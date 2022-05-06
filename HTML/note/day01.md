@@ -1,6 +1,7 @@
-<!DOCTYPE html> 
-<!DOCTYPE 指定文件语言>  
-<html lang="en">  文字区为英文的意思? 
+
+    <!DOCTYPE html> 
+    <!DOCTYPE 指定文件语言>  
+<html lang="en">  整体格式为英文
 
 
 
