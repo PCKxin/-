@@ -19,5 +19,13 @@
             font-size: XXpx  //符号大小
             content: "😍"  更改任意形状
         }
+        img{
+            width: 600px;
+            aspect-ratio: auto 600/840;
+            /* height:840px */
+            position:absolute;
+            right:0;
+            top:0
+        }
     </style>
 ```
