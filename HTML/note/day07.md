@@ -20,12 +20,21 @@
             content: "😍"  更改任意形状
         }
         img{
-            width: 600px;
+            width: 600px;  宽
             aspect-ratio: auto 600/840;
             /* height:840px */
-            position:absolute;
-            right:0;
+            position:absolute;  绝对定位
+            right:0;  
             top:0
+        }
+        p{
+            background-color:yellow
+        }
+p.padding{
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 10px;
+            padding-right: 10px;
         }
     </style>
 ```
