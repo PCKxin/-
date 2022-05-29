@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>表单练习</title>
+        <style>
+            label{
+                width: 100px;
+                text-align: right;
+                display: inline-block;
+            }
+        </style>
+    </head>
+    <body >
+        <div>
+            <form>
+                <label>用户名*：</label>
+                <input type="text" placeholder="name" maxlength="10"><br>
+                <label>密码*：</label>
+                <input type="passoword" placeholder="password" maxlength="30"><br> 
+                <label>确认密码*：</label>
+                <input type="password" placeholder="verify password" maxlength="30"><br>
+                <label>电子邮件*：</label>
+                <input type="text" placeholder="email" maxlength="20"><br>
+                <label>性别*：</label>
+                男<input type="radio" value="boy" name="sex" cheaked="cheaked">女<input type="radio" value="girl" name="sex" cheaked="cheaked"><br>
+                <label>婚姻状况*：</label>
+                已婚<input type="radio" value="ok" name="sb" cheaked="cheaked">未婚<input type="radio" value="no" name="good" cheaked="cheaked"><br>
+                <label>所在地区*：</label>
+                <input type="text" placeholder="请输入" maxlength="30"><br>
+                <label>第一学历*：</label>
+                <input type="text" placeholder="请输入" maxlength="30"><br>
+                <label>职业*：</label>
+                <input type="text" placeholder="请输入" maxlength="30"><br>
+                <label>业余爱好*：</label>
+                音乐<input type="checkbox" value="hobby">体育<input type="checkbox" value="hobby">文学<input type="checkbox" value="hobby"><br>
+                <label></label>
+                烹饪<input type="checkbox" value="hobby">旅游<input type="checkbox" value="hobby">艺术<input type="checkbox" value="hobby"><br>
+                <label>上传图片*：</label>
+                <input type="url" placeholder="image"><input type="submit" value="img" placeholder="提交"><br>
+                <label>联系地址*：</label>
+                <input type="password" placeholder="请输入" maxlength="30" size="40px"><br>
+                <label>真实姓名*：</label>
+                <input type="text" placeholder="请输入" maxlength="5"size="5px"><br>
+                <label></label>
+                <input type="submit"  placeholder="注册"><input type="submit"  placeholder="重置">
+            </form>
+        </div>
+    </body>
+</html>

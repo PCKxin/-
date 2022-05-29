@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div style="border:10px double red; width:800px">
+        <form>
+            <table>
+                <tr>
+                    <td width="100px">用户名</td>
+                    <td width="260px">
+                        <input type="text" maxlength="7">
+                    </td>
+                    <td>
+                        <span style="color:gray;">
+                            不超过七个汉字,或14个字节(数字,字母和下划线)
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100px">设置密码</td>
+                    <td width="260px">
+                        <input type="password">
+                    </td>
+                    <td>
+                        <span style="color:gray;">
+                            长度6-20个字符
+                        </span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td width="100px">电子邮箱</td>
+                    <td width="260px">
+                        <input type="text">
+                    </td>
+                    <td>
+                        <span style="color:gray;">
+                            确认身份用
+                        </span>
+                    </td>
+                <tr>
+                    <td width="100px">姓名</td>
+                    <td width="260px">
+                        <input type="text" placeholder="请输入">
+                    </td>
+                    <td>
+                        <span style="color:gray;">
+                            真实姓名
+                        </span>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>性别</td>
+                    <td>
+                        <input type="radio" name="sex" value="boy" checked>男
+                        <input type="radio" name="sex" value="girl">女
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>个人爱好</td>
+                    <td>
+                        <input type="checkbox" name="hobbies" value="wenxue">文学
+                        <input type="checkbox" name="hobbies" value="sport">体育
+                        <input type="checkbox" name="hobbies" value="music">音乐
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>所在地</td>
+                    <td>
+                        <select>
+
+                            <option value="zhe">请选择省</option>
+                            <option value="shao"></option>
+                        </select>
+                        <select>
+                            <option value="shao">请选择市</option>
+                            <option value="ning"></option>
+                            <option value="wu"></option>
+                        </select>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>家庭地址</td>
+                    <td>
+                        <input type="text">
+                    </td>
+                    <td>
+                        <span style="color: gray;">请输入详细地址</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>固定电话</td>
+                    <td><input type="text"></td>
+                    <td>
+                        <span style="color: gray;">最多12个字符</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>服务条款</td>
+                    <td>
+                        <textarea cols="30" rows="5">
+                </textarea><br>
+                    </td>
+                </tr>
+
+                <tr align="center">
+                    <td colspan="3">
+                        <input type="submit" value="我接受，注册">
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
+
+</html>
