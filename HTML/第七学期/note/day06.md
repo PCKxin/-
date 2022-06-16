@@ -1,0 +1,1 @@
+`overflow:hidden`; 自动隐藏超出的文字或图片

@@ -18,6 +18,6 @@ background-size: 50%;  /*调整背景为50%*/
 ```css
 a:hover
 { 
-background-color:yellow\;  鼠标浮上变黄
+background-color:yellow;  鼠标浮上变黄
 }
 ```
