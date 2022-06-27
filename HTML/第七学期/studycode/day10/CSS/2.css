@@ -1,0 +1,75 @@
+*{margin: 0;padding: 0;}
+
+.box{
+    width: 800px;
+}
+
+.box1{
+    width: 200px;
+    height: 200px;
+    background: green;
+}
+
+.box2{
+    width: 200px;
+    height: 200px;
+    background:yellow;
+    float: left;
+}
+
+.box3{
+    width: 200px;
+    height: 200px;
+    background: green;
+}
+
+
+.boxy1{
+    width: 300px;
+    height: 100px;
+    background: red;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 100px;
+}
+.boxy2{
+    width: 100px;
+    height: 100px;
+    background: red;
+    border-radius:0px 50px;
+    text-align: center;
+    line-height: 100px;
+}
+.boxy3{
+    width: 100px;
+    height: 100px;
+    background: red;
+    border-radius:0px 50px 50px;
+    text-align: center;
+    line-height: 100px;
+    margin: 0 auto;
+}
+.boxy4{
+    width: 100px;
+    height: 100px;
+    background: red;
+    border-radius:5px 15px 25px 35px;
+    text-align: center;
+    line-height: 100px;
+    margin: 50px auto;
+}
+.boxy5{
+    width:300px;
+    height: 100px;
+    background: pink;
+    border-radius:0px 50px 50px 0px;
+    margin: 50px auto;
+}
+
+.boxy6{
+    width:200px;
+    height: 100px;
+    background: pink;
+    border-radius:100px 100px 0px 0px ;
+    margin: 50px auto;
+}

@@ -1,0 +1,19 @@
+*{margin: 0;padding: 0;}
+
+.di1{
+    width: 210px;
+    height: 120px;
+    background: pink;
+    border-left:3px solid ;
+    border-right: 1px solid;
+    border-top: 2px solid ;
+    margin: 20px;
+    padding-right: 35px;
+    /* box-sizing:border-box; */
+}
+
+.di3{
+    width: 285px;
+    height:160      px;
+    background: orange;
+}
