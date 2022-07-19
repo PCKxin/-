@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>成绩判断</title>
+    </head>
+    <body>
+        <input type="number" id="in1">
+        <button id="bu1">按</button>
+    </body>
+    <script>
+        var in01 = document.getElementById("in1")
+        var bu01 = document.getElementById("bu1")
+            bu01.onclick = function(){
+                if(in01.value>=85 && in01.value<=100){
+                    alert("Good")
+                } else if(in01.value>=60 && in01.value<85){
+                    alert("OK")
+                } else if(in01.value<60){
+                    alert("NO")
+                } else{
+                    alert("成绩错误")
+                }
+            }
+
+    </script>
+</html>

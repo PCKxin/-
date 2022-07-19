@@ -1,0 +1,31 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.box{
+    width: 360px;
+    height: 660px;
+    margin: auto;
+}
+
+.box1{
+    width: 350px;
+    height: 220px;
+    border: 1px solid gray;
+}
+
+.box1 img{
+    width: 115px;
+    height: 100px;
+    float: left;
+    margin-left: 5px;
+    margin-top: 60px;
+}
+
+.box1 p{
+    line-height: 220px;
+    margin-left: 20px;
+    float: left;
+}

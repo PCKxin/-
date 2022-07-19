@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>练习</title>
+        <style>
+            div{
+                width: 300px;
+                height: 300px;
+                /* border:1px solid gray;  */
+            }
+            #d{
+                width: 200px;
+                height: 200px;
+                background: yellow;
+            }
+        </style>
+    </head>
+    <body> 
+        <div id="b">哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</div>
+
+        <input type="button" id="a" value="改变" onclick="jsst()"> <br>
+        <div>
+            <img src="../img/0255.png" width="300px"  id="c">
+        </div>
+        <input type="button" id="c" value="img" onmouseout="o()"onmouseover="v()"> 
+
+        <div id="d" onmouseover="v2()" onmouseout="o2()">
+
+        </div>
+    </body>
+    <script>
+        var in1 = document.getElementById("a");
+        var in2 = document.getElementById("b");
+        var in3 = document.getElementById("c");
+        var in4 = document.getElementById("d"); 
+            function jsst(){
+                in1.value="哈哈";
+                in2.style.lineHeight="30px";
+                in2.style.color="red";
+            }
+            function v(){
+                in3.src="../img/0244.png"
+            }
+            function o(){
+                in3.src="../img/0255.png"
+            }
+            function v2(){
+                in4.style.borderRadius="50%"
+                in4.style.width="200px"
+                in4.style.height="200px"
+            }
+
+            function o2(){
+                in4.style.borderRadius="0"
+                in4.style.width="300px"
+            }
+    </script>
+</html>

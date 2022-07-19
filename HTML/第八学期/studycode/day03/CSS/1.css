@@ -1,0 +1,44 @@
+*{margin: 0;padding: 0; list-style-type: none;}
+
+
+.box{
+    width: 1200px;
+    height: 150px;
+    border: 1px solid gray;
+    margin: 0 auto;
+}
+
+.box1{
+    width: 1200px;
+    height: 50px;
+    background: rgb(68, 67, 67);
+    color: white;
+    font-size: 12px;
+}
+
+.ul1{
+    margin-left:30px ;
+}
+
+.ul1 li{
+    float: left;
+    margin-left: 20px;
+    line-height: 50px;
+}
+
+.ul2{
+    float: left;
+    margin-left: 60px;
+}
+
+.ul2 li{
+    float: left;
+    margin-left: 25px;
+    line-height: 50px;
+}
+
+.ul2 .li1{
+    background: rgb(131, 130, 130);
+    width: 70px;
+    text-align: center;
+}

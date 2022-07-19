@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>移入移出，函数变量</title>
+    </head>
+    <style>
+        #c{
+            width: 100px;
+            height: 100px;
+            background: pink;
+        }
+        #a{
+            width: 300px;
+        }
+        #b{
+            width: 300px;
+        }
+    </style>
+    <body>
+        <div onclick="b()" id="c">
+            盒子
+        </div>
+        <div>
+        <img src="../img/0255.png" onmouseover="q()" id="a" onmouseout="e()">
+        </div>
+        <img src="../img/0255.png" onclick="f()" id="b" ondblclick="g()">
+    </body>
+    <script>
+        var c = document.getElementById("c")
+            function b(){
+                c.style.background="red";
+            }
+
+        var w = document.getElementById("a");
+            function q(){
+                w.src="../img/0244.png"
+            }
+            function e(){
+                w.src="../img/0255.png"
+            }
+
+        var p = document.getElementById("b");
+            function f(){
+                p.src="../img/0244.png"
+            }
+            function g(){
+                p.src="../img/0255.png"
+            }
+    </script>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>图片点击轮播</title>
+        <style>
+            *{margin: 0;padding: 0;list-style: none;}
+            #di1{
+                width: 600px;
+                height: 200px;
+                border: 1px solid gray;
+                margin: 0 auto;
+                position: relative;
+                overflow: hidden;    /*溢出隐藏*/
+            }
+            #s1{
+                position: absolute;
+                font-size: 40px;
+                font-weight: 800;
+                top: 80px;
+                left: 10px;
+            }
+            #s2{
+                position: absolute;
+                font-size: 40px;
+                font-weight: 800;
+                top: 80px;
+                right: 10px;
+            }
+            #u1{
+                width: 1400px;
+                height: 200px;
+            }
+            li{
+                width: 200px;
+                height: 200px;
+                float: left;
+            }
+            img{
+                width: 180px;
+                height: 180px;
+                padding: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="di1">
+            <span id="s1"> < </span>
+            <span id="s2"> > </span>
+            <ul id="u1">
+                <li><img src="../img/0244.png"></li>
+                <li><img src="../img/0255.png"></li>
+                <li><img src="../img/0266.jpg"></li>
+                <li><img src="../img/0244.png"></li>
+                <li><img src="../img/0255.png"></li>
+                <li><img src="../img/0266.jpg"></li>
+            </ul>
+        </div>
+    </body>
+    <script>
+        var s01 = document.getElementById("s1");
+        var s10 = document.getElementById("s2");
+        var u01 = document.getElementById("u1");
+        var n = 0; 
+            s01.onclick = function(){
+                n--;
+                if(n==-1){   // 鼠标点击次数，到负一，变到0时的效果
+                    n=0;
+                }
+                u01.style.marginLeft=n*-200+"px";
+                u01.style.transition="all 1s";
+            }
+            s10.onclick = function(){
+                n++;
+                if(n==4){  // 同理
+                    n=3;
+                }
+                u01.style.marginLeft=n*-200+"px";
+                u01.style.transition="all 1s";
+            }
+    </script>
+</html>

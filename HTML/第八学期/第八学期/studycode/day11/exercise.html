@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>循环50以内双数</title>
+    </head>
+    <body>
+        双数<textarea id="t1" cols="50" rows="30"></textarea>
+        单数<textarea id="t2" cols="50" rows="30"></textarea>
+    </body>
+    <script>
+        var t01 = document.getElementById("t1")
+        var t10 = document.getElementById("t2")
+        num1 = []
+            for(var n = 0 ;n <= 50 ; n+=2){
+                num1+=n+","
+                t01.value = num1
+            }
+            for(var n = 1 ;n <= 100 ; n+=2){
+                t10.value+=n+","
+            }
+    </script>
+</html>

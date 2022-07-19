@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JS获取元素</title>
+        <style>
+            *{margin: 0;padding: 0;}
+            #box{
+                width: 200px;
+                height: 200px;
+                background: pink;
+                margin: 20px auto;
+            }
+            #box2{
+                width: 200px;
+                height: 200px;
+                text-align: center;
+                margin: 20px auto;
+                line-height: 200px;
+                background: rgba(135, 207, 235, 0.568);
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box"></div>
+
+        <p id="box2">嘎子偷狗事件</p>
+    </body>
+    <script>
+        var boxs = document.getElementById("box");
+            boxs.onclick=function(){
+                boxs.style.background="skyblue";
+                boxs.innerHTML="这里出现了xxx";
+            }
+            boxs.ondblclick=function(){
+                boxs.style.background="rgba(253, 192, 255, 0.74)";
+                boxs.innerHTML="";
+            }
+
+        var boxss = document.getElementById("box2");
+            boxss.onmouseover=function(){
+                boxss.style.color="red";
+                boxss.style.fontSize="30px";
+                boxss.innerHTML="狗偷嘎子事件";
+            }
+            boxss.onmouseout=function(){
+                boxss.style.color="";
+                boxss.style.fontSize="";
+                boxss.innerHTML="嘎子偷狗事件";
+            }
+    </script>
+</html>
