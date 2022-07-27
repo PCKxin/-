@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>选项卡</title>
+        <style>
+            *{margin: 0;padding: 0;list-style: none;}
+            .box{
+                width: 500px;
+                height: 500px;
+                border: 1px solid gray;
+                margin: 0 auto;
+            }
+            .box ul{
+                width: 500px;
+                height: 50px;
+            }
+            .box li{
+                width: 100px;
+                height: 50px;
+                float: left;
+                text-align: center;
+                line-height: 50px;
+            }
+            .box .di1{
+                width: 500px;
+                height: 450px;
+                background: pink;
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <!--选项-->
+            <ul>
+                <li class="li1">第一个</li>
+                <li class="li1">第二个</li>
+                <li class="li1">第三个</li>
+                <li class="li1">第四个</li>
+                <li class="li1">第五个</li>
+            </ul>
+            <div class="di1">第一个出</div>
+            <div class="di1">第二个出</div>
+            <div class="di1">第三个出</div>
+            <div class="di1">第四个出</div>
+            <div class="di1">第五个出</div>
+        </div>
+    </body>
+    <script>
+        var li01 = document.getElementsByClassName("li1");
+        var di01 = document.getElementsByClassName("di1");
+            for(var a = 0; a < li01.length; a++){
+                li01[a].index = a;  //index 下标的意思
+                li01[a].onclick = function(){
+                    for(var b = 0; b<li01.length; b++){
+                        li01[b].style.background="white";
+                        li01[b].style.color="black"
+                        di01[b].style.display="none"
+                    }
+                    li01[this.index].style.background="yellow";
+                    li01[this.index].style.color="red";
+                    di01[this.index].style.display="block"
+                }
+            }
+    </script>
+</html>

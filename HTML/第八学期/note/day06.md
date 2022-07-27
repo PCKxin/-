@@ -33,3 +33,25 @@ for (var 变量名 = 赋值 ; 变量名<数组名.length ; 变量名++){
 this.style.color // this 自己本身的意思
 
 ```
+## 判断
+
+```js
+if(判断条件){
+
+} else{
+
+}
+
+------
+
+if(){
+
+}else if(){
+
+} else{
+
+}
+
+
+```
+

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>购物车计算</title>
+        <style>
+            *{margin: 0;padding: 0;list-style: none;}
+            table{
+                width: 600px;
+                margin: 0 auto;
+                border: 1px solid gray;
+                margin-top: 20px;
+                border-collapse: collapse;
+                text-align: center;
+            }
+            td{
+                border: 1px solid gray;
+            }
+            
+            .t1{
+                background: rgb(219, 218, 218);
+                height: 40px;
+            }
+            #bu1{
+                width: 20px;
+                height: 20px;
+            }
+            #in1{
+                width: 40px;
+                height: 20px;
+                text-align: center;
+            }
+            #bu2{
+                width: 20px;
+                height: 20px;
+            }
+            #bu3{
+                width: 20px;
+                height: 20px;
+            }
+            #in2{
+                width: 40px;
+                height: 20px;
+                text-align: center;
+            }
+            #bu4{
+                width: 20px;
+                height: 20px;
+            }
+            .trd{
+                height: 110px;
+            }
+        </style>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <td class="t1" width="200px">全选</td>
+                <td class="t1" width="60px">商品</td>
+                <td class="t1" width="80px">单价(元)</td>
+                <td class="t1" width="100px">数量</td>
+                <td class="t1" width="100px">小计(元)</td>
+                <td class="t1" width="60px">操作</td>
+            </tr>
+            <tr class="trd" id="tr1">
+                <td>
+                    <img src="../img/0266.jpg" width="120px">
+                </td>
+                <td>手链</td>
+                <td><p id="m1">29.9元</p></td>
+                <td>
+                    <button id="bu1">-</button>
+                    <input type="text" id="in1" value="0">
+                    <button id="bu2">+</button>
+                </td>
+                <td>
+                    <p id="p1">0</p>
+                </td>
+                <td>
+                    <button id="bud1">删除</button>
+                </td>
+            </tr>
+
+            <tr class="trd" id="tr2">
+                <td>
+                    <img src="../img/0244.png" width="120px">
+                </td>
+                <td>手表</td>
+                <td><p id="m2">39.9元</p></td>
+                <td>
+                    <button id="bu3">-</button>
+                    <input type="text" id="in2" value="0">
+                    <button id="bu4">+</button>
+                </td>
+                <td>
+                    <p id="p2">0</p>
+                </td>
+                <td>
+                    <button id="bud2">删除</button>
+                </td>
+            </tr>
+            
+            <tr>
+                <td colspan="6">总计: <span id="p3"></span></td>
+            </tr>
+        </table>
+    </body>
+    <script>
+        var bu01 = document.getElementById("bu1");
+        var bu10 = document.getElementById("bu2");
+        var bu11 = document.getElementById("bu3");
+        var bu100 = document.getElementById("bu4");
+        var nu1 = document.getElementById("m1");
+        var nu2 = document.getElementById("m2");
+        var in01 = document.getElementById("in1");
+        var in10 = document.getElementById("in2");
+        var p01 = document.getElementById("p1");
+        var p10 = document.getElementById("p2");
+        var p11 = document.getElementById("p3");
+        var tr01 = document.getElementById("tr1");
+        var tr10 = document.getElementById("tr2");
+        var del1 = document.getElementById("bud1");
+        var del2 = document.getElementById("bud2");
+        var i = 0;
+        var a = 0;
+            bu01.onclick = function(){
+                in01.value = --i
+                if(in01.value <=-1 ){
+                    in01.value = ++i 
+                }
+                p01.innerHTML=(parseInt(in01.value)*parseFloat(nu1.innerHTML)).toFixed(2);
+                p3.innerHTML = (parseFloat(p01.innerHTML)+parseFloat(p10.innerHTML)).toFixed(2);
+            }
+            bu10.onclick = function(){
+                in01.value = ++i;
+                p01.innerHTML=(parseInt(in01.value)*parseFloat(nu1.innerHTML)).toFixed(2);
+                p3.innerHTML = (parseFloat(p01.innerHTML)+parseFloat(p10.innerHTML)).toFixed(2);
+            }
+            bu11.onclick = function(){
+                in10.value = --a
+                if(in10.value <=-1 ){
+                    in10.value = ++a 
+                }
+                p10.innerHTML=(parseInt(in10.value)*parseFloat(nu2.innerHTML)).toFixed(2);
+                p3.innerHTML = (parseFloat(p01.innerHTML)+parseFloat(p10.innerHTML)).toFixed(2);
+            }
+            bu100.onclick = function(){
+                in10.value = ++a
+                p10.innerHTML=(parseInt(in10.value)*parseFloat(nu2.innerHTML)).toFixed(2);
+                p3.innerHTML = (parseFloat(p01.innerHTML)+parseFloat(p10.innerHTML)).toFixed(2);
+            }
+            del1.onclick = function(){
+                tr01.style.display="none"
+            }
+            del2.onclick = function(){
+                tr10.style.display="none"
+            }
+    </script>
+</html>

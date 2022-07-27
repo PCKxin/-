@@ -1,0 +1,40 @@
+*{margin: 0;padding: 0;list-style: none;}
+
+.box{
+    width: 1270px;
+    height: 620px;
+    margin: 0 auto;
+    border: 1px solid gray;
+    background-color: rgba(160, 159, 159, 0.596);
+    margin-top: 20px;
+}
+
+
+.box3{
+    box-sizing: border-box;
+    width: 290px;
+    height: 180px;
+    background-color: white;
+    margin: 13px;
+    float: left;
+    padding-top: 10px;
+}
+
+
+img{
+    width: 130px;
+    height: px;
+    margin: 5px;
+}
+
+.sp1{
+    margin-left: 5px;
+    font-size: 20px;
+    font-weight: 600;
+    color: black;
+}
+
+.p1{
+    font-size: 12px;
+    color: gray;
+}

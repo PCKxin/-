@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>还是循环</title>
+        <style>
+            *{margin: 0;padding: 0;list-style: none;}
+            input{
+                width: 100px;
+                height: 30px;
+                border: 1px solid gray;
+                border-radius: 10%;
+                margin-top: 50px;
+            }
+            p{
+                width: 200px;
+                height: 40px;
+                border: 1px solid gray;
+                margin: 20px;
+            }
+            button{
+                margin: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        男:<input type="text" id="in1"><br>
+        女:<input type="text" id="in2"><br>
+        <button id="bu1">查询</button> <br>
+        <p id="p1"></p>
+    </body>
+    <script>
+        var in01 = document.getElementById("in1")
+        var in10 = document.getElementById("in2")
+        var bu01 = document.getElementById("bu1")
+        var p01 = document.getElementById("p1")
+            bu01.onclick = function(){
+                if (130 > in01.value >= 23 && 130 > in10.value >= 22) {
+                    p01.innerHTML="OK"
+                }else if(in01.value < 23 && in10.value >= 22) {
+                    p01.innerHTML="男的年龄不行，回去"
+                }else if(in01.value >= 23 && in10.value < 22){
+                    p01.innerHTML="女的年龄不行，回去"
+                }else if(in01.value > 130 && in10.value > 130){
+                    p01.innerHTML="woc,神仙"
+                }else{
+                    p01.innerHTML="想P呢, 回去上学"
+                }
+            }
+    </script>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>滚动条事件</title>
+        <style>
+            *{margin: 0;padding: 0;list-style: none;}
+            #di1{
+                width: 100%;
+                height: 100px;
+                background: red;
+                display: none;
+            }
+            #di2{
+                width: 100px;
+                height: 100px;
+                background: red;
+                position: fixed;
+                right: 50px;
+                bottom: 50px;
+                display: none;
+            }
+            .di3{
+                height: 800px;
+            }
+            #di4{
+                width: 100px;
+                height: 400px;
+                background: yellow;
+                position: absolute;
+                right: 60px;
+                bottom: 20px;
+            }
+            p{
+                height: 10000px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="di1">
+
+        </div>
+        <div id="di2">
+
+        </div>
+        <div class="di3"></div>
+        <div id="di4"></div>
+        <p></p>
+    </body>
+    <script>
+        var di01 = document.getElementById("di1");
+        var di10 = document.getElementById("di2");
+        var di100 = document.getElementById("di4");
+            window.onscroll = function(){
+                var a = document.body.scrollTop||document.documentElement.scrollTop;
+                if(a >= 500){
+                    di01.style.display="block";
+                    di01.style.position="fixed";
+                }
+                else{
+                    di01.style.display="none";
+                }
+                if( a >= 2500){
+                    di10.style.display="block"
+                }
+                else{
+                    di10.style.display="none"
+                }
+                if( a >700 ){
+                    di100.style.position="fixed"
+                    di100.style.right="60px"
+                    di100.style.top="150px"
+                }
+                else{
+                    di100.style.position="absolute"
+                    di100.style.top="500px"
+                }
+            }
+    </script>
+</html>
