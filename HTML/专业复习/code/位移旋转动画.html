@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+        <style>
+            *{margin: 0;padding: 0;}
+            .d1{
+                width: 200px;
+                height: 200px;
+                background: skyblue;
+            }
+            .d1:hover{
+                transform: translate(400px,0px) rotate(360deg) scale(0.8);
+                border-radius: 50%;
+                background: pink;
+                box-shadow: 10px 10px 10px plum inset;
+                transition: all 2s;
+            }
+            .d2{
+                width: 200px;
+                height: 200px;
+                background: red;
+            }
+            .d2:hover{
+                width: 800px;
+                background: yellow;
+                transition: 2s;
+            }
+            .d3{
+                width: 200px;
+                height: 300px;
+                border: 1px solid gray;
+                margin: 0 auto;
+                position: relative;
+            }
+            .d4{
+                box-sizing: border-box;
+                width: 200px;
+                height: 0px;
+                position: absolute;
+                bottom: 0;
+            }
+            .d3:hover .d4{
+                height: 150px;
+                background: rgba(204, 237, 250, 0.74);
+                transition: all 2s;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="d1"></div>
+        <div class="d2"></div>
+        <div class="d3">
+            <div class="d4"></div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+        <style>
+            *{margin: 0;padding: 0;list-style: none;font-family: Arial;}
+            .h-box{
+                width: 1000px;
+                height: 40px;
+                margin: 0 auto;
+                box-sizing: border-box;
+            }
+            .h-li{ 
+                width: 200px;
+                height: 40px;
+                box-shadow: 2px 0px white inset;
+                box-sizing: border-box;
+                float: left;
+                background: skyblue;
+                text-align: center;
+                line-height: 40px;
+            }
+            .h-li .h-hd{
+                box-sizing: border-box;
+                width: 200px;
+                height: auto;
+                background: rgba(162, 226, 252, 0.733);
+                box-shadow: 2px 0px white inset;
+                display: none;
+            }
+            .h-li .h-hd .lp{
+                width: auto;
+                height: 40px;
+            }
+            .h-li:hover{
+                background: rgb(39, 119, 238);
+                color: white;
+            }
+            .h-li:hover .h-hd{
+                display: block;
+                color: black;
+            }
+            .lp:hover{
+                background: rgb(39, 119, 238);
+                color: white;
+                box-shadow: 2px 0px white inset;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="h-box">
+            <ul>
+                <li class="h-li">选项1
+                    <div class="h-hd">
+                        <p class="lp">1</p>
+                        <p class="lp">2</p>
+                        <p class="lp">3</p>
+                    </div>
+                </li>
+                <li class="h-li">选项2
+                    <div class="h-hd">
+                        <p class="lp">1</p>
+                        <p class="lp">2</p>
+                        <p class="lp">3</p>
+                    </div>
+                </li>
+                <li class="h-li">选项3
+                    <div class="h-hd">
+                        <p class="lp">1</p>
+                        <p class="lp">2</p>
+                        <p class="lp">3</p>
+                    </div>
+                </li>
+                <li class="h-li">选项4
+                    <div class="h-hd">
+                        <p class="lp">1</p>
+                        <p class="lp">2</p>
+                        <p class="lp">3</p>
+                    </div>
+                </li>
+                <li class="h-li">选项5
+                    <div class="h-hd">
+                        <p class="lp">1</p>
+                        <p class="lp">2</p>
+                        <p class="lp">3</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </body>
+</html>

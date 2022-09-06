@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+        <style>
+            *{margin: 0;padding: 0; list-style: none;}
+            .box li{
+                width: 100px;
+                height: 100px;
+                margin: 15px;
+            }
+            .box li:hover{
+                background: blue;
+            }
+            .li1{
+                position: relative;
+                background-color: skyblue;
+            }
+            .li2{
+                position: relative;
+                background-color: skyblue;
+            }
+            .li3{
+                position: relative;
+                background-color: skyblue;
+            }
+            .li4{
+                position: relative;
+                background-color: skyblue;
+            }
+            .li1:hover .dp1{
+                display: block;
+            }
+            .li2:hover .dp2{
+                display: block;
+            }
+            .li3:hover .dp3{
+                display: block;
+            }
+            .li4:hover .dp4{
+                display: block;
+            }
+            .li1:hover .san1{
+                display: block;
+            }
+            .li2:hover .san2{
+                display: block;
+            }
+            .li3:hover .san3{
+                display: block;
+            }
+            .li4:hover .san4{
+                display: block;
+            }
+            .dp1{
+                width: 200px;
+                height: 100px;
+                background: rgb(206, 205, 205);
+                position: absolute;
+                left: 150px;
+                display: none;
+            }
+            .dp2{
+                width: 200px;
+                height: 100px;
+                background: rgb(206, 205, 205);
+                position: absolute;
+                left: 150px;
+                display: none;
+            }
+            .dp3{
+                width: 200px;
+                height: 100px;
+                background: rgb(206, 205, 205);
+                position: absolute;
+                left: 150px;
+                display: none;
+            }
+            .dp4{
+                width: 200px;
+                height: 100px;
+                background: rgb(206, 205, 205);
+                position: absolute;
+                left: 150px;
+                display: none;
+            }
+            .san1{
+                width: 0;
+                height: 0;
+                border-width: 50px;
+                border-style: solid;
+                border-color: transparent transparent transparent pink;
+                position: absolute;
+                left: 100px;
+                display: none;
+            }
+            .san2{
+                width: 0;
+                height: 0;
+                border-width: 50px;
+                border-style: solid;
+                border-color: transparent transparent transparent pink;
+                position: absolute;
+                left: 100px;
+                display: none;
+            }
+            .san3{
+                width: 0;
+                height: 0;
+                border-width: 50px;
+                border-style: solid;
+                border-color: transparent transparent transparent pink;
+                position: absolute;
+                left: 100px;
+                display: none;
+            }
+            .san4{
+                width: 0;
+                height: 0;
+                border-width: 50px;
+                border-style: solid;
+                border-color: transparent transparent transparent pink;
+                position: absolute;
+                left: 100px;
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <ul class="box">
+            <li class="li1">
+                <div class="san1"></div>
+                <div class="dp1"></div>
+            </li>
+            <li class="li2">
+                <div class="san2"></div>
+                <div class="dp2"></div>
+            </li>
+            <li class="li3">
+                <div class="san3"></div>
+                <div class="dp3"></div>
+            </li>
+            <li class="li4">
+                <div class="san4"></div>
+                <div class="dp4"></div>
+            </li>
+        </ul>
+    </body>
+</html>

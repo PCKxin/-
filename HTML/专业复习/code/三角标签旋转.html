@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+        <style>
+            *{margin: 0;padding: 0;}
+            .box{
+                width: 800px;
+                height: 600px;
+                background: gray;
+                margin: 20px auto;
+            }
+            .box .box1{
+                width: 700px;
+                height: 50px;
+                background: skyblue;
+                margin: 0 auto;
+            }
+            .box1 .s1{
+                width: 0px;
+                height: 0px;
+                border-width: 14px;
+                border-style: solid;
+                border-color: transparent red transparent transparent;
+                float: left;
+                margin-top: 10px;
+                margin-right: 10px;
+            }
+            .box1 .h1{
+                float: left;
+                margin-top: 4px;
+            }
+            p{
+                width: 700px;
+                height: 300px;
+                background: yellow;
+                margin: 0 auto;
+                display: none;
+            }
+            .box1:hover+p{
+                display: block;
+            }
+            .box1:hover .s1{
+                transform: rotate(-90deg);
+                transition: all 1s;
+                margin-top: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <div class="box1">
+                <span class="s1"></span>
+                <h1>11</h1>
+            </div>
+            <p>11</p>
+            <div class="box1">
+                <span class="s1"></span>
+                <h1>22</h1>
+            </div>
+            <p>22</p>
+            <div class="box1">
+                <span class="s1"></span>
+                <h1>33</h1>
+            </div>
+            <p>33</p>
+        </div>
+    </body>
+</html>

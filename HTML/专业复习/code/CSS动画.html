@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+        <style>
+            *{margin: 0;padding: 0;list-style: none;}
+            .box{
+                width: 100px;
+                height: 100px;
+                background: pink;
+                animation: an1 3s infinite;
+            }
+            @keyframes an1{
+                0%{
+                    transform:translate(0,0);
+                    background: pink;
+                }
+                25%{
+                    transform:translate(400px,0px);
+                    background: orange;
+                }
+                50%{
+                    transform:translate(400px,400px0);
+                    background: skyblue;
+                    border-radius: 50%;
+                }
+                75%{
+                    transform:translate(0px,400px);
+                    background: yellow;
+                }
+                100%{
+                    transform:translate(0px,0px) rotate(360deg);
+                    background: rgb(131, 247, 131);
+                }
+            }
+            .box1{
+                width: 200px;
+                height: 200px;
+                background: skyblue;
+                animation: an2 3s infinite;
+                margin-top: 500px;
+                margin-left: 100px;
+            }
+            @keyframes an2{
+                0%{
+                    /* transform:translate(0,0); */
+                    background: skyblue;
+                }
+                25%{
+                    /* transform:translate(400px,0px); */
+                    background: rgb(248, 125, 125);
+                }
+                50%{
+                    /* transform:translate(400px,400px0); */
+                    background: orange;
+                    border-radius: 50%;
+                }
+                75%{
+                    /* transform:translate(0px,400px); */
+                    background: yellow;
+                }
+                100%{
+                    /* transform:translate(0px,0px) rotate(360deg); */
+                    background: rgb(131, 247, 131);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box"></div>
+        <div class="box1"></div>
+    </body>
+</html>

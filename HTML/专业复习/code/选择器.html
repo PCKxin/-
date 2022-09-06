@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+        <style>
+            *{margin: 0;padding: 0;}
+            div+p{      /*加号是相邻兄弟选择器，只能选择最近的一个，也就是挨着的*/
+                color: orange;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <p>1.</p>
+            <p>2.</p>
+            <p>3.</p>
+        </div>
+        <p>1</p>
+        <p>2</p>
+        <p>3</p>
+    </body>
+</html>

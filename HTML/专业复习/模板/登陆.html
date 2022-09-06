@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+        <style>
+            *{margin: 0;padding: 0;list-style: none;font-family:Arial}
+
+            .box{
+                width: 350px;
+                height: 380px;
+                /* border: 2px solid gray; */
+                box-sizing: border-box;
+                background-color: rgba(197, 195, 195, 0.74);
+                margin: 50px auto;
+                border-radius: 20px;
+            }
+            .options{
+                box-sizing: border-box;
+                padding-top: 8px;
+                width: 175px;
+                height: 50px;
+                /* border: 1px solid gray; */
+                float: left;
+                font-size: 20px;
+                font-weight: bold;
+                text-align: center;
+                line-height: 50px;
+                outline: none;/*点击去掉边框*/
+            }
+            .box1{
+                box-sizing: border-box;
+                width: 350px;
+                height: 400px;
+                display: block;
+            }
+            .box1 .input1{
+                width: 300px;
+                height: 50px;
+                margin: 20px 25px 0px; /*上：20 左右：25 下：0*/
+                border-radius: 10px;
+                border: 0px;
+                font-size: 15px;
+            }
+            .box1 #in1{
+                text-indent: 2em;
+            }
+            .box1 #in2{
+                text-indent: 2em;
+            }
+            .box1 #in3{
+                text-align: center;
+                font-size: 18px;
+                background-color: rgba(253, 168, 10, 0.938);
+                color: whitesmoke;
+                font-weight: bold;
+            }
+            .box1 .vc1{
+                box-sizing: border-box;
+                width: 80px;
+                height: 40px;
+                /* border: 1px solid gray; */
+                margin-top: 20px;
+                margin-left: 25px;
+                text-align: center;
+                line-height: 40px;
+                font-weight: bold;
+                font-size: 15px;
+                float: left;
+            }
+            .box1 .vc2{
+                margin-top: 15px;
+                margin-left: 10px;
+                float: left;
+                width: 60px;
+                height: 50px;
+                font-size: 15px;
+                border-radius: 5px;
+                border: 0px;
+                text-align: center;
+                outline: none;/*点击去掉边框*/
+            }
+            .box2{
+                box-sizing: border-box;
+                width: 350px;
+                height: 400px;
+                display: none;
+            }
+            .box2 img{
+                width:300px;
+                height: 300px;
+                margin: 10px 25px 0px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <ul>
+                <!--options 选项的意思-->
+                <li class="options" id="op1" style="color: white;">账号登陆</li>
+                <li class="options" id="op2">扫码登陆</li> 
+            </ul>
+            <!--opd 全称 option display 选项显示的意思-->
+            <div class="box1" id="opd1">
+                <input type="text" class="input1" id="in1" placeholder="输入手机号码">
+                <input type="password" class="input1" id="in2" placeholder="输入密码">
+                <ul>
+                    <li class="vc1">验证码:</li>
+                    <li>
+                        <input type="text" class="vc2" id="cod1">
+                    </li>
+                    <li>
+                        <input type="text" class="vc2" id="cod2">
+                    </li>
+                    <li>
+                        <input type="button" value="换一张"  class="vc2" id="cod3">
+                    </li>
+                </ul>
+                <input type="button" class="input1" id="in3" value="登陆">
+            </div> 
+            <div class="box2" id="opd2">
+                <img src="../img/0101.png" >
+            </div> 
+        </div>
+    </body>
+    <script>
+        var op01 = document.getElementById("op1");  //
+        var op02 = document.getElementById("op2");  //
+        var opd01 = document.getElementById("opd1");  //
+        var opd02 = document.getElementById("opd2");  //
+        var in01 = document.getElementById("in1");
+        var in02 = document.getElementById("in2");
+        var in03 = document.getElementById("in3");
+        var cod01 = document.getElementById("cod1");
+        var cod02 = document.getElementById("cod2");
+        var codb = document.getElementById("cod3");
+            op01.onclick = function(){ //选项卡
+                opd01.style.display="block"
+                opd02.style.display="none"
+                op01.style.color="white"
+                op02.style.color="black"
+            }
+            op02.onclick = function(){
+                opd02.style.display="block"
+                opd01.style.display="none"
+                op01.style.color="black"
+                op02.style.color="white"
+            }
+            cod01.value = Math.random().toString(36).slice(-4) //生成随机四位字符串
+                            // Math.random()  生成随机数字
+                            // .toString(36)  转化成36进制
+                            // .slice(-4) 取最后四位
+            codb.onclick = function(){
+                cod01.value = Math.random().toString(36).slice(-4)
+            }
+            in03.onclick = function(){
+                if(in01.length < 11){
+                    alert('手机号位数错误')
+                    cod01.value = Math.random().toString(36).slice(-4)
+                }
+                if(cod02.value != cod01.value){
+                    alert('验证码错误')
+                    cod01.value = Math.random().toString(36).slice(-4)
+                }
+                if(in01.length = 11 && cod02.value == cod01.value){
+                    alert('登陆成功')
+                }
+            }
+    </script>
+</html>

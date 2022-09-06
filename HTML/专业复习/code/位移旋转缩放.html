@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>旋转位移缩放</title>
+        <style>
+            *{margin: 0;padding: 0;}
+            .d1{
+                width: 200px;
+                height: 200px;
+                background: pink;
+                margin: 50px auto;
+            }
+            .d1:hover{
+                transform: scale(1.5);
+                transition: 1s;
+            }
+            .d2{
+                width: 200px;
+                height: 200px;
+                background: pink;
+                margin: 50px auto;
+            }
+            .d2:hover{
+                transform: scaleX(1.5);
+                transition: 1s;
+            }
+            .d3{
+                width: 200px;
+                height: 200px;
+                background: pink;
+                margin: 50px auto;
+            }
+            .d3:hover{
+                transform: scale(3,2);
+                transition: 1s;
+            }
+            .d4{
+                width: 200px;
+                height: 200px;
+                border: 3px solid greenyellow;
+                margin: 50px auto;
+                text-align: center;
+                line-height: 200px;
+                overflow: hidden;
+            }
+            img{
+                width: 150px;
+            }
+            .d4 img:hover{
+                transform: scale(2);
+                transition: 1s;
+            }
+            .d5{
+                width: 200px;
+                height: 200px;
+                background: pink;
+                margin: 50px auto;
+                text-align: center;
+                line-height: 200px;
+            }
+            .d5:hover{
+                transform: rotate(360deg);
+                transition: 2s;
+            }
+            .d6{
+                width: 200px;
+                height: 200px;
+                background: pink;
+                margin: 50px auto;
+                text-align: center;
+                line-height: 200px;
+            }
+            .d6:hover{
+                transform: rotateX(360deg);
+                transition: 2s;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>
+            位移：<br>
+            transform:translate(x位移 y位移) <br>
+            缩放：<br>
+            transform:scale(随便多少数值);等比例放大缩小<br>
+            transform:scaleX(1.2); 沿着X轴缩放1.2倍<br>
+            transform:scale(x,y);x轴与y轴缩放比例可以不一致<br>
+            旋转：<br>
+            transform:rotate(180deg); 沿着Z轴(电脑屏幕)旋转<br> 
+            transform:rotateX(90deg); 沿着X轴旋转<br>
+            transform:rotateY(90deg); 沿着Y轴旋转<br>
+        </h2>
+        <div class="d1"></div>
+        <div class="d2"></div>
+        <div class="d3"></div>
+        <div class="d4"><img src="../img/0244.png"></div>
+        <div class="d5"><img src="../img/0244.png"></div>
+        <div class="d6"><img src="../img/0244.png"></div>
+    </body>
+</html>

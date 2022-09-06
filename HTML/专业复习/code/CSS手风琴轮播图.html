@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+        <style>
+            *{margin: 0;padding: 0;list-style: none;}
+            .box{
+                width: 1200px;
+                height: 565px;
+                border: 1px solid gray;
+                margin: 20px auto;
+            }
+            .ld{
+                box-sizing: border-box;
+                width: 240px;
+                height: 800px;
+                float: left;
+                background: no-repeat;
+                background-size: 1000px; /*宽，高*/
+                transition: 1s;
+            }
+            .ld:nth-child(1){    /*应该是类顺序添加属性*/
+                background-image: url(../img/0244.png);
+            }
+            .ld:nth-child(2){
+                background-image: url(../img/0266.jpg);
+            }
+            .ld:nth-child(3){
+                background-image: url(../img/0244.png);
+            }
+            .ld:nth-child(4){
+                background-image: url(../img/0266.jpg);
+            }
+            .ld:nth-child(5){
+                background-image: url(../img/0244.png);
+            }
+            .box ul:hover li{
+                width: 50px;
+            }
+            .box ul li:hover{
+                width: 1000px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <ul>
+                <li class="ld"></li>
+                <li class="ld"></li>
+                <li class="ld"></li>
+                <li class="ld"></li>
+                <li class="ld"></li>
+            </ul>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+        <style>
+            *{margin: 0;padding: 0;}
+            .box{
+                width: 600px;
+                height: 337.5px;
+                border: 1px solid gray;
+                margin: 20px auto;
+                position: relative;
+                overflow: hidden;
+            }
+            .box ul{
+                width: 3000px;
+                height: 337.5px;
+                list-style: none;
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                animation: an1 5s infinite;
+            }
+            .box ul li{
+                width: 600px;
+                height: 337.5px;
+                float: left;
+            }
+            .box li img{
+                width: 600px;
+                height: 337.5px;
+            }
+            @keyframes an1{
+                0%{transform: translate(0px,0px);}
+                10%{transform: translate(0px,0px);}
+                25%{transform: translate(-600px,0px);}
+                35%{transform: translate(-600px,0px);}
+                50%{transform: translate(-1200px,0px);}
+                60%{transform: translate(-1200px,0px);}
+                75%{transform: translate(-1800px,0px);}
+                85%{transform: translate(-1800px,0px);}
+                100%{transform: translate(-2400px,0px);}
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <ul>
+                <li>
+                    <img src="../img/0244.png">
+                </li>
+                <li>
+                    <img src="../img/0266.jpg">
+                </li>
+                <li>
+                    <img src="../img/0244.png">
+                </li>
+                <li>
+                    <img src="../img/0266.jpg">
+                </li>
+                <li>
+                    <img src="../img/0244.png">
+                </li>
+            </ul>
+        </div>
+    </body>
+</html>

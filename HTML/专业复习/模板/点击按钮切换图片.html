@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+        <style>
+            *{margin: 0;padding: 0;list-style: none;}
+            #box1{
+                width: 600px;
+                height: 377.5px;
+                border: 1px solid gray;
+                margin: 20px auto;
+                position: relative;
+            }
+            #box1 img{
+                width: 600px;
+                height: 337.5px;
+            }
+            #prev,#next{
+                width: 50px;
+                height: 50px;
+                background: rgba(255, 192, 203, 0.575);
+                font-size: 30px;
+                color: white;
+                text-align: center;
+                line-height: 50px;
+            }
+            #prev{
+                position: absolute;
+                top: 50%;
+                margin-top: -25px;
+                left: 0px;
+            }
+            #next{
+                position: absolute;
+                top: 50%;
+                margin-top: -25px;
+                right: 0px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box1">
+            <img src="../img/0244.png" id="im1">
+            <div id="prev"> < </div>
+            <div id="next"> > </div>
+        </div>
+    </body>
+    <script>
+        var imgs = ["../img/0244.png","../img/0266.jpg","../img/0244.png","../img/0266.jpg"];
+        var im01 = document.getElementById("im1");
+        var i = 0;
+        next.onclick = function(){
+            i++;
+            im01.src = imgs[i];
+            if(i == imgs.length){
+                i = 0;
+            }
+            im01.src = imgs[i];
+        }
+        prev.onclick = function(){
+            if(i == 0){
+                i = imgs.length;
+            }
+            i--;
+            im01.src = imgs[i];
+        }
+    </script>
+</html>
