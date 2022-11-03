@@ -26,7 +26,7 @@ style="solid空格加颜色名"
         <td>2</td>
         <td>3</td>
     </tr>
-        </table>
+</table>
 
 
 
