@@ -132,9 +132,9 @@
         var opd02 = document.getElementById("opd2");  //
         var in01 = document.getElementById("in1");
         var in02 = document.getElementById("in2");
-        var in03 = document.getElementById("in3");
-        var cod01 = document.getElementById("cod1");
-        var cod02 = document.getElementById("cod2");
+        var in03 = document.getElementById("in3"); // 登录按钮
+        var cod01 = document.getElementById("cod1"); // 随机生成验证码
+        var cod02 = document.getElementById("cod2"); // 用户填写验证码
         var codb = document.getElementById("cod3");
             op01.onclick = function(){ //选项卡
                 opd01.style.display="block"
@@ -152,11 +152,14 @@
                             // Math.random()  生成随机数字
                             // .toString(36)  转化成36进制
                             // .slice(-4) 取最后四位
-            codb.onclick = function(){
+            // codb.onclick = function(){
+            //     cod01.value = Math.random().toString(36).slice(-4)
+            // }
+            codb.onclick = ()=>{
                 cod01.value = Math.random().toString(36).slice(-4)
             }
             in03.onclick = function(){
-                if(in01.length < 11){
+                if(in01.value.length < 11){
                     alert('手机号位数错误')
                     cod01.value = Math.random().toString(36).slice(-4)
                 }
@@ -164,7 +167,7 @@
                     alert('验证码错误')
                     cod01.value = Math.random().toString(36).slice(-4)
                 }
-                if(in01.length = 11 && cod02.value == cod01.value){
+                if(in01.value.length == 11 && cod02.value == cod01.value){
                     alert('登陆成功')
                 }
             }
