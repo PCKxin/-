@@ -2000,7 +2000,7 @@ function num_timer(){
     var s = date.getSeconds();
     if(h < 10){
         h = "0" + h;
-    }                                                                                                                                                                                                                                                                                                                                                                                                                  
+    }                     
     if(m < 10){
         m = "0" + m;
     }
@@ -2094,6 +2094,7 @@ var userMainNum = userNum.slice(0,3) * 1; //获取用户输入的号码前三位
         alert("号码正确");
     }
 ```
+
 ### 暴力阻止浏览器默认事件以及浏览器冒泡
  - 作用：阻止浏览器默认事件以及浏览器冒泡
  - 原理：返回false
@@ -2104,6 +2105,7 @@ button.onclick = function(){
     return false;
 }
 ```
+
 ### 事件委托
  - 作用：事件委托
  - 原理：事件委托是利用事件冒泡，只指定一个事件处理程序，就可以管理某一类型的所有事件
@@ -2120,6 +2122,82 @@ ul.onclick = function(e){
 }
 ```
 
+### 返回顶部，计时版
+ - 作用：返回顶部，带计时器
+ - 原理：获取滚动条，每次减100，当滚动条小于等于0时，清除计时器
+ - 写法：
+```js
+//例:
+//获取计时器
+var time = null; //定义一个计时器
+//获取按钮
+var btn = document.getElementById("btn");
+//获取滚动条
+var scroll_max = document.documentElement.scrollTop || document.body.scrollTop;
+//点击按钮，返回顶部
+btn.onclick = function(){
+    time = setInterval(function(){
+        scroll_max -= 100; //每次距离减100
+        if(scroll_max <= 0){ //当滚动条小于等于0时，清除计时器
+            clearInterval(time);
+        }
+        document.documentElement.scrollTop = scroll_max; //赋值给滚动条
+        document.body.scrollTop = scroll_max; //赋值给滚动条
+    },1000)
+}
+```
+
+### 滚轮滚动改变div大小
+ - 作用：滚轮滚动改变div大小
+ - 原理：获取滚轮滚动方向，滚轮向上滚动，div变大，滚轮向下滚动，div变小
+ - 写法：
+```js
+//例:
+//获取div
+var box = document.getElementById("box");
+
+//兼容ie，chrome，firefox
+if(box.addEventListener){
+    box.addEventListener('DOMMouseScroll',size_change,false); //false表示冒泡阶段
+    box.addEventListener('wheel', size_change, { passive: true });
+    //“passive: true”是一个选项，用于告诉浏览器事件监听器不会阻止滚动，并且可以安全地与滚动并行运行。这可以提高页面的响应性能，因为浏览器可以在滚动时同时运行事件监听器
+}else{
+    box.attachEvent('onmousewheel',size_change);
+}
+
+
+//函数定义
+function size_change(e){
+    var event = e || window.event;
+    var scroll_up = event.wheelDelta;
+    console.log(scroll_up)
+    // var scroll_down = event.detail;
+    // console.log(scroll_direction);
+    if(scroll_up == 150 || scroll_up == 120 || scroll_up == 3){
+        box.style.width = box.offsetWidth + 10 + 'px';
+        box.style.height = box.offsetHeight + 10 + 'px';
+        if(box.offsetWidth >= 500 || box.offsetHeight >= 500){
+            box.style.width = 500 + "px";
+            box.style.height = 500 + "px";
+        }
+    }else if(scroll_up == -150 || scroll_up == -120 || scroll_up == -3){
+        box.style.width = box.offsetWidth - 10 + 'px';
+        box.style.height = box.offsetHeight - 10 + 'px';
+        if(box.offsetWidth <= 100 || box.offsetHeight <= 100){
+            box.style.width = 100 + "px";
+            box.style.height = 100 + "px";
+        }
+    }else{
+        return false;
+    }
+}
+
+
+
+
+
+
+```
 
 ----
 
@@ -2864,6 +2942,80 @@ ul.onclick = function(e){
 
 ```
 
+### 表单对象
+
+ - **获取表单的三种方式**
+     - document.forms[0] //通过索引获取表单
+     - document.forms["name"] //通过name属性获取表单
+     - document.forms.name //通过name属性获取表单
+
+ - **获取表单控件(表单元素)**
+     - document.forms[0].elements[0] //通过索引获取表单控件
+     - document.forms[0].elements["name"] //通过name属性获取表单控件
+     - document.forms[0].elements.name //通过name属性获取表单控件
+     - 通过id属性获取表单控件
+         - document.getElementById("idname")
+         - document.getElementsByName("name")[0]
+         - document.querySelector(".name")
+         - document.querySelectorAll(".name")[0]
+
+ - 常用属性
+     - value //设置或获取表单控件的值
+     - checked //设置或获取表单控件是否选中
+         - js中
+             - checked=true //选中
+             - checked=false //不选中
+         - html中
+             - checked="checked" //选中
+             - checked=""或不设置 //不选中
+     - name //设置或获取表单控件的name属性
+     - type //设置或获取表单控件的type属性
+     - readonly //设置或获取表单控件是否只读
+     - disabled //设置或获取表单控件是否禁用
+     - readonly和disabled的区别
+         - readonly只读，不能修改，可以提交
+         - disabled禁用，不能修改，不能提交
+
+ - 常用方法
+     - focus() //获取焦点
+         - 注意：只能获取焦点，不能选中文本
+         - 用法：
+            ```js
+            document.getElementById("idname").focus(); //获取焦点
+            ```
+     - blur() //失去焦点
+         - 用法：
+            ```js
+            document.getElementById("idname").blur(); //失去焦点
+            ```
+     - select() //选中文本
+         - 用法：
+            ```js
+            document.getElementById("idname").select(); //选中文本
+            ```
+     - click() //点击事件
+         - 用法：
+            ```js
+            document.getElementById("idname").click(); //点击事件
+            ```
+     - submit() //提交表单
+         - 注意只能绑定在form表单上
+         - 用法：
+            ```js
+            document.getElementById("idname").submit(); //提交表单
+            //or
+            form.submit(); //提交表单
+            ```
+     - reset() //重置表单
+         - 用法：
+            ```js
+            document.getElementById("idname").reset(); //重置表单
+            ```
+     - 还有这种用法：
+         - document.on方法名 = function(){} //事件处理函数
+         - 例：
+             - oninput = function(){} //文本框内容改变事件
+
 ## HTML BOM对象
 
 ### BOM对象简介
@@ -3431,8 +3583,10 @@ ul.onclick = function(e){
             console.log(event.detail); //获取鼠标滚轮值
         })
         ```
-        ```
-     - 向上滚动：120
-     - 向下滚动：-120
-     - 向左滚动：-120
-     - 向右滚动：120
+ - chrome
+     - 上：150
+     - 下：-150
+ - edge，ie，firefox
+     - 上：120
+     - 下：-120
+
