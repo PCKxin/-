@@ -3760,7 +3760,24 @@ function size_change(e){
         }
         ```
 
-### 回调函数
+### ajax回调函数
+
+ - 作用：将函数作为参数传递给另一个函数，当另一个函数执行完毕后，再执行传递的函数
+
+ - ajax回调写法：
+    ```js
+    //定义一个函数，用来获取数据
+    function getData(url,callback){
+        var xhr = new XMLHttpRequest(); //创建一个XMLHttpRequest对象
+        xhr.open("get",url,true); //请求方式(method)，请求地址(url)，是否异步(async)
+        xhr.send(); //发送请求
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState == 4 && xhr.status == 200){ //判断请求状态和请求状态码
+                callback(xhr.responseText); //执行回调函数
+            }
+        }
+    }
+    ```
 
 
 
@@ -3770,4 +3787,18 @@ function size_change(e){
     //创建一个XMLHttpRequest对象
     var xhr = new XMLHttpRequest();
     //设置请求方式和请求地址
+
+## 回调函数
+
+ - 原理：将函数作为参数传递给另一个函数，当另一个函数执行完毕后，再执行传递的函数
+ - 易懂写法例子带注释：
+    ```js
+    //定义一个函数，用来获取数据
+    function getData(callback){
+        //定义一个变量，用来存储数据
+        var data = "这是一段数据";
+        //将数据作为参数，传递给回调函数
+        callback(data);
+    }
+
 
