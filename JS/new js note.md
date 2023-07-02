@@ -1784,421 +1784,6 @@ date.getFullYear(); //获取年份
                     ```
 ---
 
-## 算法&写法
-
-### 冒泡排序
- - 作用：对数组进行排序
- - 原理：比较相邻的两个元素，如果第一个比第二个大，就交换他们两个
- - 语法：
-```js
-var arr = [1,2,3,4,5,6,7,8,9,10];
-for(var i = 0; i < arr.length - 1; i++){ //定义第一次循环，两个元素比较，循环次数为数组长度-1（也就是循环次数少一次）
-    // -i理解为上一次的最大值不再比较
-    // -1剩余人员两两比较，次数少一次
-    for(var j = 0; j < arr.length - 1 -i; j++){ //定义后续比较的次数，每次循环次数少一次
-        if(arr[j] > arr[j + 1]){  //如果当前位置元素大于下一个位置的元素，就交换位置
-            var temp = arrp[j];
-            arr[j] = arr[j + 1];
-            arr[j + 1] = temp;
-        }
-    }
-}
-
-
-``` 
-
-
-### 位置交换
- - 作用：数组中两个元素的位置交换
- - 原理：
-     - 定义一个临时变量 temp ，用来存储前一个元素b
-     - 将后一个元素 c 赋值给前一个元素b
-     - 将临时变量temp 赋值给后一个元素c
- - 写法：
-```js
-var arr = [1,2,3,4,5,6,7,8,9,10];
-var temp = arr[0];  //定义一个临时变量，用来存储前一个元素
-arr[0] = arr[3]; //将后一个元素赋值给前一个元素
-arr[3] = temp;      //将前一个元素赋值给后一个元素
-```
-
-
-### 随机数
- - 作用：生成一个指定范围内的随机数
- - 通用写法：Math.random() * (max - min) + min
- - 写法：
-```js
-//生成一个1-100之间的随机数
-var num = Math.random() * (100 - 1) + 1;
-console.log(num); //输出：1-100之间的随机数
-
-//生成一个1-100之间的整数
-var num = Math.floor(Math.random() * (100 - 1) + 1); //向下取整
-var num = Math.ceil(Math.random() * (100 - 1) + 1); //向上取整
-var num = parsenInt(Math.random() * (100 - 1) + 1);  //直接取整
-
-//随机获取数组中的一个元素
-var index_num = parseInt(Math.random() * arr.length);//生成0到数组长度之间的随机数
-var res = arr[index_num]; //获取数组中的随即元素
-
-//-------------------------------
-
-
-//数组索引值随机数公式
-Math.floor(Math.random() * arr.length);
-
-//通用公式
-Math.floor(Math.random() * (max - min) + min);
-
-
-```
-
-### 复制对象
- - 作用：复制一个对象
- - 原理：遍历对象，将对象中的属性和属性值复制到新的对象中
- - 写法：
-```js
-var test_1 = {
-    "user" : "admin",
-    "password" : "qwe123",
-    "level" : 10
-    "login" : function(){
-        console.log("hello please login")
-    }
-}
-
-var test_2 = new Object();
-
-for(var key in test_1){
-    test_2 += key + ":" + test_1[key] + ";"
-}
-
-console.log(test_2);
-
-
-```
-
-### 倒计时
- - 作用：倒计时
- - 原理：定义一个变量，用来存储倒计时的秒数，每次减一秒，当秒数为0时，倒计时结束
- - 写法:
-```js
-var time = 10; //定义一个变量，用来存储倒计时的秒数
-var timer = setInterval(
-    function(){
-        time--; //每次减一秒
-        if(time == 0){ //当秒数为0时，倒计时结束
-            clearInterval(timer); //清除定时器
-        }
-    }
-,1000);
-
-```
-
-### 倒计时-Date写法
- - 作用：指定时间之前的倒计时
- - 原理：定义当前事件和指定时间的时间戳，两个时间戳相减，得到的结果是毫秒数，毫秒换算计时
- - 写法：
-```js
-function countDown(){
-    var now_time = new Date(); //定义当前时间
-    var end_time = new Date('2023/5/1 0:0:0'); //定义指定时间
-    var time = end_time - now_time; //两个时间戳相减，得到相差毫秒数
-
-    var day = parseInt(time / 86400000); //除以86400000，得到天数
-    var hour = parseInt(time % 86400000 / 3600000); //取余数，再除以3600000，得到小时数
-    var minute = parseInt(time % 86400000 % 3600000 / 60000); //取余数，再除以60000. 得到分钟数
-    var second = parseInt(time % 86400000 % 3600000 % 60000 / 1000); //取余数，再除以1000，得到秒数
-
-    console.log(day + "天" + hour + "小时" + minute + "分钟" + second + "秒") //输出：xx天xx小时xx分钟xx秒
-}
-
-setInterval(countDown,1000); //每隔一秒执行一次countDown函数
-
-//也可以定义好用ruturn返回
-function countDown(){
-    var now_time = new Date(); //定义当前时间
-    var end_time = new Date('2023/5/1 0:0:0') //定义指定时间
-    var time = end_time - now_time; //两个时间戳相减，得到相差毫秒数
-
-    var day = parseInt(time / 86400000); //除以86400000，得到天数
-    var hour = parseInt(time % 86400000 / 3600000); //取余数，再除以3600000，得到小时数
-    var minute = parseInt(time % 86400000 % 3600000 / 60000); //取余数，再除以60000. 得到分钟数
-    var second = parseInt(time % 86400000 % 3600000 % 60000 / 1000); //取余数，再除以1000，得到秒数
-
-    return day + "天" + hour + "小时" + minute + "分钟" + second + "秒" //输出：xx天xx小时xx分钟xx秒
-
-}
-
-setInterval(
-    function(){
-        console.log(countDown()); //每隔一秒执行一次countDown函数
-    },1000
-); //每隔一秒执行一次内置函数
-
-
-```
-
-### 图片计时器--js部分
- - 作用：图片计时器的运行部分
- - 原理：计时器获取图片的索引值，根据索引值获取图片的路径，将图片路径赋值给img标签的src属性
- - 写法：
-```js
-var img_arr = []; //定义一个数组，用来存储图片的路径
-    for(var i = 0; i < 10; i++){
-        img_arr.push("文件夹名字/"+ i +"图片后缀"); //适用于图片名字是数字的情况
-    }
-
-//位分离函数
-function gs(units,tens){
-    s = parseInt(tens / 10);
-    g = parseInt(units % 10);
-    return [s, g];
-}
-
-
-//计时器部分函数
-function img_timer(){
-    var date = new Date(); 
-    var hour = date.getHours(); //获取当前小时数
-
-    var hour_1 = gs(hour,hour)[0]; //获取十位数
-    var hour_2 = gs(hour,hour)[1]; //获取个位数
-    timeNum[0].src = img_arr[hour_1];
-    timeNum[1].src = img_arr[hour_2];
-
-    var minute = date.getMinutes(); //获取当前分钟数
-    var minute_1 = gs(minute, minute)[0]; //获取十位数
-    var minute_2 = gs(minute, minute)[1]; //获取个位数
-    timeNum[2].src = img_arr[minute_1];
-    timeNum[3].src = img_arr[minute_2];
-
-    var second = date.getSeconds(); //获取当前秒数
-    var second_1 = gs(second, second)[0]; //获取十位数
-    var second_2 = gs(second, second)[1]; //获取个位数
-    timeNum[4].src = img_arr[second_1];
-    timeNum[5].src = img_arr[second_2];
-
-}
-
-setInterval(img_timer,1000)
-```
-
-### 数字时钟
- - 作用：数字时钟的运行部分
- - 原理：计时器获取时间，根据时间获取时分秒，将时分秒赋值给span标签的innerHTML属性
- - 写法：
-```js
-var hour = document.getElementById("hour");
-var minute = document.getElementById("minute");
-var second = document.getElementById("second");
-
-function num_timer(){
-    var date = new Date();
-    var h = date.getHours();
-    var m = date.getMinutes();
-    var s = date.getSeconds();
-    if(h < 10){
-        h = "0" + h;
-    }                     
-    if(m < 10){
-        m = "0" + m;
-    }
-    if(s < 10){
-        s = "0" + s;
-    }
-    hour.innerHTML = h;
-    minute.innerHTML = m;
-    second.innerHTML = s;
-}
-setInterval(num_timer,1000)
-
-```
-
-### 逐个输入文字
- - 作用：逐个输入文字的运行部分
- - 原理：将字符串转换成数组，然后将数组中的每个元素赋值给获取标签的innerHTML属性
- - 写法：
-```js
-var str = "这是一段文字"; //定义一个字符串
-var str_arr = str.split(""); //将字符串转换成数组
-var str_index = 0; //定义一个索引值
-var str_timer = setInterval(function(){
-    if(str_index < str_arr.length){
-        document.getElementById("text").innerHTML += str_arr[str_index]; //将数组中的每个元素赋值给span标签的innerHTML属性
-        str_index++;
-    }else{
-        clearInterval(str_timer); //清除计时器
-    }
-},1000)
-
-
-//写法二，原数组不变
-var str = "这是一段文字"; //定义一个字符串
-var text = document.getElementById("text");
-var index = 0; //定义一个索引值
-function str_timer(){
-    index++;
-    if(index >= str.length - 1){ //如果i大于等于字符串的长度-1
-        clearInterval(timer);
-    }
-    text.innerHTML = str[i]; //将数组中的每个元素赋值给id为text标签的innerHTML属性
-}
-//定义一个计时器，每隔一秒执行一次str_timer函数
-var timer = setInterval(str_timer,1000);
-```
-
-### 随机验证码--fromCharCode()写法
- - 作用：随机验证码的运行部分
- - 原理：通过fromCharCode()，创建A-Z，a-z,0-9组成的字符串
- - 写法：
-```js
-var str = "";
-var psd = "";
-
-for(var i = 65; i <= 90; i++){ //A-Z, 65-90, 26个字母编码区域
-    str += String.fromCharCode(i);  //将A-Z编码转换成字符串
-}
-
-for(var j = 97; j <= 122; j++){ //a-z, 97-122, 26个字母编码区域
-    str += String.fromCharCode(j); //将a-z编码转换成字符串
-}
-
-for(var k = 48; k <= 57; k++){ //0-9, 48-57, 10个数字编码区域
-    str += String.fromCharCode(k); //将0-9编码转换成字符串
-}
-
-for(var n = 0; n < 4; n++){
-    var index = parseInt(Math.random() * str.length); //获取随机数
-    psd += str[index]; //将随机数作为索引值，获取str中的字符
-}
-
-console.log(psd); //打印随机验证码
-```
-
-### 号码正确性验证--大陆--简单写法
- - 作用：验证号码的正确性
- - 原理
- - 写法：
-```js
-var mainNum_list = [133,149,153,173,177,180]; //大陆号码前三位--部分
-var userNum = prompt("请输入手机号码"); //获取用户输入的号码
-var userMainNum = userNum.slice(0,3) * 1; //获取用户输入的号码前三位
-    if(userNum.length != 11){ //判断号码位数是否正确
-        alert("号码位数不正确");
-    }
-    else if(mainNum_list.indexOf(userMainNum) == -1){ //判断号码前三位是否正确
-        alert("号码前三位不正确");
-    }
-    else{
-        alert("号码正确");
-    }
-```
-
-### 暴力阻止浏览器默认事件以及浏览器冒泡
- - 作用：阻止浏览器默认事件以及浏览器冒泡
- - 原理：返回false
- - 写法：
-```js
-//例:
-button.onclick = function(){
-    return false;
-}
-```
-
-### 事件委托
- - 作用：事件委托
- - 原理：事件委托是利用事件冒泡，只指定一个事件处理程序，就可以管理某一类型的所有事件
- - 写法：
-```js
-//例:
-var ul = document.getElementById("ul");
-ul.onclick = function(e){
-    var e = e || window.event; //获取事件对象
-    var target = e.target || e.srcElement; //获取事件源
-    if(target.nodeName.toLowerCase() == "li"){ //判断点击的是否是li标签
-        console.log(target.innerHTML); //输出点击的li标签的内容
-    }
-}
-```
-
-### 返回顶部，计时版
- - 作用：返回顶部，带计时器
- - 原理：获取滚动条，每次减100，当滚动条小于等于0时，清除计时器
- - 写法：
-```js
-//例:
-//获取计时器
-var time = null; //定义一个计时器
-//获取按钮
-var btn = document.getElementById("btn");
-//获取滚动条
-var scroll_max = document.documentElement.scrollTop || document.body.scrollTop;
-//点击按钮，返回顶部
-btn.onclick = function(){
-    time = setInterval(function(){
-        scroll_max -= 100; //每次距离减100
-        if(scroll_max <= 0){ //当滚动条小于等于0时，清除计时器
-            clearInterval(time);
-        }
-        document.documentElement.scrollTop = scroll_max; //赋值给滚动条
-        document.body.scrollTop = scroll_max; //赋值给滚动条
-    },1000)
-}
-```
-
-### 滚轮滚动改变div大小
- - 作用：滚轮滚动改变div大小
- - 原理：获取滚轮滚动方向，滚轮向上滚动，div变大，滚轮向下滚动，div变小
- - 写法：
-```js
-//例:
-//获取div
-var box = document.getElementById("box");
-
-//兼容ie，chrome，firefox
-if(box.addEventListener){
-    box.addEventListener('DOMMouseScroll',size_change,false); //false表示冒泡阶段
-    box.addEventListener('wheel', size_change, { passive: true });
-    //“passive: true”是一个选项，用于告诉浏览器事件监听器不会阻止滚动，并且可以安全地与滚动并行运行。这可以提高页面的响应性能，因为浏览器可以在滚动时同时运行事件监听器
-}else{
-    box.attachEvent('onmousewheel',size_change);
-}
-
-
-//函数定义
-function size_change(e){
-    var event = e || window.event;
-    var scroll_up = event.wheelDelta;
-    console.log(scroll_up)
-    // var scroll_down = event.detail;
-    // console.log(scroll_direction);
-    if(scroll_up == 150 || scroll_up == 120 || scroll_up == 3){
-        box.style.width = box.offsetWidth + 10 + 'px';
-        box.style.height = box.offsetHeight + 10 + 'px';
-        if(box.offsetWidth >= 500 || box.offsetHeight >= 500){
-            box.style.width = 500 + "px";
-            box.style.height = 500 + "px";
-        }
-    }else if(scroll_up == -150 || scroll_up == -120 || scroll_up == -3){
-        box.style.width = box.offsetWidth - 10 + 'px';
-        box.style.height = box.offsetHeight - 10 + 'px';
-        if(box.offsetWidth <= 100 || box.offsetHeight <= 100){
-            box.style.width = 100 + "px";
-            box.style.height = 100 + "px";
-        }
-    }else{
-        return false;
-    }
-}
-
-
-
-
-
-
-```
-
 ----
 
 ## HTML DOM对象
@@ -3589,4 +3174,600 @@ function size_change(e){
  - edge，ie，firefox
      - 上：120
      - 下：-120
+
+
+----
+
+## 算法&写法
+
+### 冒泡排序
+ - 作用：对数组进行排序
+ - 原理：比较相邻的两个元素，如果第一个比第二个大，就交换他们两个
+ - 语法：
+```js
+var arr = [1,2,3,4,5,6,7,8,9,10];
+for(var i = 0; i < arr.length - 1; i++){ //定义第一次循环，两个元素比较，循环次数为数组长度-1（也就是循环次数少一次）
+    // -i理解为上一次的最大值不再比较
+    // -1剩余人员两两比较，次数少一次
+    for(var j = 0; j < arr.length - 1 -i; j++){ //定义后续比较的次数，每次循环次数少一次
+        if(arr[j] > arr[j + 1]){  //如果当前位置元素大于下一个位置的元素，就交换位置
+            var temp = arrp[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = temp;
+        }
+    }
+}
+
+
+``` 
+
+
+### 位置交换
+ - 作用：数组中两个元素的位置交换
+ - 原理：
+     - 定义一个临时变量 temp ，用来存储前一个元素b
+     - 将后一个元素 c 赋值给前一个元素b
+     - 将临时变量temp 赋值给后一个元素c
+ - 写法：
+```js
+var arr = [1,2,3,4,5,6,7,8,9,10];
+var temp = arr[0];  //定义一个临时变量，用来存储前一个元素
+arr[0] = arr[3]; //将后一个元素赋值给前一个元素
+arr[3] = temp;      //将前一个元素赋值给后一个元素
+```
+
+
+### 随机数
+ - 作用：生成一个指定范围内的随机数
+ - 通用写法：Math.random() * (max - min) + min
+ - 写法：
+```js
+//生成一个1-100之间的随机数
+var num = Math.random() * (100 - 1) + 1;
+console.log(num); //输出：1-100之间的随机数
+
+//生成一个1-100之间的整数
+var num = Math.floor(Math.random() * (100 - 1) + 1); //向下取整
+var num = Math.ceil(Math.random() * (100 - 1) + 1); //向上取整
+var num = parsenInt(Math.random() * (100 - 1) + 1);  //直接取整
+
+//随机获取数组中的一个元素
+var index_num = parseInt(Math.random() * arr.length);//生成0到数组长度之间的随机数
+var res = arr[index_num]; //获取数组中的随即元素
+
+//-------------------------------
+
+
+//数组索引值随机数公式
+Math.floor(Math.random() * arr.length);
+
+//通用公式
+Math.floor(Math.random() * (max - min) + min);
+
+
+```
+
+### 复制对象
+ - 作用：复制一个对象
+ - 原理：遍历对象，将对象中的属性和属性值复制到新的对象中
+ - 写法：
+```js
+var test_1 = {
+    "user" : "admin",
+    "password" : "qwe123",
+    "level" : 10
+    "login" : function(){
+        console.log("hello please login")
+    }
+}
+
+var test_2 = new Object();
+
+for(var key in test_1){
+    test_2 += key + ":" + test_1[key] + ";"
+}
+
+console.log(test_2);
+
+
+```
+
+### 倒计时
+ - 作用：倒计时
+ - 原理：定义一个变量，用来存储倒计时的秒数，每次减一秒，当秒数为0时，倒计时结束
+ - 写法:
+```js
+var time = 10; //定义一个变量，用来存储倒计时的秒数
+var timer = setInterval(
+    function(){
+        time--; //每次减一秒
+        if(time == 0){ //当秒数为0时，倒计时结束
+            clearInterval(timer); //清除定时器
+        }
+    }
+,1000);
+
+```
+
+### 倒计时-Date写法
+ - 作用：指定时间之前的倒计时
+ - 原理：定义当前事件和指定时间的时间戳，两个时间戳相减，得到的结果是毫秒数，毫秒换算计时
+ - 写法：
+```js
+function countDown(){
+    var now_time = new Date(); //定义当前时间
+    var end_time = new Date('2023/5/1 0:0:0'); //定义指定时间
+    var time = end_time - now_time; //两个时间戳相减，得到相差毫秒数
+
+    var day = parseInt(time / 86400000); //除以86400000，得到天数
+    var hour = parseInt(time % 86400000 / 3600000); //取余数，再除以3600000，得到小时数
+    var minute = parseInt(time % 86400000 % 3600000 / 60000); //取余数，再除以60000. 得到分钟数
+    var second = parseInt(time % 86400000 % 3600000 % 60000 / 1000); //取余数，再除以1000，得到秒数
+
+    console.log(day + "天" + hour + "小时" + minute + "分钟" + second + "秒") //输出：xx天xx小时xx分钟xx秒
+}
+
+setInterval(countDown,1000); //每隔一秒执行一次countDown函数
+
+//也可以定义好用ruturn返回
+function countDown(){
+    var now_time = new Date(); //定义当前时间
+    var end_time = new Date('2023/5/1 0:0:0') //定义指定时间
+    var time = end_time - now_time; //两个时间戳相减，得到相差毫秒数
+
+    var day = parseInt(time / 86400000); //除以86400000，得到天数
+    var hour = parseInt(time % 86400000 / 3600000); //取余数，再除以3600000，得到小时数
+    var minute = parseInt(time % 86400000 % 3600000 / 60000); //取余数，再除以60000. 得到分钟数
+    var second = parseInt(time % 86400000 % 3600000 % 60000 / 1000); //取余数，再除以1000，得到秒数
+
+    return day + "天" + hour + "小时" + minute + "分钟" + second + "秒" //输出：xx天xx小时xx分钟xx秒
+
+}
+
+setInterval(
+    function(){
+        console.log(countDown()); //每隔一秒执行一次countDown函数
+    },1000
+); //每隔一秒执行一次内置函数
+
+
+```
+
+### 图片计时器--js部分
+ - 作用：图片计时器的运行部分
+ - 原理：计时器获取图片的索引值，根据索引值获取图片的路径，将图片路径赋值给img标签的src属性
+ - 写法：
+```js
+var img_arr = []; //定义一个数组，用来存储图片的路径
+    for(var i = 0; i < 10; i++){
+        img_arr.push("文件夹名字/"+ i +"图片后缀"); //适用于图片名字是数字的情况
+    }
+
+//位分离函数
+function gs(units,tens){
+    s = parseInt(tens / 10);
+    g = parseInt(units % 10);
+    return [s, g];
+}
+
+
+//计时器部分函数
+function img_timer(){
+    var date = new Date(); 
+    var hour = date.getHours(); //获取当前小时数
+
+    var hour_1 = gs(hour,hour)[0]; //获取十位数
+    var hour_2 = gs(hour,hour)[1]; //获取个位数
+    timeNum[0].src = img_arr[hour_1];
+    timeNum[1].src = img_arr[hour_2];
+
+    var minute = date.getMinutes(); //获取当前分钟数
+    var minute_1 = gs(minute, minute)[0]; //获取十位数
+    var minute_2 = gs(minute, minute)[1]; //获取个位数
+    timeNum[2].src = img_arr[minute_1];
+    timeNum[3].src = img_arr[minute_2];
+
+    var second = date.getSeconds(); //获取当前秒数
+    var second_1 = gs(second, second)[0]; //获取十位数
+    var second_2 = gs(second, second)[1]; //获取个位数
+    timeNum[4].src = img_arr[second_1];
+    timeNum[5].src = img_arr[second_2];
+
+}
+
+setInterval(img_timer,1000)
+```
+
+### 数字时钟
+ - 作用：数字时钟的运行部分
+ - 原理：计时器获取时间，根据时间获取时分秒，将时分秒赋值给span标签的innerHTML属性
+ - 写法：
+```js
+var hour = document.getElementById("hour");
+var minute = document.getElementById("minute");
+var second = document.getElementById("second");
+
+function num_timer(){
+    var date = new Date();
+    var h = date.getHours();
+    var m = date.getMinutes();
+    var s = date.getSeconds();
+    if(h < 10){
+        h = "0" + h;
+    }                     
+    if(m < 10){
+        m = "0" + m;
+    }
+    if(s < 10){
+        s = "0" + s;
+    }
+    hour.innerHTML = h;
+    minute.innerHTML = m;
+    second.innerHTML = s;
+}
+setInterval(num_timer,1000)
+
+```
+
+### 逐个输入文字
+ - 作用：逐个输入文字的运行部分
+ - 原理：将字符串转换成数组，然后将数组中的每个元素赋值给获取标签的innerHTML属性
+ - 写法：
+```js
+var str = "这是一段文字"; //定义一个字符串
+var str_arr = str.split(""); //将字符串转换成数组
+var str_index = 0; //定义一个索引值
+var str_timer = setInterval(function(){
+    if(str_index < str_arr.length){
+        document.getElementById("text").innerHTML += str_arr[str_index]; //将数组中的每个元素赋值给span标签的innerHTML属性
+        str_index++;
+    }else{
+        clearInterval(str_timer); //清除计时器
+    }
+},1000)
+
+
+//写法二，原数组不变
+var str = "这是一段文字"; //定义一个字符串
+var text = document.getElementById("text");
+var index = 0; //定义一个索引值
+function str_timer(){
+    index++;
+    if(index >= str.length - 1){ //如果i大于等于字符串的长度-1
+        clearInterval(timer);
+    }
+    text.innerHTML = str[i]; //将数组中的每个元素赋值给id为text标签的innerHTML属性
+}
+//定义一个计时器，每隔一秒执行一次str_timer函数
+var timer = setInterval(str_timer,1000);
+```
+
+### 随机验证码--fromCharCode()写法
+ - 作用：随机验证码的运行部分
+ - 原理：通过fromCharCode()，创建A-Z，a-z,0-9组成的字符串
+ - 写法：
+```js
+var str = "";
+var psd = "";
+
+for(var i = 65; i <= 90; i++){ //A-Z, 65-90, 26个字母编码区域
+    str += String.fromCharCode(i);  //将A-Z编码转换成字符串
+}
+
+for(var j = 97; j <= 122; j++){ //a-z, 97-122, 26个字母编码区域
+    str += String.fromCharCode(j); //将a-z编码转换成字符串
+}
+
+for(var k = 48; k <= 57; k++){ //0-9, 48-57, 10个数字编码区域
+    str += String.fromCharCode(k); //将0-9编码转换成字符串
+}
+
+for(var n = 0; n < 4; n++){
+    var index = parseInt(Math.random() * str.length); //获取随机数
+    psd += str[index]; //将随机数作为索引值，获取str中的字符
+}
+
+console.log(psd); //打印随机验证码
+```
+
+### 号码正确性验证--大陆--简单写法
+ - 作用：验证号码的正确性
+ - 原理
+ - 写法：
+```js
+var mainNum_list = [133,149,153,173,177,180]; //大陆号码前三位--部分
+var userNum = prompt("请输入手机号码"); //获取用户输入的号码
+var userMainNum = userNum.slice(0,3) * 1; //获取用户输入的号码前三位
+    if(userNum.length != 11){ //判断号码位数是否正确
+        alert("号码位数不正确");
+    }
+    else if(mainNum_list.indexOf(userMainNum) == -1){ //判断号码前三位是否正确
+        alert("号码前三位不正确");
+    }
+    else{
+        alert("号码正确");
+    }
+```
+
+### 暴力阻止浏览器默认事件以及浏览器冒泡
+ - 作用：阻止浏览器默认事件以及浏览器冒泡
+ - 原理：返回false
+ - 写法：
+```js
+//例:
+button.onclick = function(){
+    return false;
+}
+```
+
+### 事件委托
+ - 作用：事件委托
+ - 原理：事件委托是利用事件冒泡，只指定一个事件处理程序，就可以管理某一类型的所有事件
+ - 写法：
+```js
+//例:
+var ul = document.getElementById("ul");
+ul.onclick = function(e){
+    var e = e || window.event; //获取事件对象
+    var target = e.target || e.srcElement; //获取事件源
+    if(target.nodeName.toLowerCase() == "li"){ //判断点击的是否是li标签
+        console.log(target.innerHTML); //输出点击的li标签的内容
+    }
+}
+```
+
+### 返回顶部，计时版
+ - 作用：返回顶部，带计时器
+ - 原理：获取滚动条，每次减100，当滚动条小于等于0时，清除计时器
+ - 写法：
+```js
+//例:
+//获取计时器
+var time = null; //定义一个计时器
+//获取按钮
+var btn = document.getElementById("btn");
+//获取滚动条
+var scroll_max = document.documentElement.scrollTop || document.body.scrollTop;
+//点击按钮，返回顶部
+btn.onclick = function(){
+    time = setInterval(function(){
+        scroll_max -= 100; //每次距离减100
+        if(scroll_max <= 0){ //当滚动条小于等于0时，清除计时器
+            clearInterval(time);
+        }
+        document.documentElement.scrollTop = scroll_max; //赋值给滚动条
+        document.body.scrollTop = scroll_max; //赋值给滚动条
+    },1000)
+}
+```
+
+### 滚轮滚动改变div大小
+ - 作用：滚轮滚动改变div大小
+ - 原理：获取滚轮滚动方向，滚轮向上滚动，div变大，滚轮向下滚动，div变小
+ - 写法：
+```js
+//例:
+//获取div
+var box = document.getElementById("box");
+
+//兼容ie，chrome，firefox
+if(box.addEventListener){
+    box.addEventListener('DOMMouseScroll',size_change,false); //false表示冒泡阶段
+    box.addEventListener('wheel', size_change, { passive: true });
+    //“passive: true”是一个选项，用于告诉浏览器事件监听器不会阻止滚动，并且可以安全地与滚动并行运行。这可以提高页面的响应性能，因为浏览器可以在滚动时同时运行事件监听器
+}else{
+    box.attachEvent('onmousewheel',size_change);
+}
+
+
+//函数定义
+function size_change(e){
+    var event = e || window.event;
+    var scroll_up = event.wheelDelta;
+    console.log(scroll_up)
+    // var scroll_down = event.detail;
+    // console.log(scroll_direction);
+    if(scroll_up == 150 || scroll_up == 120 || scroll_up == 3){
+        box.style.width = box.offsetWidth + 10 + 'px';
+        box.style.height = box.offsetHeight + 10 + 'px';
+        if(box.offsetWidth >= 500 || box.offsetHeight >= 500){
+            box.style.width = 500 + "px";
+            box.style.height = 500 + "px";
+        }
+    }else if(scroll_up == -150 || scroll_up == -120 || scroll_up == -3){
+        box.style.width = box.offsetWidth - 10 + 'px';
+        box.style.height = box.offsetHeight - 10 + 'px';
+        if(box.offsetWidth <= 100 || box.offsetHeight <= 100){
+            box.style.width = 100 + "px";
+            box.style.height = 100 + "px";
+        }
+    }else{
+        return false;
+    }
+}
+
+
+```
+
+----
+
+## AJAX
+
+### 对象及其参数
+
+ - XMLHttpRequest对象(核心对象)
+     - 作用：创建一个XMLHttpRequest对象
+     - 参数：
+         - method：请求方式，get，post
+         - url：请求地址
+         - async：是否异步，true，false
+         - username：用户名
+         - password：密码
+     - 写法：
+        ```js
+        var xhr = new XMLHttpRequest(); //创建一个XMLHttpRequest对象
+        //参数用法
+        xhr.open("get","http://www.baidu.com",true); //请求方式(method)，请求地址(url)，是否异步(async)
+        xhr.open("get","http://www.baidu.com",true,"admin","123"); //请求方式(method)，请求地址(url)，是否异步(async)，用户名(username)，密码(password)
+
+        //兼容IE8及以下
+        var xhr = new ActiveXObject("Microsoft.XMLHTTP"); //创建一个XMLHttpRequest对象
+        ```
+
+ - xhr.send()
+     - 作用：发送请求
+     - 参数：
+         - get请求：null
+         - post请求：参数
+             - 参数格式：key=value&key=value
+             - 参数原理：将参数转换成字符串，然后发送请求
+     - 写法：
+        ```js
+        xhr.send(); //发送请求
+        ```
+
+ - xhr.readyState
+     - 作用：获取请求状态
+     - 参数：
+         - 0：请求未初始化
+         - 1：服务器连接已建立
+         - 2：请求已接收
+         - 3：请求处理中
+         - 4：请求已完成，且响应已就绪
+     - 写法：
+        ```js
+        xhr.onreadystatechange = function(){
+            console.log(xhr.readyState); //获取请求状态
+        }
+        ```
+
+ - xhr.status
+     - 作用：获取请求状态码
+     - 参数：
+         - 常用状态码：
+             - 200：请求成功
+             - 404：请求失败
+             - 500：服务器错误
+             - 302：请求重定向
+             - 403：请求被拒绝
+             - 401：未授权
+             - 400：请求错误
+             - 408：请求超时
+     - 写法：
+        ```js
+        xhr.onreadystatechange = function(){
+            console.log(xhr.status); //获取请求状态码
+        }
+        ```
+
+ - xhr.responseText
+     - 作用：获取响应文本
+     - 写法：
+        ```js
+        xhr.onreadystatechange = function(){
+            console.log(xhr.responseText); //获取响应文本
+        }
+        ```
+
+ - xhr.responseXML
+     - 作用：获取响应XML
+     - 写法：
+        ```js
+        xhr.onreadystatechange = function(){
+            console.log(xhr.responseXML); //获取响应XML
+        }
+        ```
+
+ - xhr.getAllResponseHeaders()
+     - 作用：获取所有响应头
+     - 写法：
+        ```js
+        xhr.onreadystatechange = function(){
+            console.log(xhr.getAllResponseHeaders()); //获取所有响应头
+        }
+        ```
+
+ - xhr.getResponseHeader()
+     - 作用：获取指定响应头
+     - 参数：
+         - 常用响应头：
+             - Content-Type：响应类型
+             - Content-Length：响应长度
+             - Date：响应时间
+             - Server：服务器类型
+             - Connection：连接类型
+             - Expires：过期时间
+             - Last-Modified：最后修改时间
+             - Cache-Control：缓存控制
+             - Pragma：缓存控制
+             - Content-Encoding：编码类型
+             - Content-Language：语言类型
+             - Content-Disposition：响应类型
+             - Content-Range：响应范围
+             - Accept-Ranges：接受范围
+             - Transfer-Encoding：传输编码
+             - Vary：缓存控制
+             - Set-Cookie：设置cookie
+             - Cookie：获取cookie
+     - 写法：
+        ```js
+        xhr.onreadystatechange = function(){
+            console.log(xhr.getResponseHeader("Content-Type")); //获取指定响应头
+        }
+        ```
+
+ - xhr.abort()
+     - 作用：终止请求
+     - 写法：
+        ```js
+        xhr.abort(); //终止请求
+        ```
+
+ - xhr.setRequestHeader()
+     - 作用：设置请求头
+     - 参数：
+         - 常用请求头：
+             - Content-Type：请求类型
+             - Content-Length：请求长度
+             - Date：请求时间
+             - Server：服务器类型
+             - Connection：连接类型
+             - Expires：过期时间
+             - Last-Modified：最后修改时间
+             - Cache-Control：缓存控制
+             - Pragma：缓存控制
+             - Content-Encoding：编码类型
+             - Content-Language：语言类型
+             - Content-Disposition：请求类型
+             - Content-Range：请求范围
+             - Accept-Ranges：接受范围
+             - Transfer-Encoding：传输编码
+             - Vary：缓存控制
+             - Set-Cookie：设置cookie
+             - Cookie：获取cookie
+     - 写法：
+        ```js
+        xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded"); //设置请求头
+        ```
+
+ - xhr.onreadystatechange
+     - 作用：获取请求状态
+     - 原理：当请求状态发生改变时，触发onreadystatechange事件
+     - 写法：
+        ```js
+        xhr.onreadystatechange = function(){
+            console.log(xhr.readyState); //获取请求状态
+        }
+        ```
+
+### 回调函数
+
+
+
+### 基本写法
+ - 例子：
+    ```js
+    //创建一个XMLHttpRequest对象
+    var xhr = new XMLHttpRequest();
+    //设置请求方式和请求地址
 
