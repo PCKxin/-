@@ -3773,7 +3773,9 @@ function size_change(e){
         xhr.send(); //发送请求
         xhr.onreadystatechange = function(){
             if(xhr.readyState == 4 && xhr.status == 200){ //判断请求状态和请求状态码
-                callback(xhr.responseText); //执行回调函数
+                callback&&callback(JSON.parse(xhr.responseText)); 
+                //短路逻辑，如果callback存在(即onreadystatechange响应成功)，就执行callback(JSON.parse(xhr.responseText))，如果callback不存在，就不执行
+                //执行回调函数,将json字符串转换成json对象
             }
         }
     }
@@ -3783,10 +3785,37 @@ function size_change(e){
 
 ### 基本写法
  - 例子：
-    ```js
-    //创建一个XMLHttpRequest对象
-    var xhr = new XMLHttpRequest();
-    //设置请求方式和请求地址
+     - 封装一个ajax函数，用来获取数据，多浏览器兼容
+     - 参数：
+         - url：请求地址
+         - method：请求方式
+         - flag：是否异步
+         - success：请求成功后的回调函数
+     - 写法：
+        ```js
+        function ajax(url,method,flag,success){
+
+            var xhr = null; //定义一个变量，用来存储XMLHttpRequest对象
+            if(window.XMLHttpRequest){ //判断是否支持XMLHttpRequest对象
+                xhr = new XMLHttpRequest(); //创建一个XMLHttpRequest对象
+            }else{ //如果不支持XMLHttpRequest对象
+                xhr = new ActiveXObject("Microsoft.XMLHTTP"); //创建一个XMLHttpRequest对象
+            }
+
+            xhr.open(method,url,flag); //请求方式(method)，请求地址(url)，是否异步(flag)
+            
+            xhr.send(); //发送请求
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState == 4 && xhr.status == 200){ //判断请求状态和请求状态码
+                    success&&success(JSON.parse(xhr.responseText)); 
+                    //短路逻辑，如果success存在(即onreadystatechange响应成功)，就执行success(JSON.parse(xhr.responseText))，如果success不存在，就不执行
+                    //执行回调函数,将json字符串转换成json对象
+                }
+            }
+        }
+        ```
+
+
 
 ## 回调函数
 
