@@ -3815,6 +3815,42 @@ function size_change(e){
         }
         ```
 
+## json
+
+ - 介绍：json是一种轻量级的数据交换格式，json是一种数据格式，不是一种编程语言，json是一种文本格式，可以独立于语言使用
+
+ - 语法：
+     - json对象：{"key":"value","key":"value"}
+     - json数组：[{"key":"value","key":"value"},{"key":"value","key":"value"}]
+
+### js json对象
+
+ - JSON.stringify()
+     - 作用：将json对象转换成json字符串
+     - 参数：
+         - json对象
+     - 写法：
+        ```js
+        var json = {
+            "user":"admin",
+            "password":"123456"
+            };
+        var json_str = JSON.stringify(json); //将json对象转换成json字符串
+        console.log(json_str); //输出：{"user":"admin","password":"123456"}
+        ```
+
+ - JSON.parse()
+     - 作用：将json字符串转换成json对象
+     - 参数：
+         - json字符串
+     - 写法：
+        ```js
+        var json_str = '{"user":"admin","password":"123456"}';
+        var json = JSON.parse(json_str); //将json字符串转换成json对象
+        console.log(json); //输出：{"user":"admin","password":"123456"}
+        ```
+
+ - 
 
 
 ## 回调函数
