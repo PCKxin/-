@@ -3862,8 +3862,6 @@ function size_change(e){
         console.log(json); //输出：{"user":"admin","password":"123456"}
         ```
 
- - 
-
 
 ## 回调函数
 
