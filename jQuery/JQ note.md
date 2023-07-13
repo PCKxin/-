@@ -67,6 +67,13 @@
      - ()：调用jQuery的方法
      - selector：选择器，用于获取页面中的元素
 
+ - $的含义
+     - 当script标签引入jQuery.js文件时，会将 $ 对象添加到 window 对象下
+     - 这样就可以在任何位置使用 $ 符号（添加到window对象下的变量是一个全局变量）
+     - $：jQuery的标识符，用于获取页面中的元素，然后通过jQuery对象来操作元素
+     - $是一个函数，$()是一个方法，$()的参数是选择器，$()的返回值是jQuery对象
+
+
  - jQuery选择器的分类
      - 基本选择器：通过id、class、标签名、属性、过滤器等选择器来获取元素
      - 层次选择器：通过元素之间的层次关系来获取元素
@@ -85,5 +92,55 @@
          - 通过属性选择器来获取元素：$("[属性名^=属性值]") ，以属性值开头
          - 通过属性选择器来获取元素：$("[属性名$=属性值]") ，以属性值结尾
  - 层次选择器
+     - 后代选择器：$("父元素 子元素")
+     - 子代选择器：$("父元素>子元素")
+     - 兄弟选择器：$("元素1+元素2")
+     - 兄弟选择器：$("元素1~元素2")
  - 过滤选择器
+     - 过滤选择器：$("元素1:first")，第一个
+     - 过滤选择器：$("元素1:last")，最后一个
+     - 过滤选择器：$("元素1:even")，偶数
+     - 过滤选择器：$("元素1:odd")，奇数
+     - 过滤选择器：$("元素1:eq(下标)")，下标
+     - 过滤选择器：$("元素1:gt(下标)")，大于下标
  - 表单选择器
+     - 表单选择器：$(":input")，获取所有的表单元素
+     - 表单选择器：$(":text")，获取所有的文本框
+     - 表单选择器：$(":password")，获取所有的密码框
+     - 表单选择器：$(":radio")，获取所有的单选框
+     - 表单选择器：$(":checkbox")，获取所有的复选框
+     - 表单选择器：$(":submit")，获取所有的提交按钮
+     - 表单选择器：$(":reset")，获取所有的重置按钮
+     - 表单选择器：$(":button")，获取所有的按钮
+     - 等等~~~
+     - 表单选择器：$(":enabled")，获取所有的可用的表单元素
+     - 表单选择器：$(":disabled")，获取所有的不可用的表单元素
+     - 表单选择器：$(":checked")，获取所有的选中的表单元素
+     - 表单选择器：$(":selected")，获取所有的选中的下拉框元素
+
+
+### jQuery入口函数
+
+ - jQuery入口函数的介绍
+     - jQuery入口函数：$(document).ready(function(){}) 或者 $(function(){})
+         - document：文档对象
+     - window.onload和ready的区别
+         - window.onload：等待页面中所有的资源加载完毕后，再执行函数中的代码
+         - ready：等待DOM结构加载完毕后，再执行函数中的代码
+         - 可以定义多个window.onload方法但是只会执行最后一个, jq中ready方法可以定义多个, 按顺序都执行
+
+ - jQuery入口函数：$(function(){})
+     - jQuery入口函数的作用：等待DOM结构加载完毕后，再执行函数中的代码
+     - jQuery入口函数的简写：$(function(){})，等价于$(document).ready(function(){})
+     - jQuery入口函数的简写：$(function(){})，等价于$().ready(function(){})
+     - jQuery入口函数的简写：$(function(){})，等价于$(document).ready(function(){})
+     - jQuery入口函数的简写：$(function(){})，等价于$().ready(function(){})
+     - jQuery入口函数的简写：$(function(){})，等价于$().ready(function(){})
+     - jQuery入口函数的简写：$(function(){})，等价于$().ready(function(){})
+     - jQuery入口函数的简写：$(function(){})，等价于$().ready(function(){})
+     - jQuery入口函数的简写：$(function(){})，等价于$().ready(function(){})
+     - jQuery入口函数的简写：$(function(){})，等价于$().ready(function(){})
+     - jQuery入口函数的简写：$(function(){})，等价于$().ready(function(){})
+
+ - jQuery入口函数的使用
+     - jQuery入口函数的使用：
