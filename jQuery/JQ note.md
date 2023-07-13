@@ -5,9 +5,18 @@
  - jQuery是一个JavaScript库，它封装了很多常用的功能，它能够使我们更方便的操作DOM，处理事件，实现动画效果，处理AJAX等
  - jQuery是一个轻量级的JavaScript库，它的核心只有几十KB，压缩后只有几十KB，非常的小巧，非常的强大
 
-## jQuery的优势
+### jQuery的优势
 
-## jQuery的缺点
+ - 轻量级的JavaScript库，体积小，非常的强大
+ - 跨浏览器的JavaScript库，能够兼容主流的浏览器
+ - 链式编程，代码简洁，可读性强
+ - 丰富的插件，能够快速的实现各种各样的功能
+
+### jQuery的缺点
+
+ - 不能兼容所有的浏览器，比如IE6
+ - 不能实现所有的功能，比如canvas
+
 
 ## jQuery库
 
