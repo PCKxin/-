@@ -4,6 +4,8 @@
 
  - jQuery是一个JavaScript库，它封装了很多常用的功能，它能够使我们更方便的操作DOM，处理事件，实现动画效果，处理AJAX等
  - jQuery是一个轻量级的JavaScript库，它的核心只有几十KB，压缩后只有几十KB，非常的小巧，非常的强大
+ - 宗旨：write less, do more （写的更少，做的更多）
+     - jQuery的目的是让我们更方便的操作DOM，处理事件，实现动画效果，处理AJAX等，让我们写的更少，做的更多
 
 ### jQuery的优势
 
@@ -28,5 +30,12 @@
      - jQuery.min.map：生产版本的映射文件，用于调试，方便开发人员调试
 
 ### jQuery库的下载
+
+ - 官网：http://jquery.com/
+ - 下载：http://jquery.com/download/
+ - CDN：
+     - https://cdnjs.com/libraries/jquery/
+     - https://www.bootcdn.cn/jquery/
+
 
 ### jQuery库的引入
