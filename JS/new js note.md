@@ -2837,7 +2837,7 @@ date.getFullYear(); //获取年份
         })
         ```
  - window.screenX
-     - 作用：获取窗口相对于屏幕的x轴位置
+     - 作用：获取窗口相对于屏幕的x轴位置,具体：窗口左上角相对于屏幕左上角的x轴距离
      - 写法：
         ```js
         console.log(window.screenX); //获取窗口相对于屏幕的x轴位置
@@ -2981,7 +2981,7 @@ date.getFullYear(); //获取年份
         ```js
         console.log(window.event.offsetY); //获取事件触发点距离事件源上边的距离
         ```
- - window.event.offsetLeft
+ - window.event.offsetLeft，区别：offsetLeft是相对于父元素的左边距，x是相对于浏览器的左边距
      - 作用：获取事件触发点(鼠标指针)距离事件源左边的距离
      - 写法：
         ```js
@@ -3593,12 +3593,24 @@ function size_change(e){
 
 ## AJAX
 
+ - 作用：异步请求数据
+ - 概念：Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）XML是一种数据格式，AJAX是一种请求数据的方式
+
 ### 对象及其参数
 
  - XMLHttpRequest对象(核心对象)
      - 作用：创建一个XMLHttpRequest对象
      - 参数：
          - method：请求方式，get，post
+             - get和post的区别：
+                 - get请求：
+                     - 提交数据参数在url中
+                     - 参数长度有限制
+                     - 不安全
+                 - post请求：
+                     - 参数在请求体(header)中
+                     - 参数长度无限制
+                     - 安全
          - url：请求地址
          - async：是否异步，true，false
          - username：用户名
