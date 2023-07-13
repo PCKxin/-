@@ -39,3 +39,19 @@
 
 
 ### jQuery库的引入
+
+ - 本地引入
+     - 本地引入：将jQuery库下载到本地，然后通过script标签引入
+     - 本地引入的路径：相对路径、绝对路径
+     - 例子：
+         - ```html
+            <script src="js/jquery-3.5.1.js"></script>
+            ```
+ - CDN引入
+     - CDN引入：通过CDN引入，不需要下载到本地，直接通过script标签引入
+     - CDN引入的路径：https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js
+ - 本地引入和CDN引入的区别
+     - 本地引入：需要下载到本地，然后通过script标签引入，如果本地的jQuery库版本过低，需要手动更新
+     - CDN引入：不需要下载到本地，直接通过script标签引入，如果CDN的jQuery库版本过低，需要手动更新
+     - 本地引入和CDN引入的优先级：CDN引入的优先级高于本地引入
+     - 本地引入和CDN引入的选择：如果本地的jQuery库版本过低，建议使用CDN引入，如果本地的jQuery库版本比较高，建议使用本地引入
