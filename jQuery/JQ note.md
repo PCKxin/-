@@ -65,7 +65,7 @@
 ### $的含义
 
  - 当script标签引入jQuery.js文件时，会将 `$` 对象添加到 `window` 对象下
- - 这样就可以在任何位置使用 $ 符号（添加到window对象下的变量是一个全局变量）
+ - 这样就可以在任何位置使用 `$` 符号（添加到window对象下的变量是一个全局变量）
  - $：jQuery的标识符，用于获取页面中的元素，然后通过jQuery对象来操作元素
  - `$`是一个函数，`$()`是一个方法，`$()`的参数是选择器，`$()`的返回值是jQuery对象
 
@@ -125,7 +125,7 @@
 
 ### jQuery入口函数的介绍
 
- - jQuery入口函数：$(document).ready(function(){}) 或者 $(function(){})
+ - jQuery入口函数：`$(document).ready(function(){})` 或者 `$(function(){})`
      - document：文档对象
  - window.onload和ready的区别
      - window.onload：等待页面中所有的资源加载完毕后，再执行函数中的代码
