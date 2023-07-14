@@ -56,23 +56,24 @@
      - 本地引入和CDN引入的优先级：CDN引入的优先级高于本地引入
      - 本地引入和CDN引入的选择：如果本地的jQuery库版本过低，建议使用CDN引入，如果本地的jQuery库版本比较高，建议使用本地引入
 
-## jQuery选择器
+## jQuery选择器的语法：$(selector)
 
-### jQuery选择器的介绍
-
- - jQuery选择器：通过jQuery选择器可以获取到页面中的元素，然后通过jQuery对象来操作元素
-
- - jQuery选择器的语法：$(selector)
      - $：jQuery的标识符
      - ()：调用jQuery的方法
      - selector：选择器，用于获取页面中的元素
 
- - $的含义
+### $的含义
      - 当script标签引入jQuery.js文件时，会将 $ 对象添加到 window 对象下
      - 这样就可以在任何位置使用 $ 符号（添加到window对象下的变量是一个全局变量）
      - $：jQuery的标识符，用于获取页面中的元素，然后通过jQuery对象来操作元素
      - $是一个函数，$()是一个方法，$()的参数是选择器，$()的返回值是jQuery对象
 
+
+## jQuery选择器
+
+### jQuery选择器的介绍
+
+ - jQuery选择器：通过jQuery选择器可以获取到页面中的元素，然后通过jQuery对象来操作元素
 
  - jQuery选择器的分类
      - 基本选择器：通过id、class、标签名、属性、过滤器等选择器来获取元素
@@ -119,9 +120,9 @@
      - 表单选择器：$(":selected")，获取所有的选中的下拉框元素
 
 
-### jQuery入口函数
+## jQuery入口函数
 
- - jQuery入口函数的介绍
+### jQuery入口函数的介绍
      - jQuery入口函数：$(document).ready(function(){}) 或者 $(function(){})
          - document：文档对象
      - window.onload和ready的区别
@@ -129,7 +130,7 @@
          - ready：等待DOM结构加载完毕后，再执行函数中的代码
          - 可以定义多个window.onload方法但是只会执行最后一个, jq中ready方法可以定义多个, 按顺序都执行
 
- - jQuery入口函数：$(function(){})
+### jQuery入口函数：$(function(){})
      - jQuery入口函数的作用：等待DOM结构加载完毕后，再执行函数中的代码
      - jQuery入口函数的简写：$(function(){})，等价于$(document).ready(function(){})
      - jQuery入口函数的简写：$(function(){})，等价于$().ready(function(){})
@@ -142,5 +143,5 @@
      - jQuery入口函数的简写：$(function(){})，等价于$().ready(function(){})
      - jQuery入口函数的简写：$(function(){})，等价于$().ready(function(){})
 
- - jQuery入口函数的使用
+### jQuery入口函数的使用
      - jQuery入口函数的使用：
