@@ -158,3 +158,50 @@
  - jQuery入口函数的作用：等待DOM结构加载完毕后，再执行函数中的代码
  - jQuery入口函数的简写：`$(function(){})`，等价于`$(document).ready(function(){})`
  - jQuery入口函数的简写：`$(function(){})`，等价于`$().ready(function(){})`
+
+### jQuery方法
+
+ - 大多数方法，里面带参数的，相当于设置值，不带参数的，相当于获取值
+
+ - $(selector).html()：获取或者设置元素的内容
+     - 注意：覆盖原来的内容
+     - 可以传入带标签的内容结构
+     - 例子：
+         - ```js
+            // 设置内容
+            $("div").html("<span>hello world</span>");
+
+            // 获取内容
+            $("div").html();
+            ```
+
+ - $(selector).text()：获取或者设置元素的文本内容
+     - 注意：覆盖原来的内容
+     - 只能传入纯文本内容，不能解析带标签的内容结构
+     - 例子：
+         - ```js
+            // 设置文本内容
+            $("div").text("hello world");
+            $("div").text("<span>hello world</span>");
+
+            // 获取文本内容
+            $("div").text();
+            ```
+
+ - $(selector).css()：获取或者设置元素的样式
+     - 注意：覆盖原来的样式
+     - 可以传入多个样式，多个样式之间用逗号隔开
+     - 可以传入对象，对象中是多个样式
+     - 例子：
+         - ```js
+            // 设置样式
+            $("div").css("color", "red");
+            $("div").css("color", "red").css("font-size", "20px");
+            $("div").css({
+                "color": "red",
+                "font-size": "20px"
+            });
+
+            // 获取样式
+            $("div").css("color");
+            ```
