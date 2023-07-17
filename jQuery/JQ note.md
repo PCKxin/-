@@ -158,7 +158,3 @@
  - jQuery入口函数的作用：等待DOM结构加载完毕后，再执行函数中的代码
  - jQuery入口函数的简写：`$(function(){})`，等价于`$(document).ready(function(){})`
  - jQuery入口函数的简写：`$(function(){})`，等价于`$().ready(function(){})`
-
-### jQuery入口函数的使用
-
- - jQuery入口函数的使用：
