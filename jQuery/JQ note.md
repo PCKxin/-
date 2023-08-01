@@ -313,3 +313,130 @@
             $("input").removeProp("checked");
             ```
 
+ - $(selector).width()：获取或者设置元素的宽度
+     - 提示：
+         - 可以传入数值，设置元素的宽度
+         - 可以传入函数，函数的返回值是数值，设置元素的宽度
+         - 没有参数，获取元素的宽度
+     - 例子：
+         - ```js
+            // 设置宽度
+            $("div").width(200);
+            $("div").width(
+                function(index, width){
+                    return width + 100;
+                }
+            );
+
+            // 获取宽度
+            $("div").width();
+            ```
+
+ - $(selector).height()：获取或者设置元素的高度
+     - 提示：
+         - 可以传入数值，设置元素的高度
+         - 可以传入函数，函数的返回值是数值，设置元素的高度
+         - 没有参数，获取元素的高度
+     - 例子：
+         - ```js
+            // 设置高度
+            $("div").height(200);
+            $("div").height(
+                function(index, height){
+                    return height + 100;
+                }
+            );
+
+            // 获取高度
+            $("div").height();
+            ```
+
+ - $(selector).innerWidth()：获取元素的内部宽度
+     - 提示：
+         - 包含内边距，不包含边框和外边距
+         - width + 左右padding
+     - 例子：
+         - ```js
+            $("div").innerWidth();
+            ```
+
+ - $(selector).innerHeight()：获取元素的内部高度
+     - 提示：
+         - 包含内边距，不包含边框和外边距
+         - height + 上下padding
+     - 例子：
+         - ```js
+            $("div").innerHeight();
+            ```
+
+ - $(selector).outerWidth()：获取元素的外部宽度
+     - 提示：
+         - 包含内边距和边框，不包含外边距
+         - width + 左右padding + 左右border
+     - 例子：
+         - ```js
+            $("div").outerWidth();
+            ```
+
+ - $(selector).outerHeight()：获取元素的外部高度
+     - 提示：
+         - 包含内边距和边框，不包含外边距
+         - height + 上下padding + 上下border
+     - 例子：
+         - ```js
+            $("div").outerHeight();
+            ```
+
+ - $(selector).offset()：获取元素的偏移量，偏移量：元素距离文档边的距离
+     - 提示：
+         - 返回值是一个对象，对象中有两个属性：left和top
+         - left：元素距离文档的左边的距离
+         - top：元素距离文档的上边的距离
+         - 和relative有关系都是相对于文档的定位
+     - 例子：
+         - ```js
+            $("div").offset();
+            ```
+
+ - $(selector).position()：获取元素的定位，定位：元素距离最近的父元素的距离
+     - 提示：
+         - 返回值是一个对象，对象中有两个属性：left和top
+         - left：元素距离最近的父元素的左边的距离
+         - top：元素距离最近的父元素的上边的距离
+         - 和absolute有关系都是相对于父元素的定位
+     - 例子：
+         - ```js
+            $("div").position();
+            ```
+
+ - $(selector).offsetParent()：获取元素的定位的父元素
+     - 提示：
+         - 不带参数，获取元素的定位的父元素
+         - 参数是选择器，获取元素的定位的父元素中符合选择器的元素
+     - 例子：
+         - ```js
+            // 获取元素的定位的父元素
+            $("div").offsetParent();
+
+            // 获取元素的定位的父元素中符合选择器的元素
+            $("div").offsetParent("body");
+            ```
+
+ - $(selector).eq()：获取元素的指定下标的元素
+     - 提示：
+         - 不是选择器，是获取元素的指定下标的元素
+         - 可以传入负数，负数表示从后往前数
+     - 例子：
+         - ```js
+            $("div").eq(0);
+            ```
+
+ - $(selector).index()：获取元素的下标
+     - 提示：
+         - 不是选择器，是获取元素的下标
+         - 可以传入选择器，获取元素在选择器中的下标
+     - 例子：
+         - ```js
+            $("div").index();
+            $("div").index("div");
+            ```
