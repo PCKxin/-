@@ -542,11 +542,105 @@
             $("<span>hello world</span>").prependTo("div");
             ```
 
+ - $(selector).before()：在元素的前面追加内容
+     - 提示：
+         - 和原生js中的insertBefore方法一样, 在被选元素之前插入内容
+     - 例子：
+         - ```js
+            // 追加内容
+            $("div").before("<span>hello world</span>");
+            ```
 
+ - $(selector).after()：在元素的后面追加内容
+     - 提示：
+         - 和原生js中的insertAfter方法一样, 在被选元素之后插入内容
+         - 传入多个参数，多个参数之间用逗号隔开
+     - 例子：
+         - ```js
+            // 追加内容
+            $("div").after("<span>hello world</span>");
+            ```
 
+ - $(selector).wrap()：在元素的外面包裹一层内容
+     - 提示：
+         - 可以传入带标签的内容结构
+         - 可以传入函数，函数的返回值是带标签的内容结构
+     - 例子：
+         - ```js
+            // 包裹内容
+            $("div").wrap("<span></span>");
+            ```
 
+ - $(selector).unwrap()：移除元素的父元素
+     - 提示：
+         - 移除元素的父元素
+         - 不能移除body和html
+     - 例子：
+         - ```js
+            // 移除父元素
+            $("div").unwrap();
+            ```
 
+ - $(selector).each()：遍历元素
+     - 提示：
+         - 遍历元素
+         - 参数是回调函数，回调函数的返回值是false，就结束遍历
+         - 参数1：元素的下标
+         - 参数2：元素
+         - 参数名无所谓
+     - 例子：
+         - ```js
+            // 遍历元素
+            $("div").each(
+                function(index, element){
+                    console.log(index, element);
+                }
+            );
+            ```
 
+ - $(selector).remove()：移除元素,包括父元素
+     - 提示：
+         - 移除元素
+         - 会移除元素的事件
+         - 子元素和父元素都会被移除
+     - 例子：
+         - ```js
+            // 移除元素
+            $("div").remove();
+            ```
+
+ - $(selector).empty()：清空元素的子元素,不包括父元素
+     - 提示：
+         - 清空元素的内容
+         - 会移除元素的事件
+         - 删除的是元素的内容，不会删除元素本身，也就是删除子元素，不会删除父元素
+     - 例子：
+         - ```js
+            // 清空元素的内容
+            $("div").empty();
+            ```
+
+ - $(selector).clone()：克隆元素
+     - 提示：
+         - 克隆元素
+         - 参数是布尔值
+             - true：克隆元素的事件
+             - false：不克隆元素的事件
+     - 例子：
+         - ```js
+            // 克隆元素
+            $("div").clone();
+            ```
+
+ - $(selector).show()：显示元素
+     - 提示：
+         - 显示元素
+         - 显示元素的时候，会将元素的display属性设置为默认值
+     - 例子：
+         - ```js
+            // 显示元素
+            $("div").show();
+            ```
 
  - $(selector).parent()：获取元素的父元素
      - 提示：
