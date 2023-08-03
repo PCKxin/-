@@ -632,16 +632,6 @@
             $("div").clone();
             ```
 
- - $(selector).show()：显示元素
-     - 提示：
-         - 显示元素
-         - 显示元素的时候，会将元素的display属性设置为默认值
-     - 例子：
-         - ```js
-            // 显示元素
-            $("div").show();
-            ```
-
  - $(selector).parent()：获取元素的父元素
      - 提示：
          - 不带参数，获取元素的父元素
@@ -884,4 +874,72 @@
  - off和unbind的区别
      - 没有不同，可以互相解绑
 
+ - $(selector).one()：为元素绑定一次性事件
+     - 提示：
+         - 参数1：事件类型
+         - 参数2：回调函数
+         - 只能触发一次，然后解绑，刷新再次触发
+     - 例子：
+         - ```js
+            // 为div绑定click事件
+            $("div").one(
+                "click", 
+                function(){
+                    console.log("click");
+                }
+            );
+            ```
 
+ - $(selector).trigger()：模拟用户点击或者自动触发事件的行为
+     - 提示：
+         - 参数1：事件类型
+         - 参数2：传递的数据
+     - 例子：
+         - ```js
+            // 触发div的click事件
+            $("div").trigger("click");
+            ```
+
+ - $(selector).show()：显示元素
+     - 提示：
+         - 显示元素
+         - 显示元素的时候，会将元素的display属性设置为block
+         - 控制display:block/none
+     - 例子：
+         - ```js
+            // div的display属性是none，显示div
+            $("div").show();
+            ```
+
+ - $(selector).hide()：隐藏元素
+     - 提示：
+         - 隐藏元素
+         - 隐藏元素的时候，会将元素的display属性设置为none
+         - 控制display:block/none
+     - 例子：
+         - ```js
+            // div的display属性是block，隐藏div
+            $("div").hide();
+            ```
+
+ - $(selector).toggle()：切换元素的显示和隐藏
+     - 提示：
+         - 切换元素的显示和隐藏
+             - 如果元素是显示的，就隐藏
+             - 如果元素是隐藏的，就显示
+         - 控制display:block/none
+         - 参数：
+             - 参数1：切换的时间
+             - 参数2：切换的动画
+                 - swing：默认值，缓动动画
+                 - linear：匀速动画
+                 - easeIn：加速动画
+             - 参数3：回调函数
+     - 例子：
+         - ```js
+            // 切换div的显示和隐藏
+            $("div").toggle();
+
+            // 切换div的显示和隐藏，切换的时间是1000毫秒
+            $("div").toggle(1000);
+            ```
