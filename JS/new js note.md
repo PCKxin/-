@@ -3875,5 +3875,49 @@ function size_change(e){
         //将数据作为参数，传递给回调函数
         callback(data);
     }
+    ```
 
+## js执行机制
 
+### 单线程
+
+ - 同步代码会阻塞代码执行，只有执行完当前的代码，才会执行下一行代码
+
+ - 例子：
+     - ```js
+        var num = 0;
+        for(var i = 0; i < 1000000000; i++){
+            num += i;
+        }
+        ```
+
+### 异步
+
+ - 异步是指不会阻塞代码执行，会先将异步代码放到异步队列中，等待同步代码执行完毕后，再执行异步代码，执行顺序是不确定的
+
+ - 异步代码：
+     - setTimeout
+     - setInterval
+     - ajax
+     - 各种事件的回调函数
+     - 事件监听
+
+ - 例子:
+     - ```js
+        console.log("同步代码1");
+        setTimeout(
+            function(){
+                console.log("异步代码1");
+                setTimeout(
+                    function(){
+                        console.log("异步代码2");
+                    }
+                    ,1000
+                );
+                console.log("异步代码3");
+            }
+            ,0
+        );
+        console.log("同步代码2");
+        // 输出顺序：同步代码1，同步代码2，异步代码1，异步代码3，异步代码2
+        ```
