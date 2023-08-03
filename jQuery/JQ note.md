@@ -788,8 +788,28 @@
                 }
             );
             ```
+     - 绑定多个事件
          - ```js
-            // 动态数据
+            // 为div绑定click事件
+            $("div").on(
+                {
+                    "click": function(){
+                        console.log("click");
+                    },
+                    "mouseover": function(){
+                        console.log("mouseover");
+                    }
+                }
+            );
+            ```
+     - 解绑事件
+         - ```js
+            // 解绑click事件
+            $("div").off("click");
+            ```
+
+     - 动态数据
+         - ```js
             var obj = {
                 "name": "shiroko",
                 "age": 18
@@ -804,8 +824,8 @@
                 }
             )
             ```
+     - 事件委托：子元素触发事件，父元素执行事件
          - ```js
-            // 事件委托：子元素触发事件，父元素执行事件
             $(父元素).on(
                 事件名,
                 子元素选择器,
@@ -826,5 +846,42 @@
                 3. 动态添加的子元素也可以绑定事件
             */
             ```
+
+ - $(selector).bind()：为元素绑定事件
+     - 提示：
+         - 参数1：事件类型
+         - 参数2：回调函数
+     - 例子：
+         - ```js
+            // 为div绑定click事件
+            $("div").bind(
+                "click", 
+                function(){
+                    console.log("click");
+                }
+            );
+            ```
+     - 绑定多个事件
+         - ```js
+            // 为div绑定click事件
+            $("div").bind(
+                {
+                    "click": function(){
+                        console.log("click");
+                    },
+                    "mouseover": function(){
+                        console.log("mouseover");
+                    }
+                }
+            );
+            ```
+     - 解绑事件
+         - ```js
+            // 解绑click事件
+            $("div").unbind("click");
+            ```
+
+ - off和unbind的区别
+     - 没有不同，可以互相解绑
 
 
