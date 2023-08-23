@@ -406,6 +406,75 @@
 #### 否定伪类
 #### 元素伪类
 
+ - 写的时候顺序不要乱，按照LVHA的顺序写
+
+##### 链接伪类
+
+ - 作用：选择所有未被访问的链接
+
+ - 语法：选择器`:link`{}
+
+ - 例子：
+     - ```css
+        a:link{
+            color: red;
+        }
+        ```
+     - ```html
+        <a href="https://www.baidu.com/">百度</a>
+        ```
+
+##### 访问伪类
+
+ - 作用：选择所有被访问过的链接
+
+ - 语法：选择器`:visited`{}
+
+ - 例子：
+     - ```css
+        a:visited{
+            color: red;
+        }
+        ```
+     - ```html
+        <a href="https://www.baidu.com/">百度</a>
+        ```
+
+##### hover伪类
+
+ - 作用：选择鼠标指针位于其上的链接
+
+ - 语法：选择器`:hover`{}
+
+ - 例子：
+     - ```css
+        a:hover{
+            color: red;
+        }
+        ```
+     - ```html
+        <a href="https://www.baidu.com/">百度</a>
+        ```
+
+##### active伪类
+
+ - 作用：选择活动链接，鼠标按下未释放的元素
+
+ - 语法：选择器`:active`{}
+
+ - 例子：
+     - ```css
+        a:active{
+            color: red;
+        }
+        ```
+     - ```html
+        <a href="https://www.baidu.com/">百度</a>
+        ```
+
+
+
+
 ### 伪元素选择器
 
  - 特点：
