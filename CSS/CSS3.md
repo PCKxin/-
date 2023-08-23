@@ -237,6 +237,174 @@
 
 ### 属性选择器
 
+#### 存在选择器
+
+ - 选择页面中指定元素，拥有指定属性的元素
+ - 语法：`选择器[属性名]`{}
+ - 例子：
+     - ```css
+        /* 选择带有attribute_1属性的元素 */
+        [attribute_1]{
+            width: 100px;
+            height: 100px;
+            float: left;
+            margin-right: 10px;
+            background-color: rgba(255, 0, 0, 0.466);
+        }
+        ```
+     - ```html
+        <div attribute_1="">带有attribute_1属性的元素</div>
+        ```
+
+#### 等值选择器
+
+ - 选择页面中指定元素，拥有指定属性和指定属性值的元素
+ - 语法：`选择器[属性名 = 属性值]`{}
+ - 例子：
+     - ```css
+        /* 选择div元素有title属性且值为"value" */
+        div[title="value"]{
+            width: 100px;
+            height: 100px;
+            float: left;
+            margin-right: 10px;
+            background-color: pink;
+        }
+        ```
+     - ```html
+        <div title="value">属性选择器</div>
+        ```
+
+#### 属性值匹配`-`连接选择器
+
+ - 选择页面中拥有 指定属性 和以 指定属性值 开头 并用`-`连接的元素
+ - 语法：`选择器[属性名 |= 属性值]`{}
+ - 例子：
+     - ```css
+        /* 选择attribute_2属性值以 "value" 开头的所有元素 */
+        [attribute_2 |= value]{
+            width: 100px;
+            height: 100px;
+            float: left;
+            margin-right: 10px;
+            background-color: rgba(0, 255, 0, 0.466);
+        }
+        ```
+     - ```html
+        <div attribute_2="value-123">
+            属性值开头为"value"用`-`连接的元素<br>
+            value123x<br>
+            value-123✔
+        </div>
+        ```
+
+#### 开头匹配选择器
+
+ - 选择页面中指定元素，拥有指定属性和指定属性值`开头`的元素
+ - 语法：`选择器[属性名 ^= 属性值]`{}
+ - 例子：
+     - ```css
+        /* 选择attribute_3属性值以 "value" 开头的所有元素 */
+        [attribute_3 ^= value]{
+            width: 100px;
+            height: 100px;
+            float: left;
+            margin-right: 10px;
+            background-color: rgba(0, 0, 255, 0.466);
+        }
+        ```
+     - ```html
+        <div attribute_3="value123">属性值以 "value" 开头的所有元素</div>
+        <div attribute_3="value456">不用 - 也没事 <br> 但必须是开头</div>
+        ```
+
+#### 包含匹配选择器
+
+ - 选择页面中指定元素，拥有指定属性和指定属性值`包含`的元素
+ - 语法：`选择器[属性名 *= 属性值]`{}
+ - 例子：
+     - ```css
+        /* 选择attribute_4属性值包含 "value" 的所有元素 */
+        [attribute_4 *= value]{
+            width: 100px;
+            height: 100px;
+            float: left;
+            margin-right: 10px;
+            background-color: rgba(255, 0, 255, 0.466);
+        }
+        ```
+     - ```html
+        <div attribute_4="123value789">属性值包含 "value" 的所有元素</div>
+        <div attribute_4="123789456value">只要有就行</div>
+        ```
+
+#### 结尾匹配选择器
+
+ - 选择页面中指定元素，拥有指定属性和指定属性值`结尾`的元素
+ - 语法：`选择器[属性名 $= 属性值]`{}
+ - 例子：
+     - ```css
+        /* 选择attribute_5属性值以 "value" 结尾的所有元素 */
+        [attribute_5 $= value]{
+            width: 100px;
+            height: 100px;
+            float: left;
+            margin-right: 10px;
+            background-color: rgba(255, 255, 0, 0.466);
+        }
+        ```
+     - ```html
+        <div attribute_5="456value">属性值以 "value" 结尾的所有元素</div>
+        <div attribute_5="value456value">在屁股就行</div>
+        ```
+
+#### 多属性值选择器
+
+ - 选择页面中指定元素，拥有指定属性和指定属性值的元素
+ - 语法：`选择器[属性名 ~= 属性值]`{}
+ - 例子：
+     - ```css
+        /* 选择attribute_6属性值为一个词列表，并且以空格隔开
+        其中词列表中包含了一个value1 */
+        [attribute_6 ~= value1]{
+            width: 200px;
+            height: 100px;
+            float: left;
+            margin-right: 10px;
+            background-color: rgba(17, 255, 0, 0.466);
+        }
+        ```
+     - ```html
+        <div attribute_6="value1 value2">
+            属性值为一个词列表，并且以空格隔开<br>
+            其中词列表中包含了一个寻找项即可
+        </div>
+        <div attribute_6="value1 value3">里面包含寻找项即可</div>
+        ```
+
+#### 多属性选择器
+
+ - 选择页面中指定元素，拥有指定属性和指定属性值的元素
+ - 语法：`选择器[属性名1 = 属性值1][属性名2 = 属性值2]`{}
+ - 例子：
+     - ```css
+        /* 选择attribute_6属性值为 "value" 且 attribute_7属性值为 "value" 的所有元素 */
+        [attribute_7 = value][attribute_8 = value]{
+            width: 100px;
+            height: 100px;
+            float: left;
+            margin-right: 10px;
+            background-color: rgba(0, 0, 0, 0.466);
+        }
+        ```
+     - ```html
+        <div attribute_7="value" attribute_8="value">多属性选择器</div>
+        ```
+
+
+
+
+
 ### 伪类选择器
 #### 结构伪类
 #### 否定伪类
