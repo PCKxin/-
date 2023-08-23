@@ -896,3 +896,71 @@
             <li></li>
             <li></li>
         </ul>
+        ```
+
+## 盒子模型
+
+### 介绍
+
+ - 盒子模型是CSS中最重要的概念之一，它决定了元素在网页中的占位和布局
+
+ - 盒子模型的组成：
+     - 内容(content)
+     - 内边距(padding)
+     - 边框(border)
+     - 外边距(margin)
+
+### 盒子模型分类
+
+#### 标准盒子
+
+ - 标准盒子的宽度和高度只包含内容(content)
+
+ - 语法：
+     - IE6以上默认就是标准盒子
+     - `box-sizing`: `content-box;`
+
+ - 计算公式：
+     - 盒子的宽度 = 左右内边距 + 左右边框 + 内容的宽度
+     - 盒子的高度 = 上下内边距 + 上下边框 + 内容的高度
+
+#### 怪异（也叫IE）盒子
+
+ - 怪异盒子的宽度和高度包含了内容(content)、内边距(padding)和边框(border)
+
+ - 语法：
+     - IE6以下的浏览器：`box-sizing`: `border-box;`
+     - IE6以上的浏览器：`-webkit-box-sizing`: `border-box;`
+
+ - 除了margin，其他都包含，内空间满了实际尺寸就会变大
+ - 计算公式：
+     - 盒子的宽度 = 内容的宽度
+     - 盒子的高度 = 内容的高度
+
+ - 除了IE6以下的浏览器，其他浏览器都是标准盒子
+
+### box-shadow
+
+ - 盒子阴影
+
+ - 参数：
+     - 1和2分别是水平和垂直偏移量
+     - 3 模糊半径
+     - 4 阴影的尺寸
+     - 5 阴影的颜色
+     - 6 阴影的方向
+         - inset表示内阴影
+         - 默认是外阴影
+
+ - 例子：
+     - ```css
+        .box_shadow_demo{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            box-shadow: 10px 10px 10px 10px red inset;
+        }
+        ```
+     - ```html
+        <div class="box_shadow_demo"></div>
+        ```
