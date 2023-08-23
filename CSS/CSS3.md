@@ -217,16 +217,16 @@
  - 语法：`选择器1` `~` `选择器2`{}
  - 例子：
      - ```css
-            .universal_sibling_demo{
-                width: 100px;
-                height: 100px;
-                background-color: red;
-            }
-            .universal_sibling_demo ~ .uni_demo{
-                width: 100px;
-                height: 100px;
-                background-color: pink;
-            }
+        .universal_sibling_demo{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+        .universal_sibling_demo ~ .uni_demo{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
         ```
      - ```html
         <div class="universal_sibling_demo">通用兄弟选择器</div>
