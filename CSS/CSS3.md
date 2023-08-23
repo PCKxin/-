@@ -403,12 +403,300 @@
 
 ### 伪类选择器
 #### 结构伪类
+
+ - 以child结尾是在所有子元素中选择
+ - 以type结尾是在所有指定类型(type)的元素中选择
+ - 以-of-type结尾是在所有指定类型(type)的元素中选择
+
+ - child和type的区别：
+     - child是在所有子元素中选择
+     - type是在所有相同元素中选择
+
+##### first-child
+
+ - 选择 指定元素 的 父元素 的 第一个 子元素
+
+ - 语法：选择器`:first-child`{}
+ - 例子：
+     - ```css
+        /* 选第一个为p的元素 */
+        .first_child_demo p:first-child{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+        /* 选第一个子元素 */
+        .first_child_demo :first-child{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+        ```
+     - ```html
+        <div class="first_child_demo">
+            <div>第一个div</div>
+            <p>第一个</p>
+            <p>我是first-child伪类</p>
+        </div>
+        ```
+
+##### last-child
+
+ - 选择 指定元素 的 父元素 的最后一个子元素
+ - 语法：选择器`:last-child`{}
+ - 例子：
+     - ```css
+        /* 选最后一个为p的元素 */
+        .last_child_demo p:last-child{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+        /* 选最后一个子元素 */
+        .last_child_demo :last-child{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+        ```
+     - ```html
+        <div class="last_child_demo">
+            <div>第一个div</div>
+            <p>第一个</p>
+            <p>我是last-child伪类</p>
+        </div>
+        ```
+
+##### nth-child
+
+ - 选择 指定元素 的 父元素 的 第n个 子元素
+ - 语法：
+     - `:nth-child(n)`{}
+     - `:nth-child(2n)`{} 选择偶数
+     - `:nth-child(even)`{} 选择偶数
+     - `:nth-child(2n+1)`{} 选择奇数
+     - `:nth-child(odd)`{} 选择奇数
+
+ - 例子:
+     - ```css
+        .nth-child :nth-child(2){
+            width: 100px;
+            height: 100px;
+            float: left;
+            background-color: rgba(0, 200, 255, 0.697);
+        }
+        .nth-child :nth-child(3){
+            width: 100px;
+            height: 100px;
+            float: left;
+            background-color: rgba(255, 0, 0, 0.466);
+        }
+        .nth-child :nth-child(4){
+            width: 100px;
+            height: 100px;
+            float: left;
+            background-color: rgba(255, 0, 255, 0.466);
+        }
+        .nth-child :nth-child(2n){
+            margin-right: 10px;
+        }
+        .nth-child :nth-child(2n+1){
+            margin-right: 10px;
+        }
+        ```
+     - ```html
+        <div class="nth-child_demo">
+            <div>第一个子元素</div>
+            <div>第n个子元素</div>
+            <div>奇数位子元素</div>
+            <div>偶数位子元素</div>
+            <div>最后一个子元素</div>
+        </div>
+        ```
+
+##### only-child
+
+ - 选择 指定元素 的 父元素 的 唯一 子元素，也就是说，这个子元素没有兄弟元素，如果有兄弟元素，就不会被选中
+ - 语法：选择器`:only-child`{}
+ - 例子：
+     - ```css
+        .only-child_demo :only-child{
+            width: 100px;
+            height: 100px;
+            float: left;
+            background-color: rgba(0, 200, 255, 0.697);
+        }
+        ```
+     - ```html
+        <div class="only-child_demo">
+            <p>only-child</p>
+        </div>
+        ```
+
+
+##### first-of-type
+
+ - 选择 指定元素 的 父元素 的 第一个 指定类型(type) 的子元素
+
+ - 语法：选择器`:first-of-type`{}
+
+ - 例子：
+     - ```css
+        .type_demo :first-of-type{
+            width: 100px;
+            height: 100px;
+            float: left;
+            background-color: rgba(0, 200, 255, 0.697);
+        }
+        ```
+     - ```html
+        <div class="type_demo">
+            <div>第一个子元素</div>
+            <div>第n个子元素</div>
+            <p>p标签子元素</p>
+            <div>最后一个子元素</div>
+        </div>
+        ```
+
+##### last-of-type
+
+ - 选择 指定元素 的 父元素 的 最后一个 指定类型(type) 的子元素，会识别标签与类名一致的元素
+
+ - 语法：选择器`:last-of-type`{}
+ - 例子：
+     - ```css
+        .type_demo :last-of-type{
+            width: 100px;
+            height: 100px;
+            float: left;
+            background-color: rgba(0, 200, 255, 0.697);
+        }
+        ```
+     - ```html
+        <div class="type_demo">
+            <div>第一个子元素</div>
+            <div>第n个子元素</div>
+            <p>p标签子元素</p>
+            <div>最后一个子元素</div>
+        </div>
+        ```
+
+##### nth-of-type
+
+ - 选择父元素下的第n个type元素,计数从1开始
+
+ - 语法：`:nth-of-type(n)`{}
+
+ - 例子：
+     - ```css
+        .type_demo :nth-of-type(2){
+            width: 100px;
+            height: 100px;
+            float: left;
+            margin-right: 10px;
+            background-color: rgba(0, 200, 255, 0.697);
+        }
+        ```
+     - ```html
+        <div class="type_demo">
+            <div>第一个子元素</div>
+            <div>第n个子元素</div>
+            <p>p标签子元素</p>
+            <div>最后一个子元素</div>
+        </div>
+        ```
+
+##### nth-last-of-type
+
+ - 选择父元素下的倒数第n个type元素
+
+ - 语法：`:nth-last-of-type(n)`{}
+
+ - 例子：
+     - ```css
+        .type_demo :nth-last-of-type(1){
+            width: 100px;
+            height: 100px;
+            float: left;
+            margin-right: 10px;
+            background-color: rgba(0, 200, 255, 0.697);
+        }
+        ```
+     - ```html
+        <div class="type_demo">
+            <div>第一个子元素</div>
+            <div>第n个子元素</div>
+            <p>p标签子元素</p>
+            <div>最后一个子元素</div>
+        </div>
+        ```
+
+##### root
+
+ - 选择页面中的根元素
+
+ - 语法：`:root`{}
+
+ - 例子：
+     - ```css
+        :root{
+            width: 100px;
+            height: 100px;
+            float: left;
+            margin-right: 10px;
+            background-color: rgba(0, 200, 255, 0.697);
+        }
+        ```
+     - ```html
+        <div>我是根元素</div>
+        ```
+
+##### empty
+
+ - 选择页面中的空元素
+
+ - 语法：`:empty`{}
+
+ - 例子：
+     - ```css
+        :empty{
+            width: 100px;
+            height: 100px;
+            float: left;
+            margin-right: 10px;
+            background-color: rgba(0, 200, 255, 0.697);
+        }
+        ```
+     - ```html
+        <div></div>
+        ```
+
 #### 否定伪类
+
+ - 选择页面中指定元素，不拥有指定属性和指定属性值的元素
+ - 语法：`选择器:not(选择器)`{}
+ - 例子：
+     - ```css
+        /* 选择所有不是div的元素 */
+        :not(div){
+            width: 100px;
+            height: 100px;
+            float: left;
+            margin-right: 10px;
+            background-color: pink;
+        }
+        ```
+     - ```html
+        <div>我是div</div>
+        <p>我是p</p>
+        <span>我是span</span>
+        ```
+
 #### 元素伪类
 
  - 写的时候顺序不要乱，按照LVHA的顺序写
 
-##### 链接伪类
+##### link
 
  - 作用：选择所有未被访问的链接
 
@@ -424,7 +712,7 @@
         <a href="https://www.baidu.com/">百度</a>
         ```
 
-##### 访问伪类
+##### visited
 
  - 作用：选择所有被访问过的链接
 
@@ -440,7 +728,7 @@
         <a href="https://www.baidu.com/">百度</a>
         ```
 
-##### hover伪类
+##### hover
 
  - 作用：选择鼠标指针位于其上的链接
 
@@ -456,7 +744,7 @@
         <a href="https://www.baidu.com/">百度</a>
         ```
 
-##### active伪类
+##### active
 
  - 作用：选择活动链接，鼠标按下未释放的元素
 
