@@ -401,13 +401,141 @@
         <div attribute_7="value" attribute_8="value">多属性选择器</div>
         ```
 
-
-
-
-
 ### 伪类选择器
 #### 结构伪类
 #### 否定伪类
 #### 元素伪类
 
 ### 伪元素选择器
+
+ - 特点：
+     - 使用dom操作的方法，无法获取
+     - 理论上存在，实际上没有这个节点
+
+ - before和after必须配合content属性使用，否则不会显示，没有内容的划，可以设置为空，不能不写
+
+#### ::before
+
+ - 作用：在元素之前添加内容
+
+ - 语法：选择器 `::before`{}
+ - 例子：
+     - ```css
+        .before_demo::before{
+            content: "我是before伪元素";
+            width: 100px;
+            height: 100px;
+            float: left;
+            margin-right: 10px;
+            background-color: rgba(255, 0, 0, 0.466);
+        }
+        ```
+     - ```html
+        <div class="before_demo">我是before伪元素</div>
+        ```
+
+#### ::after
+
+ - 作用：在元素之后添加内容
+
+ - 语法：选择器 `::after`{}
+ - 例子：
+     - ```css
+        .after_demo::after{
+            content: "我是after伪元素";
+            width: 100px;
+            height: 100px;
+            float: left;
+            margin-right: 10px;
+            background-color: rgba(255, 0, 0, 0.466);
+        }
+        ```
+     - ```html
+        <div class="after_demo">我是after伪元素</div>
+        ```
+
+#### ::first-letter
+
+ - 作用：选择元素的第一个字母
+
+ - 语法：选择器 `::first-letter`{}
+ - 例子：
+     - ```css
+        .first_letter_demo::first-letter{
+            font-size: 50px;
+            color: red;
+        }
+        ```
+     - ```html
+        <div class="first_letter_demo">我是first-letter伪元素</div>
+        ```
+
+#### ::first-line
+
+ - 作用：选择元素的第一行
+
+ - 语法：选择器 `::first-line`{}
+ - 例子：
+     - ```css
+        .first_line_demo::first-line{
+            font-size: 50px;
+            color: red;
+        }
+        ```
+     - ```html
+        <div class="first_line_demo">我是first-line伪元素</div>
+        ```
+
+#### ::selection
+
+ - 作用：选择元素被选中的部分
+
+ - 语法：选择器 `::selection`{}
+ - 例子：
+     - ```css
+        .selection_demo::selection{
+            background-color: red;
+            color: white;
+        }
+        ```
+     - ```html
+        <div class="selection_demo">我是selection伪元素</div>
+        ```
+
+#### 一个案例
+
+ - 列表计数
+
+ - code：
+     - ```css
+        .list_demo{
+            list-style: none;
+        }
+        .list_demo li::before{
+            /* conunter意思是计数器 */
+            /* list是自定义的参数 */
+            content: counter(list);
+        }
+        .list_demo li{
+            width: 100px;
+            height: 20px;
+            text-align: center;
+            /* conunter-increment意思是计数器增加 */
+            /* list是上面括号里的参数 */
+            counter-increment: list;
+        }
+        .list_demo li::first-letter{
+            color: red;
+        }
+        .list_demo li::first-line{
+            color: blue;
+        }
+        ```
+     - ```html
+        <ul class="list_demo">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
