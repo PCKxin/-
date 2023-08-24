@@ -964,3 +964,59 @@
      - ```html
         <div class="box_shadow_demo"></div>
         ```
+
+## 边框效果
+
+### border-image
+
+ - 边框图片
+
+ - 参数：
+     - 1 图片的路径
+     - 2 图片的边框宽度
+     - 3 图片的边框切割方式
+         - stretch 拉伸
+         - repeat 重复
+         - round 平铺
+     - 4 图片的边框切割方式
+         - stretch 拉伸
+         - repeat 重复
+         - round 平铺
+
+ - 例子：
+     - ```css
+        .border_image_demo{
+            width: 100px;
+            height: 100px;
+            border: 10px solid transparent;
+            border-image: url(../images/1.jpg) 10 round;
+        }
+        ```
+     - ```html
+        <div class="border_image_demo"></div>
+        ```
+
+#### border-image-slice
+
+ - 边框图片切割值
+
+#### border-image-repeat
+
+ - 边框图片重复方式
+
+ - 参数：
+     - stretch 拉伸
+     - repeat 重复
+     - round 平铺
+
+### border-radius
+
+ - 边框圆角
+
+ - 参数：
+     - a 四角
+     - a b 左上和右下,右上和左下
+     - a b c 左上，右上和左下，右下
+     - a b c d 左上，右上，右下，左下
+
+ - 半圆高度是宽度的一半
