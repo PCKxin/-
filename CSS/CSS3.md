@@ -1046,3 +1046,370 @@
      - z 亮度 取值范围0%-100%
      - a 透明度 取值范围0%-1
 
+## 背景效果
+
+### 多背景图
+
+ - 语法：
+     - `background-image`: `url(../images/1.jpg)` `,` `url(../images/2.jpg);`
+
+### background-position
+
+ - 背景图片位置
+
+ - 参数：
+     - 1 水平方向
+         - left
+         - center
+         - right
+         - 百分比
+         - 像素
+     - 2 垂直方向
+         - top
+         - center
+         - bottom
+         - 百分比
+         - 像素
+
+ - 特定位置：
+     - 0% 0% 左上角
+     - 100% 100% 右下角
+     - 50% 50% 中心点
+     - top left 左上角
+     - top right 右上角
+
+ - 多点定位：
+     - 用逗号隔开
+     - 0% 0%, 100% 100% 左上角和右下角
+     - top left, top right 左上角和右上角
+
+### background-size
+
+ - 背景图片尺寸
+
+ - 参数：
+     - 1 宽度
+         - 百分比
+         - 像素
+         - auto
+     - 2 高度
+         - 百分比
+         - 像素
+         - auto
+     - cover 按比例缩放，保证图片完全覆盖容器
+     - contain 按比例缩放，保证图片完全显示在容器中
+
+ - 多背景图大小
+     - 用逗号隔开
+     - 100px 100px, 200px 200px
+     - 第一个高度100px，宽度100px，第二个高度200px，宽度200px
+
+### background-chip
+
+ - 背景图片裁剪
+
+ - 参数：
+     - border-box 裁剪到边框
+     - padding-box 裁剪到内边距
+     - content-box 裁剪到内容
+
+### background-origin
+
+ - 背景图片定位原点
+
+ - 参数：
+     - border-box 定位到边框
+     - padding-box 定位到内边距
+     - content-box 定位到内容
+
+### background-clip
+
+ - 背景图片裁剪
+
+ - 参数：
+     - text 裁剪到文字
+
+ - 裁剪成文字区域：
+     - 设置兼容写法
+     - 属性text
+     - 文字透明 color: transparent; 不能用opacity
+
+### background-attachment
+
+ - 背景图片固定
+
+ - 参数：
+     - fixed 固定
+     - scroll 滚动
+
+### 用例：
+
+```css
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    h3{
+        text-align: center;
+        background: rgba(255, 192, 203, 0.822);
+        color:rgb(255, 0, 0);
+    }
+    .box1{
+        width: 600px;
+        height: 400px;
+        margin: 50px auto;
+        background-color: rgba(255, 94, 0, 0.281);
+        /* 多背景图片 使用多个url（）中间用逗号隔开 */
+        background-image: url('../img/03.jpg'),url('../img/04.jpg');
+        background-repeat: no-repeat;
+        /* position 定位背景图片 */
+        background-position: top left,right bottom;
+        /* 多背景图大小，用逗号隔开 */
+        background-size: 150px 100px,450px 300px;
+    }
+    .box2{
+        width: 600px;
+        height: 400px;
+        margin: 50px auto;
+        background-color: rgba(255, 94, 0, 0.281);
+        /* 多背景图片 使用多个url（）中间用逗号隔开 */
+        background-image: url('../img/01.jpg'),
+        url('../img/02.jpg'),
+        url('../img/03.jpg'),
+        url('../img/04.jpg');
+        background-repeat: no-repeat;
+        /* position 定位背景图片 */
+        background-position: left top,right top,right bottom,left bottom;
+        background-size: 300px 200px,300px 200px,300px 200px,300px 200px;
+    }
+    .box3{
+        width: 600px;
+        height: 400px;
+        margin: 50px auto;
+        border: 10px dotted red;
+        padding: 50px;
+        background-color: rgba(255, 94, 0, 0.281);
+        background-image: url('../img/01.jpg');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;   
+        /* background-clip属性 作用：设置背景图片的裁剪区域 */
+        /* 属性值 3个  border-box  padding-box content-box text*/
+    }
+    .box3:nth-child(1){
+        /* 背景图片裁剪区域为边框区域 */
+        background-clip: border-box;
+    }
+    .box3:nth-child(2){
+        /* 背景图片裁剪区域为内边距区域 */
+        background-clip: padding-box;
+    }
+    .box3:nth-child(3){
+        /* 背景图片裁剪区域为内容区域 */
+        background-clip: content-box;
+    }
+    .box3:nth-child(4){
+        padding: none;
+        /* 背景图片裁剪区域为文字区域 */
+        -webkit-background-clip: text;
+        background-clip: text;
+        /* 文字颜色透明 */
+        color: transparent;
+        font-size: 100px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 400px;
+    }
+    .box4{
+        width: 600px;
+        height: 400px;
+        margin: 50px auto;
+        border: 10px dotted red;
+        padding: 30px;
+        background-color: rgba(255, 94, 0, 0.281);
+        background-image: url('../img/03.jpg');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;   
+        /* background-origin属性 作用：设置背景图片的定位区域 */
+        /* 属性值 3个  border-box  padding-box content-box text*/
+    }
+    .box4:nth-child(1){
+        /* 背景图片定位区域为边框区域 */
+        background-origin: border-box;
+    }
+    .box4:nth-child(2){
+        /* 背景图片定位区域为内边距区域 */
+        background-origin: padding-box;
+    }
+    .box4:nth-child(3){
+        /* 背景图片定位区域为内容区域 */
+        background-origin: content-box;
+    }
+```
+
+```html
+<body>
+    <h3>设置多背景图</h3>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <h3>background-chip属性</h3>
+    <div>
+        <div class="box3"></div>
+        <div class="box3"></div>
+        <div class="box3"></div>
+        <div class="box3">clip文字背景</div>            
+    </div>
+    <h3>background-origin属性</h3>
+    <div>
+        <div class="box4"></div>
+        <div class="box4"></div>
+        <div class="box4"></div>
+    </div>
+</body>
+```
+
+
+## 渐变效果
+
+### 线性渐变
+
+ - 从一个点的颜色向另一个点的颜色渐变，中间两种或多种颜色渐变
+
+ - 默认从上到下渐变
+
+ - 语法：
+     - `background`:`linear-gradient(方向,颜色1,颜色2,颜色3...)`;
+
+ - 添加多种颜色用逗号隔开
+ - 颜色可以是rgb，rgba，hsl，hsla，十六进制，单词
+ - 颜色后面的百分比表示颜色的位置，不写默认平均分配
+ - `repeating-linear-gradient` 重复线性渐变
+
+ - 参数：
+     - 方向：
+         - to top 从下到上
+         - to bottom 从上到下
+         - to left 从右到左
+         - to right 从左到右
+         - to top left 从右下到左上
+         - to top right 从左下到右上
+         - to bottom left 从右上到左下
+         - to bottom right 从左上到右下
+         - 45deg 从左上到右下
+         - 135deg 从右上到左下
+         - 225deg 从左下到右上
+         - 315deg 从右下到左上
+     - 颜色：
+         - rgb，rgba，hsl，hsla，十六进制，单词
+
+ - 写法例：
+     - ```css
+        background: linear-gradient(red, blue, pink, orangered, hsl(120, 100%, 50%));
+        background: linear-gradient(deepskyblue 20%, orangered 50%);
+        background: linear-gradient(to right top, deepskyblue, orangered);
+        background: repeating-linear-gradient(rgba(255, 0, 123, 0.677) 0%,rgb(43, 255, 0) 30%);
+     ```
+
+### 径向渐变
+
+ - 从一个点的颜色向四周发生过渡的渐变，默认为椭圆
+
+ - 语法：
+     - `background`:`radial-gradient(形状,颜色1,颜色2,颜色3...)`;
+
+ - `repeating-radial-gradient` 重复径向渐变
+
+ - 参数：
+     - 形状：
+         - circle 圆形
+         - ellipse 椭圆形
+         - 涉及到圆心位置，必须用兼容性三种写法
+             - px
+             - 百分比
+             - 关键字
+                 - center
+                 - top
+                 - bottom
+                 - left
+                 - right
+                 - top left
+                 - top right
+                 - bottom left
+                 - bottom right
+         - 控制径向渐变圆的尺寸大小 写在渐变形状后面
+             - closest-side 以最近边为半径
+             - closest-corner 以最近边为直径
+             - farthest-side 以最远边为半径
+             - farthest-corner 以最远边为直径
+     - 颜色：
+         - rgb，rgba，hsl，hsla，十六进制，单词
+
+ - 写法例：
+     - ```css
+        background: radial-gradient(rgb(0, 255, 60) 20%, rgb(255, 0, 0));
+        background: radial-gradient(circle, rgb(0, 255, 34), rgb(255, 0, 72));
+        background: -webkit-radial-gradient(right center, circle, rgb(255, 132, 0), rgb(0, 149, 255));
+        background: -webkit-radial-gradient(50px 50px, circle farthest-corner, black, white);
+        background: repeating-radial-gradient(deeppink 0%, deepskyblue 20%);
+        ```
+
+### 圆锥渐变
+
+ - 类似线性渐变，但是渐变方向是圆锥形，像一个指针画圆
+
+ - 语法：
+     - `background`:`conic-gradient(方向,颜色1,颜色2,颜色3...)`;
+
+ - 其他属性和其他渐变基本通用
+
+### clip和饼图例：
+```css
+    .demo{
+        width: 100%;
+        height: 320px;
+        margin: 30px auto;
+    }
+    .demo1{
+        width: 200px;
+        height: 200px;
+        float: left;
+        margin-top: 20px;
+        margin-right: 20px;
+    }
+    .demo1:nth-child(2){
+        font-size: 40px;
+        font-weight: bold;
+        text-align: center;
+        background: linear-gradient(
+            /* 从左下角到右上角 */
+            to right top,
+            rgba(215, 204, 204, 0.3) 20%,
+            rgba(180, 169, 169, 0.5) 40%,
+            rgba(138, 123, 123, 0.5) 60%,
+            rgba(55, 48, 48, 0.5) 80%,
+            rgba(31, 22, 22, 0.8) 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+    .demo1:nth-child(3){
+        border-radius: 50%;
+        background: conic-gradient(
+            pink 0%, pink 33%,
+            deepskyblue 33%, deepskyblue 66%,
+            orangered 66%, orangered 100%
+        );
+    }
+```
+```html
+<div class="demo">
+    <h3>
+        练习 <br>
+        clip和饼图
+    </h3>
+    <div class="demo1">
+        clip
+    </div>
+    <div class="demo1"></div>
+</div>
+```
