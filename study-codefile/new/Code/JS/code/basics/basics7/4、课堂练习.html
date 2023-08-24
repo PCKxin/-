@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/* 
+			 一个加油站为了鼓励车主多加油，所以加的多有优惠。
+			   92 号汽油，每升 6 元；如果大于等于 20升，那么每升 5.9 ；
+			   95 号汽油，每升 7 元；如果大于等于 30升，那么每升 6.95 ；
+			   编写 JS 程序，用户输入自己的汽油编号，然后输入自己加多少升，弹出价格。
+			 */
+			var oil = prompt("请输入汽油编号");
+			if(oil == "92") {
+				var s = prompt("请输入加油量");
+				if(s < 20) {
+					alert("金额是：" + (s * 6) + "元");
+				}else if(s >= 20) {
+					alert("金额是：" + (s * 5.9) + "元");
+				}else {
+					alert("加油量输入有误");
+				}
+			}else if(oil == "95") {
+				var s1 = prompt("请输入加油量");
+				if(s1 < 30) {
+					alert("金额是：" + (s1 * 7) + "元");
+				}else if(s1 >= 30) {
+					alert("金额是：" + (s1 * 6.95) + "元");
+				}else {
+					alert("加油量输入有误");
+				}
+			}else {
+				console.log("汽油编号输入有误");
+			}
+			
+			
+		</script>
+		
+	</head>
+	<body>
+	</body>
+</html>

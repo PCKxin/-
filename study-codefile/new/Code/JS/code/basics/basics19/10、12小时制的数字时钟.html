@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>12小时制的数字时钟</title>
+</head>
+<body>
+    <div id="box"></div>
+    <script type="text/javascript">
+        var box = document.getElementById('box');
+
+
+        function fn() {
+            var date = new Date();
+            var hour = date.getHours();  //14
+            var min = date.getMinutes();
+            var sec = date.getSeconds();
+
+            //补零
+            if(min < 10) {
+                min = "0" + min;
+            }
+            if(sec < 10) {
+                sec = "0" + sec;
+            }
+
+            //根据小时进行判断,0-12都是上午，13-23都是下午
+            if(hour > 12) {
+                hour = hour % 12;
+                box.innerHTML ="下午：" + hour + ":" + min + ":" + sec;
+            }else {
+                box.innerHTML ="上午：" + hour + ":" + min + ":" + sec;
+            }
+
+        }
+        setInterval(fn,1);
+    </script>
+</body>
+</html>

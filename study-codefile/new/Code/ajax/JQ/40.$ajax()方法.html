@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                border: 0;
+            }
+            ul{
+                list-style: none;
+                width: 992px;
+                height: 50px;
+                margin: 10px auto;
+                border-bottom: 2px solid black;
+            }
+            li{
+                width: 150px;
+                height: 35px;
+                background: #ccc;
+                border-radius: 8px;
+                float: left;
+                margin-right: 98px;
+                text-align: center;
+                line-height: 35px;
+                color: red;
+                cursor: pointer;
+            }
+            .active{
+                background: deepskyblue;
+                color: white;
+            }
+            .box{
+                width: 992px;
+                height: 200px;
+                border: 5px dashed deeppink;
+                margin: 10px auto;
+                font-size: 40px;
+                font-weight: bold;
+                text-align: center;
+                line-height: 200px;
+            }
+        </style>
+    </head>
+    <body>
+        <ul class="nav">
+            <li style="margin-left:49px">首页</li>
+            <li>服务</li>
+            <li>关于</li>
+            <li style="margin-right:49px;">我的</li>
+        </ul>
+        <div class="box"></div>
+        <script src="./jQuery/jquery-1.12.4.js"></script>
+        <!-- <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.js"></script> -->
+        
+        <script>
+            $(
+                function(){
+                    // 1. 点击四个按钮 当前按钮添加active类名 其他按钮没有这个类
+                    // 2. 点击按钮时 会发送ajax到后台 拿到对应的结果返回前端
+                        // 0代表首页  
+                        // 1代表服务
+                        // 2代表关于
+                        // 3代表我的
+                    // 3. 将结果渲染到页面中
+                    $('ul li').click(
+                        function(){
+                            // 当前按钮添加active类名 .siblings()获取当前按钮的兄弟元素 其他按钮去掉active类名
+                            $(this).addClass('active').siblings().removeClass('active');
+                            var index = $(this).index(); // 获取当前点击的按钮的索引
+                            $.ajax(
+                                {
+                                    // method:'get',
+                                    url: '../NodeJs/www/json/JqGetAjax.json', //地址，可以是相对路径
+                                    type: 'get', //类型：get post
+                                    // data: {index:index}, // 请求的参数 向后台发送的参数
+                                    dataType: 'json', // 后端返回的数据类型 / 格式
+                                    success: function(data){
+                                        // 成功时调用的函数
+                                        // console.log('success',data)
+                                        $('.box').html(data[index].content); // data对应的索引值不是里面的id数字，是顺序的索引值
+                                        // $('box').html(data)
+                                        console.log(data)
+                                        console.log('ok')
+                                    },
+                                    
+                                    // 可选 ，错误处理
+                                    error: function(err){
+                                        // 发生错误时调用的函数
+                                        console.log('error_content:'+err);
+                                    },
+
+                                    // 可选 ，不管成功或失败都调用的函数
+                                    complete: function(data){
+                                        console.log('complete_content:'+data)
+                                    },
+                                    //可选 ，超时时间
+                                    timeout: 4000,
+                                }
+                            )
+                        }
+                    )
+                }
+            )
+        </script>
+    </body>
+</html>

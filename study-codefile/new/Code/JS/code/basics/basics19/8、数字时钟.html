@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数字时钟</title>
+</head>
+<body>
+    <div id="box"></div>
+    <script type="text/javascript">
+        /*
+        *   通过class类名获取网页元素，获取过来是一组
+        *   执行某一个需要索引值
+        *   document.getElementsByClassName('类名');
+        *
+        *   通过 对象.innerHTML = 具体值
+        *   给某个元素添加内容
+        * */
+        //通过id名获取网页元素，通过id获得只有一个元素，不用索引值
+        var box = document.getElementById('box');
+        console.log(box);
+
+        function fn() {
+            //创建日期对象，获取小时、分钟、秒
+            var date = new Date();
+            var hour = date.getHours(); //小时
+            var min = date.getMinutes();//分钟
+            var sec = date.getSeconds();//秒
+            //分别判断，进行补零
+            if(hour < 10) {
+                hour = "0" + hour;
+            }
+            if(min < 10) {
+                min = "0" + min;
+            }
+            if(sec < 10) {
+                sec = "0" + sec;
+            }
+            //将获取的小时、分钟和秒拼接添加给div
+            box.innerHTML = hour + ":" + min + ":" + sec;
+        }
+        setInterval(fn,1);
+    </script>
+</body>
+</html>

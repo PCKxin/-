@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .list{
+                width: 500px;
+                margin: 50px auto;
+            }
+            .list img{
+                width: 80px;
+                margin-right: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="list">
+            <img src="./img/s0.png" alt="">
+            <img src="./img/s0.png" alt="">
+            <img src="./img/s0.png" alt="">
+            <img src="./img/s0.png" alt="">
+            <img src="./img/s0.png" alt="">
+        </div>
+        <script src="../jQuery/jquery-1.12.4.js"></script>
+        <script>
+            $(document).ready(
+                function(){
+                    // 鼠标移入事件
+                    $('.list img').mouseover(
+                        function(){
+                            // 获取当前鼠标移入的图片的索引值, 并且加1, 因为索引值是从0开始的
+                            var index = $(this).index() + 1;
+                            // 获取当前鼠标移入的图片的索引值之前的所有图片, 并且将它们的src属性值改为s1.png
+                            $('img:lt('+ index +')').prop('src','./img/s1.png');
+                        }
+                    );
+                    $('.list img').mouseout(
+                        function(){
+                            // 判断 当前 是mouseover 还是click
+                            // 是click  不应该变成空心  s1.png
+                            // 是mouseover  应该变成空心 s0.png
+                            // prop() 方法设置或返回被选元素的属性和值。
+                            // $('img').prop('src','./img/s0.png')
+                            $('img').each(
+                                function(index, item){
+                                    // 如果自定义属性a的值为1 证明是click事件
+                                    if($(item).attr('a') == 1){
+                                        $(item).prop('src', './img/s1.png')
+                                    } else {
+                                        // 如果值不为1或者没有a属性证明是mouseover事件
+                                        $(item).prop('src', './img/s0.png')
+                                    }
+                                }
+                            )
+                        }
+                    );
+                    $('.list img').click(
+                        function(){
+                            $('img').prop('src', './img/s0.png').removeAttr('a');
+                            var index = $(this).index() + 1;
+                            $('img:lt('+ index +')').prop('src', './img/s1.png').attr('a', 1);
+                        }
+                    );
+                }
+            );
+        </script>
+    </body>
+</html>

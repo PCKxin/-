@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .box1 div{
+                width: 100px;
+                height: 100px;
+            }
+            .box2 div{
+                width: 100px;
+                height: 100px;
+                border: 2px solid gray;
+                float: left;
+                margin-right: 10px;
+                text-align: center;
+                line-height: 100px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box1">
+            <div class="a" style="opacity: 0;"></div>
+            <div class="b" style="display: none;"></div>
+            <div class="c" style="visibility: visible;"></div>
+            <div class="d" style="visibility: hidden;"></div>
+            <div class="e"></div>
+        </div>
+
+        <div class="box2">
+            <div index="a">1</div>
+            <div index="b">2</div>
+            <div index="c d">3</div>
+            <div index="d e">4</div>
+            <div index="e f">5</div>
+            <div index="asf">6-1</div>
+            <div aaa="a f">7</div>
+            <div aaa="a f">8</div>
+        </div>
+
+        <script src="../jQuery/jquery-1.12.4.js"></script>
+        <script>
+            window.onload = function(){
+                // display:none 不占用页面空间
+                // opcity:0 透明度 visibility:hidden 虽然看不到,但是在页面中是占有尺寸空间的
+                console.log('visible',$('.box1 div:visible'));
+                console.log('hidden',$('.box1 div:hidden'));
+
+                // -----------------属性选择器-----------------
+                // 表示 div 中只要含有属性为 aaa 的即可
+                // $('.box2 div[aaa]').css('background','red');
+                // $('.box2 div[index=a]').css('background','pink');
+                // $('.box2 div[index="d e"]').css('background','yellow');
+                
+                // index^=a 表示 div 中 index 属性值是以 a 为开头的字符
+                $('.box2 div[index^=a]').css({background:'red'});
+                
+                //index$=f表示div中index属性值是以f为结尾的
+                //注意这里的index后面的$不是jQuery
+                $('.box2 div[index$=f]').css({background:'skyblue'});
+                
+                //index*=e表示index对应的属性值中 只要含有e就能被匹配
+                $('.box2 div[index*=e]').css({background:'purple'});
+            }
+        </script>
+    </body>
+</html>              

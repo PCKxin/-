@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{margin: 0;padding: 0;}
+            body{
+                background-color: rgb(0, 0, 0);
+            }
+            #box{
+                width: 100px;
+                height: 100px;
+                background-color: rgba(255, 192, 203, 0.738);
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box"></div>
+        <script>
+            var box = document.getElementById('box');
+            document.onkeydown = function(e){
+                var e = e || window.event;
+                var key_num = e.keyCode
+                console.log(key_num)
+                var box_left = box.offsetLeft;
+                var box_top = box.offsetTop;
+                //页面的最大宽度 - 盒子的宽度 = 最大距离
+                var max_distance_right = document.documentElement.clientWidth - box.offsetWidth;
+                var max_distance_bottom = document.documentElement.clientHeight - box.offsetHeight;
+                switch(key_num){
+                    case 37: //左
+                        box_left -= 10; //每次向左移动10px
+                        if(box_left <= 0){
+                            box_left = 0;
+                        }
+                        box.style.left = box_left + 'px';
+                        break;
+                    case 38: //上
+                        box_top -= 10; //每次向上移动10px
+                        if(box_top <= 10){
+                            box_top = 0;
+                        }
+                        box.style.top = box_top + 'px';
+                        break;
+                    case 39: //右  
+                        box_left += 10;  //每次向右移动10px
+                        if(box_left >= max_distance_right){ //如果向右移动的距离大于等于最大距离
+                            box_left = max_distance_right; 
+                        }
+                        box.style.left = box_left + 'px';
+                        break; //break跳出switch
+                    case 40:
+                        box_top += 10;
+                        if(box_top >= max_distance_bottom){
+                            box_top = max_distance_bottom;
+                        }
+                        box.style.top = box_top + 'px';
+                }
+                //切换颜色
+                if(key_num == 32 && event.ctrlKey){ //ctrl + 上
+                    box.style.backgroundColor = 'rgba('+random_color()+')';
+                }
+                function random_color(){
+                    var rgb_arr = [];
+                    var a = Math.random().toFixed(3); //Math.random配合toFixed()保留小数点后三位
+                    for(var i = 0; i < 3; i++){
+                        rgb_arr[i] = Math.round(Math.random() * 255); //Math.round()四舍五入
+                    }
+                    var rgb = rgb_arr.join(',');
+                    var rgba = rgb + ',' +a;
+                    console.log(rgba);
+                    return rgba;
+                }
+            }
+        </script>
+    </body>
+</html>

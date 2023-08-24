@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="对话框.css" type="text/css">
+</head>
+<style>
+  * {
+    padding: 0px;
+    margin: 0px;
+  }
+
+  /* 设置最大div   对话框的整体 */
+  .box {
+    width: 300px;
+    height: 500px;
+    border: 5px solid gray;
+    border-radius: 25px;
+    margin: 30px auto;
+    position: relative;
+  }
+
+  /* 听筒部分 */
+  .ting {
+    width: 130px;
+    height: 20px;
+    border: 1px solid red;
+    border-radius: 20px;
+    background-color: aqua;
+    margin: 10px auto;
+
+  }
+
+  .ting .t1 {
+    width: 90px;
+    height: 15px;
+    border: 1px solid yellow;
+    border-radius: 20px;
+    background-color: blue;
+    margin: 2px 2px 5px 5px;
+    float: left;
+  }
+
+  .ting .t2 {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 1px solid black;
+    background-color: black;
+    float: left;
+  }
+
+  .name {
+    width: 300px;
+    height: 30px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 20px;
+    background-color: azure;
+  }
+
+  .lt {
+    height: 350px;
+    background-image: url(111.jpg);
+    padding: 5px;
+    margin-top: -1px;
+  }
+
+  /* 本人的信息和头像的位置 */
+  .secode {
+    text-align: right;
+
+  }
+
+  /* 头像 */
+  .first .tx,
+  .secode .stx {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-image: url("./111.jpg");
+    background-color: yellow;
+
+  }
+</style>
+
+<body>
+  <!-- 最大的边框   相当于整个手机页面 -->
+  <div class="box">
+    <!-- 设置听筒位置 -->
+    <div class="ting">
+      <div class="t1"></div>
+      <div class="t2"></div>
+    </div>
+    <!-- 和谁聊天的备注名字 -->
+    <div class="name">班长</div>
+    <!-- 设置头像  和聊天记录 -->
+    <div class="lt">
+      <div class="first">
+        <span class="tx">班长</span>
+        <span class="jilu">你好</span>
+      </div>
+      <div class="secode">
+        <span class="sjilu">你好</span>
+        <span class="stx">我</span>
+      </div>
+    </div>
+
+    <!-- 设置输入框 -->
+    <div>
+
+      <select>
+        <option value="1">七月</option>
+        <option value="2">安生</option>
+      </select>
+      <input type="text" />
+      <input type="button" value="发送" />
+    </div>
+
+  </div>
+
+</body>
+
+</html>

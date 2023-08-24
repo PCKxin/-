@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      function getAjaxPost(obj){
+        
+      
+      //1.创建ajax的核心对象  兼容
+      var xhr=null;
+      if(window.XMLHttpRequest){
+        //IE5  6 以外的浏览器
+        xhr=new XMLHttpRequest();
+      }else{//IE5 6
+        xhr=new ActiveXObject("Microsoft.XMLHttp");
+      }
+      //2.创建请求  提交方式  路径  同步或异步
+      xhr.open("post","123.txt",true);
+      
+      //3.发送请求
+      //指定数据的发送格式  在请求头指定
+      xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+      //如果有值需要传送，直接作为send方法的参数写 
+      //例子：xhr.send("name=zs&age=10&sex=nan");
+      //如果没有，则不写
+      xhr.send();
+      
+      //4.监听状态的变化
+      xhr.onreadystatechange=function(){
+        if(xhr.readyState==4&&xhr.status==200){
+          //代码
+          //回调函数
+          success&&success(obj);
+        }
+      }
+    }
+      
+      
+      
+      
+      
+    </script>
+  </body>
+</html>

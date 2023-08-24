@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .content_box{
+                width: 500px;
+                height: 200px;
+                margin: 20px auto;
+                font-size: 20px;
+            }
+            .hsl_demo{
+                width: 200px;
+                height: 200px;
+                margin: 30px auto;
+                background: hsl(0, 100%, 54%);
+            }
+            .hsla_demo{
+                width: 200px;
+                height: 200px;
+                margin: 30px auto;
+                background: hsla(0, 100%, 54%, 0.5);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="content_box">
+            hsl(x,y,z)表示颜色 <br>
+            x 取值 0-360 色调 <br>
+            y 取值 0%-100% 饱和度 0%表示灰色 <br>
+            z 取值 0%-100% 亮度 0%表示黑色 100%表示白色 <br>
+            hsla(x,y,z,a) <br>
+            a表示的是透明度 0-1 <br>
+        </div>
+        <div class="hsl_demo"></div>
+        <div class="hsla_demo"></div>
+    </body>
+</html>

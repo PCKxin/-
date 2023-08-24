@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			function fn1() {
+				return 10 + 20;
+			}
+			var res1 = fn1();
+			console.log(res1);
+			
+			function fn2(a,b) {
+				return a + b;
+			}
+			var res2 = fn2(1,2);
+			console.log(res2);
+			var res3 = fn2("a","b");
+			console.log(res3);
+			
+			function fn3(c,d) {
+				console.log(c - d);
+			}
+			//用变量接受调用函数的过程，获取返回结果
+			var res4 = fn3(20,10);
+			console.log(res4); // undefined
+			
+			/* 
+				注意：任何函数都有自己的返回结果，
+				没有return的函数，返回结果是undefined
+			 */
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

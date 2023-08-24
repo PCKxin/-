@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>split()</title>
+    <script type="text/javascript">
+        /*
+            split()
+            作用：将字符串用指定符号分割成数组
+            参数：字符串类型的符号，（用的最多的是空字符串）
+            返回值：分割后的数组
+        */
+       var str = "零零7，零零9，零零8";
+       var res = str.split("，");
+       console.log(res);
+
+       res.sort();
+       console.log(res.join("，"));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

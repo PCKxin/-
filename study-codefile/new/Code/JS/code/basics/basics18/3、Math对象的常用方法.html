@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Math对象的常用方法</title>
+    <script type="text/javascript">
+        //最大值
+        var max = Math.max(100,200,150,10);
+        console.log(max); //200
+
+        //最小值
+        var min = Math.min(100,200,150,10);
+        console.log(min); //10
+
+        //向上取整，只要有小数点，就向上进位
+        var ceil = Math.ceil(9.9); //10
+        var ceil1 = Math.ceil(9.000001); //10
+        console.log(ceil);
+
+        //向下取整，只要有小数点，就向下取整
+        var floor = Math.floor(10.000001); // 10
+        var floor1 = Math.floor(10.999999); // 10
+        console.log(floor1);
+
+        //四舍五入，取整
+        var round = Math.round(5.5);//6
+        var round1 = Math.round(5.0000000001);//5
+        console.log(round);
+
+        //绝对值，正数的绝对值是正数，负数的绝对值还是正数
+        var abs = Math.abs(-10); // 10
+        var abs1 = Math.abs(10); // 10
+
+        //几的几次方，第一个参数是几，  第二个参数表示几次方
+        var pow = Math.pow(5,2);
+        var pow1 = Math.pow(2,20);
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

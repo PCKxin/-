@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lastIndexOf()</title>
+    <script type="text/javascript">
+        var str = "你好零零七，我是零零发，他是零零狗";
+        /*
+            lastIndexOf(字符，位置)
+            作用：从指定位置开始查询指定字符从末尾第一次出现的位置
+                 没有返回-1
+            参数：指定字符
+                 指定位置，没有从末尾开始查询，有就从指定位置从后往前查
+            返回值：指定元素第一次出现的位置
+            注意：没有返回-1     
+        */
+        console.log(str.lastIndexOf("零"));//15
+        console.log(str.lastIndexOf("零",12));//9
+        console.log(str.lastIndexOf("零",1)); //-1 
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

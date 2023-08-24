@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        
+    </body>
+    <script>
+        function JSAjax(url , method , flag , obj , data){
+            // 核心对象兼容
+            var xhr = null;
+            if(window.XMLHttpRequest){
+                //IE5  6 以外的浏览器
+                xhr=new XMLHttpRequest();
+            }else{
+                xhr=new ActiveXObject("Microsoft.XMLHttp");
+            }
+
+            // 判断提交方式
+            if(method == "get"){
+                var date = new Date().getTime();
+                // get方式提交
+                // 如果路径后拼接值(data)可以不拼接时间戳
+                xhr.open(method , url + "?" + date , flag);
+                // xhr.open(method , url , boolean);
+                xhr.send();
+            }else if(method == 'post'){
+                // post方式提交
+                xhr.open(method , url , flag);
+                // 设置请求头
+                xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+                xhr.send(data);
+            }
+
+            // 监听状态的变化
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState == 4 && xhr.status == 200){
+                    //响应成功执行的代码
+                    
+                    回调函数名 && 回调函数名(函数体); //短路逻辑，如果回调函数名为真（有值），就执行回调函数名(object)
+
+                }
+            }
+        }
+    </script>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>把其他类型强制转换成数值类型</title>
+    <script type="text/javascript">
+        /*
+        *   强转数值类型
+        *       Number()
+        *       parseInt()
+        *       parseFloat()
+        *
+        *       对字符串类型：
+        *           非数字的字符串转换结果均为NaN
+        *           对整数字符串转换结果都是正常整数数值类型
+        *           对小数字符串转换：Number（）根据小数点个数转换，如果是非正常数字结果为NaN
+        *                          parseInt（）取整并转换
+        *                          parseFloat()保留一个小数点并转换
+        *       对布尔类型：
+        *           Number()可以将true转为1，将false转为0
+        *           parseInt() 和parseFloat()不能转换布尔类型
+        *       对空对象：
+        *           Number()可以将null转为0
+        *           parseInt()和parseFloat()不能转换空对象
+        * 
+        *       对未定义：
+        *           均为NaN
+        *
+        *       区别：
+        *           Number()可以任何类型进行转换
+        *           parseInt() 和parseFloat()只对字符串起作用
+        *
+        *       parseInt() 和parseFloat()区别
+        *           parseInt()可以转数值类型并取整
+        *           parseFloat()可以转素质类型并保留带有一个小数点的小数
+        * */
+        //转换字符串为数值类型
+        var str1 = "abcd";
+        var str2 = "1234";
+
+        console.log(Number(str1));//NaN
+        console.log(parseInt(str1));//NaN
+        console.log(parseFloat(str1));//NaN
+        console.log(typeof Number(str1));
+
+        console.log(Number(str2));//1234
+        console.log(parseInt(str2));//1234
+        console.log(parseFloat(str2));//1234
+
+        var str3 = "192.168.1.1";
+        /*
+        *   非标准的数字结果为NaN
+        * */
+        console.log(Number(str3));//NaN
+        /*
+        *   parseInt()除了转换数值类型，还能取整
+        * */
+        console.log(parseInt(str3));//192
+        /*
+        *   parseFloat()除了转换数值类型，还能保留带有一个小数点的小数
+        * */
+        console.log(parseFloat(str3));//192.168
+
+
+        //把布尔类型转换成数值类型
+        var a = true;
+        var b = false;
+        /*
+        *   Number（）可以将正常的布尔类型转为数字1或0
+        *   parseInt()和parseFloat()不能转换布尔类型
+        * */
+        console.log(Number(a)); //1
+        console.log(parseInt(a)); //NaN
+        console.log(parseFloat(a));//NaN
+        console.log(Number(b)); //0
+        console.log(parseInt(b)); //NaN
+        console.log(parseFloat(b)); //Nan
+
+        //把空转为数值类型
+        var nul = null;
+        /*
+        *   Number()可以转换空为数值0
+        *   parseInt()和parseFloat()不能转换空对象
+        * */
+        console.log(Number(nul));//0
+        console.log(parseInt(nul));//NaN
+        console.log(parseFloat(nul));//NaN
+
+        //将未定义进行转换
+        var n;
+        /*
+        *   转换结果都为NaN
+        * */
+        console.log(Number(n)); //NaN
+        console.log(parseInt(n));//NaN
+        console.log(parseFloat(n));//NaN
+
+        var num = 3.14;
+        /*
+        *   充分说明parseInt()可以取整
+        * */
+        console.log(Number(num)); //3.14
+        console.log(parseInt(num));//3
+        console.log(parseFloat(num));//3.14
+
+
+        /*
+        *   保留小数点位数
+        *   toFixed()
+        *   需要保留几位，就在（）里写几
+        *   会在保留的位置进行四舍五入
+        *   注意：保留小数以后，会把结果转为字符串类型
+        * */
+        var n = 3.1415926;
+        console.log(n.toFixed(2));
+
+        console.log(typeof n); //number
+        console.log(typeof n.toFixed(2));//string  3.14
+    </script>
+</head>
+<body>
+
+</body>
+</html>

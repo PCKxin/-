@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>history对象</title>
+</head>
+<body>
+    <input type="button" value="向前一页" id="btn1">
+    <input type="button" value="向后一页" id="btn2">
+    <input type="button" value="去到哪一页" id="btn3">
+
+    <script type="text/javascript">
+        //向前一页的按钮
+        var forward = document.getElementById('btn1');
+        //向后一页的按钮
+        var back = document.getElementById('btn2');
+        //去到哪一页的按钮
+        var go = document.getElementById('btn3');
+
+        //向前一页的操作
+        forward.onclick = function () {
+            history.forward();
+        }
+
+        //向后一页的操作
+        back.onclick = function () {
+            history.back();
+        }
+
+        //去到哪一页的操作，小括号里传数字，传几表示去到第几页
+        go.onclick = function () {
+            //正数表示向前进，负数表示向后退
+            //如果是0，可以起到刷新当前页面的作用
+            history.go(0);
+        }
+
+        /////////////////////////////////
+        /*
+        *   history的属性
+        * */
+        // length历史记录的长度
+        console.log(history.length);
+    </script>
+</body>
+</html>

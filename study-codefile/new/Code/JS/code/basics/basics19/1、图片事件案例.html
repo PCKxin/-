@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .clearFloat:after{
+            display: block;
+            clear: both;
+            content:"";
+            height: 0;
+            line-height: 0;
+            visibility: hidden;
+        }
+        .clearFloat{
+            zoom: 1;
+        }
+        ul {
+            width:1064px;
+            margin:100px auto;
+        }
+        li {
+            list-style: none;
+            float:left;
+            width: 133px;
+            height: 175px;
+            font-size: 100px;
+            text-align: center;
+            line-height: 175px;
+        }
+    </style>
+</head>
+<body>
+    <ul class="clearFloat">
+        <li><img src="img/0.png" alt="" class="timer"></li>
+        <li><img src="img/0.png" alt="" class="timer"></li>
+        <li>:</li>
+        <li><img src="img/0.png" alt="" class="timer"></li>
+        <li><img src="img/0.png" alt="" class="timer"></li>
+        <li>:</li>
+        <li><img src="img/0.png" alt="" class="timer"></li>
+        <li><img src="img/0.png" alt="" class="timer"></li>
+    </ul>
+
+    <script type="text/javascript">
+        var timer = document.getElementsByClassName('timer');
+        //创建数组并给数组添加图片的路径
+        var arr = [];
+        for(var i = 0; i < 10; i++) {
+            arr.push('img/' + i + '.png');
+        }
+        console.log(arr);
+
+
+        //对象名.属性名 = 属性值
+        // timer[0].src = 新的路径值
+
+        function fn() {
+            var date = new Date();
+            var hour = date.getHours();
+            //将获取的小时分解成十位和个位两个单独的数字
+            var hS = parseInt(hour / 10); //0
+            var hG = parseInt(hour % 10); //8
+            timer[0].src = arr[hS];
+            timer[1].src = arr[hG];
+
+            var min = date.getMinutes(); // 47
+            //将获取的分解成个位和十位单独的数字
+            var mS = parseInt(min / 10); // 4
+            var mG = parseInt(min % 10); // 7
+            timer[2].src = arr[mS];
+            timer[3].src = arr[mG];
+
+            var sec = date.getSeconds();
+            var sS = parseInt(sec / 10);
+            var sG = parseInt(sec % 10);
+            timer[4].src = arr[sS];
+            timer[5].src = arr[sG];
+
+        }
+        setInterval(fn,1);
+
+
+        /*
+        *   1、创建HTML元素，设置元素对应的CSS样式
+        *   2、给需要改变的图片添加class类
+        *   3、在js中获取对应的class类的图片
+        *   4、创建一个数组用于存储9张图片的路径
+        *   5、创建日期（date）对象
+        *   6、分别获取所需要的年月日、时分秒
+        *   7、将获取的年月日、时分秒进行每一个位数的分解
+        *   8、用分解出的数字作为索引值，到数组中找到对应的元素（对应数字的图片路径）
+        *   9、找到对应的标签，通过对象名.属性名=属性值的方式将路径赋值给元素
+        *   10、创建一个函数用于计时器使用，将创建日期对象开始，一直到修改路径都放在函数里
+        *   11、设置间歇调用的计时器，调用上面的函数，设置时间
+        *
+        * */
+    </script>
+</body>
+</html>

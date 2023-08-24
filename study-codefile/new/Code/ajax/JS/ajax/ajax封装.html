@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <button id="a1">点击事件</button>
+    <script type="text/javascript">
+      function getAjax(methods, url, flag, success) {
+        //自定义变量  接收ajax核心对象
+        var xhr = null;
+        //ajax兼容写法
+        if (window.XMLHttpRequest) {
+          //适用于IE5 IE6以外的浏览器
+          xhr = new XMLHttpRequest;
+        } else {
+          //适用于IE5 IE6
+          xhr = new ActiveXObject("Microsoft.XMLHttp");
+        }
+        //设置提交方式   路径   同步异步
+        xhr.open(methods, url, flag);
+        //发送请求
+        xhr.send();
+        //设置监听状态事件
+        xhr.onreadystatechange = function () {
+          //判断状态是4   状态码是200
+          if (xhr.readyState == 4 && xhr.status == 200) {
+            //响应成功执行的代码
+            var object = JSON.parse(xhr.responseText); //将json字符串转换为json对象
+            // console.log(object);
+            console.log(typeof success())
+            success && success(object); //短路逻辑，如果success为真（有值），就执行success(object)
+            console.log(object);
+          }
+        }
+      }
+
+
+      var bu1 = document.getElementById("a1");
+      
+      bu1.onclick = function () {
+        getAjax(
+          "get", "123.txt", true, 
+          function (obj) {  // obj  为回调函数的形参
+            // console.log(obj);
+            //函数体  成功后执行的代码
+              for (var key in obj) {
+                // console.log(key+":"+obj[key]);
+                if (key == "name") {
+                  console.log(key + ":" + obj[key]);
+                  var name = obj[key];
+                }
+              }
+            }
+          );
+      }
+      
+      
+      
+      
+      
+    </script>
+  </body>
+</html>

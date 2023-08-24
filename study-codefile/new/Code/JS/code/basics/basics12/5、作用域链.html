@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>作用域链</title>
+		<script type="text/javascript">
+			/* 
+				作用域链：从当前函数中查找变量，
+						如果没有向上一层作用域中查找，
+						直到找到全局变量，
+						这个查找的过程称为作用域链
+			 */
+			
+			var a = 10;
+			function outer() {
+				
+				var b = 20;
+				function inner() {
+					var c = 30;
+					console.log(a + b + c);
+				}
+				inner();
+				
+			}
+			outer();
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

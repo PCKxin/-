@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{margin: 0;padding: 0;list-style: none;}
+            .box{
+                width: 1275px;
+                height: 500px;
+                margin: 0 auto;
+                /* background: rgba(181, 181, 181, 0.127); */
+            }
+            .menu_title{
+                width: 200px;
+                height: 50px;
+                line-height: 50px;
+                font-size: 20px;
+                color: rgb(255, 123, 0);
+                font-weight: 300;
+                margin-left: 35px;
+            }
+            .menu{
+                width: 1200px;
+                height: 450px;
+                /* background: rgba(255, 192, 203, 0.297); */
+                margin: 0 auto;
+                border-top: 2px solid orange;
+                position: relative;
+            }
+            .menu li{
+                float: left;
+            }
+            .menu .country{
+                width: 240px;
+                height: 315px;
+                outline: 1px solid rgba(193, 193, 193, 0.658);
+                margin-top: 15px;
+            }
+            .menu .country .in_title{
+                font-size: 14px;
+                font-weight: bold;
+                margin-left: 10px;
+                margin-top: 10px;
+            }
+            .menu .country .place_title{
+                font-size: 12px;
+                margin-left: 10px;
+                line-height: 30px;
+            }
+            .menu .country .place_title span{
+                display: inline-block;
+                width: 20px;
+                text-align: center;
+                color: rgba(176, 176, 176, 0.785);
+            }
+            .menu_list{
+                width: 225px;
+                height: 150px;
+                margin: 15px 10px 0px 10px;
+                background-image: url('./img/1-1.png');
+            }
+            .menu_list a{
+                width: 225px;
+                height: 150px;
+                background: rgba(255, 255, 255, 0.378);
+                display: none;
+            }
+            .menu_list:hover a{
+                display: block;
+            }
+            .menu_list_ad{
+                width: 220px;
+                height: 315px;
+                background-image: url('./img/1-6.png');
+                position: absolute;
+                top: 15px;
+                right: 0px;
+            }
+            .menu_list_ad a{
+                width: 220px;
+                height: 315px;
+                background: rgba(255, 255, 255, 0.378);
+                display: none;
+            }
+            .menu_list_ad:hover a{
+                display: block;
+            }
+            .out{
+                width: 1200px;
+                height: 110px;
+                position: absolute;
+                bottom: 0px;
+            }
+            .menu_list_out{
+                width: 230px;
+                height: 85px;
+                background: url('./img/1-4.png') no-repeat;
+                margin-top: 10px;
+                margin-right: 10px;
+            }
+            .menu_list_out a{
+                width: 230px;
+                height: 85px;
+                background: rgba(255, 255, 255, 0.378);
+                display: none;
+            }
+            .menu_list_out:hover a{
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <h2 class="menu_title">长线游</h2>
+            <ul class="menu">
+                <li class="country">
+                    <p class="in_title">国内游</p>
+                    <p class="place_title">
+                        张家界<span> | </span>阿坝州<span> | </span>九寨沟<span> | </span>三亚
+                    </p>
+                    <p class="place_title">
+                        北京<span> | </span>西双版纳<span> | </span>恩施<span> | </span>厦门
+                    </p>
+                    <p class="place_title">
+                        成都<span> | </span>桂林<span> | </span>黄帝陵<span> | </span>丽江
+                    </p>
+                    <p class="place_title">
+                        长沙<span> | </span>延安
+                    </p>
+                    <p class="in_title">出境/港澳台</p>
+                    <p class="place_title">
+                        新加坡<span> | </span>马尔代夫<span> | </span>泰国<span> | </span>日本
+                    </p>
+                    <p class="place_title">
+                        埃及<span> | </span>美国
+                    </p>
+                </li>
+                <li class="menu_list"><a href="#"></a></li>
+                <li class="menu_list"><a href="#"></a></li>
+                <li class="menu_list"><a href="#"></a></li>
+                <li class="menu_list"><a href="#"></a></li>
+                <li class="menu_list"><a href="#"></a></li>
+                <li class="menu_list"><a href="#"></a></li>
+                <li class="menu_list_ad"><a href="#"></a></li>
+                <ul class="out">
+                    <li class="menu_list_out"><a href="#"></a></li>
+                    <li class="menu_list_out"><a href="#"></a></li>
+                    <li class="menu_list_out"><a href="#"></a></li>
+                    <li class="menu_list_out"><a href="#"></a></li>
+                    <li class="menu_list_out"><a href="#"></a></li>
+                </ul>
+            </ul>
+        </div>
+    </body>
+</html>

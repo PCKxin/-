@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>通过方法设置年月日</title>
+    <script type="text/javascript">
+        var date = new Date();
+
+
+        //设置年份，参数：四位完整年份
+        date.setFullYear(2008);
+        var year = date.getFullYear();
+        console.log(year); //2008
+
+        //设置月份,参数：0-11，在获取的过程中加1显示对应的月份
+        date.setMonth(7);
+        var month = date.getMonth()+1;
+        console.log(month);
+
+
+        //设置日，参数：1-31 ，
+        // 注意：2月的时候，最多到29，如果传30，显示为1号
+        date.setDate(8);
+        var _date = date.getDate();
+        console.log(_date);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>隐式转换</title>
+		<script type="text/javascript">
+			/* 
+				转换成字符串   将内容与空字符串拼接
+				注意：可以对其他所有类型进行转换
+			 */
+			var num1 = 123;
+			var bool1 = true;
+			var nul1 = null;
+			var a1;
+			console.log(typeof (num1 + ""));
+			console.log(typeof ("" + bool1));
+			console.log(typeof (nul1 + ""));
+			console.log(typeof (a1 + ""));
+			
+			/* 
+				转换成数值类型
+				变量 * 1，可以将其他所有类型转为数值类型
+				+变量，可以将其他所有类型转为数值类型
+				建议使用 变量 * 1
+			 */
+			var str2 = "1234";
+			var bool2 = false;
+			var nul2 = null;
+			var a2;
+			console.log(typeof (str2 * 1));//number
+			console.log(bool2 * 1);//0
+			console.log(typeof (bool2 * 1));//number
+			console.log(nul2 * 1);//0
+			console.log(typeof (nul2 * 1));//number
+			console.log(a2 * 1);//NaN
+			console.log(typeof (a2 * 1));//number
+			/* ----------------------- */
+			console.log(typeof (+str2));//number
+			console.log(+bool2);// 0 
+			console.log(typeof (+bool2));//number
+			console.log(+nul2);//0
+			console.log(typeof (+nul2))//number
+			console.log(+a2);//NaN
+			console.log(typeof (+a2));//number
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

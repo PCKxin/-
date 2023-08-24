@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Math对象的属性</title>
+    <script type="text/javascript">
+        //圆周率  3.14
+        var pai = Math.PI; // 3.1415926 ~ 3,1415927之间
+        console.log(pai);
+
+        //半径为10，求圆的面积   pai * r * r
+        var r = 10;
+        var area = pai * r * r;
+        //对象.toFixed(n) 保留几位小数，需要几位，n就是几
+        console.log(area.toFixed(2));
+
+        //半径为20， 求圆的周长    2 * pai * 半径
+        var circle = 2 * pai * 20;
+        console.log(circle.toFixed(2));
+    </script>
+</head>
+<body>
+
+</body>
+</html>

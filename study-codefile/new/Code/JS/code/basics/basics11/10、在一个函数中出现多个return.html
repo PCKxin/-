@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>在一个函数中出现多个return</title>
+		<script type="text/javascript">
+			/* 
+				手动输入两个数字
+				在输入一个运算符号
+				返回对应结果
+			 */
+			var n1 = prompt("请输入第一个数字") * 1;
+			var n2 = prompt("请输入第二个数字") * 1;
+			var icon = prompt("请输入运算符");
+			/* 
+				注意：如果需要有多个return，必须在分支结构中去判断
+			 */
+			function fn(a, b, c) {
+				if(c == "+") {
+					return a + b;
+				}else if(c == "-") {
+					return a - b;
+				}else if(c == "*") {
+					return a * b;
+				}else if(c == "/") {
+					return a / b;
+				}else if(c == "%") {
+					return a % b;
+				}else {
+					return "符号输入有误";
+				}
+			}
+			var res = fn(n1, n2, icon);
+			console.log(res);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

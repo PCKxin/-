@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/* 
+				请输入银行存款
+				请输入年化利率
+				请输入目标金额
+				计算，几年能达到目标金额
+			 */
+			var money = prompt("请输入存入金额") * 1;
+			var li = prompt("请输入年化利率") * 1;
+			var will = prompt("请输入目标金额") * 1;
+			var year = 0;
+			function fn(a,b,c) {
+				while(true) {
+					a += a * b;
+					year++;
+					if(a >= c) {
+						break;
+					}
+				}
+				return year;
+			}
+			var nian = fn(money, li, will);
+			// consol7e.log(nian);
+			if(nian < 10) {
+				console.log("建议选择");
+			}else {
+				console.log("可以考虑其他银行");
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

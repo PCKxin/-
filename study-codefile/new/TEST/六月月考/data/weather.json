@@ -1,0 +1,147 @@
+{
+    "code": 200,
+    "data": [{
+            "levelIndex": "优",
+            "districtcn": "钓鱼岛",
+            "AQI": "0",
+            "namecn": "钓鱼岛",
+            "provcn": "福建"
+        },
+        {
+            "levelIndex": "严重污染",
+            "districtcn": "酒泉",
+            "AQI": "329",
+            "namecn": "酒泉",
+            "provcn": "甘肃"
+        },
+        {
+            "levelIndex": "优",
+            "districtcn": "高雄",
+            "AQI": "0",
+            "namecn": "高雄",
+            "provcn": "台湾"
+        },
+        {
+            "levelIndex": "优",
+            "districtcn": "三沙",
+            "AQI": "0",
+            "namecn": "三沙",
+            "provcn": "海南"
+        },
+        {
+            "levelIndex": "优",
+            "districtcn": "彰化",
+            "AQI": "0",
+            "namecn": "彰化",
+            "provcn": "台湾"
+        },
+        {
+            "levelIndex": "轻度污染",
+            "districtcn": "晋城",
+            "AQI": "120",
+            "namecn": "晋城",
+            "provcn": "山西"
+        },
+        {
+            "levelIndex": "优",
+            "districtcn": "东方",
+            "AQI": "8",
+            "namecn": "东方",
+            "provcn": "海南"
+        },
+        {
+            "levelIndex": "良",
+            "districtcn": "忻州",
+            "AQI": "74",
+            "namecn": "忻州",
+            "provcn": "山西"
+        },
+        {
+            "levelIndex": "优",
+            "districtcn": "图木舒克",
+            "AQI": "8",
+            "namecn": "图木舒克",
+            "provcn": "新疆"
+        },
+        {
+            "levelIndex": "优",
+            "districtcn": "屏东",
+            "AQI": "10",
+            "namecn": "屏东",
+            "provcn": "台湾"
+        },
+        {
+            "levelIndex": "优",
+            "districtcn": "白沙",
+            "AQI": "10",
+            "namecn": "白沙",
+            "provcn": "海南"
+        },
+        {
+            "levelIndex": "良",
+            "districtcn": "邢台",
+            "AQI": "77",
+            "namecn": "邢台",
+            "provcn": "河北"
+        },
+        {
+            "levelIndex": "良",
+            "districtcn": "朔州",
+            "AQI": "78",
+            "namecn": "朔州",
+            "provcn": "山西"
+        },
+        {
+            "levelIndex": "优",
+            "districtcn": "台东",
+            "AQI": "10",
+            "namecn": "台东",
+            "provcn": "台湾"
+        },
+        {
+            "levelIndex": "良",
+            "districtcn": "太原",
+            "AQI": "84",
+            "namecn": "太原",
+            "provcn": "山西"
+        },
+        {
+            "levelIndex": "优",
+            "districtcn": "深圳",
+            "AQI": "10",
+            "namecn": "深圳",
+            "provcn": "广东"
+        },
+        {
+            "levelIndex": "中度污染",
+            "districtcn": "嘉峪关",
+            "AQI": "195",
+            "namecn": "嘉峪关",
+            "provcn": "甘肃"
+        },
+        {
+            "levelIndex": "轻度污染",
+            "districtcn": "昆玉",
+            "AQI": "104",
+            "namecn": "昆玉",
+            "provcn": "新疆"
+        },
+        {
+            "levelIndex": "良",
+            "districtcn": "长治",
+            "AQI": "89",
+            "namecn": "长治",
+            "provcn": "山西"
+        },
+        {
+            "levelIndex": "良",
+            "districtcn": "海西",
+            "AQI": "77",
+            "namecn": "德令哈",
+            "provcn": "青海"
+        }
+    ],
+
+    "message": "successful",
+    "pageNum": null
+}

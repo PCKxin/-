@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>我是H1标签</h1>
+        <div class="box"></div>
+        <p>我是p标签</p>
+        <div class="box"></div>
+        <h2>我是h2标签</h2>
+        <h3>我是h3标签</h3>
+        <ul>
+            <li>0</li>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+        <div class="box2">
+            <div class="box3">
+                <p class="p1"></p>
+            </div>
+        </div>
+        <script src="../jQuery/jquery-1.12.4.js"></script>
+        <script>
+            $(
+                function(){
+                    // next()找到同级别紧挨着下一个元素
+                    // $('.box').next().css('background','red');
+                    // prev()找到同级别紧挨着上一个元素
+                    // nextAll() 当前选择器元素之后所有同辈的元素
+                    // nextUntil(xxx)当前选择器和目标xxx之间的元素
+                    // .siblings()当前选择器的所有同级元素
+                    // prevAll()当前选择器元素之前所有同辈元素
+                    // prevUntil(xxx)当前选择器和目标xxx之间的元素
+
+                    $('.box').prev().css('background','blue').end();
+                    // $('ul li:nth-child(2)').nextAll().css('background','red');
+                    $('ul li:eq(0)').nextUntil('ul li:eq(4)').css('background','blue')
+                    // $('.p1').text('我是p标签').parent().parent().css('border','1px solid black');
+                    $('.p1').text('我是p标签').parents('.box2').css('border','1px solid red');
+                    // parent()是找到当前选择器的父元素
+                    // parents(xxx)是找到当前选择器的祖先元素
+                    //
+                    // children()当前选择器的直接子元素
+                    // find(xxx)当前选择器的后代
+                    // map映射
+                    var arr = [1,2,3,4,5,6,7]
+                    // 筛选 filter  返回满足条件的元素 返回一个新数组
+                    // arr中返回大于3的所有元素
+                    // var arr2 = [];
+                    //             forEach  map
+                    // arr[i]
+                    // for(var i=0;i<arr.length;i++){
+                    //     arr[i]   i
+                    // }
+                    arr2 = arr.filter(
+                        function(item,index){
+                            // console.log(item)
+                            // console.log(index)
+                            return item > 3
+                            // if(item > 3){
+                            //     return item
+                            // }
+                        }
+                    )
+                    console.log(arr2);
+                    var arr3 = [];
+                    // map映射 对原有的数组进行加工 但是不会修改原数组 返回一个新数组
+                    arr3 = arr.map(
+                        function(){
+                            return item + 'abc'
+                        }
+                    )
+                    console.log(arr3);
+                }
+            )
+        </script>
+    </body>
+</html>

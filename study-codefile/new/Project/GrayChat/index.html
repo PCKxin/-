@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                user-select: text;
+            }
+            svg,video,img{
+                max-width: 100%;
+                display: block;
+            }
+            body{
+                font-family: system-ui;
+                /* 1rem = 16px */
+                font-size: 1.125rem;
+                line-height: 1.5;
+            }
+            html{
+                /* 自动主题颜色 */
+                color-scheme: light dark;
+            }
+            main{
+                /* 1ch等于一个0的宽度，70ch可以装下70个0 */
+                width: min(70ch, 100% - 4rem);
+                /* 自动行首行末外边距 */
+                margin-inline: auto;
+            }
+            /* 滚动槽 */
+            ::-webkit-scrollbar {
+                width: 10px;
+                height: 10px;
+            }
+            ::-webkit-scrollbar-track {
+                border-radius: 3px;
+                background: rgba(236, 9, 9, 0.06);
+                -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.08);
+            }
+            /* 滚动条滑块 */
+            ::-webkit-scrollbar-thumb {
+                border-radius: 3px;
+                background: rgba(243, 57, 20, 0.532);
+                -webkit-box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+            }
+
+            /* 美化上传按钮 */
+            /* 隐藏默认的上传按钮 */
+            input[type="file"] {
+            display: none;
+            }
+
+            /* 聊天区域 */
+            #boxFrame{
+                /* box-sizing: border-box; */
+                padding: 0px;
+                margin: 0 auto;
+                margin-top: 50px;
+                border-radius: 30px;
+                overflow: hidden;
+                width: 1280px;
+                height: 540px;
+                box-shadow: 1px 1px 6px 8px rgba(96, 96, 96, 0.1);
+                background: rgba(227, 227, 227, 0.13);
+            }
+            #chatBox{
+                box-sizing: border-box;
+                width: 100%;
+                height: 100%;
+                /* 自动滚动条 */
+                overflow-y: auto;
+                padding: 20px;
+            }
+            /* 用户信息框 */
+            .user_msg_box{
+                width: 100%;
+                height: auto;
+                float: right;
+            }
+            .others_user_msg_box{
+                width: 100%;
+                height: auto;
+                float: left;
+            }
+            .user_msg{
+                width: 95%;
+                height: auto;
+                border-radius: 20px;
+                padding: 10px;
+                /* 自动换行 */
+                overflow-wrap: break-word;
+                /* background: rgba(255, 192, 203, 0.538); */
+                text-align: right;
+            }
+            .user_msg xmp{
+                background: rgba(255, 192, 203, 0.538);
+                display: inline-block;
+                border-radius: 20px;
+                width: auto;
+                height: auto;
+                padding: 10px;
+                word-break: break-all;
+                font-family: system-ui;
+            }
+            .others_user_msg{
+                width: 95%;
+                padding: 10px;
+                height: auto;
+                border-radius: 20px;
+                overflow-wrap: break-word;
+                /* background: rgba(118, 118, 118, 0.425); */
+            }
+            .others_user_msg xmp{
+                background: rgba(118, 118, 118, 0.425);
+                display: inline-block;
+                border-radius: 20px;
+                width: auto;
+                height: auto;
+                padding: 10px;
+                word-break: break-all;
+                font-family: system-ui;
+            }
+            /* 用户输入区 */
+            .chatIn{
+                width: 1280px;
+                height: 80px;
+                margin: 0 auto;
+                position: relative;
+                top: 50px;
+                border-radius: 20px;
+                /* background: rgba(202, 202, 202, 0.277); */
+            }
+            #userPut{
+                box-sizing: border-box;
+                width: 70%;
+                height: 70px;
+                margin: 5px 0px;
+                border: 0px;
+                border-radius: 20px;
+                padding-top: 15px;
+                padding-left: 15px;
+                /* text-indent: 15px; */
+                overflow: auto;
+                outline: none;
+                background: #cfcfcf4b;
+                content: attr(placeholder-text);
+                display: inline-block;
+                color: rgb(21, 21, 21);
+                padding-right: 10px;
+            }
+            #sendBtn{
+                box-sizing: border-box;
+                border: 0px;
+                width: 10%;
+                height: 70px;
+                display: block;
+                float: right;
+                border-radius: 20px;
+                font-size: 18px;
+                user-select: none;
+            }
+            #testBtn{
+                box-sizing: border-box;
+                border: 0px;
+                width: 10%;
+                height: 70px;
+                display: block;
+                float: right;
+                margin-right: 20px;
+                border-radius: 20px;
+                font-size: 18px;
+                user-select: none;
+            }
+            /* 共享文件区 */
+            #fileBox{
+                width: 1280px;
+                height: 120px;
+                /* border: 0.5px solid gray; */
+                border-radius: 15px;
+                margin: 0 auto;
+                position: relative;
+                top: 20px;
+            }
+            #fileBtn{
+                display: inline-block;
+                padding: 12px 24px;
+                font-size: 18px;
+                cursor: pointer;
+                background-color: #797777b7;
+                box-shadow: 1px 1px 6px 8px rgba(96, 96, 96, 0.1);
+                color: #fff;
+                border-radius: 4px;
+                position: absolute;
+                left: 10%;
+                top: 30px;
+            }
+            #fileList{
+                width: 400px;
+                height: 120px;
+                /* border: 1px solid gray; */
+                border-radius: 10px;
+                box-shadow: 1px 1px 6px 8px rgba(96, 96, 96, 0.1);
+                position: absolute;
+                right: 10%;
+                overflow: auto;
+            }
+            .fileItems{
+                width: 100%;
+                height: 30px;
+                background: rgba(194, 194, 194, 0.486);
+                /* overflow: auto; */
+            }
+            .fileName{
+                display: block;
+                float: left;
+                width: 320px;
+                height: 30px;
+                text-align: center;
+                line-height: 30px;
+                font-size: 16px;
+                text-overflow:ellipsis; /* 超出部分显示省略号 */
+                white-space: nowrap; /*规定段落中的文本不进行换行 */
+                overflow: hidden; /*超出部分隐藏*/
+            }
+            .fileDown{
+                display: block;
+                float: right;
+                width: 50px;
+                height: 30px;
+                text-decoration: none;
+                color: rgb(246, 146, 106);
+                text-align: center;
+                line-height: 30px;
+                font-size: 16px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="fileBox">
+            <label for="file-upload" id="fileBtn">
+                上传文件
+            </label>
+            <input type="file" name="file" id="file-upload" multiple="multiple">
+            <!-- multiple接受多个文件上传 -->
+            <!-- 共享文件列表 -->
+            <ul id="fileList">
+                <li class="fileItems">
+                    <span class="fileName">文件名</span>
+                    <a href="" download target="_blank" class="fileDown">下载</a>
+                </li>
+                <li class="fileItems">
+                    <span class="fileName">文件名</span>
+                    <a href="" download target="_blank" class="fileDown">下载</a>
+                </li>
+                <li class="fileItems">
+                    <span class="fileName">文件名</span>
+                    <a href="" download target="_blank" class="fileDown">下载</a>
+                </li>
+                <li class="fileItems">
+                    <span class="fileName">文件名</span>
+                    <a href="" download target="_blank" class="fileDown">下载</a>
+                </li>
+                <li class="fileItems">
+                    <span class="fileName">文件名文件名文件名文件名文件名文件名文件名文件名</span>
+                    <a href="" download target="_blank" class="fileDown">下载</a>
+                </li>
+            </ul>
+        </div>
+        <div id="boxFrame">
+            <ul id="chatBox">
+                <li class="others_user_msg">
+                    <xmp>测试文本</xmp>
+                </li>
+                <li class="user_msg">
+                    <xmp>测试文本</xmp>
+                </li>
+                <li class="others_user_msg">
+                    <xmp>测试文本</xmp>
+                </li>
+                <li class="user_msg">
+                    <xmp>测试文本</xmp>
+                </li>
+                <li class="others_user_msg">
+                    <xmp>测试文本</xmp>
+                </li>
+                <li class="user_msg">
+                    <xmp>测试文本</xmp>
+                </li>
+                <li class="others_user_msg">
+                    <xmp>测试文本</xmp>
+                </li>
+                <li class="user_msg">
+                    <xmp>测试文本</xmp>
+                </li>
+                <li class="others_user_msg">
+                    <xmp>
+                        #child{
+                            width: 120px;
+                            height: 120px;
+                            border: 1px solid blue;
+                            padding: 20px;
+                            background-color: aqua;
+                            position: absolute;
+                        }
+                        <li class="user_msg">
+                            <span>测试文本</span>
+                        </li>
+                    </xmp>
+                </li>
+            </ul>
+        </div>
+        <div class="chatIn">
+            <div id="userPut" contenteditable="true" placeholder-text="输入信息捏~"></div>
+            <input type="button" value="发送测试" id="sendBtn">
+            <input type="button" value="接收测试" id="testBtn">
+        </div>
+    </body>
+    <script>
+        var chat_box = document.getElementById("chatBox");
+        var user_put = document.getElementById("userPut");
+        var send_btn = document.getElementById("sendBtn");
+        var test_btn = document.getElementById("testBtn");
+        var user_put = document.getElementById("userPut");
+        var file_btn = document.getElementById("fileBtn");
+        var file_list = document.getElementById("fileList");
+        chat_box.scrollTop = chat_box.scrollHeight;
+        file_list.scrollTop = file_list.scrollHeight;
+        //纯文本复制
+        document.addEventListener('copy', function (textC) { //监听复制事件，document为整个页面
+            /*
+            addEventListener作用为元素添加事件
+            第一个参数为事件类型，第二个参数为事件触发后调用的函数
+            */
+            textC.preventDefault(); //阻止默认的复制事件
+            var text = window.getSelection().toString(); //获取选中的文本,toString()为转换为字符串
+            textC.clipboardData.setData('text/plain', text); //将选中的文本设置到剪切板,text/plain为剪切板的类型
+        });
+
+        //发送按钮
+        send_btn.onclick = function(){
+            send_btn.style.background = "#cfcfcf4b";
+            //筛选如果内容含有空格或换行符自动替换为空
+            var user_put_text = user_put.innerHTML;
+            user_put_text = user_put_text.replace(/&nbsp;/g, "");
+            user_put_text = user_put_text.replace(/<div>/g,"\n");
+            user_put_text = user_put_text.replace(/&lt;/g,"<");
+            user_put_text = user_put_text.replace(/&gt;/g,">");
+            user_put_text = user_put_text.replace(/<br>/g,">");
+            user_put.innerHTML = user_put_text;
+            chat_box.innerHTML += "<li class='user_msg'><xmp>" + user_put.innerHTML + "</xmp></li>";
+            user_put.innerHTML = "";
+            chat_box.scrollTop = chat_box.scrollHeight;
+        }
+        send_btn.onmousedown = function(){
+            send_btn.style.background = "#cfcfcf";
+            chat_box.scrollTop = chat_box.scrollHeight;
+        }
+        user_put.onkeydown = function(){
+            if(event.shiftKey && event.keyCode == 13){
+                user_put.innerHTML += "<br>";
+                chat_box.scrollTop = chat_box.scrollHeight;
+            }
+            else if(event.keyCode == 13){
+                chat_box.innerHTML += "<li class='user_msg'><xmp>" + user_put.innerHTML + "</xmp></li>";
+                user_put.innerHTML = "";
+                chat_box.scrollTop = chat_box.scrollHeight;
+            }
+        }
+        //接收测试按钮
+        test_btn.onclick = function(){
+            chat_box.innerHTML += "<li class='others_user_msg'><xmp>测试文本</xmp></li>";
+            chat_box.scrollTop = chat_box.scrollHeight;
+        }
+        
+    </script>
+</html>

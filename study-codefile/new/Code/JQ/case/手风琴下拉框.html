@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="../jQuery/jquery-1.12.4.js"></script>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+            ul{
+                list-style: none;
+                width: 400px;
+                margin: 100px auto;
+            }
+            p{
+                height: 35px;
+                line-height: 35px;
+                text-align: center;
+                background: deepskyblue;
+                color: white;
+                border: 1px solid #ccc;
+                cursor: pointer;
+            }
+            div{
+                height: 100px;
+                font-size: 20px;
+                line-height: 100px;
+                text-align: center;
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <ul>
+            <li>
+                <p>01</p>
+                <div>123456</div>
+            </li>
+            <li>
+                <p>02</p>
+                <div>123456</div>
+            </li>
+            <li>
+                <p>03</p>
+                <div>123456</div>
+            </li>
+            <li>
+                <p>04</p>
+                <div>123456</div>
+            </li>
+        </ul>
+        <script>
+            $(
+                function(){
+                    $('p').on(
+                        'click',
+                        function(){
+                            $(this).next().slideToggle().parent().siblings().children('div').slideUp();
+                            // .slideToggle()  滑动显示或隐藏 .parent()  父级元素 .siblings()  兄弟元素 .children()  子元素 . slideUp()  向上滑动隐藏
+                            // 执行原理：点击p标签，找到它的下一个div标签，滑动显示或隐藏，找到它的父级li标签，找到它的兄弟li标签，找到它的子div标签，向上滑动隐藏
+                        }
+                    )
+                }
+            )
+        </script>
+    </body>
+</html>

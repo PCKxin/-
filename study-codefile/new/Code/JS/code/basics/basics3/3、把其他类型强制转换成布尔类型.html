@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>把其他类型强制转换成布尔类型</title>
+    <script type="text/javascript">
+        /*
+        *   强转布尔类型
+        *   Boolean()
+        *       对数值类型：0转换为false,其他数字都转为true
+        *       对字符串类型：空字符串转为false，有内容都是true
+        *       对空对象null：转为false
+        *       对未定义undefined：转为false
+        * */
+        var num = 1;
+        console.log(Boolean(num));//true
+        console.log(typeof Boolean(num));//boolean
+
+        var num1 = 0;
+        console.log(Boolean(num1));//false
+        console.log(typeof Boolean(num1));//boolean
+
+        var str = "abcd";
+        console.log(Boolean(str));//true
+        console.log(typeof Boolean(str)); //boolean
+
+        var str1 = ""; //空字符串
+        console.log(Boolean(str1));//false
+        console.log(typeof Boolean(str1));//boolean
+
+        var nul = null;
+        console.log(Boolean(nul)); //false
+        console.log(typeof Boolean(nul)); //boolean
+
+        var a ;    //undefined
+        console.log(a);//undefined
+        console.log(Boolean(a)); //false
+        console.log(typeof Boolean(a)); //boolean
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/* 
+			 驾校招生：性别 男；年龄 18岁以上
+			 （满足以上条件弹出“可以学驾照”；
+			 否则相对应弹出“年龄不符”“性别不符”）
+			 */
+			var sex = prompt("请输入性别");
+			if(sex == "男") {
+				var age = prompt("请输入年龄") * 1;
+				if(age >= 18) {
+					console.log("符合要求");
+				}else if(age < 18) {
+					console.log("年龄不符");
+				}else {
+					console.log("年龄输入有误");
+				}
+			}else if(sex == "女") {
+				console.log("性别不符");
+			}else {
+				console.log("性别输入有误");
+			}
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

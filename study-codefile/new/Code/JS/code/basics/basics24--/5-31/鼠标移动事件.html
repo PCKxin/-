@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+      div{
+        width: 100px;
+        height: 150px;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="div1"></div>
+    <button id="bu1">onmouseover</button>
+    <button id="bu2">onmouseout</button>
+    <button id="bu3">contextmenu</button>
+  </body>
+  <script type="text/javascript">
+    //鼠标移动事件
+    var div=document.getElementById("div1");
+    div.onmousemove=function(){
+      alert("onmousemove事件");
+    }
+    //鼠标移入事件
+    var bu1=document.getElementById("bu1");
+    bu1.onmouseover=function(){
+      alert("onmouseover");
+    }
+    //鼠标移出事件
+    var bu2=document.getElementById("bu2");
+    bu2.onmouseout=function(){
+      alert("onmouseout事件");
+    }
+    //右键事件
+    var bu3=document.getElementById("bu3");
+    bu3.oncontextmenu=function(){
+      alert("oncontextmenu右键事件");
+    }
+    
+  </script>
+</html>

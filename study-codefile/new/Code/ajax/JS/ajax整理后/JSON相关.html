@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        
+    </body>
+    <script>
+        var stu = {
+            name: "shiroko",
+            age: 17
+        }
+        var json_val = JSON.stringify(stu); //将js对象转为json字符串
+        console.log(json_val)
+        console.log(typeof json_val)
+        console.log('--------------------------------')
+
+        var json_arr = [
+            {
+                "id": 1,
+                "name": 'shiroko',
+                "age": 17
+            },
+            {
+                "id": 2,
+                "name": 'hoshino',
+                "age": 17
+            },
+            {
+                "id": 3,
+                "name": 'hanako',
+                "age": 16
+            }
+        ]
+        // 遍历json获取其中的对象
+        for(var i = 0; i < json_arr.length; i++){
+            // 遍历对象key值，通过key获取value值
+            // key值不能相同，如果key值一样，后面数据覆盖前面
+            for(var key in json_arr[i]){
+                console.log(key + ":" + json_arr[i][key])
+            }
+        }
+        console.log('--------------------------------')
+        
+        console.log("id 1:"+json_arr[0].name)
+
+        console.log('--------------------------------')
+        var json_arr_2 = '{"id": 1,"name": "shiroko","age": 17}'
+        var json_obj = JSON.parse(json_arr_2) // 将json字符串转成json对象
+        console.log(json_obj)
+        
+    </script>
+</html>

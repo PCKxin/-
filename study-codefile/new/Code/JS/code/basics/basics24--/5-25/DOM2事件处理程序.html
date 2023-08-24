@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <button id="button1">DOM2事件处理程序</button>
+    <button id="button2">DOM2事件处理程序解除事件</button>
+  </body>
+  <script type="text/javascript">
+    var button=document.getElementById("button1");
+    var button2=document.getElementById("button2");
+    // addEventListener:绑定事件监听处理程序
+    //第一个参数：绑定的事件
+    //第二个参数：执行事件代码的函数名
+    //第三个参数：判断是否为捕获  true:捕获  false(默认值):冒泡
+    button.addEventListener('click',show,'true');
+    function show(){
+      alert('DOM2事件处理程序');
+    }
+    
+    //解除事件
+    button2.onclick=function(){
+      button2.removeEventListener('click',show,'true');
+    }
+    
+  </script>
+</html>

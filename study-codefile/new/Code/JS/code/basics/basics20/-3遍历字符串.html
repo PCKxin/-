@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>遍历字符串</title>
+    <script type="text/javascript">
+        
+        //回顾：数组的创建
+        /*
+            为什么遍历：拿到每个元素
+
+            var arr = [1,1,2,2,3,3,4,4];
+            for(var i = 0; i < arr.length; i++) {
+                arr[i]，表示数组中的每个元素    
+            } 保留空位置
+
+            for(var i in arr) {
+                arr[i]
+            } 不保留空位置
+        */
+
+        var str = 'a b c d ';
+        for(var i = 0; i < str.length; i++) {
+            //str[i]表示每一位字符
+            console.log(str[i]);
+        } // 没区别
+        for(var j in str) {
+            console.log(str[j]);//每一位
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

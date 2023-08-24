@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全局变量被视为window对象的属性</title>
+    <script type="text/javascript">
+        /*
+            全局变量被视为winodw对象的属性
+        */ 
+        var a = 10;
+        //对象名.属性名
+        console.log(a); //10 相当于window.a,window对象可以省略
+
+        b = 20; //不声明直接复制，是window对象的属性，是全局变量
+        console.log(window.b); //20
+    
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

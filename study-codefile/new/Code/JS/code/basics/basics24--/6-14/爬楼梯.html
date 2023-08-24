@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>楼层</title>
+	<style>
+		* {
+			padding:0;
+			margin:0;
+		}
+		div {
+			width:100%;
+			color:#fff;
+			font-size:32px;
+		}
+		#header {
+			height:50px;
+			background:#ff0;
+		}
+		#nav {
+			height:100px;
+			background:#f0f;
+		}
+		#banner {
+			height:400px;
+			background:#ccc;
+		}
+		#floorBox div {
+			height:500px;
+		}
+		#floorBox .red {
+			background-color:red;
+		}
+		#floorBox .blue {
+			background-color:blue;
+		}
+		#floorBox .yellow {
+			background-color: yellow;
+		}
+		#floorBox .pink {
+			background-color:pink;
+		}
+		#floorBox .orange {
+			background-color:orange;
+		}
+		#footer {
+			height:600px;
+			background:red;
+		}
+		#floorBtn {
+			position:fixed;
+			height:200px;
+			width:100px;
+			top:50%;
+			margin-top:-100px;
+			right:10px;
+			background:#000;
+			display:none;
+		}
+		#floorBtn div {
+			width:100px;
+			height:40px;
+			line-height:40px;
+			text-align:center;
+		}
+		#floorBtn .show {
+			background:green;
+		}
+	</style>
+</head>
+<body>
+	<div id="header">头部</div>
+	<div id="nav">导航</div>
+	<div id="banner">轮播图</div>
+	<div id="floorBox">
+		<div class="red">一层主要内容</div>
+		<div class="blue">二层主要内容</div>
+		<div class="yellow">三层主要内容</div>
+		<div class="pink">四层主要内容</div>
+		<div class="orange">五层主要内容</div>
+	</div>
+	<div id="footer">尾部</div>
+	<div id="floorBtn">
+		<div class="show">一楼</div>
+		<div>二楼</div>
+		<div>三楼</div>
+		<div>四楼</div>
+		<div>五楼</div>
+	</div>
+	<script type="text/javascript">
+		//第几层内容
+		var floorBox = document.querySelector('#floorBox');
+		//内容的5个div
+		var contentDiv = document.querySelectorAll('#floorBox div');
+		//楼梯的div
+		var floorBtn = document.querySelector('#floorBtn');
+		//获取5个楼梯
+		var BtnDiv = document.querySelectorAll('#floorBtn div');
+		var index = 0;//存储当前内容盒子的下标
+		//鼠标滚轮事件
+		document.onscroll = function () {
+			//先获取最大高度
+			var max = document.documentElement.scrollTop || document.body.scrollTop;
+			//向上取整 因为值会包含小数
+			max = Math.ceil(max);
+			console.log(max);
+			// 楼层的显示和隐藏   
+			// offsetTop获取元素到已经被定位的父级的距离（left,top）,如果父级没有定位，
+			// 获取元素到body的距离
+			if (max >= floorBox.offsetTop) {
+				//滚动条滑到楼层的时候显示出来
+				floorBtn.style.display = 'block';
+			} else {
+				//滚动条在楼层外的部分隐藏楼梯
+				floorBtn.style.display = 'none';
+			}
+			//获取对应的每一个内容的div
+			for (var i = 0; i < contentDiv.length; i++) {
+				//如果滚动条到达某个内容盒子距离顶部的高度
+				if (max >= contentDiv[i].offsetTop) {
+					//把当前盒子的下标赋值给index，index为当前盒子的下标
+					console.log("索引"+i);
+					console.log("楼层顶部：" + contentDiv[i].offsetTop);
+					index = i;
+				}
+			}
+			//让侧边栏按钮所有的样式都清空
+			for (var j = 0; j < BtnDiv.length; j++) {
+				BtnDiv[j].className = '';
+			}
+			//对应按钮显示样式
+			BtnDiv[index].className = 'show';
+		}
+
+		// 点击切换楼层内容
+		//  1、）添加自定义属性，用来标注位置，获取对应的索引
+		for (var i = 0; i < BtnDiv.length; i++) {
+			BtnDiv[i].setAttribute('index', i);
+		}
+		
+		// 2）事件委托  利用事件冒泡的原理，将自身事件绑定给祖先级元素
+		floorBtn.onclick = function (e) {
+			// 1、获取事件对象的兼容性写法
+			var ev = e || window.event;
+			// 2、获d取真正触发事件的对象
+			var tag = ev.target || ev.srcElement;
+			//index等于目前触发按钮的自定义下标
+			index = tag.getAttribute('index');
+			// 获取对应内容到页面距离，去按钮对应的盒子距离顶部的高度
+			var oTop = contentDiv[index].offsetTop;
+			// 将获取到的距离送给页面的隐藏距离
+			document.documentElement.scrollTop = oTop;
+			document.body.scrollTop = oTop;
+		}
+	</script>
+</body>
+</html>
+
+

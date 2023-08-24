@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/* 
+				用数组存图片，存的是图片的完整名称
+			 */
+			var arr = new Array(10);
+			for(var i = 0; i < arr.length; i++) {
+				arr[i] = i + ".png";
+				document.write("<img src = 'img/" + arr[i] + "'>");
+			}
+			console.log(arr);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

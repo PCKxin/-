@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            div{
+                width: 300px;
+                height: 300px;
+                background: rgba(199, 199, 199, 0.611);
+                border-radius: 10px;
+                margin: 10px auto;
+                display: flex;
+            }
+            span{
+                width: 40px;
+                height: 40px;
+                background: orange;
+                border-radius: 50%;
+            }
+            .flexbox1{
+                flex-direction: row;
+                /* space-between: 两端对齐 */
+                justify-content: space-between;
+            }
+            .flexbox1 span:nth-child(2){
+                align-self: center;
+            }
+
+            .flexbox2{
+                /* column: 垂直排列 */
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            .flexbox3{
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .flexbox3 span:nth-child(2){
+                /* flex-end: 末尾对齐 */
+                align-self: flex-end;
+            }
+            
+            .flexbox4,.flexbox5{
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            .flexbox4 span:nth-child(2){
+                align-self: flex-end;
+            }
+            .flexbox5 span:nth-child(1){
+                align-self: flex-end;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="flexbox1">
+            <span></span>
+            <span></span>
+        </div>
+        <div class="flexbox2">
+            <span></span>
+            <span></span>
+        </div>
+        <div class="flexbox3">
+            <span></span>
+            <span></span>
+        </div>
+        <div class="flexbox4">
+            <span></span>
+            <span></span>
+        </div>
+        <div class="flexbox5">
+            <span></span>
+            <span></span>
+        </div>
+    </body>
+</html>

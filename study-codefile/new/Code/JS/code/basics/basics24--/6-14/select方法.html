@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <input type="text" value="1234" id="text" />
+    <input type="button" value="全选" id="bu1">
+  </body>
+  <script type="text/javascript">
+    var text=document.getElementById("text");
+    var button=document.getElementById("bu1");
+    button.onclick=function(){
+      //全选text的文本内容
+     text.select();
+    }
+  </script>
+</html>

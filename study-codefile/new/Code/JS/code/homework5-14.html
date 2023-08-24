@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta user_name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{margin: 0;padding: 0;list-style: none;}
+            p{
+                width: 600px;
+                height: 50px;
+                margin: 0 auto;
+                line-height: 50px;
+            }
+            #email,#user_name,#test_code,#submit,#city,.psd{
+                width: 200px;
+                height: 30px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                outline: none;
+                text-indent: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <p>
+            我的邮箱 
+            <input type="email" name="mail" id="email">
+        </p>
+        <p>
+            我的密码
+            <input type="password" name="psd" class="psd">
+            <input type="button" value="显示密码" class="value_display">
+            <input type="button" value="隐藏密码" class="value_hidden">
+        </p>
+        <p>
+            再次输入密码
+            <input type="password" name="psd" class="psd">
+            <input type="button" value="显示密码" class="value_display">
+            <input type="button" value="隐藏密码" class="value_hidden">
+        </p>
+        <p>
+            昵称
+            <input type="text" name="user_name" id="user_name" placeholder="4-12位">
+        </p>
+        <p>
+            性别
+            <input type="radio" name="boy" class="sex">男
+            <input type="radio" name="girl" class="sex">女
+        </p>
+        <p>
+            所在地
+            <select name="city" id="city">
+                <option value="0">请选择</option>
+                <option value="1">北京</option>
+                <option value="2">上海</option>
+                <option value="3">广州</option>
+                <option value="4">深圳</option>
+            </select>
+        </p>
+        <p>
+            验证码
+            <input type="text" user_name="test_code" id="test_code">
+        </p>
+        <p>
+            <input type="button" value="立即注册" id="submit">
+        </p>
+    </body>
+
+    <script>
+        //获取所有要操作的元素
+        var email = document.getElementById("email");
+        var psd = document.getElementsByClassName("psd");
+        var value_display = document.getElementsByClassName("value_display");
+        var value_hidden = document.getElementsByClassName("value_hidden");
+        var user_name = document.getElementById("user_name");
+        var sex = document.getElementsByClassName("sex");
+        var city = document.getElementById("city");
+        var test_code = document.getElementById("test_code");
+        var submit_btn = document.getElementById("submit");
+
+        //隐藏显示密码
+        value_display[0].onclick = function () {
+            psd[0].type = "text";
+        }
+        value_hidden[0].onclick = function () {
+            psd[0].type = "password";
+        }
+        value_display[1].onclick = function () {
+            psd[1].type = "text";
+        }
+        value_hidden[1].onclick = function () {
+            psd[1].type = "password";
+        }
+
+        //判断邮箱是否正确
+        email.onblur = function () {
+            /*
+            * 正则表达式
+            *   ^ 以什么开头
+            *  \w+ 匹配任意多个字符
+            *   @ 匹配@
+            *  \w+ 匹配任意多个字符
+            *  \. 匹配.
+            *  \w+ 匹配任意多个字符
+            *  $ 以什么结尾
+            */
+            
+            var reg = /^\w+@\w+\.\w+$/; 
+            if(reg.test(email.value) == false) {
+                alert("邮箱格式错误");
+            }
+        }
+        //对比密码是否一致
+        psd[1].onblur = function () {
+            if(psd[0].value != psd[1].value) {
+                alert("密码不一致");
+            }
+        }
+        //判断昵称是否正确
+        user_name.onblur = function(){
+            if(user_name.value.length <= 4 || user_name.value.length >= 12) {
+                alert("昵称错误");
+            }
+        }
+        //判断性别是否选择
+        submit_btn.onclick = function(){
+            if(sex[0].checked == 0 && sex[1].checked == 0) {
+                alert("请选择性别");
+            }
+        }
+        
+    </script>
+</html>

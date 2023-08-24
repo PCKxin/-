@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        var user = prompt("请输入用户名");  //字符串
+        var password = prompt("请输入密码"); //字符串
+        if(user.length >= 8 && user.length <= 12) {
+            if(password.length >= 8 && password.length <= 12) {
+                console.log("登陆成功");
+            }else {
+                console.log("密码长度有误");
+            }
+        }else {
+            console.log("用户名有误")
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

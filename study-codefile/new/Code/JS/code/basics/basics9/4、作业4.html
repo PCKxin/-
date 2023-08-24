@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/* 
+			 将1000 - 5000 之间 
+			 各位数之和为5的数在控制台输出出来。 比如：2111
+			 */
+			for(var i = 1000; i <= 5000; i++) {
+				var g = parseInt(i % 10);
+				var s = parseInt(i / 10 % 10);
+				var b = parseInt(i / 100 % 10);
+				var q = parseInt(i / 1000);
+				if(g + s + b + q == 5) {
+					console.log(i);
+				}
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        /*
+            通过fromCharCode()，
+            创建A-Z，a-z,0-9组成的字符串
+            A：65，Z：90
+            a：97，z：122
+            0：48，9：57 
+            随机生成四位验证码
+        */
+        var str = "";
+        var psd = "";
+        for(var i = 65; i <= 90; i++) {
+            str += String.fromCharCode(i);
+        }
+        console.log(str); //A-Z
+        for(var j = 97; j <= 122; j++) {
+            str += String.fromCharCode(j);
+        }
+        console.log(str); //A-Z,a-z
+        for(var k = 48; k <= 57; k++) {
+            str += String.fromCharCode(k);
+        }
+        console.log(str);//A-Z,a-z,0-9
+
+        
+        //生成随机四位验证码
+        for(var n = 0; n < 4; n++) {
+            //生成一个从0~长度的随机数  0-62之间
+            var m = parseInt(Math.random()*str.length);
+            //将随机生成索引值对应的字符拼接全局psd变量
+            psd += str.charAt(m);            
+        }
+        console.log(psd);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

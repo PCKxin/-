@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>倒计时</title>
+    <script type="text/javascript">
+        /*
+        *   1、定义日期对象，获取当前时间
+        *   2、定义将来时间，new Date(目标时间)
+        *   3、求出间隔的时间差，将来-现在，(毫秒数)
+        *   4、根据时间差的毫秒数，进行天、小时、分钟、秒的换算
+        *   5、根据情况添加
+        *   6、定义计时器
+        * */
+
+        // function fn() {
+        //     //1、定义当前时间
+        //     var now = new Date();
+        //     //2、定义将来时间
+        //     var will = new Date('2023/5/1 0:0');
+        //     //3、求时间差
+        //     var t = will - now;
+        //     console.log(t);//返回的间隔是毫秒数
+
+        //     //4、用时间差转换天、小时、分钟及秒
+
+        //     //天：  已知的总数 / 1天的毫秒数，再取整
+        //     var day = parseInt(t / 86400000);
+        //     console.log(day);  // 17天
+
+        //     //小时：已知的总数 - 已知天数的毫秒数 = 已知剩余小时的毫秒数
+        //     //已知剩余下小时的毫秒数 / 3600000 = 几点几小时
+        //     //再取整
+        //     var hour = parseInt((t - day * 86400000) / 3600000);
+        //     console.log(hour);  // 10小时
+
+        //     //分钟：已知的总数 - 已知天数的毫秒数 = 已知剩余小时的毫秒数
+        //     // 已知剩余小时的毫秒数 - 已知小时的毫秒数 = 剩余分钟的毫秒数
+        //     // 已知剩余分钟的总毫秒数 / 60000 = 几.几 秒
+        //     //再取整
+        //     var min = parseInt((t - day * 86400000 - hour * 3600000) / 60000);
+        //     console.log(min); //54分钟
+
+        //     //秒：已知的总数 - 已知天数的毫秒数 = 已知剩余小时的毫秒数
+        //     //  已知剩余小时的毫秒数 - 已知小时的毫秒数 = 剩余分钟的毫秒数
+        //     //  已知剩余分钟的总毫秒数 - 已知分钟数的毫秒数 = 剩余秒的毫秒数
+        //     //  剩余秒的毫秒数 / 1000 = 几.几秒
+        //     //再取整
+        //     var sec = parseInt((t - day * 86400000 - hour * 3600000 - min * 60000) / 1000);
+        //     console.log(sec);
+
+        //     console.log("距离5月1日还有：" + day + "天" + hour + "小时" + min + "分钟" + sec + "秒");
+        // }
+        // setInterval(fn,1000);
+
+        function countDown(){
+            var now_time = new Date(); //定义当前时间
+            var end_time = new Date('2023/5/1 0:0:0') //定义指定时间
+            var time = end_time - now_time; //两个时间戳相减，得到相差毫秒数
+
+            var day = parseInt(time / 86400000); //除以86400000，得到天数
+            var hour = parseInt(time % 86400000 / 3600000); //取余数，再除以3600000，得到小时数
+            var minute = parseInt(time % 86400000 % 3600000 / 60000); //取余数，再除以60000. 得到分钟数
+            var second = parseInt(time % 86400000 % 3600000 % 60000 / 1000); //取余数，再除以1000，得到秒数
+
+            return day + "天" + hour + "小时" + minute + "分钟" + second + "秒" //输出：xx天xx小时xx分钟xx秒
+            // console.log(day + "天" + hour + "小时" + minute + "分钟" + second + "秒");
+        }
+
+        setInterval(
+            function(){
+                console.log(countDown()); //每隔一秒执行一次countDown函数
+            },1000
+        ); //每隔一秒执行一次内置函数
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        
+    </body>
+    <script>
+        //1.创建一个节点(创建p标签)
+        var p1 = document.createElement("p");
+            p1.innerHTML = "我是p1";
+
+
+        //2.把新创建的p标签添加到body中
+        document.body.appendChild(p1);
+
+
+        //3.删除子节点
+        document.body.removeChild(p1);
+
+        //删除自身节点
+
+        var p= document.getElementById("p1");
+        //void:没有返回值
+        //remove():删除自身节点
+        p.remove(); 
+
+
+        //4.克隆节点, true:克隆节点的子节点 false:不克隆子节点
+        var p2 = p1.cloneNode(true);
+        document.body.appendChild(p2);
+
+
+        //5.替换节点
+        //参数1:新节点 参数2:被替换的节点
+        var p3 = document.createElement("p");
+            p3.innerHTML = "我是p3";
+        document.body.replaceChild(p3,p2);
+
+
+        //6.插入节点
+        //1.创建需要插入的新标签
+        var p2=document.createElement("p");
+        //2.获取想要插入的位置后的标签
+        var s1=document.getElementById("s1");
+        //3，使用insertBefore在前边插入新标签
+        //父节点 . insertBefore (新标签目标位置的标签
+        document.getElementById("div1").insertBefore(p2,s1);
+
+
+
+        var a=document.getElementById("a1");
+
+        //7.获取元素属性值 参数是具体的属性     
+        //getAttribute(属性)
+        var href=a.getAttribute("href");
+        var target=a.getAttribute("target");
+
+
+        //8.设置属性的属性值  
+        //setAttribute(属性，新的属性值)
+        var p=a.setAttribute("id","a3");
+        var id1=a.getAttribute("id");
+        
+        console.log(id1);
+        console.log(href);
+        console.log(target);
+        a.id="a4";
+        console.log(a.id);
+
+        //9.克隆节点   cloneNode(boolean)
+        //获取目标节点
+        var span=document.getElementById("s1");
+        //使用该节点调用cloneNode(boolean)
+        span.cloneNode(boolean)
+        //如果boolean取值是true，复制节点(标签)和内容
+        //如果boolean取值是false，只复制节点(标签)，不复制内容
+
+        //10.获取父节点
+        子节点.parentNode
+
+        //11.获取子节点
+        父节点.childNodes //返回值是子节点列表，其中包括空格，会以text（文本）形式当做子节点获取到
+
+        //12.获取第一个子节点
+        父节点.firstChild //返回值是第一个子节点，包含text
+
+        //13.获取最后一个子节点
+        父节点.lastChild //返回值是最后一个子节点，包含text
+
+        //14.获取前一个兄弟节点
+        当前节点.previousSibling //返回值是前一个兄弟节点，包含text
+
+        //15.获取后一个兄弟节点
+        当前节点.nextSibling //返回值是后一个兄弟节点，包含text
+
+        
+    </script>
+</html>

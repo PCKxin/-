@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <form action="#" method="post">
+            请选择选项：<br>
+            <input type="checkbox" name="hobby" id="checkall_yes_no">全选/全不选
+            <br>
+            <input type="checkbox" name="hobby" id="hobby_soccer" value="足球">足球
+            <input type="checkbox" name="hobby" id="hobby_swim" value="游泳">游泳
+            <input type="checkbox" name="hobby" id="hobby_running" value="跑步">跑步
+            <input type="checkbox" name="hobby" id="hobby_anime" value="动画">动画
+            <input type="checkbox" name="hobby" id="hobby_game" value="游戏">游戏
+            <br>
+            <input type="button" value="全选" id="check_all">
+            <input type="button" value="反选" id="reverse_check">
+            <input type="button" value="取消" id="cancel_out">
+            <input type="button" value="提交" id="subimt_on">
+        </form>
+        <script>
+            //封装函数
+            function get_click(id,fun,checkYN){
+                var id = document.getElementById(id); //获取元素
+                id.onclick = fun; //调用函数
+                document.getElementById('checkall_yes_no').checked = checkYN; //全选/全不选
+            }
+            //获取兴趣复选框，通过name属性，得到一个数组
+            var hobby_arr = document.getElementsByName('hobby');
+            //全选/全不选
+            get_click(
+                'checkall_yes_no',
+                function(){
+                    for(var i = 0; i < hobby_arr.length; i++){
+                        if(this.checked){ //如果此选项被选中(checked默认为false)
+                            hobby_arr[i].checked = true; //所有选项都被选中
+                        }else{
+                            hobby_arr[i].checked = false; //所有选项都不被选中
+                        }
+                    };
+                }
+            )
+            //全选
+            get_click(
+                'check_all',
+                function(){
+                    for(var i = 0; i < hobby_arr.length; i++){
+                        hobby_arr[i].checked = true; //所有选项都被选中
+                    };
+                },
+                true
+            )
+            //反选
+            get_click(
+                'reverse_check',
+                function(){
+                    for(var i = 0; i < hobby_arr.length; i++){
+                        // document.getElementById("checkedOrNo").checked=true;
+                        if(hobby_arr[i].checked){
+                            hobby_arr[i].checked = false;
+                            document.getElementById("checkall_yes_no").checked=false;
+                        }else{
+                            hobby_arr[i].checked = true;
+                        }
+                    }
+                }
+            )
+            //取消
+            get_click(
+                'cancel_out',
+                function(){
+                    for(var i = 0; i < hobby_arr.length; i++){
+                        hobby_arr[i].checked = false; //所有选项都不被选中
+                    }
+                },
+                false
+            )
+            //提交
+            get_click(
+                'subimt_on',
+                function(){
+                    var hobby_sub_arr = [];
+                    for(var i = 0; i < hobby_arr.length; i++){
+                        if(hobby_arr[i].checked){
+                            hobby_sub_arr.push(hobby_arr[i].value); //将选中的值放入数组
+                        }
+                    }
+                    if(hobby_sub_arr.length == 0){
+                        alert('请选择选项');
+                    }else{
+                        alert('您选择的是：' + hobby_sub_arr.join('、'));
+                    }
+                }
+            )
+        </script>
+    </body>
+</html>

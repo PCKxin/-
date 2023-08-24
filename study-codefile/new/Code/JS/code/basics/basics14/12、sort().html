@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>sort()</title>
+    <script type="text/javascript">
+        var arr = ["zhangbowen","zhangbo","zhaoyanbo","zhouchen"];
+        /*
+        *   sort()
+        *       作用：排序，默认是对字符串的从小到大排序
+        *       参数：默认没有，对数值排序要写匿名函数
+        *       注意：原数组改变
+        * */
+        console.log(arr);
+
+        arr.sort();
+        console.log(arr);
+
+        var arr1 = [111,2,1,32,51,14];
+        console.log(arr1);
+        arr1.sort(function (a,b) {
+            //使用匿名函数作为sort（）参数可以实现数值排序
+            // a-b 从小到大排序 , b-a 从大到小排序
+            return b - a;
+        });
+        console.log(arr1);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

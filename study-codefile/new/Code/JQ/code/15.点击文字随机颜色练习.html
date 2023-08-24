@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .box{
+                width: 700; 
+                height: 200px;
+                border: 1px solid purple;
+                margin: 10px auto;
+                box-shadow: 0 0 2px 2px pink;
+                text-align: center;
+                line-height: 200px;
+                font-size: 20px; 
+                font-weight: bold;
+            }
+            input{
+                width: 200px;
+                height: 20px;
+                font-size: 20px;
+                border: 1px solid pink;
+            }
+            input:focus{
+                box-shadow: 0 0 2px 2px pink;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="text" class="a">
+        <button>发送</button>
+        <div class="box">每次点击按钮</div>
+        <script src="../jQuery/jquery-1.12.4.js"></script>
+        <script>
+            $(document).ready(
+                function(){
+                    $('button').click(
+                        function(){
+                            var str = $('.a').val(); //拿到输入框的输入内容
+                            if(str == '' || str.length == 0){ //如果没有输入
+                                alert('输入内容不能为空...');
+                                return; //逻辑整个停掉
+                            }
+                            //文字随机颜色
+                            // Math.random()随机数范围 0-1
+                            //最小值0     最大值1
+                            var arr = ['purple','green','skyblue','pink','yellow','blue'];      
+                            var index = Math.ceil(Math.random() * arr.length - 1);
+                            $('.box').text(str).css('color',arr[index]); //将文字内容放到box里
+                            $('.a').val(''); //将输入框内容置为空
+                        }
+                    )
+                }
+            )
+        </script>
+    </body>
+</html>

@@ -1,0 +1,679 @@
+.clearFloat:after{
+    display: block;
+    content: "";
+    clear: both;
+    height: 0;
+    visibility: hidden;
+}
+
+.clearFloat{
+    zoom: 1;
+}
+
+body{
+    /* 有图片，也要添加背景色，默认为白色 */
+    background: url(../img/body_bg.png) repeat-x #fff;
+}
+
+/*顶部top的设置*/
+.top{
+    width: 960px;
+    height: 30px;
+    margin: 0 auto;
+}
+
+/* 左侧菜单栏 */
+.top_menu{
+    float: left;
+}
+.top_menu li{
+    float: left;
+    /* right是横向(移动的位置，可以直接使用上下左右的单词) 14是竖向*/
+    background: url(../img/top_ico.png) no-repeat right 14px;
+    line-height: 30px;
+    padding-right: 18px;
+    margin-left: 15px;
+}
+.top_menu a{
+    font-size: 13px;
+    color: #c0c0c0;
+}
+.top_menu a:hover{
+    color: #fff;
+}   
+
+.top_menu .no_dot{
+    background: none;
+    padding: 0;
+}
+
+/* 顶部右侧工具栏 */
+.top_bar{
+    float: right;
+}
+
+.top_bar li{
+    float: left;
+    /* 背景图需要对li有高 */
+    height: 30px;
+    line-height: 30px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.top_bar a{
+    color: #c0c0c0;
+}
+
+.top_bar .phone{ 
+    background: url('../img/top_ico.png') no-repeat left -16px;
+    padding: 0 30px;
+}
+
+.top_bar .help{
+    background: url("../img/top_ico.png") no-repeat left -46px;
+    padding: 0 38px;
+}
+.top_bar a{
+    color: #fff;
+}
+.top_bar img{
+    margin: 10px 0 0 13px;
+}
+/* 头部 */
+.header{
+    width: 960px;
+    height: 100px;
+    background: url("../img/header_bg.png");
+    margin: 0 auto;
+    position: relative;
+}
+
+
+/*左侧div*/
+
+.shopping {
+    width: 260px;
+    height:100px;
+    background:url("../img/shopping_bg.png") no-repeat;
+    border:1px solid rgba(0,0,0,0);
+}
+.shopping p {
+    font-size:20px;
+    color:#f7f7f7;
+    /*涉及到公用外边距，给父级添加1px的透明边框*/
+    margin:30px 0 0 84px;
+}
+.shopping a {
+    display: block;
+    width:114px;
+    height:23px;
+    background:url("../img/shopping_bg.png") no-repeat 0 -100px;
+    text-align: center;
+    line-height: 23px;
+    /*字体最小值是12，默认值是16*/
+    font-size: 12px;
+    color:#ffc200;
+    font-weight: bold;
+    margin:12px 0 0 104px;
+}
+.shopping a:hover {
+    color:#ffdb6a;
+}
+
+.shopping a:hover{
+    color: #ffdb6a;
+}
+
+/* 中间logo */
+
+.header h1{
+    width:238px;
+    height: 100px;
+    position:absolute;
+    top:0;
+    /*直接把元素定位到整个宽度的一半位置，默认根据图片的左上角定位*/
+    left:50%;
+    margin-left: -119px;
+}
+
+/* 右侧搜索框 */
+
+.search{
+    width: 292px;
+    height: 31px;
+    background: url('../img/search.png');
+    position: absolute;
+}
+
+.header .search{
+    top: 34px;
+    right: 0;
+}
+
+.search .text{
+    width: 250px;
+    height: 30px;
+    border-radius: 10px 0 0 10px;
+    text-indent: 30px;
+    outline: none;
+    border: none;
+    background:none;
+    font-size: 12px;
+    color:#666666;
+    float:left;
+}
+
+.search .btn{
+    width: 42px;
+    height: 30px;
+    /* border-radius: 0 10px 10px 0; */
+    border: none;
+    outline: none;
+    background: none;
+    float: left;
+}
+
+
+/* 导航栏 */
+
+.nav{
+    width: 960px;
+    height: 44px;
+    margin: 0 auto;
+}
+
+
+.nav li{
+    float: left;
+    height: 27px;
+    padding: 0 18px;
+    margin: 8px 10px 0 0;
+    line-height: 27px;
+    border-radius: 4px 4px 0 0;
+}
+
+.nav li:hover{
+    background: url('../img/li_bg.png');
+}
+
+.nav .active{
+    background: url("../img/li_bg.png");
+}
+
+.nav a{
+    font-size: 12px;
+    color: #fff;
+}
+
+/* 内容区域 */
+/* 用滑动门做门框 */
+.content{
+    width: 1000px;
+    margin: 24px auto 0;
+    background: url('../img/content_bg.png') -1000px 0;
+}
+
+.content_top{
+    width: 1000px;
+    background: url('../img/content_bg.png') no-repeat 0 top;
+}
+
+.content_bottom {
+    width:1000px;
+    background: url("../img/content_bg.png") no-repeat -2000px bottom;
+    border:1px solid rgba(0,0,0,0);
+}
+
+/*主体内容*/
+#main {
+    width:940px;
+    margin:0 auto;
+    /* outline:2px solid aqua; */
+}
+
+/*广告栏部分*/
+.banner {
+    width:940px;
+    height: 300px;
+    margin:10px auto 30px;
+    position:relative;
+}
+
+.banner .bg {
+    width:940px;
+    height:52px;
+    background: rgba(0,0,0,0.8);
+    /*
+        兼容低版本ie使用的透明度设置方法
+        opacity透明度，取值0-100之间
+    */
+    filter:opacity(80);
+    position:absolute;
+    bottom:0;
+    left:0;
+}
+.banner h2 {
+    font-size: 18px;
+    color:#ffc600;
+    float:left;
+    margin:18px 38px 0 34px;
+}
+.banner p {
+    font-size: 12px;
+    color:#ffcccc;
+    float:left;
+    width:628px;
+    margin-top: 14px;
+}
+
+
+/*左侧侧边栏*/
+.side {
+    width:209px;
+    /*outline:2px solid red;*/
+    float:left;
+}
+/*左侧上半部分*/
+.side .module_menu {
+    width:209px;
+}
+.side .module_menu p {
+    width:209px;
+    height:29px;
+    background: url("../img/menu_bg.gif");
+    /*左上角，右上角，右下角，左下角*/
+    border-radius: 8px 8px 0 0 ;
+    color: #ffffff;
+    font-size: 14px;
+    text-align: center;
+    line-height: 29px;
+}
+.side .module_menu ul {
+    width:199px;
+    height:342px;
+    background:#ffeeb7;
+    border:1px solid #f3dc94;
+    border-top: none;
+    margin-top: 1px;
+    border-radius: 0 0 8px 8px;
+    padding:18px 0 0 8px;
+}
+.side .module_menu li {
+    width:184px;
+    height:26px;
+    margin:0 auto;
+    line-height: 26px;
+    border-bottom: 1px solid #ffffff;
+}
+.side .module_menu li:hover {
+    background: #f9e193;
+    border-bottom:1px solid #b20e00;
+}
+.side .module_menu li:hover a {
+    color:#b20e00;
+}
+.side .module_menu a {
+    font-size: 12px;
+    color:#434343;
+    margin-left: 34px;
+    font-weight: bold;
+}
+/*左侧中间部分*/
+.side .join_menu {
+    width: 207px;
+    height:328px;
+    background:#f5f5f2;
+    border:1px solid #e8e8e3;
+    border-radius: 8px;
+    margin-top: 12px;
+}
+.side .join_menu p {
+    font-size: 14px;
+    color:#666666;
+    width:179px;
+    margin:15px 0 14px 14px;
+    font-weight: bold;
+}
+
+.side .text {
+    width:176px;
+    height:26px;
+    outline:none;
+    border:none;
+    border-top: 1px solid #9c9c9c;
+    border-left: 1px solid #9c9c9c;
+    margin:0 0 7px 15px;
+}
+.side .btn {
+    width:88px;
+    height:25px;
+    background:url("../img/shopping_bg.png") 0 -145px;
+    border:none;
+    outline:none;
+    color:#fff;
+    font-size: 12px;
+    font-weight: bold;
+    /*margin:0 auto对块元素起作用，因此转为块元素*/
+    display: block;
+    margin:0 auto;
+}
+.side .join_list {
+    background:url("../img/shopping_bg.gif") no-repeat 10px 8px;
+    margin:13px 0 0 8px;
+}
+.side .join_list li {
+    width:123px;
+    height: 35px;
+    border-top: 1px solid #fff;
+    font-size: 12px;
+    color:#434343;
+    /*添加内边距应该注意在原有宽高减少对应距离*/
+    padding:10px 0 0 70px;
+}
+.side .join_list .active {
+    line-height: 25px;
+}
+
+/*左侧底部*/
+.side .payment {
+    /*上右下左*/
+    margin:34px 0 0 20px;
+}
+
+/*右侧包裹区域*/
+#wrap {
+    width:706px;
+    float:right;
+    /* outline:2px solid blue; */
+}
+
+/*模拟下拉列表部分*/
+.sort {}
+.sort dl {
+    float:left;
+}
+.sort dt {
+    font-size: 12px;
+    font-weight: bold;
+    color:#747474;
+    float:left;
+    margin-top: 2px;
+}
+.sort dd {
+    position:relative;
+    width:109px;
+    height:19px;
+    float:left;
+    line-height: 19px;
+    text-indent:5px;
+    margin-right: 12px;
+}
+.sort h2{
+    font-size: 12px;
+    font-weight: normal;
+    color:#747474;
+    width:108px;
+    height:17px;
+    border:1px solid #cccccc;
+    border-right:none;
+}
+.sort a {
+    display: inline-block;
+    width:19px;
+    height:19px;
+    background: url("../img/shopping_bg.png") no-repeat 0 -376px;
+    position:absolute;
+    top:0;
+    left:90px;
+}
+.sort a:hover {
+    background: url("../img/shopping_bg.png") no-repeat -19px -376px;
+}
+.sort ul {
+    position:absolute;
+    top:19px;
+    left:0;
+    width:109px;
+    display: none;
+    /*即便看上去是白色，也要加白色背景*/
+    background:#fff;
+}
+.sort dd:hover ul{
+    display:block;
+}
+.sort li {
+    font-size: 12px;
+    color:#747474;
+    border:1px solid #747474;
+}
+.sort li:hover {
+    background:pink;
+}
+/*右侧翻页符*/
+.sort p {
+    float:right;
+    font-size: 12px;
+    color:#747474;
+    margin: 2px 8px 0 0;
+}
+.sort strong {
+    font-size: 12px;
+    color:#999999;
+}
+.sort span {
+    font-size: 12px;
+    color:#747474;
+}
+.sort .color_style {
+    color:#b20e00;
+}
+
+/*图片列表*/
+.pic_list {
+    width:706px;
+    /* outline: 2px solid red; */
+    margin-top: 28px;
+    overflow: hidden;
+}
+.pic_list h2 {
+    font-size: 13px;
+    color:#666666;
+    margin-bottom: 16px;
+}
+.pic_list ul {
+    width:800px;
+    outline:green;
+}
+.pic_list li {
+    width:157px;
+    height:190px;
+    float:left;
+    margin-right: 26px;
+}
+.pic_list img {
+    border:1px solid #c6c6c6;
+}
+.pic_list li:hover img{
+    border:1px solid #b20e00;
+}
+.pic_list p {
+    color:#292929;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 8px;
+}
+.pic_list .price {
+    font-weight: normal;
+}
+.pic_list span {
+    color:#b20e00;
+}
+
+/*页码*/
+.page {
+    text-align: center;
+    margin-top: 8px;
+    border-bottom:1px solid #cdcdc8;
+    padding-bottom: 5px;
+}
+.page a {
+    display: inline-block;
+    height:20px;
+    padding:0 8px;
+    text-align: center;
+    line-height: 20px;
+    font-size: 12px;
+    color:#b20e00;
+}
+.page a:hover {
+    background:#b20e00;
+    color:#ffffff;
+}
+.page .active {
+    background:#b20e00;
+    color:#ffffff;
+}
+.page span {
+    font-family: "宋体";
+    font-weight: bold;
+}
+
+/*右侧底部*/
+.scroll_list {}
+.scroll_wrap {
+    height:196px;
+    background: url("../img/scroll_bg.gif") repeat-x 0 -478px;
+}
+.scroll_wrap_l {
+    height:196px;
+    background: url("../img/scroll_bg.gif") no-repeat 0 -86px;
+}
+.scroll_wrap_r {
+    height:196px;
+    background: url("../img/scroll_bg.gif") no-repeat right -283px;
+    border:1px solid rgba(0,0,0,0);
+    position:relative;
+}
+
+/*滚动列表里的内容*/
+.list_wrap {
+    margin:30px 0 0 70px;
+}
+.list_wrap li {
+    float:left;
+    width:147px;
+    margin-right: 60px;
+}
+.list_wrap img {
+    border:1px solid #c0c0c0;
+}
+.list_wrap p {
+    font-size: 12px;
+    color:#660000;
+    text-align: center;
+    margin-top: 12px;
+}
+
+/*左右箭头*/
+.scroll_wrap h3 {
+    width:35px;
+    height:42px;
+    background: url("../img/scroll_bg.gif");
+    position:absolute;
+    top:50%;
+    margin-top: -21px;
+}
+.scroll_wrap .prev {
+    left:0;
+}
+.scroll_wrap .next {
+    right:0;
+    background-position: 0 -42px;
+}
+
+/*页脚*/
+#footer {
+    height:302px;
+    background: url("../img/footer_bg.png");
+    margin-top: 36px;
+}
+
+
+.foot_info{
+    width: 960px;
+    height: 61px;
+    margin: 0 auto;
+    /* 方便子元素search做定位 */
+    position: relative;
+}
+.foot_info p{
+    float: left;
+    line-height: 60px;
+    color: #cbcbcb;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.foot_info .ico1{
+    background: url('../img/footer_info.png') no-repeat 0 4px;
+    padding-left: 60px;
+    margin-right: 25px;
+}
+
+.foot_info .ico2{
+    background: url('../img/footer_info.png') no-repeat 0 -52px;
+    padding-left: 50px;
+}
+
+.foot_info .search{
+    width: 292px;
+    height: 31px;
+    background: url('../img/search.png');
+    position: absolute;
+}
+
+.foot_link{
+    width: 920px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding-top: 20px;
+}
+
+.foot_link dl{
+    float: left;
+    width: 184px;
+}
+
+.foot_link dt{
+    font-size: 15px;
+    color: #fff;
+    font-weight: blod;
+    line-height: 60px;
+}
+
+.foot_link dd{
+    /* dd文字上沿到下一行文字上沿 */
+    line-height: 20px;
+}
+
+.foot_link a{
+    font-size: 13px;
+    color: #cfcfcf;
+}
+
+/* 拉开最后一个dl中的dd的间距 */
+.font_link .space{
+    padding-top: 20px;
+}
+
+.font_link .pos{
+    position: relative;
+    left: -20px;
+}
+
+/* 改变黄色文字部分 */
+.foot_link span{
+    color: #ffcc00;
+}

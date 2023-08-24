@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        /*
+        *       将日期定义为奥运会开幕式的日期，
+        *       2008年8月8日，周五 开幕
+        *
+        *       网页页面输出：
+        *           2008年8月8日 周五
+        *
+        * */
+        var date = new Date("2008/8/8");
+        var year = date.getFullYear(); // 2008
+        var month = date.getMonth()+1; //0-11
+        var _date = date.getDate(); //8
+        var day = date.getDay();//0-6
+        var arr = ['周日','周一','周二','周三','周四','周五','周六'];
+        document.write(year + "年" + month + "月" + _date + "日 " + arr[day]);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

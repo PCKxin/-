@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                font-family: Arial;
+            }
+            div{
+                width: 100px;
+                height: 100px;
+                background: #ccc;
+                margin: 0 auto;
+            }
+            .a{
+                background: orange;
+            }
+            .b{
+                border: 5px solid pink;
+            }
+            .box1{
+                width: 500px;
+            }
+            .active{
+                background: skyblue;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+        <button>点击切换</button>
+        <script src="../jQuery/jquery-1.12.4.js"></script>
+        <script>
+            window.onload = function(){
+                // 类名的操作
+                var div = document.querySelector('div');
+                // 第一种 直接赋值
+                // 缺点 如果本身含有类名 重新赋值后会覆盖原有类名
+                div.className = 'a b';
+                // 第二种
+                // 通过classList属性中,add方法添加类名
+                div.classList.add('a');
+                div.classList.add('b');
+                // remove()删除类名
+                div.classList.remove('a');
+            }
+            $(document).ready(
+                function(){
+                    // 添加一个类名
+                    $('div:eq(1)').addClass('a');
+                    // 添加多个类名 类名之间用空格隔开
+                    $('div:eq(1)').addClass('b box1');
+                    // 删除类名 如果不传入参数 相当于所有类名全部删除
+                    // $('div:eq(1)').removeClass();
+                    // 传如参数 删除指定类名 如果是多个类名 用空格隔开
+                    $('div:eq(1)').removeClass('a b');
+                    // toggleClass() 切换类名 如果有就删除 没有就添加
+                    $('div:eq(2)').toggleClass('active');
+                    $('button').click(
+                        function(){
+                            $('div:eq(2)').toggleClass('active');
+                        }
+                    )
+                }
+            )
+        </script>
+    </body>
+</html>

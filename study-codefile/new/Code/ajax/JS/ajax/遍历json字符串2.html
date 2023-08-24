@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      var json=[{"id":1,"name":"张三","age":12},{"id":2,"name":"李四","age":13},{"id":3,"name":"王五","age":14}];
+      //遍历json获取其中的对象
+      for(var i=0;i<json.length;i++){
+        //遍历对象获取key值，通过key值获取value值
+        for(var key in json[i]){
+          console.log(key+":"+json[i][key]);
+        }
+        
+      }
+      
+      
+      
+    </script>
+  </body>
+</html>

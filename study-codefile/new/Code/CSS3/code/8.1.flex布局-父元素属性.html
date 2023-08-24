@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .demo_box{
+                width: 100%;
+                height: auto;
+                margin: 0px auto;
+                margin-top: 50px;
+            }
+            .demo_title{
+                width: 100%;
+                height: 50px;
+                line-height: 50px;
+                text-align: center;
+                border-top: 1px solid black;
+                border-bottom: 1px solid black;
+            }
+            .demo_box h3{
+                width: 100%;
+                height: 30px;
+                line-height: 30px;
+                background-color: rgb(255, 173, 187);
+                text-align: center;
+                color: rgb(255, 255, 255);
+            }
+
+            .flexbox{
+                width: 800px;
+                height: 500px;
+                background-color: rgba(169, 169, 169, 0.389);
+                margin: 10px auto;
+                /* 开启弹性布局 父元素中定义display: flex; */
+                display: flex;
+            }
+
+            span{
+                width: 100px;
+                height: 50px;
+                background-color: orange;
+                border: 1px solid gray;
+                margin-right: 5px;
+                margin-bottom: 5px;
+            }
+
+            .parent_demo1{
+                /* 主轴：里面的子元素会按照主轴的方向进行排列 */
+                /* 
+                    主轴的方向 其中包含
+                    
+                    行
+                    row（默认值 水平向右）
+                    row-reverse(水平向左)
+                    
+                    列
+                    column(垂直向下的)
+                    column-reverse(垂直向上)
+                */
+                /* 定义主轴的方向 */
+                flex-direction: row;
+                /* 默认在一行或一列 显示 如果需要换行 */
+                /* 换行 ：按照设定的实际尺寸排列 如果这一行或者这一列 */
+                /* 放不下 会挤到下一行 */
+                
+                flex-wrap: wrap;
+                /* 不换行 （默认值） 在一行或者一列上显示 */
+                /* flex-wrap: nowrap; */
+            }
+            .parent_demo2{
+                /* 第二步 确定主轴的方向（看里面的子元素 是上下排列的 还是左右排列的） */
+                flex-direction: row;
+                /* 第三步 控制子元素在主轴上的排列方式或位置 */
+                /* flex-start 子元素在主轴的起始位置进行排列 */
+                justify-content: flex-start;
+            }
+            .parent_demo3{
+                flex-direction: row;
+                /* flex-end 子元素在主轴结束位置排列 */
+                justify-content: flex-end;
+            }
+            .parent_demo4{
+                flex-direction: row;
+                /* center 子元素在主轴居中的位置 */
+                justify-content: center;
+            }
+            .parent_demo5{
+                flex-direction: row;
+                /* space-between */
+                /* 先将第一个子元素放到主轴的flex-start位置 */
+                /* 再将最后一个子元素放到主轴的flex-end位置 */
+                /* 剩下的子元素平分剩余空间 ( 它们的左右(row) 或者 上下(column) margin是相等的) */
+                justify-content: space-between;
+                height: 300px;
+            }
+            .parent_demo6{
+                flex-direction: row;
+                /* space-around */
+                /* 就是平分剩余空间 所有子元素margin值是相等的 */
+                justify-content: space-around;
+                height: 300px;
+            }
+
+            .parent_demo7{
+                /* 交叉轴的对齐方式 */
+                /* align-items */
+                /* 第一个属性值  flex-start 交叉轴起始位置 */
+                align-items: flex-start;
+                flex-direction: row;
+                justify-content: flex-start;
+            }
+            .parent_demo8{
+                /* 第二个属性值  flex-end 交叉轴结束位置 */
+                align-items: flex-end;
+                flex-direction: row;
+                justify-content: flex-start;
+            }
+            .parent_demo9{
+                /* 第二个属性值  center 交叉轴居中的位置 */
+                align-items: center;
+                flex-direction: row;
+                justify-content: flex-start;
+            }
+            .parent_demo10{
+                /* 练习-将子元素放到父元素中水平垂直居中的位置 */
+                align-items: center;
+                justify-content: center;
+            }
+
+            .parent_demo11 span{
+                width: 150px;
+                height: 50px;
+            }
+            .parent_demo11{
+                /* 交叉轴（单行）对齐方式align-items */
+                /* 交叉轴（多行）对齐方式align-content */
+                /* 怎么区分单行或者多行(如何让align-content生效？) */
+                /* 1.flex-wrap:wrap */
+                /* 2.父元素的高度为固定值（不能设置height:auto） */
+                /* flex-start 将子元素放到交叉轴的起始位置 */
+                align-content: flex-start;
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .parent_demo12 span{
+                width: 150px;
+                height: 50px;
+            }
+            .parent_demo12{
+                /* flex-end 将子元素放到交叉轴的结束位置 */
+                align-content: flex-end;
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .parent_demo13 span{
+                width: 150px;
+                height: 50px;
+            }
+            .parent_demo13{
+                /* center 将子元素放到交叉轴的居中位置 */
+                align-content: center;
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .parent_demo14 span{
+                width: 200px;
+                height: 50px;
+            }
+            .parent_demo14{
+                /* space-between 属性是将第一个子元素放到交叉轴的起始位置 */
+                align-content: space-between;
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .parent_demo15 span{
+                width: 200px;
+                height: 50px;
+            }
+            .parent_demo15{
+                /* space-around 就是平分剩余空间 所有子元素margin值是相等的 */
+                align-content: space-around;
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .parent_demo16 span{
+                width: 200px;
+                height: auto;
+            }
+            .parent_demo16{
+                /* stretch 将子元素的高度拉伸到和父元素一样高 */
+                align-content: stretch;
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="demo_box">
+            <h2 class="demo_title">开启弹性布局，是否换行，主轴的方向，对齐方式</h2>
+            
+            <h3>弹性布局原理：在父级中定义属性，来控制子元素(孙子级别不受影响)的位置和排列方式</h3>
+            <div class="flexbox parent_demo1">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <h3>主轴的对齐方式属性: justify-content:</h3>
+            <h3>1.  justify-content:flex-start</h3>
+            <h3>flex-start子元素在主轴的起始位置进行排列</h3>
+            <div class="flexbox parent_demo2">
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+            </div>
+
+            <h3>flex-end子元素在主轴结束位置排列</h3>
+            <div class="flexbox parent_demo3">
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+            </div>
+
+
+            <h3>center子元素在主轴居中的位置</h3>
+            <div class="flexbox parent_demo4">
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+            </div>
+
+            <h3>space-between</h3>
+            <h3>先将第一个子元素放到主轴的flex-start位置</h3>
+            <h3>再将最后一个子元素放到主轴的flex-end位置</h3>
+            <h3>剩下的子元素平分剩余空间 ( 它们的左右(row) 或者 上下(column) margin是相等的)</h3>
+            <div class="flexbox parent_demo5">
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+            </div>
+
+            <h3>space-around</h3>
+            <h3>就是平分剩余空间 所有子元素margin值是相等的</h3>
+            <div class="flexbox parent_demo6">
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+            </div>
+
+        </div>
+        <div class="demo_box">
+            <h2 class="demo_title">交叉轴的对齐方式</h2>
+            
+            <h3>当主轴定义好了方向之后，交叉轴永远垂直于主轴</h3>
+            <h3>交叉轴的对齐方式align-items</h3>
+            <h3>第一个属性值  flex-start 交叉轴起始位置 </h3>
+            <div class="flexbox parent_demo7">
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+            </div>
+            <h3>第二个属性值  flex-end 交叉轴结束位置 </h3>
+            <div class="flexbox parent_demo8">
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+            </div>
+            <h3>第二个属性值  center 交叉轴居中的位置 </h3>
+            <div class="flexbox parent_demo9">
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+            </div>
+            <h3>练习-将子元素放到父元素中水平垂直居中的位置</h3>
+            <div class="flexbox parent_demo10">
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+            </div>
+        </div>
+        <div class="demo_box">
+            <h2 class="demo_title">交叉轴多行对齐方式</h2>
+
+            <h3>交叉轴（单行）对齐方式align-items</h3>
+            <h3>交叉轴（多行）对齐方式align-content</h3>
+            <h3>怎么区分单行或者多行(如何让align-content生效?)
+                1.flex-wrap:wrap  
+                2.父元素的高度为固定值（不能设置height:auto）
+            </h3>
+            <h3>align-content: flex-start</h3>
+            <div class="flexbox parent_demo11">
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+                <span>5</span>
+                <span>6</span>
+                <span>7</span>
+            </div>
+            
+            <h3>align-content: flex-end</h3>
+            <div class="flexbox parent_demo12">
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+                <span>5</span>
+                <span>6</span>
+                <span>7</span>
+            </div>
+            
+            <h3>align-content: center</h3>
+            <div class="flexbox parent_demo13">
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+                <span>5</span>
+                <span>6</span>
+                <span>7</span>
+            </div>
+            
+            <h3>align-content: space-between</h3>
+            <div class="flexbox parent_demo14">
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+                <span>5</span>
+                <span>6</span>
+                <span>7</span>
+            </div>
+            
+            <h3>align-content: space-around</h3>
+            <div class="flexbox parent_demo15">
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+                <span>5</span>
+                <span>6</span>
+                <span>7</span>
+            </div>
+            
+            <h3>align-content:stretch</h3>
+            <h3>想让这个stretch生效 需要将span中height值设置为auto</h3>
+            <div class="flexbox parent_demo16">
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+                <span>5</span>
+                <span>6</span>
+                <span>7</span>
+            </div>
+        </div>
+    </body>
+</html>

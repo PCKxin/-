@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            .time_area{
+                box-sizing: border-box;
+                width: 1280px;
+                height: 440px;
+                margin: 0 auto;
+                background: rgba(128, 128, 128, 0.3);
+                padding: 20px 40px;
+            }
+            .area_title h2{
+                width: 150px;
+                height: 40px;
+                font-size: 28px;
+                line-height: 40px;
+                letter-spacing: 3px; /* 字体间距 */
+                float: left;
+            }
+            .area_title p{
+                width: 350px;
+                height: 40px;
+                line-height: 40px;
+                float: left;
+                font-size: 18px;
+                color: black;
+            }
+            .area_title p span{
+                font-size: 22px;
+                color: black;
+                font-weight: bold;
+                line-height: 40px;
+            }
+            .area_title .time_out{
+                display: inline-block;
+                width: 40px;
+                /* height: 40px; */
+                text-align: center;
+                
+            }
+            .area_title a{
+                width: 90px;
+                height: 40px;
+                line-height: 40px;
+                float: right;
+                font-size: 14px;
+                color: gray;
+                text-decoration: none;
+            }
+            .area_title a .more_icon{
+                font-size: 14px;
+                width: 20px;
+                height: 20px;
+                line-height: 20px;
+                text-align: center;
+                display: inline-block;
+                background: white;
+                border-radius: 50%;
+                margin-left: 5px;
+            }
+
+            /* 列表内容区 */
+            .time_area ul{
+                width: 100%;
+                height: 340px;
+                /* background: rgba(255, 192, 203, 0.568); */
+                margin-top: 60px;
+            }
+            .time_area ul li{
+                width: 280px;
+                height: 340px;
+                float: left;
+                margin-right: 26.6px;
+                background: white;
+                border-radius: 15px;
+                text-align: center;
+            }
+            .time_area ul li:nth-child(4){
+                margin-right: 0;
+            }
+            .time_area ul li .list_img{
+                width: 80%;
+                height: 175px;
+                margin-top: 25px;
+            }
+            .time_area ul li .list_title{
+                width: 100%;
+                height: 30px;
+                line-height: 30px;
+                font-size: 16px;
+                color: black;
+                font-weight: bold;
+            }
+            .time_area ul li .list_title_second{
+                width: 100%;
+                height: 25px;
+                line-height: 25px;
+                font-size: 14px;
+                color: gray;
+            }
+            .time_area ul li .price{
+                width: 100%;
+                height: 40px;
+                line-height: 40px;
+                font-size: 16px;
+                color: black;
+                margin-top: 20px;
+                font-weight: bold;
+            }
+            .time_area ul li .price .price_now{
+                color: rgba(0, 64, 255, 0.659);
+                margin-right: 20px;
+            }
+            .time_area ul li .price .price_old{
+                text-decoration: line-through;
+                color: gray;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="time_area">
+            <div class="area_title">
+                <h2>秒杀专区</h2>
+                <p>
+                    距离秒杀结束还剩
+                    <span class="time_out">00</span>
+                    <span>:</span>
+                    <span class="time_out">00</span>
+                    <span>:</span>
+                    <span class="time_out">00</span>
+                </p>
+                <a href="#">了解更多 <span class="more_icon">></span></a>
+            </div>
+
+            <ul>
+                <li>
+                    <img src="" class="list_img">
+                    <p class="list_title">test_tit</p>
+                    <p class="list_title_second">test_tit_s</p>
+                    <p class="price">
+                        <span class="price_now">￥0000</span>
+                        <span class="price_old">￥1234</span>
+                    </p>
+                </li>
+                <li>
+                    <img src="" class="list_img">
+                    <p class="list_title">test_tit</p>
+                    <p class="list_title_second">test_tit_s</p>
+                    <p class="price">
+                        <span class="price_now">￥0000</span>
+                        <span class="price_old">￥1234</span>
+                    </p>
+                </li>
+                <li>
+                    <img src="" class="list_img">
+                    <p class="list_title">test_tit</p>
+                    <p class="list_title_second">test_tit_s</p>
+                    <p class="price">
+                        <span class="price_now">￥0000</span>
+                        <span class="price_old">￥1234</span>
+                    </p>
+                </li>
+                <li>
+                    <img src="" class="list_img">
+                    <p class="list_title">test_tit</p>
+                    <p class="list_title_second">test_tit_s</p>
+                    <p class="price">
+                        <span class="price_now">￥0000</span>
+                        <span class="price_old">￥1234</span>
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </body>
+    <script>
+        var countDown_time = document.getElementsByClassName("time_out");
+        var listTit = document.getElementsByClassName("list_title");
+        var listTitSecond = document.getElementsByClassName("list_title_second");
+        var priceNow = document.getElementsByClassName("price_now");
+        var priceOld = document.getElementsByClassName("price_old");
+        var list_data = [
+            {"title":"Galaxy S22湖屿蓝8GB+128GB", "content":"限时立省1100元", "now":"￥ 3899", "old":"￥ 4999"},
+            {"title":"65英寸级QLED电视Q80B", "content":"至高12期O利率", "now":"￥ 6999", "old":"￥ 10999"},
+            {"title":"Galaxy Watch5 Pro蓝牙版45mm", "content":"限时立省400元", "now":"￥ 2699", "old":"￥ 3099"},
+            {"title":"85英寸级crystal UHD电视AU8800", "content":"至高可省10000元", "now":"￥ 6499", "old":"￥ 16499"}
+        ]
+        function countDown(){
+            var now_time = new Date();
+            var end_time = new Date('2023/5/1 0:0:0');
+            var time = end_time - now_time;
+            // var day = parseInt(time / 86400000);
+            var hour = parseInt(time / 3600000);
+            var minute = parseInt(time % 3600000 / 60000);
+            var second = parseInt(time % 3600000 % 60000 / 1000);
+            return [hour, minute, second]
+        }
+        setInterval(
+            function(){
+                countDown_time[0].innerHTML = countDown()[0];
+                countDown_time[1].innerHTML = countDown()[1];
+                countDown_time[2].innerHTML = countDown()[2];
+            }, 1000
+        );
+        for(var i = 0; i < list_data.length; i++){
+            listTit[i].innerHTML = list_data[i].title;
+            listTitSecond[i].innerHTML = list_data[i].content;
+            priceNow[i].innerHTML = list_data[i].now;
+            priceOld[i].innerHTML = list_data[i].old;
+        }
+    </script>
+</html>

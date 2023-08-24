@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+    <html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script>
+            // //1.读取学生的十门课的成绩，然后输出10门课成绩的最高分，最低分，总分，平均分
+            // var arr = [];
+            //     for (var i = 0; i < 10; i++) {
+            //         var score = prompt("test score") * 1;
+            //         arr.push(score);
+            //     }
+            //     arr.sort(
+            //         function (a, b) {
+            //             return a - b;
+            //         }
+            //     )
+            //     //最高分
+            //     var max = arr[arr.length - 1]
+            //     //最低分
+            //     var min = arr[0]
+            //     //总分
+            //     var sum = 0;
+            //     for (var i = 0; i < arr.length; i++) {
+            //         sum += arr[i];
+            //     }
+            //     //平均分
+            //     var avg = sum / arr.length;
+            //     console.log("最高分：" + max);
+            //     console.log("最低分：" + min);
+            //     console.log("总分：" + sum);
+            //     console.log("平均分：" + avg);
+
+
+
+            // //2.把数组中下标为3的元素移到数组的开头
+            // var arr2 = [1,2,3,4,5];
+            // var temp = arr2[3];    
+            //     for(var i = 3; i > 0; i--){ //从下标为3的元素开始，循环到下标为1的元素
+            //         arr2[i] = arr2[i - 1];  //arr2[3] = arr2[2]，arr2[2] = arr2[1]，arr2[1] = arr2[0]
+            //     }
+            //     arr2[0] = temp;
+            //     console.log(arr2);
+
+
+
+            // //3.有一个大到小排列的数组，输入一个数，按照原来规律插进去
+            // var arr3 = [99,85,82,63,60];
+            // var num_3 = prompt("number") * 1;
+            //     arr3.push(num_3);
+            //     arr3.sort(
+            //         function(a,b){
+            //             return b - a;
+            //         }
+            //     )
+            //     console.log(arr3);
+
+
+
+            // //4.一个数组中有20个元素，对前十个元素使用升序排序，后十个元素使用降序排序
+            // var arr4 = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
+            // //前十升序
+            // var arr4_1 = [];
+            //     for(var i = 0; i < 10; i++){
+            //         arr4_1.push(arr4[i]);
+            //     }
+            //     arr4_1.sort(
+            //         function(a,b){
+            //             return a - b; 
+            //         }
+            //     )
+            // //后十降序
+            // var arr4_2 = [];
+            //     for(var i = 10; i < 20; i++){
+            //         arr4_2.push(arr4[i]);
+            //     }
+            //     arr4_2.sort(
+            //         function(a,b){
+            //             return b - a;
+            //         }
+            //     )
+            // //合并
+            // var arr4 = arr4_1.concat(arr4_2);
+            //     console.log(arr4);
+
+
+
+            // //5.数组中数字类型求和
+            // var arr5 = [1,2,3,4,5,6,7,8,9,10,"yuki",15];
+            // var sum_5 = 0;
+            //     for(var i = 0; i < arr5.length; i++){
+            //         // sum += arr5[i]
+            //         if(typeof arr5[i] == "number"){
+            //             sum_5 += arr5[i];
+            //         }
+            //     }
+            //     console.log(sum);
+
+
+
+            // //6.将数组中的0去掉，将不为0的值存入新数组
+            // var arr6 = [4, 0, 7, 9, 0, 0, 2, 6, 0, 3, 1, 0];
+            // var arr6_new = [];
+            //     for(var i = 0; i < arr6.length; i++){
+            //         if(arr6[i] != 0){
+            //             arr6_new.push(arr6[i]);
+            //         }
+            //     }
+            //     console.log(arr6_new);
+
+
+
+            //7.随机选取10~100之间10个数字，存入一个数组，冒泡排序
+            var arr7 = [];
+            for (var i = 0; i < 10; i++){
+                var num_7 = Math.floor(Math.random(100 - 10) * 100 + 10)
+                arr7.push(num_7);
+            }
+            // console.log(arr7)
+            for (var a = 0; a < arr7.length - 1; a++){
+                for ( var b = 0; b < arr7.length - 1 - a; b++){
+                    if(arr7[b] > arr7[b + 1]){
+                        var temp = arr7[b];
+                        arr7[b] = arr7[b + 1];
+                        arr7[b + 1] = temp;
+                    }
+                }
+            }
+            console.log(arr7)
+
+
+            // //8.输入10个数字，存入数组，当长度大于10时，提示无法继续输入
+            // var arr8 = [];
+            //     while(true){
+            //         var num_8 = prompt("number") * 1;
+            //         arr8.push(num_8);
+            //         if(arr8.length > 10){
+            //             arr8.pop();
+            //             alert("length out of range !");
+            //             console.log(arr8);
+            //             break;
+            //         }
+            //     }
+
+
+
+            //9.6人打分，去掉最高分和最低分，求平均分按百分制计算
+            var arr9 = [];
+                for(var i = 0; i < 6; i++){
+                    var score_9 = prompt("your score") * 1;
+                    arr9.push(score_9);
+                }
+                arr9.sort(
+                    function(a,b){
+                        return a-b;
+                    }
+                )
+                arr9.shift();
+                arr9.pop();
+                var sum_9 = 0;
+                for(var i = 0; i < arr9.length; i++){
+                    sum_9 += arr9[i];
+                }
+                var avg_9 = sum_9 / arr9.length;
+                console.log(avg_9);
+
+
+
+
+
+
+
+
+
+
+
+
+            /***
+            *                    _ooOoo_
+            *                   o8888888o
+            *                   88" . "88
+            *                   (| -_- |)
+            *                    O\ = /O
+            *                ____/`---'\____
+            *              .   ' \\| |// `.
+            *               / \\||| : |||// \
+            *             / _||||| -:- |||||- \
+            *               | | \\\ - /// | |
+            *             | \_| ''\---/'' | |
+            *              \ .-\__ `-` ___/-. /
+            *           ___`. .' /--.--\ `. . __
+            *        ."" '< `.___\_<|>_/___.' >'"".
+            *       | | : `- \`.;`\ _ /`;.`/ - ` : | |
+            *         \ \ `-. \_ __\ /__ _/ .-` / /
+            * ======`-.____`-.___\_____/___.-`____.-'======
+            *                    `=---='
+            *
+            * .............................................
+            *          佛祖保佑             永无BUG
+            */
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        //注意：字面量创建字符串也能使用构造函数创建字符串的方法和属性
+        var str = "Hello, world!";
+            //     0123456789
+            //               10
+            //                11
+            //                 12
+        var str1 = "        "; //空格也算字符 
+        
+        //获取字符串的长度，字符串名.length 获取
+        console.log(str.length);//13
+        console.log(str1.length);//8
+
+        //数组中，length属性能修改
+
+        // 字符串中的length属性能被修改吗????
+        var str2 = "abcdefghi";
+        console.log(str2.length); // 9
+        str2.length = 20;//❌字符串中，length不能被修改
+        console.log(str2.length); //9
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

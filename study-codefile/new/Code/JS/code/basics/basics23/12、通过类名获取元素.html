@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>通过类名获取元素</title>
+</head>
+<body>
+    <div class="box">div1</div>
+<!--    <div class="box">div2</div>-->
+
+    <script type="text/javascript">
+        /*
+        *   通过class类获取元素
+        *   get获取
+        *   Elements多个元素
+        *   By是通过
+        *   ClassName类名
+        * */
+        var box = document.getElementsByClassName("box");
+        console.log(box);//类数组集合（类似数组的集合）
+        //注意：哪怕当前类名只有一个元素，也是一个集合
+
+        console.log(typeof box);//object，说明不是数组
+
+        console.log(box[0]);
+
+        //可以通过遍历对每一个元素进行操作
+        for(var i = 0; i < box.length; i++) {
+            console.log(box[i]);
+        }
+    </script>
+</body>
+</html>

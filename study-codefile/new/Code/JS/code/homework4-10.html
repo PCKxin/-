@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+            margin: 0;
+            padding: 0;
+        }
+        .clearFloat:after{
+            content: "";
+            height: 0;
+            line-height: 0;
+            clear: both;
+            display: block;
+            visibility: hidden;
+        }
+        .clearFloat{
+            zoom: 1;
+        }
+        .box{
+            width: 2562px;
+            height: 1412px;
+            background-color: rgb(252, 236, 236);
+            margin: 0 auto;
+            border: 1px solid rgba(0,0,0,0);
+        }
+        #title{
+            font-size: 46px;
+            color: rgb(50, 50, 50);
+            margin-top: 34px;
+            margin-right: 26px;
+            margin-left: 36px;
+            float: left;
+        }
+        #image{
+            float: left;
+            margin-top: 44px;
+            margin-right: 30px;
+        }
+        #second_title{
+            font-size: 24px;
+            color: rgb(194, 194, 194);
+            margin-top: 52px;
+        }
+        .box ul{
+            width: 2528px;
+            height: 1230px;
+            background-color: rgb(250, 248, 255);
+            float: left;
+            margin-left: 30px;
+            margin-top: 50px;
+        }
+        ul li{
+            float: left;
+            width: 460px;
+            height: 600px;
+            background-color: rgb(255, 255, 255);
+            list-style: none;
+            margin-right: 30px;
+            margin-bottom: 30px;
+        }
+        ul img{
+            float: left;
+            width: 210px;
+            height: 300px;
+            margin-top: 67px;
+            margin-left: 128px;
+        }
+        .name{
+            float: left;
+            font-size: 24px;
+            color: rgb(127, 127, 127);
+            margin-left: 50px;
+            margin-top: 54px;
+            margin-bottom: 20px;
+            width: 350px;
+        }
+        .write{
+            float: left;
+            margin-left: 50px;
+            font-size: 22px;
+            color: rgb(97, 97, 97);
+            margin-bottom: 44px;
+            width: 3640px;
+        }
+        .price{
+            float: left;
+            font-size: 22px;
+            color: rgb(255, 55, 55);
+            font-weight: bold;
+            margin-left: 50px;
+        }
+        .money{
+            float: right;
+            font-size: 18px;
+            margin-right: 90px;
+            text-decoration: line-through;
+            color: rgb(143, 143, 143);
+        }
+        img:hover{
+            opacity: 0.5;
+        }
+    </style>
+    </head>
+    <body>
+        <div class="box">
+            <h2 id="title">文轩聚焦</h2>
+            <img src="img/111.png" alt="" id="image">
+            <p id="second_title">倾情推荐时下最热门图书</p>
+            <ul>
+                <li class="content"></li>
+                <li class="content"></li>
+                <li class="content"></li>
+                <li class="content"></li>
+                <li class="content"></li>
+                <li class="content"></li>
+                <li class="content"></li>
+                <li class="content"></li>
+                <li class="content"></li>
+            </ul>
+        </div>
+        <script>
+            var data = [
+                { 
+                    "src": "img/0.png", 
+                    "name": "朝鲜战争(上下)/王树增战...", 
+                    "write": "王树增 著", 
+                    "price": "￥76.8", 
+                    "money": "￥96.00" 
+                },
+                { 
+                    "src": "img/1.png", 
+                    "name": "中华人民共和国民法典附...", 
+                    "write": "法律出版社 编", 
+                    "price": "￥9.9", 
+                    "money": "20.00" 
+                },
+                { 
+                    "src": "img/3.png", 
+                    "name": "雪国之劫", 
+                    "write": "(旧)东野圭吾 著 郑悦 译", 
+                    "price": "￥28.4", 
+                    "money": "￥45.00" 
+                },
+                { 
+                    "src": "img/4.png", 
+                    "name": "还是钟南山", "write": "魏东海 著", "price": "￥37.4", "money": "￥40" },
+                { 
+                    "src": "img/5.png", 
+                    "name": "你当像鸟飞往你的山", 
+                    "write": " (美)塔拉:韦斯特弗(Tara Westov..", 
+                    "price": "￥37.2", "money": "￥59.00" 
+                },
+                { 
+                    "src": "img/6.png", 
+                    "name": "生鲜电商的新零售之路", 
+                    "write": "舒雍 著", "price": "￥53.8", 
+                    "money": "￥69.00" 
+                },
+                { 
+                    "src": "img/7.png", 
+                    "name": "新太空竞赛埃隆:马斯克，杰..", 
+                    "write": "(美)蒂姆:费恩霍尔茨(Tim FEern...", 
+                    "price": "￥31.3", "money": "￥59.00" 
+                },
+                { 
+                    "src": "img/8.png", 
+                    "name": "护士的故事", 
+                    "write": "(英)克里斯蒂沃森(Christie Wat..", 
+                    "price": "￥28.6", "money": "￥56.00" 
+                },
+                { 
+                    "src": "img/9.png", 
+                    "name": "剧变人类社会与国家危机...", 
+                    "write": "(美)贾雷德:戴荥德(Jared Diam...", 
+                    "price": "￥76.4", "money": "￥90" 
+                }
+            ];
+            var content_box = document.getElementsByClassName("content");
+            for(var i = 0;i < data.length;i++){
+                content_box[i].innerHTML = "<img src = '"+ data[i].src +"'>"
+                                        + "<p class='name'>"+ data[i].name +"</p>"
+                                        + "<p class='write'>"+ data[i].write +"</p>"
+                                        + "<p class='price'>"+ data[i].price +"</p>"
+                                        + "<p class='money'>"+ data[i].money +"</p>"
+            }
+		</script>
+    </body>
+</html>

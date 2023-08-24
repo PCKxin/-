@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/* 
+			 本金10000元存入银行，
+			 年利率是千分之三，
+			 每过1年，将本金和利息相加作为新的本金。
+			 计算5年后，获得的本金是多少？
+			 */
+			var y = 0;
+			var money = 10000;
+			while (y < 5) {
+				// money = money + money * 0.003;
+				money += money * 0.003;
+				y++;
+			}
+			// toFixed(n)保留几位小数，需要几，n就是几
+			console.log("5年后存款有" + money.toFixed(2) + "元");
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

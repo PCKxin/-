@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            button{
+                width:150px;
+                height:40px;
+                background:deepskyblue;
+                border-radius:8px;
+                color:white;
+                border:none;
+            }
+            div{
+                width:300px;
+                height:300px;
+                border:2px solid black;
+                margin:100px auto;
+            }
+        </style>
+    </head>
+    <body>
+        <button>点击获取</button>
+        <div></div>
+        <script src="../jQuery/jquery-1.12.4.js"></script>
+        <script>
+            $(
+                function(){
+                    $('button').on(
+                        'click',
+                        function(){
+                            $.get(
+                                'http://192.168.35.252:8390/JqGetAjax', 
+                                {index:5},
+                                function(data){
+                                    console.log(typeof data)
+                                    // console.log(data[4])
+                                    $('div').css({background:data.color}) // data对应的索引值不是里面的id数字，是顺序的索引值
+                                },
+                                'json'
+                                // text 一般情况下会返回的是字符串格式
+                                // json 不一定  看后台的返回的类型
+                            )
+                        }
+                    )
+                }
+            )
+        </script>
+    </body>
+</html>

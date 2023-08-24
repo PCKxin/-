@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{margin: 0;padding: 0;list-style: none;}
+            .recommend_right{
+                margin: 0 auto;
+                width: 428px;
+                height: 680px;
+                background-image: url('https://dimg04.c-ctrip.com/images/0zg38120009h0ysgm6F22.jpg');
+                background-repeat: no-repeat;
+                background-position: center;
+                /* background-size: contain;  填充 与 100%同效 */
+                background-size: 100%;
+                border-radius: 10px;
+                position: relative;
+                top: 30px;
+            }
+            .re_option{
+                /* box-sizing: border-box; */
+                width: 428px;
+                height: 340px;
+                border-radius: 10px;
+                /* border: 1px solid gray; */
+                position: absolute;
+            }
+            .title_weather{
+                position: absolute;
+                left: 20px;
+                top: 25px;
+                width: 214px;
+                height: 50px;
+                margin: 0;
+            }
+            .re_title{
+                color: white;
+                font-size: 16px;
+            }
+            .re_weather{
+                color: white;
+                margin-top: 5px;
+                font-size: 14px;
+
+            }
+            .option_list{
+                position: absolute;
+                top: 25px;
+                right: 0px;
+                width: 190px;
+            }
+            .option_list img{
+                width: 44px;
+                height: 44px;
+                border-radius: 4px;
+                float: left;
+                margin-top: 4px;
+                margin-left: 4px;
+            }
+            .op_li1{
+                width: 180px;
+                height: 52px;
+                background-color: rgba(196, 196, 196, 0.629);
+                border-radius: 10px;
+                margin-bottom: 15px;
+                animation: slide-in 0.8s ease-in-out;
+            }
+            .op_li2{
+                width: 180px;
+                height: 52px;
+                background-color: rgba(196, 196, 196, 0.629);
+                border-radius: 10px;
+                margin-bottom: 15px;
+                animation: slide-in 1s ease-in-out;
+            }
+            .op_li3{
+                width: 180px;
+                height: 52px;
+                background-color: rgba(196, 196, 196, 0.629);
+                border-radius: 10px;
+                margin-bottom: 15px;
+                animation: slide-in 1.2s ease-in-out;
+            }
+            .op_li_tit{
+                width: 120px;
+                /* height: 18px; */
+                padding-top: 5px;
+                padding-left: 10px;
+                color: white;
+                font-size: 14px;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+            .op_li_price{
+                width: 120px;
+                padding-left: 10px;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+            .sign{
+                font-size: 13px;
+                color: white;
+            }
+            .XX_price{
+                font-size: 14px;
+                color: white;
+                font-weight: bold;
+            }
+
+
+            /* css动画 */
+            @keyframes slide-in{
+                0% {
+                    opacity: 0;
+                    transform: translateX(100%);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translateX(0%);
+                }
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <div class="recommend_right">
+            <div class="re_option">
+
+                <div class="title_weather">
+                    <p class="re_title">杭州酒店口碑榜</p>
+                    <p class="re_weather">5℃~10℃</p>
+                </div>
+
+                <div class="option_list">
+                    <div class="op_li1">
+                        <img src="https://dimg04.c-ctrip.com/images/0222u1200084amtc397B3_D_200_200.jpg">
+                        <p class="op_li_tit">杭州康莱德酒店</p>
+                        <p class="op_li_price">
+                            <span class="sign">￥</span>
+                            <span class="XX_price">1537.0</span>
+                            <span class="sign">起</span>
+                        </p>
+                    </div>
+                    <div class="op_li2">
+                        <img src="https://dimg04.c-ctrip.com/images/200415000000y1q4r6330_D_200_200.jpg">
+                        <p class="op_li_tit">杭州君悦酒店</p>
+                        <p class="op_li_price">
+                            <span class="sign">￥</span>
+                            <span class="XX_price">1660.0</span>
+                            <span class="sign">起</span>
+                        </p>
+                    </div>
+                    <div class="op_li3">
+                        <img src="https://dimg04.c-ctrip.com/images/0202d120009gukbvt798A_D_200_200.jpg">
+                        <p class="op_li_tit">杭州绿城尊蓝钱江豪华精选酒店</p>
+                        <p class="op_li_price">
+                            <span class="sign">￥</span>
+                            <span class="XX_price">1482.0</span>
+                            <span class="sign">起</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+
+<!--
+    <img src="https://dimg04.c-ctrip.com/images/0zg38120009h0ysgm6F22.jpg">
+    
+    
+-->

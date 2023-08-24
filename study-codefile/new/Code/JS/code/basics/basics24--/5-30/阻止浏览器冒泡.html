@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- <style type="text/css">
+      div{
+        box-shadow: ;
+      }
+    </style> -->
+  </head>
+  <body>
+    <button id="a1">按钮</button>
+    <script type="text/javascript">
+      var button=document.getElementById("a1");
+      button.onclick=function(e){
+        var event=e||window.event;
+        //阻止浏览器冒泡
+        //标准浏览器                 ie浏览器
+        (event.stopPropagation)||(event.cancleBubble=true);
+        alert('123');
+      }
+    </script>
+  </body>
+</html>
+

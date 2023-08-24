@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <span>1</span>
+            <span>2
+                <span>3</span>
+            </span>
+        </div>
+        -------------------------------------------
+        <div class="box2">
+            <p>我是第一段内容</p>
+            <div>我是div</div>
+            <p>我是第二段内容</p>
+            <p>我是第三段内容</p>
+            <ul></ul>
+            <div>我是div</div>
+        </div>
+        -------------------------------------------
+        <div class="box3">
+            <li>0</li>
+            <p>我是p标签</p>
+            <div></div>
+            <ul></ul>
+            <div>1</div>
+            <li>2</li>
+            <div>
+                <li>3</li>
+            </div>
+            <li>4</li>
+        </div>
+        ----------------------复习 inline-block 行内块--------------------------<br>
+        1.inline-block会导致元素之间有空隙，怎么解决？<br>
+        两种:   1.元素与元素之间不留空格，紧挨着写<br>
+                2.父元素设置font-size:0<br>
+                3.也可以使用多行注释<br>
+        <div>
+            <div class="box4">123</div>
+            <div class="box4">456</div>
+        </div>
+        <script src="../jQuery/jquery-1.12.4.js"></script>
+        <script>
+            $().ready(
+                function(){
+                    $('*').css({margin:0,padding:0});
+                    //返回一个集合（一个或多个）
+                    console.log($('.box span')); //拿到所有后代元素
+                    console.log($('.box > span')); //拿到所有子元素,只能拿到一级子元素
+                    //相邻选择器： 选择到 .box2 下的所有p标签后面紧挨着的div元素
+                    // （注意这个div只能再p标签后面，前面得话匹配不到）
+                    $('.box2 p + div').css('background','red');
+                    $('.box3 p ~ li').css('background','orange');
+                    //只能找到p标签之后得所有li（同级别，在p标签之后）
+                }
+            );
+        </script>
+    </body>
+</html>

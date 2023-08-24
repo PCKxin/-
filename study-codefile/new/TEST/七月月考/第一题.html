@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="PanJiaBao" content="width=device-width, initial-scale=1.0">
+        <title>第一题</title>
+        <style>
+        *{margin: 0;padding: 0;}
+        img {
+            border: none;
+            display: block;
+            position: relative;
+        }
+        .clearFloat:after {
+            display: block;
+            content: "";
+            clear: both;
+            height: 0;
+            line-height: 0;
+            visibility: hidden;
+        }
+        .clearFloat {
+            zoom: 1;
+        }
+        .box{
+            width: 790px;
+            height: 361px;
+            margin: 100px auto;
+        }
+        .box div{
+            float: left;
+            width: 158px;
+            height: 361px;
+            overflow: hidden;
+        }
+        p{
+            cursor: pointer;
+            background: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="box clearFloat">
+        <div>
+            <p><img src="./img/01.jpg" alt=""></p>
+            <p><img src="./img/02.jpg" alt=""></p>
+        </div>
+        <div>
+            <p><img src="./img/03.jpg" alt=""></p>
+        </div>
+        <div>
+            <p><img src="./img/04.jpg" alt=""></p>
+            <p><img src="./img/05.jpg" alt=""></p>
+        </div>
+        <div>
+            <p><img src="./img/06.jpg" alt=""></p>
+        </div>
+        <div>
+            <p><img src="./img/07.jpg" alt=""></p>
+            <p><img src="./img/08.jpg" alt=""></p>
+        </div>
+    </div>
+
+    <script src="./jq/jquery.js"></script>
+    <script>
+        $(document).ready(
+            function () {
+            
+                $('.box div p img').mouseover(
+                    function (){
+                        $(this).animate(
+                                {left:-15},
+                                300, 
+                                'linear'
+                            )
+                            .parents('.box')
+                            .find('img')
+                            .css({opacity:'0.5'})
+                            .end()
+                            .end()
+                            .css({opacity:'1'})
+                    }
+                )
+
+                $('.box div p img').mouseout(
+                    function (){
+                        $(this).animate(
+                                {left:0},
+                                300,
+                                'linear'
+                            )
+                            .parents('.box')
+                            .find('img')
+                            .css({opacity:'1'})
+                    }
+                )
+
+            }
+        );
+    </script>
+    </body>
+</html>

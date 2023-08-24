@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取小时、分钟和秒</title>
+    <script type="text/javascript">
+        var date = new Date();
+        //小时
+        var hour = date.getHours();//范围：0 - 23
+        console.log(hour);//8
+        //分钟
+        var min = date.getMinutes();//范围：0 - 59
+        console.log(min);//具体的分钟
+        //秒
+        var sec = date.getSeconds();//范围：0 - 59
+        console.log(sec);
+
+        var hours = date.getHours();
+        if(hours < 10){
+                hours = "0" + hours;
+        }
+        console.log(hours);//08
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>

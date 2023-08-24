@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="button" value="开始" id="start">
+    <span id="num">10</span>
+    <script type="text/javascript">
+        var start = document.getElementById("start");
+        var num = document.getElementById("num");
+        var timer;
+        //n变量是在js里用于改变的变量
+        var n = 10;
+        //函数，执行的内容
+        function fn() {
+            n--;
+            if(n <= 0) {
+                clearInterval(timer);
+            }
+            num.innerHTML = n;
+        }
+        start.onclick = function () {
+            clearInterval(timer);
+            timer = setInterval(fn,1000);
+        }
+    </script>
+</body>
+</html>

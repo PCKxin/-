@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			.clearFloat:after {
+				display: block;
+				content:"";
+				clear:both;
+				height: 0;
+				line-height: 0;
+				visibility: hidden;
+			}
+			.clearFloat {
+				zoom: 1;
+			}
+			#box div {
+				width:200px;
+				height:200px;
+				background:red;
+				float:left;
+				margin-right: 10px;
+			}
+			#box div:hover {
+				/* 
+					opacity是设置元素整体的透明度
+					取之 0 - 1
+					越靠近1 透明度越潜
+					越靠近0 透明度越深
+				 */
+				opacity:0.1;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box" class="clearFloat">
+			<div>这是正常显示的内容</div>
+			<div>这是正常显示的内容</div>
+			<div>这是正常显示的内容</div>
+		</div>
+	</body>
+</html>

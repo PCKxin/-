@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script>
+            var user_money = 100;
+            while(true){
+                var Q = prompt("请选择您的操作:\n1.取款\n⒉存款\n3.查看余额\n4.退出") * 1;
+                if(Q == 1){
+                    var out_money = prompt("账户余额："+user_money+"\n取出金额:") * 1;
+                    if(out_money <= 100){
+                        user_money = user_money - out_money
+                        alert("完成"+"\n当前余额："+user_money)
+                        // break
+                    }else{
+                        alert("余额不足"+"\n当前最大余额为:")
+                    }
+                }
+                else if(Q == 2){
+                    var in_money = prompt("账户余额："+user_money+"\n存入金额:") * 1;
+                    user_money = user_money + in_money
+                    alert("完成"+"\n当前余额："+user_money)
+                        // break
+                }
+                else if(Q == 3){
+                    alert("当前余额："+user_money)
+                    // break
+                }
+                else if(Q == 4){
+                    alert("system off line")
+                    break
+                }
+                else{
+                    alert("error, 请重新输入数字")
+                }
+            }
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

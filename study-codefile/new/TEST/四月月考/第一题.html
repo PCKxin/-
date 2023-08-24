@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>第一题</title>
+    </head>
+    <body>
+        
+    </body>
+    <script>
+        //自定义一个随机颜色函数
+        //接收bool类型的参数，true表示随机十六进制颜色，false表示随机rgb颜色, 无参数时输出随机十六进制颜色
+        function get_random_color(flag){
+            if(flag == undefined){
+                var color = "#";
+                var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, "a" ,"b", "c", "d", "e", "f"];
+                for(var i = 0; i < 6; i++){
+                    color += arr[Math.floor(Math.random() * arr.length)];
+                }
+                return color;
+            }
+            else if(flag == 1 || flag == true){
+                var color = "#";
+                var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, "a" ,"b", "c", "d", "e", "f"];
+                for(var i = 0; i < 6; i++){
+                    color += arr[Math.floor(Math.random() * arr.length)]; //随机抽取arr中的一个元素
+                }
+                return color;
+            }
+            else if(flag == 0 || flag == false){
+                var color = "rgb(";
+                for(var i = 0; i < 3; i++){
+                    color += Math.floor(Math.random() * 256) + ","; //Math.random() * 256 生成0-255的随机数,加上逗号
+                    // console.log(color); 
+                }
+                // delete color[color.lastIndexOf(",")]
+                color = color.slice(0, color.length - 1); //去掉最后一个逗号
+                color += ")";
+                return color;
+            }
+            else{
+                return "参数错误";
+            }
+            
+        }
+        console.log(get_random_color(true));
+        console.log(get_random_color(false));
+        console.log(get_random_color());
+        // console.log(Boolean(1));
+    </script>
+</html>

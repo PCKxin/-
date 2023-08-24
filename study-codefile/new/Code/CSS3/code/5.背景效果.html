@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            h3{
+                text-align: center;
+                background: rgba(255, 192, 203, 0.822);
+                color:rgb(255, 0, 0);
+            }
+            .box1{
+                width: 600px;
+                height: 400px;
+                margin: 50px auto;
+                background-color: rgba(255, 94, 0, 0.281);
+                /* 多背景图片 使用多个url（）中间用逗号隔开 */
+                background-image: url('../img/03.jpg'),url('../img/04.jpg');
+                background-repeat: no-repeat;
+                /* position 定位背景图片 */
+                background-position: top left,right bottom;
+                /* 多背景图大小，用逗号隔开 */
+                background-size: 150px 100px,450px 300px;
+            }
+            .box2{
+                width: 600px;
+                height: 400px;
+                margin: 50px auto;
+                background-color: rgba(255, 94, 0, 0.281);
+                /* 多背景图片 使用多个url（）中间用逗号隔开 */
+                background-image: url('../img/01.jpg'),
+                url('../img/02.jpg'),
+                url('../img/03.jpg'),
+                url('../img/04.jpg');
+                background-repeat: no-repeat;
+                /* position 定位背景图片 */
+                background-position: left top,right top,right bottom,left bottom;
+                background-size: 300px 200px,300px 200px,300px 200px,300px 200px;
+            }
+            .box3{
+                width: 600px;
+                height: 400px;
+                margin: 50px auto;
+                border: 10px dotted red;
+                padding: 50px;
+                background-color: rgba(255, 94, 0, 0.281);
+                background-image: url('../img/01.jpg');
+                background-size: 100% 100%;
+                background-repeat: no-repeat;   
+                /* background-clip属性 作用：设置背景图片的裁剪区域 */
+                /* 属性值 3个  border-box  padding-box content-box text*/
+            }
+            .box3:nth-child(1){
+                /* 背景图片裁剪区域为边框区域 */
+                background-clip: border-box;
+            }
+            .box3:nth-child(2){
+                /* 背景图片裁剪区域为内边距区域 */
+                background-clip: padding-box;
+            }
+            .box3:nth-child(3){
+                /* 背景图片裁剪区域为内容区域 */
+                background-clip: content-box;
+            }
+            .box3:nth-child(4){
+                padding: none;
+                /* 背景图片裁剪区域为文字区域 */
+                -webkit-background-clip: text;
+                background-clip: text;
+                /* 文字颜色透明 */
+                color: transparent;
+                font-size: 100px;
+                font-weight: bold;
+                text-align: center;
+                line-height: 400px;
+            }
+            .box4{
+                width: 600px;
+                height: 400px;
+                margin: 50px auto;
+                border: 10px dotted red;
+                padding: 30px;
+                background-color: rgba(255, 94, 0, 0.281);
+                background-image: url('../img/03.jpg');
+                background-size: 100% 100%;
+                background-repeat: no-repeat;   
+                /* background-origin属性 作用：设置背景图片的定位区域 */
+                /* 属性值 3个  border-box  padding-box content-box text*/
+            }
+            .box4:nth-child(1){
+                /* 背景图片定位区域为边框区域 */
+                background-origin: border-box;
+            }
+            .box4:nth-child(2){
+                /* 背景图片定位区域为内边距区域 */
+                background-origin: padding-box;
+            }
+            .box4:nth-child(3){
+                /* 背景图片定位区域为内容区域 */
+                background-origin: content-box;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>设置多背景图</h3>
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <h3>background-chip属性</h3>
+        <div>
+            <div class="box3"></div>
+            <div class="box3"></div>
+            <div class="box3"></div>
+            <div class="box3">clip文字背景</div>            
+        </div>
+        <h3>background-origin属性</h3>
+        <div>
+            <div class="box4"></div>
+            <div class="box4"></div>
+            <div class="box4"></div>
+        </div>
+    </body>
+</html>

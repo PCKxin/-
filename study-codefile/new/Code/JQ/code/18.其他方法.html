@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="box1">
+            1234
+            <div>
+                123456
+                <p>我是box1的元素</p>
+            </div>
+        </div>
+        <div class="box2">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </div>
+
+        <script src="../jQuery/jquery-1.12.4.js"></script>
+        <script>
+            window.onload = function(){
+                var a1 = [3,4,5,6,7];
+                // 生成一个新数组  原有a1中+1的值
+                var a2 = [];
+                for(var i = 0; i < a1.length; i++){
+                    a2.push(a1[i]+1);
+                }
+                console.log(a1);
+                console.log(a2);
+            }
+
+            $(document).ready(
+                function(){
+                    if($('p').parent().is('.box1')){
+                        console.log('ture');
+                    }else{
+                        console.log('false');
+                    }
+
+                    // li[0 , 1] 索引取不到2
+                    $('.box2 li').slice(0 , 2).css({background:'red'})
+
+                    // end() 和链式调用有关系
+                    $('p').parent().css({border:'1px solid red'}).end().end().css({color:'blue'})
+
+                    var arr = [11,32,43,54,35,26];
+                    // 数组里所有值都乘二
+                    // $.map() 映射  循环最大的特点 不会改变原本的数组  返回一个新数组
+                    // item 表示的是数组的每一项
+                    // index 表示的是数组的索引
+                    var arr2 = $.map(
+                        arr,
+                        function(item , index){
+                            console.log(item);
+                            return item*2;
+                        }
+                    )
+                    console.log(arr2);
+                    console.log(arr);
+                }
+            )
+        </script>
+    </body>
+</html>

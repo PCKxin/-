@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            ul{
+                list-style: none;
+                width: 600px;
+                margin: 10px auto;
+            }
+            li{
+                height: 60px;
+                padding: 10px;
+                border-bottom: 2px solid black;
+                font-size: 30px;
+            }
+            input{
+                width: 30px;
+                height: 30px;
+            }
+            .box{
+                width: 130px;
+                font-size: 40px;
+                color: red;
+                margin: 0 auto;
+            }
+            span{
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            全选:<input type="checkbox" class="checkAll">
+        </div>
+        <ul>
+            
+        </ul>
+        <script src="../jQuery/jquery-1.12.4.js"></script>
+        <script>
+            $(
+                function(){
+                    var data = [
+                        {id:0,name:'华为手机',price:5499},
+                        {id:0,name:'苹果手机',price:6499},
+                        {id:0,name:'小米手机',price:4499}
+                    ]
+                    var str = ''
+                    for(var i = 0; i < data.length; i++){
+                        str += '<li><input type="checkbox">商品名称：<span>' + data[i].name + '</span>商品价格：<span>' + data[i].price + '</span></li>'
+                    }
+                    $('ul').html(str);
+                    $('.checkAll').change(
+                        function(){
+                            // 拿到全选框 是否被选中  返回true或者false
+                            var flag = $(this).prop('checked');
+                            // 将全选框 中 是否选中属性 赋值给下面所有的复选框
+                            $('li input').prop('checked', flag);
+                        }
+                    )
+                    $('ul input').change(
+                        function(){
+                            // ul中所有的input的个数
+                            // console.log($('ul input').length);
+                            // 选中状态的个数
+                            console.log($('ul input:checked').length);
+                            // 如果选中状态的个数 和 ul中所有的input的个数相等
+                            if($().length === $('ul input:checked').length){
+                                // 将全选框选中
+                                $('.checkAll').prop('checked', true);
+                            } else {
+                                $('.checkAll').prop('checked', false);
+                            }
+                        }
+                    )
+                }
+            )
+        </script>
+    </body>
+</html>

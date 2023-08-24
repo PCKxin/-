@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      var str = prompt();
+      //和
+      var he = 0;
+      for(var i =0; i < str.length; i++){
+        //顺序
+        document.write(str[i]);
+        he += str[i]*1;
+      }
+
+      //将字符串转为数组
+      var a1 = str.split("");
+      
+      //排序  空格隔开    倒数
+      document.write(a1.reverse().join(""));
+      
+      //打印和
+      document.write("和"+he);
+      
+      //位数
+      document.write("有"+ str.length + "位");
+      
+      //求和
+      var sum=eval(a1.join("+"));
+      document.write("和："+sum);
+      
+      //自定义一个四位整数    求每一位的和    使用运算符
+      var num=1243;
+      
+      
+      
+    </script>
+  </body>
+</html>

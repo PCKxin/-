@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/* 
+				请输入一个1-100之间的数字
+				进行逢七避过
+				1、7的倍数
+				2、个位数是7
+				3、十位数是7
+			 */
+			var n = prompt("请输入一个1-100之间数字")*1;
+			//考虑个位数
+			var g = parseInt(n % 10);
+			//考虑十位数
+			var s = parseInt(n / 10);
+			//判断
+			if(n % 7 == 0 || g == 7 || s == 7) {
+				console.log("避过");
+			}else {
+				console.log(n);
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

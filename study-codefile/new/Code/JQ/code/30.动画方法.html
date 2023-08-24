@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{margin:0;padding:0}
+            .box{
+                width:200px;
+                height:200px;
+                margin:20px auto;
+                background:red;
+            }
+            button{
+                width:80px;
+                height:35px;
+                background:deepskyblue;
+                border:none;
+                color:white;
+                margin-right:10px;
+                border-radius:8px;
+            }
+            button:active{
+                box-shadow:0 0 3px 3px deepskyblue;
+                background:dodgerblue;
+            }
+            .btn-list{
+                width:200px;
+                margin:0 auto;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <div class="box box1"></div>
+        <div class="btn-list">
+            <button class="show">显示</button>
+            <button class="hide">隐藏</button>
+            <button class="toggle">切换</button>
+        </div>
+
+        <div class="box box2"></div>
+        <div class="btn-list">
+            <button class="slideDown">滑入</button>
+            <button class="slideUp">滑出</button>
+            <button class="slideToggle">滑动切换</button>
+        </div>
+        
+        <script src="../jQuery/jquery-1.12.4.js"></script>
+        <script>
+            $(document).ready(
+                function(){
+                    // 1.显示/隐藏动画 控制display:block/none
+                    $('.show').click(
+                        function(){
+                            $('.box1').show();
+                        }
+                    );
+                    $('.hide').click(
+                        function(){
+                            $('.box1').hide();
+                        }
+                    )
+                    $('.toggle').click(
+                        function(){
+                            // 如果当前元素 是显示 执行toggle()以后就是隐藏
+                            // 如果当前元素 是隐藏 执行toggle()以后就是显示
+                            $('.box1').toggle(
+                                2000,
+                                'linear', // 动画效果,默认是swing，匀速，linear匀速，swing缓冲，
+                                function(){
+                                    alert('动画方法执行完成以后会调用这个函数')
+                                }
+                            );
+                        }
+                    );
+                    
+                    // 2.滑入/滑出动画 控制height:0/height:200px
+                    // slideDown() slideUp() 控制高度
+                    // slideToggle() 控制滑入滑出切换
+                    $('.slideDown').click(
+                        function(){
+                            $('.box2').slideDown(1000); // 滑入,参数是动画执行的时间
+                        }
+                    );
+                    $('.slideUp').click(
+                        function(){
+                            $('.box2').slideUp(1000); // 滑出
+                        }
+                    );
+                    $('.slideToggle').click(
+                        function(){
+                            $('.box2').slideToggle(1000); // 滑入滑出切换
+                        }
+                    );
+                }
+            );
+        </script>
+    </body>
+</html>

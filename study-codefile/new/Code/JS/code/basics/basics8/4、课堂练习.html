@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/* 
+				一口井深度有7米
+				蜗牛从井底网上爬
+				白天爬3米，晚上掉2米
+				几天能出来
+			 */
+			var h = 0;
+			var day = 0; //统计天数
+			while (true) {
+				// h = h + 3;  
+				h += 3; //白天爬3米
+				
+				day++; //统计天数
+				
+				//˙只要爬行高度大于等于7，表示从井里出去
+				if(h >= 7) {
+					//只要出去就终止了
+					break;
+				}
+				//晚上掉2米
+				// h = h - 2;
+				h -= 2;
+			}
+			console.log(day);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

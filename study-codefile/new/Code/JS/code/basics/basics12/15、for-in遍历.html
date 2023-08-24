@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>for-in（加强for循环）遍历</title>
+		<script type="text/javascript">
+			var arr = ['a','b','c','d','e'];
+			/* for(var i = 0; i < arr.length; i++) {
+				console.log(arr[i]);
+			} */
+			
+			/* 
+				for循环
+				定义i变量
+				在对应的数组里使用
+				默认的i会从0开始
+			 */
+			for(var i in arr) {
+				console.log(arr[i]); 
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

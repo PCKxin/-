@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        /*
+        *   slice(start,end)
+        *   作用：截取一部分
+        *   参数：开始位置
+        *        结束为止的后一位索引
+        *   返回值：截取下来的元素组成的数组
+        *   注意：原数组不变
+        *
+        *   splice()
+        *       作用：增、删、改
+        *       参数：
+        *           两个参数，表示删除
+        *               开始位置，删除几个
+        *           三个及以上，第二个参数不为0，替换
+        *               开始位置，删除几个，新元素
+        *           三个及以上，第二个参数为0，添加
+        *               开始位置，删除0个，新元素
+        *       返回值：被删除元素组成的数组
+        *       注意：原数组改变
+        * */
+        var arr = [1,2,3,4,5];
+        var res = arr.splice(2,1);
+        console.log(res);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

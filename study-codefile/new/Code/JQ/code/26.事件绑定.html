@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <div style="width: 100px; height: 100px; background: red;"></div>
+        <ul class="box">
+            
+        </ul>
+        <button>点击添加li</button>
+        <script src="../jQuery/jquery-1.12.4.js"></script>
+        <script>
+            $(
+                function(){
+                    /*
+                    
+                    第一种事件绑定
+                    $('div').click(function(){
+                        console.log('hello')
+                    })
+                    
+                    */
+
+                    /*
+                    
+                    第二种事件绑定 通过on()方法绑定
+                    $('div').on('click',function(){
+                        console.log('123');
+                    })
+                    
+                    */
+
+                    var obj = {
+                        a:1,
+                        b:2
+                    }; // 动态数据
+                    $('div').on(
+                        'click',
+                        obj,
+                        function(event){
+                            // 通过on绑定事件时，可以传入一个动态数据
+                            // 例如上面的obj，然后可以在触发这个事件的回调函数
+                            // 中的event事件对象中，通过event.data拿到这个动态数据
+                            console.log(event.data);
+                        }
+                    );
+                    
+                    /*
+                    
+                    $('.box li').on(
+                        'click',
+                        function(){
+                            console.log($(this).index());
+                        }
+                    );
+
+                    */ 
+                    
+
+                    /*
+                    
+                    事件委托：子元素触发的事件，让父元素去执行event.target
+                    
+                    $(父元素).on(
+                        事件名,
+                        子元素选择器,
+                        动态数据,
+                        事件的回调函数
+                    )
+                    
+                    这种方式去给子元素添加事件 好处：
+                        1.性能提升
+                                因为利用事件委托，其实绑定事件的是父元素,
+                                通过e.target找到具体执行的子元素执行逻辑
+                                减少了给所有子元素添加事件的性能影响
+                        2.动态添加的子元素 也能绑定事件！！！！
+                    
+                    */
+                    
+                    $('.box').on(
+                        'click',
+                        'li',
+                        function(){
+                            console.log($(this).index());
+                        }
+                    )
+                    var i = 0;
+                    $('button').click(
+                        function(){
+                            i++;
+                            $('ul').append('<li>我是动态添加的第'+i+'li</li>')
+                        }
+                    )
+                }
+            )
+        </script>
+    </body>
+</html>

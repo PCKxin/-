@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        /*
+        *   什么是BOM
+        *       浏览器对象模型
+        *
+        *   组成：
+        *       window 窗口
+        *       location 地址栏
+        *       navigator 浏览器信息
+        *       screen 屏幕信息
+        *       history 历史记录
+        *
+        *   全局变量被视为window对象的属性
+        *   函数被视为window对象的方法
+        *
+        *    var a = 10;
+        *    console.log(window.a);
+        *
+        *    x = 20;  //可以被视为全局变量
+        *    表示： window.x = 20
+        *
+        *    区别：
+        *       var定义的全局变量不能被delete删除
+        *       不带var定义的全局变量能被delete删除
+        *
+        *    window对象
+        *       人机交互的方法和接口：
+        *       alert()弹出框
+        *       prompt()输入框
+        *       confirm()确认框，确定按钮表示true，取消表示false
+        *
+        *       计时器
+        *       setInterval(执行的内容，毫秒)间歇调用
+        *       setTimeout(执行的内容，延迟的时间)延迟调用
+        *
+        *       给计时器起名字用var声明变量进行接收
+        *
+        *       clearInterval(计时器名字)
+        *       clearTimeout(计时器名字)
+        *
+        *       对窗口的操作
+        *       open("路径","在哪打开",name,"样式")
+        *       在哪打开：_self/_blank
+        *        举例：
+        *           在新窗口打开百度，要求窗口大小为100*100，位置x为100，y为100
+        *           open("http://www.baidu.com","_blank","width=100,height=100,x=100,y=100");
+        *       关闭窗口
+        *       close()
+        *
+        * */
+        function fn() {
+            var t = Math.round(Math.random() * 1080);
+            var l = Math.round(Math.random() * 1920);
+            open("http://www.baidu.com","_blank","width=100,height=100,top="+t+",left="+l);
+        }
+        setInterval(fn,1000);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

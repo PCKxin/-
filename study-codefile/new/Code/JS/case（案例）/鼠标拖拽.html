@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            #box{
+                width: 100px;
+                height: 100px;
+                background-color: pink;
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box"></div>
+        <script>
+            //获取元素
+            var box = document.getElementById('box');
+            window.onload = function(e){
+                //兼容性获取event对象
+                var e = e || window.event;
+                box.onmousedown = function(e){
+                    var ev_el_left = e.offsetX; //获取鼠标相对于元素的左边距，也就是发点距离元素左边的距离
+                    var ev_el_top = e.offsetY;
+                    document.onmousemove = function(e){
+                        var ev_left = e.clientX; //获取鼠标相对于浏览器的左边距, 不包含滚动条
+                        var ev_top = e.clientY;
+                        box.style.left = ev_left - ev_el_left + 'px'; //元素的left值等于鼠标的坐标减去鼠标相对于元素的左边距
+                        box.style.top = ev_top - ev_el_top + 'px';
+                        //获取浏览器的宽高
+                        var maxwidth = window.innerWidth - box.offsetWidth; //浏览器的宽度减去元素的宽度
+                        var maxheight = window.innerHeight - box.offsetHeight;
+                        //限制元素的移动范围
+                        if(box.offsetLeft <= 0){ //元素的offsetLeft值是相对于父元素的左边距
+                            box.style.left = 0+'px'; //如果元素的left值小于0，就让元素的left值等于0
+                        } else if(box.offsetLeft >= maxwidth){
+                            box.style.left = maxwidth+'px'; //如果元素的left值大于浏览器的宽度减去元素的宽度，就让元素的left值等于浏览器的宽度减去元素的宽度
+                        }
+                        if(box.offsetTop <= 0){
+                            box.style.top = 0+'px';
+                        } else if(box.offsetTop >= maxheight){
+                            box.style.top = maxheight+'px';
+                        }
+                    }
+                    document.onmouseup = function(){
+                        document.onmousemove = null;
+                    }
+                }
+            }
+
+        </script>
+    </body>
+</html>

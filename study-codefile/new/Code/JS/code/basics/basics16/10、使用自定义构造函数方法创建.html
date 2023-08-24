@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用自定义构造函数方法创建</title>
+    <script type="text/javascript">
+        /*
+        *   驼峰命名法：由多个单词组成，第一个单词首字母小写，
+        *             后面每个单词首字母大写
+        *          例如：mySelf ,  backgroundColor
+        *
+        *   帕斯卡命名法：由多个单词组成，每一个单词首字母大写
+        *          例如：MySelf ,  BackgroundColor
+        * */
+
+        //创建自定义构造函数
+        function Student(name,age,school,collage) {
+            /*
+            *   this，这个对象的某个属性
+            * */
+            this.name = name;
+            this.age = age;
+            this.school = school;
+            this.collage = collage;
+        }
+
+        //创建对象
+        var person1 = new Student("邸子豪","20","北工商","移动智能");
+        console.log(person1.name);
+        console.log(person1.age);
+        console.log(person1["school"]);
+
+        var person2 = new Student("刘家乐","18","北工商","移动智能");
+        console.log(person2.name);
+
+        /*
+        *   注意：下面var了谁，上面this就是谁
+        *
+        * */
+    </script>
+</head>
+<body>
+
+</body>
+</html>

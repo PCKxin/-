@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script>
+            //A 100-90，B 90-80，C 80-60，D 60以下四个等级，输入一个等级，显示分数所在区间
+            var score = prompt("you score");
+            
+            score == "A" || score == "a" ? console.log("100-90") 
+            : score == "B" || score == "b" ? console.log("90-80") 
+            : score =="C" || score == "c" ? console.log("80-60")
+            : score == "D" || score == "d" ? console.log("60") 
+            : console("error");
+
+            //输入今天是星期几，判断如果是周六，则 去唱歌；如果是周日，则 去植物园；如果是其他，则上学
+            var day = prompt("what day");
+            day == "周六" ? console.log("去唱歌") 
+            : day == "周日" ? console.log("去植物园")
+            : console.log("去植物园");
+
+            //BMI=体重/身高的平方 BMI是指身高体重的一个计算公式
+            /*指数说明：
+                低于18.5	
+                18.5-24.9999		正常
+                25-27.9999	过重
+                28-32	肥胖
+                高于32	非常肥胖
+                输入身高和体重，计算BMI，输入身体状况
+            */
+            var BMI_a = Number(prompt("weight"));
+            var BMI_b = Number(prompt("height"));
+                BMI = BMI_a / (BMI_b * BMI_b)
+                // console.log(BMI)
+                BMI < 18.5 ? console.log("过轻") 
+                : BMI >=18.5 || BMI <=24.9 ? console.log("正常")
+                : BMI >=25 || BMI <=27.9 ? console.log("过重")
+                : BMI >=28 || BMI < 32 ? console.log("肥胖")
+                : BMI > 32 ? console.log("非常肥胖")
+                : console.log("Error ???")
+
+            //输入月份，显示对应的季节，12、1、2属于冬季，3、4、5属于春季，6，7，8属于夏季，9，10，11属于秋季
+            
+            var mouth = prompt("what mouth");
+                mouth == 12 || mouth == 1 || mouth == 2 ? console.log("冬季") :
+                mouth == 3 || mouth == 4 || mouth == 5 ? console.log("春季") : 
+                mouth == 6 || mouth == 7 || mouth == 8 ? console.log("夏季") :
+                mouth == 9 || mouth == 10 || mouth == 11 ? console.log("秋季") :
+                console.log("error");
+        </script>
+    </head>
+    <body>
+        <div>
+            <p>分数区间: <span id="topic_a"></span></p>
+            <p>星期活动: <span id="topic_b"></span></p>
+            <p>BMI:     <span id="topic_c"></span></p>
+            <p>季节:     <span id="topic_d"></span></p>
+        </div>
+    </body>
+</html>

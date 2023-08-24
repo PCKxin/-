@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>charCodeAt()</title>
+    <script type="text/javascript">
+        var str = "abcdefghijklmn";
+        /*
+            charCodeAt(n)
+            作用：取得字符串中第n个位置对应字符的ASCII码
+            参数：n表示索引值
+            返回值：对应的ASCII码
+            注意：如果查询索引值超出字符串范围返回NaN
+        */
+        console.log(str.charCodeAt(0));//97
+        var res = str.charCodeAt(0);
+        console.log(res); // 97
+        var res1 = str.charCodeAt(23);
+        cosnole.log(res1); // NaN 查询索引值超出字符串范围
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

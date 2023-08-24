@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <style>
+        .clearFLoat:after {
+            display: block;
+            /* 因为clear属性只对块元素起作用 */
+            content: "";
+            /* 伪元素，让内容为空 */
+            clear: both;
+            /* 左右两边都清除 */
+            height: 0;
+            line-height: 0;
+            visibility: hidden;
+            /* 让元素隐藏，占有原有空间 */
+        }
+    
+        .clearFLoat {
+            zoom: 1;
+        }
+    
+        /* 清浮动:1:给父级加高 
+            clear属性
+            给父元素添加overflow:hidden;
+            万能清浮动
+            */
+
+        /* 设置标题 */
+        ul {
+            margin: 50px;
+            /* 相对定位不会脱离文档流 */
+            position: relative;
+        }
+    
+        ul>li {
+            float: left;
+            margin-right: 30px;
+        }
+    
+        ol {
+            /* 让元素脱离文档流，因此用绝对定位 */
+            /* 即便看上去背景是白色，也要给元素设置背景为白色 */
+            position: absolute;
+            top: 18px;
+            left: 0;
+            /* 默认，让ol都隐藏 */
+            /* display:none;元素隐藏，原有占位消失
+            visibility:hidden;元素隐藏，原有位置保留 */
+            display: none;
+        }
+    
+        /* 给ul子元素li做滑动，让下面的ol出现 */
+        ul>li:hover ol {
+            display: block;
+        }
+    
+        ol>li {
+            width: 200px;
+            height: 300px;
+            /* 外边线：不占用盒模型计算大小
+            border：边框，占用盒模型计算大小 */
+            outline: 2px solid green;
+            float: left;
+            background: #fff;
+        }
+    
+        /* 默认让第一个页面显示 */
+        .show {
+            display: block;
+        }
+    
+        /* 相对定位:根据自身原有位置做定位，不脱离文档流
+            绝对定位：根据最近的，具有定位的祖先级元素做定位，如果都没有，根据body做定位，脱离文档流
+            固定定位：根据页面可视区域做定位，脱离文档流*/
+    </style>
+    <body>
+        <div>
+            <ul>
+                <!-- 标题栏 -->
+                <li>
+                    <!-- 二级菜单 -->
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </body>
+</html>

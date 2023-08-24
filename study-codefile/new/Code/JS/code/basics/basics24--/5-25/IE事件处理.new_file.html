@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta  http-equiv="X-UA-Compatible" content="IE=10">
+    <title>IE事件处理程序</title>
+  </head>
+  <body>
+    <button id="bu1">IE事件处理程序绑定事件</button>
+    <button id="bu2">IE事件处理程序解除事件</button>
+  </body>
+  <script type="text/javascript" >
+    var bu1=document.getElementById("bu1");
+    var bu2=document.getElementById("bu2");
+    //绑定事件  1.
+    // function show(){
+    //   alert('绑定事件');
+    // }
+    // bu1.attachEvent('onclick',show);
+    
+    //2.
+    bu1.attachEvent('onclick',function(){
+      alert('123');
+    });
+    //必须在IE浏览器运行，但是IE11也不支持
+    
+    //解除事件
+    bu2.onclick=function(){
+      bu2.detachEvent('onclick',show);
+          }
+    
+  </script>
+</html>

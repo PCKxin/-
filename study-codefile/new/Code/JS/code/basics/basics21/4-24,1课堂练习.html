@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="button" value="开始" id="start">
+    <input type="button" value="结束" id="end">
+
+    <script type="text/javascript">
+        var start = document.getElementById("start");
+        var end = document.getElementById("end");
+        var timer = null; //定义一个变量，用于计时器
+        //执行的内容
+        function fn() {
+            console.log("hello");
+        }
+        //开始按钮
+        start.onclick = function () {
+            //在定义计时器开始之前，先清除一次计时器
+            //防止连续执行计时器
+            clearInterval(timer);
+            timer = setInterval(fn,500);
+        }
+        //结束按钮
+        end.onclick = function () {
+            clearInterval(timer);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>第一题</title>
+        <style>
+            *{margin: 0;padding: 0;list-style: none;}
+            .box{
+                width: 1000px;
+                height: 300px;
+                /* border: 1px solid gray; */
+                margin: 0 auto;
+                margin-top: 20px;
+            }
+            .box a{
+                display: block;
+            }
+            .list_name{
+                width: 1000px;
+                height: 300px;
+                position: relative;
+            }
+            .list_tit{
+                width: 250px;
+                height: 200px;
+                float: left;
+            }
+            .list_tit img{
+                width: 250px;
+                height: 200px;
+            }
+            .list_content{
+                width: 1000px;
+                height: 0px;
+                position: absolute;
+                left: 0;
+                top:200px;
+                overflow: hidden;
+            }
+            .list_content img{
+                width: 1000px;
+                height: 100px;
+            }
+            .list_tit:hover .list_content{
+                transition: 1s;
+                height: 100px;
+            }
+            .san1{
+                width: 0;
+                height: 0;
+                border-width: 10px;
+                border-style: solid;
+                border-color: pink transparent transparent  transparent ;
+                position: absolute;
+                left: 125px;
+                top: 200px;
+                display: none;
+            }
+            .list_tit:nth-child(1):hover .san1{
+                display: block;
+            }
+            .list_tit:nth-child(2):hover .san1{
+                display: block;
+                left: 375px;
+            }
+            .list_tit:nth-child(3):hover .san1{
+                display: block;
+                left: 625px;
+            }
+            .list_tit:nth-child(4):hover .san1{
+                display: block;
+                left: 875px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+                <ul class="list_name">
+                    <li class="list_tit">
+                        <a href="#">
+                            <img src="./素材/01/图层 1.png" class="list_name_img">
+                        </a>
+                        <div class="list_content">
+                            <a href="#">
+                                <img src="./素材/01/图层 5.png" class="list_content_img">
+                            </a>
+                        </div>
+                        <div class="san1"></div>
+                    </li>
+                    <li class="list_tit">
+                        <a href="#">
+                            <img src="./素材/01/图层 1.png" class="list_name_img">
+                        </a>
+                        <div class="list_content">
+                            <a href="#">
+                                <img src="./素材/01/图层 5.png" class="list_content_img">
+                            </a>
+                        </div>
+                        <div class="san1"></div>
+                    </li>
+                    <li class="list_tit">
+                        <a href="#">
+                            <img src="./素材/01/图层 1.png" class="list_name_img">
+                        </a>
+                        <div class="list_content">
+                            <a href="#">
+                                <img src="./素材/01/图层 5.png" class="list_content_img">
+                            </a>
+                        </div>
+                        <div class="san1"></div>
+                    </li>
+                    <li class="list_tit">
+                        <a href="#">
+                            <img src="./素材/01/图层 1.png" class="list_name_img">
+                        </a>
+                        <div class="list_content">
+                            <a href="#">
+                                <img src="./素材/01/图层 5.png" class="list_content_img">
+                            </a>
+                        </div>
+                        <div class="san1"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>
+

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        var arr = [1,1,2,2,3,3,4,4,5,5];
+        //1、定义一个新数组存储不重复的元素
+        var newArr = [];
+        //2、获取原数组中的每一位
+        for(var i = 0; i < arr.length; i++) {
+            // arr[i] 就是每一位
+            //3、在新数组中判断原数组中的每一位是否存在
+            if(newArr.indexOf(arr[i]) == -1) {
+                //4、如果查询结果为-1，表示不存在，将其添加
+                newArr.push(arr[i]);
+            }
+        }
+        console.log(newArr);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

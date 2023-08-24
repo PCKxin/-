@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{margin: 0;padding: 0;list-style: none;}
+            .big_box{
+                width: 1400px;
+                height: 650px;
+                position: relative;
+                background: #faa8ac;
+                margin: 0 auto;
+            }
+            .big_img{
+                position: absolute;
+                top: 50px;
+                left: 120px;
+            }
+            .box{
+                width: 350px;
+                height: 550px;
+                /* outline: 1px solid gray; */
+                margin-top: 10px;
+                background: white;
+                position: absolute;
+                top: 30px;
+                right: 220px;
+            }
+            .title{
+                width: 350px;
+                height: 50px;
+                margin: 0 auto;
+                line-height: 50px;
+                border-bottom: 1px solid rgba(198, 198, 198, 0.637);
+            }
+            .title p{
+                float: left;
+                width: 175px;
+                height: 50px;
+                text-align: center;
+            }
+            .title p a{
+                font-size: 18px;
+                text-decoration: none;
+                color: gray;
+            }
+            .title p:nth-child(2) a{
+                font-size: 20px;
+                text-decoration: none;
+                color: rgb(255, 0, 166);                             
+                font-weight: bold;
+                /* border-bottom: 2px solid rgb(255, 0, 166); */
+            }
+
+            .content{
+                width: 250px;
+                height: 260px;
+                margin: 0 auto;
+                margin-top: 40px;
+            }
+            .content form{
+                width: 250px;
+                height: 260px;
+                /* background: orange; */
+            }
+            .content form .login{
+                width: 250px;
+                height: 35px;
+                border: 1px solid rgba(128, 128, 128, 0.525);
+                border-radius: 5px;
+                text-indent: 15px;
+            }
+            .content form input:nth-child(2){
+                margin-top: 15px;
+            }
+            .content .reset{
+                width: 250px;
+                height: 30px;
+                margin-top: 20px;
+            }
+            .content .reset a{
+                color: black;
+                text-decoration: none;
+                font-size: 14px;
+            }
+            .content .reset a:nth-child(2){
+                float: right;
+            }
+            .content .re_text{
+                color: gray;
+                font-size: 12px;
+                margin-top: 25px;
+            }
+            .content .re_text input{
+                width: 20px;
+                height: 20px;
+                margin-right: 10px;
+                display: block;
+                float: left;
+            }
+            .content .re_text a{
+                color: rgb(0, 128, 255);
+                text-decoration: none;
+            }
+            .content form button{
+                width: 250px;
+                height: 40px;
+                color: white;
+                background: rgb(255, 0, 166);
+                border: 0px;
+                border-radius: 5px;
+                margin-top: 35px;
+            }
+            .footer{
+                width: 350px;
+                height: 85px;
+                margin: 0 auto;
+                margin-top: 50px;
+                background: url('./img/第二题-2.png') no-repeat;
+                background-size:  100% 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="big_box">
+            <img src="./img/第二题-1.png" class="big_img">
+            <div class="box">
+                <div class="title">
+                    <p><a href="#">扫码登录</a></p>
+                    <p><a href="#">账户登录</a></p>
+                </div>
+                <div class="content">
+                    <form action="https://passport.vip.com" method="post">
+                        <input type="text"  placeholder="手机号/用户名/绑定邮箱" class="login">
+                        <input type="password"  placeholder="密码" class="login">
+                        <p class="reset">
+                            <a href="#">短信验证登录</a>
+                            <a href="#">忘记密码</a>
+                        </p>
+                        <p class="re_text">
+                            <input type="checkbox">我已阅读并接受以下条款:
+                            <a href="#">《唯品会服务条款》</a> 
+                            和
+                            <a href="#">《唯品会基本功能隐私政策》</a>
+                        </p>
+                        <button>登 录</button>
+                    </form>
+                </div>
+                <div class="footer"></div>
+            </div>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      window.onload=function(){
+      document.onmousedown=function(e){
+        //获取鼠标按键的值
+          function getButton(e) {
+            var event = e || window.event;
+            if (event) {  //W3C,ie9以上
+              return event.button;
+            } else if (window.event) {  //ie8以下
+              switch (event.button) {
+                case 0:  
+                  return 4;  
+                case 1:  //ie的左键
+                  return 0;
+                case 2:  //ie的右键
+                  return 2;
+                case 4:  //ie的滚轮
+                  return 1; 
+                default:
+                  break;
+              }
+            }
+          }
+          if (getButton(e) == '0') {
+            alert('左键');
+          }
+          if (getButton(e) == '1') {
+            alert('滚轮');
+          }
+          if (getButton(e) == '2') {
+            alert('右键');
+          }
+
+
+        }
+
+      }
+    </script>
+  </body>
+</html>

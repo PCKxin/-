@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>两种遍历之间的区别</title>
+		<script type="text/javascript">
+			var arr = ['a','b','c',,,,'d','e'];
+			console.log(arr);
+			
+			//用for循环遍历数组，会保留空的位置，空的位置的值是undefined
+			for(var i = 0; i < arr.length; i++) {
+				console.log(arr[i]);
+			}
+			
+			console.log("-------------------");
+			
+			//for-in遍历数组，会将空的位置去掉
+			for(var j in arr) {
+				console.log(arr[j]);
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

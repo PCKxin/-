@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                font-family: Arial;
+            }
+            #box{
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                background-color: rgb(255, 22, 22);
+                display: none;
+                /* background-color: rgb(59, 251, 38); */
+            }
+            #flushOn{
+                margin: 0 auto;
+                height: 300px;
+                width: 500px;
+                background: rgba(128, 128, 128, 0.433);
+                text-align: center;
+                line-height: 300px;
+                font-size: 100px;
+                cursor: pointer;
+                border-radius: 50px;
+                margin-top: 10%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="flushOn">GO!</div>
+        <div id="box"></div>
+        <script>
+            var box = document.getElementById("box");
+            var flush_on = document.getElementById("flushOn");
+            function flashing(){
+                var timer = setInterval( //setInterval() 方法可按照指定的周期（以毫秒计）来调用函数或计算表达式。
+                    function(){
+                        // box.style.display = "none";
+                        box.style.backgroundColor = "rgb(255, 0, 0)";
+                        // console.log("OK")
+                    },
+                    50,
+                )
+                var timer2 = setInterval(
+                    function(){
+                        // box.style.display = "block";
+                        box.style.backgroundColor = "rgb(59, 251, 38)";
+                        // console.log("OK")
+                    },
+                    100,
+                )
+            }
+            flush_on.onclick = function(){
+                box.style.display = "block";
+                flashing();
+            }
+            // //颜色由浅到深
+            // function color_change(){
+            //     var r = 0;
+            //     var g = 0;
+            //     var b = 0;
+            //     var timer = setInterval(
+            //         function(){
+            //             r += 1;
+            //             g += 1;
+            //             b += 1;
+            //             box.style.backgroundColor = "rgb("+r+","+g+","+b+")";
+            //             if(r == 255){
+            //                 clearInterval(timer);
+            //             }
+            //         },
+            //         10,
+            //     )
+            // }
+            // color_change();
+        </script>
+    </body>
+</html>

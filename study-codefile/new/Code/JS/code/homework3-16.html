@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script>
+            window.onload = function(){
+                //第一题
+                var user_money = document.getElementById("money");
+                var uesr_choice = document.getElementById("choice");
+                var bu_1 = document.getElementById("bu-1");
+                bu_1.onclick = function(){
+                    var money_value = user_money.value * 1;
+                    var choice_value = uesr_choice.value * 1;
+                    if(money_value >= 50 && money_value < 100){
+                        if(choice_value == 1){
+                            alert("好的，您一共消费 " + (money_value + 2) + " 元 \n 百事可乐饮料一瓶");
+                        }else if(choice_value == 0){
+                            alert("好的，您一共消费" + money_value + "元");
+                        }else{
+                            alert("请输入正确选项号码");
+                        }
+                    }else if(money_value >= 100 && money_value < 200){
+                        if(choice_value == 1){
+                            alert("好的，您一共消费" + (money_value + 2)  + "元" + "百事可乐饮料一瓶");
+                        }else if(choice_value == 2){
+                            alert("好的，您一共消费" + (money_value + 3) + "元" + "500m1可乐一瓶");
+                        }else if(choice_value == 3){
+                            alert("好的，您一共消费" + (money_value + 10) +"元" + "5公斤面粉");
+                        }else if(choice_value == 0){
+                            alert("好的，您一共消费" + money_value + "元");
+                        }else{
+                            alert("请输入正确选项号码");
+                        }
+                    }else if(money_value >= 200){
+                        if(choice_value == 1){
+                            alert("好的，您一共消费" + (money_value + 2) + "元" + "百事可乐饮料一瓶");
+                        }else if(choice_value == 2){
+                            alert("好的，您一共消费" + (money_value + 3) + "元" + "500m1可乐一瓶");
+                            
+                        }else if(choice_value == 3){
+                            alert("好的，您一共消费" + (money_value + 10) +"元" + "5公斤面粉");
+                        }else if(choice_value == 4){
+                            alert("好的，您一共消费" + (money_value + 10) +"元" + "苏泊尔炒菜锅");
+                        }else if(choice_value == 5){
+                            alert("好的，您一共消费" + (money_value + 20) +"元" + "欧莱雅爽肤水一瓶");
+                        }else if(choice_value == 0){
+                            alert("好的，您一共消费" + money_value + "元");
+                        }else{
+                            alert("请输入正确选项号码");
+                            
+                        }
+                    }else{
+                        alert("好的，您一共消费" + money_value + "元");
+                    }
+                }
+
+                //第二题
+                var plane = prompt("请输入飞机舱型");
+                var month = prompt("请输入月份")*1;
+                
+                var money = 4000;
+                
+                if(plane == "头等舱") {
+                    switch(month) {
+                        case 4:
+                        case 5:
+                        case 6:
+                        case 7:
+                        case 8:
+                        case 9:
+                        case 10:
+                            alert("飞机票价为：" + money * 0.9);
+                            break;
+                        case 11:
+                        case 12:
+                        case 1:
+                        case 2:
+                        case 3:
+                            alert("飞机票价为："+ money * 0.6);
+                            break;
+                        default:
+                            alert("月份输入有误");
+                            break;
+                    }	
+                }else if(plane == "经济舱") {
+                    switch(month) {
+                        case 4:
+                        case 5:
+                        case 6:
+                        case 7:
+                        case 8:
+                        case 9:
+                        case 10:
+                            alert("飞机票价为：" + money * 0.75);
+                            break;
+                        case 11:
+                        case 12:
+                        case 1:
+                        case 2:
+                        case 3:
+                            alert("飞机票价为："+ money * 0.3);
+                            break;
+                        default:
+                            alert("月份输入有误");
+                            break;
+                    }	
+                }else {
+                    alert("舱型输入有误");
+                }
+                //第三题税收
+                
+                var m = prompt("请输入收入的金额") * 1;
+
+                if(m >= 0 && m <= 2500) {
+                    alert(m + "元的税收为：" + (m * 0)); //2500内无
+                }else if(m > 2500 && m <= 4000) {
+                    alert(m + "元的税收为：" + (m-2500)* 0.1); //2500-4000 10%
+                }else if(m > 4000 && m <= 8000) {
+                    alert(m + "元的税收为：" + ((4000-2500)*0.1 + (m-4000)*0.15));  //2500-4000 10% 4000-8000 15%
+                }else if(m > 8000 && m <= 10000) {
+                    alert(m + "元的税收为：" + ((4000-2500)*0.1 + (8000-4000)*0.15 + (m-8000)*0.175));  //2500-4000 10% 4000-8000 15% 8000-10000 17.5
+                }else if(m > 10000) {
+                    alert(m + "元的税收为：" + ((4000-2500)*0.1 + (8000-4000)*0.15 + (10000-8000)*0.175 + (m-10000)*0.2)); // 2500-4000 10% 4000-8000 15% 8000-10000 17.5 >10000 20%
+                }else {
+                    alert("金额输入有误");
+                }
+
+                //时间进位1秒
+                var hour = prompt("请输入小时") * 1;
+                var min = prompt("请输入分钟") * 1;
+                var sec = prompt("请输入秒") * 1;
+                
+                sec++;//得到下一秒
+                
+                //让秒进位到分钟
+                if(sec > 59) {
+                    min++;
+                    sec = 0;
+                }
+                //让分钟进位到小时
+                if(min > 59) {
+                    hour++;
+                    min = 0;
+                }
+                //让小时进位
+                if(hour > 23) {
+                    hour = 0;
+                }
+                
+                console.log(hour + ":" + min + ":" + sec);
+
+            /***
+            *                    _ooOoo_
+            *                   o8888888o
+            *                   88" . "88
+            *                   (| -_- |)
+            *                    O\ = /O
+            *                ____/`---'\____
+            *              .   ' \\| |// `.
+            *               / \\||| : |||// \
+            *             / _||||| -:- |||||- \
+            *               | | \\\ - /// | |
+            *             | \_| ''\---/'' | |
+            *              \ .-\__ `-` ___/-. /
+            *           ___`. .' /--.--\ `. . __
+            *        ."" '< `.___\_<|>_/___.' >'"".
+            *       | | : `- \`.;`\ _ /`;.`/ - ` : | |
+            *         \ \ `-. \_ __\ /__ _/ .-` / /
+            * ======`-.____`-.___\_____/___.-`____.-'======
+            *                    `=---='
+            *
+            * .............................................
+            *          佛祖保佑             永无BUG
+            */
+            }
+        </script>
+    </head>
+    <body>
+        <div>
+            <p>
+                <span>换购选择：</span><br>
+                <span>0: 不换购</span><br>
+                <span>1: 满50元, 加2元换购百事可乐饮料一瓶</span><br>
+                <span>2: 满100元, 加3元换购500m1可乐一瓶</span><br>
+                <span>3: 满100元, 加10元换购5公斤面粉</span><br>
+                <span>4: 满200元, 加10元换购1个苏泊尔炒菜锅</span><br>
+                <span>5: 满200元, 加20元可换购欧莱雅爽肤水一瓶</span>
+            </p>
+            <p>消费金额: <input type="text" id="money"></p>
+            <p>换购选择: <input type="text" id="choice"></p>
+            <p><input type="button" value="GO" id="bu-1"></p>
+        </div>
+    </body>
+</html>

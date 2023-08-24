@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/* 
+				return的作用：
+				1、 获取当前函数的返回结果
+				2、 终止当前函数，因此需要return返回值，将其写在函数的最后一行
+			 */
+			function fn(a, b) {
+				return a + b;
+			}
+			var res = fn(10, 20);
+			console.log(res); //30
+			
+			function fn1() {
+				alert(1);
+				return;
+				alert(2);
+			}
+			fn1();
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

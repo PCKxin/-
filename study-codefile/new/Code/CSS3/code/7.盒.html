@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            div{
+                width: 300px;
+                height: 300px;
+                margin: 50px auto;
+                border: 1px solid red;
+                text-align: center;
+            }
+            /*标准盒模型中 你设置的width和height就是content*/
+            /*怪异盒模型中 你设置的width和height是content+padding+border*/
+            .sizing_demo1{
+                padding: 50px;
+                border: 10px solid red;
+            }
+            .sizing_demo2{
+                box-sizing: border-box;
+                padding: 50px;
+                border: 10px solid blue;
+            }
+            
+            .shadow_demo{
+                width: 300px;
+                height: 300px;
+                line-height: 30px;
+                margin: 50px auto;
+                border: 1px solid black;
+                box-shadow: 10px 10px 30px 30px rgb(251, 198, 84) inset;
+                /* 
+                    第一个和第二个参数值 表示x，y轴的偏移量
+                    第三个参数值  表示模糊的程度  值越大越模糊
+                    第四个参数值  表示阴影的尺寸大小
+                    第五个参数值  表示阴影的颜色
+                    第六个参数值  可选  如果不写表示是外部阴影
+                                    如果写inset表示是内部阴影
+                */
+            }
+        </style>
+    </head>
+    <body>
+        <div class="shadow_demo">
+            第一个参数 表示x轴的偏移量 <br>
+            第二个参数 表示y轴的偏移量 <br>
+            第三个参数 表示模糊的程度 值越大越模糊 <br>
+            第四个参数 表示阴影的尺寸大小 <br>
+            第五个参数 表示阴影的颜色 <br>
+            第六个参数 可选 如果不写表示是外部阴影 <br>
+            如果写inset表示是内部阴影 <br>
+        </div>
+        <div class="sizing_demo1">标准盒模型: box-sizing:content-box;</div>
+        <div class="sizing_demo2">
+            怪异盒模型 <br> 
+            除了margin所有尺寸都在盒子内算 <br> 
+            盒子内空间满了实际尺寸会增大
+        </div>
+    </body>
+</html>

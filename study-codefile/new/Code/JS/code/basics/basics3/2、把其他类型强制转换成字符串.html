@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>把其他类型强制转换成字符串</title>
+    <script type="text/javascript">
+        /*
+            强制转换成字符串
+        *   1、String();
+        *   2、toString();
+
+            区别：
+                String() 可以将其他基本数据类型转换为字符串类型
+                toString() 只能将数值类型和布尔类型转换成字符串类型，
+                           null和未定义不能转换
+        * */
+        var num = 123;
+        console.log(typeof String(num)); //string
+        console.log(typeof num.toString()); //string
+
+        var bool = true;
+        console.log(typeof String(bool)); //string
+        console.log(typeof bool.toString()); //string
+
+        var nul = null;
+        console.log(typeof String(nul)); //string
+        //console.log(typeof nul.toString()); //报错
+        /*
+        *  Cannot read properties of null (reading 'toString')
+        *   不能给XXX读取XXX方法或属性
+        * */
+
+        var n ;
+        console.log(n); //undefined
+        console.log(typeof String(n));//string
+        console.log(typeof n.toString());//报错
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

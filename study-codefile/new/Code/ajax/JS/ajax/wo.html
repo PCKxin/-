@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      function getAjax(methods, url, data, flag, success) {
+        var xhr = null;
+        if (window.XMLHttpRequest) {
+          xhr = new XMLHttpRequest;
+        } else {
+          xhr = new ActiveXObject("Microsoft.XMLHttp");
+        }
+
+        if (methods == "get") {
+          var date = new Date().getTime();
+          //如果路径后拼接值(data)可以不拼接时间戳
+          xhr.open(methods, url + "?" + data, flag);
+          xhr.send();
+        } else if (methods == "post") {
+          xhr.open(methods, url, flag);
+          xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+          xhr.send(data);
+        }
+
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState == 4 && xhr.status == 200) {
+            // var object=JSON.parse(xhr.responseText);
+            success && success(object);
+          }
+        }
+      }
+    
+    </script>
+  </body>
+</html>

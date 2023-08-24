@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="PanJiaBao" content="width=device-width, initial-scale=1.0">
+        <title>第三题</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+
+            .imgShow{
+                width: 1000px;
+                height: 500px;
+                position: relative;
+                margin: 0 auto;
+                margin-top: 100px;
+                border: 1px solid gray;
+            }
+
+            .sShow{
+                box-sizing: border-box;
+                width: 350px;
+                height:  350px;
+                position: absolute;
+                top: 75px;
+                border: 1px solid;
+            }
+            .sShow img{
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+
+            .mMask{
+                width: 120px;
+                height: 130px;
+                background: rgba(0,0,0,0.3);
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: none;
+                /* display: block; */
+            }
+
+            .lShow{
+                width: 240px;
+                height: 240px;
+                position: absolute;
+                top: 110px;
+                left: 355px;
+                overflow: hidden;
+                z-index: 10;
+                display: none;
+                /* display: block; */
+            }
+            .lShow img{
+                width: 700px;
+                height: 700px;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            .msg{
+                font-size: 80px;
+                color: rgba(254, 19, 19, 0.553);
+                z-index: -1;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="imgShow">
+            <!-- 左侧小图 -->
+            <div class="sShow">
+                <img src="./img/xiaotu.jpg" alt="">
+                <div class="mMask"></div>
+            </div>
+            <!-- 右侧大图 -->
+            <div class="lShow">
+                <img src="./img/datu.jpg" alt="">
+            </div>
+        </div>
+        
+        <script src="./jq/jquery.js"></script>
+        <script>
+            $(document).ready(
+                function(){
+                    // 切换显示状态
+                    $('.sShow').hover(
+                        function(){
+                            $('.mMask').toggle();
+                            $('.lShow').toggle();
+                        }
+                    )
+
+                    // 获取 mMask 宽高
+                    var m_mask_h = $('.mMask').height();
+                    var m_mask_w = $('.mMask').width();
+
+                    // 获取 sShow 宽高
+                    var s_show_w = $('.sShow').width();
+                    var s_show_h = $('.sShow').height();
+
+                    // 获取 lShow img 宽高
+                    var l_show_img_w = $('.lShow img').width();
+                    var l_show_img_h = $('.lShow img').height();
+                    
+                    // 图片大小演算
+                    $('.sShow').mousemove(
+                        function(e){
+                            var s_show_x = $('.sShow').offset().left; // 获取s号展示区距离文档左边的距离
+                            var s_show_y = $('.sShow').offset().top; // 获取s号展示区距离文档上边的距离
+                            var ex = e.pageX; // 获取事件坐标
+                            var ey = e.pageY;
+                            var mouse_x = ex - s_show_x; // 获取鼠标在s号展示区的坐标
+                            var mouse_y = ey - s_show_y; 
+
+                            // 让鼠标在亚克力框中间
+                            // 最小值
+                            if(mouse_x < m_mask_w / 2){
+                                mouse_x = m_mask_w / 2;
+                            }   
+                            if(mouse_y < m_mask_h / 2){
+                                mouse_y = m_mask_h / 2;
+                            }
+                            
+                            // 防止亚克力框跑出s号展示区
+                            // 最大值
+                            if(mouse_x > s_show_w - m_mask_w / 2){
+                                mouse_x = s_show_w - m_mask_w / 2;
+                            }
+                            if(mouse_y > s_show_h - m_mask_h / 2){
+                                mouse_y = s_show_h - m_mask_h / 2;
+                            }
+
+                            // 定位值设定
+                            $('.mMask').css(
+                                {
+                                    left: mouse_x - m_mask_w / 2, // 当前鼠标坐标减去亚克力框的一半
+                                    top: mouse_y - m_mask_h / 2
+                                }
+                            )
+                            $('.lShow img').css(
+                                {
+                                    left: - 2 * (mouse_x - m_mask_w / 2), // 亚克力框的定位的二倍，负数移动实现效果
+                                    top: - 2 * (mouse_y - m_mask_h / 2)
+                                }
+                            )
+                            console.log("亚克力left定位" + (mouse_x - m_mask_w / 2))
+                            console.log("l号图片left定位" + (- 2 * (mouse_x - m_mask_w / 2)))
+                        }
+                    )
+                }
+            )
+        </script>
+    </body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        function nocopy(){
+            var code = unescape('\u6f58\u4f73\u5b9d\u0020\u0038\u002f\u0039\u0020\u9632\u590d\u5236\u6c34\u5370');
+            console.log(code); 
+            msg = '<p class="msg">'+code+'</p>'
+            $('.imgShow').append(msg);
+        }
+        nocopy()
+    </script>
+</html>
