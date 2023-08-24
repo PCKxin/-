@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        var max = Math.max(1,2,3);
+        var min = Math.min(1,2,3);
+        var ceil = Math.ceil(10.0001);
+        var floor = Math.floor(9.9999);
+        var abs = Math.abs(-5);
+        var round = Math.round(4.4);
+        var pow = Math.pow(5,3);
+        var pai = Math.PI;
+
+        //var n = Math.random() * (max - min) + min;
+
+        //1、创建日期对象
+        var date = new Date();
+        //2、通过日期对象自定义时间
+        var date1 = new Date("2023/5/1 20:00");
+        //3、距离世界协调时间的时间差，毫秒数，1970年1月1日
+        var cha = Date.parse("2023/4/14");
+        //4、分别获取年月日、时分秒
+        var year = date.getFullYear();//四位年份
+        var month = date.getMonth();//0-11，表示与当前月份对应，需要+1
+        var _date = date.getDate();//返回在该月中的第几天
+        var day = date.getDay();//周几  0-6 0表示周日
+        var hour = date.getHours();//小时，0-23
+        var min = date.getMinutes();//分钟，0-59
+        var sec = date.getSeconds();//秒，0-59
+        //5、设置年月日，时分秒
+        date.setFullYear(2035); //参数是四位年份
+        date.setMonth(3);//参数为0-11，0表示1月
+        date.setDate(14); //参数为1-31
+        date.setHours(23);//0-23
+        date.setMinutes(59); //0-59
+        date.setSeconds(59);//0-59
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义时间</title>
+    <script type="text/javascript">
+        /*
+            自定义日期和时间
+
+        *   1、 "四位年份-月份-日期" 进行传参，修改的是年月日
+                默认的小时、分钟、秒会到零点、零分、零秒
+                "四位年份-月份-日期 小时：分钟：秒" 修改年月日、时分秒
+
+            2、"四位年份/月份/日期"进行传参，修改的是年月日
+                "四位年份/月份/日期 小时：分钟：秒"
+
+            区别：
+                "-"连接符在ie8版本之前不支持   ❌
+                "/"连接符可以兼容低版本ie
+        * */
+        var date = new Date("2008/8/8 20:8:0");
+        console.log(date);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style type="text/css">
+            .box5{
+                height: 200px;
+            }
+            .box5 div{
+                width: 100px;
+                height: 100px;
+                float: left;
+                margin-right:10px ;
+                border: 1px solid red;
+            }
+        </style>
+    </head>
+    <body>
+        <ul class="box1">
+            <span>0</span>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <div>7</div>
+        </ul>
+        <ul class="box2">
+            <li>0</li>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+        </ul>
+        <ul class="box3">
+            <li>0</li>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+        </ul>
+        <ul class="box4">
+            <li>感受人们心中的音乐</li>
+            <li>把自己的祈祷注入音乐</li>
+            <li>感受人们心中的音乐</li>
+            <li>感受人们心中的音乐</li>
+            <li>感受人们心中的音乐</li>
+        </ul>
+        <div class="box5">
+            <div></div>
+            <div> </div>
+            <div>
+                
+            </div>
+            <div>321</div>
+            <div><p></p></div>
+        </div>
+        <div class="box6">
+            <li><span>1331</span></li>
+            <li>312313</li>
+        </div>
+        <div class="box7">
+            <input type="button" value="我会自动获取焦点" autofocus>
+            <input type="text" value="我是做对比的">
+            <button>点我有惊喜</button>
+        </div>
+        <script src="../jQuery/jquery-1.12.4.js"></script>
+        <script>
+            $(document).ready(
+                function(){
+                    $('.box1 li:first').css('background','blue');
+                    // $('.box1 li:nth-of-type(1)')
+                    // $('.box1 li:eq(0)')
+                    // 上面的三种选择器 是一样的效果
+                    
+                    // $('box1 li:nth-child(1)') 
+                    // $('box1 li:first-child')
+                    // 上面这两种时一样的效果
+
+                    $('.box1 li:last').css('background','skyblue');
+                    
+                    // nth-last-of-type(3) 从后往前数第3个
+                    $('.box1 li:nth-last-of-type(3)').css('background','pink');
+                    
+                    // even 索引值为偶数
+                    $('.box2 li:even').css('background','deeppink');
+                    
+                    // odd 索引值为奇数
+                    $('.box2 li:odd').css('background','yellow');
+                    
+                    // gt 表示大于2的索引（不包括索引值为2的）
+                    $('.box3 li:gt(2)').css('background','orange');
+                    
+                    // lt 表示小于5的索引（不包括索引值为5的）
+                    $('.box3 li:lt(5)').css('border','2px solid red');
+
+                    // contains(XX) 包含XX的元素,XX可以是标签名，也可以是文本内容
+                    $('.box4 li:contains(祈祷)').text('血色玫瑰').css('background','skyblue');
+
+                    // empty() 选择没有子元素的元素
+                    $('.box5 div:empty').css('background','red');
+
+                    // parent() 选择有子元素的元素，不管子元素是什么，只要有就行，空格换行都算
+                    $('.box5 div:parent').css('background','skyblue');
+
+                    // 选择是否含有span元素的li
+                    $('.box6 li:has(span)').css('background','pink');
+                    
+                    // focus 选择当前获取焦点的元素
+                    $('.box7 input:focus').css('background','red');
+                    $('.box7 button').click(
+                        function(){
+                            $(':focus').css('background','yellow');
+                        }
+                    )
+                }
+            )
+        </script>
+    </body>
+</html>

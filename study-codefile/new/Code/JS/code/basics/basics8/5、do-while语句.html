@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>do-while语句</title>
+		<script type="text/javascript">
+			/* 
+				do-while语句 ，  直到……时
+				
+				//初始条件
+				do {
+					//循环的内容
+					//迭代条件
+				}while(循环条件)
+			 
+			 */
+			/* 
+				控制台输出十遍自己的名字
+			 */
+			var i = 0; 
+			do {
+				console.log("名字");
+				i++;
+			}while(i < 10);
+			
+			/* 
+				循环条件不满足的时候，也会执行一次
+				新执行循环，后判断是否满足
+			 */
+			var n = 10;
+			do {
+				console.log("我自己");
+				n++;
+			}while(n < 5)
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

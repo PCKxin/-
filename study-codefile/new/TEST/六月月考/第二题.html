@@ -1,0 +1,279 @@
+<!-- <!DOCTYPE html>
+    <html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="PanJiaBao" content="width=device-width, initial-scale=1.0">
+        <title>第二题</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                font-family: Arial;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <div class="box_top">
+                <p>最佳城市</p>
+                <p>最差城市</p>
+            </div>
+    
+            <div>
+                <ul>
+                    <p>排名</p>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>6</li>
+                    <li>7</li>
+                    <li>8</li>
+                    <li>9</li>
+                    <li>10</li>
+                </ul>
+                <ul class="cs">
+                    <p>城市</p>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+    
+    
+    
+        <script>
+            var cs_name = document.querySelectorAll(".cs li");
+            function getAjax(methods, url, flag, success) {
+                var XHR = null;
+                if (window.XMLHttpRequest) {
+                    XHR = new XMLHttpRequest();
+                } else {
+                    XHR = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                var date = new Date().getTime();
+                XHR.open(methods, url + "?" + date, flag);
+                XHR.send();
+                XHR.onreadystatechange = function () {
+                    if (XHR.readyState == 4 && XHR.status == 200) {
+                        var object = JSON.parse(XHR.responseText);
+                        success && success(object);
+                    }
+                }
+            }
+            getAjax("get", "data/weather.json", true, function (obj) {
+                for (var key in obj) {
+                    if (key == "data") {
+                        for (var i = 0; i < obj[key].length; i++) {
+                            for (var key1 in obj[key][i]) {
+                                if (key1 == "namecn") {
+                                    cs_name[i].innerText += obj[key][i][key1];
+                                }
+                                if (key1 == "provcn") {
+                                    cs_name[i].innerText += obj[key][i][key1];
+                                }
+
+                            }
+                        }
+                    }
+                }
+            })
+        </script>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="PanJiaBao" content="width=device-width, initial-scale=1.0">
+    <title>第二题</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-family: Arial;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="box_top">
+            <p>最佳城市</p>
+            <p>最差城市</p>
+        </div>
+
+        <div>
+            <ul>
+                <p>排名</p>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+                <li>8</li>
+                <li>9</li>
+                <li>10</li>
+            </ul>
+            <ul class="cs">
+                <p>城市</p>
+                <li id="city1"></li>
+                <li id="city2"></li>
+                <li id="city3"></li>
+                <li id="city4"></li>
+                <li id="city5"></li>
+                <li id="city6"></li>
+                <li id="city7"></li>
+                <li id="city8"></li>
+                <li id="city9"></li>
+                <li id="city10"></li>
+            </ul>
+        </div>
+
+        <script type="text/javascript">
+            var cs_name = document.querySelectorAll(".cs li");
+            function getAjax(methods, url, flag, success) {
+                var XHR = null;
+                if (window.XMLHttpRequest) {
+                    XHR = new XMLHttpRequest();
+                } else {
+                    XHR = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                var date = new Date().getTime();
+                XHR.open(methods, url + "?" + date, flag);
+                XHR.send();
+                XHR.onreadystatechange = function () {
+                    if (XHR.readyState == 4 && XHR.status == 200) {
+                        var object = JSON.parse(XHR.responseText);
+                        success && success(object);
+                    }
+                }
+            }
+            getAjax("get", "data/weather.json", true, function (obj) {
+                for (var key in obj) {
+                    if (key == "data") {
+                        for (var i = 0; i < obj[key].length; i++) {
+                            for (var key1 in obj[key][i]) {
+                                if (key1 == "namecn") {
+                                    cs_name[i].innerText += obj[key][i][key1]?.toString();
+                                }
+                                if (key1 == "provcn") {
+                                    cs_name[i].innerText += obj[key][i][key1]?.toString();
+                                }
+
+                            }
+                        }
+                    }
+                }
+            })
+        </script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 潘佳宝 7/10 防复制水印 -->

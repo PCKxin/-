@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            div{
+                width: 300px;
+                height: 300px;
+                background: red;
+                margin: 100px auto;
+
+                /*兼容性写法*/
+                /*解决 低版本浏览器中 标准写法不识别*/
+                /*需要兼容性写法才能识别 */
+
+                /*webkit内核  苹果和谷歌*/
+                -webkit-border-radius: 10px 20px;
+
+                /*gecko  火狐的*/
+                -moz-border-radius: 10px 20px;
+
+                /*trident ie的*/
+                -ms-border-radius: 10px 20px;
+
+                /*blink  欧鹏的*/
+                -o-border-radius: 10px 20px;
+
+                /*标准写法*/
+                border-radius: 10px 20px;
+
+                /* yuki: 必须把标准写法定义了 */
+
+                /*严格模式下*/
+                /*标准写法 和 兼容性写法 都应该写 */
+                /*顺序？应该先写？*/
+                /*先写 兼容性写法 后写标准写法*/
+            }
+        </style>
+    </head>
+    <body>
+        
+    </body>
+</html>

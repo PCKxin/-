@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>change事件</title>
+  </head>
+  <body>
+    打游戏：<input type="checkbox" name="a1" class="hobby" value="1" >
+    睡觉:<input type="checkbox" name="a1" checked="checked" class="hobby" value="2" />
+    看手机:<input type="checkbox" name="a1"  class="hobby" value="3" />
+    
+  </body>
+  <script type="text/javascript">
+    var hobbys=document.getElementsByClassName("hobby");
+    var hobby2=document.getElementsByName("a1");
+    for(var i=0;i<hobby2.length;i++){
+      console.log(hobby2[i]);  
+      hobby2[i].onchange=function(){  //change,当元素的值发生改变时触发
+        alert(hobby2[i]);  
+      }
+    }
+    
+  </script>
+</html>

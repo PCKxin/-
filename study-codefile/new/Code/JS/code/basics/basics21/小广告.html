@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小广告</title>
+</head>
+<body>
+    <span id="now">立即关闭✖️</span>
+    <p>
+        <strong id="num">10</strong>
+        <em>秒钟以后关闭</em>
+    </p>
+
+    <script type="text/javascript">
+        var now = document.getElementById("now");
+        var num = document.getElementById("num");
+        var n = 10;
+        //立即关闭
+        now.onclick = function () {
+            close();
+        }
+        //倒计时关闭
+        function fn() {
+            n--;
+            num.innerHTML = n;
+            if (n == 0) {
+                close();
+            }
+        }
+    </script>
+</body>
+</html>

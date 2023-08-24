@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>实参的表示方式</title>
+		<script type="text/javascript">
+			function fn(a, b, c) {
+				console.log(a + b + c);
+			}
+			
+			fn(1,2,3);
+			
+			//实参可以为表达式
+			fn(1+2, 3+4 , 5+6);
+			
+			//实参可以是变量
+			var num1 = 10;
+			var num2 = 20;
+			var num3 = 30;
+			fn(num1, num2, num3);
+		</script>
+	</head>
+	
+	<body>
+	</body>
+</html>

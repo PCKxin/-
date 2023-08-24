@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全局变量和window对象属性的区别</title>
+    <script type="text/javascript">
+        var a = 10;
+        window.b = 20;
+
+        delete a;
+        delete b;
+
+        console.log(a);// 10
+        console.log(b);// b is not defined
+
+        /*
+            全局变量被视为window对象的属性，不能被delete删除
+            不声明直接赋值也是window对象的属性，能被delete删除
+        */
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

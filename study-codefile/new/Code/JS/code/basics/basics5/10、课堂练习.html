@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/* 
+				手动输入年龄，购买对应的门票
+				6岁以下免票
+				6-12岁以下买儿童票
+				12-18岁买学生票
+				18岁以上买成人票
+			 */
+			var age = prompt("请输入年龄") * 1;
+			age > 0 && age < 6 ? console.log("免票") : 
+			age >= 6 && age < 12 ? console.log("儿童票") : 
+			age >= 12 && age < 18 ? console.log("学生票") : 
+			age >= 18 ? console.log("成人票") : console.log("年龄有误");
+ 		</script> 
+	</head> 
+	<body>
+	</body>
+</html>

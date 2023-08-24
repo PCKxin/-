@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script>
+            window.onload = function(){
+                /*
+                如用户输入8点~12问候上午好；
+                用户输入12点~18点 弹出下午好；
+                用户输入18点~20点	弹出傍晚好；
+                用户输入超过20点，弹出晚上好；
+                */
+                var time_in = document.getElementById("topic_1");
+                var bu01 = document.getElementById("bu-1");
+                bu01.onclick = function(){
+                    if( time_in.value >= 8 && time_in.value <= 12) {
+                        alert("上午好");
+                    } else if( time_in.value >= 13 && time_in.value < 18 ){
+                        alert("下午好");
+                    } else if( time_in.value >= 18 && time_in.value <= 20 ){
+                        alert("傍晚好");
+                    } else if( time_in.value > 20){
+                        alert("晚上好");
+                    } else{
+                        alert("早~");
+                    }
+                }
+            }
+            // window.onload = function(){
+            //     //用户依次输入2个值，最后弹出最大的那个值
+            //     var value_1 = prompt("number one") * 1;
+            //     var value_2 = prompt("number two") * 1;
+                
+            // }
+
+
+
+
+            
+
+
+            //用户输入一个数，判断是奇数还是偶数
+
+
+
+
+            //假设这个月1号是星期三，提示用户输入本月的日期（即1日-31日），返回用户输入的那一天是星期几
+            //作业4
+            window.onload = function(){
+                var day = document.getElementById("topic_4");
+                var bu04 = document.getElementById("bu-4");
+                bu04.onclick = function(){
+                    var day_value = Number(day.value) % 7
+                    if (Number(day.value) % 7 == 0) {
+                        alert("星期二")
+                    }
+                    else if (day_value  == 1) {
+                        alert("星期三")
+                    }
+                    else if (day_value  == 2) {
+                        alert("星期四")
+                    }
+                    else if (day_value  == 3) {
+                        alert("星期五")
+                    }
+                    else if (day_value  == 4) {
+                        alert("星期六")
+                    }
+                    else if (day_value  == 5) {
+                        alert("星期日")
+                    }
+                    else {
+                        alert("信息有误")
+                    }
+                }
+            }
+
+            /***
+            *                    _ooOoo_
+            *                   o8888888o
+            *                   88" . "88
+            *                   (| -_- |)
+            *                    O\ = /O
+            *                ____/`---'\____
+            *              .   ' \\| |// `.
+            *               / \\||| : |||// \
+            *             / _||||| -:- |||||- \
+            *               | | \\\ - /// | |
+            *             | \_| ''\---/'' | |
+            *              \ .-\__ `-` ___/-. /
+            *           ___`. .' /--.--\ `. . __
+            *        ."" '< `.___\_<|>_/___.' >'"".
+            *       | | : `- \`.;`\ _ /`;.`/ - ` : | |
+            *         \ \ `-. \_ __\ /__ _/ .-` / /
+            * ======`-.____`-.___\_____/___.-`____.-'======
+            *                    `=---='
+            *
+            * .............................................
+            *          佛祖保佑             永无BUG
+            */
+        </script>
+    </head>
+    <body>
+        <p>
+            现在时间（24小时制）：
+            <input type="text" id="topic_1">
+            <input type="button" id="bu-1" value="OK">
+        </p>
+        <p>
+            输入俩值比较：
+            <input type="text" id="topic_2" placeholder="value1">
+            <input type="text" placeholder="value2">
+            <input type="button" id="bu-2" placeholder="OK">
+        </p>
+        <p>
+            判断奇偶数：
+            <input type="text" id="topic_3">
+            <input type="button" id="bu-3" placeholder="OK">
+        </p>
+        <p>
+            输入日期返回今天星期:
+            <input type="text" id="topic_4">
+            <input type="button" id="bu-4" value="OK">
+        </p>
+    </body>
+</html>

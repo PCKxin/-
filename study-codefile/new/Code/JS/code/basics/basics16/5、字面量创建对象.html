@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字面量创建对象</title>
+    <script type="text/javascript">
+        /*
+        *   姓名，性别，年龄，身高，体重，兴趣爱好，正在做的事情
+        * */
+        var student = {
+            //属性
+            name : "邸子豪",
+            sex : "你自己看",
+            age : "不告诉你",
+            height : "你自己感觉",
+            weight : "就不告诉你",
+            hobby : "跟小姑娘聊天",
+            //带有匿名函数的是方法
+            doing : function () {
+                console.log("正在打代码");
+            },
+            want : function () {
+                console.log("中午吃什么");
+            }
+        }
+        console.log(student);
+
+        //对象具体的某个属性或方法的调用
+        //1、对象名.属性名
+        console.log("这个学生的名字是：" + student.name);
+        console.log("性别是：" + student.sex);
+
+        //2、对象名["属性名"]
+        console.log("身高是：" + student["height"]);
+        console.log("体重是：" + student["weight"]);
+
+        //方法  对象名.方法名()
+        student.doing();
+        student.want();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

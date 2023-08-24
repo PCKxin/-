@@ -1,0 +1,31 @@
+/* 样式重置 */
+body, ul, p, h1, h2, h3, h4, dl, dd, form, input, textarea, select {
+    margin: 0;
+    padding: 0;
+    /* 默认英文字体 */
+    font-family: Arial;
+}
+li{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+img{
+    border: none;  /* 解决图片下方自带边距问题 */
+    display: block;
+}
+/* 万能清浮动 */
+.clearFloat::after{
+    display: block;
+    content: "";
+    clear: both;
+    height: 0;
+    visibility: hidden;
+}
+.clearFloat{
+    zoom: 1;
+}

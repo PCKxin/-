@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p class="txt" id="t">这是段落标签</p>
+
+    <script type="text/javascript">
+        /*
+        *   节点 node
+        *
+        *   分类：        nodeType类型的属性值
+        *       文档节点   9
+        *       元素节点   1
+        *       属性节点   2
+        *       文本节点   3
+        *
+        *   DOM部分都是document对象下的内容
+        *   nodeType是属性：用于查看节点类型的属性
+        * */
+
+        //1、文档节点类型
+        console.log(document.nodeType); // 9
+
+        //2、元素节点类型，先获取元素，拿到当前元素的所有属性
+        var t = document.getElementById('t');
+        console.log(t);
+
+        console.log(t.nodeType); // 1
+
+        //attributes单词就是属性的意思，
+        // 通过 元素.attributes 获取当前元素所拥有的所有属性
+        console.log(t.attributes);
+        //通过 元素.attributes[i].nodeType查询哪个元素的哪个属性的类型
+        console.log(t.attributes[0].nodeType);//2
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/* 
+			 1、	请输入一个5位数，逆向打印出这个数字
+			 */
+			var n = prompt("请输入一个五位数字")*1;
+			var g = parseInt(n % 10);
+			var s = parseInt(n / 10 % 10);
+			var b = parseInt(n / 100 % 10);
+			var q = parseInt(n / 1000 % 10);
+			var w = parseInt(n / 10000);
+			console.log("" + g + s + b + q + w);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

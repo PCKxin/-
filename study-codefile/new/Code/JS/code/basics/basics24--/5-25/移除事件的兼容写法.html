@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>移除事件的标准写法</title>
+  </head>
+  <body>
+  </body>
+  <script type="text/javascript">
+    function removeEvent(Obj,event,fn){
+      //标准写法
+      if(Obj.removeEventListener){
+        Obj.removeEventListener(event,fn,false);
+      }else{
+        //IE低版本
+        Obj.detachEvent('on'+event,fn);
+      }
+    }
+  </script>
+</html>

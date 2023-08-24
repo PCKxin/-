@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        /*
+        *   请输入一组同学的年龄，(5人)
+        *   将年龄从小到大排序
+        * */
+        var arr = [];
+        for(var i = 0; i < 5; i++) {
+            var age = prompt("请输入同学的年龄") * 1;
+            arr.push(age);
+        }
+        console.log(arr);
+
+        arr.sort(function (a,b) {
+            return a - b;
+        });
+        console.log(arr);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

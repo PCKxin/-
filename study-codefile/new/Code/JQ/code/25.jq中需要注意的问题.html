@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script src="../jQuery/jquery-1.12.4.js"></script>
+        <script>
+            // window.onload = function(){
+            //     var a = 1;//全局变量
+            //     function fn(){
+            //         var a = 2;//函数内部通过var声明的变量 局部变量
+            //         console.log(this.a)
+            //         //this指向。。。谁调用 this就是指向谁
+            //         //    不要在乎在哪定义的
+            //         //    在乎在哪调用的
+            //     }
+            //     window.fn();//1
+            //
+            //     var b = 1;
+            //     var obj = {
+            //         b:2,
+            //         c:function(){
+            //             console.log(this.b)
+            //         }
+            //     }
+            //     //obj.c();//2
+            //     var d = obj.c;
+            //     // d = function(){
+            //     //     console.log(this.b)
+            //     // }
+            //         window.d();//1
+            // }
+            var a = 1;
+            // 如果this指向window 通过this想拿到全局变量
+            // 需要将全局变量a定义到ready事件的外部
+            $(document).ready(
+                function(){
+                    // jq中 最顶级的对象不是window 是document
+                    // 所以在ready事件 中定义 变量 ，并不是全局变量
+                    // 没有将下面a变量加入到window中
+                    // var a = 1不属于全局变量
+                    function fn (){
+                        var a =2;
+                        console.log(this.a)
+                    }
+                }
+            )
+        </script>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>获取外部引入的样式</title>
+    <link href="day0523_2.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <div id="div"></div>
+  </body>
+  <script type="text/javascript">
+    var div=document.getElementById("div");
+    var height=window.getComputedStyle(div,null).height;
+    var color=window.getComputedStyle(div,null)["background"];
+    console.log(height);
+     console.log(color);
+     
+     
+  </script>
+  
+  <!-- 元素.style和getComputedStyle的区别
+   1.元素.style获取行内样式
+     getComputedStyle获取最终样式
+   2.元素.style设置样式（可读可写）
+     getComputedStyle只读模式，只能获取属性的样式不能修改
+    
+    Computed：计算属性的    
+   -->
+  
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+      ol{
+        width: 500px;
+        height: 500px;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+       <!-- <button id="bu1">按钮</button> -->
+       <ol id="bu1">
+         <li>列表1</li>
+         <li>列表2</li>
+         <li>列表3</li>
+       </ol>
+    </div>
+   
+  </body>
+  <script type="text/javascript">
+    var button=document.getElementById("bu1");
+    button.onclick=function(e){
+      var event=e||window.event;
+      //返回事件真正的触发者；      console.log(event.target); //li
+      //返回事件的监听者（触发的事件绑定到了谁，就返回谁）
+      console.log(event.currentTarget);//ol
+    }
+  </script>
+</html>

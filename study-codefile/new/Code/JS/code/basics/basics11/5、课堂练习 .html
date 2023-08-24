@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/* 
+				定义一个函数，循环判断是否为闰年，循环范围为传参输入
+			 */
+			var s = prompt("请输入从哪年开始统计")*1;
+			var e = prompt("请输入到哪年结束")*1;
+			var count = 0;
+			function fn(a , b) {
+				for(var i = a; i <= b; i++) {
+					if (i % 400 == 0 || (i % 4 ==0 && i % 100 !=0)) {
+						count++;
+					}
+				}
+				return count;
+			}
+			var res = fn( s , e ) ;
+			console.log(res);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

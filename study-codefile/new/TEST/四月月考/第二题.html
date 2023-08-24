@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+            .top_img{
+                display: block;
+                width: 980px;
+                height: 295px;
+                margin: 0 auto;
+            }
+            .clock_box{
+                width: 900px;
+                height: 400px;
+                margin: 0 auto;
+                background-color: black;
+                border: 8px solid #ccc;
+                border-radius: 10px;
+                position: relative;
+            }
+            .today_time{
+                box-sizing: border-box;
+                width: 860px;
+                height: 100px;
+                /* background: white; */
+                line-height: 100px;
+                text-align: center;
+                font-size: 30px;
+                color: white;
+                /* color: black; */
+                font-weight: bold;
+                margin: 0 auto;
+                margin-top: 20px;
+            }
+            .year_data{
+                display: inline-block;
+                width: 140px;
+                height: 40px;
+            }
+            .mouth_data{
+                display: inline-block;
+                width: 80px;
+                height: 40px;
+            }
+            .day_data{
+                display: inline-block;
+                width: 80px;
+                height: 40px;
+            }
+            .time_img_s{
+                width: 25px-;
+                height: 40px;
+            }
+            .time_img_x{
+                width: 60px;
+                height: 100px;
+            }
+            .timer{
+                box-sizing: border-box;
+                width: 860px;
+                height: 140px;
+                /* background: white; */
+                text-align: center;
+                font-size: 80px;
+                color: red;
+                font-weight: bold;
+                margin: 0 auto;
+                margin-top: 20px;
+            }
+            .hour{
+                display: inline-block;
+                width: 150px;
+                height: 140px;
+            }
+            .minute{
+                display: inline-block;
+                width: 150px;
+                height: 140px;
+            }
+            .second{
+                display: inline-block;
+                width: 150px;
+                height: 140px;
+            }
+            .week{
+                box-sizing: border-box;
+                width: 860px;
+                height: 100px;
+                /* background: white; */
+                line-height: 100px;
+                text-align: center;
+                font-size: 30px;
+                color: white;
+                /* color: black; */
+                font-weight: bold;
+                margin: 0 auto;
+                margin-top: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <img src="./img/01/top_img.png" class="top_img">
+        <div class="clock_box">
+            <div class="today_time">
+                今天：
+                <span class="year_data">
+                    <img src="./img/01/0.png" class="time_img_s">
+                    <img src="./img/01/0.png" class="time_img_s">
+                    <img src="./img/01/0.png" class="time_img_s">
+                    <img src="./img/01/0.png" class="time_img_s">
+                </span>
+                年
+                <span class="mouth_data">
+                    <img src="./img/01/0.png" class="time_img_s">
+                    <img src="./img/01/0.png" class="time_img_s">
+                </span>
+                月
+                <span class="day_data">
+                    <img src="./img/01/0.png" class="time_img_s">
+                    <img src="./img/01/0.png" class="time_img_s">
+                </span>
+                日
+            </div>
+            <div class="timer">
+                <span class="hour">
+                    <img src="./img/01/0.png" class="time_img_x">
+                    <img src="./img/01/0.png" class="time_img_x">
+                </span>
+                <span>:</span>
+                <span class="minute">
+                    <img src="./img/01/0.png" class="time_img_x">
+                    <img src="./img/01/0.png" class="time_img_x">
+                </span>
+                <span>:</span>
+                <span class="second">
+                    <img src="./img/01/0.png" class="time_img_x">
+                    <img src="./img/01/0.png" class="time_img_x">
+                </span>
+            </div>
+            <div class="week">
+                星期：
+                <span class="date_data">
+                    <img src="./img/01/0.png" class="time_img_s">
+                </span>
+                距离过年还有：
+                <span class="countDown_data">
+                    <img src="./img/01/0.png" class="time_img_s">
+                    <img src="./img/01/0.png" class="time_img_s">
+                    <img src="./img/01/0.png" class="time_img_s">
+                </span>
+                天
+            </div>
+        </div>
+    </body>
+    <script>
+        //获取元素
+        var year_data = document.getElementsByClassName("time_img_s");
+        var mouth_data = document.getElementsByClassName("time_img_x");
+        function go(){
+            //获取当前时间
+            var date = new Date();
+            var year = date.getFullYear();
+            var mouth = date.getMonth() + 1; //获取当前月份(0-11,0代表1月)
+            var day = date.getDate();
+            var hour = date.getHours();
+            var minute = date.getMinutes();
+            var second = date.getSeconds();
+            //获取当前星期
+            var week = date.getDay();     
+            //获取当前时间距离2024/2/09还有多少天
+            var countDown = Math.floor((new Date("2024/2/09") - new Date()) / 86400000);
+            //填入对应图片 
+            year_data[0].src = "./img/01/" + Math.floor(year / 1000) + ".png"; //千位
+            year_data[1].src = "./img/01/" + Math.floor(year % 1000 / 100) + ".png";  //百位
+            year_data[2].src = "./img/01/" + Math.floor(year % 1000 % 100 / 10 ) + ".png";  //十位
+            year_data[3].src = "./img/01/" + Math.floor(year % 1000 % 100 % 10 / 1 ) + ".png";  //个位
+            //填入月份
+            year_data[4].src = "./img/01/" + Math.floor(mouth / 10) + ".png"; //十位    
+            year_data[5].src = "./img/01/" + Math.floor(mouth % 10) + ".png";  //个位
+            //填入日期
+            year_data[6].src = "./img/01/" + Math.floor(day / 10) + ".png"; //十位
+            year_data[7].src = "./img/01/" + Math.floor(day % 10) + ".png";  //个位
+
+            //填入小时
+            mouth_data[0].src = "./img/01/" + Math.floor(hour / 10) + ".png"; //十位
+            mouth_data[1].src = "./img/01/" + Math.floor(hour % 10) + ".png";  //个位
+            //填入分钟
+            mouth_data[2].src = "./img/01/" + Math.floor(minute / 10) + ".png"; //十位
+            mouth_data[3].src = "./img/01/" + Math.floor(minute % 10) + ".png";  //个位
+            //填入秒
+            mouth_data[4].src = "./img/01/" + Math.floor(second / 10) + ".png"; //十位
+            mouth_data[5].src = "./img/01/" + Math.floor(second % 10) + ".png";  //个位
+            //填入星期
+            year_data[8].src = "./img/01/" + Math.floor(week % 7) + ".png";  //个位
+            //填入距离过年还有多少天
+            year_data[9].src = "./img/01/" + Math.floor(countDown / 100) + ".png";  //百位
+            year_data[10].src = "./img/01/" + Math.floor(countDown % 100 / 10) + ".png";  //十位
+            year_data[11].src = "./img/01/" + Math.floor(countDown % 100 % 10 / 1) + ".png";  //个位
+        }
+        setInterval(go,1000);
+    </script>
+</html>

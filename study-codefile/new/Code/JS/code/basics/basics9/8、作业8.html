@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/* 
+			 2、	请输入一个100-999之间的数字，判断是否为水仙花数
+			 */
+				var i = prompt("请输入一个数字") * 1;
+				if(i < 100 || i > 999) {
+					console.log("数字输入有误");
+				}else {
+					var g = parseInt(i % 10);
+					var s = parseInt(i / 10 % 10);
+					var b = parseInt(i / 100);
+					if(g * g * g + s * s * s + b * b * b == i) {
+						console.log(i + "是水仙花数");
+					}else {
+						console.log(i + "不是水仙花数");
+					}
+				}
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

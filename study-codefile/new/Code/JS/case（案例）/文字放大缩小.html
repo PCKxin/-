@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{margin: 0;padding: 0;}
+            div{
+                height: 500px;
+                border: 1px solid red;
+            }
+            p{
+                text-align: center;
+                line-height: 500px;
+                color: aqua;
+                font-size: 0px;
+            }
+        </style>
+    </head>
+    <body>
+        <div>       
+            <p>我是一段文字</p>
+            <!-- 要求 font-size：变大到40px 开始缩小 缩小到0再变大
+            0-40px最小最大值之间来回变化
+            0 1 2 3 4 5 。。。。40 39 38 37。。。。0 1 2 3 4 5  -->
+        </div>
+    
+        <script>
+            var p1 = document.querySelector('p')
+            var index = 0;
+            var flag = true;
+
+            function fontsize_change(){
+                if(flag){
+                    index++;
+                    if(index >= 40){
+                        index = 40;
+                        flag = false;
+                    }
+                }else{
+                    index--;
+                    if(index <= 0){
+                        index = 0;
+                        flag = true;
+                    }
+                }
+                p1.style.fontSize = index+'px';
+            }
+            setInterval(fontsize_change,50)
+            
+            // //简洁版
+            // function fontsize_change(){
+            //     index = flag ? Math.min(index + 1 , 40) : Math.max(index -1 , 0);
+            //     p1.style.fontSize = index+'px';
+            //     // 如果index === 40，flag = false，如果index === 0，flag = true否则flag = true
+            //     flag = index === 40 ? false : index === 0 ? true : flag;
+            //     setTimeout(fontsize_change,50)
+            //     // // 递归调用,不断调用自己,增加平滑度
+            //     // requestAnimationFrame(fontsize_change)
+            // }
+            // fontsize_change()
+        </script>
+    </body>
+</html>

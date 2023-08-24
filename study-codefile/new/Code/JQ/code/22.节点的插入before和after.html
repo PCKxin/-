@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <ul>
+            <li>0</li>
+            <li>1</li>
+            <li class="current"></li>
+        </ul>
+        <script src="../jQuery/jquery-1.12.4.js"></script>
+        <script>
+            $(document).ready(
+                function(){
+                    // before()和原生js的insertBefore()方法一样，在被选元素的前面插入内容
+                    $('ul').before('<p>我是before创建的p</p>');
+
+                    // after()和原生js的insertAfter()方法一样，在被选元素的后面插入内容
+                    $('ul').after('<p>我是after创建的p</p>');
+
+                    // eq()方法是获取指定索引的元素
+                    $('ul li').eq(1).before('<div>我是befor添加的div</div>');
+                    $('ul li').eq(1).after('<div>我是after添加的div</div>');
+
+                    // insertBefore()和insertAfter()方法是在被选元素的前面和后面插入内容
+                    $('<p>我是insertbefore添加的节点</p>').insertBefore('.current').css({color:'pink'});
+                    $('<p>我是insertAfter添加的节点</p>').insertAfter('.current').css({color:'orange'});
+                }
+            );
+        </script>
+    </body>
+</html>

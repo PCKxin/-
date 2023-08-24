@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>splice()</title>
+    <script type="text/javascript">
+        /*
+        *   splice()
+        *       作用：可以对数组元素进行增、删、改，取决于参数的个数
+        *       注意：原数组改变
+        *       返回值：被删除元素组成的新数组
+        *       参数：
+        *           2个参数表示删除：
+        *               起始位置
+        *               删除几个
+        *           3个及以上，第二个参数不为0，表示替换:
+        *               起始位置
+        *               删除几个
+        *               新元素
+        *           3个及以上，第二个参数是0，表示添加：
+        *               起始位置，在起始位置前面开始添加
+        *               0
+        *               新元素
+        * */
+
+        var arr1 = [1,2,"a","b","c",3,4,5];
+             //     0 1  2   3   4  5 6 7
+        var res1 = arr1.splice(2,3);
+        console.log(res1);
+        console.log(arr1);
+
+        var arr2 = ['刘家乐','邸子豪','赵明坤','刘广涵'];
+        arr2.splice(2,1,"王英桥","王一凡");
+        console.log(arr2);
+
+        var arr3 = [1,2,5,6,7];
+          //        0 1 2 3 4
+        arr3.splice(2,0,3,4);
+        console.log(arr3);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

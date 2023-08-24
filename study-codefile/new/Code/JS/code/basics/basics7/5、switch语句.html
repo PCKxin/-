@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>switch语句</title>
+		<script type="text/javascript">
+			/* 
+				多分支结构语句
+				
+				switch(用于判断的内容) {
+					case 常量1 :
+						//满足case 常量1的时候执行的内容
+						break;
+					case 常量2 :
+						//满足case 常量2的时候执行的内容
+						break;
+					……
+					default:
+						//上面所有情况都不满足时执行的内容
+						break;
+				}
+				
+				switch关键词
+				case 常量：  表示不同情况
+				break 表示： 结束程序（终止程序），
+							每一个case下必须要写
+							否则所有条件都会执行
+				default表示 所有情况都不满足的时候执行的内容
+				
+			 */
+			
+			/* 
+				输入星期几，
+				如果：周一、周二、周三、周四、周五
+				显示：上课
+				如果：周六或周日
+				显示：休息
+			 */
+			var day = prompt("请输入星期");
+			switch(day) {
+				case "周一":
+					console.log("上课");
+					break;
+				case "周二":
+					console.log("上课");
+					break;
+				case "周三":
+					console.log("上课");
+					break;
+				case "周四":
+					console.log("上课");
+					break;
+				case "周五":
+					console.log("上课");
+					break;
+				case "周六":
+					console.log("休息");
+					break;
+				case "周日":
+					console.log("休息");
+					break;
+				default:
+					console.log("星期输入有误");
+					break;
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

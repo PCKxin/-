@@ -1,0 +1,26 @@
+[
+  {
+    "id": 0,
+    "name": "小米手机",
+    "price": 2999,
+    "color": "red"
+  },
+  {
+    "id": 1,
+    "name": "华为手机",
+    "price": 5999,
+    "color": "red"
+  },
+  {
+    "id": 2,
+    "name": "荣耀手机",
+    "price": 3999,
+    "color": "red"
+  },
+  {
+    "id": 3,
+    "name": "oppo手机",
+    "price": 6999,
+    "color": "red"
+  }
+]

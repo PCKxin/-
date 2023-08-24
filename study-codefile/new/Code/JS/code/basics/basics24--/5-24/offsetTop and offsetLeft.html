@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+        /* 父级div的样式 */
+      #parent{
+        width: 300px;
+        height: 300px;
+        border: 1px solid red;
+        padding: 10px;
+        position: relative;
+      }
+      /* 子级div的样式 */
+      #child{
+        width: 120px;
+        height: 120px;
+        border: 1px solid blue;
+        padding: 20px;
+        background-color: aqua;
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="parent">
+      <div id="child"></div>
+    </div>
+  </body>
+  <script type="text/javascript">
+    //获取子级的元素
+    var child=document.getElementById("child");
+    //offsetLeft：获取子级的左边框到已经定位的父级左边框的大小，如果父级没有定位，获取的是 子级左边框到body左边的大小
+    console.log(child.offsetLeft); //10
+    //offsetTop：获取子级的上边框到已经定位的父级上边框的大小，如果父级没有定位，获取的是 子级上边框到body上边的大小
+    console.log(child.offsetTop); //10
+    //offsetParent:获取已经定位的父级元素，父级如果没有定位，获取body
+    console.log(child.offsetParent); //div#parent
+  </script>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>24小时制</title>
+</head>
+<body>
+    <div id="box"></div>
+    <script type="text/javascript">
+        //1、通过id获取div标签，获取到的只是一个标签，使用时候不加索引值
+        var box = document.getElementById('box');
+        console.log(box);
+
+        //5、定义计时器，让时间自己动
+        function fn() {
+            //2、创建日期对象
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            var _date = date.getDate();
+            var arr = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+            //    0       1       2       3       4       5       6
+            var day = date.getDay(); // 0-6
+            var hour = date.getHours();
+            var min = date.getMinutes();
+            var sec = date.getSeconds();
+
+            //3、补零
+            if(hour < 10) {
+                hour = "0" + hour;
+            }
+            if(min < 10) {
+                min = "0" + min;
+            }
+            if(sec < 10) {
+                sec = "0" + sec;
+            }
+
+            //4、将所有获取的值拼接，添加给div
+            box.innerHTML = year + "年" + month + "月" + _date + "日，" + arr[day] + hour + ":" + min + ":" + sec;
+        }
+        setInterval(fn,10); //时间为毫秒数
+    </script>
+</body>
+</html>

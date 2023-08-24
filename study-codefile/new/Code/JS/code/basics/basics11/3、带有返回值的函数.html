@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/* 
+				带有返回值的函数
+				return 获取返回值
+			 */
+			
+			function fn(a,b,c) {
+				//如果需要运行什么结果，就用return返回这个结果
+				return a + b + c;
+			}
+			/* 
+				用变量接收调用函数的过程，就能拿到return的结果
+			 */
+			var res = fn(1,2,3);
+			//拿着返回结果，可以做不同的操作
+			console.log(res);  //拿着返回结果在控制台输出
+			document.write(res);//拿着返回结果在页面输出
+			if(res >= 10) { //拿着返回结果做判断操作
+				//可以做任意操作
+			}
+			
+			var res1 = fn(10,20,30);
+			console.log(res1);
+			if(res1 > 10) {
+				
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <span>hello jquery</span>
+
+        <span class="inner">hello word</span>
+
+        <span>hello jquery</span>
+
+        <div class="box1">
+            <span>hello</span>
+        </div>
+
+        <div class="box2" data-aaa="123">
+            <span>word</span>
+        </div>
+        
+        <button>clone</button>
+        
+        <div class="box3">我是box3</div>
+        
+        <div class="box4">
+            <div class="a"></div>
+            <div class="b"></div>
+            <div class="c">
+                <div class="d"></div>
+            </div>
+        </div>
+        
+        <div class="box5">
+            <li>0</li>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </div>
+        
+        <script src="../jQuery/jquery-1.12.4.js"></script>
+        <script>
+            $(
+                function(){
+                    // wrap()方法 给指定的元素外面 套了一层指定的结构
+                    $('.inner').wrap('<h2 class="outer"></h2>');
+
+                    // unwrap()方法 取消wrap()产生的父元素
+                    $('.inner').unwrap();
+
+                    // $('span').replaceWith('<p>span里的内容被我替换掉了</p>');
+                    $('span').each(
+                        function(index,item){
+                            // console.log(item.innerText)
+                            // console.log(index)
+                            $(item).replaceWith('<p>'+item.innerText+'</p>');
+                        }
+                    );
+
+                    $('box1').empty(); // 删除是子元素，外面父元素保留
+                    $('box2').remove(); // 删除是子元素，外面父元素也删除
+
+                    // 原生js中删除节点 removeChild()父元素调用，删除子元素 innerHTML/Text = ''
+                    $('button').click(
+                        function(){
+                            console.log('123');
+                            $(this).clone().insertAfter('button');
+                            // clone()方法 复制一个节点！！！
+                            // 如果传入true  clone(true)那么也会将绑定得事件复制下来
+                            // 原生js中 cloneNode() 跟上面得意思一样
+                        }
+                    );
+
+                    // >  children()方法 只会找到父元素下得直接子元素，孙子及后代不会找到
+                    // console.log($('.box4').children());// a b c
+                    // find()是可以找到所有后代得元素
+                    // console.log($('.box4').find('.d'))
+                    console.log(
+                            $('.box4').children('.c').children('.d')
+                        );
+                    $('.box5 li').eq(3).siblings().css({background:'red'});
+
+                }
+            )
+        </script>
+    </body>
+</html>

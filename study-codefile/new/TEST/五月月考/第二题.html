@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+    <html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="PanJiaBao" content="width=device-width, initial-scale=1.0">
+        <title>第二题</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+            #userName{
+                width: 200px;
+                height: 50px;
+                border: 1px solid gray;
+                border-radius: 15px;
+                outline: none;
+                padding-left: 10px;
+                margin: 0 auto;
+                margin-top: 100px;
+                display: block;
+            }
+            #testBtn{
+                width: 100px;
+                height: 50px;
+                border: 1px solid gray;
+                border-radius: 15px;
+                outline: none;
+                margin: 0 auto;
+                margin-top: 20px;
+                display: block;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="text" name="user" id="userName" placeholder="请输入姓名">
+        <input type="button" value="OK" id="testBtn">
+    </body>
+    <script>
+        /*
+        长度判断，6-12位
+        由英文和数字组成，纯英文或纯数字也可以
+        其他字符不允许输入
+        */ 
+        var user_name = document.getElementById("userName");
+        var test_btn = document.getElementById("testBtn");
+        var Aa_Zz = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','A','B', 'C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q', 'R','S','T','U','V','W','X','Y','Z'];
+        var num = ['0','1','2','3','4','5','6','7','8','9'];
+        //判断
+        test_btn.onclick = function(){
+            var user_name_value = user_name.value;
+            var user_name_length = user_name_value.length;
+            //长度判断
+            if(user_name_length < 6 || user_name_length > 12){
+                alert("长度6-12位");
+            }
+            //字符判断
+            for(var i = 0; i < user_name_length; i++){
+                var user_name_value_i = user_name_value[i].toString();
+                if(Aa_Zz.indexOf(user_name_value_i) == -1 && num.indexOf(user_name_value_i) == -1){ //数组中没有该字符
+                    alert("请输入英文或数字");
+                    break;
+                }
+                else{
+                    alert("OK");
+                    break;
+                }
+            }
+        }
+    </script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 潘佳宝 6/7 防复制水印 -->

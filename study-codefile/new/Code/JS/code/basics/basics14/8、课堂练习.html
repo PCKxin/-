@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        /*
+        *   循环输入电话号码进行保存，如果出现重复的电话，
+        *   提示电话号码已存在，并退出循环
+        * */
+        var arr = [];
+        while(true) {
+            var tel = prompt("请输入电话号码");
+            //判断，arr.indexOf(tel) == -1 表示电话号码不在数组中
+            if(arr.indexOf(tel) == -1) {
+                arr.push(tel);
+                alert("添加成功");
+                console.log(arr);
+            }else {
+                alert("电话号码已存在，程序即将终止");
+                break;
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

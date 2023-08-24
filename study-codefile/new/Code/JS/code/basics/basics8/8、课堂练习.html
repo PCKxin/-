@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/* 
+				输出1-100
+			 */
+			for(var i = 1; i <= 100; i++) {
+				console.log(i);
+			}
+			
+			/* 
+				输出100-1
+			 */
+			for(var j = 100; j >= 1; j--) {
+				console.log(j);
+			}
+			
+			/* 
+				输出100-200
+			 */
+			for(var k = 100; k <= 200; k++) {
+				console.log(k);
+			}
+			
+			/* 
+				输出1-100之间能被2整除的数字
+				能被几整出就是  % 几 == 0
+				谁是谁的倍数   % 谁 == 0
+			 */
+			for(var a = 1; a <= 100; a++) {
+				if(a % 2 == 0) {
+					console.log(a);
+				}
+			}
+			
+			/* 
+				输出100-200之间，
+				能被3和7同时整除的数字的个数
+			 */
+			var count = 0;
+			for(var b = 100; b <= 200; b++) {
+				if(b % 3 == 0 && b % 7 == 0) {
+					count++;
+				}
+			}
+			console.log("一共有" + count + "个");
+			
+			
+			/* 
+				while和do-while区别
+				while是先判断，后执行
+				do-while是先执行，后判断，至少执行一次
+				
+				for和while区别
+				while是多用于不知道循环次数的时候使用
+				for是多用于已知循环次数的时候使用 
+			 */
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

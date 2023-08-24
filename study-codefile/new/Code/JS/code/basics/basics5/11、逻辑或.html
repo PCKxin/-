@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>逻辑或</title>
+		<script type="text/javascript">
+			/* 
+				逻辑或  || 读做：或
+				
+				逻辑或：表示多个条件下，有一个条件为真，结果就是真
+						所有条件都为假，结果才为假
+				
+				逻辑或还叫短路或
+				例如： 真||假||假
+			 */
+			
+			/* 
+				输入月份
+				1、3、5、7、8、10、12显示该月有31天
+				4、6、9、11显示该月有30天
+				2显示该月有28天或29天
+			 */
+			var m = prompt("请输入月份")*1;
+			m==1 || m==3 || m==5 || m==7 || m==8 || m==10 || m==12 ? console.log("该月有31天") :
+			m==4 || m==6 || m==9 || m==11 ? console.log("该月有30天") :
+			m==2 ? console.log("该月有28天或29天") : console.log("输入有误");
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/* 
+			 取出1900年-2000年之间所有的闰年年份，并统计个数
+			 */
+			var count = 0;
+			for(var year = 1900; year <= 2000; year++) {
+				if(year % 400 == 0 || (year % 4 ==0 && year % 100 !=0)) {
+					console.log(year);
+					count++;
+				}
+			}
+			console.log("一共有" + count + "个");
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

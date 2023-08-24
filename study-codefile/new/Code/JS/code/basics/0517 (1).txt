@@ -1,0 +1,301 @@
+ 
+1.创建一个节点
+    document. createElement("标签名"); 
+例子:   创建p标签
+    var p=document. createElement("p");
+
+
+2.获取属性值
+     第一种：节点.getAttribute("属性名");
+   (1)获取节点
+     例子:   var p=document.getElementById("id值");
+      （2）使用获取到的节点调用getAttribute方法
+         var id1=p.getAttribute("id");
+
+   第二种：
+     (1)获取节点
+     例子:   var p=document.getElementById("id值");
+     (2)直接调用想要获取的属性
+       例子：p.id;
+
+3.设置属性值
+  第一种：节点.setAttribute("属性名","属性值");
+  (1)获取节点
+     例子:   var p=document.getElementById("id值");
+      （2）使用获取到的节点调用setAttribute方法
+         var id1=p.setAttribute(“id”，“p2”);
+
+   第二种：
+     (1)获取节点
+     例子:   var p=document.getElementById("id值");
+     (2)直接调用属性，给其赋值
+       例子：p.id="p3";
+
+
+4.追加节点   appendChild()
+  
+   (1)创建节点
+    document. createElement("标签名");
+  例子:var p1=document. createElement("p");
+
+   （2）获取父节点
+    document.body
+   
+   (3)调用appendChild()追加后面   父节点.appendChild(“子节点”)；
+   
+   例子：document.body.appendChild(p1);
+
+5.在前面插入节点   insertBefore()
+
+   (1)创建节点
+    document. createElement("标签名");
+  例子:var p1=document. createElement("p");
+
+   (2)获取要插入位置后一位的节点  <span id="s1" />    
+   例子:例子:   var span=document.getElementById("s1");
+
+   (3)父节点调用insertBefore()，将新创建的p标签插入到span标签前
+   
+  例子:document.body.insertBefore(p1,span);
+
+6.删除子节点   removeChild("子节点");
+
+  (1)获取要删除的节点   
+       例子:var span=document.getElementById("s1");
+
+   (2)使用父节点调用removeChild方法，将要被删除的子节点作为参数
+   例子:document.body.removeChild(span);
+
+7.删除自身节点   remove（）
+   
+(1)获取要删除的节点   
+       例子:var span=document.getElementById("s1");
+
+(2)要被删除节点本身去调用remove()
+   例子:  span.remove();
+
+
+8.使用JS操作CSS样式
+
+   (1)获取需要被设置样式的节点
+       
+       例子:var span=document.getElementById("s1");
+
+  (2)通过调用style属性设置样式
+     例子: span.style.fontColor="red";
+
+
+  (3)通过调用style属性获取样式
+     例子: span.style.fontColor;
+
+
+9.克隆节点   cloneNode(boolean)
+  （1）获取目标节点
+    例子:var span=document.getElementById("s1");
+   （2）使用该节点调用cloneNode(boolean)
+  例子:span.cloneNode(boolean)
+  如果boolean取值是true，复制节点(标签)和内容
+   如果boolean取值是false，只复制节点(标签)，不复制内   容
+
+
+
+
+
+节点关系
+
+1.获取子节点 childNodes  
+  (1)获取父节点
+     例子:var 父节点=document.getElementById("父节点id值");
+
+  (2)通过父节点调用childNodes属性获取子节点列表
+    注意：子节点包含空白文本，注释
+ 解决办法：使用for循环和if判断
+   例子：var 子节点=父节点.childNodes；
+
+2.获取父节点  parentNode
+  (1)获取子节点
+   例子:var 子节点=document.getElementById("子节点id值");
+ (2)通过子节点调用parentNode获取父节点
+    例子:var  父节点=子节点.parentNode；
+
+3.获取第一个子节点   firstChild
+ (1)获取父节点
+     例子:var 父节点=document.getElementById("父节点id值");
+
+ (2)通过父节点调用firstChild属性获取第一个子节点
+   注意：子节点包含空白文本，注释
+    例子:var  第一个字节点=父节点.firstChild
+
+4.获取最后一个子节点   lastChild
+ (1)获取父节点
+     例子:var 父节点=document.getElementById("父节点id值");
+  
+（2）通过父节点调用lastChild属性获最后一个子节点
+   注意：子节点包含空白文本，注释
+  例子:var  最后一个字节点=父节点.lastChild
+
+5.获取前一个兄弟节点   previousSibling
+  (1)获取一个节点
+    例子：var 节点=document.getElementById("id值");
+
+  (2)该节点通过调用previousSibling属性获取前一个兄弟节点
+   注意：子节点包含空白文本，注释
+  例子：var   前一个兄弟节点=节点.previousSibling;
+
+6.获取后一个兄弟节点     nextSibling
+  (1)获取一个节点
+    例子：var 节点=document.getElementById("id值");
+
+  (2)该节点通过调用nextSibling属性获取后一个兄弟节点
+   注意：子节点包含空白文本，注释
+  例子：var 后一个兄弟节点=节点.nextSibling;
+   
+
+7.获取子节点的个数   childElementCount
+ (1)获取父节点
+  例子：var 父节点=document.getElementById("父节点id值");
+
+ （2）通过父节点调用childElementCount属性获取子节点的个数
+例子：var  子节点个数=父节点.childElementCount；
+
+8.获取第一个子节点，不包括空白文本，注释    firstElementChild    
+    (1)获取父节点
+  例子：var 父节点=document.getElementById("父节点id值");
+
+ （2）通过父节点调用firstElementChild属性获取第一个子节点
+例子：var  第一个子节点=父节点.firstElementChild；
+
+
+9.获取最后一个子节点，不包括空白文本，注释    lastElementChild    
+    (1)获取父节点
+  例子：var 父节点=document.getElementById("父节点id值");
+
+ （2）通过父节点调用lastElementChild属性获取最后一个子节点
+例子：var  最后一个子节点=父节点.lastElementChild；
+
+
+10.获取前一个兄弟节点   previousElementSibling
+  (1)获取一个节点
+    例子：var 节点=document.getElementById("id值");
+
+  (2)该节点通过调用previousElementSibling属性获取前一个兄弟节点
+  例子：var   前一个兄弟节点=节点.previousElementSibling;
+
+11.获取最后一个兄弟节点   nextElementSibling
+  (1)获取一个节点
+    例子：var 节点=document.getElementById("id值");
+
+  (2)该节点通过调用nextElementSibling属性获取最后一个兄弟节点
+  例子：var   最后一个兄弟节点=节点.nextElementSibling;
+
+JS设置CSS样式
+
+1.classList:获取元素CSS样式的类名
+例子：<div id="box" class="div1"></div>
+var div=document.getElementById("box");
+var d=div.classList;  结果是div1
+
+2.add('类名','类名')  添加类名
+例子：html:<div id="box" class="div1"></div>
+js:var div=document.getElementById("box");
+  div.add('width','height');
+css: .width{width:100px;}  .height{height:100px;}
+
+如果添加的类名已经存在，则没有效果
+如果不存在，添加进去
+
+3.toggle('类名',boolean)   切换属性
+如果 类名已经存在，boolean值是true,样式不变
+                                boolean值是false,删掉样式
+
+如果 类名不存在，boolean值是true,添加样式
+               boolean值是false,不添加样式
+
+4.length:获取类名的数量
+
+5.获取css的行内样式
+
+  元素.style.属性
+例子：html:<div id="box" class="div1" style="width:100px;"></div>
+js:   js:var div=document.getElementById("box");
+div.style.width    //获取div的宽
+
+6.设置css的行内样式
+ 元素.style.属性=“属性值”
+例子：html:<div id="box" class="div1" style="width:100px;"></div>
+js:   js:var div=document.getElementById("box");
+div.style.width='200px'    //设置div的宽
+
+7.获取非行内样式  高版本
+   window.getComputedStyle(对象,null)["属性"];	
+	 window.getComputedStyle(对象,null).属性;
+例子：html:<div id="box" class="div1"></div>
+css: .width{width：100px;}
+js:var div=document.getElementById("box");
+     window.getComputedStyle(div,null)["width"];	
+或  window.getComputedStyle(div,null).width;
+
+8.获取非行内样式  低版本
+  语法: 对象.currentStyle["属性"];
+例子：  
+html:<div id="box" class="div1"></div>
+css: .width{width：100px;}
+js:  var div=document.getElementById("box");
+         div.currentStyle["width"]
+
+9.获取非行内样式兼容性问题的封装
+function getStyle(元素，属性){
+  if(window.getComputedStyle){
+    return  window.getComputedStyle(元素,null)["属性"];
+  }else{
+    return  元素.currentStyle["属性"];
+  }
+}
+
+
+10.获取元素实际大小  offsetWidth   offsetHeight
+     offsetWidth=width+左右padding+左右border
+    offsetHeight=height+上下padding+上下border
+
+例子：html:<div id="box" class="div1"></div>
+css: div{width：100px;height:100px;border:1px solid    red;padding:20px;}   
+js:  var div=document.getElementById("box");
+         div.offsetWidth;   //100+40+2=142
+     div.offsetHeight;  //100+40+2=142
+
+11.获取滚动内容的元素大小  scrollWidth   scrollHeight
+   scrollWidth:可视区域的宽+被隐藏区域的宽
+     scrollHeight:可视区域的高+被隐藏区域的高
+
+12.获取内边距的空间大小  clientWidth   clientHeight
+   clientWidth：内容区+左右padding
+   clientHeight：内容区+上下padding
+
+13.获取边框的宽度   clientLeft 和 clientTop
+   clientLeft：获取左边框的宽度
+   clientTop：获取上边框的宽度
+
+14.获取元素到父级的距离    offsetLeft 和 offsetTop
+
+  获取元素到已经被定位的父级的距离（left,top）,如果父级没有定位，
+   获取元素到body的距离
+
+15.获取已经定位的父级  offsetParent
+  如果父级没有定位，获取元素到body的距离
+
+16.获取滚动条被隐藏区域的大小   scrollTop 和scrollLeft
+
+17.设置滚动条隐藏的兼容问题写法
+     document.documentElement.scrollTop||document.body.scrollTop;
+
+
+
+
+
+
+
+
+
+
+
+

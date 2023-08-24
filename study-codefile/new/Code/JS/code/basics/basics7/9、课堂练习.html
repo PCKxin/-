@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/* 
+				n从0开始，只要n<10就一直循环，
+				计算循环的次数，并循环打印自己的名字
+			 */
+			/* 
+				技巧问题：
+					就重新定义一个新变量
+					统计次数，从0开始
+					求和（求总分等），从0开始
+			 */
+			var n = 0;
+			var count = 0; //专门用于统计次数
+			while(n < 10) {
+				console.log("周臣");
+				count++; //打印一次，统计次数就长1
+				n++; //迭代条件
+			}
+			console.log("一共打印了" + count + "次名字");
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

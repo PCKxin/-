@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+    <html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="PanJiaBao" content="width=device-width, initial-scale=1.0">
+        <title>第一题</title>
+        <style>
+		body,
+		div,
+		ul,
+		ol,
+		li {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+
+		body {
+			position: relative;
+		}
+
+		.news {
+			width: 487px;
+			height: 541px;
+			position: absolute;
+			left: 50vw;
+			top: 50vh;
+			transform: translate(-50%, -50%);
+			display: flex;
+			flex-direction: column;
+		}
+
+		.news ul {
+			width: 100%;
+			display: flex;
+		}
+
+		.news ul li {
+			flex-grow: 1;
+			border: 1px solid #ededed;
+			background-color: #d4defb;
+			font-size: 14px;
+			height: 33px;
+			text-align: center;
+			line-height: 33px;
+			cursor: pointer;
+		}
+
+		.news ol {
+			flex-grow: 1;
+			position: relative;
+		}
+
+		.news ol li {
+			width: 100%;
+			height: 100%;
+			display: none;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		.news ol li:nth-of-type(1) {
+			background-color: #fafafa;
+		}
+
+		.news ol li:nth-of-type(2) {
+			background-color: #fafafa;
+		}
+
+		.news ol li:nth-of-type(3) {
+			background-color: #fafafa;
+		}
+
+		.news ol li:nth-of-type(4) {
+			background-color: #fafafa;
+		}
+
+		.news ol li:nth-of-type(5) {
+			background-color: #fafafa;
+		}
+
+		.news ol li:nth-of-type(6) {
+			background-color: #fafafa;
+		}
+
+		.news ul li.active {
+			background-color: #fff;
+			border-bottom-color: #fff;
+		}
+
+		.news ol li.active {
+			display: flex;
+		}
+
+		.div {
+			width: 485px;
+			height: 595px;
+			border: 1px solid #ededed;
+		}
+
+		.box1 {
+			width: 485px;
+			height: 26px;
+			background: #d4defb;
+			font-weight: bold;
+			color: #3374cf;
+		}
+
+		.a1 {
+			width: 100px;
+			height: 48px;
+			display: inline-block;
+			border: 1px solid #ededed;
+			text-align: center;
+			font-size: 14px;
+		}
+
+		.a2 {
+			width: 100px;
+			height: 48px;
+			display: inline-block;
+			border: 1px solid #ededed;
+			text-align: center;
+			font-size: 14px;
+		}
+
+		.box {
+			width: 464px;
+			height: 76px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="news">
+		<ul>
+			<li class="active">亚洲</li>
+			<li>欧洲</li>
+			<li>北美洲</li>
+			<li>南美洲</li>
+			<li>非洲</li>
+			<li>大洋洲</li>
+		</ul>
+		<ol>
+			<li class="active">
+				<div class="div">
+					<div class="box">
+						<p class="box1">&nbsp;&nbsp;A</p>
+						<span class="a1">
+							阿骞拜疆
+							Azerbaijan
+						</span>
+						<span class="a2">亚美尼亚Armenia</span>
+					</div>
+					<div class="box">
+						<p class="box1">&nbsp;&nbsp;B</p>
+						<span class="a1">
+							孟加拉
+							Bangladesh
+						</span>
+						<span class="a2">北京<br>Beijing</span>
+					</div>
+					<div class="box">
+						<p class="box1">&nbsp;&nbsp;C</p>
+						<span class="a1">
+							塞浦路斯
+							Cyprus
+						</span>
+					</div>
+					<div class="box">
+						<p class="box1">&nbsp;&nbsp;J</p>
+						<span class="a1">
+							格鲁吉亚
+							Georgia
+						</span>
+					</div>
+					<div class="box">
+						<p class="box1">&nbsp;&nbsp;I</p>
+						<span class="a1">
+							印度尼西亚
+							Indonesia
+						</span>
+						<span class="a2">印度<br>India</span>
+						<span class="a2">伊拉克<br>lraq</span>
+						<span class="a2">伊朗<br>lran</span>
+					</div>
+					<div class="box">
+						<p class="box1">&nbsp;&nbsp;J</p>
+						<span class="a1">
+							约旦
+							<br>Jordan
+						</span>
+						<span class="a2">日本<br>Japan</span>
+					</div>
+					<p class="box1">&nbsp;&nbsp;L</p>
+				</div>
+			</li>
+			<li>
+				<div class="div">
+					<div class="box">
+						<p class="box1">&nbsp;&nbsp;A</p>
+						<span class="a1">
+							阿尔巴尼亚
+							Albania
+						</span>
+						<span class="a2">奥地利<br>Austria</span>
+					</div>
+					<div class="box">
+						<p class="box1">&nbsp;&nbsp;B</p>
+						<span class="a1">
+							白俄罗斯Belarus
+						</span>
+					</div>
+					<div class="box">
+						<p class="box1">&nbsp;&nbsp;C</p>
+						<span class="a1">
+							克罗地亚
+							Croatia
+
+						</span>
+					</div>
+					<div class="box">
+						<p class="box1">&nbsp;&nbsp;D</p>
+						<span class="a1">
+							丹麦
+							Denmark
+
+						</span>
+					</div>
+					<div class="box">
+						<p class="box1">&nbsp;&nbsp;E</p>
+						<span class="a1">
+							爱沙尼亚Esthonia
+
+						</span>
+
+					</div>
+					<div class="box">
+						<p class="box1">&nbsp;&nbsp;F</p>
+						<span class="a1">
+							芬兰
+
+
+
+							<br>Finland
+						</span>
+						<span class="a2">法国<br>France</span>
+					</div>
+					<p class="box1">&nbsp;&nbsp;G</p>
+				</div>
+			</li>
+			<li>
+				<div class="div">
+					<div class="box">
+						<p class="box1">&nbsp;&nbsp;A</p>
+						<span class="a1">
+							安圭拉
+							Anguilla
+
+
+						</span>
+						<span class="a2">美国<br>America</span>
+					</div>
+					<div class="box">
+						<p class="box1">&nbsp;&nbsp;B</p>
+						<span class="a1">
+							巴巴多斯
+							Barbados
+						</span>
+						<span class="a2">巴哈马<br>Bahamas</span>
+						<span class="a2">伯利兹<br>Belize</span>
+
+					</div>
+					<div class="box">
+						<p class="box1">&nbsp;&nbsp;C</p>
+						<span class="a1">
+							加拿大
+							<br>
+
+
+							Canada
+
+
+
+
+
+						</span>
+						<span class="a1">
+							哥斯达黎加
+							Costa Rica
+						</span>
+						<span class="a2">古巴<br>Cuba</span>
+						<span class="a2">开曼群岛(..<br>Cayman ls...</span>
+					</div>
+					<div class="box">
+						<p class="box1">&nbsp;&nbsp;D</p>
+						<span class="a1">
+							多米尼加Dominica.
+
+
+
+
+						</span>
+					</div>
+					<div class="box">
+						<p class="box1">&nbsp;&nbsp;E</p>
+						<span class="a1">
+							萨尔瓦多El Salvador
+
+						</span>
+
+					</div>
+					<div class="box">
+						<p class="box1">&nbsp;&nbsp;G</p>
+						<span class="a1">
+							危地马拉Guatemala
+
+						</span>
+
+					</div>
+					<p class="box1">&nbsp;&nbsp;J</p>
+				</div>
+			</li>
+			<li>
+				<div class="div">
+					<div class="box">
+						<p class="box1">&nbsp;&nbsp;A</p>
+						<span class="a1">
+							阿鲁巴
+							(荷.
+							Aruba
+
+
+
+						</span>
+					</div>
+					<div class="box">
+						<p class="box1">&nbsp;&nbsp;B</p>
+						<span class="a1">
+							玻利维亚
+
+							Bolivia
+
+
+						</span>
+						<span class="a2">巴西<br> Brazil</span>
+
+					</div>
+					<div class="box">
+						<p class="box1">&nbsp;&nbsp;C</p>
+						<span class="a1">
+							智利 <br>
+							Chile
+						</span>
+						<span class="a1">
+							哥伦比亚
+							Colombia
+						</span>
+					</div>
+					<div class="box">
+						<p class="box1">&nbsp;&nbsp;E</p>
+						<span class="a1">
+							厄瓜多尔Ecuador
+						</span>
+					</div>
+					<div class="box">
+						<p class="box1">&nbsp;&nbsp;I</p>
+						<span class="a1">
+							圭亚那<br>Guyana
+						</span>
+
+					</div>
+					<div class="box">
+						<p class="box1">&nbsp;&nbsp;J</p>
+						<span class="a1">
+							秘鲁
+							<br>
+							Peru
+						</span>
+						<span class="a1">
+							巴拉圭 Paraguay
+
+
+						</span>
+
+					</div>
+					<p class="box1">&nbsp;&nbsp;P</p>
+				</div>
+			</li>
+			<li>
+				<div class="div">
+					<div class="box">
+						<p class="box1">&nbsp;&nbsp;S</p>
+						<span class="a1">
+							阿尔及利亚
+
+							Algeria
+						</span>
+						<span class="a1">
+							安哥拉
+							Angola
+						</span>
+
+					</div>
+					<div class="box">
+						<p class="box1">&nbsp;&nbsp;B</p>
+						<span class="a1">
+							布基纳法索
+							Burkina faso
+						</span>
+						<span class="a2">布隆迪<br> Burundi</span>
+						<span class="a2">博茨瓦纳<br>Botswana</span>
+
+					</div>
+					<div class="box">
+						<p class="box1">&nbsp;&nbsp;C</p>
+						<span class="a1">
+							中非
+							Central Af...
+						</span>
+						<span class="a2">佛得角<br> Cape verd...</span>
+						<span class="a2">科摩罗<br>Comores</span>
+					</div>
+					<div class="box">
+						<p class="box1">&nbsp;&nbsp;D</p>
+						<span class="a1">
+							刚果(金)Democrati.
+
+						</span>
+					</div>
+					<div class="box">
+						<p class="box1">&nbsp;&nbsp;E</p>
+						<span class="a1">
+							埃及
+							<br>
+							Egypt
+						</span>
+						<span class="a2">埃塞俄比亚<br>Ethiopia</span>
+						<span class="a2">赤道几内亚<br>Equatorial...</span>
+					</div>
+					<div class="box">
+						<p class="box1">&nbsp;&nbsp;G</p>
+
+						<span class="a1">
+							加蓬
+							<br>
+							Gabon
+						</span>
+						<span class="a1">
+							加纳
+							<br>
+							Ghana
+						</span>
+						<span class="a2">冈比亚<br>Gambia</span>
+						<span class="a2">几内亚<br>Guinea</span>
+
+					</div>
+					<p class="box1">&nbsp;&nbsp;K</p>
+				</div>
+			</li>
+			<li>
+				<div class="div">
+					<div class="box">
+						<p class="box1">&nbsp;&nbsp;A</p>
+						<span class="a1">
+							澳大利亚Australia
+						</span>
+					</div>
+					<div class="box">
+						<p class="box1">&nbsp;&nbsp;F</p>
+						<span class="a1">
+							斐济<br>Fiji
+						</span>
+
+					</div>
+					<div class="box">
+						<p class="box1">&nbsp;&nbsp;N</p>
+						<span class="a1">
+							新喀里多尼.. Cale...
+
+
+						</span>
+						<span class="a1">
+							新西兰
+							<br>New Zeala...
+						</span>
+					</div>
+					<div class="box">
+						<p class="box1">&nbsp;&nbsp;P</p>
+						<span class="a1">
+							巴布亚新几<br>.Papua-Ne.
+
+						</span>
+					</div>
+
+					<div class="box">
+						<p class="box1">&nbsp;&nbsp;S</p>
+						<span class="a1">
+							所罗门群岛
+
+							Salomonen
+
+						</span>
+						<span class="a1">
+							西萨摩亚 samoa
+
+
+						</span>
+
+					</div>
+
+				</div>
+			</li>
+		</ol>
+	</div>
+        <script>
+            //封装一个ajax函数
+            function data_transfer(method,url,data,success){
+                //兼容核心
+                var xhr = null; 
+                if(window.XMLHttpRequest){
+                    xhr = new XMLHttpRequest();
+                }else{
+                    xhr = new ActiveXObject('Microsoft.XMLHTTP');
+                }
+                xhr.open('get',"data/getWniHotcountryGroupBy.json",true);
+                xhr.send();
+            }
+                var title = document.querySelectorAll('ul li');
+                var content = document.querySelectorAll('ol li');
+
+                title.forEach(function (item, key) {
+                    item.onclick = function () {
+                        title.forEach(function (i, k) {
+                            i.className = '';
+                            content[k].className = '';
+                        });
+                        item.className = 'active';
+                        content[key].className = 'active';
+                    }
+                })
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 潘佳宝 7/10 防复制水印 -->

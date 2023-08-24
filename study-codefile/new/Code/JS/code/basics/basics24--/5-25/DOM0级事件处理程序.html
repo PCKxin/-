@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <button id="button1">点击事件</button>
+    <!-- <button id="button1">解除事件</button> -->
+  </body>
+  <script type="text/javascript">
+    var button1=document.getElementById("button1");
+    //// DOM0级事件处理程序的第一种方法
+    // button1.onclick=function(){
+    //   alert("DOM0级事件处理程序");
+    // }
+    
+    // DOM0级事件处理程序的第二种方法
+    button1.onclick=show;
+    function show(){
+      alert('123');
+      //解除事件
+      button1.onclick=function(){
+        button1.onclick=null;        
+      }
+    }
+    
+    
+    
+    
+    
+  </script>
+</html>

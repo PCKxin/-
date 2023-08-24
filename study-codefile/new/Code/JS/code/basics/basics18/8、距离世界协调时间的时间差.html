@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>距离世界协调时间的时间差</title>
+    <script type="text/javascript">
+        /*
+        *   世界协调时间
+        *       1970年1月1日 零点
+        *
+        *   Date.parse(参数)
+        *   参数：自定义的时间   "四位年份/月份/日期 小时：分钟：秒"
+        *
+        *   1秒：1000毫秒
+        *   1分钟：60秒：60000毫秒
+        *   1小时：60分钟：3600秒：3600000毫秒
+        *   1天：24小时：1440分钟：86400秒：86400000毫秒
+        * */
+        var timer = Date.parse("2023/4/11 14:4:15");
+        console.log(timer);
+
+        console.log(timer / 86400000);
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

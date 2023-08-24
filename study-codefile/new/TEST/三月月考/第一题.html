@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{margin: 0;padding: 0;list-style: none;}
+            .box{
+                width: 1200px;
+                height: 600px;
+                background: rgba(202, 202, 202, 0.54);
+                margin: 0 auto;
+            }
+            .menu{
+                width: 1160px;
+                height: 40px;
+                margin: 0 auto;
+                padding-top: 20px;
+                border-bottom: 1px solid gray;
+                position: relative;
+            }
+            .menu h2{
+                width: 110px;
+                height: 40px;
+                font-size: 20px;
+                color: gray;
+                float: left;
+                /* text-align: center; */
+                line-height: 40px;
+                /* padding-right: 20px; */
+            }
+            .menu .tit{
+                float: left;
+                width: 80px;
+                height: 40px;
+                text-align: center;
+                line-height: 40px;
+                cursor:pointer;
+            }
+
+            .menu .tit .second_menu{
+                width: 1160px;
+                height: 500px;
+                /* background: orange; */
+                position: absolute;
+                left: 0px;
+                top: 60px;
+                display: none;
+            }
+            .menu .tit .second_menu li{
+                width: 270px;
+                height: 225px;
+                margin-left: 10px;
+                margin-right: 10px;
+                margin-top: 20px;
+                float: left;
+            }
+            .menu .tit .second_menu li img{
+                width: 260px;
+                height: 225px;
+            }
+
+            .menu .tit:hover{
+                background: rgb(224, 224, 224);
+                border: 1px solid gray;
+                border-bottom: 0px;
+                border-radius: 2px;
+            }
+            .menu .tit:hover .second_menu{
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <div class="menu">
+                <h2>热门目的地</h2>
+                <ul>
+                    <li class="tit">香港
+                        <ul class="second_menu">
+                            <li><img src="../三月月考/img/1-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/2-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/3-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/4-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/5-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/6-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/7-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/8-1.png" alt=""></li>
+                        </ul>
+                    </li>
+                    <li class="tit">东京
+                        <ul class="second_menu">
+                            <li><img src="../三月月考/img/1-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/3-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/3-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/8-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/5-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/6-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/7-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/8-1.png" alt=""></li>
+                        </ul>
+                    </li>
+                    <li class="tit">巴黎
+                        <ul class="second_menu">
+                            <li><img src="../三月月考/img/2-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/2-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/3-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/4-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/5-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/8-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/7-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/8-1.png" alt=""></li>
+                        </ul>
+                    </li>
+                    <li class="tit">大阪
+                        <ul class="second_menu">
+                            <li><img src="../三月月考/img/8-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/2-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/3-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/4-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/5-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/6-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/7-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/6-1.png" alt=""></li>
+                        </ul>
+                    </li>
+                    <li class="tit">澳门
+                        <ul class="second_menu">
+                            <li><img src="../三月月考/img/7-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/2-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/3-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/4-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/6-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/6-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/7-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/7-1.png" alt=""></li>
+                        </ul>
+                    </li>
+                    <li class="tit">新加坡
+                        <ul class="second_menu">
+                            <li><img src="../三月月考/img/3-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/2-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/8-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/4-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/6-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/4-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/7-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/8-1.png" alt=""></li>
+                        </ul>
+                    </li>
+                    <li class="tit">洛杉矶
+                        <ul class="second_menu">
+                            <li><img src="../三月月考/img/8-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/2-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/6-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/4-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/5-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/6-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/7-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/4-1.png" alt=""></li>
+                        </ul>
+                    </li>
+                    <li class="tit">伦敦
+                        <ul class="second_menu">
+                            <li><img src="../三月月考/img/7-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/2-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/3-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/5-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/5-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/8-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/7-1.png" alt=""></li>
+                            <li><img src="../三月月考/img/7-1.png" alt=""></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>

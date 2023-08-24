@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/* 
+			输入五科成绩，计算平均分，
+			如果平均分大于60，表示及格，
+			否则提示需要继续努力 
+			 */
+			
+			var s1 = prompt("请输入第一科成绩") * 1;
+			var s2 = prompt("请输入第二科成绩") * 1;
+			var s3 = prompt("请输入第三科成绩") * 1;
+			var s4 = prompt("请输入第四科成绩") * 1;
+			var s5 = prompt("请输入第五科成绩") * 1;
+			
+			function fn(a,b,c,d,e) {
+				var ave = ( a + b + c + d + e ) / 5;
+				if(ave >= 60) {
+					console.log("及格");
+				}else {
+					console.log("继续努力");
+				}
+			}
+			
+			fn(s1, s2, s3, s4, s5);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

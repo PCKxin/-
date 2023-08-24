@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            function Ajax(url , method , flag , data , obj){
+                // 创建核心对象
+                var xhr = new XMLHttpRequest();
+                // 启动请求
+                // open的三个参数
+                // 1. 提交方式 get post
+                // 2. 提交的路径
+                // 3. boolean true: 异步提交 false: 同步提交
+                xhr.open(method, url, flag)
+                // 3. 发送请求
+                // 请求头用来告诉服务器，发送的数据格式
+                xhr.setRequestHeader("content-type","application/x-www-form-urlencoded") // 参数1: 请求头的key 参数2: 请求头的value
+                // 如果有值需要传送，直接作为send方法的参数写，也可以传参
+                // 例如：xhr.send("name=zs&age=10&sex=nan"); 接收的数据格式为字符串
+                xhr.send(data);
+                // 4. 绑定事件
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState == 4 && xhr.status == 200){
+                        // 解析数据 ，添加进页面
+                        // 回调函数
+                        success && success(obj); //短路逻辑，如果success为真（有值），就执行success(object)
+                        // success() 作用：将数据添加进页面
+                    }
+                }
+            }
+            Ajax(地址, 提交方式, 是否异步, 传送的数据, 回调函数)
+        </script>
+    </body>
+</html>

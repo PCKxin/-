@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <input type="text" value="123" id="input1" />
+    <span id="sp">qwrx</span>
+  </body>
+  <script type="text/javascript">
+    var input = document.getElementById("input1");
+    // var span=document.getElementById("span");
+    //  alert(span.select());
+    document.getElementById("sp").onclick = function () {
+      var s = document.getElementById("sp").select();
+      console.log(s);
+    }
+
+  </script>
+</html>

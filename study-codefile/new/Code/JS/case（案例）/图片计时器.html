@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+            ul{
+                width: 1064px;
+                margin: 0 auto;
+                margin-top: 100px;
+            }
+            li{
+                list-style: none;
+                float: left;
+                width: 133px;
+                height: 175px;
+                font-size: 100px;
+                text-align: center;
+                line-height: 175px;
+            }
+        </style>
+    </head>
+    <body>
+        <ul>
+            <li><img src="img/0.png" alt="" class="timeNum"></li>
+            <li><img src="img/0.png" alt="" class="timeNum"></li>
+            <li>:</li>
+            <li><img src="img/0.png" alt="" class="timeNum"></li>
+            <li><img src="img/0.png" alt="" class="timeNum"></li>
+            <li>:</li>
+            <li><img src="img/0.png" alt="" class="timeNum"></li>
+            <li><img src="img/0.png" alt="" class="timeNum"></li>
+        </ul>
+    </body>
+    <script>
+        var timeNum = document.getElementsByClassName('timeNum');
+        //创建数组并给数组添加图片的路径
+        var img_arr = [];
+        for(var i = 0; i < 10; i++){
+            img_arr.push('img/' + i + '.png'); //纯数字路径的图片名写法
+        }
+
+        //对象名.属性名 = 属性值
+        //位分离函数
+        function gs(units,tens){
+            s = parseInt(tens / 10);
+            g = parseInt(units % 10);
+            return [s, g];
+        }
+        //计时器部分函数
+        function img_timer(){
+            var date = new Date(); 
+            var hour = date.getHours(); //获取当前小时数
+
+            var hour_1 = gs(hour,hour)[0]; //获取十位数
+            var hour_2 = gs(hour,hour)[1]; //获取个位数
+            timeNum[0].src = img_arr[hour_1];
+            timeNum[1].src = img_arr[hour_2];
+
+            var minute = date.getMinutes(); //获取当前分钟数
+            var minute_1 = gs(minute, minute)[0]; //获取十位数
+            var minute_2 = gs(minute, minute)[1]; //获取个位数
+            timeNum[2].src = img_arr[minute_1];
+            timeNum[3].src = img_arr[minute_2];
+
+            var second = date.getSeconds(); //获取当前秒数
+            var second_1 = gs(second, second)[0]; //获取十位数
+            var second_2 = gs(second, second)[1]; //获取个位数
+            timeNum[4].src = img_arr[second_1];
+            timeNum[5].src = img_arr[second_2];
+
+        }
+        setInterval(img_timer,1000)
+    </script>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{margin: 0;padding: 0;list-style: none;}
+            .box{
+                width: 350px;
+                height: 380px;
+                /* outline: 1px solid gray; */
+                margin: 0 auto;
+                margin-top: 10px;
+            }
+            .title{
+                width: 250px;
+                height: 50px;
+                margin: 0 auto;
+                padding-top: 10px;
+                line-height: 50px;
+            }
+            .title p{
+                float: left;
+                width: 100px;
+                height: 50px;
+                text-align: center;
+            }
+            .title p a{
+                font-size: 18px;
+                text-decoration: none;
+                color: gray;
+            }
+            .title p:nth-child(2) a{
+                font-size: 20px;
+                text-decoration: none;
+                color: black;                             
+                font-weight: bold;
+                border-bottom: 2px solid red;
+            }
+            .content{
+                width: 250px;
+                height: 260px;
+                margin: 0 auto;
+                margin-top: 20px;
+            }
+            .content form{
+                width: 250px;
+                height: 260px;
+                /* background: orange; */
+            }
+            .content form input{
+                width: 250px;
+                height: 35px;
+                border: 1px solid rgba(128, 128, 128, 0.525);
+                border-radius: 5px;
+                text-indent: 15px;
+            }
+            .content form input:nth-child(2){
+                margin-top: 15px;
+            }
+            .content .re_text{
+                color: gray;
+                font-size: 12px;
+                margin-top: 15px;
+            }
+            .content .re_text a{
+                color: rgb(0, 128, 255);
+                text-decoration: none;
+            }
+            .content form button{
+                width: 250px;
+                height: 40px;
+                color: white;
+                background: rgba(255, 88, 82, 0.993);
+                border: 0px;
+                border-radius: 5px;
+                margin-top: 15px;
+            }
+            .footer{
+                color: gray;
+                font-size: 12px;
+                width: 250px;
+                height: 40px;
+                margin: 0 auto;
+            }
+            .footer a{
+                float: right;
+                color: rgb(0, 128, 255);
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <div class="title">
+                <p><a href="#">免密登录</a></p>
+                <p><a href="#">密码登录</a></p>
+            </div>
+            <div class="content">
+                <form action="www.baidu.com" method="post">
+                    <input type="text"  placeholder="请输入手机号">
+                    <input type="password"  placeholder="请输入密码">
+                    <p class="re_text">
+                        登录即同意
+                        <a href="#">《用户协议》</a> 
+                        和
+                        <a href="#">《隐私政策》</a>
+                    </p>
+                    <button>登 录</button>
+                </form>
+            </div>
+            <div class="footer">
+                <input type="checkbox">一个月内免登录
+                <a href="#">找回密码?</a>
+            </div>
+        </div>
+    </body>
+</html>

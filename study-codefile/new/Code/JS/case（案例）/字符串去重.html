@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            var str = "afsfsdfsdfsdfsaggsghh1234165456400"
+
+
+            var str_arr = str.split(""); //将字符串转为数组
+            var new_str_arr = []; //新数组    接收不重复的值
+            for(i = 0; i < str_arr.length; i++){
+                //循环遍历原数组  获取每一个元素
+                if(new_str_arr.indexOf(str_arr[i]) == -1){
+                    // 将不存在于新数组的值添加到新数组中
+                    new_str_arr.push(str_arr[i]);
+                }
+            }
+            var new_str = new_str_arr.join("");
+            console.log('一共有'+ new_str.length + '种')
+
+
+            //查询字符串出现的次数
+            for(i = 0; i < new_str.length; i++){
+                var count = 0;
+                for(j = 0; j < str_arr.length; j++){
+                    if(new_str[i] == str_arr[j]){
+                        count++;
+                        // console.log(count)
+                    }
+                }
+                console.log(count)
+            }
+
+
+            //查询次数，对象方法
+            var str_obj = {}
+            for(i = 0; i < str_arr.length; i++){ //遍历字符串数组
+                if( ! str_obj[str_arr[i]] ){ //如果对象里没有这个属性
+                    str_obj[str_arr[i]] = 1;  //就给这个属性赋值为1
+                }else{
+                    str_obj[str_arr[i]]++;  //如果有这个属性，就让这个属性的值加1
+                }
+            }
+            console.log(str_obj)
+        </script>
+    </body>
+</html>

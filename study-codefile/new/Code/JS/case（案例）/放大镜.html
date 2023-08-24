@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        #box{
+            margin: 100px;
+            position: relative;
+        }
+        #small{
+            width: 270px;
+            height: 270px;
+            position: relative;
+        }
+        #small img{
+            width: 270px;
+            height: 270px;
+        }
+        #move{
+            position: absolute;
+            top:  20px;
+            left: 40px;
+            width: 50px;
+            height: 50px;
+            background: rgba(0,0,0,0.6);
+            display: none;
+        }
+        #big{
+            position: absolute;
+            top: 0;
+            left: 300px;
+            width: 350px;
+            height: 350px;
+            overflow: hidden;
+            display: none;
+
+        }
+        #big img{
+            width: 600px;
+            height: 600px;
+            position: absolute;
+            left: 0;
+            top:0;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <!-- 小图容器 -->
+        <div id="small">
+            <img src="1.jpg" alt="" id="smallImg">
+            <div id="move"></div>
+        </div>
+        <!-- 大图容器 -->
+        <div id="big">
+            <img src="1.jpg" alt="" id="bigImg">
+        </div>
+    </div>
+    <script type="text/javascript">
+        //获取小盒子、移动的盒子、大盒子、大图片、整个盒子
+        var small = document.getElementById('small');
+        var move = document.getElementById('move');
+        var big = document.getElementById('big');
+        var bigImg = document.getElementById('bigImg');
+        var box = document.getElementById('box');
+
+        //小盒子移动，让大盒子和里面的移动的盒子出现
+        small.onmouseover = function(){
+            move.style.display = 'block';
+            big.style.display = 'block';
+        }
+        small.onmouseout = function(){
+            move.style.display = 'none';
+            big.style.display = 'none';
+        }
+
+        //大图的宽度/小图的宽度=大图容器的宽度/move的宽度=大图的left值/move块的left值
+        small.onmousemove = function(e){
+            var ev = e||window.event;
+            // 小图到大图放大的倍数
+            var scale = bigImg.offsetWidth/small.offsetWidth;
+            console.log(scale)//2.2
+
+
+            //重新定义move的大小
+            // 大图容器的宽度/move的宽度=2.2
+            //big/move = scale
+            //move = big/scale
+            move.style.width = big.offsetWidth/scale+'px';
+            move.style.height = big.offsetHeight/scale+'px';
+
+            var l = ev.clientX-move.offsetWidth/2-box.offsetLeft;
+            var t = ev.clientY-move.offsetHeight/2-box.offsetTop;
+            // 限制move的范围
+            var maxL = small.offsetWidth-move.offsetWidth;
+            var maxT = small.offsetHeight-move.offsetHeight;
+            if(l<0){
+                l=0
+            }else if(l>maxL){
+                l=maxL
+            }
+            if(t<0){
+                t=0;
+            }else if(t>maxT){
+                t=maxT;
+            }
+            //重新赋值
+            move.style.left = l+'px';
+            move.style.top = t+'px';
+
+            // 大图的left值/move块的left值=2.2;
+            bigImg.style.left = -l*scale+'px';
+            bigImg.style.top = -t*scale+'px';
+        }
+    </script>
+</body>
+</html>

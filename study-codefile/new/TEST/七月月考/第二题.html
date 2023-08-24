@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="PanJiaBao" content="width=device-width, initial-scale=1.0">
+        <title>第二题</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+
+            .box{
+                width: 865px;
+                height: 500px;
+                border: 1px solid gray;
+                margin: 0 auto;
+                margin-top: 100px;
+            }
+            .box ul{
+                width: 865px;
+                height: 55px;
+            }
+            .box ul li{
+                width: 90px;
+                height: 50px;
+                line-height: 50px;
+                text-align: center;
+                /* margin-top: 4px; */
+                margin-left: 4px;
+                border: 1px solid gray;
+                float: left;
+            }
+            .msg{
+                font-size: 80px;
+                color: rgba(255, 192, 203, 0.792);
+                z-index: -1;
+            }
+        </style>
+    </head>
+    <body>
+        <ul class="box">
+            
+        </ul>
+    </body>
+    <script src="./jq/jquery.js"></script>
+    <script>
+        $(document).ready(
+            function(){
+                // 乘法口诀表,表格版
+                var str = ""; // 用于存储字符串
+                for(var i = 1; i <= 9; i++){ 
+                    str += "<ul>"; // 每一行的开头
+                    for(var j = 1; j <= i; j++){ // j <= i,因为乘法口诀表是对称的
+                        str += "<li>" + j + "*" + i + "=" + i*j + "</li>"; // 每一行的内容
+                    }
+                    str += "</ul>";
+                }
+                $(".box").html(str);
+            }
+        )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        function nocopy(){
+            var code = unescape('\u6f58\u4f73\u5b9d\u0020\u0038\u002f\u0039\u0020\u9632\u590d\u5236\u6c34\u5370');
+            console.log(code); 
+            msg = '<p class="msg">'+code+'</p>'
+            $("body").append(msg);
+        }
+        nocopy()
+    </script>
+</html>

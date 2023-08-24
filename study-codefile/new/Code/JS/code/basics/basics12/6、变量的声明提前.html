@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>变量的声明提前(变量提升)</title>
+		<script type="text/javascript">
+			/* 
+				js默认将变量的声明提前
+				
+				如果先执行输出语句，在输出语句后再声明变量
+				或默认理解为：
+					先声明变量，在执行输出语句，在给变量赋值
+					因此第一个输出语句不报错，值为undefined
+					
+			 */
+			console.log(a); //undefined
+			
+			var a = 10;
+			console.log(a); //10
+			
+			/* 
+				js内部执行的内容
+				
+				var a;
+				console.log(a);  // undefined
+				a = 10;
+				console.log(a); // 10
+			 
+			 */
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

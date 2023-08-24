@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>offsetWidth offsetHeight 获取元素实际的大小 </title>
+    <style type="text/css">
+      div{
+        width: 100px;
+        height: 200px;
+        border: 2px solid red;
+        padding: 10px ;
+      }     
+    </style>
+  </head>
+  <body>
+    <div id="div1"></div>
+  </body>
+  <script type="text/javascript">
+    var div=document.getElementById("div1");
+    //offsetWidth：获取元素的实际大小 
+    //offsetWidth=width+左右padding+左右border
+    
+    //offsetHeight:获取元素的实际大小
+    //offsetHeight=height+左右padding+左右border
+    console.log(div.offsetWidth);
+    console.log(div.offsetHeight);
+
+    
+    
+    
+  </script>
+</html>

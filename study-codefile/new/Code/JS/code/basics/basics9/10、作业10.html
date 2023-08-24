@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/* 
+			 4、	输入一个三位数，
+				判断其显示顺序是否为：百位>十位>个位的形式，
+				如果不是，请将输入的三位数调整为判断顺序的显示方式
+			 */
+			var n = prompt("请输入一个三位数字")*1;
+			//分解个、十、百位用于比较
+			var g = parseInt(n % 10);
+			var s = parseInt(n / 10 % 10);
+			var b = parseInt(n / 100);
+			console.log(b,s,g); //
+			/* 
+				已知个位、十位、百位，
+				按从大到小的顺序交换每一位上面的具体值
+			 */
+			if(b < s) {
+				var temp = b;
+				b = s;
+				s = temp;
+			}
+			console.log(b,s,g);
+			
+			if(s < g) {
+				var temp1 = s;
+				s = g;
+				g = temp1;
+			}
+			console.log(b,s,g);
+			
+			if(b < s) {
+				var temp2 = b;
+				b = s;
+				s = temp2;
+			}
+			console.log(b,s,g);
+			console.log("" + b + s + g);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

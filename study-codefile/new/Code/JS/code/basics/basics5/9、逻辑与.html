@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>逻辑与</title>
+		<script type="text/javascript">
+			/* 
+				逻辑与  && (读作：并且)
+				
+				判断条件1 && 判断条件2   执行
+				
+				并且：表示多个条件同时为真，最终结果才为真
+					有一个条件结果为假，最终结果就为假
+					
+				逻辑与 还叫 短路与
+				多个判断条件，遇到一个不成立，后面不管是否成立都不再考虑
+			 */
+			
+			// 考试成绩在60分-80分之间显示及格，80分以上显示合格
+			var score = 75;
+			score >= 60 && score < 80 ? console.log("及格") 
+			: score >= 80 && score <= 100 ? console.log("合格") 
+			: console.log("成绩有误");
+
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <ul></ul>
+        <script src="../jQuery/jquery-1.12.4.js"></script>
+        <script>
+            window.onload = function(){
+                var ul = document.querySelector('ul');
+                var li = document.createElement('li');
+                li.innerText = '我是新创建的li';
+                ul.appendChild(li);
+            }
+            $(document).ready(
+                function(){
+                    // append()和原生js的appendChild()方法一样，在被选元素的结尾(后面)插入内容
+                    $('ul').append('<li>我是jq创建的li</li>');
+
+                    // appendTo()是将子节点添加到父节点中
+                    $('<li>将li添加到ul中</li>').appendTo('ul');
+                    
+                    /*
+                    append()和appendTo()的区别：
+                    append()是父元素调用的
+                    appendTo()是子元素调用的
+                    方便链式编程
+                        如果下面逻辑要操作父元素，那么就用append()
+                        如果下面逻辑要操作子元素，那么就用appendTo()
+                    */
+                    
+                    // prepend()和原生js的insertBefore()方法一样，在被选元素的开头(前面)插入内容
+                    $('ul').prepend('<li>我是prepend创建的li</li>');
+
+                    // prependTo()是将子节点添加到父节点中
+                    $('<li>我是prependTo创建的li</li>').prependTo('ul');
+
+                    // append()和appendTo()方法是在被选元素的结尾(后面)插入内容
+                    // prepend()和prependTo()方法是在被选元素的开头(前面)插入内容
+                }
+            );
+        </script>
+    </body>
+</html>

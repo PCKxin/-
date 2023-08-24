@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>scrollHeight  scrollWidth</title>
+    <style type="text/css">
+      #box{
+        width: 200px;
+        height: 200px;
+        border: 1px solid red;
+        background-color: aqua;
+        overflow: auto;
+      }
+      #context{
+        width: 500px;
+        height: 500px;
+        border: 1px solid blue;
+        background-color: red;
+        padding: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box">
+      <div id="context">qwwwe</div>
+    </div> 
+    宽：<span id="s1"></span>
+    高：<span id="s2"></span>
+  </body>
+  <script type="text/javascript">
+    var context=document.getElementById("context");
+    //scrollHeight：获取实际的高（可视区域的高+隐藏区域的高）
+    console.log(context.scrollHeight);
+    //scrollWidth:获取实际的宽（可视区域的宽+隐藏区域的宽）
+    console.log(context.scrollWidth);
+    var s1=document.getElementById("s1");
+   // document.write(context.scrollHeight);
+    s1.innerHTML=context.scrollWidth+"px";
+    s2.innerHTML=context.scrollHeight+"px";
+  </script>
+</html>

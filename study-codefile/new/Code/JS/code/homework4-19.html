@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <p>
+            姓名：<input type="text" id="nName">
+        </p>
+        <p>
+            电话：<input type="text" id="tel">
+        </p>
+        <p>
+            <input type="button" value="保存" id="save">
+        </p>
+        <p>
+            <input type="button" value="抽奖" id="choose">
+        </p>
+        <div id="choose_box">
+            <p>获奖人名：</p>
+        </div>
+    </body>
+    <script>
+        var nName = document.getElementById('nName');//姓名
+        var tel = document.getElementById('tel');//电话
+        var save = document.getElementById('save');//保存
+        var choose = document.getElementById('choose');//抽奖
+        var choose_box = document.getElementById("choose_box");//抽奖结果
+        var name_arr = [];
+        var tel_arr = [];
+        var arr = ["133", "149", "153", "173", "177", "180", "181", "189", "199", "130", "131", "132", "145", "155", "156", "166", "171", "175", "176", "185", "186", "134", "135", "136", "137", "138", "139", "147", "150", "151", "152", "157", "158", "159", "178", "182", "183", "184", "187", "188", "198"];
+            save.onclick = function () {
+                if (nName.value.length == 0) {
+                    alert("姓名不能为空");
+                } 
+                else if (tel.value.length != 11) {
+                    alert("手机号长度有误");
+                }
+                else if (isNaN(parseInt(tel.value)) == true) {
+                    alert("手机格式有误");
+                }
+                else if (arr.indexOf(tel.value.substr(0, 3)) == -1) {
+                    alert("手机号码不是有效电话，请重新输入");
+                }
+                else if (name.indexOf(nName.value) != -1 || tel_arr.indexOf(tel.value) != -1) {
+                    if(name.indexOf(nName.value) != -1){
+                        alert("姓名已存在");
+                    }
+                    else{
+                        alert("手机号已存在");
+                    }
+                }
+                else {
+                    name_arr.unshift(nName.value);
+                    tel_arr.unshift(tel.value);
+                    alert("保存成功");
+                }
+            }
+            choose.onclick = function () {
+                ran_num = parseInt(Math.random() * name_arr.length)
+                var n1 = tel_arr[ran_num].substr(0,3);
+                var n2 = tel_arr[ran_num].substr(7,4);  
+                var n3 = n1 + "****" + n2;
+                choose_box.innerHTML = "<p>获奖人</p >" + "<p>" + name_arr[ran_num] + "</p >" + "<p>" + n3 + "</p >"
+            }
+    </script>
+
+</html>

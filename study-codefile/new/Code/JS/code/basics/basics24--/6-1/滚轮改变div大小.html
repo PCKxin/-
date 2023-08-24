@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+      #box{
+        width: 150px;
+        height: 150px;
+        background-color: red;
+        margin: 0 auto;
+        margin-top: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box">
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript">
+    var div=document.getElementById("box");
+    //ie  谷歌
+    div.onmousewheel=fn;
+    //火狐
+    div.addEventListener('DOMMouseScroll',fn,false);
+    function fn(e){
+     
+      var event=e||window.event;
+       //ie  谷歌
+      var temp1=event.wheelDelta;
+      //火狐
+      var temp2=event.detail;
+      //获取内部小div
+      var div1=document.getElementById("box1");     
+      if(temp1==210||temp2==-3){
+        //滚轮向上滑动
+        div1.style.height=div1.offsetHeight-2+'px';
+      }else{
+        //滚轮向下
+        div1.style.height=div1.offsetHeight+2+'px';
+      }
+      
+      
+      
+      
+    }
+    
+  </script>
+</html>

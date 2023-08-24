@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <p id="p1"></p>
+    <input type="button" value="按钮" id="bu1" /> 
+    <script type="text/javascript">
+      var bu1=document.getElementById("bu1");
+      var p1=document.getElementById("p1");
+      bu1.onclick=function(){
+        //1.创建ajax的核心对象  XMLHttpRequest
+        var xhr=new XMLHttpRequest();
+        //2.启动请求
+        // open的三个参数
+        //1.提交方式  get  post
+        //2.提交的路径
+        //3.boolean  true:异步提交   false：同步提交
+        xhr.open("get","1111.html",true);
+        //3.发送请求
+        xhr.send();
+        //4.绑定事件
+        xhr.onreadystatechange=function(){
+          if(xhr.readyState==4&&xhr.status==200){
+            //解析数据   并展示到页面
+            p1.innerHTML=xhr.responseText;
+          }
+        }
+        
+        
+        
+        
+        
+        
+      }
+    </script>
+  </body>
+</html>
+
+

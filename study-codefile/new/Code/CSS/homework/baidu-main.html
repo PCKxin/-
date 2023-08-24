@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>bbbbaidu</title>
+        <style>
+            *{margin: 0;padding: 0; list-style: none;}
+            .box{
+                /* box-sizing: border-box; */
+                width: 1000px;
+                height: 150px;
+                /* border: 1px solid gray; */
+                margin: 0 auto;
+                margin-top: 40px;
+            }
+            .imgss{
+                width: 120px;
+                height: 70px;
+                /* border: 1px dashed blue; */
+                /* text-align: center; */
+                /* line-height: 40px; */
+                margin-top: 25px;
+                margin-left: 40px;
+                float: left;
+            }
+            .search{
+                /* box-sizing: border-box; */
+                width: 655px;
+                height: 41px;
+                float: left;
+                border: 2px solid blue;
+                border-radius: 10px 0px 0px 10px;
+                margin-top: 45px;
+            }
+            .s-right{
+                /* box-sizing: border-box; */
+                width: 50px;
+                height: 40px;
+                border: 0px;
+                border-right: 0px;
+                border-radius: 10px 0px 0px 10px;
+                color: gray;
+                outline: none;
+            }
+            .s-center{
+                width: 600px;
+                height: 40px;
+                border: 0px;
+                outline: none;/*点击去掉边框*/
+            }
+            .s-left{
+                width: 90px;
+                height: 45px;
+                color: white;
+                border-radius: 0px 10px 10px 0px;
+                border: 0px;
+                background: blue;
+                float: left;
+                margin-top: 45px;
+                outline: none;
+            }
+            .list{
+                /* box-sizing: border-box; */
+                width: 800px;
+                margin-top: 10px;
+                text-align: left;
+                float: left;
+            }
+            .list li{
+                float: left;
+                margin-left: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <img src="https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png" class="imgss">
+            <div class="search">
+                <select name="" class="s-right">
+                    <option>网页</option>
+                </select>
+                <input type="text" placeholder="湖北宣恩17岁高一学生失联22天" class="s-center">
+            </div>
+            <input type="button" value="百度一下" class="s-left">
+            <ul class="list">
+                <li>中国医药:将在大陆销售辉瑞新冠药</li>
+                <li>初二男生遭15人围殴刺伤3人获无罪</li>
+                <li>诊所爆满市民车排门口坐车</li>
+                <li>韩国司机因听不懂日语遭日本人殿打</li>
+                <li>37岁球员感染新冠后去世</li>
+                <li>专家:个例 各城市首轮感染高峰期预</li>
+            </ul>
+        </div>
+    </body>
+</html>

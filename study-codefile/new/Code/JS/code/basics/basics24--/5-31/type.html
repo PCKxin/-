@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    * {
+      padding:0;
+      margin:0;
+    }
+    .red {
+      width:100px;
+      height:100px;
+      background:red;
+      left:0;
+      top:0;
+      position:absolute;
+    }
+  </style>
+</head>
+<body>
+  <div id="box" class="red"></div>
+  <script type="text/javascript">
+    var box = document.getElementById('box');
+    document.onkeydown = function(e){
+      var ev = e||window.event;
+      var num = ev.keyCode;
+      console.log(num);
+      var oLeft = box.offsetLeft;
+      var oTop = box.offsetTop;
+      switch(num){
+        // 左键头的keycod  键码值
+        case 37:  
+        oLeft -=10; //每次移动10px
+        if(oLeft <0){
+          oLeft = 0
+        } 
+        box.style.left = oLeft+'px';
+        break;
+        //上
+        case 38:
+        oTop -=10;
+        if(oTop <0){
+          oTop = 0
+        } 
+        box.style.top = oTop+'px';
+        break;
+        //右
+        case 39:
+        oLeft +=10;
+        //整个页面的宽度减去div的宽度   是div 运动最大的距离
+        if(oLeft >document.documentElement.clientWidth-box.offsetWidth){
+          oLeft = document.documentElement.clientWidth-box.offsetWidth
+        } 
+        box.style.left = oLeft+'px';
+        break;
+        //下
+        case 40:
+        oTop +=10;
+        if(oTop >document.documentElement.clientHeigh-box.offsetHeigh){
+          oTop = document.documentElement.clientHeight-box.offsetHeight
+          alert(oTop);
+        } 
+        box.style.top = oTop+'px';
+        break;
+      }
+      if(num==65&&ev.ctrlKey){ //ctrl+a
+        box.style = '';
+        box.className = 'red';
+      }
+      if(num==67&&ev.ctrlKey&&ev.altKey){  //ctrl+alt+c
+        box.style.background = 'rgb('+changeColor()+')';
+      }
+    }
+    function changeColor(){
+      var arr = [];
+      for(var i=0;i<3;i++){
+        arr[i] = Math.round(Math.random()*255);
+      }
+      return arr.join(',')
+    }
+  </script>
+</body>
+</html>

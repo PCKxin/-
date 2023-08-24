@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>三元运算符（三目运算符）</title>
+		<script type="text/javascript">
+			/* 
+				语法：
+					判断条件？执行语句1:执行语句2
+				根据判断条件看结果，
+				如果结果为真，就执行？后的语句1部分
+				如果结果为假，就执行：后的语句2部分
+			 */
+			//var light = "红灯";
+			//light == "绿灯" ? console.log("过马路") : console.log("等信号灯");
+			
+			5 > 3 ? console.log(true) : console.log(false);
+			
+			/* 
+				根据信号灯判断，如果是绿灯，执行过马路；
+							如果是红灯，执行等信号等；
+							如果是黄灯，执行提高警惕；
+			 */
+			var light = prompt("啥灯");
+			light == "绿灯" ? console.log("过马路") 
+			: light == "红灯" ? console.log("等信号灯") 
+			: light == "黄灯" ? console.log("提高警惕") 
+			: console.log("信号灯有误");
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

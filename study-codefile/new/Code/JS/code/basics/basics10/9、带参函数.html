@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>带参函数</title>
+		<script type="text/javascript">
+			/* function area() {
+				var width = 20;
+				var height = 10;
+				console.log(width * height);
+			}
+			area();
+			
+			function fn() {
+				var width = 4;
+				var height = 4;
+				console.log(width * height);
+			}
+			fn(); */
+			
+			/* 
+				形式参数：形参，定义函数的时候，以一种形式出现的参数
+			 */
+			function area(width,height) {
+				console.log(width * height);
+			}
+			/* 
+				实际参数：实参，调用函数的时候，以具体值传入的参数
+			 */
+			//墙的面积
+			area(20,10);
+			/* 
+				传递参数：传参，将实际参数对位传递给形参的过程
+			 */
+			//投影面积
+			area(2,2);
+			
+			
+			/* 
+				普通函数：没有特殊要求的时候，可以使用普通函数
+				带参函数：当具体值不确定的时候，使用带参函数
+			 */
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

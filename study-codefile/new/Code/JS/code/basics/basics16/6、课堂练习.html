@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        /*
+        *   创建自己手机的对象
+        *   写出手机的品牌brand，型号model，运行内存RAM
+        *   存储空间ROM，颜色color
+        *
+        *   手机可以打电话、发信息、玩游戏、听音乐
+        * */
+        var phone = {
+            brand : "iphone",
+            model : "14pro Max",
+            RAM : "6G",
+            ROM : "256G",
+            color : "石墨黑",
+            call : function () {
+                console.log("打电话");
+            },
+            message : function () {
+                console.log("发信息");
+            },
+            game : function () {
+                console.log("打游戏");
+            },
+            music : function () {
+                console.log("听音乐");
+            }
+        }
+
+        //调用当前对象的属性
+        //1、 对象名.属性名
+        console.log(phone.brand);
+        console.log(phone.model);
+
+        //2、对象名["属性名"]
+        console.log(phone["RAM"]);
+        console.log(phone["ROM"]);
+
+        //调用对象的方法
+        // 对象名.方法名()
+        phone.call();
+        phone.message();
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

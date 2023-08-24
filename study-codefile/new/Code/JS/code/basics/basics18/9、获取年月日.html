@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取年月日</title>
+    <script type="text/javascript">
+        //要想使用Date对象的方法，必须先创建date对象
+        var date = new Date();
+        //单独获取完整年份
+        var year = date.getFullYear();
+        console.log(year); // 2023 四位的完整年份
+        //单独获取月份
+        var month = date.getMonth() + 1;//月份  返回 0-11
+        console.log(month);
+        //单独获取日期
+        var _date = date.getDate();//返回当前是该月中的第几天
+        console.log(_date);// 11
+        //单独获取星期几
+        var day = date.getDay();
+        console.log(day);// 2  返回0-6 0表示周日
+    </script>
+</head>
+<body>
+
+</body>
+</html>

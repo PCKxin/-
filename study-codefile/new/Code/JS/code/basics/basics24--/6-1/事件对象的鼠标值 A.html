@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <button id="a1" >按钮</button>
+    <script type="text/javascript">
+      var bu1=document.getElementById("a1");
+      bu1.onmousedown=function(e){
+        //获取鼠标按键的值
+        function getButton(e){
+          var event=e||window.event;
+          if(event){//W3C
+             return event.button;    
+          }else if(window.event){
+            switch (event.button){
+              case 0:               
+                return 4;
+              case 1://ie的左键
+                 return 0;
+              case 2:
+                 return 2;
+              case 4:
+                 return 1;
+              default:
+                break;
+            }
+          }          
+        }     
+        if(getButton(e)=='0'){
+          alert('左键');
+        }
+        if(getButton(e)=='1'){
+          alert('滚轮');
+        }
+        if(getButton(e)=='2'){
+          alert('右键');
+        }
+        
+        
+        
+        
+      }
+    </script>
+  </body>
+</html>

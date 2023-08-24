@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>动态表格</h1>
+        <table id="t1" border="1px" cellpadding="10" cellspacing="0">
+            <tr>
+                <th>序号</th>
+                <th>用户</th>
+                <th>性别</th>
+                <th>操作</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>张三</td>
+                <td>男</td>
+                <td><input type="button" value="删除" onclick="deleteUser()"></td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td>序号</td>
+                <td><input type="text" id="user_id"></td>
+            </tr>
+            <tr>
+                <td>用户</td>
+                <td><input type="text" id="name"></td>
+            </tr>
+            <tr>
+                <td>性别</td>
+                <td><input type="text" id="sex"/></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="button" value="添加用户" onclick="addUser()">
+                </td>
+            </tr>
+        </table>
+    </body>
+    <script>
+        //删除用户
+        function deleteUser(){
+            //event  当前事件对象
+            //event.target 当前事件对象作用于哪个标签上 (input标签)
+            //event.target.parentNode   td标签
+            //event.target.parentNode.parentNode tr标签
+            //parentNode  父节点
+            event.target.parentNode.parentNode.remove();
+        }
+
+        //添加用户
+        function addUser(){
+
+            //获取用户输入的信息
+            var id = document.getElementById("user_id");
+            var name = document.getElementById("name");
+            var sex = document.getElementById("sex");
+
+            //创建行 tr标签
+            var tr = document.createElement("tr");
+
+            //创建列 td标签
+            var td1 = document.createElement("td"); //序号
+            var td2 = document.createElement("td"); //用户
+            var td3 = document.createElement("td"); //性别
+            var td4 = document.createElement("td"); //操作
+            td1.innerHTML = id.value;
+            td2.innerHTML = name.value;
+            td3.innerHTML = sex.value;
+            td4.innerHTML = "<input type='button' value='删除' onclick='deleteUser()'>";
+
+            //将列添加到行中
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+            tr.appendChild(td3);
+            tr.appendChild(td4);
+
+            //将行添加到表格中
+            var table = document.getElementById("t1");
+            table.appendChild(tr);
+
+            //清空用户输入的信息
+            id.value = "";
+            name.value = "";
+            sex.value = "";
+        }
+    </script>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>参数的个数</title>
+		<script type="text/javascript">
+			function fn(a,b,c) {
+				console.log(a + b + c);
+			}
+			
+			/* 
+				当形参比实参多，多出的形参值为undefined
+			 */
+			fn("你","我");
+			
+			/* 
+				当实参比形参多，多处的实参会被截掉
+			 */
+			fn("你","我","他","大家");
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

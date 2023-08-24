@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/* 
+				根据BMI（身体质量指数）显示一个人的体型。
+				BMI是指身高体重的一个计算公式
+				BMI=体重/身高的平方，体重为公斤，身高为米
+				指数说明：
+				    低于18.5	过轻
+				    18.5-24.9999		正常
+				    25-27.9999	过重
+				    28-32	肥胖
+				    高于32	非常肥胖
+				输入身高和体重，计算BMI，输入身体状况
+			 */
+			function bmi(weight,height) {
+				var BMI = weight / (height * height);
+				if(BMI < 18.5) {
+					console.log("过轻");
+				}else if(BMI >= 18.5 && BMI <= 24.9999) {
+					console.log("正常");
+				}else if(BMI >= 25 && BMI <=27.9999) {
+					console.log("过重");
+				}else if(BMI >= 28 && BMI <= 32) {
+					console.log("肥胖");
+				}else if(BMI > 32) {
+					console.log("非常肥胖");
+				}
+			}
+			//崔雍昂
+			bmi(95,1.85);
+			// 张博
+			bmi(60,1.83);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

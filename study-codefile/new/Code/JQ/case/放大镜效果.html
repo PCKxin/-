@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .imgShow{
+                width: 1000px;
+                height: 500px;
+                position: relative;
+                margin: 0 auto;
+                margin-top: 100px;
+                border: 1px solid black;
+                position: relative;
+            }
+            .sShow{
+                box-sizing: border-box;
+                width: 512px;
+                height: 384px;
+                /* border: 1px solid black; */
+                position: absolute;
+                top: 50px;
+            }
+            .sShow img{
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+            .mMask{
+                width: 150px;
+                height: 150px;
+                background: rgba(0,0,0,0.3);
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: none;
+            }
+            .lShow{
+                width: 300px;
+                height: 300px;
+                position: absolute;
+                top: 92px;
+                left: 520px;
+                overflow: hidden;
+                /* 最上层index */
+                z-index: 10;
+                display: none;
+            }
+            .lShow img{
+                width: 1024px;
+                height: 768px;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="imgShow">
+            <!--左侧小图-->
+            <div class="sShow">
+                <img src="./img/test_shiro.jpg" alt="" >
+                <div class="mMask"></div>
+            </div>
+            <!--右侧大图-->
+            <div class="lShow">
+                <img src="./img/test_shiro.jpg" alt="">
+            </div>
+        </div>
+
+
+        <script src="../jQuery/jquery-1.12.4.js"></script>
+        <script>
+            $(document).ready(
+                function(){
+                    // $('sShow').hover(
+                    //     function(){
+                    //         $('.mMask').show();
+                    //         $('.lShow').show();
+                    //     },function(){
+                    //         $('.mMask').hide();
+                    //         $('.lShow').hide();
+                    //     }
+                    // )
+                    $('.sShow').hover(
+                        function(){
+                            $('.mMask').toggle();
+                            $('.lShow').toggle();
+                            // $('.mMask').show();
+                            // $('.lShow').show(); 
+                        }
+                    )
+                    
+                    // 获取mMask的宽度
+                    var m_mask_w = $('.mMask').width();
+                    var m_mask_h = $('.mMask').height();
+                    
+                    // 获取sShow的宽度
+                    var s_show_w = $('.sShow').width();
+                    var s_show_h = $('.sShow').height();
+                    
+                    // 获取lShow img的宽度
+                    var l_show_img_w = $('.lShow img').width();
+                    var l_show_img_h = $('.lShow img').height();
+                    
+                    $('.sShow').mousemove(
+                        function(e){
+            
+                            var s_show_x = $('.sShow').offset().left;
+                            var s_show_y = $('.sShow').offset().top;
+                            var ex = e.pageX;
+                            var ey = e.pageY;
+                            var mouse_x = ex - s_show_x;
+                            var mouse_y = ey - s_show_y;
+                            
+                            // 最小值
+                            if(mouse_x < m_mask_w / 2){
+                                mouse_x = m_mask_w / 2;
+                            }   
+                            if(mouse_y < m_mask_h / 2){
+                                mouse_y = m_mask_h / 2;
+                            }
+
+                            // 最大值
+                            if(mouse_x > s_show_w - m_mask_w / 2){
+                                mouse_x = s_show_w - m_mask_w / 2;
+                            }
+                            if(mouse_y > s_show_h - m_mask_h / 2){
+                                mouse_y = s_show_h - m_mask_h / 2;
+                            }
+
+                            $('.mMask').css(
+                                {
+                                    left: mouse_x - m_mask_w / 2,
+                                    top: mouse_y - m_mask_h / 2
+                                }
+                            )
+                            console.log("遮罩left定位" + (mouse_x - m_mask_w / 2))
+                            console.log("大图left定位" + (- l_show_img_w * (mouse_x - m_mask_w / 2) / s_show_w))
+                            $('.lShow img').css(
+                                {
+                                    // left: - l_show_img_w * (mouse_x - m_mask_w / 2) / s_show_w, 
+                                    // top: - l_show_img_h * (mouse_y - m_mask_h / 2) / s_show_h
+                                    left: - 2 * (mouse_x - m_mask_w / 2),
+                                    top: - 2 * (mouse_y - m_mask_h / 2)
+                                }
+                            )
+                        }
+                    )
+                }
+            )
+        </script>
+    </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            input{
+                width: 200px;
+                height: 40px;
+                font-size: 20px;
+                border: 1px solid pink;
+            }
+            input:focus{
+                box-shadow: 0 0 2px 2px pink;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- val方法针对的是表单元素中带有value属性的元素 -->
+        <input type="text" value="123456">
+        <select name="">
+            <option value="jq">jQuery</option>
+            <option value="css">css</option>
+            <option value="html">html</option>
+            <option value="javascript">javascript</option>
+        </select>
+        <script src="../jQuery/jquery-1.12.4.js"></script>
+        <script type="text/javascript">
+                $(document).ready(
+                    function () {
+                            var str = $(':text').val();//val方法中不传入参数 表示获取当前input的value值
+                            console.log(str);//返回的是一个字符串类型
+                            $(':text').val('别人中粮，我中玫瑰，我可以死，浪漫不死');
+                            $('select').change(
+                                function () {
+                                    console.log($(this).val());
+                                }
+                            )
+                            $('input').change(
+                                function () {
+                                    console.log($(this).val());
+                                }
+                            )
+                        }
+                    )
+        </script>
+    </body>
+</html>

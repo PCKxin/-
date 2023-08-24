@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>算数运算符</title>
+		<script type="text/javascript">
+			/* 
+				+ 加号
+				+在数值类型中使用，功能为相加的计算
+				+在字符串中使用，起到拼接的作用
+			 */
+			var num1 = 10;
+			var num2 = 20;
+			console.log(num1 + num2); //30
+			var str1 = "10";
+			var str2 = "20";
+			console.log(str1 + str2); //1020
+			var bool = true;
+			var num3 = 20;
+			console.log(bool + num3);//21
+			var bool1 = true;
+			var bool2 = false;
+			console.log(bool1 + bool2);//1
+			
+			/* 
+				-减号
+				正常计算减法
+				字符串为数字的，会取出数字相减
+				字符之间不能做减法
+			 */
+			var num4 = 10;
+			var num5 = 20;
+			console.log(num4 - num5); //-10
+			var str3 = "10";
+			var str4 = "20";
+			//字符串是数字，做减法会取出具体数字进行相减
+			console.log(str3 - str4); // -10
+			//字符串是字符，减法会出现NaN
+			var str5 = "a";
+			var str6 = "b";
+			console.log(str5 - str6);//NaN
+				
+			/* 
+				*乘号
+				注意：如果是小数和小数相乘，需要分别扩大倍数，结果缩小倍数
+			 */
+			var num6 = 10;
+			var num7 = 20;
+			console.log(num6 * num7);//200
+			var str7 = "20";
+			var str8 = "10";
+			console.log(str7 * str8);//200
+			var str9 = "a";
+			var str10 = "b";
+			console.log(str9 * str10);//NaN
+			var num8 = 0.2;
+			var num9 = 0.2;
+			console.log((num8 * 100) * (num9 * 100) / 10000);//0.04
+			
+			/* 
+				/ 除号
+				除法中，第二个数字不能为0
+			 */
+			var num10 = 20;
+			var num11 = 0;
+			console.log(num10 / num11); // 2
+			var str11 = "20";
+			var str12 = "10";
+			console.log(str11 / str12); //2
+			var num12 = -10;
+			var num13 = 0;
+			console.log(num12 / num13); //-Infinity
+			
+			/* 
+				% 取余 （念做：模）
+				除法才会有余数
+				注意：取余第二个数字也不能为0
+			 */
+			var n = -3;
+			var m = 0;
+			console.log(n % m); //3
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

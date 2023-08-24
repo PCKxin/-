@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{margin:0;padding:0}
+            ul{
+                list-style:none;
+                width:1000px;
+                height:100px;
+                margin:10px auto;
+                border:1px solid black;
+            }
+            li{
+                float:left;
+                width:200px;
+                height:100px;
+                text-align:center;
+                line-height:100px;
+                cursor:pointer;
+            }
+            .active{
+                background:red;
+                color:white;
+            }
+            .box{
+                font-size:40px;
+                font-weight:bold;
+                text-align:center;
+            }
+        </style>
+    </head>
+    <body>
+        <ul>
+            <li class="active">商品介绍</li>
+            <li>规格与包装</li>
+            <li>商品评价</li>
+            <li>售后保障</li>
+            <li>商品问答</li>
+        </ul>
+        <div class="box">
+            这是关于商品介绍内容
+        </div>
+
+    <script src="../jQuery/jquery-1.12.4.js"></script>
+    <script>
+        $(document).ready(
+            function(){
+                var data = [
+                    {id:0,text:'这是关于商品得介绍内容'},
+                    {id:1,text:'这是关于规格与包装内容'},
+                    {id:2,text:'这是关于商品评价内容'},
+                    {id:3,text:'这是关于售后保障内容'},
+                    {id:4,text:'这是关于商品问答内容'},
+                ];
+                $('ul li').click(
+                    function(){
+                        // 选中当前点击的li, 并且给它添加active类
+                        // 选中当前点击的li的兄弟元素, 并且移除它的类
+                        $(this).addClass('active').siblings().removeClass();
+                        // 拿到当前点击的li的索引
+                        var index = $(this).index();
+                        // 将当前点击的li的索引对应的数据, 显示到box中
+                        $('.box').text(data[index].text);
+                    }
+                );
+            }
+        );
+    </script>
+    </body>
+</html>

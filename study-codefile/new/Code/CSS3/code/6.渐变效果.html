@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            h3{
+                text-align: center;
+                background: rgb(255, 181, 194);
+                color: white;
+            }
+            .linear_demo_box{
+                width: 100%;
+                height: 220px;
+                margin: 30px auto;
+            }
+            .linear_demo{
+                width: 200px;
+                height: 100px;
+                float: left;
+                margin-top: 20px;
+                margin-right: 20px;
+            }
+            .linear_demo:nth-child(2){
+                background: linear-gradient(red, blue, pink, orangered, hsl(120, 100%, 50%));
+                /*默认从上到下发生渐变*/
+                /*添加多种颜色 用,隔开*/
+                /*表示颜色得方法 都可以使用*/
+                /*十六进制 rgba rgb hsl() hsla() 英文单词*/
+            }
+            .linear_demo:nth-child(3){
+                background: linear-gradient(deepskyblue 20%, orangered 50%);
+                /*颜色后面得百分比 是 表示发生渐变得位置*/
+                /*比如上面写的： 表示得是 蓝色从20%得位置开始渐变 到 50%位置 渐变到橘红*/
+            }
+            .linear_demo:nth-child(4){
+                background: linear-gradient(to right top, deepskyblue, orangered);
+                /*to right 从左到右*/
+                /*to left 从右到左*/
+                /*to top 从下到上*/
+                /*to right bottom 从左上角到右下角*/
+                /*to left top 从右下角到左上角*/
+                /*to right top 从左下角到右上角*/
+                /*to left bottom 从右上角到左下角*/
+            }
+            .linear_demo:nth-child(5){
+                background: repeating-linear-gradient(rgba(255, 0, 123, 0.677) 0%,rgb(43, 255, 0) 30%);
+                /* 重复的线性渐变 */
+            }
+
+            .radial_demo_box{
+                width: 100%;
+                height: 220px;
+                margin: 30px auto;
+            }
+            .radial_demo{
+                width: 200px;
+                height: 100px;
+                float: left;
+                margin-top: 20px;
+                margin-right: 20px;
+            }
+            .radial_demo:nth-child(2){
+                background: radial-gradient(rgb(0, 255, 60) 20%, rgb(255, 0, 0));
+                /*默认从中心点开始渐变*/
+            }
+            .radial_demo:nth-child(3){
+                background: radial-gradient(circle, rgb(0, 255, 34), rgb(255, 0, 72));
+                /*将渐变形状变成正圆*/
+            }
+            .radial_demo:nth-child(4){
+                /* 改变径向渐变圆心的位置 */
+                /* 涉及到圆心位置 必须写兼容性写法！！！ */
+                /* 三种写法 */
+                /* 1.使用px; */
+                /* 2.使用%; */
+                /* 3.使用关键字 */
+                /* background:-webkit-radial-gradient(0px 0px,circle,red,blue); */
+                /* background:-webkit-radial-gradient(50% 0%,circle,red,blue); */
+                background: -webkit-radial-gradient(right center, circle, rgb(255, 132, 0), rgb(0, 149, 255));
+            }
+            .radial_demo:nth-child(5){
+                /* 控制径向渐变圆的尺寸大小 写在渐变形状后面 */
+                /* 1.最近的边 closest-side */
+                /* 2.最远的边 farthest-side */
+                /* 3.最近的角 closest-corner */
+                /* 4.最远的角 farthest-corner */
+                background: -webkit-radial-gradient(50px 50px, circle farthest-corner, black, white);
+            }
+            .radial_demo:nth-child(6){
+                /* 重复的径向渐变 */
+                background: repeating-radial-gradient(deeppink 0%, deepskyblue 20%);
+            }
+
+            .CircularCone_demo_box{
+                width: 100%;
+                height: 220px;
+                margin: 30px auto;
+            }
+            .CircularCone_demo{
+                width: 200px;
+                height: 100px;
+                float: left;
+                margin-top: 20px;
+                margin-right: 20px;
+            }
+            .CircularCone_demo:nth-child(2){
+                background: conic-gradient(red, rgb(26, 255, 0));
+                /* conic-gradient() 圆锥渐变 */
+            }
+            .CircularCone_demo:nth-child(3){
+                background: conic-gradient(pink 20%, deepskyblue 50%, deeppink 80%);
+            }
+
+            .demo{
+                width: 100%;
+                height: 320px;
+                margin: 30px auto;
+            }
+            .demo1{
+                width: 200px;
+                height: 200px;
+                float: left;
+                margin-top: 20px;
+                margin-right: 20px;
+            }
+            .demo1:nth-child(2){
+                font-size: 40px;
+                font-weight: bold;
+                text-align: center;
+                background: linear-gradient(
+                    /* 从左下角到右上角 */
+                    to right top,
+                    rgba(215, 204, 204, 0.3) 20%,
+                    rgba(180, 169, 169, 0.5) 40%,
+                    rgba(138, 123, 123, 0.5) 60%,
+                    rgba(55, 48, 48, 0.5) 80%,
+                    rgba(31, 22, 22, 0.8) 100%
+                );
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+            }
+            .demo1:nth-child(3){
+                border-radius: 50%;
+                background: conic-gradient(
+                    pink 0%, pink 33%,
+                    deepskyblue 33%, deepskyblue 66%,
+                    orangered 66%, orangered 100%
+                );
+            }
+        </style>
+    </head>
+    <body>
+        <div class="linear_demo_box">
+            <h3>
+                linear-gradient() <br>
+                线性渐变 <br>
+                从一个点的颜色向另一个方向
+                发生颜色过渡得渐变 
+                中间两种颜色或者多种颜色
+            </h3>
+            <div class="linear_demo"></div>
+            <div class="linear_demo"></div>
+            <div class="linear_demo"></div>
+            <div class="linear_demo"></div>
+        </div>
+        <div class="radial_demo_box">
+            <h3>
+                径向渐变 <br>
+                从一个点的颜色向四周发生颜色过渡得渐变 <br>
+                默认渐变的图形为椭圆
+            </h3>
+            <div class="radial_demo"></div>
+            <div class="radial_demo"></div>
+            <div class="radial_demo"></div>
+            <div class="radial_demo"></div>
+            <div class="radial_demo"></div>
+        </div>
+        <div class="CircularCone_demo_box">
+            <h3>
+                圆锥渐变
+            </h3>
+            <div class="CircularCone_demo"></div>
+            <div class="CircularCone_demo"></div>
+        </div>
+        <div class="demo">
+            <h3>
+                练习 <br>
+                clip和饼图
+            </h3>
+            <div class="demo1">
+                clip
+            </div>
+            <div class="demo1"></div>
+        </div>
+    </body>
+</html>

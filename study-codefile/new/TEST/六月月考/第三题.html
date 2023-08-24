@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+    <html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="PanJiaBao" content="width=device-width, initial-scale=1.0">
+        <title>第三题</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                font-family: Arial;
+            }
+            .box{
+                width: 900px;
+                height: 500px;
+                /* border: 1px solid #000; */
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.703),inset 0px 0px 10px rgba(5, 70, 237, 0.522);
+
+                margin: 0 auto;
+                position: relative;
+                top: 50px;
+            }
+            .img_on_box{
+                box-sizing: border-box;
+                width: 700px;
+                height: 500px;
+                /* border: 1px solid #000; */
+                float: left;
+            }
+            .img_on{
+                box-sizing: border-box;
+                width: 670px;
+                height: 470px;
+                text-align: center;
+                margin: 15px;
+            }
+            #img_in_box{
+                box-sizing: border-box;
+                width: 200px;
+                height: 500px;
+                /* border: 1px solid #000; */
+                float: right;
+            }
+            .img_in{
+                box-sizing: border-box;
+                width: 160px;
+                height: 75px;
+                text-align: center;
+                margin: 15px 20px 5px 20px;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>看控制台,题的要求很多都没学,尽力了</h1>
+        <div class="box">
+            <div class="img_on_box">
+                <!-- 大图 -->
+                <img src="" class="img_on">
+            </div>
+            <div id="img_in_box">
+                <!-- 五个缩略图 -->
+                <img src="" class="img_in">
+                <img src="" class="img_in">
+                <img src="" class="img_in">
+                <img src="" class="img_in">
+                <img src="" class="img_in">
+            </div>
+        </div>
+        <script>
+            window.onload = function(){
+                //封装ajax
+                function data_transfer(method,url,data,success){
+                    //兼容核心
+                    var xhr = null;
+                    if(window.XMLHttpRequest){
+                        xhr = new XMLHttpRequest();
+                    }else{
+                        xhr = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    xhr.open(method,url,true);
+                    xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");  //设置请求头
+                    xhr.send(data); //发送请求
+                    xhr.onreadystatechange = function(){ //监听状态
+                        console.log(xhr.readyState,xhr.status);
+                        if(xhr.readyState == 4 && xhr.status == 200){ //判断状态
+                            //响应成功执行的代码
+                            var object=JSON.parse(xhr.responseText); //将json字符串转换为json对象
+                            success&&success(object); //成功后执行的函数
+                        }
+                    }
+                }
+                //获取节点
+                var img_on_box = document.querySelector(".img_on_box");
+                var img_in_box = document.getElementById("img_in_box");
+                var img_on = document.querySelector(".img_on");
+                var img_in = document.querySelectorAll(".img_in");
+                //获取所有的缩略图地址数据
+                data_transfer(
+                    "get",
+                    "data/data.json",
+                    true,
+                    function(data){
+                        console.log(data);
+                        //将路径添加到数组中
+                        var url_arr = [];
+                        for(var i = 0; data.data.length > i; i++){
+                            url_arr.push(data.data[i].href);
+                        }
+                        console.log(url_arr);
+                        //将缩略图地址添加到缩略图中
+                        for(var i = 0; i < img_in.length; i++){
+                            img_in[i].src = url_arr[i];
+                        }
+                        //将第一张缩略图的地址作为默认图添加到大图中,并加边框,其他缩略图透明度为0.5
+                        img_on.src = url_arr[0];
+                        img_in[0].style.border = "3px solid red";
+                        img_in[0].style.opacity = "1";
+                        for(var i = 1; i < img_in.length; i++){
+                            img_in[i].style.opacity = "0.5";
+                        }
+                        //给缩略图添加点击事件
+                        for(var i = 0; i < img_in.length; i++){
+                            img_in[i].index = i;
+                            img_in[i].onclick = function(){
+                                //点击缩略图时，将缩略图的地址添加到大图中
+                                img_on.src = url_arr[this.index];
+                                //点到的缩略图加边框，没点到的缩略图去掉边框，透明度为0.5
+                                img_in[this.index].style.border = "3px solid red";
+                                img_in[this.index].style.opacity = "1";
+                                for(var j = 0; j < img_in.length; j++){
+                                    if(j != this.index){
+                                        img_in[j].style.border = "none";
+                                        img_in[j].style.opacity = "0.5";
+                                    }
+                                }
+                            }
+                        }
+                    }
+                )
+            }
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 潘佳宝 7/10 防复制水印 -->

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>遍历json字符串</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      var json={"name":"zs","age":18,"sex":"男"};
+      //遍历字符串
+      //key值不能相同，如果key值一样，后面的数据会覆盖前面的
+      //value可以相同
+      for(var key in json ){
+        console.log(key+":"+json[key]);
+      }
+      
+      
+    </script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        var obj1 = {
+            "brand" : "iphone",
+            "model" : "14pro Max",
+            "color" : "石墨黑",
+            "call" : function () {
+                console.log("打电话");
+            }
+        }
+
+        //复制obj1对象，将所有的属性和方法，复制给obj2
+
+        //定义obj2的空对象
+        var obj2 = {
+
+        }
+        //遍历obj1，
+        // key + "：" + obj1[key] 每一条属性和属性值
+        // 每遍历出一个属性和属性值，用+=赋值给obj2
+        for(var key in obj1) {
+            obj2 += key + ":" + obj1[key];
+        }
+        //obj2里面有相应的内容
+        console.log(obj2)
+        
+        var test_1 = {
+            "user" : "admin",
+            "password" : "qwe123",
+            "level" : 10,
+            "login" : function(){
+                console.log("hello please login")
+            }
+        }
+        // console.log(test_1)
+        var test_2 = new Object();
+
+        for(var key in test_1){
+            test_2 += key + ":" + test_1[key] + ";"
+        }
+        console.log(test_2)
+    </script>
+</head>
+<body>
+
+</body>
+</html>

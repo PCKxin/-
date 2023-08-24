@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="a" id="b" style="width: 100px;" aaa="123"></div>
+        <script src="../jQuery/jquery-1.12.4.js"></script>
+        <script>
+            // window.onload = function(){
+            //         var div = document.querySelector('div');
+            //         var val = div.getAttribute('class');
+            //         div.setAttribute('aaa',345);
+            //         var val = div.getAttribute('aaa');
+            //         console.log(val);
+            //     }
+            $(document).ready(
+                function(){
+                    // attr() 获取或设置属性值，本身含有的属性和自定义属性都可以使用，建议自定义属性'使用'这个方法
+                    // prop() 只能用于本身含有的属性，自定义属性'不能'使用这个方法
+                    // 获取class对应的属性值
+                    var val = $('div').prop('class');
+                    var val2 = $('div').attr('class');
+                    console.log(val);//a
+                    console.log(val2);//a
+
+                    // 获取自定义属性aaa对应的属性值
+                    val = $('div').prop('aaa');
+                    val2 = $('div').attr('aaa');
+                    console.log(val);//undefined 自定义属性不能使用prop方法
+                    console.log(val2);//123
+                    
+                    // 设置id对应的属性值 传一个参数是获取 传两个参数是设置重新赋值
+                    // 属性名 属性值
+                    $('div').prop('id','abc');
+                    $('div').attr('id','bcd');
+
+                    // 设置aaa对应的属性值
+                    $('div').prop('aaa',789);// 不生效 prop不能操作自定义属性
+                    $('div').attr('aaa',456);// 生效！
+
+                    // 删除属性
+                    // 将div中class属性删除
+                    $('div').removeProp('class');// 将class对应属性值变成undefined
+                    $('div').removeAttr('class');// 是将class和对应的属性值都删除掉
+                    $('div').removeProp('aaa');// 不能删除自定义属性
+                }
+            )
+        </script>
+    </body>
+</html>

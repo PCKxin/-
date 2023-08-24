@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            div{
+                width: 300px;
+                height: 300px;
+                padding: 50px; 
+                border: 10px solid black;
+                margin: 0 auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div></div>
+        <script src="../jQuery/jquery-1.12.4.js"></script>
+        <script>
+            window.onload = function(){
+                var div = document.querySelector('div');
+                // width + 左右padding
+                // 300 + 50*2 = 400
+                console.log(div.clientWidth);
+                // width + 左右padding + 左右border
+                // 300 + 50*2 + 10*2 = 420
+                console.log(div.offsetWidth);
+            }
+            $(document).ready(
+                function(){
+                    // jq中获取样式中设置的 width/height的尺寸
+                    console.log($('div').width());
+                    console.log($('div').height());
+
+                    // width + 左右padding
+                    console.log($('div').innerWidth()); // 400
+                    
+                    // height + 上下padding
+                    console.log($('div').innerHeight()); // 400
+
+                    // outerWidth: width + 左右padding + 左右border
+                    // outerHeight: height + 上下padding + 上下border
+                    console.log($('div').outerWidth()); // 420
+                    console.log($('div').outerHeight()); // 420
+                }
+            )
+        </script>
+    </body>
+</html>

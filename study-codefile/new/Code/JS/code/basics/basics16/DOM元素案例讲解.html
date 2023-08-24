@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .clearFloat:after {
+            display: block;
+            content:"";
+            clear:both;
+            height: 0;
+            line-height: 0;
+            visibility: hidden;
+        }
+        .clearFloat {
+            zoom: 1;
+        }
+
+        .list {
+            width:750px;
+        }
+        .book {
+            list-style: none;
+            float:left;
+            width:150px;
+            height:220px;
+            text-align:center;
+        }
+        .book img {
+            width: 100px;
+            height:120px;
+        }
+        .book .bookName {
+            color:#666;
+            font-size: 14px;
+            height:29px;
+        }
+        .book .writer {
+            color:#999;
+            font-size: 12px;
+        }
+        .book .price {
+            color:red;
+            font-weight: bold;
+            font-size: 12px;
+            float:left;
+        }
+        .book .money {
+            color:#999;
+            font-size: 12px;
+            float:right;
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <ul class="list clearFloat">
+            <li class="book"></li>
+            <li class="book"></li>
+            <li class="book"></li>
+            <li class="book"></li>
+            <li class="book"></li>
+            <li class="book"></li>
+            <li class="book"></li>
+            <li class="book"></li>
+            <li class="book"></li>
+            <li class="book"></li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        /*
+        *   每一个图书系列都是一个对象，
+        *   一共有十套，因此用数组包住每个对象
+        *   每个对象就是数组的一个元素
+        * */
+        var data = [
+            {"src":"img/0.png","name":"米小圈上学记3年级","writer":"北猫 著","price":"¥56.0","money":"¥100.0"},
+            {"src":"img/1.png","name":"少年读史记(8册)","writer":"徐菡 编","price":"￥41.3","money":"￥64.0"},
+            {"src":"img/2.png","name":"米小圈脑筋急转弯","writer":"北猫 著作","price":"￥35.8","money":"￥64.0"},
+            {"src":"img/3.png","name":"彼得免和他的朋友们(全8册)","writer":"(英)碧翠克丝·波特 著 孙静 ","price":"￥21.6","money":"￥96.0"},
+            {"src":"img/4.png","name":"幼儿睡前故事绘本(全60册)","writer":"罗自国绘","price":"￥31.2","money":"￥120.0"},
+            {"src":"img/5.png","name":"小猪唏哩呼噜 (彩色注音) ..","writer":"孙幼军 著孙幼军 著","price":"￥31.0","money":"￥50.0"},
+            {"src":"img/6.png","name":"十万个为什么 彩图注音版(..","writer":"北猫 著","price":"￥35.8","money":"￥64.0"},
+            {"src":"img/7.png","name":"宝贝的奇妙洞洞书(4册)","writer":"孙静 编","price":"￥23.0","money":"￥100.0"},
+            {"src":"img/8.png","name":"幼儿睡前故事绘本(全60册)","writer":"罗自国绘","price":"￥31.2","money":"￥120.0"},
+            {"src":"img/9.png","name":"启蒙故事小绘本(全100册)","writer":"孙静,何婉莹 编","price":"￥67.2","money":"￥560.0"}
+        ];
+
+        //通过class类对html元素进行获取
+        //通过class类获取html元素,()的参数是获取的哪一个类名
+        var book = document.getElementsByClassName("book");
+        console.log(book);
+
+        /*
+        *   读取数组的元素：  数组名[索引值]
+        *   读取对象中的某个属性：  对象名.属性名
+        *   数组名[索引值].属性名
+        * */
+        // console.log(data[1].name);
+        // console.log(data[9].src);
+
+        //通过遍历获取到每一个对象，拿对象中的某一个属性
+        for(var i = 0; i < data.length; i++) {
+            // innerHTML，是给获取的元素添加内容
+            //data[i]是每个对象,book[i]每个li
+            book[i].innerHTML = "<img src='"+ data[i].src +"'>"
+                              + "<p class='bookName'>" + data[i].name + "</p>"
+                              + "<p class='writer'>" + data[i].writer+ "</p>"
+                              + "<p class='price'>" + data[i].price + "</p>"
+                              + "<p class='money'>" + data[i].money + "</p>";
+
+        }
+    </script>
+</body>
+</html>

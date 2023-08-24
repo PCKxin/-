@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>节点类型</title>
+</head>
+<body>
+    <p class="text" id="p">这是段落标签</p>
+
+    <script type="text/javascript">
+        /*
+        *   nodeType属性表示节点类型
+        * */
+        //文档节点的类型
+        console.log(document.nodeType); // 9
+
+        //元素节点的类型
+        var p = document.getElementById('p');
+        console.log(p.nodeType); // 1
+
+        //属性节点
+        console.log(p.attributes); //获取元素的所有属性
+        console.log(p.attributes[0]);//class类
+        console.log(p.attributes[0].nodeType);// 2
+    </script>
+</body>
+</html>

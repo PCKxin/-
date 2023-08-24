@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .box{
+                width: 700px;
+                height: 500px;
+                border: 2px solid orange;
+                margin: 0 auto;
+                overflow: hidden;
+            }
+            .main{
+                width: 700px;
+                height: 350px;
+                position: relative;
+            }
+            .control{
+                width: 700px;
+                height: 150px;
+                background: orange;
+                text-align: center;
+                padding-top: 30px;
+            }
+            .control input{
+                width: 250px;
+                height: 40px;
+                line-height: 40px;
+                outline: none;
+                font-size: 25px;
+                border: 1px solid deepskyblue;
+            }
+            input:focus{
+                box-shadow: 0 0 3px 3px deepskyblue;
+            }
+            button{
+                width: 100px;
+                height: 40px;
+                color: white;
+                background: deeppink;
+                border-radius: 8px;
+            }
+            button:active{
+                box-shadow: 0 0 3px 3px deeppink;
+            }
+            p{
+                width: 190px;
+                /*border: 1px solid black;*/
+                height: 30px;
+                font-size: 30px;
+                position: absolute;
+                left: 750px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <div class="main">
+                <!--<p>1234567890</p> -->
+                <!--<p></p> -->
+                <!--<p></p>-->
+                <!--<p></p>-->
+            </div>
+            <div class="control">
+                <!-- maxlength 最大输入长度的限制       -->
+                <input type="text" maxlength="10">
+                <!-- 面试题：当type=number时，maxlength属性将失效，怎么解决？-->
+                <!-- <input id="a" type="number" step="0.2" oninput="inputLen(5)" > -->
+                <button>发送</button>
+            </div>
+        </div>
+        
+        <script>
+            // 截取值函数
+            function inputLen(num){
+                var input = document.getElementById("a"); 
+                input.value = a.value.slice(0,num); // 获取input的值，然后截取前num位，再赋值给input
+            }
+        </script>
+        <script src="../jQuery/jquery-1.12.4.js"></script>
+        <script>
+            $(document).ready(
+                function(){
+                    $('button').click(
+                        function(){
+                            var val = $('input').val(); // 获取input的值
+                            if(!val)return; // 如果val为空，就不执行下面的代码
+                            $('input').val(''); // 清空input的值
+                            var html = '<p>'+val+'</p>'; // 创建p标签，将val的值赋值给p标签
+                            $('.main').append(html);
+                            var color = ['yellow','pink','purple','red','blue']; // 定义颜色数组
+                            var c_index = Math.floor(Math.random()*color.length); // 随机获取颜色数组的下标
+                            var top = Math.floor(Math.random()*$('.main').height() - parseInt($('p').css('fontSize'))); // 随机获取p标签的top值
+
+                            $('p').last().css({color:color[c_index],top:top}).animate( // 设置p标签的样式,animate()方法实现动画效果
+                                {left:-200}, // 动画的目标位置
+                                5000,
+                                'linear',
+                                function(){
+                                    // 动画结束时调用的/动画移动到目标位置以后调用的
+                                    $(this).remove();
+                                }
+                            )
+                        }
+                    )
+                }
+            )
+        </script>
+    </body>
+</html>

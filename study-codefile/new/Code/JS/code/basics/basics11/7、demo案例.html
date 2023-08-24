@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/* 
+				输入存入金额
+				输入目标金额
+				输入年化利率
+				显示几年能够达到目标
+				是否推荐存入该银行
+			 */
+			var money = prompt("请输入首次存入的金额")*1;
+			var li = prompt("请输入年化利率") * 1;
+			var will = prompt("请输入目标金额") * 1;
+			var year = 0; //统计几年
+			function fn(a , b , c) {
+				while (true) {
+					// money = money + money * li
+					a += a * b;
+					year++;
+					// money >= will
+					if(a >= c) {
+						break;
+					}
+				}
+				return year;
+			}
+			var res = fn(money , li , will);
+			console.log("一共需要" + res + "年");
+			if(res <= 10) {
+				console.log("建议存入该银行");
+			}else {
+				console.log("可以考虑其他银行");
+			}
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

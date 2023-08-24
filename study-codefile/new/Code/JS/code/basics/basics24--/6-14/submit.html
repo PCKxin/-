@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>submit事件</title>
+  </head>
+  <body>
+    <form action="" method="" id="form1">
+      <input type="submit" value="提交按钮" id="a1">
+    </form>
+  </body>
+  <script type="text/javascript">
+    var form = document.getElementById("form1");
+    //错误写法
+    var a1 = document.getElementById("a1");
+    //submit事件只能绑定到form表单上
+    form.onsubmit = function () {
+      alert("submit事件");
+    }
+    //错误
+    a1.onsubmit = function () {
+      alert();
+    }
+  </script>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+input[type="file"] {
+display: none;
+}
+.custom-file-upload {
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  background-color: #f44336;
+  color: #fff;
+  border-radius: 4px;
+}
+.custom-file-upload:hover {
+  background-color: #d32f2f;
+}
+</style>
+</head>
+<body>
+
+<form action="/action_page.php">
+  <label for="file-upload" class="custom-file-upload">
+    Upload File
+  </label>
+  <input id="file-upload" type="file"/>
+</form>
+
+</body>
+</html>

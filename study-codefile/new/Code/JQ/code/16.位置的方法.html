@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .farter{
+                width: 500px;
+                height: 500px;
+                border: 1px solid gray;
+                margin: 50px 0 0 60px;
+                background-color: antiquewhite;
+            }
+            .son{
+                width: 200px;
+                height: 100px;
+                background: pink;
+                /* 已知宽高垂直居中 */
+                /* 需要知道的宽高是多少 */
+                /* 在通过margin-left和margin-top向左（负值）向上（负值）调整 */
+                /* 调整的距离为 宽度的一半 和 高度的一半 */
+                /* left: 50%; */
+                /* top: 50%; */
+                /* margin-left: -100px; -width/2 */
+                /* margin-top: -50px;   -height/2 */
+                /* 未知宽高垂直居中 */
+                /* top: 0; */
+                /* left: 0; */
+                /* right: 0; */
+                /* bottom: 0; */
+                /* margin: auto; !*自动 自适应*! */
+            }
+        </style>
+    </head>
+    <body>
+        <div class="farter">
+            <div class="son"></div>
+        </div>
+        <div class="f" style="position: relative; width: 300px; height: 300px;">
+            <div class="ab" style="position: absolute;width: 100px;height: 100px;"></div>
+            <div class="fix" style="position: fixed;width: 200px;height: 200px;"></div>
+        </div>
+        <ul class="box">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+        </ul>
+        <script src="../jQuery/jquery-1.12.4.js"></script>
+        <script>
+            $(
+                function(){
+                    // offset() 跟定位中的relative有关系 相对视觉窗口的偏移量
+                    console.log($('.farter').offset()) //返回对象{top, left}
+                    // position() 跟定位中的absolute有关系 相对于父元素的偏移量
+                    console.log($('.son').position()) //返回对象{top, left}
+                    $('.son').position();
+                    console.log($('.a').offsetParent());//html
+                    console.log($('.b').offsetParent());//div.a(定位父元素relative)
+                    console.log($('.c').offsetParent());//html
+                    //重点！！！
+                    // eq()方法 不是选择器！
+                    // 传入索引值 拿到对应索引的那个jq对象！
+                    $('.box li').eq(2).css({background:'pink'}).text('hellow word');
+                }
+            )
+        </script>
+    </body>
+</html>

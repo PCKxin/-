@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // 全局变量 / 局部变量
+            // 作用域链
+            // 函数调用 / js回收机制
+
+
+            // 闭包的定义：一个函数内部可以访问另一个函数内部的变量，就形成了闭包，闭包就是一个函数
+
+            var a = 2;
+            function fn() {
+                var a = 1;
+            }
+            // 堆内存 引用数据类型
+            // 栈（zhan）内存 基础数据类型
+            fn(); // 调用完以后 var a = 1 所占用的内存会被释放
+
+            // 闭包
+                // 1.保护变量 不会被其他操作手段随意获取
+                // 2.保存变量  定义到函数内部 ， 函数调用完后也不会被回收
+            function add() {
+                var blood = 100;
+                return function(){
+                    blood++;
+                    // 在另一个函数中，引用了外部add中的blood变量
+                    // 所以blood变量不会被js回收机制回收
+                    console.log(blood);
+                }
+            }
+            
+            var c = add(); // c = function(){blood++}
+            c();
+            // add();
+            // console.log(add())
+
+            function b(){
+                var a = 100;
+                a++;
+                console.log(a);
+            }
+            b();
+
+
+
+
+
+
+            
+            for(var i = 0; i < 4; i++){
+                ( // 自执行函数
+                    function(i){ // 被传入的参数 
+                        setInterval( 
+                            function(){
+                                console.log(i); // i = 5
+                            },1000
+                        );
+                    }
+                )
+                (i); // (i) 传给自执行函数的参数
+            }
+        </script>
+    </body>
+</html>
+
+<!-- 
+
+这段代码创建了一个循环，循环共执行四次，并且每次循环都会在一个自执行匿名函数中调用setInterval函数。setInterval函数会以1000毫秒（1秒）的间隔反复执行内部的函数。
+
+当循环第一次执行时，它会使用i为0来调用第一个setInterval函数。然后循环继续，依次使用i为1、2和3来调用第二、三和四个setInterval函数。循环结束后，所有四个setInterval函数都处于激活状态，并会持续执行，每个函数会输出它们对应的i的值。
+
+之所以代码不会在四次循环后停止输出，是因为每个setInterval函数都会在后台独立运行，即使循环已经执行完毕。因此，你会看到不断输出的结果，每个setInterval函数都会不断地执行。
+
+要实现在四次循环后停止输出，你可以使用clearInterval方法在一定数量的执行后清除这些定时器。例如：
+
+
+var intervals = [];
+
+for (var i = 0; i < 4; i++) {
+    (function(i) {
+        var interval = setInterval(function() {
+            console.log(i);
+        }, 1000);
+        intervals.push(interval);
+    })(i);
+}
+
+// 在4秒后清除所有定时器
+setTimeout(function() {
+    intervals.forEach(function(interval) {
+        clearInterval(interval);
+    });
+}, 4000);
+
+这段代码会在4秒后停止所有定时器，并输出每个定时器的i值（0、1、2、3）。
+
+
+
+
+-->

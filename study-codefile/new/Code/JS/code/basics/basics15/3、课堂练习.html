@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        var arr = [2,12,45,1,2,56,21,54,26,745,21,56];
+        /*
+        *   将数组中的前6个元素按升序排列
+        *   将数组中的后6个元素按降序排列
+        *   重新拼成新数组
+        * */
+        var res1 = arr.slice(0,6);
+        console.log(res1);
+        res1.sort(function (a,b) {
+            return a - b;
+        });
+        console.log(res1);
+
+        var res2 = arr.slice(6);
+        console.log(res2);
+        res2.sort(function (a,b) {
+            return b - a;
+        });
+        console.log(res2);
+
+        var newArr = res1.concat(res2);
+        console.log(newArr);
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>

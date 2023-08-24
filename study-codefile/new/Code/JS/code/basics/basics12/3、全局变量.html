@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>全局变量</title>
+		<script type="text/javascript">
+			/* 
+				如果在函数外部创建的变量，
+				这个变量可以在脚本任何地方被使用，
+				这就是全局变量，具有全局作用域 
+			 */
+			var a = 10;
+			
+			function fn1() {
+				console.log(a); //10
+			}
+			fn1();
+			
+			function fn2() {
+				console.log(a); //10 ?
+			}
+			fn2();
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        /*
+        *   歌唱比赛
+        *   六个评委评分
+        *   去掉最高分
+        *   去掉最低分
+        *   求出平均分
+        * */
+        var arr = [];
+        for(var i = 0; i < 6; i++) {
+            var score = prompt("请输入评分")*1;
+            arr.push(score);
+        }
+        console.log(arr);
+
+        //排序，冒泡，用于拿到最高分和最低分
+        for(var j = 0; j < arr.length - 1; j++) {
+            for(var k = 0; k < arr.length - j - 1; k++) {
+                if(arr[k] > arr[k+1]) {
+                    var temp = arr[k];
+                    arr[k] = arr[k+1];
+                    arr[k+1] = temp;
+                }
+            }
+        }
+        console.log(arr);
+
+        //求出最高分，和最低分
+        var max = arr.pop();  //返回当前被删除的元素
+        console.log("最高分是：" + max);
+
+        var min = arr.shift();  //返回当前被删除的元素
+        console.log("最低分是：" + min);
+
+        console.log(arr);
+
+        //定义总分，为了求平均分
+        var sum = 0;
+        for(var a = 0; a < arr.length; a++) {
+            sum += arr[a];//  sum = sum + arr[a];
+        }
+        //平均分
+        console.log("平均分是：" + sum / arr.length);
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>

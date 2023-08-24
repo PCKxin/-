@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+    <html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="PanJiaBao" content="width=device-width, initial-scale=1.0">
+        <title>第三题</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+            .circle_s{
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                border:1px solid rgb(0, 115, 255);
+                position: absolute;
+                box-shadow: 0px 0px 10px rgba(2, 117, 241, 0.703),inset 0px 0px 10px rgba(5, 70, 237, 0.522);
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div id="circle"></div>
+    </body>
+    <script>
+        var circle = document.getElementById("circle");
+        //圆圈跟随鼠标移动
+        document.onmousemove = function(e){ 
+            var event = e || window.event;
+            //获取鼠标的位置
+            var mx = event.clientX;
+            var yx = event.clientY;
+            //创建圆
+            var circle_s = document.createElement("div");
+            //添加类名
+            circle_s.className = "circle_s";
+            //设置圆的坐标
+            var circleX = mx - 5 + "px";
+            var clrcleY = yx - 5 + "px";
+            circle_s.style.left = circleX;
+            circle_s.style.top = clrcleY;
+            //追加到页面
+            circle.appendChild(circle_s);
+            //定时器清除
+            setTimeout(
+                function(){
+                    circle.removeChild(circle_s);
+                },300
+            )
+        }
+    </script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 潘佳宝 6/7 防复制水印 -->

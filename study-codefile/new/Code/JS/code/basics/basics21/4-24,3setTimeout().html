@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>setTimeout()</title>
+</head>
+<body>
+    <script type="text/javascript">
+        /*
+        *   setTimeout()延迟调用
+        * */
+        //1、匿名函数定义
+        setTimeout(function (){
+            console.log(123);
+        }, 2000);
+
+        //2、将执行的内容单独定义函数
+        function fn() {
+            console.log("下课");
+        }
+        setTimeout(fn, 150000);
+
+        // clearTimeout(计时器名字);
+    </script>
+</body>
+</html>

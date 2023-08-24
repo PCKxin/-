@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+      *{
+        padding: 0px;
+        margin: 0px;
+      }
+      #a1{
+        width: 100%;
+        height: 5000px;
+        background-color: aqua;
+      }
+      #a2{
+        width: 100%;
+        height: 5000px;
+        background-color:yellowgreen;
+      }
+      #fixed{
+        position: fixed;
+        width: 30px;
+        height: 30px;
+        background-color: red;
+        top: 500px;
+        left: 0px;
+        
+        
+      }
+    </style>
+  </head>
+  <body>
+    <div id="a1"></div>
+    <div id="a2"></div>
+    <div id="fixed"></div>
+  </body>
+  <script type="text/javascript">
+    
+      //定义计时器
+      var time = null;
+
+      var fixed = document.getElementById("fixed");
+      fixed.onclick = function () {
+        //获取最大高度
+        var max = document.documentElement.scrollTop || document.body.scrollTop;
+        //延时
+        setTimeout(function () {
+
+          time = setInterval(
+            function () {
+              //速度
+              var seep = Math.ceil(max / 5); //向上取整,保证最小值是1
+
+              max = max - seep; //最大值减去速度
+              if (max <= 0) {
+                //最大值是0 那说明在顶部
+                max = 0;
+                //定时器清除
+                clearInterval(time);
+              }
+
+            }, 500)
+          document.documentElement.scrollTop = document.body.scrollTop;
+        }, 500);
+      }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </script>
+</html>

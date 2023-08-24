@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/* 
+			 输入一个数，判断这个数是大于0，小于0还是等于0？
+			 */
+			var n = prompt("请输入一个数字")*1;
+			/* 
+				isNaN()验证是否为非数字
+				结果为true表示非数字
+				结果为false表示为纯数字
+			 */
+			if(isNaN(n) == false) {
+				if(n < 0) {
+					console.log(n + "小于0");
+				}else if(n == 0) {
+					console.log(n + "等于0");
+				}else if(n > 0) {
+					console.log(n + "大于0");
+				}
+			}else {
+				console.log("输入的内容不是数字，请重新输入");
+			}
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

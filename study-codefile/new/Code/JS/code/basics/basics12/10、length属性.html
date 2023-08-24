@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>length属性</title>
+		<script type="text/javascript">
+			/* 
+				length属性表示数组的长度
+				
+			 */
+			var arr = [1,2,3,4,5,6,7,8];
+			/* 
+				length是一个数组的属性，每一个数组都有length属性
+				数组是继承对象的类型
+				对象属性的调用方法
+				
+				对象名.属性名
+			 */
+			console.log(arr.length); // 通过arr.length获取长度8
+			
+			/* 
+				数组长度是动态的（可以修改）
+				当数组长度比实际元素多，多出的值是undefined
+				当数组长度比实际元素少，多处的元素被截掉
+			 */
+			arr.length = 5;
+			console.log(arr);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

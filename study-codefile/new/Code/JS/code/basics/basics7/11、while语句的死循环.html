@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>while语句的死循环</title>
+		<script type="text/javascript">
+			/* 
+				while(循环条件) {
+							
+				}
+				只要循环条件为真，就会执行循环内容
+			 */
+			
+			/* 
+					注意：当不知道需要循环几次的时候，用while语句
+						 可以使用标准的死循环语句
+			 */
+			//while(true) {
+				//执行的内容
+				
+				//一定要有终止条件
+			//}
+			
+			/* 
+				例如：银行存款有5万元
+					利息是0.73%
+					几年后能到11万
+			 */
+			var money = 50000;
+			var year = 0;  //用于统计年份
+			while(true) {
+				money = money + money * 0.0073;
+				year++; //每存一次，年份+1
+				//写死循环一定要有终止条件
+				if(money >= 110000) {
+					break; //终止代码循环，继续后面的操作
+				}
+			}
+			console.log(year + "年后，存款到达11万");
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>多板块列表</title>
+        <style>
+            *{margin: 0;padding: 0;list-style: none;}
+            body{
+                background-color: #f5f5f5;
+            }
+            .box{
+                width: 780px;
+                height: 800px;
+                margin: 0 auto;
+                margin-top: 50px;
+                /* border: 1px solid gray; */
+            }
+            .title{
+                font-size: 25px;
+                font-weight: bold;
+                width: 780px;
+                height: 30px;
+                margin-top: 15px;
+            }
+
+/* ---------------------------------------------- */
+            .newsTop{
+                width: 780px;
+                height: 120px;
+                background-color: white;
+                margin-top: 15px;
+            }
+            .newsTop a{
+                text-decoration: none;
+                color: black;
+            }
+
+            .topMainTit{
+                font-weight: normal;
+                width: 780px;
+                height: 30px;
+                margin-left: 15px;
+                padding-top: 15px;
+            }
+
+            .topLastTit-one{
+                float: left;
+                margin-left: 15px;
+                margin-top: 25px;
+            }
+            .topLastTit-two{
+                float: left;
+                margin-left: 120px;
+                margin-top: 25px;
+            }
+
+            .Last-Tit{
+                display: inline-block;
+                height: 30px;
+                line-height: 30px;
+                background: #bf0614 url(https://p2.img.cctvpic.com/photoAlbum/templet/common/DEPA1603705823513963/headL.png) no-repeat left top;
+                margin-right: 10px;
+            }
+            .Last-Tit a{
+                text-decoration: none;
+                display: inline-block;
+                padding: 0px 12px;
+                height: 30px;
+                color: white;
+                background: url(https://p2.img.cctvpic.com/photoAlbum/templet/common/DEPA1603705823513963/headR.png) no-repeat right top;
+            }
+
+/* --------------------------------------- */
+
+            .newsMain-right{
+                width: 380px;
+                height: 405px;
+                float: left;
+                background-color: white;
+                margin-right: 20px;
+                margin-top: 20px;
+            }
+
+            .newsMain-right ul li{
+                width: 380px;
+                height: 45px;
+                line-height: 45px;
+                margin-left: 15px;
+                font-size: 14px;
+            }
+            .newsMain-right ul li a{
+                color: black;
+                text-decoration: none;
+            }
+            
+            .newsMain-right .boldTit{
+                font-size: 18px;
+                font-weight: bold;
+            }
+
+/* -------------------------------------------- */
+
+            .newsMain-left{
+                width: 380px;
+                height: 405px;
+                float: left;
+                /* background-color: rgb(240, 210, 154); */
+                margin-top: 20px;
+            }
+
+            .newsMain-left-top{
+                width: 380px;
+                height: 135px;
+                background-color: white;
+            }
+            .newsMain-left-top a{
+                color: black;
+                text-decoration: none;
+            }
+            .newsMain-left-top li{
+                width: 380px;
+                height: 45px;
+                line-height: 45px;
+                font-size: 14px;
+                margin-left: 15px;
+            }
+            .newsMain-left-top .boldTit{
+                font-size: 18px;
+                font-weight: bold;
+            }
+            .newsMain-left-last{
+                width: 380px;
+                height: 260px;
+                margin-top: 10px;
+            }
+            .last-list-one{
+                width: 180px;
+                height: 260px;
+                float: left;
+                background-color: white;
+                margin-right: 20px;
+            }
+            .last-list-two{
+                width: 180px;
+                height: 260px;
+                float: left;
+                background-color: white;
+            }
+            .news-left-text{
+                font-size: 14px;
+                margin-left: 15px;
+                margin-top: 8px;
+            }
+            .news-left-text a{
+                color: black;
+                text-decoration: none;
+            }
+            .textBot{
+                font-size: 13px;
+                width: 60px;
+                height: 15px;
+                margin-top: 70px;
+            }
+            .textBot a{
+                color: rgb(162, 162, 162);
+            }
+            .news-img{
+                width: 180px;
+                height: 105px;
+                transition: all 0.6s;
+            }
+            .news-left-image{
+                width: 180px;
+                height: 105px;
+                overflow: hidden;
+            }
+            .news-img:hover{
+                transform: scale(1.5);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+
+            <p class="title">要闻</p>
+
+            <div class="newsTop">
+                <h2 class="topMainTit"><a href="#">习近平致信祝贺经济日报创刊40周年 贺信全文</a></h2>
+                <p class="topLastTit-one">
+                    <span class="Last-Tit"><a href="#">天天学习</a></span>
+                    <a href="#">2022年总书记十大用典</a>
+                </p>
+                <p class="topLastTit-two">
+                    <span class="Last-Tit"><a href="#">央视快评</a></span>
+                    <a href="#">让明天的中国更美好</a>
+                </p>
+            </div>
+
+            <div class="newsMain-right">
+                <ul>
+                    <li><a href="#">习近平同安提瓜和巴布达总督威廉斯互致贺电</a></li>
+                    <li class="boldTit"><a href="#">浓浓烟火气！灯火里的中国，热气腾腾！</a></li>
+                    <li><a href="#">物流保通保畅：国家铁路货运元旦继续保持高位运行</a></li>
+                    <li><a href="#">元旦假期 各地电力部门假期加大生产与民生用电保障</a></li>
+                    <li><a href="#">公安部：严打制售假冒涉疫药品及相关用品违法活动</a></li>
+                    <li class="boldTit"><a href="#">元旦假期餐饮客流增长 消费焕发新活力</a></li>
+                    <li><a href="#">年味渐浓 各农贸市场、商超已抢先进入“春节模式”</a></li>
+                    <li><a href="#">各地跨省游长线游有序恢复 民航铁路迎客流高峰</a></li>
+                    <li><a href="#">我国最大油气田年产油气创新高 突破6500万吨</a></li> 									
+                </ul>
+            </div>
+
+            <div class="newsMain-left">
+                <ul class="newsMain-left-top">
+                    <li class="boldTit"><a href="#">补贴退 原料涨 部分新能源车价格元旦起上调</a></li>
+                    <li><a href="#">长春调整公积金贷款政策 “三孩家庭”额度可提高20万元</a></li>
+                    <li><a href="#">未来三天新疆北部有持续降雪 华北黄淮等地霾天气发展</a></li> 									
+                </ul>
+                <ul class="newsMain-left-last">
+                    <li class="last-list-one">
+                        <div class="news-left-image">
+                            <a href="#">
+                                <img src="https://images.weserv.nl/?url=https://i0.hdslb.com/bfs/archive/3be57cb3fd54d3b7ca496baa1e32508af2374838.jpg" class="news-img">
+                            </a>
+                        </div>
+                        <div class="news-left-text">
+                            <a href="#">三星堆青铜神兽与顶尊跪坐人像成功“合体”</a>
+                            <div class="textBot">
+                                <a href="#">社会新闻</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="last-list-two">
+                        <div class="news-left-image">
+                            <a href="#">
+                                <img src="https://images.weserv.nl/?url=https://i0.hdslb.com/bfs/archive/3be57cb3fd54d3b7ca496baa1e32508af2374838.jpg" class="news-img">
+                            </a>
+                        </div>
+                        <div class="news-left-text">
+                            <a href="#">象限仪座流星雨4日极大，拉开2023年天象大幕</a>
+                            <div class="textBot">
+                                <a href="#">社会新闻</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>

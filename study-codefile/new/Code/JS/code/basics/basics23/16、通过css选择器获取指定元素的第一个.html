@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>通过css选择器获取指定元素的第一个</title>
+</head>
+<body>
+    <span id="text">文本</span>
+
+    <div class="box">div1</div>
+    <div class="box">div2</div>
+    <div class="box">div3</div>
+
+    <script type="text/javascript">
+        /*
+        *   通过css选择器获取指定元素中的第一个元素
+        *   querySelector("css选择器");
+        * */
+        var txt = document.querySelector('#text');
+        console.log(txt); //一个标签
+
+        var box = document.querySelector('.box');
+        console.log(box);//符合要求的第一个标签
+    </script>
+</body>
+</html>

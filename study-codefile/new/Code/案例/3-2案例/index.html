@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="./css/reset.css">
+        <link rel="stylesheet" href="./css/index.css">
+        
+    </head>
+    <body>
+        <!-- 顶部，黑色工具条部分 -->
+        <div class="top">
+            <ul class="top_menu clearFloat">
+                <li><a href="#">Account Sign ln</a></li>
+                <li><a href="#">Register</a></li>
+                <li><a href="#">Buyers Guide</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Blog</a></li>
+                <li class=".no_dot"><a href="#">Contact</a></li>
+                <li class="no_dot"><a href="#">Contact</a></li>
+            </ul>
+            <ul class="top_bar">
+                <li class="phone"><a href="#">123.456.7890</a></li>
+                <li class="help"><a href="#">Live Help</a></li>
+                <li><a href="#"><a href="#"><img src="./img/top_img1.gif"></a></li>
+                <li><a href="#"><a href="#"><img src="./img/top_img2.gif"></a></li>
+            </ul>
+        </div>
+        <!-- 网站头部 -->
+        <div class="header">
+            <div class="shopping">
+                <p>0 items in your bag</p>
+                <a href="#">Check Out</a>
+            </div>
+            <h1>
+                <a href="#">
+                    <img src="./img/logo.png">
+                </a>
+            </h1>
+            <div class="search">
+                <form action="#" method="post" class="clearFloat">
+                    <input type="text" name="" class="text" value="Search website">
+                    <input type="submit" name="submit" class="btn" value="">
+                </form>
+            </div>
+
+
+        </div>
+        <!-- 导航栏 -->
+        <div class="nav">
+            <ul>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">LATEST ARRIVALS</a></li>
+                <li><a href="#">MEN'S</a></li>
+                <li><a href="#">WOMEN'S</a></li>
+                <li><a href="#">KIDS</a></li>
+                <li><a href="#">BRAND</a></li>
+                <li><a href="#">SALE</a></li>
+                <li><a href="#">SALE</a></li>
+                <li><a href="#">GIFT CARDS</a></li>
+                <li><a href="#">FREEBIES</a></li>
+            </ul>
+        </div>
+        <!-- 内容区域 -->
+        <!-- 
+            滑动门：
+            内容从上到下显示，截取图片横向排列
+            内容从左到右显示，截取图片竖向排列
+            截取的区域等高等宽
+            需要三层标签的嵌套
+        -->
+        <div class="content">
+            <div class="content_top">
+                <div class="content_bottom">
+            <!--广告栏-->
+                    <div class="banner">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <img src="img/banner/1.png" alt="">
+                                </a>
+                            </li>
+                        </ul>
+                        <!--背景以及文字-->
+                        <div class="bg">
+                            <h2>PRODUCT TITLE</h2>
+                            <p>Lorem ipsum dolor sit amet , consectetur adipiscing elit. Cras suscipit lacus dapibus ante mattis in adipiscingnibh placerat. Cras bibendum porta diam, non dignissim sapien malesuada vitae.</p>
+                        </div>
+                    </div>
+                    <!--主体内容-->
+                    <div id="main" class="clearFloat">
+                        <!--左侧侧边栏-->
+                        <div class="side">
+                            <!--左侧上半部分-->
+                            <div class="module_menu">
+                                <p>Browse Categories</p>
+                                <ul>
+                                    <li><a href="#">Lorem ipsurm dolor sit</a></li>
+                                    <li><a href="#">Amet consectetur</a></li>
+                                    <li><a href="#">Adipiscin elit</a></li>
+                                    <li><a href="#">Cras suscipit lacus</a></li>
+                                    <li><a href="#">Dapibus ante mattis</a></li>
+                                    <li><a href="#">Adipiscing nibh placerat</a></li>
+                                    <li><a href="#">cras bibendum</a></li>
+                                    <li><a href="#">Porta diam elit</a></li>
+                                    <li><a href="#">Adipiscing nibh placerat</a></li>
+                                    <li><a href="#">Cras bibendum</a></li>
+                                    <li><a href="#">Porta diarn elit</a></li>
+                                </ul>
+                            </div>
+                            <!--左侧中间部分-->
+                            <div class="join_menu">
+                                <p>Join our newsletter list to get the latest updates</p>
+                                <form action="#" method="post">
+                                    <input type="text" name="joinNow" class="text">
+                                    <input type="submit" value="Join Now" class="btn">
+                                </form>
+                                <ul class="join_list">
+                                    <li class="active">Follow us on Twitter</li>
+                                    <li>Become our fann Facebook</li>
+                                    <li>Connect with uson Linkedln</li>
+                                    <li>Send us youremail enquiries</li>
+                                </ul>
+                            </div>
+                            <!--左侧底部-->
+                            <div class="payment">
+                                <img src="img/payment.gif" alt="">
+                            </div>
+                        </div>
+                        <!--右侧包裹内容的div-->
+                        <div id="wrap">
+                            <!--商品排序-->
+                            <div class="sort clearFloat">
+                                <!--左侧下拉列表-->
+                                <dl>
+                                    <dt>Sort by：</dt>
+                                    <dd>
+                                        <h2>Ascending</h2>
+                                        <!--让a标签没有功能-->
+                                        <a href="javascript:;"></a>
+                                        <ul>
+                                            <li>menu1</li>
+                                            <li>menu2</li>
+                                            <li>menu3</li>
+                                        </ul>
+                                    </dd>
+                                    <dd>
+                                        <h2>Product Name</h2>
+                                        <!--让a标签没有功能-->
+                                        <a href="javascript:;"></a>
+                                        <ul>
+                                            <li>menu1</li>
+                                            <li>menu2</li>
+                                            <li>menu3</li>
+                                        </ul>
+                                    </dd>
+                                    <dd>
+                                        <h2>Brand Name</h2>
+                                        <!--让a标签没有功能-->
+                                        <a href="javascript:;"></a>
+                                        <ul>
+                                            <li>menu1</li>
+                                            <li>menu2</li>
+                                            <li>menu3</li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                                <!--右侧翻页符-->
+                                <p>
+                                    <strong>Items per page: </strong>
+                                    <span>12</span> /
+                                    <span>20</span> /
+                                    <span class="color_style">30</span> /
+                                    <span class="color_style">50</span>
+                                </p>
+                            </div>
+                            <!--商品列表-->
+                            <div class="pic_list">
+                                <h2>OUR PRODUCTS</h2>
+                                <ul>
+                                    <li>
+                                        <img src="img/pic_list/1.jpg" alt="">
+                                        <p>Product Name</p>
+                                        <p class="price">Price:
+                                            <span>$12.99</span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <img src="img/pic_list/4.jpg" alt="">
+                                        <p>Product Name</p>
+                                        <p class="price">Price:
+                                            <span>$12.99</span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <img src="img/pic_list/3.jpg" alt="">
+                                        <p>Product Name</p>
+                                        <p class="price">Price:
+                                            <span>$12.99</span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <img src="img/pic_list/2.jpg" alt="">
+                                        <p>Product Name</p>
+                                        <p class="price">Price:
+                                            <span>$12.99</span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <img src="img/pic_list/1.jpg" alt="">
+                                        <p>Product Name</p>
+                                        <p class="price">Price:
+                                            <span>$12.99</span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <img src="img/pic_list/1.jpg" alt="">
+                                        <p>Product Name</p>
+                                        <p class="price">Price:
+                                            <span>$12.99</span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <img src="img/pic_list/2.jpg" alt="">
+                                        <p>Product Name</p>
+                                        <p class="price">Price:
+                                            <span>$12.99</span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <img src="img/pic_list/3.jpg" alt="">
+                                        <p>Product Name</p>
+                                        <p class="price">Price:
+                                            <span>$12.99</span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <img src="img/pic_list/4.jpg" alt="">
+                                        <p>Product Name</p>
+                                        <p class="price">Price:
+                                            <span>$12.99</span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <img src="img/pic_list/4.jpg" alt="">
+                                        <p>Product Name</p>
+                                        <p class="price">Price:
+                                            <span>$12.99</span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <img src="img/pic_list/3.jpg" alt="">
+                                        <p>Product Name</p>
+                                        <p class="price">Price:
+                                            <span>$12.99</span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <img src="img/pic_list/2.jpg" alt="">
+                                        <p>Product Name</p>
+                                        <p class="price">Price:
+                                            <span>$12.99</span>
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!--页码-->
+                            <div class="page">
+                                <a href="#" class="active">1</a>
+                                <a href="#">2</a>
+                                <a href="#">3</a>
+                                <a href="#">4</a>
+                                <a href="#">5</a>
+                                <a href="#">NEXT <span>></span></a>
+                                <a href="#">LAST <span>>></span></a>
+                            </div>
+                            <!--滚动显示的列表-->
+                            <div class="scroll_list">
+                                <h2>FEATURED PRODUCTS</h2>
+                                <!--滑动门三层嵌套-->
+                                <div class="scroll_wrap">
+                                    <div class="scroll_wrap_l">
+                                        <div class="scroll_wrap_r">
+                                            <ul class="list_wrap clearFloat">
+                                                <li>
+                                                    <img src="img/scroll_pic/1.jpg" alt="">
+                                                    <p>Elegant MP3 player skin PSD download</p>
+                                                </li>
+                                                <li>
+                                                    <img src="img/scroll_pic/2.jpg" alt="">
+                                                    <p>Download shopping bag & icons (PSD &PNG)</p>
+                                                </li>
+                                                <li>
+                                                    <img src="img/scroll_pic/3.jpg" alt="">
+                                                    <p>High resolution abstract bokeh background</p>
+                                                </li>
+                                            </ul>
+                                            <h3 class="prev"></h3>
+                                            <h3 class="next"></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 页脚 -->
+        <div id="footer">
+            <div class="foot_info">
+                <p class="icon1">Shop online with us safely & securely</p>
+                <p class="icon2">We ship your orders anywhere!</p>
+                <form action="#" method="post">
+                    <input type="" name="text" class="text" value="search">
+                    <input type="" name="btn" class="btn" value="">
+                </form>
+            </div>
+            <div class="foot_link">
+                <dl>
+                    <dt>Company</dt>
+                    <dd><a href="#">Home</a></dd>
+                    <dd><a href="#">About Us</a></dd>
+                    <dd><a href="#">Blog</a></dd>
+                    <dd><a href="#">Latest News</a></dd>
+                    <dd><a href="#">Login</a></dd>
+                    <dd><a href="#">Join Us</a></dd>
+                </dl>
+                <dl>
+                    <dt>Categories</dt>
+                    <dd><a href="#">Lorem ipsum dolor sit</a></dd>
+                    <dd><a href="#">Amet consectetur</a></dd>
+                    <dd><a href="#">Adipiscin elit</a></dd>
+                    <dd><a href="#">Cras suscipit lacus</a></dd>
+                    <dd><a href="#">Dapibus ante mattis</a></dd>
+                    <dd><a href="#">Adipiscing nibh placerat</a></dd>
+                </dl>
+                <dl>
+                    <dt>Information</dt>
+                    <dd><a href="#">My Account</a></dd>
+                    <dd><a href="#">Rewards</a></dd>
+                    <dd><a href="#">Terms & Conditions</a></dd>
+                    <dd><a href="#">Buying Guide</a></dd>
+                    <dd><a href="#">FAQ</a></dd>
+                </dl>
+                <dl>
+                    <dt>Social Network</dt>
+                    <dd><a href="#">My Account</a></dd>
+                    <dd><a href="#">Rewards</a></dd>
+                    <dd><a href="#">Terms & Conditions</a></dd>
+                    <dd><a href="#">Buying Guide</a></dd>
+                    <dd><a href="#">FAQ</a></dd>
+                </dl>
+                <dl class="active">
+                    <dt>Contact Us</dt>
+                    <dd><a href="#">Phone: 1.234.567.8901</a></dd>
+                    <dd><a href="#">Toll-Free: 1.234.567.8901</a></dd>
+                    <dd><a href="#">Fax: 1.234.567.8901</a></dd>
+                    <dd class="space"><a href="#">Email:<span>Send us an email</span></a></dd>
+                    <dd><a href="#">MON - SAT 9am to 7:30pm</a></dd>
+                    <dd><a href="#">Sundays, holidays closed</a></dd>
+                </dl>
+            </div>
+        </div>
+    </body>
+</html>

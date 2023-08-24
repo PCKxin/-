@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取和设置表单的属性</title>
+</head>
+<body>
+    <p>
+        用户名：<input type="text" name="user" id="user">
+    </p>
+    <p>
+        密码框：<input type="password" name="psd" id="psd">
+    </p>
+    <p>
+        <input type="button" value="显示密码" id="show">
+        <input type="button" value="隐藏密码" id="none">
+    </p>
+    <p>
+        <input type="button" value="登陆" id="submit">
+    </p>
+
+    <script type="text/javascript">
+        //根据需求先获取所有要操作的元素
+        var user = document.getElementById('user');
+        var psd = document.getElementById('psd');
+        var show = document.getElementById('show');
+        var none = document.getElementById('none');
+        var submit = document.getElementById('submit');
+
+        //初始用户名和密码
+        var username = "admin";
+        var password = "123456";
+
+        //显示输入的密码
+        show.onclick = function () {
+            //对象名.属性名 可以获取到具体某一个属性
+            console.log(psd.type);
+            // 对象名.属性名 = "属性值"
+            psd.type = "text";
+        }
+        //隐藏密码密码
+        none.onclick = function () {
+            console.log(none);
+            console.log(psd.type);  //对象名.属性名
+            psd.type = "password"; //对象名.属性名 = "属性值"
+        }
+        //判断输入的是否正确
+        submit.onclick = function () {
+            /*
+            *   因为input标签带有value属性
+            *   因此获取用户名和密码框的值既可
+            * */
+            console.log(user.value);
+            console.log(psd.value);
+            if(user.value.trim() == username && psd.value == password) {
+                alert("登陆成功");
+            }else {
+                alert("登陆失败");
+            }
+        }
+    </script>
+
+</body>
+</html>

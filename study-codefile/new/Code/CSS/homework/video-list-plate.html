@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{margin: 0;padding: 0;list-style: none;}
+            .box{
+                position: relative;
+                top: 50px;
+                width: 1430px;
+                height: 450px;
+                /* border: 1px solid gray; */
+                margin: 0 auto;
+                background: url("https://p2.img.cctvpic.com/photoAlbum/templet/common/DEPA1603705823513963/wrapper_backBg_01.png") no-repeat ;
+                background-size: 1430px 500px;
+                
+            }
+            .plate-1{
+                width: 100px;
+                height: 100px;
+                /* border: 1px solid gray; */
+                margin: 5px;
+                background-color: rgba(255, 74, 74, 0.705);
+                position: absolute;
+            }
+            .plate-1-p1{
+                width: 100px;
+                height: 30px;
+                line-height: 80px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+            }
+            .plate-1-p2{
+                width: 100px;
+                height: 30px;
+                line-height: 70px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+            }
+            .plate-2{
+                width: 210px;
+                height: 100px;
+                background-color: rgba(247, 169, 68, 0.808);
+                margin: 5px;
+                position: absolute;
+            }
+            .plate-2-p{
+                color: white;
+                font-size: 30px;
+                line-height: 100px;
+                text-align: center;
+            }
+            .plate-3{
+                width: 210px;
+                height: 200px;
+                background-color: rgba(0, 255, 255, 0.815);
+                margin: 5px;
+                position: absolute;
+            }
+            .plate-3-p{
+                color: white;
+                font-size: 30px;
+                line-height: 200px;
+                text-align: center;
+            }
+            .plate-2-img{
+                width: 200px;
+                height: 100px;
+            }
+            .c2{
+                left: 110px;
+            }
+            .c3{
+                left: 220px;
+            }
+            .c4{
+                left: 330px;
+            }
+            .c5{
+                left: 440px;
+            }
+            .c6{
+                left: 550px;
+            }
+            .c7{
+                left: 660px;
+            }
+            .c8{
+                left: 770px;
+            }
+            .c9{
+                left: 880px;
+            }
+            .c10{
+                left: 990px;
+            }
+            .c11{
+                left: 1210px;
+            }
+            .c12{
+                top: 110px;
+            }
+            .c13{
+                top: 110px;
+                left: 220px;
+            }
+            .c14{
+                top: 110px;
+                left: 330px;
+            }
+            .c15{
+                top: 110px;
+                left: 440px;
+            }
+            .plate-center{
+                width: 320px;
+                height: 210px;
+                background-color: rgba(171, 250, 68, 0.747);
+                position: absolute;
+                margin: 5px;
+            }
+            .center-tit{
+                height: 35px;
+                font-size: 30px;
+                color: white;
+                line-height: 180px;
+                text-align: center;
+            }
+            .center-tit2{
+                /* width: 210px; */
+                height: 35px;
+                font-size: 25px;
+                color: white;
+                line-height: 200px;
+                text-align: center;
+            }
+            .c16{
+                top: 110px;
+                left: 550px;
+            }
+            .c17{
+                left: 880px;
+                top: 110px;
+            }
+            .c18{
+                left: 990px;
+                top: 110px;
+            }
+            .c19{
+                left: 1100px;
+                top: 110px;
+            }
+            .c20{
+                /* left: 880px; */
+                top: 230px;
+            }
+            .c21{
+                top: 220px;
+                left: 220px;
+            }
+            .c22{
+                top: 220px;
+                left: 330px;
+            }
+            .c23{
+                top: 220px;
+                left: 440px;
+            }
+            .c24{
+                top: 330px;
+                left: 220px;
+            }
+            .c25{
+                top: 330px;
+                left: 330px;
+            }
+            .c26{
+                top: 330px;
+                left: 440px;
+            }
+            .c27{
+                top: 330px;
+                left: 550px;
+            }
+            .c28{
+                top: 330px;
+                left: 660px;
+            }
+            .c29{
+                top: 330px;
+                left: 770px;
+            }
+            .c30{
+                top: 220px;
+                left: 880px;
+            }
+            .c31{
+                top: 220px;
+                left: 990px;
+            }
+            .c32{
+                top: 220px;
+                left: 1100px;
+            }
+            .c33{
+                top: 330px;
+                left: 880px;
+            }
+            .c34{
+                top: 330px;
+                left: 990px;
+            }
+            .c35{
+                top: 330px;
+                left: 1100px;
+            }
+            .c36{
+                top: 220px;
+                left: 1210px;
+            }
+            .c37{
+                top: 220px;
+                left: 1320px;
+            }
+            .c38{
+                top: 330px;
+                left: 1210px;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 	https://p2.img.cctvpic.com/photoAlbum/templet/common/DEPA1603705823513963/wrapper_backBg_01.png -->
+        <div class="box">
+            <div class="plate-1 c1">
+                <p class="plate-1-p1">CCTV-1</p>
+                <p class="plate-1-p2">综合</p>
+            </div>
+            <div class="plate-1 c2">
+                <p class="plate-1-p1">CCTV-2</p>
+                <p class="plate-1-p2">财经</p>
+            </div>
+            <div class="plate-1 c3"></div>
+            <div class="plate-1 c4">
+                <p class="plate-1-p1">CCTV-5</p>
+                <p class="plate-1-p2">体育</p>
+            </div>
+            <div class="plate-1 c5"></div>
+            <div class="plate-1 c6">
+                <p class="plate-1-p1">CCTV-8</p>
+                <p class="plate-1-p2">电视剧</p>
+            </div>
+            <div class="plate-1 c7"></div>
+            <div class="plate-1 c8">
+                <p class="plate-1-p1">CCTV-10</p>
+                <p class="plate-1-p2">科教</p>
+            </div>
+            <div class="plate-1 c9">
+                <p class="plate-1-p1">CCTV-17</p>
+                <p class="plate-1-p2">农业农村</p>
+            </div>
+            <div class="plate-2 c10">
+                <p class="plate-2-p">总台之声</p>
+            </div>
+            <div class="plate-3 c11">
+                <p class="plate-3-p">收视榜</p>
+            </div>
+            <div class="plate-2 c12">
+                <img src="https://p3.img.cctvpic.com/photoAlbum/page/performance/img/2023/1/3/1672731859186_33.png" class="plate-2-img">
+            </div>
+            <div class="plate-1 c13">
+                <p class="plate-1-p1">CCTV-3</p>
+                <p class="plate-1-p2">综艺</p>
+            </div>
+            <div class="plate-1 c14"></div>
+            <div class="plate-1 c15">
+                <p class="plate-1-p1">CCTV-6</p>
+                <p class="plate-1-p2">电影</p>
+            </div>
+            <div class="plate-center c16">
+                <p class="center-tit">《考古公开课》</p>
+                <p class="center-tit2">舌尖上的考古</p>
+            </div>
+            <div class="plate-1 c17">
+                <p class="plate-1-p1">CCTV-12</p>
+                <p class="plate-1-p2">社会与法</p>
+            </div>
+            <div class="plate-1 c18">
+                <p class="plate-1-p1">上海</p>
+            </div>
+            <div class="plate-1 c19">
+                <p class="plate-1-p1">CCTV-16</p>
+                <p class="plate-1-p2">奥林匹克</p>
+            </div>
+            <div class="plate-3 c20">
+                <p class="plate-3-p">收视榜</p>
+            </div>
+
+            <div class="plate-1 c21">
+                <p class="plate-1-p1">CCTV-4</p>
+                <p class="plate-1-p2">中文国际</p>
+            </div>
+
+            <div class="plate-1 c22"></div>
+
+            <div class="plate-1 c23">
+                <p class="plate-1-p1">CCTV-7</p>
+                <p class="plate-1-p2">国防军事</p>
+            </div>
+
+            <div class="plate-1 c24"></div>
+
+            <div class="plate-1 c25">
+                <p class="plate-1-p1">CCTV-5+</p>
+                <p class="plate-1-p2">体育赛事</p>
+            </div>
+
+            <div class="plate-1 c26"></div>
+
+            <div class="plate-1 c27">
+                <p class="plate-1-p1">CCTV-9</p>
+                <p class="plate-1-p2">记录</p>
+            </div>
+
+            <div class="plate-1 c28"></div>
+
+            <div class="plate-1 c29">
+                <p class="plate-1-p1">CCTV-6</p>
+                <p class="plate-1-p2">电影</p>
+            </div>
+
+            <div class="plate-1 c30"></div>
+
+            <div class="plate-1 c31">
+                <p class="plate-1-p1">CCTV-11</p>
+                <p class="plate-1-p2">戏曲</p>
+            </div>
+
+            <div class="plate-1 c32"></div>
+
+            <div class="plate-1 c33">
+                <p class="plate-1-p1">CCTV-13</p>
+                <p class="plate-1-p2">新闻</p>
+            </div>
+            <div class="plate-1 c34">
+                <p class="plate-1-p1">CCTV-14</p>
+                <p class="plate-1-p2">少儿</p>
+            </div>
+            <div class="plate-1 c35">
+                <p class="plate-1-p1">CCTV-15</p>
+                <p class="plate-1-p2">音乐</p>
+            </div>
+            <div class="plate-1 c36"></div>
+            <div class="plate-1 c37"></div>
+            <div class="plate-2 c38">
+                <p class="plate-2-p">总台之声</p>
+            </div>
+
+
+
+        </div>
+    </body>
+</html>

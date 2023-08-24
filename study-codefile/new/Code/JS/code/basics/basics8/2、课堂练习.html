@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/* 
+				5、	计算1到100以内能被7整除但不是偶数的数的个数。
+			 */
+			var i = 1;
+			var count = 0; //统计个数
+			while (i <= 100) {
+				if(i % 7 == 0 && i % 2 != 0) {
+					count++; //符合要求的情况下，让count+1
+				}
+				i++;
+			}
+			console.log("一共有" + count + "个");
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="对话框.css" type="text/css">
+  </head>
+  <body>
+    <!-- 最大的边框   相当于整个手机页面 -->
+    <div class="box">
+     <!-- 设置听筒位置 --> 
+       <div class="ting">
+         <div class="t1"></div>
+         <div class="t2"></div>
+       </div> 
+      <!-- 和谁聊天的备注名字 -->
+      <div class="name">班长</div>
+      <!-- 设置头像  和聊天记录 -->
+      <div class="lt" id="lt">
+         <div class="first">
+          <span class="tx">班长</span>
+          <span class="jilu">你好</span>
+         </div>
+         <div class="secode">
+          <span class="sjilu">你好</span>
+          <span class="stx">我</span>
+         </div>
+      </div>
+      
+      <!-- 设置输入框 -->
+      <div class="sr" id="input1">
+        
+        <select class="people" id="xlk">
+          <option  value="1">七月</option>
+          <option  value="2">安生</option>
+        </select>
+        <input type="text" id="wb" />
+        <input type="button" id="bu1" value="发送" class="but" />
+      </div>
+    
+    </div>  
+    
+  </body>
+  <script type="text/javascript">
+    //页面加载的时候执行的函数
+    window.onload=function(){
+      //获取按钮
+       var button=document.getElementById("bu1"); 
+      //获取文本框
+      var wb=document.getElementById("wb");
+      //获取下拉框
+      var xlk=document.getElementById("xlk");
+      //获取头像和聊天记录
+      var lt=document.getElementById("lt");
+      // 给按钮添加点击事件  
+      button.onclick=function(){
+        //获取文本的内容
+        var wbValue=wb.value;
+        //获取谁说的话
+        var xlkValue=xlk.value;
+        //定义一个空字符串
+        var str="";
+        if(wbValue==""){
+          alert("不能发空白内容");
+          return;
+        }
+        if(xlkValue=='1'){//七月说的话 追加到七月的聊天记录
+          str="<div class='first'><span class='tx'>班长</span><span class='jilu'>"+wbValue+"</span></div>";         
+        }else{//安生发送的内容 追加到安生的聊天记录
+          str="<div class='secode'><span class='sjilu'>"+wbValue+"</span><span class='stx'>我</span></div>";
+        }
+        //将值追加到页面
+        lt.innerHTML=lt.innerHTML+str;
+        //清理已发送的内容
+        wb.value="";         
+      }
+      
+      
+      
+    }
+   
+    
+    
+   
+    
+    
+    
+  </script>
+</html>

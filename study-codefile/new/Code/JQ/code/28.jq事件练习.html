@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0
+            }
+
+            .main {
+                width: 800px;
+                height: 300px;
+                background: #e0dddd;
+                margin: 0 auto;
+            }
+
+            th {
+                height: 40px;
+            }
+
+            table thead tr {
+                border: 1px solid black;
+            }
+
+            td {
+                width: 200px;
+                height: 50px;
+                text-align: center;
+            }
+
+            button {
+                width: 150px;
+                height: 40px;
+                background: deepskyblue;
+                color: white;
+                border: none;
+                /*边框圆角*/
+                border-radius: 8px;
+                /*鼠标移入时 鼠标指针变成小手*/
+                cursor: pointer;
+            }
+
+            /*按钮点击访问时得样式*/
+            button:active {
+                /*给button加了一个阴影效果*/
+                box-shadow: 0 0 5px 5px #a9d9ee;
+            }
+
+            .dialog {
+                display: none;
+                position: fixed;
+                /*相当于 宽高都是100%；*/
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.3);
+            }
+
+            .box {
+                width: 600px;
+                height: 400px;
+                position: absolute;
+                /*水平垂直居中*/
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                margin: auto;
+                background: white;
+                border-radius: 10px;
+            }
+
+            .close {
+                position: absolute;
+                top: 10px;
+                right: 30px;
+                font-size: 30px;
+                font-weight: bold;
+                cursor: pointer;
+            }
+
+            .close:active {
+                box-shadow: 0 0 5px 5px black;
+            }
+
+            label {
+                display: inline-block;
+                width: 100px;
+                height: 40px;
+                text-align: center;
+                font-size: 25px;
+            }
+
+            input {
+                width: 350px;
+                height: 40px;
+                line-height: 40px;
+                font-size: 25px;
+                color: #484343;
+                border: 1px solid deepskyblue;
+                outline: none;
+            }
+
+            input:focus {
+                box-shadow: 0 0 2px 2px deepskyblue;
+            }
+
+            .save {
+                position: absolute;
+                bottom: 10px;
+                right: 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="main">
+            <table border="1" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>姓名</th>
+                        <th>年龄</th>
+                        <th>职业</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <!--                <td>1</td>-->
+                        <!--                <td>2</td>-->
+                        <!--                <td>3</td>-->
+                        <!--                <td><button>修改</button></td>-->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="dialog">
+            <div class="box">
+                <h2 style="text-align: center;margin-top: 10px;"></h2>
+                <span class="close">X</span>
+
+                <label for="name">姓名</label>
+                <input type="text" id="name">
+                <div style="margin:20px;"></div>
+                <label for="age">年龄</label>
+                <input type="text" id="age">
+                <div style="margin:20px;"></div>
+                <label for="work">职业</label>
+                <input type="text" id="work">
+                <button class="save">保存</button>
+            </div>
+        </div>
+        <script src="../jQuery/jquery-1.12.4.js"></script>
+        <script>
+            $(document).ready(
+                function(){
+                    var data = {name: 'shiroko' , age: '17' , work: 'student'};
+                    showData();
+
+                    // 将数据渲染到页面
+                    function showData(){
+                        var str = '';
+                        str = '<td>' 
+                                + data.name + 
+                                '</td><td>' 
+                                + data.age + 
+                                '</td><td>' 
+                                + data.work + 
+                                '</td>' + 
+                                '<td><button class="changeItem">修改</button></td>';
+                        $('tbody').html(str);
+                    }
+
+                    // 点击修改按钮 弹出修改框
+                    $('table').on(
+                        'click',
+                        '.changeItem',
+                        function(){
+                            // $('.dialog').css({'display','block'})
+                            $('.dialog').show();
+                            $('.box h2').text('修改信息');
+                            $('#name').val(data.name);
+                            $('#age').val(data.age);
+                            $('#work').val(data.work);
+                        }
+                    );
+
+                    // 保存修改后的数据
+                    $('.save').click(
+                        function(){
+                            data.name = $('#name').val();
+                            data.age = $('#age').val();
+                            data.work = $('#work').val();
+                            // $('.dialog').css({'display','none'})
+                            // hide() 功能是隐藏元素，但是元素还在页面中，和display:none不同，display:none是不在页面中
+                            $('.dialog').hide(100);
+                            showData();
+                        }
+                    );
+
+                    // 点击关闭按钮 关闭修改框
+                    $('.close').click(
+                        function(){
+                            // $('.dialog').css({'display','none'})
+                            $('.dialog').hide(100); // 100ms
+                        }
+                    )
+                }
+            )
+        </script>
+    </body>
+</html>

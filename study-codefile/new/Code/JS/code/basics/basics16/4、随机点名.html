@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        var arr1 = ["王薪轩","张博文","杜宜容","单新豪","王一凡"];
+        var arr2 = ['张嘉谊','王瑩俏','杨琦','崔雍昂','赵宏鑫'];
+        var arr3 = ["杨雪松","闫硕","潘家宝"];
+        var arr4 = ['邸子豪',"魏哲宇","刘佳乐","刘通浩","张博"];
+        var arr5 = ["刘广涵","郑朋浩","徐俊川","雷耀宗","宋家阔"];
+        var arr = arr1.concat(arr2,arr3,arr4,arr5);
+        console.log(arr);
+
+        /*
+        *   公式：Math.random() * (max - min) + min
+        *   公式：parseInt(Math.random() * (max - min) + min);
+        *
+        *   举例：10-20之间的随机数
+        *   parseInt(Math.random() * ( 20 - 10 ) + 10)
+        *                               ⬇️
+        *   parseInt(Math.random() * 10 + 10)
+        * */
+        //生成0到数组长度之间的随机数
+        var n = parseInt(Math.random() * arr.length);
+        //把生成的随机数字当成索引值使用
+        console.log(arr[n]);
+
+        //把当前被选中的人员，从数组中删掉
+        arr.splice(n,1);
+        console.log(arr);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

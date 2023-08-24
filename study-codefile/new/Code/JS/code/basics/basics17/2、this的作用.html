@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        /*
+        *   this会在函数、方法和构造函数中出现
+        * */
+        //1、普通函数
+        function fn() {
+            console.log(this); //window对象
+        }
+        fn();
+
+        //2、在方法中
+        var obj = {
+            "name" : "周某某",
+            "print" : function () {
+                console.log(this);  //object
+            }
+        }
+        console.log(obj.name);
+        obj.print();
+
+        //3、在构造函数中
+        function Write() {
+            console.log(this); //object
+        }
+        var w = new Write();
+
+        /*
+        *   this在普通函数中指向window
+        *   this在方法中指向object
+        *   this在构造函数中指向object
+        * */
+    </script>
+</head>
+<body>
+
+</body>
+</html>

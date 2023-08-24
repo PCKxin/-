@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      function addEvent(Obj,event,fn){
+        //标准写法
+        if(Obj.addEventListener){
+          Obj.addEventListener(event,fn,false);
+        }else{
+          //IE低版本
+          Obj.addEvent('on'+event,fn);
+        }
+      }
+    </script>
+  </body>
+</html>

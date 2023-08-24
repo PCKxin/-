@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        /*
+        *   将系统时间设置为2008年8月8日，周五，20：08
+        *   在页面中显示格式为：
+        *           2008年08月08日，周五，20：08
+        * */
+        var date = new Date("2008/08/08 20:08");
+        var year = date.getFullYear(); // 2008
+        var month = date.getMonth()+1;//8 月份是从0开始的，所以要加1
+        var _date = date.getDate();//8
+        var arr = ['周日','周一','周二','周三','周四','周五','周六'];
+        var day = date.getDay();//5
+        var hour = date.getHours();//20
+        var min = date.getMinutes();//8
+
+        //给个位数字在前面补零，补零的动作要在最终使用前进行
+        if(month < 10) {
+            month = "0" + month;
+        }
+        if(_date < 10) {
+            _date = "0" + _date;
+        }
+        if(min < 10) {
+            min = "0" + min;
+        }
+        document.write(year + "年" + month + "月" + _date + "日," + arr[day] + "," + hour + ":" + min);
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

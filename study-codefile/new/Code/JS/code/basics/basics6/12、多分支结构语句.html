@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>多分支结构语句</title>
+		<script type="text/javascript">
+			/* 
+				if(判断条件1) {
+					//条件1满足的时候执行的内容
+				}else if(判断条件2) {
+					//条件2满足的时候执行的内容
+				}else if(判断条件3) {
+					//条件3满足的时候执行的内容
+				}
+					……(省略号位置，根据需求写多少个判断条件)
+				else {
+					//所有条件都不满足的时候执行的内容
+				}
+				
+			 */
+			
+			/* 
+				6岁以下免票
+				6-14岁买儿童票
+				14-18买学生票
+				18以上买成人票
+			 */
+			var age = prompt("请输入年龄")*1;
+			if(age > 0 && age < 6) {
+				console.log("免票");
+			}else if(age >= 6 && age < 14) {
+				console.log("购买儿童票");
+			}else if(age >= 14 && age < 18) {
+				console.log("购买学生票");
+			}else if(age >= 18) {
+				console.log("购买成人票");
+			}else {
+				console.log("年龄输入有误，清重新输入");
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

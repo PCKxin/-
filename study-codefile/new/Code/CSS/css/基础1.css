@@ -1,0 +1,7 @@
+*{margin:0; padding: 0;} /*全局*/
+.box{
+    width: 200px;   /*class*/
+}
+#box2{
+    width: 300px;  /*id*/
+}

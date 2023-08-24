@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <input type="text" id="input1" />
+  </body>
+  <script type="text/javascript">
+    var input=document.getElementById("input1");
+    //keydown:键盘按下时触发该事件
+    input.onkeydown=function(){
+     // alert(input.value);
+    }
+    //keyup:键盘在按下某个键后松手的时候触发的事件
+    input.onkeyup=function(){
+   //   alert(input.value);
+    }
+    //输入一个字符会触发的事件     shift/ctrl/alt 除外
+    input.onkeypress=function(){
+      alert("周一");
+    }
+    
+    
+    
+  </script>
+</html>

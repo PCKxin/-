@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+    </head>
+    <body>
+        <ul id="test">
+            <li>111</li>
+            <li>222</li>
+            <li id="li-test">3465456</li>
+            <li>555</li>
+            <li>
+                <ol>
+                    <li></li>
+                </ol>
+            </li>
+        </ul>
+    </body>
+    <script>
+        //1.获取到无序列表ul
+        var ul_test = document.getElementById("test");
+
+        //获取子节点，不包括空白文档和注释
+        var child = ul_test.childElementCount;
+        console.log(child);
+
+        //获取第一个子节点
+        var li_test = ul_test.firstChild;
+        console.log(li_test);
+
+        //获取最后一个子节点
+        var li_test_last = ul_test.lastElementChild;
+        console.log(li_test_last);
+
+        //获取第三个li标签
+        var li_test_3 = document.getElementById("li-test");
+
+        //获取li_test_3的前一个兄弟节点
+        var li_test_2 = li_test_3.previousElementSibling;
+        console.log(li_test_2);
+
+        //获取li_test_3的后一个兄弟节点
+        var li_test_4 = li_test_3.nextElementSibling;
+        console.log(li_test_4);
+
+        //获取ul所有的子节点
+        var lis = ul_test.childNodes;
+        console.log(lis);
+
+        //创建一个新的数组
+        var arr_list = [];
+        var j = 0;
+        for (var i = 0; i < lis.length; i++) {
+            //对比子节点数组中的每一个节点，判断是否是li，如果是就存入数组中
+            if(lis[i] == li_test_3){
+                arr_list[j] = lis[i];
+                j++;
+                li_test_3 = li_test_3.nextElementSibling;  //后一个兄弟节点赋值给li_test_3，也就是从li_test_3开始循环，不要疑惑为什么是三个了
+            }
+        }
+        console.log(arr_list);
+
+        for (var i = 0, j = 5; i < 5, j > 0; i++, j--) {
+            console.log(i + j);
+        }
+
+    </script>
+</html>

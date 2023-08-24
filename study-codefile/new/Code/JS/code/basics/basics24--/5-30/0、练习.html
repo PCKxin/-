@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.clearFloat:after{
+				display: block;
+				content: "";
+				clear: both;
+				height: 0;
+				line-height: 0;
+				visibility: hidden;
+			}
+			.clearFloat{
+				zoom: 1;
+			}
+			#box{
+				width: 500px;
+				height: 800px;
+				border: 1px solid red;
+				margin: 0 auto;
+				padding: 20px;
+				overflow: auto;
+			}
+			#box1{
+				width: 500px;
+				height: 60px;
+				border: 1px solid red;
+				margin: 0 auto;
+				padding: 20px;
+			}
+			li{
+				list-style: none;
+				width: 500px;
+			}
+			img{
+				width: 50px;
+				height: 50px;
+			}
+			.li1 > img{
+				float: left;
+			}
+			.li1 > div{
+				width: 440px;
+				float: left;
+				font-size: 15px;
+				margin-top: 15px;
+				margin-left: 10px;
+				/* word-wrap: break-word; */
+				word-break: break-all;
+				/* text-indent: 10px; */
+			}
+			.li2 > img{
+				float: right;
+			}
+			.li2 > div{
+				width: 440px;
+				float: right;
+				font-size: 15px;
+				margin-top: 15px;
+				margin-right: 10px;
+				/* word-wrap: break-word; */
+				word-break: break-all;
+				/* text-indent: 10px; */
+				text-align: right;
+			}
+			.li2 > div > p{
+				border-radius: 5px;
+				float: right;
+				padding: 5px;
+				text-align: center;
+				background: green;
+			}
+			.li1 > div > p{
+				border-radius: 5px;
+				float: left;
+				padding: 5px;
+				text-align: center;
+				background: rgb(28, 0, 128);
+				color: #fff;
+			}
+			#qh{
+				width: 40px;
+				height: 30px;
+				font-size: 15px;
+			}
+			#fs{
+				width: 40px;
+				height: 30px;
+				font-size: 15px;
+			}
+			#wb{
+				width: 200px;
+				height: 30px;
+				font-size: 15px;
+			}
+			
+		
+				
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<ul id="ul1">
+				<li class="clearFloat li1">
+					<img src="../img/1.jpg" alt="">
+					<div>
+						<p>你好</p>
+					</div>
+				</li>
+				<li class="clearFloat li2">
+					<img src="../img/2.jpg" alt="">
+					<div>
+						<p>你好</p>
+					</div>
+				</li>
+			</ul>
+			
+		</div>
+		<div id="box1">
+			<input type="button" value="一号" id="qh">
+			<input type="text" id="wb">
+			<input type="button" value="发送" id="fs">
+		</div>
+	</body>
+	<script type="text/javascript">
+		var qh = document.getElementById("qh");
+		var wb = document.getElementById("wb");
+		var fs = document.getElementById("fs");
+		var ul1 = document.getElementById("ul1");
+		
+		qh.addEventListener('click' , fn1 , true);
+		function fn1() {
+			if(qh.value == "一号") {
+				qh.value = "二号";
+			}else {
+				qh.value = "一号";
+			}
+		}
+		
+		
+		
+		fs.addEventListener('click' , fn2 , true);
+		function fn2() {
+			if(qh.value == "一号"){
+				var li1 = document.createElement("li");
+				var img1 = document.createElement("img");
+				var div1 = document.createElement("div");
+				var p1 = document.createElement("p");
+				
+				p1.innerText = wb.value;
+				img1.src = "../img/1.jpg";
+				li1.className = "clearFloat li1"
+				div1.appendChild(p1);
+				li1.appendChild(img1);
+				li1.appendChild(div1);
+				ul1.appendChild(li1);
+				wb.value = "";
+			}else {
+				var li1 = document.createElement("li");
+				var img1 = document.createElement("img");
+				var div1 = document.createElement("div");
+				var p1 = document.createElement("p");
+				
+				p1.innerText = wb.value;
+				img1.src = "../img/2.jpg";
+				li1.className = "clearFloat li2"
+				div1.appendChild(p1);
+				li1.appendChild(img1);
+				li1.appendChild(div1);
+				ul1.appendChild(li1);
+				wb.value = "";
+			}
+		}
+	</script>
+</html>

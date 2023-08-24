@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="box"></div>
+        <script src="../jQuery/jquery-1.12.4.js"></script>
+        <script>
+            // 当script标签引入jQuery.js文件时，会将 $ 对象添加到 window 对象下
+            // 这样就可以在任何位置使用 $ 符号（添加到window对象下的变量是一个全局变量）
+            
+            /*
+                == 和 ===有什么不同
+                ==比较的是值 	1='1' true
+                ===比较的是值和类型	1='1' false
+            */
+            
+            /*
+                console.log($ === jQuery) //jq文件引用了会返回true 没引用会返回false
+                $的含义：
+                    $ === jQuery 当它是一个函数，这个函数可以传入一个参数
+                    根据这个参数可以返回dom中对应的节点
+            */
+            function $(tagname){ 
+                var str = tagname;
+                if(str == "#"){
+                    return document.getElementById(tagname);
+                }else if(str == '.'){
+                    return document.getElementsByClassName(tagname);
+                }else {
+                    return document.getElementsByTagName(tagname);
+                }
+            }
+            
+            $('box');
+        </script>
+    </body>
+</html>

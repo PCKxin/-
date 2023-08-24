@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>遍历对象</title>
+    <script type="text/javascript">
+        var obj = {
+            "brand" : "iphone",
+            "model" : "14pro Max",
+            "color" : "石墨黑",
+            "call" : function () {
+                console.log("打电话");
+            }
+        }
+        /*
+        *   思考: 遍历数组用 for循环或着for-in
+        *        for循环遍历数组用索引值
+        *
+        *        对象有索引值吗？？？
+        * */
+        // console.log(obj.length);  //  undefined
+        /*for(var i = 0; i < obj.length; i++) {
+            不能用此方法进行遍历
+        }*/
+
+        /*
+        *       用for-in遍历对象，因为对象是无序的
+        *       key:value
+        *
+        *       key变量对应的是属性名或方法名的部分
+        *       in 后面表示在哪个对象中，遍历谁，就in谁
+        *
+        *       对象名.属性名  ❌
+        *       对象名["属性名"]
+        * */
+        /*for(var key in obj) {
+            console.log(key); //key当前是所有的属性名或方法名部分
+            //console.log(obj.key); // ❌ 遍历对象不能用  属性名.属性值
+            console.log(obj[key]); // key是个变量，存储着所有的属性名，不能写引号
+        }*/
+
+        for(var key in obj) {
+            console.log(key); //key是一个变量，存储着所有的属性名和方法名
+            // console.log(obj.key) //undefined ❌
+            console.log(obj[key]); //obj[key]循环中obj的每一个属性对应的值
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

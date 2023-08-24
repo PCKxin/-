@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			var money = 100;
+			while(true) {
+				var pro = prompt("请选择您的操作：\n1、取款\n2、存款\n3、查询\n4、退出");
+				if(pro == "1") {
+					var q = prompt("请输入取款金额")*1;
+					if(q > money) {
+						alert("账户余额不足，请重新输入");
+					}else {
+						money -= q;
+						alert("当前余额为：" + money + "元");
+					}
+				}else if(pro == "2") {
+					var m = prompt("请输入存入金额")*1;
+					money += m;
+					alert("当前余额为：" + money + "元");
+				}else if(pro == "3") {
+					alert("当前余额为：" + money + "元");
+				}else if (pro == "4") {
+					alert("程序即将结束");
+					break;
+				}else {
+					alert("序号选择有误");
+				}
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

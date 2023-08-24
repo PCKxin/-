@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        /*
+        *   function color(flag) {
+        *
+        *   }
+        *   如果传参值为false，显示rgb(0,0,0)
+        *   如果传参值为true或不写实参，显示#ffffff
+        * */
+        function color(flag) {
+            if(flag == false) {
+                var a = Math.round(Math.random() * 255);
+                var b = Math.round(Math.random() * 255);
+                var c = Math.round(Math.random() * 255);
+                console.log("rgb("+a+","+b+","+c+")");
+            }else if(flag == true || flag == undefined) {
+                /*
+                *   #00f1c2
+                *   #  +  6个数字
+                * */
+                var str = "0123456789abcdef";
+                var s = "";
+                for(var i = 0; i < 6; i++) {
+                    var n = parseInt(Math.random() * str.length);
+                    s += str[n];
+                }
+                console.log("#" + s);
+            }
+        }
+        color();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        
+    </body>
+    <script>
+        //8.使用JS操作CSS样式
+
+        //获取需要被设置样式的节点
+            
+            例子:var span=document.getElementById("s1");
+
+        //通过调用style属性设置样式
+            例子: span.style.fontColor="red";
+
+
+        //通过调用style属性获取样式
+            例子: span.style.fontColor;
+
+        //如果某个样式在css中有“—”，在js中需要去掉"-",并且后面         单词的首字母大写   
+        //   例子：css中，background-color
+        //  在js中的写法是backgroundColor
+
+        //获取当前元素
+        //var div=document.getElementsByClassName("div1")[0];
+        var d1 = document.getElementById("d1");
+
+
+        //通过classList获取当前元素的类名(class="div1")
+        var div = d1.classList
+        console.log(div.length); //1
+        console.log(d1.classList); //DOMTokenList(1) ["div1", value: "div1"]
+        console.log(d1.classList[0]); //div1
+
+
+        d1.onclick = function () {
+
+            //给元素添加指定的类(样式)，
+            //如果类名已经存在，添加的样式不起作用
+            div.add("width", "height"); //添加多个样式
+            //div.add("width");
+
+            //删除元素指定的类名(具体类选择器中的样式)
+            //div.remove("width");
+
+
+            /*
+            1：如果参数一的类名不存在
+                参数二值是true,添加样式
+                参数二是false ，不添加参数一的样式
+            */
+            /*
+            2：如果参数一的类名已经存在
+                参数二是true:样式不变
+                参数二是false ，删掉参数一的样式
+            */
+            div.toggle("color", true);
+            //添加样式,如果样式存在(false)，不添加,如果样式不存在(true)，添加
+
+            //contains("类名")：是否包含某个类
+            //如果包含某个类返回值是true，反之是false
+            console.log(div.contains("width"));
+
+            //获取该元素的类选择器的个数
+            console.log(div.length);
+            /*
+            三元运算符:表达式1？表达式2：表达式3
+            如果表达式1的条件成立，执行表达式2；反之，执行表示3
+            
+            */
+
+            div.toggle("width", div.length < 4 ? true : false); //如果类选择器的个数小于4，添加width样式，反之，不添加
+
+        }
+    </script>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            #box{
+                width: 100px;
+                height: 100px; 
+                background: pink;
+                position: fixed;
+                top: 50px;
+                left: 45%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box"></div>
+        <script>
+            window.onload = function(){
+                var box = document.getElementById('box');
+                //兼容ie，chrome，firefox
+                if(box.addEventListener){
+                    box.addEventListener('DOMMouseScroll',size_change,false);
+                    box.addEventListener('wheel', size_change, { passive: true });
+                }else{
+                    box.attachEvent('onmousewheel',size_change);
+                }
+                //滚轮事件
+                function size_change(e){
+                    var event = e || window.event;
+                    var scroll_up = event.wheelDelta;
+                    console.log(scroll_up)
+                    // var scroll_down = event.detail;
+                    // console.log(scroll_direction);
+                    if(scroll_up > 0){
+                        box.style.width = box.offsetWidth + 10 + 'px';
+                        box.style.height = box.offsetHeight + 10 + 'px';
+                        if(box.offsetWidth >= 300 || box.offsetHeight >= 300){
+                            box.style.width = 300 + "px";
+                            box.style.height = 300 + "px";
+                        }
+                    }else if(scroll_up < 0){
+                        box.style.width = box.offsetWidth - 10 + 'px';
+                        box.style.height = box.offsetHeight - 10 + 'px';
+                        if(box.offsetWidth <= 100 || box.offsetHeight <= 100){
+                            box.style.width = 100 + "px";
+                            box.style.height = 100 + "px";
+                        }
+                    }else{
+                        return false;
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>

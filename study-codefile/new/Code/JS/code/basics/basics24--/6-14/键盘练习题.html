@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+      .a2{
+        width: 50px;
+        height: 50px;
+        background-color: aqua;
+        position:absolute;
+        left: 0px;
+        top: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="a1" class="a2"></div>
+  </body>
+  <script type="text/javascript">
+    // offsetLeft  offsetTop
+    var div=document.getElementById("a1");
+    var left1=div.offsetLeft;
+    var top1=div.offsetTop;
+    document.onkeydown=function(event){
+      var event=event||window.event;
+      var num=event.keyCode;
+      if(num==37){//左
+        left1-=10;//left1=left1-10;
+        if(left1<0){
+          left1=0;
+        }
+        div.style.left=left1+'px';
+      }else if(num==38){//上
+      top1-=10;
+      if(top1<0){
+        top1=0;
+      }
+      div.style.top=top1+'px'; 
+      }else if(num==39){//右
+      left1+=10;
+      if(left1>document.documentElement.clientWidth-div.offsetWidth){
+        left1=document.documentElement.clientWidth-div.offsetWidth;
+      }
+      div.style.left=left1+'px';
+      }else if(num==40){//下
+        top1+=10;
+        if(top1>document.documentElement.clientHeight-div.offsetHeight){
+          top1=document.documentElement.clientHeight-div.offsetHeight;
+        }
+        div.style.top=top1+'px';
+      }
+      
+      //回到原点
+      if(num==65&&event.shiftKey){
+        div.style="";
+        div.style.className='a2';
+      }
+     //随机切换颜色
+      if(num==66&&event.ctrlKey&&event.altKey){
+        div.style.backgroundColor="rgb("+getColor()+")";
+      }
+      //封装颜色的函数
+    function getColor(){
+      var arr=[];
+      for(var i=0;i<3;i++){
+        arr[i]=Math.random()*255;
+      }
+      return arr.join(",");
+    }
+    }
+  </script>
+</html>

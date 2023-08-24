@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box"></div>
+    <script type="text/javascript">
+        // var str = "你好零零七，我是零零发，他是零零狗";
+        // //通过id获取div
+        // var box = document.getElementById('box');
+        // //自定义一个变量，用做索引值
+        // var i = -1;
+        // function fn() {
+        //     i++; //让索引值变大
+        //     //给i定义范围
+        //     if(i >= str.length - 1) { //如果i大于等于字符串的长度-1
+        //         //清除计时器，清除哪一个计时器，参数被清除的计时器的名字
+        //         clearInterval(timer);                
+        //     }
+        //     //将每一位添加给box
+        //     box.innerHTML += str[i];
+        // }
+        // //用变量接收计时器，变量就是当前计时器的名字
+        // var timer = setInterval(fn,100);
+
+        // var str = "这是一段文字"; //定义一个字符串
+        // var str_arr = str.split(""); //将字符串转换成数组
+        // var str_index = 0; //定义一个索引值
+        // var str_timer = setInterval(function(){
+        //     if(str_index < str_arr.length){
+        //         document.getElementById("box").innerHTML += str_arr[str_index]; //将数组中的每个元素赋值给span标签的innerHTML属性
+        //         str_index++;
+        //     }else{
+        //         clearInterval(str_timer); //清除计时器
+        //     }
+        // },100)
+
+
+        /*
+            split()
+            作用：将字符串用指定符号分割成数组
+            参数：字符串类型的符号，（用的最多的是空字符串）
+            返回值：分割后的数组
+        */
+        var str = "零零7，零零9，零零8";
+        var res = str.split("，");
+        console.log(res);
+
+        res.sort();
+        console.log(res.join(""));
+    </script>
+</body>
+</html>

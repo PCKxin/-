@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对文字的设置</title>
+</head>
+<body>
+    <div id="box">
+
+    </div>
+
+    <div id="div">
+
+    </div>
+    <script type="text/javascript">
+        //低版本浏览器不兼容
+        // var box1 = document.querySelector("#box");
+        // console.log(box1);
+        //可以兼容低版本浏览器
+        var box2 = document.getElementById("box");
+        console.log(box2);
+        /*
+        *   innerHTML = "内容"
+        *       1、可以直接添加文字
+        *       2、解析HTML标签(也可以添加HTML元素)
+        *
+        *   元素.innerHTML
+        *       可以获取指定元素中的具体值
+        * */
+        box2.innerHTML = "<h1>今天是周五</h1>";
+        console.log(box2.innerHTML);
+
+        var div = document.getElementById("div");
+        /*
+        *  元素.innerText = "内容"
+        *       给指定元素添加文字内容
+        *       注意： 不能解析HTML标签
+        *
+        *   元素.innerText
+        *       可以获取指定元素中的具体值(所有内容都是文字)
+        * */
+        div.innerText = "<h1>这是第二个div</h1>";
+        console.log(div.innerText);
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>while循环</title>
+		<script type="text/javascript">
+			/* 
+				//初始变量
+				while(循环条件) {
+					//循环内容
+					//迭代条件 ++ --
+				}
+				
+			 */
+			/* 
+				 n从0开始，只要n<10就一直循环，
+				 计算循环的次数，并循环打印自己的名字
+			 */
+			var n = 0;
+			var count = 0; //用于统计次数
+			while(n < 10) {
+				console.log("名字");
+				count++; // 每输出一次count次数加1
+				n++; // 让循环条件++
+			}
+			console.log("一共输出了" + count + "次");
+			
+			/* 
+				标准的死循环
+				
+				while(true) {
+					//执行的语句
+					//一定要有终止条件，在满足一定情况下，用break跳出循环
+					if(判断条件) {
+						break;
+					}
+				}
+				
+			 */
+			/* 
+				存款有5万，年化利率7.3%，多久存款能到10万
+			 */
+			var year = 0;
+			var money = 50000;
+			while(true) {
+				money = money + money * 0.073;
+				year++;
+				if(money >= 100000) {
+					break;
+				}
+			}
+			console.log("一共需要" + year + "年");
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

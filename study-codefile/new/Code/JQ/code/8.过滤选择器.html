@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <li>0</li>
+        <div>1</div>
+        <div>
+            <li>2</li>
+            <div>3</div>
+            <div>
+                <li>4</li>
+            </div>
+        </div>
+        <div>
+            <li>6-0</li>
+            <div></div>
+            <div></div>
+            <div></div>
+            <li>6</li>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div>5</div>
+        </div>
+        <ul class="box1">
+            <li>1-1</li>
+            <li>2</li>
+            <div>2-1</div>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+        </ul>
+        <ul class="box2">
+            <div>1</div>
+            <li>2</li>
+            <div>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </div>
+            <li>6</li>
+        </ul>
+        <ul class="box3">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <div>4</div>
+            <li>5</li>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <div>4</div>
+            <li>5</li>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <div>4</div>
+            <li>5</li>
+        </ul>
+        <ul class="box4">
+            <div>
+                <li>0</li>
+                <li>1</li>
+            </div>
+            <div>
+                <li>2</li>
+            </div>
+            <li>3</li>
+        </ul>
+        <ul class="box5">
+            <li>0</li>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <div>我是div-4</div>
+            <li>5</li>
+            <li>6</li>
+        </ul>
+        <script src="../jQuery/jquery-1.12.4.js"></script>
+        <script>
+            $(
+                function(){
+                    $('*').css({margin:0,padding:0});
+                    $('.box1 li:nth-child(2)').css('background','red');
+                    $('.box2 li:nth-child(3)').css('background','red');
+                    // $('li:nth-child(1)').css('background','red');//0 2 4
+                    // $('li:nth-of-type(1)').css('background','blue');
+
+                    // dom:nth-child(num) 表示父元素下的第num个子元素必须是dom元素
+                    // 在乎的事dom元素的位置，而不是dom元素的类型
+                    
+                    // dom:nth-of-type(num) 表示父元素下的第num个子元素必须是dom元素
+                    // 在乎的是dom元素的类型，而不是dom元素的位置
+
+                    // 父元素下第一个子元素是li的
+                    $('.box3 li:first-child').css('background','red');
+                    
+                    // 父元素下最后一个子元素是li的
+                    $('.box3 li:last-child').css('background','red');
+                    
+                    // 父元素下只有一个元素是li的
+                    $('.box4 li:only-child').css('background','red');
+                    
+                    // eq(0) 索引 参数是从0开始取值  返回的是jq对象
+                    $('box5 li:eq(4)').css('background','red');
+                }
+            )
+        </script>
+    </body>
+</html>

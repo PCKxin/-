@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>设置小时、分钟和秒</title>
+    <script type="text/javascript">
+        var date = new Date();
+        //设置小时，正常传值为：0-23,
+        // 超过23,天进位;小于0,天退位
+        date.setHours(9);
+        console.log(date);
+        //设置分钟，正常值为：0-59,
+        // 超过59，小时进位；小于0，小时退位
+        date.setMinutes(40);
+        console.log(date);
+        //设置秒，正常值为：0-59，
+        // 超过59，分钟进位；小于0，分钟退位
+        date.setSeconds(50);
+        console.log(date);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

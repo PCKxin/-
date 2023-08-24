@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>location对象</title>
+
+</head>
+<body>
+    <input type="button" value="刷新" id="btn1">
+
+    <script type="text/javascript">
+        //location.assign()方法，重新加载地址栏，表单注册时候用的较多
+        // location.assign("http://www.baidu.com");
+
+        var btn1 = document.getElementById("btn1");
+        btn1.onclick = function () {
+            //loaction.reload()重新加载（刷新页面）
+            location.reload();
+        }
+        /*
+        *   刷新：
+        *       location.reload()方法
+        *       history.go(0)方法
+        * */
+
+        /*
+        *   location.replace("地址");
+        *   用括号里的地址替换当前地址，不会产生历史记录
+        * */
+        location.replace("http://www.baidu.com");
+    </script>
+</body>
+</html>

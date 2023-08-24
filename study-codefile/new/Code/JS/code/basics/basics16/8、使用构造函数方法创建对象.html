@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用构造函数方法创建对象</title>
+    <script type="text/javascript">
+        /*
+        *   手机对象，品牌brand，型号model，颜色color
+        *   可以用于打电话call，发信息message
+        *
+        * */
+        var phone = new Object(); //名字为phone的空对象
+        console.log(phone);
+        //给当前对象需要的属性赋值  对象名.属性名 = 属性值
+        phone.brand = "iphone";
+        phone.model = "14 pro Max";
+        phone.color = "石墨黑";
+
+        //给当前对象添加需要的方法  对象名.方法名 = function () {}
+        phone.call = function () {
+            console.log("打电话");
+        }
+
+        //调用当前对象的属性
+        console.log(phone.brand);
+        console.log(phone["model"]);
+
+        //调用当前对象的方法
+        phone.call();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

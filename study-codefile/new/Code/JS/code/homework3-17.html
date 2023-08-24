@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script>
+            // //逆向输出5位数
+            // var user_input = prompt("five-digit number") * 1;
+            // var unit = user_input % 10 + "";
+            // var tens_digit = parseInt(user_input / 10) % 10 + "";
+            // var hundreds_digit = parseInt(user_input / 100) % 10 + "";
+            // var thousand_digit = parseInt(user_input / 1000) % 10 + "";
+            // var ten_thousand_digit = parseInt(user_input / 10000) %10 + "";
+            // console.log(unit + tens_digit + hundreds_digit + thousand_digit + ten_thousand_digit)
+
+            // //判断三位数的水仙花数
+            // var user_input = prompt("three-digit number") * 1;
+            // var unit = user_input % 10;
+            // var tens_digit = user_input / 10 % 10;
+            // var hundreds_digit = user_input / 100 % 10;
+            // if((unit * unit * unit) + (tens_digit * tens_digit * tens_digit) + (hundreds_digit * hundreds_digit * hundreds_digit)){
+            //     console.log("OK")
+            // }else{
+            //     console.log("NO")
+            // }
+
+            // //比较两数大小
+            // var user_input_1 = prompt("first") * 1;
+            // var user_input_2 = prompt("second") * 1;
+            // if(user_input_1 > user_input_2){
+            //     console.log("第一个大")
+            // }else if(user_input_1 < user_input_2 ){
+            //     console.log("第二个大")
+            // }else{
+            //     console.log("平或者错误")
+            // }
+
+            //输入一个三位数 各数位大小大到小排
+            var user_input = prompt("three-digit number") * 1;
+            var unit = parseInt(user_input) % 10;
+            var tens_digit = parseInt(user_input / 10) % 10;
+            var hundreds_digit = parseInt(user_input / 100) % 10;
+            if(hundreds_digit > tens_digit > unit){
+                console.log(user_input);
+            }else{
+                var list_num = [hundreds_digit, tens_digit, unit];
+                console.log(list_num)
+                for(var i = 0; i < 3; i++){
+                    if(list_num[i] > Math.min(hundreds_digit, tens_digit, unit) && list_num[i] < Math.max(hundreds_digit, tens_digit, unit)){
+                        var center_number = list_num[i];
+                        break;
+                    }   
+                }
+                console.log(
+                    (Math.max(hundreds_digit, tens_digit, unit) + "")
+                    + (center_number + "")
+                    + (Math.min(hundreds_digit, tens_digit, unit) + "")
+                )
+            }
+
+            /***
+            *                    _ooOoo_
+            *                   o8888888o
+            *                   88" . "88
+            *                   (| -_- |)
+            *                    O\ = /O
+            *                ____/`---'\____
+            *              .   ' \\| |// `.
+            *               / \\||| : |||// \
+            *             / _||||| -:- |||||- \
+            *               | | \\\ - /// | |
+            *             | \_| ''\---/'' | |
+            *              \ .-\__ `-` ___/-. /
+            *           ___`. .' /--.--\ `. . __
+            *        ."" '< `.___\_<|>_/___.' >'"".
+            *       | | : `- \`.;`\ _ /`;.`/ - ` : | |
+            *         \ \ `-. \_ __\ /__ _/ .-` / /
+            * ======`-.____`-.___\_____/___.-`____.-'======
+            *                    `=---='
+            *
+            * .............................................
+            *          佛祖保佑             永无BUG
+            */
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

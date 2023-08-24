@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <button id="bu1">mousedown</button>
+    <button id="bu2">mouseup</button>
+  </body>
+  <script type="text/javascript">
+    //鼠标按下触发的事件
+    var bu1=document.getElementById("bu1");
+    bu1.onmousedown=function(){
+      alert("鼠标按下事件");
+    }
+    //鼠标放开弹起来的时候触发的事件
+    var bu2=document.getElementById("bu2");
+    bu2.onmouseup=function(){
+      alert("鼠标弹起来触发");
+    }
+    
+    
+  </script>
+</html>
