@@ -1514,17 +1514,57 @@
  - flex-wrap: wrap; 时，align-content: stretch; 有效果
  - 父元素高度为固定值（不能设置height:auto）
 
+#### 案例文件
 
-
-
-
-
-
-
-
-
-
+ - [案例文件](../study-codefile/new/Code/CSS3/code/8.1.flex布局-父元素属性.html)
 
 ### 子元素属性
 
+#### flex
+
+ - 子元素的伸缩比例
+ - 把父元素剩余空间进行平分
+ - 子元素占父元素几分之几
+ - 当主轴为水平方向时，width属性无效
+ - 当主轴为垂直方向时，height属性无效
+
+ - 语法：`flex`:`num`;
+
+
+#### flex-grow
+
+ - 子元素的伸缩比例
+ - 会保留子元素的原始尺寸
+ - 计算公式：
+     - 原有尺寸+（父容器-所有子元素占有的空间）x 子元素占父元素得几分之几
+
+ - 语法：`flex-grow`:`num`;
+
+#### order
+
+ - 子元素的排列顺序
+ - 默认值为0
+ - 值越小越靠前，支持负数
+
+ - 语法：`order`:`num`;
+
+#### align-self
+
+ - 子元素的对齐方式
+ - 会覆盖父元素的align-items属性
+
+ - 语法：`align-self`:`flex-start | flex-end | center | baseline | stretch;`;
+
+ - 参数：
+     - flex-start 默认值, 交叉轴的起始位置
+     - flex-end 交叉轴的结束位置
+     - center 交叉轴的中间位置
+     - baseline 项目的第一行文字的基线
+     - stretch 默认值，如果项目未设置高度或设为auto，将占满整个容器的高度
+
+#### 案例文件
+
+ - [案例文件](../study-codefile/new/Code/CSS3/code/8.2.flex布局-子元素上的属性.html)
+
 ### 布局案例
+
