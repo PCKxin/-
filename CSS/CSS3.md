@@ -1413,3 +1413,118 @@
     <div class="demo1"></div>
 </div>
 ```
+
+## flex布局
+
+ - display:flex;
+ - 弹性布局原理：
+     - 在父级中设置flex，来控制一级子元素的位置和排列方式
+
+
+### 父元素属性
+
+ - 主轴：里面的子元素会按照主轴的方向排列
+     - 主轴的方向：
+         - 默认是水平方向
+         - 行
+             - `row`
+             - `row-reverse`
+         - 列
+             - `column`
+             - `column-reverse`
+
+#### flex-direction
+
+ - 主轴的方向
+
+ - 语法：`flex-direction`:`row | row-reverse | column | column-reverse;`;
+
+ - 参数：
+     - row 默认值，水平向右
+     - row-reverse 水平向左，从右到左
+     - column 垂直向下
+     - column-reverse 垂直向上，从下到上
+
+#### flex-wrap
+
+ - 子元素是否换行
+
+ - 语法：`flex-wrap`:`nowrap | wrap | wrap-reverse;`;
+
+ - 参数：
+     - nowrap 默认值，不换行
+     - wrap 换行
+     - wrap-reverse 换行，从下到上
+
+#### justify-content
+
+ - 主轴上的对齐方式
+
+ - 语法：`justify-content`:`flex-start | flex-end | center | space-between | space-around;`;
+
+ - 参数：
+     - flex-start 默认值, 左对齐, 子元素在主轴的起始位置进行排列
+     - flex-end 右对齐, 子元素在主轴结束位置排列
+     - center 居中对齐, 子元素在主轴中间位置排列
+     - space-between 
+         - 两端对齐，中间间隔相等
+         - 先将第一个子元素放到主轴的flex-start位置
+         - 再将最后一个子元素放到主轴的flex-end位置
+         - 剩下的子元素平分剩余空间 ( 它们的左右(row) 或者 上下(column) margin是相等的)
+     - space-around 
+         - 两端对齐，中间间隔相等，两边间隔是中间间隔的一半
+         - 就是平分剩余空间 所有子元素margin值相等
+
+#### align-items
+
+ - 交叉轴的对齐方式
+
+ - 语法：`align-items`:`flex-start | flex-end | center | baseline | stretch;`;
+
+ - 参数：
+     - flex-start 默认值, 交叉轴的起始位置
+     - flex-end 交叉轴的结束位置
+     - center 交叉轴的中间位置
+     - baseline 项目的第一行文字的基线
+     - stretch 默认值，如果项目未设置高度或设为auto，将占满整个容器的高度
+
+#### align-content
+
+ - 多行交叉轴的对齐方式
+
+ - 语法：`align-content`:`flex-start | flex-end | center | space-between | space-around | stretch;`;
+
+ - 参数：
+     - flex-start 交叉轴的起始位置
+     - flex-end 交叉轴的结束位置
+     - center 交叉轴的中间位置
+     - space-between 
+         - 与交叉轴两端对齐，轴线之间的间隔平均分布
+         - 将第一个子元素放到交叉轴的起始位置
+     - space-around 
+         - 每根轴线两侧的间隔都相等
+         - 就是平分剩余空间 所有子元素margin值是相等的
+     - stretch 
+         - 默认值，轴线占满整个交叉轴
+         - 将子元素的高度拉伸到和父元素一样高
+
+#### 区分align-content和align-items(如何让align-content生效)
+
+ - flex-wrap: nowrap; 时，align-content: stretch; 无效果
+ - flex-wrap: wrap; 时，align-content: stretch; 有效果
+ - 父元素高度为固定值（不能设置height:auto）
+
+
+
+
+
+
+
+
+
+
+
+
+### 子元素属性
+
+### 布局案例
