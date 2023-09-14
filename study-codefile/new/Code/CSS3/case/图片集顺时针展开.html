@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin:0;
+                padding:0;
+            }
+            .box{
+                width: 500px;
+                height: 500px;
+                position: relative;
+                margin: 100px auto;
+                margin-top: 500px;
+            }
+            .box img{
+                width: 100%;
+                height: auto;
+                position: absolute;
+                top: 0;
+                left: 0;
+                transition-property: transform;
+                transition-duration: 1s;
+                /* linear: 匀速 */
+                transition-timing-function: linear;
+                transform-origin: 500px 0px;
+            }
+            .box:hover img:nth-child(1){
+                transform: rotate(60deg);
+            }
+            .box:hover img:nth-child(2){
+                transform: rotate(120deg);
+            }
+            .box:hover img:nth-child(3){
+                transform: rotate(180deg);
+            }
+            .box:hover img:nth-child(4){
+                transform: rotate(240deg);
+            }
+            .box:hover img:nth-child(5){
+                transform: rotate(300deg);
+            }
+            .box:hover img:nth-child(6){
+                transform: rotate(360deg);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <img src="../img/01.jpg">
+            <img src="../img/02.jpg">
+            <img src="../img/03.jpg">
+            <img src="../img/04.jpg">
+            <img src="../img/02.jpg">
+            <img src="../img/03.jpg">
+        </div>
+    </body>
+</html>

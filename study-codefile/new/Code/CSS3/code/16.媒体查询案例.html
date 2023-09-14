@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="media-demo.css" media="screen and (min-width: 950px) and (max-width: 1200px)">
+        <title></title>
+        <style>
+            @import url(media-demo2.css) screen and (min-width: 900px) and (max-width: 950px);
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            div{
+                width: 300px;
+                height: 300px;
+                margin: 100px auto;
+                text-align: center;
+                line-height: 300px;
+                font-size: 30px;
+                color: white;
+                font-weight: bold;
+                transition: all 1s linear;
+            }
+            
+            @media screen and (max-width: 900px) {
+                .demo3{
+                    background: linear-gradient(pink 20%, skyblue 30%, deeppink 50%);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="demo1">由link标签引入</div>
+        <div class="demo2">由@import标签引入</div>
+        <div class="demo3">由@media引入</div>
+    </body>
+</html>

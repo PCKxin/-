@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .box{
+                width: 500px;
+                height: 500px;
+                background: rgba(177, 177, 177, 0.082);
+                border: 1px solid gray;
+                position: relative;
+                margin: 20px auto;
+            }
+            .ball{
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                background: conic-gradient(pink 20%, deepskyblue 50%, deeppink 80%);
+                position: absolute;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <div class="ball"></div>
+        </div>
+        <script>
+            window.onload = function(){
+                var box = document.querySelector('.box');
+                var ball = document.querySelector('.ball');
+                var w = box.offsetWidth;
+                var h = box.offsetHeight;
+                console.log(w,h)
+                var x = 1.5; // 水平方向上每次的偏移量
+                var y = 2.2; // 垂直方向上每次的偏移量
+                var xLeft = 40; // 水平方向上的初始位置
+                var yTop = 50;  // 垂直方向上的初始位置
+                setInterval(
+                    function(){
+                        if(ball.offsetLeft + ball.offsetWidth >= w || ball.offsetLeft <= 0){ // 判断小球是否到达边界
+                            x = -x; // 到达边界则反向
+                        }
+                        if(ball.offsetTop + ball.offsetHeight >= h || ball.offsetTop <= 0){
+                            y = -y;
+                        }
+                        xLeft += x; // 偏移量累加
+                        yTop += y;
+                        ball.style.left = xLeft + 'px'; // 小球的位置
+                        ball.style.top = yTop + 'px';
+                    }
+                    , 1
+                )
+            }
+        </script>
+    </body>
+</html>

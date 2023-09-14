@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .title{
+                margin-top: 20px;
+                font-size: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: pink;
+            }
+            .content{
+                margin-top: 20px;
+                font-size: 20px;
+                line-height: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: skyblue;
+            }
+        </style>
+    </head>
+    <body>
+        <h2 class="title">什么是媒体查询</h2>
+        <h3 class="content">
+            当屏幕尺寸发生改变时, 会根据设置的不同尺寸, 设置不同的css样式 <br>
+            例如: 当屏幕宽度为1200时, div为红色 <br>
+                    当屏幕宽度为960时, div为黑色 <br>
+            媒体查询会自动帮我们监听屏幕(浏览器)的尺寸
+        </h3>
+        <h2 class="title">媒体查询的特点</h2>
+        <h3 class="content">
+            最大的特点: 一套代码可以兼容pc和移动端, 减少开发成本 <br>
+            注意: 使用媒体查询时, 要对布局的整体把握非常到位,可以画草图, 想好了再写
+        </h3>
+        
+        <h2 class="title">媒体查询的三种引入方式</h2>
+        <h3 class="content">
+            在link标签中使用media属性 <br>
+            在style标签中使用@media screen and ( ) <br>
+            在style标签中使用@import url( ) screen and ( )<br>
+            注意 <br>
+            @import要写在style表开头
+        </h3>
+
+        <h2 class="title">书写顺序问题</h2>
+        <h3 class="content">
+            如果写max-width:属性值 这个属性值要从大到小去写 <br>
+            如果写min-width:属性值 这个属性值要从小到大去写 <br>
+        </h3>
+    </body>
+</html>

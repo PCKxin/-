@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin:0;
+                padding:0;
+            }
+            .list{
+                width: 82px;
+                height: 82px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+            }
+            .list img{
+                width: 82px;
+                height: 82px;
+                border-radius: 50%;
+                overflow: hidden;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            .home{
+                width: 82px;
+                height: 82px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                border-radius: 50%;
+                overflow: hidden;
+                transition: transform 1s linear;
+            }
+        </style>
+    </head>
+    <body>
+        <ul class="list">
+            <img src="../img/01.jpg">
+            <img src="../img/02.jpg">
+            <img src="../img/03.jpg">
+            <img src="../img/04.jpg">
+            <img src="../img/02.jpg">
+        </ul>
+        <img src="../img/border_img.png" class="home">
+    </body>
+    <script>
+        window.onload = function(){
+            var imgs = document.querySelectorAll('.list img');
+            var home_btn = document.querySelector('.home');
+            var flag = true; //控制开关
+            var r = -200; //半径
+            home_btn.onclick = function(){
+                if (flag) {
+                    for (var i = 0; i < imgs.length; i++) {
+                        var opts = getLeftTop(90 / 4 * i, r); //获取每个图片的left和top值,传入角度和半径
+                        imgs[i].style.top = opts.top + 'px';
+                        imgs[i].style.left = opts.left + 'px';
+                        imgs[i].style.transform = 'rotate(720deg)'; //旋转720度
+                        imgs[i].style.transition = 'all 1s linear ' + (i * 300) + 'ms'; //每个图片过渡效果依次延迟300毫秒
+                    }
+                    home_btn.style.transform = 'rotate(720deg)'; //旋转720度
+                } else {
+                    for (var i = 0; i < imgs.length; i++) {
+                        imgs[i].style.left = '0px';
+                        imgs[i].style.top = '0px';
+                        imgs[i].style.transform = 'rotate(0deg)'; //旋转0度
+                        // imgs.length - 1 - i 依次往前重演效果 , 延迟200毫秒
+                        imgs[i].style.transition = 'all 1s linear ' + (imgs.length - 1 - i) * 200 + 'ms';
+                    }
+                    home_btn.style.transform = 'rotate(0deg)'; //旋转0度
+                }
+                flag = !flag; //每次点击开关取反
+            }
+            //获取每个图片的left和top值
+            // deg:角度
+            // r:半径
+            function getLeftTop(deg , r){
+                console.log(Math.sin(deg * Math.PI / 180) * r)
+                console.log(Math.cos(deg * Math.PI / 180) * r)
+                return {
+                    left: Math.sin(deg * Math.PI / 180) * r, //sin()方法返回一个数值的正弦值
+                    top: Math.cos(deg * Math.PI / 180) * r // cos()方法返回一个数值的余弦值
+                };
+            }
+        }
+
+    </script>
+</html>

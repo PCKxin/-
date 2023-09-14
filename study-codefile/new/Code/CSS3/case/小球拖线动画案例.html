@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            body{
+                background: black;
+            }
+            div{
+                width: 150px;
+                height: 150px;
+                border: 4px solid transparent;
+                margin: 50px auto;
+                border-radius: 50%;
+                position: relative;
+                animation-duration: 1.5s;
+                animation-timing-function: linear;
+                animation-iteration-count: infinite;
+                /* background: white; */
+            }
+            .box1{
+                animation-name: move1;
+                border-top: 4px solid deepskyblue;
+            }
+            .box2{
+                transform: translate(0px, -100px);
+                animation-name: move2;
+                border-top: 4px solid deeppink;
+            }
+            @keyframes move1{
+                to{
+                    transform: rotate(360deg);
+                }
+            }
+            @keyframes move2{
+                to{
+                    transform: translate(0px, -100px) rotate(-360deg);
+                }
+            }
+            .box1::before{
+                content: '';
+                width: 20px;
+                height: 20px;
+                position: absolute;
+                right: 10px;
+                top: 10px;
+                border-radius: 50%;
+                background: deepskyblue;
+                box-shadow: 0 0 10px 1px #ffffff, 0 0 10px 3px #cbc8c8, 0 0 10px 5px #534b4b;
+            }
+            .box2::before{
+                content: '';
+                width: 20px;
+                height: 20px;
+                position: absolute;
+                left: 10px;
+                top: 10px;
+                border-radius: 50%;
+                background: deeppink;
+                box-shadow: 0 0 10px 1px #ffffff, 0 0 10px 3px #cbc8c8, 0 0 10px 5px #534b4b;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box1"></div>
+        <div class="box2"></div>
+    </body>
+</html>

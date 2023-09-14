@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin:0;
+                padding:0;
+            }
+            div{
+                width: 200px;
+                height: 200px;
+                border-radius: 50%;
+                margin: 200px auto;
+                background: conic-gradient(pink 20%, deepskyblue 50%, deeppink 80%);
+            }
+        </style>
+    </head>
+    <body>
+        <div></div>
+    </body>
+    <script>
+        window.onload = function(){
+            var div = document.querySelector('div');
+            var deg = 0; // 控制角度增加
+            // 最大值 2 放大一倍   最小值 0 看不到
+            // 在这两个值中间来回切换
+            var result = 1; // 结果
+            var num = 0.01; // 控制放大 还是 缩小
+            setInterval(
+                function(){
+                    deg += 2;
+                    // if(result <= 0){ // 到达最小值 不能再小了 接下来要变大
+                    //     num = 0.01; // 一个数 加上一个正数 一定是越来越大的
+                    // }
+                    // if(result >= 2){ // 到达最大值 不能再大了 接下来要变小
+                    //     num = -0.01; // 一个数 加上一个负数 一定会越来越小的
+                    // }
+                    if(result <= 0 || result >= 2){
+                        // 每一次到达边界最小值或者最大值的时候
+                        // num 取值应该和上一次的值相反
+                        num = -num;
+                    }
+                    result = result + num;
+                    div.style.transform = 'rotate(' + deg + 'deg) scale(' + result + ',' + result + ')';
+                    // div.style.transform = 'scale(' + result + ',' + result + ')';
+                    // 1.01          1 + 0.01
+                    // 1.02          1.01 + 0.01
+                    // 2
+                    // 2.01          2 + 0.01
+                    // 2             2.01 - 0.01
+                    // 1.99          2 - 0.01
+                    // 0
+                },10
+            )
+        }
+    </script>
+</html>

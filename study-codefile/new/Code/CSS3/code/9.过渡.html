@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+    <html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            h2{
+                text-align: center;
+                font-size: 20px;
+                background: rgb(255, 164, 179);
+                color: white;
+            }
+            .transition_demo1{
+                width: 300px;
+                height: 300px;
+                margin: 10px auto;
+                background: skyblue;
+                /* 过渡的属性 将过渡属性名放到transition-property后 */
+                transition-property: background;
+                /* 过渡花费的时间 可以用秒s 也可以用毫秒ms */
+                transition-duration: 2s;
+                /* 过渡的时间曲线  例如：匀速 先慢后快 先快后慢 */
+                transition-timing-function: linear;
+                /* 过渡延迟的时间  也是 可以用 s或者ms */
+                transition-delay: 0s;
+            }
+            .transition_demo1:hover{
+                background: pink;
+            }
+            
+            .transition_demo2{
+                width: 300px;
+                height: 300px;
+                background: deeppink;
+                margin: 10px auto;
+                transition-property: width, height, background;
+                transition-duration: 1s, 1s, 1s;
+                transition-timing-function: linear;
+            }
+            .transition_demo2:hover{
+                width: 600px;
+                height: 450px;
+                background: rgb(155, 220, 246);
+            }
+
+            .transition_demo3{
+                box-sizing: border-box;
+                width: 450px;
+                height: 300px;
+                margin: 10px auto;
+                position: relative;
+                background: rgb(182, 228, 246);
+                overflow: hidden;
+            }
+            .transition_demo3 a{
+                display: block;
+                width: 100px;
+                height: 50px;
+                line-height: 50px;
+                text-align: center;
+                font-size: 18px;
+                color: white;
+                background: #ffdee4;
+                font-weight: bold;
+                text-decoration: none;
+                position: absolute;
+                left: -100px;
+                transition-property: left;
+                transition-duration: 0.5s;
+                transition-timing-function: linear;
+            }
+            .transition_demo3 a:nth-child(2){
+                top: 60px;
+                transition-delay: 0.15s;
+            }
+            .transition_demo3 a:nth-child(3){
+                top: 120px;
+                transition-delay: 0.3s;
+            }
+            p{
+                width: 450px;
+                height: 100px;
+                line-height: 100px;
+                font-size: 30px;
+                font-weight: bold;
+                text-align: center;
+                color: transparent;
+                background: url('../img/04.jpg');
+                background-clip: text;
+                -webkit-background-clip: text;
+                position: absolute;
+                bottom: -100px;
+                transition-property: bottom;
+                transition-duration: 1s;
+                transition-timing-function: linear;
+            }
+            .transition_demo3:hover a{
+                left: 20px;
+            }
+            .transition_demo3:hover p{
+                bottom: 0px;
+            }
+
+            .transition_demo4{
+                width: 300px;
+                height: 300px;
+                margin: 10px auto;
+                background: rgb(137, 225, 255);
+                text-align: center;
+                line-height: 300px;
+                font-size: 30px;
+                color: white;
+                transition: all 1s linear;
+            }
+            .transition_demo4:hover{
+                background: rgb(255, 164, 179);
+            }
+        </style>
+    </head>
+    <body>
+        <h2>哪个元素中的样式发生改变，就在那个元素上添加过渡属性！</h2>
+        <div class="transition_demo1"></div>
+        <h2>多个属性发生过渡的写法</h2>
+        <div class="transition_demo2"></div>
+        <h2>案例01</h2>
+        <div class="transition_demo3">
+            <a href="">选项一</a>
+            <a href="">选项二</a>
+            <a href="">选项三</a>
+            <p>其他</p>
+        </div>
+        <h2>简写顺序：</h2>
+        <h2>transition: transition-property transition-duration transition-timing-function transition-delay;</h2>
+        <h2>transition: 属性名 时长 时间曲线 延迟时间;</h2>
+        <div class="transition_demo4">简写案例</div>
+    </body>
+</html>

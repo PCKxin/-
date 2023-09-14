@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            body{
+                perspective: 800px;
+            }
+            /* 按钮装饰 */
+            .btn{
+                width: 100px;
+                height: 100px;
+                text-align: center;
+                line-height: 100px;
+                background: pink;
+                border-radius: 10px;
+                font-weight: bold;
+                color: white;
+                position: absolute;
+                cursor: pointer;
+                top: 300px;
+            }
+            .up{
+                left: 200px;
+            }
+            .down{
+                left: 800px;
+            }
+            .btn div:nth-child(1){
+                border-radius: 5px;
+                width: 0px;
+                height: 5px;
+                background:linear-gradient(to right,rgba(255,0,0,0),rgba(255,0,0,0.25));
+                position: absolute;
+                top: -5px;
+                left: 0px;
+                animation: move1 1s linear infinite forwards;
+            }
+            @keyframes move1{
+                to{
+                    width: 105px;
+                }
+            }
+            .btn div:nth-child(2){
+                border-radius: 5px;
+                width:5px;
+                height:0px;
+                background: linear-gradient(to bottom,rgba(255,0,0,0.25),rgba(255,0,0,0.5));
+                position:absolute;
+                left:100px;top:0px;
+                animation:move2 1s linear infinite forwards 1s;
+            }
+            @keyframes move2{
+                to{
+                    height:105px;
+                }
+            }
+            .btn div:nth-child(3){
+                border-radius: 5px;
+                width:0px;
+                height:5px;
+                background:linear-gradient(to right,rgba(255,0,0,0.5),rgba(255,0,0,0.75));
+                position:absolute;
+                left:100px;top:105px;
+                transform-origin:top left;
+                transform:rotate(180deg);
+                animation:move3 1s linear infinite forwards 2s;
+            }
+            @keyframes move3{
+                to{
+                    width:105px;
+                }
+            }
+            .btn div:nth-child(4){
+                border-radius: 5px;
+                width:5px;
+                height:0px;
+                background: linear-gradient(to bottom,rgba(255,0,0,0.75),rgba(255,0,0,1));
+                position:absolute;
+                left:0px;top:100px;
+                transform-origin:top left;
+                transform:rotate(180deg);
+                animation:move4 1s linear infinite forwards 3s; 
+            }
+            @keyframes move4{
+                to{
+                    height:105px;
+                }
+            }
+            
+            /* 图片盒子 */
+            .imgbox{
+                width: 400px;
+                height: 260px;
+                position: absolute;
+                top: 140px;
+                left: 350px;
+                border-radius: 10px;
+            }
+            .imgbox img{
+                width:100%;
+                height: 100%;
+                position:absolute;
+                top:0;
+                left:0;
+                opacity:0;
+                transform-origin:bottom;
+                transform:rotateX(180deg);
+            }
+            .hide{
+                animation: hide 1s linear forwards;
+            }
+            @keyframes hide{
+                0%{
+                    opacity: 1;
+                    transform: rotateX(0deg);
+                }
+                100%{
+                    opacity: 0;
+                    transform: rotateX(180deg);
+                }
+            }
+            .show{
+                animation: show 1.5s linear forwards;
+            }
+            @keyframes show{
+                0%{
+                    opacity:0;
+                    transform:rotateX(-180deg);
+                }
+                25%{
+                    opacity:1;
+                    transform:rotateX(30deg);
+                }
+                50%{
+                    opacity:1;
+                    transform:rotateX(-20deg);
+                }
+                75%{
+                    opacity:1;
+                    transform:rotateX(5deg);
+                }
+                100%{
+                    opacity:1;
+                    transform:rotateX(0deg);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="btn up">
+            上一张
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="imgbox">
+            <img src="../img/01.jpg" class="show">
+            <img src="../img/02.jpg">
+            <img src="../img/03.jpg">
+            <img src="../img/04.jpg">
+        </div>
+        <div class="btn down">
+            下一张
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <script>
+            window.onload = function(){
+                var up = document.querySelector(".up");
+                var down = document.querySelector(".down");
+                var imgs = document.querySelectorAll("img");
+                var now = 0; // 默认得当前索引
+                down.onclick = function(){
+                    // 点击下一张
+                    // 当前得now 应该消失
+                    // now++这个索引应该显示出来；
+                    imgs[now].className = "hide";// 当前得now 应该消失
+                    now++;
+                    if(now >= imgs.length-1){
+                        now = 0;
+                    }
+                    imgs[now].className = "show"; // now++这个索引应该显示出来；
+                }
+                up.onclick = function(){
+                    imgs[now].className = "hide";
+                    now--;
+                    if(now < 0){
+                        now = imgs.length-1;
+                    }
+                    imgs[now].className = "show";
+                }
+            }
+        </script>
+    </body>
+</html>

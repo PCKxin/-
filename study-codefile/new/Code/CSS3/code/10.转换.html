@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+    <html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            h2{
+                text-align: center;
+                font-size: 25px;
+                background: pink;
+                color: white;
+            }
+            .demo_title{
+                color: rgb(253, 0, 51);
+            }
+            .transform_demo1{
+                width: 200px;
+                height: 200px;
+                background: deeppink;
+                margin: 10px auto;
+                transform: translate(100px, 10px);
+            }
+            .transform_demo2{
+                width: 200px;
+                height: 200px;
+                background: pink;
+                margin: 10px auto;
+                transform: translateX(-100px);
+            }
+            
+            .transform_demo3{
+                width: 200px;
+                height: 200px;
+                background: pink;
+                margin: 10px auto;
+                transition-property: transform;
+                transition-duration: 1s;
+                transition-timing-function: linear;
+            }
+            .transform_demo3:hover{
+                transform: translate(100px, 10px);
+            }
+            .transform_demo4{
+                width: 200px;
+                height: 200px;
+                background: rgb(255, 139, 159);
+                margin: 10px auto;
+                transition-property: transform;
+                transition-duration: 1s;
+                transition-timing-function: linear;
+            }
+            .transform_demo4:hover{
+                transform: translate(-50%, -5%);
+            }
+
+            /* 元素水平垂直居中 */
+            .transform_demo5_box{
+                width: 600px;
+                height: auto;
+                margin: 10px auto;
+                border: 1px solid black;
+            }
+            .transform_demo5_box p{
+                width: 150px;
+                height: 50px;
+                background: orangered;
+                color: white;
+                text-align: center;
+            }
+            /* 已知宽高 */
+            /* 使用margin调整 */
+            .demo5_content_box1{
+                width: 300px;
+                height: 300px;
+                border: 1px solid black;
+                margin: 10px auto;
+                position: relative;
+            }
+            .demo5_content_box1 p{
+                line-height: 50px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-left: -75px;
+                margin-top: -25px;
+            }
+            /* 未知宽高 */
+            /* 四个方向值都为0+margin:auto */
+            .demo5_content_box2{
+                width: 300px;
+                height: 300px;
+                border: 1px solid black;
+                margin: 10px auto;
+                position: relative;
+            }
+            .demo5_content_box2 p{
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                margin: auto;
+            }
+            /* 使用弹性布局 */
+            .demo5_content_box3{
+                width: 300px;
+                height: 300px;
+                border: 1px solid black;
+                margin: 10px auto;
+                line-height: 50px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            /* 使用2d转换 */
+            .demo5_content_box4{
+                width: 300px;
+                height: 300px;
+                border: 1px solid black;
+                margin: 10px auto;
+                position: relative;
+            }
+            .demo5_content_box4 p{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                line-height: 50px;
+                transform: translate(-50%, -50%);
+            }
+
+            /* transform:rotate(旋转角度deg) */
+            /* 旋转角度为正值时，顺时针旋转 */
+            .transform_demo6,.transform_demo7{
+                width: 300px;
+                height: 300px;
+                background: rgba(253, 203, 211, 0.404);
+                margin: 30px auto;
+                transition-property: transform;
+                transition-duration: 1s;
+                transition-timing-function: linear;
+            }
+            .transform_demo6:hover{
+                transform: rotate(45deg);
+            }
+            /* 旋转角度为负值时，逆时针旋转 */
+            .transform_demo7:hover{
+                transform: rotate(-45deg);
+            }
+
+            /* 2d转换-transform:scale缩放 */
+            /* scale(x,y)x,y默认值为1,表示不放大也不缩小 */
+            /* 使用scale控制元素缩小,最小值为(0,0)不允许有负数 */
+            .transform_demo8{
+                width: 300px;
+                height: 300px;
+                background: rgba(253, 203, 211, 0.404);
+                margin: 10px auto;
+                transform: scale(0.5, 0.5);
+            }
+            /* 使用scale控制元素放大, 没有最大值 */
+            .transform_demo9{
+                width: 150px;
+                height: 150px;
+                background: rgba(253, 203, 211, 0.404);
+                margin: 10px auto;
+                transform: scale(2, 2);
+            }
+
+            /* 一起使用 平移和缩放 */
+            .transform_demo10{
+                width: 300px;
+                height: 300px;
+                background: rgba(147, 147, 147, 0.445);
+                margin: 30px auto;
+            }
+            .transform_demo10 p{
+                width: 150px;
+                height: 50px;
+                text-align: center;
+                line-height: 50px;
+                background: rgba(255, 221, 227, 0.763);
+                transition-property: transform;
+                transition-duration: 1s;
+                transition-timing-function: linear;
+            }
+            .transform_demo10:hover p{
+                transform: translate(75px, 125px) scale(2, 2);
+            }
+
+            /* transform:skew(倾斜角度) */
+            .transform_demo11,.transform_demo12{
+                width: 150px;
+                height: 150px;
+                background: rgba(255, 54, 87, 0.625);
+                margin: 50px auto;
+            }
+            /* 沿着x轴倾斜 */
+            .transform_demo11{
+                transform: skewX(30deg);
+            }
+            /* 沿着y轴倾斜 */
+            .transform_demo12{
+                transform: skewY(30deg);
+            }
+
+            /* 自动旋转练习 */
+            .transform_exercise1{
+                width: 280px;
+                height: 280px;
+                background: rgba(255, 54, 87, 0.625);
+                margin: 50px auto;
+                transition-property: transform;
+                transition-duration: 1s;
+                transition-timing-function: linear;
+            }
+
+            /* 倾斜练习 */
+            /* 导航 */
+            .transform_exercise2_box{
+                width: 400px;
+                height: 300px;
+                margin: 10px auto;
+                border: 1px solid gray;
+            }
+            .transform_exercise2_box div{
+                width: 150px;
+                height: 100px;
+                background: rgba(255, 54, 87, 0.625);
+                float: left;
+                margin-left: 20px;
+                margin-top: 20px;
+                transform: skewX(20deg);
+            }
+            .transform_exercise2_box div a{
+                display: block;
+                transform: skewX(-20deg);
+                line-height: 100px;
+                text-align: center;
+                color: white;
+                text-decoration: none;
+            }
+            /* 倾斜后消失效果 */
+            .transform_exercise3{
+                width: 400px;
+                height: 300px;
+                margin: 10px auto;
+                position: relative;
+                border: 1px solid gray;
+                overflow: hidden;
+            }
+            .transform_exercise3 img{
+                width: 150px;
+                height: 90px;
+                /* line-height: 90px; */
+                /* text-align: center; */
+                background: deeppink;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                transition-property: transform;
+                transition-duration: 1s;
+                transition-timing-function: linear;
+            }
+            .transform_exercise3:hover img{
+                transform: translate(-50%, -50%) skewX(-90deg);
+            }
+
+            /* transform-origin 转换原点 */
+            .transform_demo13,.transform_demo14,.transform_demo15,.transform_demo16{
+                width: 300px;
+                height: 300px;
+                background: rgba(253, 203, 211, 0.404);
+                margin: 50px auto;
+                transition-property: transform;
+                transition-duration: 1s;
+                transition-timing-function: linear;
+            }
+            /* 当元素旋转时，默认是以中心点为旋转中心 */
+            .transform_demo13:hover{
+                transform: rotate(45deg);
+            }
+            /* 可以使用三种方式改变旋转的原点位置 */
+            .transform_demo14{
+                /* 左上角 */
+                transform-origin: left top;
+            }
+            .transform_demo14:hover{
+                transform: rotate(45deg);
+            }
+            /* 百分比 */
+            .transform_demo15{
+                /* 左上角 */
+                transform-origin: 0% 0%;
+            }
+            .transform_demo15:hover{
+                transform: rotate(60deg);
+            }
+            /* px */
+            .transform_demo16{
+                /* 左上角 */
+                transform-origin: 0px 0px;
+            }
+            .transform_demo16:hover{
+                transform: rotate(60deg);
+            }
+
+            /* 心形位置切换案例 */
+            .transform_exercise4{
+                width: 300px;
+                height: 300px;
+                margin: 200px auto;
+                background: rgb(255, 90, 20);
+                position: relative;
+            }
+            .transform_exercise4:hover{
+                transform: rotate(45deg) scale(1.2, 1.2);
+            }
+            .transform_exercise4 div{
+                position: absolute;
+                width: 300px;
+                height: 300px;
+                background: red;
+                border-radius: 50%;
+            }
+            .transform_exercise4 div:nth-child(1){
+                top: 0;
+                left: -150px;
+            }
+            .transform_exercise4 div:nth-child(2){
+                top: -150px;
+                left: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <h2 class="demo_title">translate基础用法表示平移</h2>
+        <h2>translate(x,y) 相当于当前位置进行平移(不脱离文档流)</h2>
+        <h2>如果有top和left值会先移动到指定位置在进行translate的平移</h2>
+        <div class="transform_demo1"></div>
+        
+        <h2 class="demo_title">translateX和translateY</h2>
+        <div class="transform_demo2"></div>
+        
+        <h2 class="demo_title">取值: 两种一种为px, 另一种是百分比</h2>
+        <h2>当取值为百分比时, 这个百分比是相当于 -自身宽高- 的 百分比</h2>
+        <div class="transform_demo3"></div>
+        <div class="transform_demo4"></div>
+
+        <h2 class="demo_title">元素水平垂直居中</h2>
+        <h2>主要分为两个类，一种已知宽高，另一种未知宽高</h2>
+        <div class="transform_demo5_box">
+            <h2 class="demo5_box_title">已知宽高</h2>
+            <div class="demo5_content_box1">
+                <p>使用margin调整</p>
+            </div>
+            <h2 class="demo5_box_title">未知宽高</h2>
+            <div class="demo5_content_box2">
+                <p>四个方向值都为0+margin:auto</p>
+            </div>
+            <div class="demo5_content_box3">
+                <p>使用弹性布局</p>
+            </div>
+            <div class="demo5_content_box4">
+                <p>使用2d转换</p>
+            </div>
+        </div>
+
+        <h2 class="demo_title">transform:rotate(旋转角度deg)</h2>
+        <h2>旋转角度为正值时，顺时针旋转</h2>
+        <div class="transform_demo6"></div>
+        <h2>旋转角度为负值时，逆时针旋转</h2>
+        <div class="transform_demo7"></div>
+
+        <h2 class="demo_title">2d转换-transform:scale缩放</h2>
+        <h2>scale(x,y)x,y默认值为1,表示不放大也不缩小</h2>
+        <div></div>
+        <h2>使用scale控制元素缩小,最小值为(0,0)不允许有负数</h2>
+        <div class="transform_demo8"></div>
+        <h2>使用scale控制元素放大, 没有最大值</h2>
+        <div class="transform_demo9"></div>
+        <h2>一起使用 平移和缩放</h2>
+        <div class="transform_demo10">
+            <p>日本又来台风了</p>
+        </div>
+
+        <h2 class="demo_title">transform:skew(倾斜角度)</h2>
+        <h2>沿着x轴倾斜</h2>
+        <div class="transform_demo11"></div>
+        <h2>沿着y轴倾斜</h2>
+        <div class="transform_demo12"></div>
+
+        <h2 class="demo_title">自动旋转练习</h2>
+        <div class="transform_exercise1"></div>
+
+        <h2 class="demo_title">倾斜练习</h2>
+        <h2>导航</h2>
+        <div class="transform_exercise2_box">
+            <div>
+                <a href="">导航一</a>
+            </div>
+            <div>
+                <a href="">导航二</a>
+            </div>
+        </div>
+        <h2>倾斜后消失效果</h2>
+        <div class="transform_exercise3">
+            <!-- <p>content</p> -->
+            <img src="../img/04.jpg">
+        </div>
+
+        <h2 class="demo_title">transform-origin 转换原点</h2>
+        <h2>当元素旋转时，默认是以中心点为旋转中心</h2>
+        <div class="transform_demo13"></div>
+        <h2>可以使用三种方式改变旋转的原点位置</h2>
+        <h2>第一种: 使用关键字(top , left , right , bottom , center)</h2>
+        <h2>默认为transform-origin:center center</h2>
+        <div class="transform_demo14"></div>
+        <h2>第二种: 用百分比表示 ( 默认为 50% 50%)</h2>
+        <h2>取值范围: 0-100%, 以左上角为0% 0%点</h2>
+        <h2>如果使用百分比, 那么这个旋转的原点就是在这个元素的范围之内</h2>
+        <div class="transform_demo15"></div>
+        <h2>第三种: 使用px 这个还是以左上角为 0 0点</h2>
+        <h2>用px的最大特点 , 可以将原点定义在元素外部</h2>
+        <div class="transform_demo16"></div>
+
+        <h2>心形位置切换案例</h2>
+        <div class="transform_exercise4">
+            <div></div>
+            <div></div>
+        </div>
+    </body>
+
+
+    <script>
+        window.onload = function(){
+            var exercise1 = document.getElementsByClassName('transform_exercise1');
+            var flag = true;
+            setInterval(
+                function(){
+                    if(flag){
+                        exercise1[0].style.transform = 'rotate(360deg)';
+                    } else {
+                        exercise1[0].style.transform = 'rotate(0deg)';
+                    }
+                    flag = !flag;
+                }
+                ,1000
+            )
+        }
+    </script>
+</html>

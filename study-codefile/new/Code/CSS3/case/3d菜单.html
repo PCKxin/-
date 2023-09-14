@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            body{
+                perspective: 800px;
+            }
+            button{
+                width: 200px;
+                height: 40px;
+                border-radius: 10px;
+                background: pink;
+                color: white;
+                border: none;
+                cursor: pointer;
+                position: absolute;
+                top: 0px;
+                left: 0px;
+            }
+            .main{
+                width: 500px;
+                position: relative;
+                transform-style: preserve-3d;
+                margin: 100px auto;
+            }
+            h2{
+                height: 80px;
+                color: white;
+                text-align: center;
+                line-height: 80px;
+                background: pink;
+                transform: translateZ(10px);
+            }
+            .main>div{
+                /* !important 优先级最高 */
+                top: 80px !important;
+            }
+            .main div{
+                /* overflow: hidden; */
+                width: 100%;
+                height: 40px;
+                position: absolute;
+                left: 0;
+                top: 41px;
+                transform-style: preserve-3d;
+                transform-origin: top;
+                transform: rotateX(-110deg);
+            }
+            .open{
+                /* forwards 保持动画结束状态 */
+                animation: open 1s linear forwards;
+            }
+            @keyframes open{
+                0%{
+                    transform: rotateX(-130deg);
+                }
+                25%{
+                    transform: rotateX(50deg);
+                }
+                50%{
+                    transform: rotateX(-15deg);
+                }
+                75%{
+                    transform: rotateX(20deg);
+                }
+                100%{
+                    transform: rotateX(0deg);
+                }
+            }
+            .close{
+                animation: close 1s linear forwards;
+            }
+            @keyframes close{
+                0%{
+                    transform:rotateX(0deg);
+                }
+                100%{
+                    transform:rotateX(-130deg);
+                }
+            }
+            .open span{
+                box-shadow: 0 0 10px 0px deeppink inset !important;
+            }
+            .main span{
+                width: 100%;
+                height: 100%;
+                display: block;
+                box-shadow: 0 0 10px 0px skyblue inset;
+                line-height: 40px;
+                text-align: center;
+                transition-property: all;
+                transition-duration: 1s;
+                transition-timing-function: linear;
+            }
+        </style>
+    </head>
+    <body>
+        <button>显示</button>
+        <div class="main">
+            <h2>这是一段标题</h2>
+            <div>
+                <span>菜单一</span>
+                <div>
+                    <span>菜单二</span>
+                    <div>
+                        <span>菜单三</span>
+                        <div>
+                            <span>菜单四</span>
+                            <div>
+                                <span>菜单五</span>
+                                <div>
+                                    <span>菜单六</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            window.onload = function(){
+                var btn = document.querySelector("button");
+                var divs = document.querySelectorAll(".main div");
+                // 点击显示按钮时候，给所有divs动态去添加一个类名 open
+                // 延迟添加
+                var flag = true; // 控制开关
+                var i = 0; // 控制延迟时间
+                var timer = null; // 定时器
+                btn.onclick = function(){
+                    if(timer){ // 如果定时器存在
+                        return; // 直接结束
+                    }
+                    if(flag){ // 如果开关是true
+                        i = 0; // 索引为0
+                        timer = setInterval(
+                            function(){
+                                divs[i].className = 'open'; // 给当前div添加open类名
+                                i++; // 索引自增
+                                if(i == divs.length){ // 如果索引等于divs的长度
+                                    clearInterval(timer);
+                                    flag = false; // 开关变成false
+                                    timer = null; // 定时器清空
+                                    btn.innerText = "隐藏";
+                                }
+                            }
+                            ,200
+                        );
+                    }
+                    else{
+                        i = divs.length - 1; // 索引等于divs的长度-1
+                        timer = setInterval(
+                            function(){
+                                divs[i].className = 'close';
+                                i--;
+                                if(i < 0){
+                                    clearInterval(timer);
+                                    flag = true;
+                                    timer = null;
+                                    btn.innerText = "显示";
+                                }
+                            }
+                            ,200
+                        )
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>

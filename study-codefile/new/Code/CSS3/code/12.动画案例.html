@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link href="http://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            h2{
+                margin-top: 20px;
+                font-size: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: pink;
+            }
+            .demo{
+                width: auto;
+                height: 600px;
+                background-color: rgba(180, 180, 180, 0.06);
+                margin: 20px auto;
+                position: relative;
+            }
+
+/* ----------------------------------------------- */
+
+            .line{
+                width: 300px;
+                height: 300px;
+                border-radius: 50%;
+                border: 1px solid red;
+                position: absolute;
+                top: 150px;
+                left: 500px;
+            }
+            .ballBox{
+                width: 300px;
+                height: 300px;
+                position: absolute;
+                top: 150px;
+                left: 500px;
+                animation-name: demo1;
+                animation-duration: 2s;
+                animation-timing-function: linear;
+                animation-iteration-count: infinite;
+            }
+            .ballBox .ball{
+                width: 50px;
+                height: 50px;
+                background-color: red;
+                position: absolute;
+                top: -25px;
+                left: 125px;
+                border-radius: 50%;
+            }
+            @keyframes demo1{
+                to{
+                    transform: rotate(360deg);
+                }
+            }
+
+/* ----------------------------------------------- */
+
+            .wBall{
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                background: conic-gradient(pink 20%, deepskyblue 50%, deeppink 80%);
+                animation-name: demo2;
+                animation-duration: 3s;
+                animation-timing-function: linear;
+                animation-fill-mode: forwards;
+            }
+            .wall{
+                width: 10px;
+                height: 100px;
+                background: #ccc;
+                position: absolute;
+                top: 0;
+                left: 700px;
+            }
+            @keyframes demo2{
+                95%{
+                    transform: translate(600px, 0) rotate(1080deg);
+                }
+                100%{
+                    transform: translate(575px, 0) rotate(1050deg);
+                }
+            }
+
+/* ----------------------------------------------- */
+
+            .sBall{
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                background: conic-gradient(pink 20%, deepskyblue 50%, deeppink 80%);
+                position: absolute;
+                left: 500px;
+                top: 0;
+                animation-name: demo3;
+                animation-duration: 1.5s;
+                animation-timing-function: ease-in;
+                animation-iteration-count: infinite;
+                animation-direction: alternate;
+                z-index: 3;
+            }
+            .shadow{
+                width: 150px;
+                height: 80px;
+                border-radius: 50%;
+                background: #797373;
+                position: absolute;
+                left: 500px;
+                top: 500px;
+                /* filter 作用是给元素添加滤镜效果 */
+                filter: blur(10px);
+                animation-name: demo3-shadow;
+                animation-duration: 1.5s;
+                animation-timing-function: ease-in;
+                animation-direction: alternate;
+                animation-iteration-count: infinite;
+            }
+            @keyframes demo3{
+                to{
+                    transform: translate(0, 400px);
+                }
+            }
+            @keyframes demo3-shadow{
+                to{
+                    filter: blur(2px);
+                }
+            }
+
+/* ----------------------------------------------- */
+
+            .demo_frame{
+                width: 100%;
+                height: 600px;
+                background-color: rgba(21, 21, 21, 0.782);
+                margin: 20px auto;
+                position: relative;
+            }
+
+            .frame_anime{
+                width: 200px;
+                height: 100px;
+                margin: 20px auto;
+                position: absolute;
+                top: 250px;
+                left: 50%;
+                background: url('../img/bear.png') no-repeat;
+                animation-name: demo4;
+                animation-duration: 1s;
+                animation-iteration-count: infinite;
+                /* steps() 用于设置动画的帧数 */
+                animation-timing-function: steps(8);
+                /* animation: demo4 1s infinite steps(8); */
+            }
+            @keyframes demo4{
+                100%{
+                    background-position: -1600px 0;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <h2>中心点旋转</h2>
+        <div class="demo">
+            <div class="line"></div>
+            <div class="ballBox">
+                <div class="ball"></div>
+            </div>
+        </div>
+        <h2>小球撞墙</h2>
+        <div class="demo">
+            <div class="wBall"></div>
+            <div class="wall"></div>
+        </div>
+        <h2>小球弹起</h2>
+        <div class="demo">
+            <div class="sBall"></div>
+            <div class="shadow"></div>
+        </div>
+        <h2>逐步动画</h2>
+        <div class="demo_frame">
+            <div class="frame_anime"></div>
+        </div>
+        <h2>图标库font-some使用</h2>
+        <li style="color:red; margin: 20px auto; font-size: 50px; list-style: none; text-align: center;">
+            <i class="fa fa-apple"></i>
+        </li>
+    </body>
+</html>

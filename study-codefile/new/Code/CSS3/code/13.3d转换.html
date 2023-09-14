@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>3d转换</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .title{
+                margin-top: 20px;
+                font-size: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: pink;
+            }
+            .content{
+                margin-top: 20px;
+                font-size: 20px;
+                line-height: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: skyblue;
+            }
+
+/* ----------------------------------------------------- */
+            /* 景深/透视：是指屏幕到眼睛（电脑模拟）的距离，模拟人类的眼睛观察 */
+            /* 属性就是眼睛到屏幕的距离 */
+            /* 一般设置在body上 或者 父元素上 */
+
+            .demo1-box{
+                perspective: 1000px;
+            }
+
+            .demo1{
+                width: 300px;
+                height: 300px;
+                margin: 20px auto;
+                background: red;
+                /* translateZ(0px) 代表的是z轴的位移 */
+                transform: translateZ(0px);
+                transition-property: transform;
+                transition-duration: 1s;
+            }
+            .demo1:hover{
+                /* z轴发生位移的两种写法 */
+                transform: translate3d(0,0,300px);
+                /* transform: translateZ(300px); */
+            }
+
+/* ----------------------------------------------------- */
+
+            .demo2-box{
+                perspective: 1000px;
+            }
+
+            .demo2,.demo3,.demo4,.demo5{
+                width: 300px;
+                height: 300px;
+                margin: 20px auto;
+                background: rgb(255, 117, 140);
+                position: relative;
+                transition-property: transform;
+                transition-duration: 1s;
+            }
+            .demo2-Xline{
+                width: 350px;
+                height: 5px;
+                background: red;
+                position: absolute;
+                top: 50%;
+                left: 0;
+                transform: translateY(-50%);
+            }
+            .demo4-Yline{
+                width: 5px;
+                height: 350px;
+                background: red;
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .demo2:hover{
+                transform: rotateX(60deg);
+            }
+            .demo3:hover{
+                transform: rotateX(-60deg);
+            }
+            .demo4:hover{
+                transform: rotateY(60deg);
+            }
+            .demo5:hover{
+                transform: rotateY(-60deg);
+            }
+
+/* ----------------------------------------------------- */
+
+            .demo3-box{
+                perspective: 1000px;
+            }
+
+            .demo6{
+                width: 300px;
+                height: 300px;
+                margin: 20px auto;
+                position: relative;
+                transform: rotateY(-30deg);
+                transform-style: preserve-3d;
+            }
+
+            .demo6 div{
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            .demo6 div:nth-child(1){
+                background: green;
+            }
+            .demo6 div:nth-child(2){
+                background: blue;
+                transform: rotateX(60deg);
+            }
+
+/* ----------------------------------------------------- */
+
+            .demo4-box{
+                perspective: 1000px;
+            }
+
+            .demo7,.demo8,.demo9,.demo10{
+                width: 250px;
+                height: 100px;
+                margin: 20px auto;
+                background: rgb(255, 117, 140);
+                position: relative;
+                transition-property: transform;
+                transition-duration: 1s;
+                transition-timing-function: linear;
+            }
+            .demo7-Xline{
+                width: 350px;
+                height: 5px;
+                background: red;
+                position: absolute;
+            }
+            .demo9-Yline{
+                width: 5px;
+                height: 150px;
+                background: red;
+                position: absolute;
+            }
+
+            .demo7{
+                transform-origin: top;
+            }
+            .demo7 .demo7-Xline{
+                top: 0;
+                left: 0;
+            }
+            .demo7:hover{
+                transform: rotateX(60deg);
+            }
+
+            .demo8{
+                transform-origin: bottom;
+            }
+            .demo8 .demo7-Xline{
+                bottom: 0;
+                left: 0;
+            }
+            .demo8:hover{
+                transform: rotateX(60deg);
+            }
+            .demo9{
+                transform-origin: left;
+            }
+            .demo9 .demo9-Yline{
+                top: 0;
+                left: 0;
+            }
+            .demo9:hover{
+                transform: rotateY(60deg);
+            }
+            .demo10{
+                transform-origin: right;
+            }
+            .demo10 .demo9-Yline{
+                top: 0;
+                right: 0;
+            }
+            .demo10:hover{
+                transform: rotateY(60deg);
+            }
+
+        </style>
+    </head>
+    <body>
+        <h2 class="title">perspective 景深/透视</h2>
+        <h3 class="content">
+            是指屏幕到眼睛的距离, 模拟人类的眼睛观察3d(近大远小) <br>
+            属性就是眼睛到屏幕的距离 <br>
+            一般设置在body上 或者 父元素上 取值一般在800-1000px左右 <br>
+            值越大: 说明眼睛离屏幕越远 3d效果越不明显 <br>
+            值越小: 眼睛离着屏幕越近 3d效果很明显 <br>
+        </h3>
+        <h2 class="title">Z轴</h2>
+        <h3 class="content">
+            z轴的方向, 目前是从屏幕的起点指向你的眼睛为正方向 <br>
+            z轴设置的值越大, 离你的眼睛越近, 在页面中显示的结果就是越来越大 <br>
+            相反, z值越来越小, 离你的眼睛越来越远, 实际效果就是元素越来越小 <br>
+            但是元素的实际尺寸是没有任何变化的
+        </h3>
+        <div class="demo1-box">
+            <div class="demo1"></div>
+        </div>
+        
+        <h2 class="title">3d转换的旋转</h2>
+        <div class="demo2-box">
+            <h3 class="content">
+                沿着x轴进行旋转 <br>
+                x轴旋转角度为正值方向 <br>
+            </h3>
+            <div class="demo2">
+                <div class="demo2-Xline"></div>
+            </div>
+            <h3 class="content">
+                沿着x轴进行旋转 <br>
+                x轴旋转角度为负值方向 <br>
+            </h3>
+            <div class="demo3">
+                <div class="demo2-Xline"></div>
+            </div>
+            <h3 class="content">
+                沿着y轴旋转 <br>
+                y轴旋转角度为正值方向 <br>
+            </h3>
+            <div class="demo4">
+                <div class="demo4-Yline"></div>
+            </div>
+            <h3 class="content">
+                沿着y轴旋转 <br>
+                y轴旋转角度为负值方向 <br>
+            </h3>
+            <div class="demo5">
+                <div class="demo4-Yline"></div>
+            </div>
+        </div>
+
+        <h2 class="title">transform-style: preserve-3d</h2>
+        <h3 class="content">
+            想要子元素有3d效果，需要在父元素身上添加一个属性 <br>
+            开启3d效果/3d呈现 <br>
+            transform-style: <br>
+            preserve-3d 开启3d <br>
+            flat 关闭3d (不写这个属性也是关闭) 默认值 <br>
+        </h3>
+        <h3 class="content">
+            3d效果怎么写? <br>
+            先创建一个父级relative定位, 然后里面所有的子元素absolute定位, <br>
+            初始值都为top: 0; left: 0; <br>
+            然后再分别调整每一个子元素旋转和位移, 到达指定的位置就可以了 <br>
+        </h3>
+        <div class="demo3-box">
+            <div class="demo6">
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+
+        <h2 class="title">transform-origin 在3d转换的4个属性值</h2>
+        <h3 class="content">
+            当沿着x轴进行旋转的时候, 上下旋转, 所以有两个值 top 和 bottom <br>
+            当沿着y轴进行旋转的时候, 左右旋转, 也有两个值, left 和 right <br>
+        </h3>
+        <div class="demo4-box">
+            <h3 class="content">属性值为top时: </h3>
+            <div class="demo7">
+                <div class="demo7-Xline"></div>
+            </div>
+            <h3 class="content">属性值为bottom时: </h3>
+            <div class="demo8">
+                <div class="demo7-Xline"></div>
+            </div>
+            <h3 class="content">属性值为left时: </h3>
+            <div class="demo9">
+                <div class="demo9-Yline"></div>
+            </div>
+            <h3 class="content">属性值为right时: </h3>
+            <div class="demo10">
+                <div class="demo9-Yline"></div>
+            </div>
+        </div>
+
+    </body>
+</html>

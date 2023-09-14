@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .title{
+                margin-top: 20px;
+                font-size: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: pink;
+            }
+
+/* ----------------------------------------------- */
+
+            .p-box1{
+                perspective: 1300px;
+            }
+            .demo-box1{
+                width: 320px;
+                height: 200px;
+                margin: 20px auto;
+                position: relative;
+                transform-style: preserve-3d;
+                animation: move 1s linear infinite;
+            }
+            .demo-box1 img{
+                width: 100%;height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            @keyframes move{
+                to{
+                    transform: rotateY(360deg);
+                }
+            }
+            .demo-box1 img:nth-child(1){
+                transform: translateZ(400px);
+            }
+            .demo-box1 img:nth-child(2){
+                transform: rotateY(60deg) translateZ(400px);
+            }
+            .demo-box1 img:nth-child(3){
+                transform: rotateY(120deg) translateZ(400px);
+            }
+            .demo-box1 img:nth-child(4){
+                transform: rotateY(180deg) translateZ(400px);
+            }
+            .demo-box1 img:nth-child(5){
+                transform: rotateY(240deg) translateZ(400px);
+            }
+            .demo-box1 img:nth-child(6){
+                transform: rotateY(300deg) translateZ(400px);
+            }
+
+/* ----------------------------------------------- */
+
+            .p-box2{
+                perspective: 800px;
+            }
+            .demo-box2{
+                width: 300px;
+                height: 225px;
+                background: url('../img/04.jpg') no-repeat;
+                background-size: 100% 100%;
+                position: relative;
+                margin: 20px auto;
+                transform-style: preserve-3d;
+            }
+            .demo-box2 div{
+                width: 50%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                border: 1px solid black;
+                transition-property: transform;
+                transition-duration: 1s;
+                transition-timing-function: linear;
+            }
+            .demo-box2 .left{
+                background: linear-gradient(rgb(255, 0, 93) 10%, #ffb69b 90%);
+                top: 0;
+                left: 0;
+                transform-origin: left;
+            }
+            .demo-box2 .right{
+                background: linear-gradient(deepskyblue 30%, orangered 70%);
+                top: 0;
+                right: 0;
+                transform-origin: right;
+            }
+            .demo-box2:hover .left{
+                transform: rotateY(-130deg);
+            }
+            .demo-box2:hover .right{
+                transform: rotateY(130deg);
+            }
+
+/* ----------------------------------------------- */
+
+            .p-box3{
+                perspective: 800px;
+            }
+            .demo-box3{
+                width: 500px;
+                height: 450px;
+                margin: 0px auto;
+                position: relative;
+                /* 定义在父元素 只会影响子元素 不会影响到孙子级别 */
+                transform-style: preserve-3d;
+            }
+            .demo-box3 div{
+                transform-style: preserve-3d;
+                width: 100%;
+                height: 100px;
+                position: absolute;
+                top: 85px;
+                left: 0;
+                transform-origin: top;
+            }
+            span{
+                width: 100%;
+                height: 80px;
+                display: block;
+                line-height: 100px;
+                text-align: center;
+                border: 1px solid black;
+            }
+            .db-3-1{
+                transform: rotateX(-45deg);
+            }
+            .db-3-2{
+                transform: rotateX(90deg);
+            }
+            .db-3-3{
+                transform: rotateX(-90deg);
+            }
+            .db-3-4{
+                transform: rotateX(90deg);
+            }
+
+/* ----------------------------------------------- */
+
+            .p-box4,.p-box5{
+                perspective: 800px;
+            }
+            .demo-box4{
+                width: 400px;
+                height: 200px;
+                position: relative;
+                margin: 80px auto;
+                transform-style: preserve-3d;
+                transition-property: transform;
+                transition-duration: 1s;
+                transition-timing-function: linear;
+            }
+            .demo-box4 div{
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                text-align: center;
+                line-height: 200px;
+                font-size: 30px;
+                font-weight: bold;
+                color: white;
+            }
+            .demo-box4 div:nth-child(1){
+                background: rgba(255, 0, 0, 0.3);
+                transform: translateZ(100px);
+            }
+            .demo-box4 div:nth-child(2){
+                background: rgba(0, 255, 0, 0.3);
+                transform: translateY(100px) rotateX(-90deg);
+            }
+            .demo-box4 div:nth-child(3){
+                background: rgba(0, 0, 255, 0.3);
+            }
+            .demo-box4:hover{
+                transform: rotateX(90deg);
+            }
+
+/* ----------------------------------------------- */
+
+            .demo-box5{
+                width: 300px;
+                height: 300px;
+                position: relative;
+                margin: 180px auto;
+                transform-style: preserve-3d;
+                animation: demo5 10s linear infinite;
+            }
+            @keyframes demo5{
+                /* 绕着x轴旋转1圈，绕着y轴旋转1圈，绕着z轴旋转0圈，旋转360deg */
+                50%{
+                    transform: rotate3d(1, 0, 0, 360deg);
+                }
+                100%{
+                    transform: rotate3d(1, 0, 0, 360deg) rotate3d(0, 1, 0, 360deg);
+                }
+            }
+            .demo-box5 div{
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                text-align: center;
+                line-height: 300px;
+                font-size: 40px;
+            }
+            .demo-box5 div:nth-child(1){
+                background: rgba(255, 0, 0, 0.363);
+                transform: translateZ(150px);
+            }
+            .demo-box5 div:nth-child(2){
+                background: rgba(0, 251, 255, 0.325);
+                transform: rotateY(180deg) translateZ(150px);
+            }
+            .demo-box5 div:nth-child(3){
+                background: rgba(255, 221, 0, 0.3);
+                transform: rotateY(-90deg) translateZ(150px);
+            }
+            .demo-box5 div:nth-child(4){
+                background: rgba(255, 0, 212, 0.3);
+                transform: rotateY(90deg) translateZ(150px);
+            }
+            .demo-box5 div:nth-child(5){
+                background: rgba(8, 0, 255, 0.3);
+                transform: rotateX(90deg) translateZ(150px);
+            }
+            .demo-box5 div:nth-child(6){
+                background: rgba(255, 51, 0, 0.3);
+                transform: rotateX(-90deg) translateZ(150px);
+            }
+        </style>
+    </head>
+    <body>
+        <h2 class="title">3d图片旋转</h2>
+        <div class="p-box1">
+            <div class="demo-box1">
+                <img src="../img/01.jpg">
+                <img src="../img/02.jpg">
+                <img src="../img/03.jpg">
+                <img src="../img/04.jpg">
+                <img src="../img/04.jpg">
+                <img src="../img/01.jpg">
+            </div>
+        </div>
+
+        <h2 class="title">开门效果</h2>
+        <div class="p-box2">
+            <div class="demo-box2">
+                <div class="left"></div>
+                <div class="right"></div>
+            </div>
+        </div>
+
+        <h2 class="title">折纸效果</h2>
+        <div class="p-box3">
+            <div class="demo-box3">
+                <div class="db-3-1">
+                    <span>选项一</span>
+                    <div class="db-3-2">
+                        <span>选项二</span>
+                        <div class="db-3-3">
+                            <span>选项三</span>
+                            <div class="db-3-4">
+                                <span>选项四</span>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="title">3d导航</h2>
+        <div class="p-box4">
+            <div class="demo-box4">
+                <div>A面</div>
+                <div>B面</div>
+                <div>初始面</div>
+            </div>
+        </div>
+
+        <h2 class="title">正方体</h2>
+        <div class="p-box5">
+            <div class="demo-box5">
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+                <div>5</div>
+                <div>6</div>
+            </div>
+        </div>
+    </body>
+</html>
