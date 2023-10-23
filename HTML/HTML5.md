@@ -318,23 +318,161 @@
 
 ### 表单
 
-#### 表单新增
+#### 新增表单属性
 
- - 表单属性:
-     - required: 判断输入长度是否大于0或输入的内容是不是null或者undefined 必填属性
-     - autofocus: 自动获取焦点, 浏览器刷新页面有失效几率, 可以通过js中提供的focus()事件解决
-     - autocomplete: 自动补全, 和name结合使用, input标签必需写上name名称才生效, 如果表单中需要填写比较敏感或有安全隐患的信息, 建议设置为off
-     - maxlength: 最大输入长度
-     - minlength: 最小输入长度
-     - pattern: 正则表达式, 用于验证输入内容是否符合规则
-     - placeholder > 占位符, 在输入内容之前显示的内容
-     - readonly: 只读, 不能修改
-     - disabled: 禁用, 不能修改, 不能提交
-     - value: 默认值
-     - name: 表单名称, 用于和后台交互
-     - form: 用于关联表单, 相当于一个袋子收集信息, 使其在不同的表单中进行数据传输
-     - action: 用于指定表单提交的地址
-     - method: 用于指定表单提交的方式, 默认为get
-     - target: 用于指定表单提交后的打开方式, 默认为_self
-     - enctype: 用于指定表单提交的编码方式, 默认为application/x-www-form-urlencoded
-     - novalidate: 用于取消表单的验证
+ - required: 判断输入长度是否大于0或输入的内容是不是null或者undefined 必填属性
+ - autofocus: 自动获取焦点, 浏览器刷新页面有失效几率, 可以通过js中提供的focus()事件解决
+ - autocomplete: 自动补全, 和name结合使用, input标签必需写上name名称才生效, 如果表单中需要填写比较敏感或有安全隐患的信息, 建议设置为off
+ - maxlength: 最大输入长度
+ - minlength: 最小输入长度
+ - pattern: 正则表达式, 用于验证输入内容是否符合规则
+ - placeholder > 占位符, 在输入内容之前显示的内容
+ - readonly: 只读, 不能修改
+ - disabled: 禁用, 不能修改, 不能提交
+ - value: 默认值
+ - name: 表单名称, 用于和后台交互
+ - form: 用于关联表单, 相当于一个袋子收集信息, 使其在不同的表单中进行数据传输
+ - action: 用于指定表单提交的地址
+ - method: 用于指定表单提交的方式, 默认为get
+ - target: 用于指定表单提交后的打开方式, 默认为_self
+ - enctype: 用于指定表单提交的编码方式, 默认为application/x-www-form-urlencoded
+ - novalidate: 用于取消表单的验证
+
+#### 新增表单类型
+
+##### email 邮箱
+
+ - 移动端键盘会自动切换为邮箱键盘出现@符号
+ - 输入内容会默认验证是否有@符号
+ - 用法:
+     - ```html
+        <input type="email">
+        ```
+
+##### url 网址
+
+ - 输入内容会默认验证是否有http://或者https://
+ - 移动端键盘会出现.com等网址后缀
+ - 用法:
+     - ```html
+        <input type="url">
+        ```
+
+##### number 数字
+
+ - 只能输入数字或者无限不循环的小数
+ - 不加min和max属性时, 默认最小值为0, 最大值为无限大
+ - 不加step属性时, 默认步长为1, 即整数
+ - 用法:
+     - ```html
+        <input type="number" maxlength="5" min="0" max="100" value="20" step="0.1">
+        <!-- 最大长度为5, 最小值为0, 最大值为100, 默认值为20, 步长为0.1 -->
+        ```
+
+##### tel 手机号码格式
+
+ - 移动端键盘会自动切换为数字键盘
+ - 用法:
+     - ```html
+        <input type="tel">
+        ```
+
+##### range 范围
+
+ - 用于显示范围
+ - 自由拖动
+ - 用法:
+     - ```html
+        <input type="range" min="0" max="100" value="50" step="1">
+        <!-- 最小值为0, 最大值为100, 默认值为50, 步长为1 -->
+        ```
+
+##### search 搜索框
+
+ - 默认有一个清除按钮, 搜索框后面的一个x号 用于清除搜索框中的内容
+ - 用法:
+     - ```html
+        <input type="search">
+        ```
+
+##### color 颜色选择器
+
+ - 用于选择颜色, 返回的是一个十六进制的颜色值
+ - 用法:
+     - ```html
+        <input type="color">
+        ```
+
+##### date 日期
+
+ - 用于选择日期
+ - 年月日
+ - 用法:
+     - ```html
+        <input type="date">
+        ```
+
+##### mouth 月份
+
+ - 用于选择月份
+ - 年 月
+ - 用法:
+     - ```html
+        <input type="mouth">
+        ```
+
+##### week 星期
+
+ - 用于选择星期
+ - 年 星期
+ - 用法:
+     - ```html
+        <input type="week">
+        ```
+
+##### time 时间
+
+ - 用于选择时间
+ - 小时 分钟
+ - 用法:
+     - ```html
+        <input type="time">
+        ```
+
+##### datetime-local 日期时间
+
+ - 用于选择完整日期和时间
+ - 年 月 日 - 小时 分钟
+ - 用法:
+     - ```html
+        <input type="datetime-local">
+        ```
+
+##### multiple 多选
+
+ - 用于多选
+ - 设置当前表单允许同时多选使用 
+ - 用法:
+     - ```html
+        <input type="file" multiple>
+        ```
+
+##### accept 文件类型
+
+ - 用于限制文件类型
+ - 用法:
+     - ```html
+        <input type="file" accept="image/*">
+        <!-- 只能选择图片 -->
+        ```
+
+##### reset 重置
+
+ - 用于重置表单
+ - 用法:
+     - ```html
+        <input type="reset">
+        ```
+ - 注意: 重置按钮会重置表单中所有的内容, 包括表单中的默认值
+
+
