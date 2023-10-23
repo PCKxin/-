@@ -1568,3 +1568,161 @@
 
 ### 布局案例
 
+ - [案例文件](../study-codefile/new/TEST/八月月考/第一题响应式.html)
+
+
+## 过渡效果
+
+### transition-property
+
+ - 过渡属性
+
+ - 语法：`transition-property`:`all | none | property;`;
+
+ - 参数：
+     - all 所有属性
+     - none 没有属性
+     - property 属性名
+
+### transition-duration 
+
+ - 过渡时间
+
+ - 语法：`transition-duration`:`time;`;
+
+ - 参数：
+     - time 时间
+
+### transition-timing-function
+
+ - 过渡速度曲线
+
+ - 语法：`transition-timing-function`:`linear | ease | ease-in | ease-out | ease-in-out | cubic-bezier(n,n,n,n);`;
+
+ - 参数：
+     - linear 匀速
+     - ease 慢速开始，然后变快，然后慢速结束
+     - ease-in 慢速开始
+     - ease-out 慢速结束
+     - ease-in-out 慢速开始和结束
+     - cubic-bezier(n,n,n,n) 贝塞尔曲线
+
+### transition-delay
+
+ - 过渡延迟
+
+ - 语法：`transition-delay`:`time;`;
+
+ - 参数：
+     - time 时间
+
+### transition
+
+ - 过渡
+
+ - 语法：`transition`:`property duration timing-function delay;`;
+
+ - 参数：
+     - property 过渡属性
+     - duration 过渡时间
+     - timing-function 过渡速度曲线
+     - delay 过渡延迟
+
+
+## 转换
+
+### transform-origin
+
+ - 转换原点
+
+ - 语法：`transform-origin`:`x y z;`;
+
+ - 参数：
+     - x 水平方向
+         - 百分比
+         - 像素
+         - 关键字
+             - left
+             - center
+             - right
+     - y 垂直方向
+         - 百分比
+         - 像素
+         - 关键字
+             - top
+             - center
+             - bottom
+     - z 深度方向 , 3D转换才有用
+         - 百分比
+         - 像素
+         - 关键字
+             - center
+             - length
+             - initial
+             - inherit
+
+### transform
+
+ - 转换
+
+ - 语法：`transform`:`none | transform-functions;`;
+
+ - 参数：
+     - none 默认值
+     - transform-functions 转换函数
+         - translate(x,y) 平移
+             - x 水平方向
+                 - 百分比
+                 - 像素
+             - y 垂直方向
+                 - 百分比
+                 - 像素
+         - translateX(x) 水平方向平移
+             - x 水平方向
+                 - 百分比
+                 - 像素
+         - translateY(y) 垂直方向平移
+             - y 垂直方向
+                 - 百分比
+                 - 像素
+         - translateZ(z) 深度方向平移
+             - z 深度方向
+                 - 百分比
+                 - 像素
+         - scale(x,y) 缩放
+             - x 水平方向
+                 - 百分比
+                 - 像素
+             - y 垂直方向
+                 - 百分比
+                 - 像素
+         - scaleX(x) 水平方向缩放
+             - x 水平方向
+                 - 百分比
+                 - 像素
+         - scaleY(y) 垂直方向缩放
+             - y 垂直方向
+                 - 百分比
+                 - 像素
+         - scaleZ(z) 深度方向缩放
+             - z 深度方向
+                 - 百分比
+                 - 像素
+         - rotate(angle) 旋转
+             - angle 角度
+                 - deg
+                 - rad
+                 - grad
+                 - turn
+         - rotateX(angle) 水平方向旋转
+             - angle 角度
+                 - deg
+                 - rad
+                 - grad
+                 - turn
+         - rotateY(angle) 垂直方向旋转
+             - angle 角度
+                 - deg
+                 - rad
+                 - grad
+                 - turn
