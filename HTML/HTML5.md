@@ -316,9 +316,9 @@
      - figurecaption: 用于指定figure标签的标题
  - 注意: figure标签中的内容会独立于主要内容, 一般用于图像, 图表, 照片, 代码等
 
-### 表单
+## 表单
 
-#### 新增表单属性
+### 新增表单属性
 
  - required: 判断输入长度是否大于0或输入的内容是不是null或者undefined 必填属性
  - autofocus: 自动获取焦点, 浏览器刷新页面有失效几率, 可以通过js中提供的focus()事件解决
@@ -338,9 +338,9 @@
  - enctype: 用于指定表单提交的编码方式, 默认为application/x-www-form-urlencoded
  - novalidate: 用于取消表单的验证
 
-#### 新增表单类型
+### 新增表单类型
 
-##### email 邮箱
+#### email 邮箱
 
  - 移动端键盘会自动切换为邮箱键盘出现@符号
  - 输入内容会默认验证是否有@符号
@@ -349,7 +349,7 @@
         <input type="email">
         ```
 
-##### url 网址
+#### url 网址
 
  - 输入内容会默认验证是否有http://或者https://
  - 移动端键盘会出现.com等网址后缀
@@ -358,7 +358,7 @@
         <input type="url">
         ```
 
-##### number 数字
+#### number 数字
 
  - 只能输入数字或者无限不循环的小数
  - 不加min和max属性时, 默认最小值为0, 最大值为无限大
@@ -369,7 +369,7 @@
         <!-- 最大长度为5, 最小值为0, 最大值为100, 默认值为20, 步长为0.1 -->
         ```
 
-##### tel 手机号码格式
+#### tel 手机号码格式
 
  - 移动端键盘会自动切换为数字键盘
  - 用法:
@@ -377,7 +377,7 @@
         <input type="tel">
         ```
 
-##### range 范围
+#### range 范围
 
  - 用于显示范围
  - 自由拖动
@@ -387,7 +387,7 @@
         <!-- 最小值为0, 最大值为100, 默认值为50, 步长为1 -->
         ```
 
-##### search 搜索框
+#### search 搜索框
 
  - 默认有一个清除按钮, 搜索框后面的一个x号 用于清除搜索框中的内容
  - 用法:
@@ -395,7 +395,7 @@
         <input type="search">
         ```
 
-##### color 颜色选择器
+#### color 颜色选择器
 
  - 用于选择颜色, 返回的是一个十六进制的颜色值
  - 用法:
@@ -403,7 +403,7 @@
         <input type="color">
         ```
 
-##### date 日期
+#### date 日期
 
  - 用于选择日期
  - 年月日
@@ -412,7 +412,7 @@
         <input type="date">
         ```
 
-##### mouth 月份
+#### mouth 月份
 
  - 用于选择月份
  - 年 月
@@ -421,7 +421,7 @@
         <input type="mouth">
         ```
 
-##### week 星期
+#### week 星期
 
  - 用于选择星期
  - 年 星期
@@ -430,7 +430,7 @@
         <input type="week">
         ```
 
-##### time 时间
+#### time 时间
 
  - 用于选择时间
  - 小时 分钟
@@ -439,7 +439,7 @@
         <input type="time">
         ```
 
-##### datetime-local 日期时间
+#### datetime-local 日期时间
 
  - 用于选择完整日期和时间
  - 年 月 日 - 小时 分钟
@@ -448,7 +448,7 @@
         <input type="datetime-local">
         ```
 
-##### multiple 多选
+#### multiple 多选
 
  - 用于多选
  - 设置当前表单允许同时多选使用 
@@ -457,7 +457,7 @@
         <input type="file" multiple>
         ```
 
-##### accept 文件类型
+#### accept 文件类型
 
  - 用于限制文件类型
  - 用法:
@@ -466,7 +466,7 @@
         <!-- 只能选择图片 -->
         ```
 
-##### reset 重置
+#### reset 重置
 
  - 用于重置表单
  - 用法:
@@ -475,4 +475,136 @@
         ```
  - 注意: 重置按钮会重置表单中所有的内容, 包括表单中的默认值
 
+
+### 表单验证
+
+#### valueMissing 输入值为空时
+
+ - 判断值是否为空
+ - [案例文件](../study-codefile/new/Code/HTML5/code/6.1表单验证-valueMissing.html)
+
+#### typeMismatch 输入值类型不匹配
+
+ - 判断值的类型是否匹配
+ - [案例文件](../study-codefile/new/Code/HTML5/code/6.2表单验证-typeMismatch.html)
+
+#### patternMismatch 输入值与正则不匹配
+
+ - 判断值是否符合正则表达式
+ - [案例文件](../study-codefile/new/Code/HTML5/code/6.3表单验证-patternMismatch.html)
+
+#### rangeUnderflow 输入值小于最小值
+
+ - 判断值是否小于最小值
+ - [案例文件](../study-codefile/new/Code/HTML5/code/6.4表单验证-rangeUnderflow.html)
+
+#### stepMismatch 输入值不符合步长
+
+ - 判断值是否符合步长
+ - 判断是否符合min、max及step的规则
+ - [案例文件](../study-codefile/new/Code/HTML5/code/6.5表单验证-stepMismatch.html)
+
+#### customError 自定义错误
+
+ - 自定义错误
+ - 判断是否符合自定义的验证规则, 如果符合返回false, 不符合返回true
+ - [案例文件](../study-codefile/new/Code/HTML5/code/6.6表单验证-customError.html)
+
+#### preventDefault() 阻止默认事件
+
+ - 阻止默认事件
+ - [案例文件](../study-codefile/new/Code/HTML5/code/6.7表单验证-preventDefault.html)
+
+#### formnovalidate 取消验证
+
+ - 取消验证
+ - [案例文件](../study-codefile/new/Code/HTML5/code/6.8表单验证-formnovalidate.html)
+
+
+## 媒体标签
+
+### 引入
+
+ - 直接引入
+ - 使用source标签引入
+
+### 标签属性解释
+
+ - controls: 显示控制条
+ - autoplay: 自动播放
+ - loop: 循环播放
+ - muted: 静音
+ - poster: 视频封面, 预览图片, 加入autoplay属性时, 会在视频加载完成前显示
+ - preload: 预加载
+
+### 对象属性
+
+ - duration: 视频总时长
+ - currentTime: 当前播放时间
+ - paused: 是否暂停
+ - ended: 是否播放结束
+ - volume: 音量
+ - muted: 是否静音
+ - play(): 播放
+ - pause(): 暂停
+ - load(): 加载
+ - canPlayType(): 检测浏览器是否支持某种视频格式
+ - readyState: 视频当前状态
+ - error: 视频错误信息
+ - networkState: 网络状态
+ - buffered: 已缓冲的视频时间
+ - seekable: 可以跳转的视频时间
+ - seeking: 是否正在跳转
+ - currentSrc: 当前视频路径
+ - videoWidth: 视频宽度
+ - videoHeight: 视频高度
+ - playbackRate: 播放速度
+ - preload: 预加载
+ - durationchange: 视频总时长改变时触发
+
+ - [案例文件](../study-codefile/new/Code/HTML5/code/7.2媒体标签-video对象属性.html)
+
+### video标签
+
+ - 用于播放视频
+ - 用法:
+     - ```html
+        <video src="path" controls autoplay loop muted poster="path"></video>
+        ```
+ - 属性:
+     - src: 视频路径
+     - controls: 显示控制条
+     - autoplay: 自动播放
+     - loop: 循环播放
+     - muted: 静音
+     - poster: 视频封面
+
+### audio标签
+
+ - 用于播放音频
+ - 用法:
+     - ```html
+        <audio src="path" controls autoplay loop muted></audio>
+        ```
+ - 属性:
+     - src: 音频路径
+     - controls: 显示控制条
+     - autoplay: 自动播放
+     - loop: 循环播放
+     - muted: 静音
+
+### source标签
+
+ - 用于引入媒体文件
+ - 用法:
+     - ```html
+        <video controls autoplay loop muted poster="path">
+            <source src="path" type="video/mp4">
+            <source src="path" type="video/ogg">
+            <source src="path" type="video/webm">
+        </video>
+        ```
+ - 属性:
+     - src: 媒体路径
+     - type: 媒体类型
 
