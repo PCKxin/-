@@ -1726,3 +1726,91 @@
                  - rad
                  - grad
                  - turn
+
+## 动画
+
+### animation-name
+
+ - 动画名称
+
+ - 语法：`animation-name`:`none | keyframes-name;`;
+
+ - 参数：
+     - none 默认值
+     - keyframes-name 关键帧名称
+
+### animation-duration
+
+ - 动画持续时间
+
+ - 语法：`animation-duration`:`time;`;
+
+ - 参数：
+     - time 时间
+
+### animation-timing-function
+
+ - 动画速度曲线
+
+ - 语法：`animation-timing-function`:`linear | ease | ease-in | ease-out | ease-in-out | cubic-bezier(n,n,n,n);`;
+
+ - 参数：
+     - linear 匀速
+     - ease 慢速开始，然后变快，然后慢速结束
+     - ease-in 慢速开始
+     - ease-out 慢速结束
+     - ease-in-out 慢速开始和结束
+     - cubic-bezier(n,n,n,n) 贝塞尔曲线
+
+### animation-delay
+
+ - 动画延迟
+
+ - 语法：`animation-delay`:`time;`;
+
+ - 参数：
+     - time 时间
+
+### animation-iteration-count
+
+ - 动画播放次数
+
+ - 语法：`animation-iteration-count`:`num | infinite;`;
+
+ - 参数：
+     - num 次数
+     - infinite 无限次
+
+### animation-direction
+
+ - 动画方向(播放顺序)
+
+ - 语法：`animation-direction`:`normal | reverse | alternate | alternate-reverse;`;
+ - 参数：
+     - normal 默认值，正常播放
+     - reverse 反向播放
+     - alternate 从 0% ---> 100% 动画在奇数次播放时，按照正常的顺序播放，偶数次播放时，按照反向的顺序播放
+     - alternate-reverse 从 100% ---> 0% 动画在奇数次播放时，按照反方向播放，偶数次播放时，按照正常的顺序播放
+
+
+### animation-play-state
+
+ - 动画播放状态
+
+ - 语法：`animation-play-state`:`running | paused;`;
+
+ - 参数：
+     - running 默认值，播放
+     - paused 暂停
+
+### animation-fill-mode
+
+ - 动画填充模式
+
+ - 语法：`animation-fill-mode`:`none | forwards | backwards | both;`;
+
+ - 参数：
+     - none 默认值，不填充
+     - forwards 动画结束后，保持最后一帧的状态
+     - backwards 动画开始前，保持第一帧的状态
+     - both 动画结束后，保持最后一帧的状态，动画开始前，保持第一帧的状态
