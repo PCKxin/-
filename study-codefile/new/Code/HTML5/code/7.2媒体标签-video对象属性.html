@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .title{
+                margin-top: 20px;
+                font-size: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: pink;
+            }
+            .content{
+                margin-top: 20px;
+                font-size: 20px;
+                line-height: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: skyblue;
+            }
+            video{
+                display: block;
+                width: 800px;
+                margin: 0 auto;
+                margin-top: 100px;
+                /* object-fit 属性规定如何调整对象以适应对象的高度和宽度 */
+                
+                /* 保持原有尺寸比例，超出视频范围被裁剪 */
+                object-fit: cover;
+                
+                /* 不保持原有比例，内容拉伸填充整个容器 */
+                /* object-fit: fill; */
+            }
+        </style>
+    </head>
+    <body>
+        <video id="demo" controls poster="../img/01.jpg">
+            <source src="../video/test.mp4" id="demo_video">
+            <!-- IE不支持 webm格式 可以用IE浏览器测试兼容性 -->
+            <!-- <source src="../video/test.webm" id="demo_video"> -->
+            <!-- 线上视频 -->
+            <!-- <source src="url_path" id="demo_video"> -->
+        </video>
+        <!-- 下面视频 测试 视频设置媒体组 的时候用 -->
+        <!-- <video poster="../img/01.jpg" id="demo2" width="800px">
+            <source src="../video/test.mp4" id="demo_video_2" />
+        </video> -->
+
+
+        <div class="demo_menu">
+            <!-- 点击播放 -->
+            <button onclick="play_demo()">点击播放</button>
+
+            <!-- 暂停 -->
+            <button onclick="pause_demo()">暂停</button>
+
+            <!-- 方法检查浏览器是否可以播放规定的视频类型 -->
+            <button id="reload_demo">方法检查浏览器是否可以播放规定的视频类型</button>
+
+            <!-- 换个视频看看 -->
+            <button id="reload_demo_2">换个视频看看</button>
+
+            <!-- 自动播放 -->
+            <button onclick="autoplay_demo()">自动播放</button>
+
+            <!-- 关闭自动播放 -->
+            <button onclick="closeAutoplay_demo()">关闭自动播放</button>
+
+            <!-- 判断是否自动播放 -->
+            <button onclick="checkAutoplay_demo()">判断是否自动播放</button>
+
+            <!-- 首个缓冲的范围 -->
+            <button onclick="getFirstBu_demo()">首个缓冲的范围</button>
+
+            <!-- 缓冲的个数 -->
+            <button onclick="getBu_demo()">缓冲的个数</button>
+
+            <!-- 开启控件 -->
+            <button onclick="openControls_demo()">开启控件</button>
+
+            <!-- 关闭控件 -->
+            <button onclick="closeControls_demo()">关闭控件</button>
+
+            <!-- 查看当前视频URL -->
+            <button onclick="getUrl_demo()">查看当前视频URL</button>
+
+            <!-- 查看当前视频播放位置 -->
+            <button onclick="getCurrentTime_demo()">查看当前视频播放位置</button>
+
+            <!-- 跳转快进5s -->
+            <button onclick="setCurrentTime_demo()">跳转快进5s</button>
+
+            <!-- 获取视频总时间 -->
+            <button onclick="getDuration_demo()">获取视频总时间</button>
+
+            <!-- 设置视频音量 -->
+            <button onclick="setVolume_demo()">设置视频音量</button>
+
+            <!-- 获取视频音量 -->
+            <button onclick="getVolume_demo()">获取视频音量</button>
+
+            <!-- 开启静音 -->
+            <button onclick="openMuted_demo()">开启静音</button>
+
+            <!-- 关闭静音 -->
+            <button onclick="closeMuted_demo()">关闭静音</button>
+
+            <!-- 视频的播放是否结束 -->
+            <button onclick="isEnded_demo()">视频的播放是否结束</button>
+
+            <!-- 启用循环播放 -->
+            <button onclick="beginLoop_demo()">启用循环播放</button>
+
+            <!-- 关闭循环播放 -->
+            <button onclick="endLoop_demo()">关闭循环播放</button>
+
+            <!-- 检查循环播放状态 -->
+            <button onclick="checkLoop_demo()">检查循环播放状态</button>
+
+            <!-- 获取网络状态 -->
+            <button onclick="getNetworkState_demo()">获取网络状态</button>
+
+            <!-- 视频是否暂停 -->
+            <button onclick="isPaused_demo()">视频是否暂停</button>
+
+            <!-- 获取播放速度 -->
+            <button onclick="getPlaybackRate_demo()">获取播放速度</button>
+
+            <!-- 快速播放 -->
+            <button onclick="fastPlaybackRate_demo()">快速播放</button>
+
+            <!-- 慢速播放 -->
+            <button onclick="slowPlaybackRate_demo()">慢速播放</button>
+
+            <!-- 恢复正常播放速度 -->
+            <button onclick="normalPlaybackRate_demo()">恢复正常播放速度</button>
+
+            <!-- 后退 -->
+            <button onclick="skip(-10)">后退&lt;&lt;</button>
+
+            <!-- 前进 -->
+            <button onclick="skip(10)">前进&gt;&gt;</button>
+
+            <!-- 获取视频的第一个播放范围 -->
+            <button onclick="getFirstplayed_demo()">获取视频的第一个播放范围</button>
+
+            <!-- 获取错误状态 -->
+            <button onclick="getError_demo()">获取错误状态</button>
+
+            <!-- 为视频设置媒体组 -->
+            <button onclick="setMedGroup_demo()">为视频设置媒体组</button>
+
+            <!-- 获取媒体组名称 -->
+            <button onclick="getMedGroup_demo()">获取媒体组名称</button>
+
+            <!-- 获取视频的封面图片路径 -->
+            <button onclick="getPoster_demo()">获取视频的封面图片路径</button>
+
+            <!-- 修改视频的封面图片路径 -->
+            <button onclick="setPoster_demo()">修改视频的封面图片路径</button>
+
+            <!-- 获取域加载状态 -->
+            <button onclick="getPreload_demo()">获取域加载状态</button>
+
+            <!-- 启用域加载 -->
+            <button onclick="setPreload_demo()">启用域加载</button>
+
+            <!-- 禁用域加载状态 -->
+            <button onclick="disablePreload_demo()">禁用域加载状态</button>
+        </div>
+
+        <h2 class="title">视频组解释</h2>
+        <h3 class="content">
+            视频组作用: <br>
+            当有多个视频时, 可以通过视频组来控制视频的播放 <br>
+            比如: 当一个视频播放完毕后, 自动播放下一个视频<br>
+            写法: <br>
+            1. 为视频设置媒体组 <br>
+            2. 为视频设置事件 <br>
+            3. 事件中判断视频是否播放完毕 <br>
+            4. 播放完毕后，自动播放下一个视频 <br>
+        </h3>
+
+        <h2 class="title">域加载</h2>
+        <h3 class="content">
+            域加载作用: <br>
+            当视频很大时, 可以通过域加载来提前加载视频, 以免视频播放时卡顿 <br>
+            写法: <br>
+            1. 为视频设置域加载 <br>
+            2. 为视频设置事件 <br>
+            3. 事件中判断视频是否加载完毕 <br>
+            4. 加载完毕后, 自动播放视频 <br>
+        </h3>
+
+
+        <script>
+            // 获取执行元素
+            var demo = document.getElementById('demo');
+            var demo2 = document.getElementById('demo2');
+            // 获取视频
+            var demo_video = document.getElementById('demo_video');
+
+            // 1 点击播放
+            function play_demo(){
+                demo.play();
+            }
+
+            // 2 暂停
+            function pause_demo(){
+                demo.pause();
+            }
+
+            // 3 方法检查浏览器是否可以播放规定的视频类型
+            reload_demo.onclick = function(){
+                var canPlay = demo.canPlayType('video/mp4');
+                
+                if(canPlay == ""){
+                    canPlay = "浏览器不支持该视频格式";
+                }
+                alert(canPlay);
+            }
+
+            // 4 换个视频看看
+            reload_demo_2.onclick = function(){
+                demo_video.src = "../video/test.webm";
+                // 重新加载视频
+                demo.load();
+            }
+
+            // 5 自动播放
+            function autoplay_demo(){
+                demo.autoplay = true;
+                // 重新加载视频
+                demo.load();
+            }
+
+            // 6 关闭自动播放
+            function closeAutoplay_demo(){
+                demo.autoplay = false;
+                // 重新加载视频
+                demo.load();
+            }
+
+            // 7 判断是否自动播放
+            function checkAutoplay_demo(){
+                console.log("是否自动播放 - " + demo.autoplay);
+            }
+
+            // 8 首个缓冲的范围
+            function getFirstBu_demo(){
+                // buffered属性  返回一个TimeRanges对象，表示视频的缓冲范围
+                // start(index) - 返回指定缓冲区段的开始位置
+                // end(index) - 返回指定缓冲区段的结束位置
+                console.log("首个缓冲范围 - " + demo.buffered.start(0) + " - " + demo.buffered.end(0));
+            }
+
+            // 9 缓冲的个数
+            function getBu_demo(){
+                // length 属性返回视频缓冲区段的个数
+                console.log("缓冲个数 - " + demo.buffered.length);
+            }
+
+            // 10 开启控件
+            function openControls_demo(){
+                demo.controls = true;
+            }
+
+            // 11 关闭控件
+            function closeControls_demo(){
+                demo.controls = false;
+            }
+
+            // 12 查看当前视频URL
+            function getUrl_demo(){
+                console.log("当前视频URL - " + demo.currentSrc);
+            }
+
+            // 13 查看当前视频播放位置
+            function getCurrentTime_demo(){
+                console.log("当前视频播放位置 - " + demo.currentTime);
+            }
+
+            // 14 跳转往前加5秒播放
+            function setCurrentTime_demo(){
+                console.log("跳转往前加5秒播放 - " + (demo.currentTime += 5));
+            }
+
+            // 15 获取视频总时间
+            function getDuration_demo(){
+                console.log("视频总时间" + demo.duration);
+            }
+
+            // 16 设置视频音量
+            function setVolume_demo(){
+                demo.volume = 0.5;
+            }
+
+            // 17 获取视频音量
+            function getVolume_demo(){
+                console.log("视频音量 - " + demo.volume);
+            }
+
+            // 18 开启静音
+            function openMuted_demo(){
+                demo.muted = true;
+            }
+
+            // 19 关闭静音
+            function closeMuted_demo(){
+                demo.muted = false;
+            }
+
+            // 20 视频的播放是否结束
+            function isEnded_demo(){
+                if(demo.ended == true){
+                    alert("视频已结束");
+                }else{
+                    alert("视频未结束");
+                }
+            }
+
+            // 21 启用循环播放
+            function beginLoop_demo(){
+                demo.loop = true;
+                demo.load();
+            }
+
+            // 22 关闭循环播放
+            function endLoop_demo(){
+                demo.loop = false;
+                demo.load();
+            }
+
+            // 23 检查循环播放状态
+            function checkLoop_demo(){
+                console.log("循环播放状态 - " + demo.loop);
+            }
+
+            // 24 获取网络状态
+            function getNetworkState_demo(){
+                // 0 = NETWORK_EMPTY - 未初始化
+                // 1 = NETWORK_IDLE - 未使用网络
+                // 2 = NETWORK_LOADING - 浏览器正在下载数据
+                // 3 = NETWORK_NO_SOURCE - 未找到视频来源
+                console.log("网络状态 - " + demo.networkState);
+            }
+
+            // 25 视频是否暂停
+            function isPaused_demo(){
+                if(demo.paused == true){
+                    alert("暂停");
+                }else{
+                    alert("没有暂停");
+                }
+            }
+
+            // 26 获取播放速度
+            function getPlaybackRate_demo(){
+                // playbackRate 视频播放的速度
+                // 1.0 是正常速度
+                // 0.5 是半速（较慢）
+                // 2.0 是双倍速（更快）
+                // -1.0 是向后，正常速度
+                // -0.5 是向后，半速
+                console.log("播放速度 - " + demo.playbackRate);
+            }
+
+            // 27 快速播放
+            function fastPlaybackRate_demo(){
+                demo.playbackRate = 2.0;
+            }
+
+            // 28 慢速播放
+            function slowPlaybackRate_demo(){
+                demo.playbackRate = 0.5;
+            }
+
+            // 29 恢复正常播放速度
+            function normalPlaybackRate_demo(){
+                demo.playbackRate = 1.0;
+            }
+
+            // 30 后退
+            // 31 前进
+            function skip(time){
+                demo.currentTime += time;
+            }
+
+            // 32 获取视频的第一个播放范围
+            function getFirstplayed_demo(){
+                // played 属性返回一个TimeRanges对象，表示视频的播放范围
+                // start(index) - 返回指定播放区段的开始位置
+                // end(index) - 返回指定播放区段的结束位置
+                console.log("视频的第一个播放范围 - " + demo.played.start(0) + " - " + demo.played.end(0));
+            }
+
+            // 33 获取错误状态
+            function getError_demo(){
+                // error 属性返回一个MediaError对象，表示视频错误状态
+                // 1 = MEDIA_ERR_ABORTED - 取回过程被用户中止
+                // 2 = MEDIA_ERR_NETWORK - 当下载时发生错误
+                // 3 = MEDIA_ERR_DECODE - 当解码时发生错误
+                // 4 = MEDIA_ERR_SRC_NOT_SUPPORTED - 不支持音频/视频
+                console.log("错误状态 - " + demo.error);
+            }
+
+            // 34 为视频设置媒体组
+            function setMedGroup_demo(){
+                demo.medGroup = "test1111";
+                demo2.medGroup = "test2222";
+                alert("设置媒体组成功");
+            }
+
+            // 35 获取媒体组名称
+            function getMedGroup_demo(){
+                alert("媒体1: " + demo.medGroup + " 媒体2: " + demo2.medGroup);
+            }
+
+            // 36 获取视频的封面图片路径
+            function getPoster_demo(){
+                console.log("视频的封面图片路径 - " + demo.poster);
+            }
+
+            // 37 修改视频的封面图片路径
+            function setPoster_demo(){
+                demo.poster = "../img/02.jpg";
+            }
+
+            // 38 获取域加载状态
+            function getPreload_demo(){
+                // preload 属性设置或返回是否在页面加载后立即加载视频
+                // auto - 当页面加载后载入整个视频
+                // metadata - 当页面加载后只载入元数据
+                // none - 当页面加载后不载入视频
+                console.log("域加载状态 - " + demo.preload);
+            }
+
+            // 39 启用域加载
+            function setPreload_demo(){
+                demo.preload = "auto";
+            }
+
+            // 40 禁用域加载状态
+            function disablePreload_demo(){
+                demo.preload = "none";
+            }
+
+            
+        </script>
+    </body>
+</html>

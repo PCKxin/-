@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="./css/index.css">
+        <style>
+            video{
+                /* 保持原有尺寸比例。但部分内容可能被剪切 */
+                object-fit:cover; 
+                /* 不保证保持原有的比例，内容拉伸填充整个内容容器。 */
+                /* object-fit:fill; */
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 整体布局 -->
+        <div id="box" class="style-box">
+            <!-- 视频容器 -->
+            <div id="video-box" class="style-video-box">
+                <video poster="./img/bg.jpg" width="600px" controls="controls" id="vid" class="style-vid">
+                    <source src="./video/test.mp4">
+                </video>
+            </div>
+            <!-- 播放控件容器 -->
+            <div id="interface-box" class="style-interface-box">
+                <!-- 主控件盒子 -->
+                <div class="style-controls-holder">
+                    <!-- 开始暂停按钮 -->
+                    <!--  
+                        data-text="play" 为了让按钮的文字在播放和暂停时切换
+                    -->
+                    <a href="#" id="play" class="style-play" data-text="play" title="播放"></a>
+                    <a href="#" id="pause" class="style-pause" data-text="pause" title="暂停"></a>
+                    <!-- 分隔符 -->
+                    <span class="style-seperator sep1"></span>
+                    <!-- 进度条盒子 -->
+                    <div class="style-progress" id="progress">
+                        <!-- 进度条 -->
+                        <div class="style-seek-bar" id="seek-bar">
+                            <!-- 里面带颜色进度 -->
+                            <div class="style-play-bar" id="play-bar">
+                                <!-- 进度按钮 -->
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 时间提示 -->
+                    <div class="style-current-time" id="current-time">00:00</div>
+                    <div class="time-sep">/</div>
+                    <div class="style-duration" id="duration">00:00</div>
+                    <!-- 分隔符 -->
+                    <span class="style-seperator sep2"></span>
+                    <!-- 静音切换 -->
+                    <a href="#" id="mute" class="style-mute" data-text="mute" title="静音"></a>
+                    <a href="#" id="unmute" class="style-unmute" data-text="unmute" title="取消静音"></a>
+                    <!-- 声音条 -->
+                    <div class="style-volume-bar" id="volume-bar">
+                        <div class="style-volume-value" id="volume-value">
+                            <span class="volume-handle"></span>
+                        </div>
+                    </div>
+                    <!-- 分隔符 -->
+                    <span class="style-seperator sep3"></span>
+                    <!-- 全屏切换 -->
+                    <a href="#" id="full-screen" class="style-full-screen" data-text="full screen" title="全屏"></a>
+                </div>
+            </div>
+        </div>
+        <script src="./js/function.js"></script>
+    </body>
+</html>

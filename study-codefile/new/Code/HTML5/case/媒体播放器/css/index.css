@@ -1,0 +1,205 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background: url(../img/bg.jpg) no-repeat;
+    background-size: 100%;
+}
+
+a{
+    text-decoration: none;
+}
+/* 总盒子样式 */
+.style-box{
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+    width: 600px;
+    margin: 150px auto;
+}
+
+/* 播放控件容器 */
+.style-interface-box{
+    width: 100%;
+    height: 35px;
+    position: relative;
+    z-index: 9999;
+    background-image: -webkit-linear-gradient(top, rgb(242, 242, 242), rgb(209, 209, 209));
+    background-image: -moz-linear-gradient(top, rgb(242, 242, 242), rgb(209, 209, 209));
+    background-image: -o-linear-gradient(top, rgb(242, 242, 242), rgb(209, 209, 209));
+    background-image: -ms-linear-gradient(top, rgb(242, 242, 242), rgb(209, 209, 209));
+    background-image: linear-gradient(top, rgb(242, 242, 242), rgb(209, 209, 209));
+    /* 内阴影 */
+    box-shadow:
+        inset 0px 1px 0px #f7f7f7,
+        /* 正1代表向下 */
+        inset 0px -1px 0px #e2e2e2;
+        /* 负正1代表反的方向向上 */
+}
+
+/* 主控件盒子 */
+.style-controls-holder{
+    width: 600px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 开始和暂停按钮 */
+.style-play, .style-pause{
+    width: 40px;
+    height: 35px;
+    float: left;
+    background: url(../img/icon.png) 0 0 no-repeat;
+}
+
+.style-pause{
+    background: url(../img/icon.png) -40px 0 no-repeat;
+    display: none;
+}
+
+/* 分隔符 */
+.style-seperator{
+    width: 2px;
+    height: 35px;
+    float: left;
+    background: url(../img/line.png) no-repeat;
+    overflow: hidden;
+    margin: 0px 0px 0 0;
+    /* user-select 作用：禁止选中文本 */
+    user-select: none;
+    /* default: 选择文本 */
+    cursor: default;
+}
+
+/* 进度条盒子 */
+.style-progress{
+    width: 280px;
+    height: 10px;
+    float: left;
+    background: #706d6d;
+    border-radius: 5px;
+    margin: 13px 10px 0;
+    box-shadow:
+        inset 0px 1px 4px rgba(0, 0, 0, 0.4), 
+        0px 1px 0px rgba(255, 255, 255, 0.4);
+}
+
+/* 进度条 */
+.style-seek-bar{
+    width: 0;
+    height: 100%;
+    cursor: pointer;
+}
+
+/* 进度条拖拽按钮父盒子 */
+.style-play-bar{
+    width: 0px;
+    height: 10px;
+    background: url(../img/play-bar.png);
+    position: relative;
+    border-radius: 5px
+}
+
+/* 进度条拖拽按钮 */
+.style-play-bar span{
+    width: 16px;
+    height: 17px;
+    background: url(../img/handle.png) no-repeat;
+    position: absolute;
+    top: -3px;
+    right: -12px;
+}
+
+/* 时间提示 */
+/* 时间提示 */
+.time-sep,
+.style-current-time,
+.style-duration {
+    float: left;
+    font-family: Arial;
+    font-size: 12px;
+    color: #444;
+    margin: 12px 0 0;
+    user-select: none;
+    cursor: default;
+}
+
+.style-duration {
+    margin-right: 10px;
+    user-select: none;
+    cursor: default;
+}
+
+.time-sep {
+    margin: 12px 3px 0;
+}
+
+/* 静音切换 */
+.style-mute,
+.style-unmute {
+    width: 40px;
+    height: 35px;
+    float: left;
+}
+
+.style-unmute {
+    background: url(../img/icon.png) -80px 0 no-repeat;
+}
+
+.style-mute {
+    background: url(../img/icon.png) -120px 0 no-repeat;
+    display: none;
+}
+
+/* 声音条 */
+.style-volume-bar {
+    width: 70px;
+    height: 10px;
+    background: #706d6d;
+    border-radius: 5px;
+    float: left;
+    margin: 13px 0px 0 0;
+}
+
+.style-volume-value {
+    width: 0;
+    height: 10px;
+    position: relative;
+    background: #0094d9;
+    border-radius: 5px
+}
+
+.style-volume-value span {
+    position: absolute;
+    background: url(../img/volume.png) center no-repeat;
+    width: 11px;
+    height: 10px;
+    top: 0px;
+    right: -11px;
+}
+
+/* 全屏切换 */
+.style-full-screen {
+    width: 40px;
+    height: 35px;
+    float: left;
+    background: url(../img/icon.png) -150px 0 no-repeat;
+}
+
+.style-video-full .style-box-video {
+    top: 0;
+    left: 0;
+    position: fixed !important;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.style-video-full .style-interface-box {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+}

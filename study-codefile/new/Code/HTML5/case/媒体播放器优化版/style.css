@@ -1,0 +1,411 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+body{
+    font-family: system-ui;
+    background: url(./img/bg.png) no-repeat;
+    background-size: 100% ;
+}
+
+a{
+    text-decoration: none;
+}
+
+.flex-box{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+/* 滚动槽 */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+::-webkit-scrollbar-track {
+    border-radius: 3px;
+    background: rgba(236, 9, 9, 0.06);
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.08);
+}
+/* 滚动条滑块 */
+::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background: rgba(255, 32, 144, 0.822);
+    -webkit-box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+}
+
+
+/* 总盒子样式 */
+.style-box{
+    font-family: Arial, Helvetica, sans-serif;
+    background: rgb(255, 255, 255);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+    width: 800px;
+    height: auto;
+    margin-top: 100px;
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+/* 图片容器 */
+
+.style-img-box{
+    width: 800px;
+    height: 550px;
+    overflow: hidden;
+    background-image: url();
+    background-size: 125%;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+/* .style-img-box img{
+    width: 800px;
+    position: absolute;
+    top: -180px;
+    left: 0;
+} */
+
+/* 媒体容器 */
+
+.style-video-box{
+    display: none;
+}
+
+/* 列表样式 */
+
+.style-list-box{
+    width: 600px;
+    height: 240px;
+    background: rgba(216, 216, 216, 0.781);
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 20px;
+    position: absolute;
+    top: 25px;
+    left: 100px;
+    overflow: hidden;
+    z-index: 20;
+    display: none;
+}
+
+.style-list{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 580px;
+    height: 220px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 24px;
+    overflow-y: auto;
+    font-weight: bold;
+}
+
+.style-list-link{
+    /* pointer-events: none; */
+    color: black;
+}
+
+.style-list-link:hover{
+    color: rgb(255, 32, 144);
+}
+
+.style-interface-box{
+    width: 800px;
+    height: 260px;
+    border-radius: 25px;
+    position: absolute;
+    bottom: -80px;
+    left: 0;
+    z-index: 20;
+    background: rgba(255, 255, 255, 0.781);
+}
+
+/* 进度信息容器 */
+
+.style-progress-box{
+    width: 800px;
+    height: 50px;
+    border-radius: 25px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    /* background: rgba(255, 57, 57, 0.507); */
+}
+
+/* 进入条时间 */
+.style-current-time{
+    width: 60px;
+    height: 50px;
+    font-size: 24px;
+    line-height: 50px;
+    margin:0px 20px;
+    float: left;
+    user-select: none;
+    cursor: default;
+}
+.style-duration-time{
+    width: 60px;
+    height: 50px;
+    font-size: 24px;
+    line-height: 50px;
+    margin:0px 20px;
+    user-select: none;
+    cursor: default;
+    float: right;
+}
+
+/* 进度条盒子 */
+.style-progress{
+    width: 600px;
+    height: 20px;
+    background: rgba(231, 231, 231, 0.74);
+    box-shadow:
+        inset 0px 1px 4px rgba(0, 0, 0, 0.4), 
+        0px 1px 0px rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    margin-top: 15px;
+    float: left;
+    overflow: hidden;
+}
+
+/* 进度条 */
+.style-seek-bar{
+    width: 0;
+    height: 100%;
+    cursor: pointer;
+}
+/* 进度条拖拽父盒子 */
+.style-play-bar{
+    width: 0px;
+    height: 20px;
+    background: url(./img/play-bar.png);
+    position: relative;
+    border-radius: 10px
+}
+/* 进度条拖拽按钮 */
+.style-play-bar span{
+    width: 16px;
+    height: 20px;
+    background: url(./img/handle.png) no-repeat 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+
+/* 歌曲信息盒子 */
+.style-msg-box{
+    width: 800px;
+    height: 150px;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 20;
+}
+
+/* 歌曲名称 */
+.style-v-name{
+    width: 800px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 30px;
+    font-weight: bold;
+    color: rgb(255, 32, 144);
+    user-select: none;
+    cursor: pointer;
+    margin-top: -40px;
+}
+
+.style-v-author{
+    width: 800px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 22px;
+    font-weight: bold;
+    color: rgb(88, 59, 74);
+    user-select: none;
+    cursor: pointer;
+}
+
+
+/* 播放控件容器 */
+
+.style-controls-box{
+    width: 800px;
+    height: 60px;
+    /* background: rgba(255, 32, 143, 0.274); */
+    border-radius: 30px;
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    z-index: 20;
+}
+
+/* 菜单键 */
+.style-menu-btn{
+    width: 50px;
+    height: 50px;
+    background: url(./img/menu.png) no-repeat;
+    background-size: 100%;
+    float: left;
+    margin-top: 5px;
+    margin-left: 25px;
+    cursor: pointer;
+}
+
+/*上一首 播放 下一首*/
+
+.style-prev-btn{
+    width: 30px;
+    height: 30px;
+    background: url(./img/previcon.png) no-repeat;
+    background-size: 100%;
+    float: left;
+    position: absolute;
+    top: 15px;
+    left: 160px;
+    cursor: pointer;
+}
+
+.style-play-btn,.style-pause-btn{
+    width: 50px;
+    height: 50px;
+    float: left;
+    position: absolute;
+    top: 5px;
+    left: 230px;
+    cursor: pointer;
+}
+
+.style-play-btn{
+    background: url(./img/playicon.png) no-repeat;
+    background-size: 100%;
+    display: block;
+}
+
+.style-pause-btn{
+    background: url(./img/pauseicon.png) no-repeat;
+    background-size: 100%;
+    display: none;   
+}
+
+.style-next-btn{
+    width: 30px;
+    height: 30px;
+    background: url(./img/nexticon.png) no-repeat;
+    background-size: 100%;
+    float: left;
+    position: absolute;
+    top: 15px;
+    left: 320px;
+    cursor: pointer;
+}
+
+/* 音量控制 */
+
+.style-volume-box{
+    width: 150px;
+    height: 20px;
+    background: rgb(196, 196, 196);
+    border-radius: 15px;
+    position: absolute;
+    top: 20px;
+    right: 100px;
+}
+
+.style-volume-value{
+    width: 0;
+    height: 100%;
+    position: relative;
+    background: rgb(255, 32, 144);
+    border-radius: 15px;
+}
+
+.style-volume-value span{
+    width: 22px;
+    height: 22px;
+    background: url(./img/volume.png) no-repeat;
+    background-size: 100%;
+    position: absolute;
+    top: 0px;
+    left: -5px;
+    cursor: pointer;
+}
+
+/* 静音切换 */
+.style-mute-btn,.style-unmute-btn{
+    width: 35px;
+    height: 35px;
+    float: left;
+    position: absolute;
+    top: 13px;
+    right: 50px;
+    cursor: pointer;
+}
+
+.style-mute-btn{
+    background: url(./img/icon.png) no-repeat;
+    background-position: -80px 0;
+    display: block;
+}
+
+.style-unmute-btn{
+    background: url(./img/icon.png) no-repeat;
+    background-position: -120px 0;
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* #bg-img:hover{
+    cursor: pointer;
+    width: 840px;
+    top: -200px;
+    left: -20px;
+    transition: all 0.5s ease-in-out;
+}
+
+.style-interface-box:hover{
+    cursor: pointer;
+    bottom: 0px;
+    transition: all 0.5s ease-in-out;
+}
+
+.style-list-interface-box:hover ~ .style-list-box{
+    display: block;
+    transition: all 0.5s ease-in-out;
+} */
+

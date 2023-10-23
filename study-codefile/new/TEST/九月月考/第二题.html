@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            body:before{
+                content: "\6f58\4f73\5b9d\0031\0030\002f\0031\0038\6c34\5370";
+                font-size: 80px;
+                color: rgba(255, 192, 203, 0.792);
+                z-index: -1;
+            }
+            #demo{
+                display: block;
+                background: url(img/780.jpg) no-repeat center;
+                background-size: 120%;
+                margin: 0 auto;
+                margin-top: 100px;
+                border: 1px solid rgba(194, 194, 194, 0.816);
+                border-radius: 15px;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="demo" width="600" height="400"></canvas>
+        <script>
+            var demo = document.querySelector("#demo");
+            var ctx = demo.getContext("2d");
+            // 灰色刮层
+            ctx.fillStyle = "gray";
+            ctx.fillRect(0, 0, 600, 400);
+
+            // 鼠标按下刮除灰色刮层
+            demo.onmousedown = function(e){
+                var x = e.clientX - demo.offsetLeft;  // 鼠标在demo中的x坐标
+                var y = e.clientY - demo.offsetTop;
+                console.log(x, y);
+                console.log(e.clientX, e.clientY);
+                console.log(demo.offsetLeft, demo.offsetTop);
+                ctx.clearRect(x - 10, y - 10, 20, 20);
+                demo.onmousemove = function(e){ // 鼠标移动刮除灰色刮层
+                    var x = e.clientX - demo.offsetLeft;
+                    var y = e.clientY - demo.offsetTop;
+                    ctx.clearRect(x - 10, y - 10, 20, 20);
+                }
+                demo.onmouseup = function(){ // 鼠标抬起停止刮除灰色刮层
+                    demo.onmousemove = null;
+                }
+            }
+
+
+        </script>
+    </body>
+</html>

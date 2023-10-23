@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .title{
+                margin-top: 20px;
+                font-size: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: pink;
+            }
+            .content{
+                margin-top: 20px;
+                font-size: 20px;
+                line-height: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: skyblue;
+            }
+            .demobox{
+                margin-top: 20px;
+                width: 100%;
+                height: auto;
+                text-align: center;
+                font-size: 20px;
+                color: white;
+                background: rgba(185, 185, 185, 0.568);
+            }
+            #canvas-demo1, 
+            #canvas-demo2, 
+            #canvas-demo3, 
+            #canvas-demo4, 
+            #canvas-demo5, 
+            #canvas-demo6, 
+            #canvas-demo7, 
+            #canvas-demo8,
+            #canvas-demo9,
+            #canvas-demo10
+            {
+                background: rgba(185, 185, 185, 0.805);
+            }
+            
+        </style>
+    </head>
+    <body>
+        <h2 class="title">初始canvas</h2>
+        <h3 class="content">
+            h5提供的新标签 <br>
+            用于图形的绘制, 逐像素进行渲染 <br>
+            canvas标签只是图形的容器, 本身并不具备绘制功能 , 绘制需要使用js <br>
+            canvas标签的宽高默认为300px * 150px <br>
+            canvas自由度高, 但是代码量大 <br>
+        </h3>
+        <h3 class="content">
+            主要应用领域: <br>
+            1.游戏开发 <br>
+            2.数据可视化 <br>
+            3.图形编辑器 <br>
+            4.远程控制 <br>
+            5.模拟器 <br>
+        </h3>
+        
+        <h2 class="title">canvas绘制矩形</h2>
+        <h3 class="content">
+            getContext()方法 , 用于获取canvas的上下文环境 <br>
+            书写顺序: <br>
+            样式设置 > 绘制方法 <br>
+            语法: <br>
+            var cxt = canvas.getContext(填入2d或3d) <br>
+            cxt .fillRect(x,y,w,h) 用于绘制填充矩形 <br>
+            cxt .fillStyle = "" 用于设置填充颜色,默认为黑色, 注意书写顺序 这个方法是全局属性 <br>
+            cxt .strokeRect(x,y,w,h) 用于绘制边框矩形 <br>
+            cxt .strokeStyle = "" 用于设置边框颜色,默认为黑色 <br>
+            cxt .lineWidth = "" 用于设置边框宽度,默认为1px <br>
+            lineWidth和border区别: <br>
+            border增大,向外border宽度进行增加(向一个方向) linewidth增大,是向两个方向增大,默认值为1 <br>
+            两种绘制方法: <br>
+            第一种 fillRect() strokeRect() <br>
+            第二种绘制矩形的方法: <br>
+            rect(x,y,w,h) 用于绘制矩形路径 <br>
+            fill() 用于填充路径 <br>
+            stroke() 用于绘制路径边框 <br>
+        </h3>
+        <div class="demobox">
+            第一种: <br>
+            <canvas id="canvas-demo1" width="400" height="300"></canvas> <br>
+            第二种: <br>
+            <canvas id="canvas-demo2" width="400" height="300"></canvas>
+        </div>
+        
+        <h2 class="title">canvas绘制直线和路径</h2>
+        <h3 class="content">
+            moveTo (x,y) 用于设置路径起点 <br>  
+            lineTo (x,y) 用于设置路径终点 , 可以用多次<br>
+            closePath() 用于闭合路径 <br>
+        </h3>
+        <div class="demobox">
+            <canvas id="canvas-demo3" width="400" height="300"></canvas>
+        </div>
+        
+        <h2 class="title">canvas绘制圆弧</h2>
+        <h3 class="content">
+            arc(x,y,r,起始弧度(角度),结束弧度(角度),绘制方向) 用于绘制圆弧 <br>
+            弧度 = 角度 * Math.PI / 180 <br>
+            角度 3点钟 ===》0度 <br>
+            角度 6点钟 ===》90度 <br>
+            角度 9点钟 ===》180度 <br>
+            角度 12点钟 ===》270度 <br>
+            绘制方向 false顺时针(默认值) true逆时针 <br>
+            还有Math.PI*2 = 360度 <br>
+        </h3>
+        <div class="demobox">
+            <canvas id="canvas-demo4" width="400" height="300"></canvas>
+        </div>
+        
+        <h2 class="title">canvas绘制扇形</h2>
+        <h3 class="content">
+            扇形 比 圆弧 多了一个点的坐标 可以使用moveTo()表示 <br>
+        </h3>
+        <div class="demobox">
+            <canvas id="canvas-demo5" width="400" height="300"></canvas>
+        </div>
+        
+        <h2 class="title">canvas绘制其他曲线</h2>
+        <h3 class="content">
+            arcTo(x1,y1,x2,y2,r) 绘制曲线 <br>
+            x1,y1 为起始点坐标 <br>
+            x2,y2 为终点坐标 <br>
+            r 为半径 <br>
+            贝塞尔曲线 <br>
+            quadraticCurveTo(x1,y1,x2,y2) 二次贝塞尔曲线 <br>
+            x1,y1 为控制点坐标 <br>
+            x2,y2 为终点坐标 <br>
+            控制点在哪  曲线就偏向哪儿 <br>
+            bezierCurveTo(x1,y1,x2,y2,x3,y3) 三次贝塞尔曲线 <br>
+            x1,y1 为控制点坐标 <br>
+            x2,y2 为控制点坐标 <br>
+            x3,y3 为终点坐标 <br>
+        </h3>
+        <div class="demobox">
+            <canvas id="canvas-demo6" width="400" height="400"></canvas>
+        </div>
+        
+        <h2 class="title">canvas中的2d转换</h2>
+        <h3 class="content">
+            translate(x,y) 用于平移 <br>
+            rotate(deg) 用于旋转 <br>
+            scale(x,y) 用于缩放 <br>
+            当使用以上三个方法的时候 一定要使用save() restore()把代码包裹起来 <br>
+            否则会影响其他图形的绘制
+            save() 用于保存当前的状态 <br>
+            restore() 用于恢复之前保存的状态 <br>
+            claerRect (x,y,w,h) 用于清除指定区域 <br>
+            fillRect (x,y,w,h) 用于绘制填充矩形 <br>
+        </h3>
+        <div class="demobox">
+            <canvas id="canvas-demo7" width="400" height="400"></canvas>
+        </div>
+
+        <h2 class="title">canvas插入图像</h2>
+        <h3 class="content">
+            图片预加载 意思是在页面加载的时候, 图片已经加载完成 <br>
+            图片懒加载 意思是在页面加载的时候, 图片没有加载完成 <br>
+            图片完全加载完成  会自动执行 <br>
+            drawImage(img图片对象 , 画布x轴位置 , 画布y轴位置 , width , height) <br>
+        </h3>
+        <div class="demobox">
+            <canvas id="canvas-demo8" width="400" height="400"></canvas>
+        </div>
+
+        <h2 class="title">canvas 绘制文字</h2>
+        <h3 class="content">
+            canvas支持的字体很少 不传入字体走默认值 <br>
+            font = '样式 粗细 大小 字体' 用于设置字体样式 <br>
+            textBaseline = 'top' 用于设置垂直方向的对齐方式 <br>
+            textAlign = 'left' 用于设置水平方向的对齐方式 <br>
+            fillText(内容,x,y) 用于绘制填充文字 <br>
+            measureText(内容).width 用于获取整段文字的宽度 <br>
+            内容可以用变量传递 <br>
+        </h3>
+        <div class="demobox">
+            <canvas id="canvas-demo9" width="400" height="400"></canvas>
+        </div>
+
+        <h2 class="title">canvas 绘制笑脸</h2>
+        <h3 class="content">
+            moveTo(x,y) 用于设置路径起点 <br>
+            arc(x,y,r,起始弧度(角度),结束弧度(角度),绘制方向) 用于绘制圆弧 <br>
+            stroke() 用于绘制路径边框 <br>
+            clearRect() 用于清除指定区域 <br>
+        </h3>
+        <div class="demobox">
+            <canvas id="canvas-demo10" width="400" height="400"></canvas>
+        </div>
+        <script>
+            window.onload = function(){
+                var canvas_demo1 = document.querySelector('#canvas-demo1');
+                var canvas_demo2 = document.querySelector('#canvas-demo2');
+                var demo1_cxt = canvas_demo1.getContext('2d');
+                var demo2_cxt = canvas_demo2.getContext('2d');
+                // 第一种
+                // demo1_cxt.fillStyle = 'skyblue';
+                demo1_cxt.fillStyle = 'pink';
+                demo1_cxt.strokeStyle = 'red';
+                demo1_cxt.fillRect(50,50, 100, 100);
+                demo1_cxt.strokeRect(50,50, 100, 100);
+                // 第二种
+                demo2_cxt.fillStyle = 'skyblue';
+                demo2_cxt.strokeStyle = 'deeppink';
+                demo2_cxt.rect(50,50, 100, 100);
+                demo2_cxt.fill();
+                demo2_cxt.stroke(); //相当于 用笔实际在画布中绘制出来的那个动作
+
+                // 绘制直线和路径
+                var canvas_demo3 = document.querySelector('#canvas-demo3');
+                var demo3_cxt = canvas_demo3.getContext('2d');
+                demo3_cxt.strokeStyle = 'red';
+                demo3_cxt.beginPath();
+                demo3_cxt.moveTo(50,50);
+                demo3_cxt.lineTo(300,50);
+                demo3_cxt.lineTo(300,220);
+                demo3_cxt.stroke();
+                demo3_cxt.closePath();
+                demo3_cxt.beginPath();
+                demo3_cxt.moveTo(150,150);
+                demo3_cxt.lineTo(280,150);
+                demo3_cxt.lineTo(280,220);
+                demo3_cxt.lineTo(150,150);
+                demo3_cxt.stroke(); 
+                demo3_cxt.closePath();
+
+                // 绘制圆弧
+                var canvas_demo4 = document.querySelector('#canvas-demo4');
+                var demo4_cxt = canvas_demo4.getContext('2d');
+                demo4_cxt.strokeStyle = 'pink';
+                demo4_cxt.lineWidth = 5;
+                demo4_cxt.beginPath();
+                // 12点方向到3点方向
+                demo4_cxt.arc(150,150,100,270*Math.PI/180,0*Math.PI/180,false);
+                demo4_cxt.stroke();
+
+                // 绘制扇形
+                var canvas_demo5 = document.querySelector('#canvas-demo5');
+                var demo5_cxt = canvas_demo5.getContext('2d');
+                demo5_cxt.strokeStyle = 'pink';
+                demo5_cxt.lineWidth = 5;
+                demo5_cxt.beginPath();
+                demo5_cxt.moveTo(150,150);
+                demo5_cxt.arc(150,150,100,270*Math.PI/180,0*Math.PI/180,false);
+                demo5_cxt.closePath();
+                demo5_cxt.stroke();
+
+                // 绘制其他曲线
+                var canvas_demo6 = document.querySelector('#canvas-demo6');
+                var demo6_cxt = canvas_demo6.getContext('2d');
+                demo6_cxt.strokeStyle = 'pink';
+                demo6_cxt.lineWidth = 5;
+                demo6_cxt.beginPath();
+                demo6_cxt.moveTo(50,300);
+                demo6_cxt.arcTo(50,50,100,50,40);
+                demo6_cxt.stroke();
+                // 贝塞尔曲线
+                // 1.一个控制点  控制点在哪  曲线就偏向哪儿
+                demo6_cxt.beginPath();
+                demo6_cxt.moveTo(0,0); // 起始点
+                demo6_cxt.quadraticCurveTo(400,0,400,400); // 控制点和终点
+                demo6_cxt.stroke();
+                // 2.两个控制点
+                demo6_cxt.beginPath();
+                demo6_cxt.strokeStyle = 'skyblue';
+                demo6_cxt.moveTo(400,0);
+                demo6_cxt.bezierCurveTo(0,0,400,400,0,400);
+                demo6_cxt.stroke()
+
+                // 2d转换
+                var canvas_demo7 = document.querySelector('#canvas-demo7');
+                var demo7_cxt = canvas_demo7.getContext('2d');
+                setInterval( // 定时器作用是让矩形旋转
+                    function(){
+                        demo7_cxt.clearRect(0,0,canvas_demo7.width,canvas_demo7.height);
+                        demo7_cxt.save();
+                        demo7_cxt.beginPath();
+                        demo7_cxt.fillStyle = 'skyblue';
+                        demo7_cxt.translate(150,150); // 平移
+                        demo7_cxt.rotate(60*Math.PI/180); // 旋转
+                        demo7_cxt.scale(0.5,0.5); // 缩放
+                        demo7_cxt.fillRect(0,0,200,100); // 绘制矩形
+                        demo7_cxt.restore(); // 恢复之前保存的状态
+                    },1000
+                )
+
+                // 插入图像
+                var canvas_demo8 = document.querySelector('#canvas-demo8');
+                var demo8_cxt = canvas_demo8.getContext('2d');
+                var img = new Image(); // 图片预加载
+                img.src = '../img/01.jpg';
+                img.onload = function(){
+                    // 图片完全加载完成  会自动执行
+                    demo8_cxt.drawImage(img,50,50,260,200);
+                }
+
+                // 绘制文字
+                var canvas_demo9 = document.querySelector('#canvas-demo9');
+                var demo9_cxt = canvas_demo9.getContext('2d');
+                var str = 'canvas绘制文字';
+                demo9_cxt.font = 'italic 30px bold Arial'; // italic斜体  bold加粗
+                demo9_cxt.font = '30px aaa'; // 简写 aaa是不存在的字体
+                demo9_cxt.textBaseline = 'top'; // 垂直方向的对齐方式 top middle bottom
+                demo9_cxt.textAlign = 'left'; // 水平方向对齐方式 left/right/center
+                demo9_cxt.fillText(str,50,50);
+                // 获取整段文字的宽度
+                var w = demo9_cxt.measureText(str).width;
+                console.log(w);
+
+                // moveTo绘制笑脸
+                var canvas_demo10 = document.querySelector('#canvas-demo10');
+                var demo10_cxt = canvas_demo10.getContext('2d');
+                demo10_cxt.strokeStyle = 'pink';
+                demo10_cxt.lineWidth = 5;
+                demo10_cxt.beginPath(); // 开始绘制
+                demo10_cxt.arc(75,75,50,0,Math.PI*2);
+                demo10_cxt.moveTo(110,75); // 绘制嘴巴
+                demo10_cxt.arc(75,75,35,0,Math.PI);
+                // 绘制左眼
+                demo10_cxt.moveTo(65,65);
+                demo10_cxt.arc(60,65,5,0,Math.PI*2);
+                // 绘制右眼
+                // moveTo(x95=(x90+半径5))
+                demo10_cxt.moveTo(95,65);
+                demo10_cxt.arc(90,65,5,0,Math.PI*2);
+                demo10_cxt.stroke();
+                demo10_cxt.clearRect();
+
+
+            }
+
+        </script>
+    </body>
+</html>

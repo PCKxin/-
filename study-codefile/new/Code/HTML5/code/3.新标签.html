@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .title{
+                margin-top: 20px;
+                font-size: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: pink;
+            }
+            .content{
+                margin-top: 20px;
+                font-size: 20px;
+                line-height: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: skyblue;
+            }
+            .demobox{
+                margin-top: 20px;
+                width: 100%;
+                height: 260px;
+                text-align: center;
+                font-size: 20px;
+                color: white;
+                background: rgba(185, 185, 185, 0.568);
+            }
+            .prog_demo{
+                width: 200px;
+                height: 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <h2 class="title">progress 进度条</h2>
+        <div class="demobox">
+            进度: <progress value="0" max="100" class="prog_demo"></progress> 0%
+        </div>
+        <h2 class="title">datalist 列表</h2>
+        <h3 class="content">为input标记定义一个下拉列表,配合option</h3>
+        <div class="demobox">
+            请选择合适人选：<input list="vallist" placeholder="请选择" />
+            <datalist id="vallist">
+                <option value="shiroko" />
+                <option value="hoshino" />
+                <option value="mika" />
+                <option value="toki" />
+            </datalist>
+        </div>
+        <h2 class="title">details 文档描述</h2>
+        <h3 class="content">details标签用于描述文档或文档某个部分的细节</h3>
+        <div class="demobox">
+            <details>
+                <summary>我是标题</summary>
+                <dd>我是内容1</dd>
+                <dd>我是内容2</dd>
+                <dd>我是内容3</dd>
+                <dd>我是内容4</dd>
+                <dd>我是内容5</dd>
+            </details>
+            <details>
+                <summary>我是标题2</summary>
+                <dd>我是内容1</dd>
+                <dd>我是内容2</dd>
+                <dd>我是内容3</dd>
+                <dd>我是内容4</dd>
+                <dd>我是内容5</dd>
+            </details>
+        </div>
+        <h2 class="title">dialog 定义对话框</h2>
+        <h3 class="content">dialog标签定义对话框, 用于显示文档之外的内容</h3>
+        <div class="demobox">
+            <dialog open>
+                <dt>主题</dt>
+                <dd>内容1</dd>
+                <dd>内容2</dd>
+                <dd>内容3</dd>
+            </dialog>
+            <table style="position: relative; left: 200px;">
+                <tr>
+                    <th>一月<dialog open style="left: 220px;width: 120px;">我是弹框</dialog></th>
+                    <th>二月</th>
+                    <th>三月</th>
+                </tr>
+                <tr>
+                    <td>22</td>
+                    <td>23</td>
+                    <td>28</td>
+                </tr>
+            </table>
+        </div>
+        <h2 class="title">ruby注释标签</h2>
+        <h3 class="content">用于对文本进行注释</h3>
+        <div class="demobox">
+            <ruby>
+                汉<rp>(</rp><rt>han</rt><rp>)</rp>
+                字<rp>(</rp><rt>zi</rt><rp>)</rp>
+            </ruby>
+        </div>
+        <h2 class="title">mark 高亮突出</h2>
+        <h3 class="content">用于突出显示某段文字(行内标签)自带背景颜色/默认为黄色，可以修改</h3>
+        <div class="demobox">
+            <p>好好<mark style="background: red;color: #fff;">学习</mark>天天向上</p>
+        </div>
+        <h2 class="title">time 时间</h2>
+        <h3 class="content">
+            用于定义日期/时间 <br>
+            datetime属性规定日期/时间(以ISO 8601格式) <br>
+            datetime属性是必需的 <br>
+        </h3>
+        <div class="demobox">
+            今天是<time>2023-9-15</time>
+            <p> 我在 <time datetime="2008-02-14">datatime这个日期</time> 有点事情</p>
+        </div>
+        <h2 class="title">output输出结果</h2>
+        <h3 class="content">
+            用于不同类型的输出，比如计算或脚本输出 <br>
+            for属性规定了output元素与哪个元素绑定 <br>
+            form属性规定了output元素所属的一个或多个表单 <br>
+            name属性规定了output元素的名称 <br>
+        </h3>
+        <div class="demobox">
+            <form oninput="x.value = parseInt(a.value) + parseInt(b.value)">
+            input1(默认50): <input type="range" id="a" value="50" >
+            input2: <input type="number" id="b" value="50" >
+            =<output name="x" for="a b"></output>
+            </form>
+        </div>
+    </body>
+</html>

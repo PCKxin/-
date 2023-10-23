@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .title{
+                margin-top: 20px;
+                font-size: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: pink;
+            }
+            .content{
+                margin-top: 20px;
+                font-size: 20px;
+                line-height: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: skyblue;
+            }
+            .demobox{
+                margin-top: 20px;
+                width: 100%;
+                height: auto;
+                text-align: center;
+                font-size: 20px;
+                color: white;
+                background: rgba(185, 185, 185, 0.568);
+            }
+            #demo2_list{
+                list-style: none;
+                width: 500px;
+                margin: 0 auto;
+            }
+            #demo2_list li{
+                height: 30px;
+                line-height: 30px;
+                border-bottom: 1px solid #ccc;
+                display: flex;
+                justify-content: space-between;
+            }
+        </style>
+    </head>
+    <body>
+        <h2 class="title">localStorage 本地存储</h2>
+        <h3 class="content">
+            关闭浏览器数据不会消失，需要手动清除 <br>
+            容量5M-10M左右 <br>
+            永久生效, 代码清除或清除缓存才会消失 <br>
+            只能存储字符串类型的数据 <br>
+            同一浏览器不同页面之间可以共享数据 <br>
+        </h3>
+        <div class="demobox">
+            <input type="text" id="demo1_txt" placeholder="请输入要存储的数据"> <br>
+            <input type="button" id="demo1_btn" value="存储数据"> <br>
+            <input type="button" id="demo1_btn2" value="读取数据"> <br>
+            <input type="button" id="demo1_btn3" value="删除数据">
+            <p id="demo1_con"></p>
+        </div>
+
+        <h2 class="title">localStorage JSON对象存储</h2>
+        <h3 class="content">
+            JSON.stringify() 方法将对象转换为字符串 <br>
+            stringify(value[, replacer[, space]]) 三个参数 <br>
+            value:必需 <br>
+            replacer:可选 作用是转换结果的函数或数组 <br>
+            space:可选 文本添加缩进、空格和换行符 <br>
+            如果 space 是一个数字, 则返回值文本在每个级别缩进指定数目的空格, 如果 space 大于 10, 则文本缩进 10 个空格。
+            space 也可以使用非数字，如：\t。 <br>
+            JSON.parse() 方法将字符串转换为对象 <br>
+        </h3>
+        <div class="demobox">
+            <input type="button" id="demo2_btn" value="存储数据"> <br>
+            <input type="button" id="demo2_btn2" value="读取数据"> <br>
+            <input type="button" id="demo2_btn3" value="删除数据">
+            <p id="demo2_con"></p>
+            <ul id="demo2_list"></ul>
+        </div>
+
+        <h2 class="title">Cookie</h2>
+        <h3 class="content">
+            cookie 全称 HTTP Cookie, 简称 Cookie <br>
+            是浏览器存储数据的一种方式 <br>
+            Cookie 最大容量为4KB <br>
+            Cookie 会自动随着浏览器每次请求发送到服务器端 <br>
+            一般用于存储用户的 登录信息 和 网站需要的用户信息 <br>
+            在浏览器中操作cookie: <br>
+            在Application 里直接双击添加, 然后到Natwort 里 Headers 的 Response Headers里找到cookie去看 <br>
+        </h3>
+        <div class="demobox">
+            <input type="text" id="demo3_cookie" value="cookie_user">
+            <input type="text" id="demo3_cookie2" value="格式例：24*3600*30 一个月后过期"> <br>
+            <input type="button" id="demo3_btn" value="存储数据"> <br>
+            <input type="button" id="demo3_btn2" value="清除cookie">
+            <p id="demo3_con"></p>
+        </div>
+        <script>
+            /*--------------------------demo1------------------------------*/
+            // 获取元素
+            var demo1_txt = document.querySelector('#demo1_txt');
+            var demo1_btn_save = document.querySelector('#demo1_btn');
+            var demo1_btn_read = document.querySelector('#demo1_btn2');
+            var demo1_btn_del = document.querySelector('#demo1_btn3');
+            var demo1_con = document.querySelector('#demo1_con');
+            // 存储数据
+            demo1_btn_save.onclick = function(){
+                if(demo1_txt.value == ""){
+                    alert('请输入要存储的数据');
+                    return;
+                }
+                localStorage.setItem('demo1_data',demo1_txt.value);
+            }
+            // 读取数据
+            demo1_btn_read.onclick = function(){
+                var data = localStorage.getItem('demo1_data')
+                if(data == "" || data == null){
+                    alert('没有数据');
+                    return; // 终止代码
+                }
+                demo1_con.innerHTML = data;
+            }
+            // 删除数据
+            demo1_btn_del.onclick = function(){
+                localStorage.removeItem('demo1_data');
+                demo1_con.innerHTML = "已清除"
+                demo1_txt.value = "";
+                demo1_txt.focus();
+            }
+            /*--------------------------demo1------------------------------*/
+
+            /*--------------------------demo2------------------------------*/
+            var demo2_save = document.querySelector('#demo2_btn');
+            var demo2_read = document.querySelector('#demo2_btn2');
+            var demo2_del = document.querySelector('#demo2_btn3');
+            var demo2_con = document.querySelector('#demo2_con');
+            var demo2_list = document.querySelector('#demo2_list');
+
+            var demo2_test_obj = {
+                "title" : "T117不忍ノ心",
+                "author" : "BlueArchive",
+                "href" : "./video/T117不忍ノ心.mp3",
+                "img" : "img/T117BG.png"
+            };
+            
+            var demo2_test_arr = [
+                {id:"0",img : "img/T117BG.png","title" : "T117不忍ノ心"},
+                {id:"1",img : "./img/T120BG.jpg","title" : "T113カルバノグの兎"},
+                {id:"2",img : "./img/T113BG.png","title" : "T120アビドス"}
+            ];
+
+            // 存储数据
+            demo2_save.onclick = function(){
+                localStorage.setItem("demo2_loc_obj",JSON.stringify(demo2_test_obj));
+                localStorage.setItem("demo2_loc_arr",JSON.stringify(demo2_test_arr));
+                demo2_con.innerHTML = "save ok"
+            };
+
+            // 读取数据
+            demo2_read.onclick = function(){
+                var obj_data = localStorage.getItem("demo2_loc_obj");
+                var arr_data = localStorage.getItem("demo2_loc_arr");
+                if(arr_data){
+                    demo2_con.innerHTML = "";
+                    data_show();
+                    console.log(arr_data);
+                }else{
+                    demo2_con.innerHTML = "";
+                    demo2_con.innerHTML = "请先存储数据";
+                }
+            }
+
+            // 删除数据
+            demo2_del.onclick = function(){
+                // 清空此页面所有缓存
+                localStorage.clear();
+                demo2_list.innerHTML = "";
+            }
+
+            // 展示本地存储数据
+            function data_show(){
+                var data = JSON.parse(localStorage.getItem('demo2_loc_arr'));
+
+                if(data != null && data.length > 0){
+                    var list_con = "";
+                    for(var i = 0; i < data.length; i++){
+                        list_con += `
+                        <li>
+                            <span>名称: ${data[i].title}</span>
+                            <span>ID: ${data[i].id}</span>
+                        </li>
+                        `
+                    }
+                    demo2_list.innerHTML = list_con;
+                }
+            }
+
+            /*--------------------------demo2------------------------------*/
+
+            /*--------------------------demo3------------------------------*/
+
+            var demo3_cookie = document.querySelector('#demo3_cookie');
+            var demo3_btn = document.querySelector('#demo3_btn');
+            var demo3_con = document.querySelector('#demo3_con');  
+
+            // 设置cookie
+            demo3_btn.onclick = function(){
+                var date = new Date();
+                console.log(demo3_cookie2.value)
+                cookie_con = "uesr" + "=" + demo3_cookie.value + `max-age= ${demo3_cookie2.value}`;
+                document.cookie = cookie_con;
+                demo3_con.innerHTML = document.cookie;
+            }
+
+            // 删除cookie
+            var demo3_btn2 = document.querySelector('#demo3_btn2');
+            demo3_btn2.onclick = function(){
+                var date = new Date();
+                date.setTime(date.getTime() - 100000000000000000000); // 设置过期时间, 当前时间减去100000毫秒
+                document.cookie = "uesr" + "=" + demo3_cookie.value + ";expires=" + date.toGMTString(); // 设置cookie过期 ,  = v 是为了让cookie有值 , date.toGMTString()是设置过期时间
+                document.cookie = "";
+                demo3_con.innerHTML = document.cookie;
+                console.log(document.cookie);
+            }
+        </script>
+    </body>
+</html>

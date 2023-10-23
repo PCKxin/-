@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            body:before{
+                content: "\6f58\4f73\5b9d\0031\0030\002f\0031\0038\6c34\5370";
+                font-size: 80px;
+                color: rgba(255, 192, 203, 0.792);
+                z-index: -1;
+            }
+            #box_canvas{
+                width: 650px;
+                height: 450px;
+                margin-left: 150px;
+                margin-top: 150px;
+                border: 1px solid rgba(194, 194, 194, 0.816);
+                border-radius: 15px;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="box_canvas" width="650px" height="450px"></canvas>
+        <script>
+            var canvas = document.querySelector("#box_canvas");
+            var ctx = canvas.getContext("2d");
+
+            // 基础表格
+            // x轴 12条高为350px的线，宽为1px，间隔为50px 底部文字为1-12月
+            // y轴 10条宽为550px的线，高为1px，间隔为35px 左侧文字为0-100
+            // 0和1月原点分别在原点的左侧和下方
+            function drawTable(){
+                ctx.beginPath(); // 绘制开始
+                ctx.strokeStyle = "black"; // 设置线条颜色
+                ctx.lineWidth = 0.25; // 设置线条宽度
+                ctx.font = "12px Arial"; // 设置字体
+                ctx.fillStyle = "blue"; // 设置字体颜色 >月份颜色
+                ctx.textAlign = "center"; // 设置文字居中
+                ctx.textBaseline = "top"; // 设置文字基线
+                // 居中绘制
+                for(var i = 0; i < 12; i++){
+                    ctx.moveTo(50 + i * 50, 50);
+                    ctx.lineTo(50 + i * 50, 400);
+                    ctx.fillText(i + 1 + "月", 50 + i * 50, 410);
+                }
+                ctx.stroke(); 
+                ctx.beginPath();
+                ctx.textAlign = "right";
+                ctx.textBaseline = "middle"
+                ctx.fillStyle = "red"; // 设置字体颜色 >数据颜色
+                for(var i = 0 ; i < 11; i++){
+                    ctx.moveTo(50, 50 + i * 35);
+                    ctx.lineTo(600, 50 + i * 35);
+                    ctx.fillText(100 - i * 10, 40, 50 + i * 35);
+                }
+                ctx.stroke();
+            }
+
+            // 绘制数据 , 从左到右依次为1-12月, 每次刷新随机生成 0-100 的数据, 文字在顶部
+            // 自动绘制为折线图
+
+            // 刷新随机数据
+            function randomData(){
+                var arr = [];
+                for(var i = 0; i < 12; i++){
+                    arr.push(Math.floor(Math.random() * 100));
+                }
+                return arr;
+            }
+            // 绘制折线图
+            function drawLine(arr){
+                ctx.beginPath();
+                ctx.strokeStyle = "red";
+                ctx.lineWidth = 2;
+                ctx.moveTo(50, 400 - arr[0] * 3.5);  // 起始点坐标
+                for(var i = 1; i < 12; i++){
+                    ctx.lineTo(50 + i * 50, 400 - arr[i] * 3.5); // 终点坐标
+                }
+                ctx.stroke();
+            }
+            // 绘制数据
+            function drawData(arr){
+                ctx.beginPath();
+                ctx.fillStyle = "deeppink";
+                ctx.textAlign = "center";
+                ctx.textBaseline = "bottom";
+                for(var i = 0; i < 12; i++){
+                    ctx.fillText(arr[i], 50 + i * 50, 40);
+                }
+            }
+            // 执行
+            drawTable();
+            var arr = randomData();
+            drawLine(arr);
+            drawData(arr);
+
+            // 每隔150毫秒刷新一次
+            setInterval(
+                function(){
+                    ctx.clearRect(0, 0, 650, 450);
+                    drawTable();
+                    drawLine(randomData());
+                    drawData(randomData());
+                }, 150
+            )
+        </script>
+    </body>
+</html>

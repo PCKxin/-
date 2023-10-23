@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .title{
+                margin-top: 20px;
+                font-size: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: pink;
+            }
+            .content{
+                margin-top: 20px;
+                font-size: 20px;
+                line-height: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: skyblue;
+            }
+            .demobox{
+                margin-top: 20px;
+                width: 100%;
+                height: 120px;
+                text-align: center;
+                font-size: 20px;
+                color: white;
+                background: rgba(185, 185, 185, 0.568);
+            }
+        </style>
+    </head>
+    <body>
+        <h2 class="title">valueMissing 输入值为空时</h2>
+        <h3 class="content">判断值是否为空</h3>
+        <h3 class="content">
+            第一种 <br>
+            oninvalid 属性 <br>
+            用于在验证表单输入字段时触发自定义操作 <br>
+            当用户尝试提交无效数据时, 浏览器会自动验证表单字段 <br>
+            通过使用 oninvalid 属性，我们可以在验证失败时显示自定义的错误消息或执行其他自定义操作 <br>
+            在数据发送到服务端之前, 需要对表单元素按照约束条件进行验证, 验证不通过, 会收到invalid通知<br>
+            oninvalid 事件验证 valueMissing 要和 required 配合使用
+        </h3>
+        <div class="demobox">
+            <form action="#" id="demo1">
+                <label for="">
+                    用户名: <input type="text" id="test1" name="username" required>
+                </label>
+
+                <!-- 提交第一种 -->
+                <button type="submit">submit提交</button>
+            </form>
+        </div>
+        
+        <h3 class="content">
+            第二种 <br>
+            button onclick事件绑定自定义方法 <br>
+        </h3>
+        <div class="demobox">
+            <form action="#" id="demo2">
+                <label for="">
+                    用户名: <input type="text" id="test2" name="username" required>
+                </label>
+
+                <!-- 提交第二种 -->
+                <button onclick="checkValue()">提交</button>
+            </form>
+        </div>
+
+        <h3 class="content">
+            第三种 <br>
+            debugger 语句<br>
+            用于停止执行 JavaScript, 并调用 (如果可用) 调试函数 <br>
+        </h3>
+        <div class="demobox">
+            <form action="#" id="demo3">
+                <label for="">
+                    用户名: <input type="text" id="test3" name="username" required>
+                </label>
+
+                <!-- 提交第三种 -->
+                <button type="submit">submit提交</button>
+            </form>
+        </div>
+
+        <h3 class="content">
+            第四种 <br>
+            addEventListener() 方法 <br>
+            用于向指定元素添加事件句柄 <br>
+        </h3>
+        <div class="demobox">
+            <form action="#" id="demo4">
+                <label for="">
+                    用户名: <input type="text" id="test4" name="username" required>
+                </label>
+
+                <!-- 提交第四种 -->
+                <button type="submit">submit提交</button>
+            </form>
+        </div>
+
+        <h3 class="content">
+            第四种-2 <br>
+            addEventListener() 方法直接向form添加<br>
+        </h3>
+        <div class="demobox">
+            <form action="#" id="demo5">
+                <label for="">
+                    用户名: <input type="text" id="test5" name="username" required>
+                </label>
+                <button type="submit">submit提交</button>
+                <button onclick="checkValue()">提交</button>
+            </form>
+        </div>
+
+
+        <script>
+            // 第一种
+            test1.oninvalid = function(e){
+                // validity 属性返回一个 ValidityState 对象，其中包含了当前元素的有效性状态
+                console.log(e.target.validity);
+            }
+            if(test1.validity.valueMissing){
+                // setCustomValidity() 方法设置当前表单元素的自定义错误消息
+                test1.setCustomValidity('用户名不能为空');
+            } else {
+                test1.setCustomValidity('');
+            }
+
+            // 第二种
+            function checkValue(){
+                if(test2.validity.valueMissing){
+                    test2.setCustomValidity('用户名不能为空');
+                } else {
+                    test2.setCustomValidity('');
+                }
+            }
+
+            // 第三种
+            test3.oninvalid = function(e){
+                console.log(e);
+                var validity = e.target.validity;
+                console.log(validity);
+                if(test3.validity.valueMissing){
+                    debugger // 自动在浏览器中断，并跳到调用的地方
+                    test3.setCustomValidity('用户名不能为空');
+                } else {
+                    test3.setCustomValidity('');
+                }
+            }
+
+            // 第四种
+            test4.addEventListener(
+                'invalid', 
+                function(e){
+                    console.log(e);
+                    var validity = e.target.validity;
+                    console.log(validity);
+                    if(test4.validity.valueMissing){
+                        test4.setCustomValidity('用户名不能为空');
+                    } else {
+                        test4.setCustomValidity('');
+                    }
+                }
+            )
+            
+            //也可以直接向form元素添加事件句柄
+            document.getElementById("demo5").addEventListener("invalid", fn, true);
+            function fn(e) {
+                var validity = e.target.validity;
+                console.log(validity);
+                if (validity.valueMissing) {
+                    e.target.setCustomValidity("用户名不能为空");
+                } else {
+                    e.target.setCustomValidity("");
+                }
+            }
+        </script>
+    </body>
+</html>

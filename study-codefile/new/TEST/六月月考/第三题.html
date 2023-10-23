@@ -53,7 +53,6 @@
         </style>
     </head>
     <body>
-        <h1>看控制台,题的要求很多都没学,尽力了</h1>
         <div class="box">
             <div class="img_on_box">
                 <!-- 大图 -->
@@ -100,7 +99,7 @@
                 data_transfer(
                     "get",
                     "data/data.json",
-                    true,
+                    true, // true为异步，false为同步
                     function(data){
                         console.log(data);
                         //将路径添加到数组中

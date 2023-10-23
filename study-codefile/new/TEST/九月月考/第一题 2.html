@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            body:before {
+                content: "\6f58\4f73\5b9d\0031\0030\002f\0031\0038\6c34\5370";
+                font-size: 80px;
+                color: rgba(255, 192, 203, 0.792);
+                z-index: -1;
+            }
+
+            .demobox {
+                width: 1200px;
+                height: 400px;
+                display: block;
+                margin: 0 auto;
+                margin-top: 100px;
+                border-radius: 15px;
+            }
+
+            #demo,
+            #demo2 {
+                width: 450px;
+                height: 450px;
+                margin: 0px 20px;
+                display: block;
+                text-align: center;
+                float: left;
+                border: 1px solid rgba(194, 194, 194, 0.816);
+                border-radius: 15px;
+            }
+
+            #demo p, #demo2 p {
+                width: 300px;
+                height: 50px;
+                line-height: 50px;
+                margin: 0 auto;
+                margin-top: 20px;
+                text-align: center;
+                background: pink;
+            }
+
+            #demo a, #demo2 a {
+                width: 300px;
+                height: 50px;
+                line-height: 50px;
+                margin: 0 auto;
+                margin-top: 20px;
+                text-align: center;
+                display: block;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="demobox">
+            <div id="demo">
+                <p draggable="true" id="draggable1">1231231231231</p>
+                <p draggable="true" id="draggable2">1231231231231</p>
+                <p draggable="true" id="draggable3">1231231231231</p>
+                <a href="##" draggable="true" id="draggable4">dafsdfsdafsdadf</a>
+                <p draggable="true" draggable="true" id="draggable5">1231231231231</p>
+                <p draggable="true" draggable="true" id="draggable6">1231231231231</p>
+            </div>
+            <div id="demo2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        </div>
+
+        <script>
+            // 开始拖拽事件
+            document.getElementById("draggable1").addEventListener("dragstart", function (event) {
+                event.dataTransfer.setData("text", event.target.id);
+            });
+            document.getElementById("draggable2").addEventListener("dragstart", function (event) {
+                event.dataTransfer.setData("text", event.target.id);
+            });
+            document.getElementById("draggable3").addEventListener("dragstart", function (event) {
+                event.dataTransfer.setData("text", event.target.id);
+            });
+            document.getElementById("draggable4").addEventListener("dragstart", function (event) {
+                event.dataTransfer.setData("text", event.target.id);
+            });
+            document.getElementById("draggable5").addEventListener("dragstart", function (event) {
+                event.dataTransfer.setData("text", event.target.id);
+            });
+            document.getElementById("draggable6").addEventListener("dragstart", function (event) {
+                event.dataTransfer.setData("text", event.target.id); 
+                // dataTransfer.setData() 方法设置被拖数据的数据类型和值
+            });
+
+
+            // 防止浏览器默认行为
+            function allowDrop(event) {
+                event.preventDefault();
+            }
+
+            // 放置事件
+            function drop(event) {
+                event.preventDefault(); // 防止浏览器默认行为
+                var data = event.dataTransfer.getData("text"); // 获取被拖数据的数据类型和值
+                var draggedElement = document.getElementById(data); // 获取被拖元素
+                event.target.appendChild(draggedElement); // 放置被拖元素
+            }
+        </script>
+    </body>
+
+</html>

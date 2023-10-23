@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .title{
+                margin-top: 20px;
+                font-size: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: pink;
+            }
+            .content{
+                margin-top: 20px;
+                font-size: 20px;
+                line-height: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: skyblue;
+            }
+            header,article,footer{
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <h2 class="title">方法一</h2>
+        <h3 class="content">
+            第一步 在js中使用document.createElement('新标签名') <br>
+            第二步 因为创建出来的元素属于行内元素 所以在css中改为块级元素 <br>
+        </h3>
+        <header>头部</header>
+        <article>内容区</article>
+        <footer>底部</footer>
+        <script>
+            document.createElement('header');
+            document.createElement('article');
+            document.createElement('footer');
+        </script>
+        <h2 class="title">方法二</h2>
+        <h3 class="content">
+            script 标签引入插件 
+        </h3>
+        <script src="../code/html5shiv.js"></script>
+    </body>
+</html>

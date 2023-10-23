@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .title{
+                margin-top: 20px;
+                font-size: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: pink;
+            }
+            .content{
+                margin-top: 20px;
+                font-size: 20px;
+                line-height: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: skyblue;
+            }
+            .demobox{
+                margin-top: 20px;
+                width: 100%;
+                height: 120px;
+                text-align: center;
+                font-size: 20px;
+                color: white;
+                background: rgba(185, 185, 185, 0.568);
+            }
+        </style>
+    </head>
+    <body>
+        <h2 class="title">typeMismatch 类型不匹配</h2>
+        <h3 class="content">
+            判断是否符合类型 <br>
+        </h3>
+        <div class="demobox">
+            <form action="#" id="demo1">
+                <input type="email" name="email" id="email1" required>
+                <button type="submit">提交</button>
+            </form>
+        </div>
+        <div class="demobox">
+            <form action="#" id="demo2">
+                <input type="email" name="email" id="email2" required>
+                <button type="submit">提交</button>
+            </form>
+        </div>
+        <script>
+            // 第一种
+            email1.oninvalid = function(e){
+                var validity = e.target.validity;
+                console.log(validity);
+                // typeMismatch 返回为 true 时, 说明类型不匹配
+                if(validity.typeMismatch){
+                    e.target.setCustomValidity('类型不匹配')
+                }
+            }
+            // 第二种
+            document.getElementById('demo2').addEventListener(
+                'invalid',
+                function(e){
+                    var validity = e.target.validity;
+                    if(validity.typeMismatch){
+                        e.target.setCustomValidity('类型不匹配')
+                    }
+                },true
+            );
+        </script>
+    </body>
+</html>

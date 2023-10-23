@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="flex-box">
+            <div class="style-box" id="box">
+                <div class="style-img-box" id="img-box">
+                    <!-- 背景图 -->
+                    <!-- <img src="./img/TESTBG.jpg" id="bg-img"> -->
+                    <!-- 菜单 -->
+                    <div class="style-list-box" id="list-box">
+                        <ul class="style-list"  id="music-list">
+                            <li><a href="#" id="m1" class="style-list-link" data-author="blueArchive" data-img="img/T117BG.png" data-url="http://127.0.0.1:8868/Code/HTML5/case/%E5%AA%92%E4%BD%93%E6%92%AD%E6%94%BE%E5%99%A8%E4%BC%98%E5%8C%96%E7%89%88/video/T117%E4%B8%8D%E5%BF%8D%E3%83%8E%E5%BF%83.mp3">T117不忍ノ心</a></li>
+                            <li><a href="#" id="m2" class="style-list-link" data-author="blueArchive" data-img="img/T120BG.jpg" data-url="http://127.0.0.1:8868/Code/HTML5/case/%E5%AA%92%E4%BD%93%E6%92%AD%E6%94%BE%E5%99%A8%E4%BC%98%E5%8C%96%E7%89%88/video/T120%E3%82%A2%E3%83%93%E3%83%89%E3%82%B9.mp3">T120アビドス</a></li>
+                            <li><a href="#" id="m3" class="style-list-link" data-author="幻昼" data-img="./img/TESTBG.jpg" data-url="http://127.0.0.1:8868/Code/HTML5/case/%E5%AA%92%E4%BD%93%E6%92%AD%E6%94%BE%E5%99%A8%E4%BC%98%E5%8C%96%E7%89%88/video/test.mp3" >幻昼</a></li>
+                            <li><a href="#" id="m4" class="style-list-link">test</a></li>
+                            <li><a href="#" id="m5" class="style-list-link">test</a></li>
+                            <li><a href="#" id="m6" class="style-list-link">test</a></li>
+                            <li><a href="#" id="m7" class="style-list-link">test</a></li>
+                        </ul>
+                    </div>
+                    <!-- 播放控件容器 -->
+                    <div class="style-interface-box" id="interface-box">
+                        <!-- 进度条盒子 -->
+                        <div class="style-progress-box" id="progress-box">
+                            <div class="style-current-time" id="current-time">00:00</div>
+                            <!-- 进度条 -->
+                            <div class="style-progress" id="progress">
+                                <div class="style-seek-bar" id="seek-bar">
+                                    <!-- 颜色条 -->
+                                    <div class="style-play-bar" id="play-bar">
+                                        <!-- 进度按钮 -->
+                                        <span id="play-bar-icon"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="style-duration-time" id="duration-time">00:00</div>
+                        </div>
+                        <!-- 歌曲信息 -->
+                        <div class="style-msg-box" id="msg-box">
+                            <div class="style-v-name" id="v-name">名字名字</div>
+                            <div class="style-v-author" id="v-author">作者作者</div>
+                        </div>
+                        <!-- 播放控件 -->
+                        <div class="style-controls-box" id="controls-box">
+                            <!-- 菜单 -->
+                            <a href="#" id="menu" class="style-menu-btn" data-text="menu" title="菜单"></a>
+                            <!-- 上一首 -->
+                            <a href="#" id="prev" class="style-prev-btn" data-text="prev" title="上一首"></a>
+                            <!-- 播放暂停 -->
+                            <a href="#" id="play" class="style-play-btn" data-text="play" title="播放"></a>
+                            <a href="#" id="pause" class="style-pause-btn" data-text="pause" title="暂停"></a>
+                            <!-- 下一首 -->
+                            <a href="#" id="next" class="style-next-btn" data-text="next" title="下一首"></a>
+                            <!-- 音量 -->
+                            <a href="#" id="mute" class="style-mute-btn" data-text="mute" title="静音"></a>
+                            <a href="#" id="unmute" class="style-unmute-btn" data-text="unmute" title="取消静音"></a>
+                            <div class="style-volume-box" id="volume-box">
+                                <div class="style-volume-value" id="volume-value">
+                                    <span id="volume-value-icon"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 媒体容器 -->
+                <div class="style-video-box" id="video-box">
+                    <video id="mid" class="style-mid" width="300px" controls preload>
+                        <source src="" id="m-link">
+                    </video>
+                </div>
+
+            </div>
+        </div>
+            <!-- 引入功能 -->
+            <script src="./function.js"></script>
+    </body>
+</html>

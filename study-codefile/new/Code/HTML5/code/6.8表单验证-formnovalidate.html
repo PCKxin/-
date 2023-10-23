@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .title{
+                margin-top: 20px;
+                font-size: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: pink;
+            }
+            .content{
+                margin-top: 20px;
+                font-size: 20px;
+                line-height: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: skyblue;
+            }
+            .demobox{
+                margin-top: 20px;
+                width: 100%;
+                height: 120px;
+                text-align: center;
+                font-size: 20px;
+                color: white;
+                background: rgba(185, 185, 185, 0.568);
+            }
+        </style>
+    </head>
+    <body>
+        <h2 class="title">formnovalidate 关闭验证</h2>
+        <h3 class="content">
+            formnovalidate用于关闭提交按钮的验证功能
+        </h3>
+        <div class="demobox">
+            <form action="#" id="demo1">
+                <input type="email" name="email" id="email">
+                <button type="submit" formnovalidate>提交</button>
+            </form>
+        </div>
+    </body>
+</html>

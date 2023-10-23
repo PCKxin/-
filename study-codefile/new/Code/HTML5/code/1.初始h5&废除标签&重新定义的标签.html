@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .title{
+                margin-top: 20px;
+                font-size: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: pink;
+            }
+            .content{
+                margin-top: 20px;
+                font-size: 20px;
+                line-height: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: skyblue;
+            }
+        </style>
+    </head>
+    <body>
+        <h2 class="title">初识h5</h2>
+        <h3 class="content">
+            html5是发展到现在第5个版本, 5是版本号 <br>
+            广义的HTML5包括HTML、CSS和JavaScript的技术组合 <br>
+            目的是减少浏览器对于需要插件的丰富性网络应用服务的需求 <br>
+            使浏览器实现客户端更加独立和方便
+        </h3>
+        <h3 class="content">
+            <span style="color: red;">新特性: </span><br>
+            1.语义特性 > 给网页更好的意义和结构 <br>
+            2.本地存储 > 本地存储能力, 减少服务器的压力, 更短的启动时间和联网速度<br>
+            3.设备兼容 > 提供了数据与应用接入开放接口, 使外部应用可以与浏览器数据相连, 比如gps<br>
+            4.websocket > 服务器推送技术, 使浏览器和服务器之间可以实时通信<br>
+            5.多媒体 > audio和video标签, 使浏览器可以直接播放视频和音频<br>
+            6.图形特性 > canvas标签, 使浏览器可以直接绘制图形<br>
+            7.性能与集成 > 会通过XMLHttpRequest2等对象, 使浏览器可以实现跨域请求<br>
+            8.CSS3 > 在不牺牲性能和语义的前提下, 提供了更多风格和效果<br>
+        </h3>
+        <h3 class="content">
+            <span style="color: red;"> 标签语义化 </span><br>
+            以前布局都是div 但是对于浏览器来说没有语义化, 不能很好的识别 <br>
+            语义化主要是针对搜索引擎, 收录更方便 <br>
+            在ie9中 需要把这些元素转为块级元素 <br>
+            去掉css样式时候, 也能合理的显示页面的结构 <br>
+            便于团队开发和维护 <br>
+            可读性更高 <br>
+            ----------------------- <br>
+            header > 头部标签 位置页首, 页面顶部或者板块顶部 <br>
+            nav > 导航标签 包含连接的一个列表 <br>
+            section > 区域标签 板块用于划分页面上不同的区域 <br>
+            atricle > 文章标签 <span style="color: red;">用来在页面中表示一套独立且完整的内容</span> <br>
+            aside > 侧边栏标签 引用、广告、导航元素组<br>
+            footer > 底部标签 版块底部<br>
+        </h3>
+        <h2 class="title">废除标签</h2>
+        <h3 class="content">
+            <span style="color: red;">不建议使用</span> <br>
+            原有的html标签, 在html5中有一些被废除了, 但是浏览器还是可以识别的<br>
+        </h3>
+        <h3 class="content">
+            basefont > 设置字体的颜色, 大小, 字体等<br>
+            big > 设置字体的大小<br>
+            center > 设置文本居中<br>
+            font > 设置字体的颜色, 大小, 字体等<br>
+            s > 设置删除线<br>
+            strike > 设置删除线<br>
+            tt > 设置等宽字体<br>
+            frame > 设置框架<br>
+            frameset > 设置框架集<br>
+            noframes > 设置框架集<br>
+            acronym > 设置缩写<br>
+            bgSound > 设置背景音乐<br>
+            blink > 设置闪烁<br>
+            等很多, 一般vscode上会显示红色<br>
+        </h3>
+        <h2 class="title">重新定义的标签</h2>
+        <h3 class="content">
+            b > 设置粗体文本<br>
+            i > 设置斜体文本<br>
+            u > 设置下划线文本<br>
+            dd > 可以和details figure dialog等一起使用 定义描述列表中的描述部分<br>
+            dl > 定义描述列表<br>
+            dt > 定义描述列表中的项目<br>
+            s > 设置删除线<br>
+            small > 设置小号字体 例如打印注释或者法律条款<br>
+            strong > 设置重要的文本<br>
+        </h3>
+    </body>
+</html>
