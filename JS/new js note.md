@@ -1388,7 +1388,7 @@ for(var key in test){
      - Math.ceil(x); //向上取整
      - Math.floor(x); //向下取整
      - Math.round(x); //四舍五入
-     - Math.max(x,y,z,...); //求最大值
+     - Math.max(x,y,z,...); //求最大值  
      - Math.min(x,y,z,...); //求最小值
      - Math.pow(x,y);  //求x的y次方
      - Math.sqrt(x);  //求x的平方根
