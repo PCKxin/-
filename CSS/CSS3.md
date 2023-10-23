@@ -1814,3 +1814,180 @@
      - forwards 动画结束后，保持最后一帧的状态
      - backwards 动画开始前，保持第一帧的状态
      - both 动画结束后，保持最后一帧的状态，动画开始前，保持第一帧的状态
+
+### animation
+
+ - 动画
+
+ - 语法：`animation`:`name duration timing-function delay iteration-count direction fill-mode;`;
+
+ - 参数：
+     - name 动画名称
+     - duration 动画持续时间
+     - timing-function 动画速度曲线
+     - delay 动画延迟
+     - iteration-count 动画播放次数
+     - direction 动画方向(播放顺序)
+     - fill-mode 动画填充模式
+
+### 动画案例
+
+ - [案例文件](../study-codefile/new/Code/CSS3/code/12.动画案例.html)
+
+## 3D转换
+
+### perspective
+
+ - 透视
+ - 景深/透视：是指屏幕到眼睛（电脑模拟）的距离，模拟人类的眼睛观察
+ - 属性就是眼睛到屏幕的距离
+ - 一般设置在父元素上
+
+ - 语法：`perspective`:`length;`;
+
+ - 参数：
+     - length 透视距离
+         - 百分比
+         - 像素
+
+### perspective-origin
+
+ - 透视原点
+
+
+ - 语法：`perspective-origin`:`x y;`;
+
+ - 参数：
+     - x 水平方向
+         - 百分比
+         - 像素
+         - 关键字
+             - left
+             - center
+             - right
+     - y 垂直方向
+         - 百分比
+         - 像素
+         - 关键字
+             - top
+             - center
+             - bottom
+
+### transform-style
+
+ - 转换样式
+
+ - 语法：`transform-style`:`flat | preserve-3d;`;
+
+ - 参数：
+     - flat 默认值，子元素不保留3D效果
+     - preserve-3d 子元素保留3D效果
+
+### backface-visibility
+
+ - 背面可见性
+
+ - 语法：`backface-visibility`:`visible | hidden;`;
+
+ - 参数：
+     - visible 默认值，背面可见
+     - hidden 背面不可见
+
+### 3D转换案例
+
+ - [案例文件](../study-codefile/new/Code/CSS3/code/14.3d转换案例.html)
+
+## 媒体查询
+
+### 媒体查询
+
+ - 语法：`@media`:`media-type and (media-feature-rule){css-code;}`;
+
+ - 参数：
+     - media-type 媒体类型
+         - all 所有设备
+         - print 打印机
+         - screen 屏幕
+         - speech 屏幕阅读器
+     - media-feature-rule 媒体特性规则
+         - and 与
+         - not 非
+         - only 仅
+         - , 或
+     - css-code css代码
+
+### 三种引入方式
+
+ - link标签 media属性
+ - style标签 @media 
+ - style标签 @import url()
+     - @import 要写在style标签的最上面
+
+### 书写顺序问题
+
+ - 一般情况下，媒体查询写在最后面
+ - 如果写在前面，后面的样式会覆盖前面的样式
+ - max-width 属性值从大到小去写
+ - min-width 属性值从小到大去写
+
+### 媒体特性规则
+
+ - width 宽度
+ - height 高度
+ - device-width 设备宽度
+ - device-height 设备高度
+ - orientation 方向
+     - portrait 竖屏
+     - landscape 横屏
+ - aspect-ratio 宽高比
+ - device-aspect-ratio 设备宽高比
+ - color 颜色
+ - color-index 颜色索引
+ - monochrome 单色
+ - resolution 分辨率
+ - scan 扫描方式
+     - progressive 逐行扫描
+     - interlace 隔行扫描
+ - grid 网格
+ - update-frequency 更新频率
+ - overflow-block 垂直方向溢出
+ - overflow-inline 水平方向溢出
+
+### css代码例
+
+```css
+<style>
+    @import url(media-demo2.css) screen and (min-width: 900px) and (max-width: 950px);
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    div{
+        width: 300px;
+        height: 300px;
+        margin: 100px auto;
+        text-align: center;
+        line-height: 300px;
+        font-size: 30px;
+        color: white;
+        font-weight: bold;
+        transition: all 1s linear;
+    }
+    
+    @media screen and (max-width: 900px) {
+        .demo3{
+            background: linear-gradient(pink 20%, skyblue 30%, deeppink 50%);
+        }
+    }
+</style>
+<body>
+    <div class="demo1">由link标签引入</div>
+    <div class="demo2">由@import标签引入</div>
+    <div class="demo3">由@media引入</div>
+</body>
+
+```
+
+### 媒体查询案例
+
+ - [案例文件](../study-codefile/new/TEST/八月月考/第一题响应式.html)
