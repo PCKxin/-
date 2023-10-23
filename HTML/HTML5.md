@@ -608,3 +608,42 @@
      - src: 媒体路径
      - type: 媒体类型
 
+
+## 本地存储
+
+ - [案例文件](../study-codefile/new/Code/HTML5/code/9.H5本地存储.html)
+
+### localStorage
+
+ - 本地存储
+ - 关闭浏览器数据不会消失
+ - 容量5M - 10M
+ - 永久生效, 代码或手动清除
+ - 只能存储字符串
+ - 同一浏览器, 同一域名下的所有页面共享
+ - 用法:
+     - ```js
+        localStorage.setItem("key", "value"); // key为键, value为值
+        localStorage.getItem("key"); // 获取key对应的值
+        localStorage.removeItem("key"); // 删除key对应的值
+        localStorage.clear(); // 清空所有的值
+        ```
+ - 注意: localStorage存储的数据会永久保存在本地, 除非手动删除
+
+### sessionStorage
+
+ - 本地存储
+ - 关闭浏览器数据会消失
+ - 容量5M - 10M
+ - 临时生效, 关闭浏览器自动清除
+ - 只能存储字符串
+ - 同一浏览器, 同一域名下的所有页面共享
+ - 用法:
+     - ```js
+        sessionStorage.setItem("key", "value"); // key为键, value为值
+        sessionStorage.getItem("key"); // 获取key对应的值
+        sessionStorage.removeItem("key"); // 删除key对应的值
+        sessionStorage.clear(); // 清空所有的值
+        ```
+ - 注意: sessionStorage存储的数据会在浏览器关闭时自动删除
+
