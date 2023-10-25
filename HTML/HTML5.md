@@ -647,3 +647,276 @@
         ```
  - 注意: sessionStorage存储的数据会在浏览器关闭时自动删除
 
+### Cookie
+
+ - 最大容量4KB
+ - 会随着http请求发送到服务器
+ - 一般用于存储用户信息和用户行为
+ - 生效时间: 一般为关闭浏览器后失效, 也可以设置过期时间
+
+
+ - 在浏览器中查看cookie:
+     - chrome: F12 -> Application -> Storage -> Cookies
+     - firefox: F12 -> Storage -> Cookies
+     - ie: F12 -> Storage -> Cookies
+
+ - 参数：
+     - name: cookie名称
+     - value: cookie值
+     - expires: cookie过期时间
+         - GMT格式: Thu, 01 Jan 1970 00:00:00 GMT
+     - path: cookie路径
+         - 默认为当前路径
+     - domain: cookie域名
+     - secure: cookie是否只能通过https协议访问
+         - 默认为false
+     - httpOnly: cookie是否只能通过http协议访问
+         - 默认为false
+     - samesite: cookie是否同源
+         - 默认为false
+     - max-age: cookie过期时间, 单位为秒
+         - 优先级高于expires
+     - SameSite: cookie是否同源
+         - 默认为false
+
+ - 用法:
+     - ```js
+        document.cookie = 
+        "name=value; expires=过期时间; path=路径; domain=域名; secure; httpOnly; samesite; max-age=过期时间; SameSite";
+        ```
+
+ - 万能清除cookie:
+     - ```js
+        document.cookie = "name=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+        ```
+
+
+## Canvas 画布
+
+ - [案例文件](../study-codefile/new/Code/HTML5/code/8.1初始Canvas&基本API.html)
+
+ - 用于绘制图形
+ - 逐像素进行渲染，可以用于制作动画
+ - 是容器，不具备绘制功能，需要js来绘制
+ - 画布默认宽高为300px * 150px
+
+### 基本API
+
+#### getContext()
+
+ - 用于获取画布上下文
+ - 用法:
+     - ```js
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+        ```
+
+#### fillRect()
+
+ - 用于绘制填充矩形
+ - 用法:
+     - ```js
+        ctx.fillRect(x, y, width, height);
+        ```
+ - 参数:
+     - x: 矩形左上角的x坐标
+     - y: 矩形左上角的y坐标
+     - width: 矩形的宽度
+     - height: 矩形的高度
+
+#### fillStyle
+
+ - 用于设置填充颜色
+ - 用法:
+     - ```js
+        ctx.fillStyle = "red";
+        ```
+
+#### strokeStyle
+
+ - 用于设置描边颜色
+ - 用法:
+     - ```js
+        ctx.strokeStyle = "red";
+        ```
+
+#### lineWidth
+
+ - 用于设置描边宽度
+ - lineWidth和border区别:
+     - border增大,向外border宽度进行增加(向一个方向) 
+     - linewidth增大,是向两个方向增大,默认值为1
+ - 用法:
+     - ```js
+        ctx.lineWidth = 10;
+        ```
+
+#### strokeRect()
+
+ - 用于绘制描边(边框)矩形
+ - 用法:
+     - ```js
+        ctx.strokeRect(x, y, width, height);
+        ```
+ - 参数:
+     - x: 矩形左上角的x坐标
+     - y: 矩形左上角的y坐标
+     - width: 矩形的宽度
+     - height: 矩形的高度
+
+#### clearRect()
+
+ - 用于清除指定矩形区域
+ - 用法:
+     - ```js
+        ctx.clearRect(x, y, width, height);
+        ```
+ - 参数:
+     - x: 矩形左上角的x坐标
+     - y: 矩形左上角的y坐标
+     - width: 矩形的宽度
+     - height: 矩形的高度
+
+#### moveTo()
+
+ - 用于设置路径起点
+ - 用法:
+     - ```js
+        ctx.moveTo(x, y);
+        ```
+ - 参数:
+     - x: 起点x坐标
+     - y: 起点y坐标
+
+
+#### lineTo()
+
+ - 用于设置路径终点 , 可以用多次
+ - 用法:
+     - ```js
+        ctx.lineTo(x, y);
+        ```
+ - 参数:
+     - x: 直线终点的x坐标
+     - y: 直线终点的y坐标
+
+#### closePath()
+
+ - 用于闭合路径
+ - 用法:
+     - ```js
+        ctx.closePath();
+        ```
+
+#### stroke()
+
+ - 用于绘制描边(边框)
+ - 用法:
+     - ```js
+        ctx.stroke();
+        ```
+
+#### beginPath()
+
+ - 用于开始绘制新路径
+ - 用法:
+     - ```js
+        ctx.beginPath();
+        ```
+
+#### fill()
+
+ - 用于填充路径
+ - 用法:
+     - ```js
+        ctx.fill();
+        ```
+
+#### rect()
+
+ - 用于绘制矩形路径
+ - 用法:
+     - ```js
+        ctx.rect(x, y, width, height);
+        ```
+ - 参数:
+     - x: 矩形左上角的x坐标
+     - y: 矩形左上角的y坐标
+     - width: 矩形的宽度
+     - height: 矩形的高度
+
+#### arc()
+
+ - 用于绘制圆弧
+ - 用法:
+     - ```js
+        ctx.arc(x, y, r, startAngle, endAngle, anticlockwise);
+        ```
+ - 参数:
+     - x: 圆心x坐标
+     - y: 圆心y坐标
+     - r: 圆半径
+     - startAngle: 起始角度
+     - endAngle: 结束角度
+     - anticlockwise: 是否逆时针
+
+#### arcTo()
+
+ - 用于绘制曲线
+ - 用法:
+     - ```js
+        ctx.arcTo(x1, y1, x2, y2, r);
+        ```
+ - 参数:
+     - x1: 第一个切点x坐标
+     - y1: 第一个切点y坐标
+     - x2: 第二个切点x坐标
+     - y2: 第二个切点y坐标
+     - r: 圆半径
+
+#### quadraticCurveTo()
+
+ - 用于绘制二次贝塞尔曲线
+ - 用法:
+     - ```js
+        ctx.quadraticCurveTo(cpx, cpy, x, y);
+        ```
+ - 参数:
+     - cpx: 控制点x坐标
+     - cpy: 控制点y坐标
+     - x: 结束点x坐标
+     - y: 结束点y坐标
+
+#### bezierCurveTo()
+
+ - 用于绘制三次贝塞尔曲线
+ - 用法:
+     - ```js
+        ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y);
+        ```
+ - 参数:
+     - cp1x: 第一个控制点x坐标
+     - cp1y: 第一个控制点y坐标
+     - cp2x: 第二个控制点x坐标
+     - cp2y: 第二个控制点y坐标
+     - x: 结束点x坐标
+     - y: 结束点y坐标
+
+
+#### 2d转换
+
+ - translate(x, y): 平移
+ - rotate(angle): 旋转
+ - scale(x, y): 缩放
+ - transform(a, b, c, d, e, f): 变换
+     - a: 水平缩放
+     - b: 水平倾斜
+     - c: 垂直倾斜
+     - d: 垂直缩放
+     - e: 水平移动
+     - f: 垂直移动
+ - setTransform(a, b, c, d, e, f): 重置变换
+ - save(): 保存当前状态
+ - restore(): 恢复之前保存的状态
+
+ - 注意：当使用以上方法时，需要使用save()和restore()方法来保存和恢复之前的状态
