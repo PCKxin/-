@@ -920,3 +920,238 @@
  - restore(): 恢复之前保存的状态
 
  - 注意：当使用以上方法时，需要使用save()和restore()方法来保存和恢复之前的状态
+
+
+#### 绘制图片
+
+ - drawImage(img, x, y, width, height): 绘制图片
+     - img: 图片对象
+     - x: 图片左上角x坐标
+     - y: 图片左上角y坐标
+     - width: 图片宽度
+     - height: 图片高度
+
+ - 用法:
+     - ```js
+        var img = new Image();
+        img.src = "path";
+        img.onload = function(){
+            ctx.drawImage(img, 0, 0, 100, 100);
+        }
+        ```
+
+ - 注意：drawImage()方法中的img参数可以是图片对象，也可以是canvas对象
+
+
+#### 绘制文字
+
+ - fillText(text, x, y, maxWidth): 绘制填充文字
+     - text: 文字内容
+     - x: 文字左下角x坐标
+     - y: 文字左下角y坐标
+     - maxWidth: 最大宽度
+
+ - strokeText(text, x, y, maxWidth): 绘制描边文字
+     - text: 文字内容
+     - x: 文字左下角x坐标
+     - y: 文字左下角y坐标
+     - maxWidth: 最大宽度
+
+ - font: 设置字体
+ - textAlign: 设置水平方向的对齐方式
+ - textBaseline: 设置垂直方向的对齐方式
+
+ - 用法:
+     - ```js
+        ctx.font = "30px Arial";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText("文字", 100, 100);
+        ctx.strokeText("文字", 100, 100);
+        ```
+
+ - 注意：textAlign和textBaseline属性必须在fillText()和strokeText()方法之前设置
+
+ - measureText(text): 测量文字宽度
+     - text: 文字内容
+
+## SVG 矢量图
+
+ - [案例文件](../study-codefile/new/Code/HTML5/code/10.svg基础.html)
+
+ - svg是矢量图，不会失真
+ - canvas是位图，会失真
+ - 基于xml语法
+ - 使用标签绘制
+
+### 引入方式
+
+ - 直接引入
+     - ```html
+        <svg width="200" height="200" viewBox="0 0 200 200">
+            <circle cx="100" cy="100" r="50" fill="red"></circle>
+        </svg>
+        ```
+ - 使用img标签引入
+     - ```html
+        <img src="path" alt="">
+        ```
+ - 使用object标签引入
+     - ```html
+        <object type="image/svg+xml" data="path"></object>
+        ```
+ - 使用iframe标签引入
+     - ```html
+        <iframe src="path"></iframe>
+        ```
+
+### 基本标签
+
+### svg
+
+ - svg标签
+ - 用法:
+     - ```html
+        <svg width="200" height="200" viewBox="0 0 200 200">
+            <circle cx="100" cy="100" r="50" fill="red"></circle>
+        </svg>
+        ```
+ - 属性:
+     - width: svg宽度
+     - height: svg高度
+     - viewBox: svg视口大小
+         - x: x坐标
+         - y: y坐标
+         - width: 宽度
+         - height: 高度
+
+#### rect
+
+ - 用于绘制矩形
+ - 用法:
+     - ```html
+        <rect x="0" y="0" width="100" height="100" fill="red"></rect>
+        ```
+ - 属性:
+     - x: 矩形左上角x坐标
+     - y: 矩形左上角y坐标
+     - width: 矩形宽度
+     - height: 矩形高度
+     - fill: 填充颜色
+
+#### circle
+
+ - 用于绘制圆形
+ - 用法:
+     - ```html
+        <circle cx="100" cy="100" r="50" fill="red"></circle>
+        ```
+ - 属性:
+     - cx: 圆心x坐标
+     - cy: 圆心y坐标
+     - r: 圆半径
+     - fill: 填充颜色
+
+#### ellipse
+
+ - 用于绘制椭圆
+ - 用法:
+     - ```html
+        <ellipse cx="100" cy="100" rx="50" ry="30" fill="red"></ellipse>
+        ```
+ - 属性:
+     - cx: 圆心x坐标
+     - cy: 圆心y坐标
+     - rx: x轴半径
+     - ry: y轴半径
+     - fill: 填充颜色
+
+#### line
+
+ - 用于绘制直线
+ - 用法:
+     - ```html
+        <line x1="0" y1="0" x2="100" y2="100" stroke="red"></line>
+        ```
+ - 属性:
+     - x1: 起点x坐标
+     - y1: 起点y坐标
+     - x2: 终点x坐标
+     - y2: 终点y坐标
+     - stroke: 描边颜色
+
+#### g
+
+ - 用于组合元素
+ - g标签中定义的属性，会被子元素继承 ，只有公有属性才会被继承
+ - 可以给g标签加一个id或class属性，然后通过css来设置样式
+ - 用法:
+     - ```html
+        <g>
+            <rect x="0" y="0" width="100" height="100" fill="red"></rect>
+            <circle cx="100" cy="100" r="50" fill="red"></circle>
+        </g>
+        ```
+ - 注意: g标签中的元素会作为一个整体进行变换
+
+#### path
+
+ - 用于绘制路径
+ - 用法:
+     - ```html
+        <path d="M0 0 L100 100 L200 0 Z" fill="red"></path>
+        ```
+ - 属性:
+     - d: 路径
+         - M: 移动到
+         - L: 画线到
+         - Z: 闭合路径
+ - 注意: path标签中的d属性值是一个字符串, 用于描述路径
+
+#### polygon
+
+ - 用于绘制多边形
+ - 用法:
+     - ```html
+        <polygon points="0 0, 100 100, 200 0" fill="red"></polygon>
+        ```
+ - 属性:
+     - points: 多边形的顶点坐标
+         - x1 y1, x2 y2, x3 y3, ...
+
+#### polyline
+
+ - 用于绘制折线
+ - 用法:
+     - ```html
+        <polyline points="0 0, 100 100, 200 0" fill="red"></polyline>
+        ```
+ - 属性:
+     - points: 折线的顶点坐标
+         - x1 y1, x2 y2, x3 y3, ...
+
+#### use标签
+
+ - 用于引用其他标签
+ - 用法:
+     - ```html
+        <defs>
+            <circle id="circle" cx="100" cy="100" r="50" fill="red"></circle>
+        </defs>
+        <use xlink:href="#circle"></use>
+        ```
+ - 属性:
+     - xlink:href: 引用的元素id
+
+#### defs标签
+
+ - 用于定义元素
+ - defs中定义的元素，只能在defs中使用，也可以通过use标签进行引用
+ - 用法:
+     - ```html
+        <defs>
+            <circle id="circle" cx="100" cy="100" r="50" fill="red"></circle>
+        </defs>
+        <use xlink:href="#circle"></use>
+        ```
+ - 注意: defs标签中定义的元素, 可以通过use标签进行引用
