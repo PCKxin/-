@@ -1155,3 +1155,227 @@
         <use xlink:href="#circle"></use>
         ```
  - 注意: defs标签中定义的元素, 可以通过use标签进行引用
+
+
+## 常用API
+
+ - [案例文件](../study-codefile/new/Code/HTML5/code/11.状态&屏幕&文件&通知&地图api.html)
+
+### 网络状态
+
+ - navigator.onLine: 判断网络状态
+     - true: 在线
+     - false: 离线
+
+ - 事件监听判断
+     - online: 在线时触发
+     - offline: 离线时触发
+
+ - 注意: 
+     - 事件监听必须写在window.onload事件中
+     - 调试的时候 在浏览器控制台中 网络 默认节流那里选择offline或者online测试
+     - 这个也就能判断一下有没有连接到电脑网卡
+     - 正常判断需要用ajax做心跳检测
+
+### 全屏和取消全屏
+
+ - css里面先写好
+     - ```css
+        -浏览器兼容头-full-screen {
+            width: 100%;
+            height: 100%;
+        }
+        ```
+ - js里面写
+     - ```js
+        // 全屏
+        document.documentElement.兼容头requestFullscreen();
+        // 取消全屏
+        document.兼容头exitFullscreen();
+        ```
+
+### 文件
+
+ - FileReader: 用于读取文件
+ - File: 用于表示文件
+ - Blob: 用于表示二进制数据
+ - FileList: 用于表示文件列表
+
+#### FileReader
+
+ - FileReader.readAsText(file): 读取文本文件
+ - FileReader.readAsDataURL(file): 读取图片文件
+ - FileReader.readAsArrayBuffer(file): 读取二进制文件，返回一个ArrayBuffer对象
+ - FileReader.readAsBinaryString(file): 读取二进制文件，返回一个二进制字符串
+ - FileReader.onload: 读取完成时触发
+ - FileReader.result: 读取的结果
+ - FileReader.error: 读取错误时触发
+ - FileReader.abort(): 取消读取
+
+ - 用法例:
+     - ```js
+        var file = document.getElementById("file");
+        file.onchange = function(){
+            var files = file.files; // 获取文件列表
+            var reader = new FileReader(); // 创建文件读取对象
+            reader.readAsText(files[0]); // 读取文件
+            reader.onload = function(){ // 读取完成时触发
+                console.log(reader.result); // 输出读取的内容
+            }
+        }
+        ```
+
+### 通知管理
+
+#### Notification
+
+ - 用于创建通知
+ - Notification.permission: 用于判断浏览器是否支持通知
+     - granted: 支持
+     - denied: 不支持
+     - default: 默认
+ - Notification.requestPermission(): 用于请求通知权限
+ - Notification(title, options): 用于创建通知
+     - title: 通知标题
+     - options: 通知选项
+         - body: 通知内容
+         - icon: 通知图标
+         - tag: 通知标签
+         - renotify: 是否覆盖之前的通知
+         - silent: 是否静音
+         - data: 通知数据
+         - actions: 通知操作
+             - action: 操作名称
+             - title: 操作标题
+             - icon: 操作图标
+ - Notification.onclick: 通知被点击时触发
+ - Notification.onshow: 通知显示时触发
+ - Notification.onclose: 通知关闭时触发
+ - Notification.onerror: 通知出错时触发
+ - Notification.close(): 关闭通知
+
+ - 用法例:
+     - ```js
+        var btn = document.getElementById("btn");
+        btn.onclick = function(){
+            if(Notification.permission == "granted"){ // 判断浏览器是否支持通知
+                var notification = new Notification("标题", { // 创建通知
+                    body: "内容",
+                    icon: "path",
+                    tag: "标签",
+                    renotify: true,
+                    silent: true,
+                    data: "数据",
+                    actions: [
+                        {
+                            action: "action",
+                            title: "标题",
+                            icon: "path"
+                        }
+                    ]
+                });
+                notification.onclick = function(){ // 通知被点击时触发
+                    console.log("通知被点击");
+                }
+                notification.onshow = function(){ // 通知显示时触发
+                    console.log("通知显示");
+                }
+                notification.onclose = function(){ // 通知关闭时触发
+                    console.log("通知关闭");
+                }
+                notification.onerror = function(){ // 通知出错时触发
+                    console.log("通知出错");
+                }
+                setTimeout(function(){ // 5秒后关闭通知
+                    notification.close();
+                }, 5000);
+            }else if(Notification.permission == "default"){ // 判断浏览器是否支持通知
+                Notification.requestPermission(); // 请求通知权限
+            }
+        }
+        ```
+
+### 窗口失焦
+
+ - window.onblur: 窗口失焦时触发
+ - window.onfocus: 窗口获焦时触发
+
+ - 用法例:
+     - ```js
+        window.onblur = function(){ // 窗口失焦时触发
+            console.log("窗口失焦");
+        }
+        window.onfocus = function(){ // 窗口获焦时触发
+            console.log("窗口获焦");
+        }
+        ```
+
+ - 注意: 
+     - window.onblur和window.onfocus事件必须写在window.onload事件中
+     - window.onblur和window.onfocus事件在浏览器最小化时不会触发
+
+ - 事件监听:
+     - visibilitychange: 页面可见性改变时触发
+     - document.hidden: 判断页面是否隐藏
+         - true: 隐藏
+         - false: 显示
+     - document.visibilityState: 页面可见性
+         - visible: 显示
+         - hidden: 隐藏
+         - prerender: 正在渲染
+         - unloaded: 未加载
+
+### 位置
+
+ - navigator.geolocation: 用于获取位置
+ - navigator.geolocation.getCurrentPosition(success, error, options): 用于获取当前位置
+     - success: 获取成功时触发
+     - error: 获取失败时触发
+     - options: 选项
+         - enableHighAccuracy: 是否启用高精度
+         - timeout: 超时时间
+         - maximumAge: 缓存时间
+ - navigator.geolocation.watchPosition(success, error, options): 用于监听位置变化
+     - success: 获取成功时触发
+     - error: 获取失败时触发
+     - options: 选项
+         - enableHighAccuracy: 是否启用高精度
+         - timeout: 超时时间
+         - maximumAge: 缓存时间
+ - Position: 用于表示位置
+ - Position.coords: 用于表示位置坐标
+ - Position.coords.latitude: 用于表示纬度
+ - Position.coords.longitude: 用于表示经度
+ - Position.coords.accuracy: 用于表示精度
+ - Position.coords.altitude: 用于表示海拔
+ - Position.coords.altitudeAccuracy: 用于表示海拔精度
+ - Position.coords.heading: 用于表示方向
+ - Position.coords.speed: 用于表示速度
+ - Position.timestamp: 用于表示时间戳
+
+ - 用法例:
+     - ```js
+        navigator.geolocation.getCurrentPosition(function(position){ // 获取当前位置
+            console.log(position.coords.latitude); // 输出纬度
+            console.log(position.coords.longitude); // 输出经度
+        }, function(error){ // 获取失败时触发
+            console.log(error);
+        }, {
+            enableHighAccuracy: true, // 是否启用高精度
+            timeout: 5000, // 超时时间
+            maximumAge: 0 // 缓存时间
+        });
+        navigator.geolocation.watchPosition(function(position){ // 监听位置变化
+            console.log(position.coords.latitude); // 输出纬度
+            console.log(position.coords.longitude); // 输出经度
+        }, function(error){ // 获取失败时触发
+            console.log(error);
+        }, {
+            enableHighAccuracy: true, // 是否启用高精度
+            timeout: 5000, // 超时时间
+            maximumAge: 0 // 缓存时间
+        });
+        ```
+ - 注意:
+     - getCurrentPosition()和watchPosition()方法必须在https协议下才能使用
+     - getCurrentPosition()和watchPosition()方法必须在服务器上才能使用

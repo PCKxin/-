@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .title{
+                margin-top: 20px;
+                font-size: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: pink;
+            }
+            .content{
+                margin-top: 20px;
+                font-size: 20px;
+                line-height: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: skyblue;
+            }
+            .demobox{
+                box-sizing: border-box;
+                margin: 0 auto;
+                margin-top: 20px;
+                width: 1000px;
+                height: auto;
+                text-align: center;
+                font-size: 20px;
+                color: white;
+                background: rgba(185, 185, 185, 0.568);
+            }
+            #demo1_box1,#demo1_box2,#demo1_box3{
+                width: 400px;
+                height: 200px;
+                /* float: left; */
+                background: #ccc;
+                margin: 20px 10px;
+            }
+            #p1,#p2,#p3{
+                height: 40px;
+                line-height: 40px;
+                text-align: center;
+                background: skyblue;
+                margin-bottom: 10px;
+                border-radius: 10px;
+            }
+
+            #demo2_box1,#demo2_box2,#demo2_box3{
+                width: 500px;
+                height: 300px;
+                line-height: 300px;
+                background: #ccc;
+                margin: 20px 10px;
+            }
+            .demo2_span{
+                width: 500px;
+                height: 50px;
+                text-align: center;
+                line-height: 50px;
+                font-size: 30px;
+                color: deepskyblue;
+            }
+        </style>
+    </head>
+    <body>
+        <h2 class="title">拖放事件</h2>
+        <h3 class="content">
+            第一步: 拖放标签需要添加属性 draggable="true" <br>
+            .ondragstart 事件在用户开始拖动元素时触发 <br>
+            .ondrag 事件在元素正在拖动时触发 <br>
+            .ondragend 事件在用户完成元素拖动后触发 <br>
+            .ondragnter 事件在拖动元素 进入 放置元素 的 可释放目标时触发 <br>
+            .ondragover 事件在拖动元素 在 放置元素 的 可释放目标上时触发 <br>
+            .ondragleave 事件在拖动元素 离开 放置元素 的 可释放目标时触发 <br>
+            .ondrop 事件在拖动元素 放置到 可释放目标 时触发 <br>
+        </h3>
+        <div class="demobox">
+            <div id="demo1_box1">
+                <p id="p1" draggable="true">内容一</p>
+                <p id="p2" draggable="true">内容二</p>
+                <p id="p3" draggable="true">内容三</p>
+            </div>
+            <div id="demo1_box2"></div>
+            <div id="demo1_box3"></div>
+        </div>
+
+        <h2 class="title">模拟回收站</h2>
+        <div class="demobox">
+            <div id="demo2_box1">
+                <span class="demo2_span">将图片拖拽到此处</span>
+            </div>
+            <div id="demo2_box2">
+                <span class="demo2_span">图片展示区</span>
+            </div>
+            <div id="demo2_box3">
+                <span class="demo2_span">将图片拖拽到此处删除</span>
+            </div>
+        </div>
+        <script>
+            window.onload = function(){
+                var demo1_p1 = document.querySelector('#p1');
+                var demo1_box2 = document.querySelector('#demo1_box2');
+
+                // 方案一: 使用全局变量，将源对象存储起来
+                // // demo1_p1源对象
+                // // 针对于 源对象 有三个事件
+                // var obj = null; //全局变量
+                // document.ondragstart = function(e){
+                //     // 事件委托是 子元素触发的事件让父元素去执行
+                //     // 怎么才能知道是哪个子元素触发的？ event.target
+                //     console.log('源对象开始被拖动调用，执行一次');
+                //     console.dir(e.target);
+                //     obj = e.target;
+                // }
+                // demo1_p1.ondrag = function(){
+                //     // console.log('源对象拖动中。。。，多次执行');
+                // }
+                // demo1_p1.ondragend = function(){
+                //     // console.log('源对象拖动结束，鼠标放开时，执行一次');
+                // }
+                // // demo1_box2目标对象  四个事件
+                // demo1_box2.ondragenter = function(){
+                //     // console.log('源对象拖拽到目标对象范围内执行');
+                // }
+                // document.ondragover = function(e){
+                //     e.preventDefault(); //ondragover事件会覆盖ondrop
+                //     // 想要执行ondrop事件，需要将这个事件的默认行为取消
+                //     console.log('源对象在目标对象范围内悬停时执行，执行多次');
+                // }
+                // demo1_box2.ondragleave = function(){
+                //     // console.log('源对象离开目标对象范围内执行');
+                // }
+                // document.ondrop = function(e){
+                //     // e.target 目标对象
+                //     // 因为这个事件是在ondragstart事件后执行的
+                //     // 所以obj这个全局变量已经被赋值了
+                //     e.target.appendChild(obj);
+                //     console.log('源对象在目标对象范围内释放执行');
+                // }
+
+                // 方案二: 使用事件对象的dataTransfer属性
+                document.ondragstart = function(e){
+                    e.dataTransfer.setData('text/html',e.target.id);//存储数据
+                    // setData(key,value) value只能是基础数据类型 string number boolean
+                    // dom.setAttribute() // 也可以存储数据
+                }
+                demo1_p1.ondrag = function(){
+                    // console.log('源对象拖动中。。。，多次执行');
+                }
+                demo1_p1.ondragend = function(){
+                    // console.log('源对象拖动结束，鼠标放开时，执行一次');
+                }
+                // demo1_box2目标对象  四个事件
+                demo1_box2.ondragenter = function(){
+                    // console.log('源对象拖拽到目标对象范围内执行');
+                }
+                document.ondragover = function(e){
+                    e.preventDefault(); //ondragover事件会覆盖ondrop
+                }
+                demo1_box2.ondragleave = function(){
+                    // console.log('源对象离开目标对象范围内执行');
+                }
+                document.ondrop = function(e){
+                    var value = e.dataTransfer.getData('text/html',e.target.id);//获取数据
+                    console.log('value',value);
+                    e.target.appendChild(document.getElementById(value));
+                }
+
+
+                // 模拟回收站
+                var demo2_box1 = document.querySelector('#demo2_box1');
+                var demo2_box2 = document.querySelector('#demo2_box2');
+                var demo2_box3 = document.querySelector('#demo2_box3');
+                var demo2_span = document.querySelector('.demo2_span');
+                var num = 0; // 用于给图片添加类名
+
+                demo2_box1.addEventListener('dragenter',fn);  // 拖拽到目标对象范围内执行
+                demo2_box1.addEventListener('dragover',fn);  // 拖拽到目标对象范围内悬停时执行
+                demo2_box1.addEventListener('dragleave',fn); // 拖拽到目标对象范围内离开时执行
+                demo2_box1.addEventListener('drop',fn); // 拖拽到目标对象释放时执行
+
+                function fn(e){
+                    // 将本地图片拖拽到浏览器中，浏览器会打开一个新标签
+                    // 这是浏览器的默认行为，所以需要在ondrop中取消这个事件的默认行为
+                    e.preventDefault();
+                    //console.log(e.type);//具体执行的事件名称
+                    switch (e.type){
+                        case 'dragenter':
+                            demo2_span.innerText = '松开鼠标图片将添加到展示区';
+                            break;
+                        case 'dragover':
+                            break;
+                        case 'dragleave':
+                            demo2_span.innerText = '将图片拖拽到此处';
+                            break;
+                        case 'drop':
+                            // 第一步  拿到从本地拖拽上来的图片对象
+                            console.log(e.dataTransfer.files);
+                            var files = e.dataTransfer.files; // 本地图片对象
+                            for(var i = 0; i < files.length; i++){
+                                var fr = new FileReader();
+                                fr.readAsDataURL(files[i]); // 读取本地图片
+                                fr.onload = function(){
+                                    // console.log(this.result); // this.result 本地图片的base64编码
+                                    demo2_box2.innerHTML += '<img src='+this.result+' class=aa'+num++ +'>';
+                                    document.ondragstart = function(e){ // 拖拽开始时执行
+                                        e.dataTransfer.setData('text/html',e.target.className)  // 存储数据  
+                                    }
+                                    document.ondragover = function(e){ // 拖拽到目标对象范围内悬停时执行
+                                        e.preventDefault();
+                                    }
+                                    document.ondrop = function(e){ // 拖拽到目标对象释放时执行
+                                        if(e.target.id != 'demo2_box2'){ // 如果不是目标对象
+                                            var value = e.dataTransfer.getData('text/html'); // 获取数据
+                                            demo2_box2.removeChild(document.getElementsByClassName(value)[0]);
+                                        }
+                                    }
+                                }
+                            }
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>

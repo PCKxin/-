@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            body{
+                background: skyblue;
+            }
+            canvas{
+                background: white;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="color" id="color">
+        <input type="range" max="20" min="1" step="1" value="1" id="range">
+        <input type="button" value="橡皮擦" id="button">
+        <input type="button" value="清屏" id="clear">
+        <canvas id="demo" width="600px" height="600px"></canvas>
+        <script>
+            window.onload = function(){
+                var demo = document.getElementById('demo');
+                var color = document.getElementById('color');
+                var range = document.getElementById('range');
+                var btn = document.getElementById('button');
+                var clear = document.getElementById('clear');
+                var cxt = demo.getContext('2d');
+                color.onchange = function(){
+                    cxt.strokeStyle = this.value; // 设置画笔颜色
+                }
+                range.onchange = function(){
+                    cxt.lineWidth = this.value; // 设置画笔粗细
+                }
+                btn.onclick = function(){
+                    cxt.lineWidth = 10; // 设置画笔粗细
+                    cxt.strokeStyle = 'white'; // 设置画笔颜色
+                }
+                clear.onclick = function(){
+                    cxt.clearRect(0,0,demo.width,demo.height); // 清屏
+                }
+                demo.onmousedown = function(e){
+                    cxt.beginPath(); // 非常重要 表示跟之前绘制的图形没有关系
+                    var x = e.clientX - demo.offsetLeft; // 获取鼠标点击的x坐标
+                    var y = e.clientY - demo.offsetTop;
+                    cxt.moveTo(x,y); // 设置画笔起点
+                    document.onmousemove = function(e){
+                        var x = e.clientX - demo.offsetLeft; // 获取鼠标移动的x坐标
+                        var y = e.clientY - demo.offsetTop;
+                        cxt.lineTo(x,y); // 设置画笔终点
+                        cxt.stroke();
+                    }
+                    document.onmouseup = function(){
+                        document.onmousemove = null; // 鼠标抬起时取消鼠标移动事件
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>

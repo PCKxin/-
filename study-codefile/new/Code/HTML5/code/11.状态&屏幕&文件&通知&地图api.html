@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="icon" href="../img/icon.png">
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .title{
+                margin-top: 20px;
+                font-size: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: pink;
+            }
+            .content{
+                margin-top: 20px;
+                font-size: 20px;
+                line-height: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: skyblue;
+            }
+            .demobox{
+                margin-top: 20px;
+                width: 100%;
+                height: auto;
+                text-align: center;
+                font-size: 20px;
+                color: white;
+                background: rgba(185, 185, 185, 0.568);
+            }
+            #demo1{
+                width: 100%;
+                height: 100px;
+                line-height: 100px;
+                font-size: 30px;
+                text-align: center;
+            }
+            #demo2 img{
+                width: 100%;
+                height: 100%;
+            }
+            /*只会在内核为webkit浏览器全屏模式下执行*/
+            #demo2 :-webkit-full-screen{
+                background: deepskyblue;
+            }
+            #demo2 :-webkit-full-screen img{
+                width: 100%;
+                height: 100%;
+            }
+            #demo2 :-webkit-full-screen #btn2{
+                position: absolute;
+                top: 0px;
+                left: 0px;
+            }
+            #demo4_content{
+                width: 200px;
+                height: 200px;
+                border-radius: 50%;
+                overflow: hidden;
+                margin: 0 auto;
+                background: white;
+            }
+            #demo4_content img{
+                width: 100%;
+                height: 100%;
+            }
+
+            #demo6_map{
+                width: 500px;
+                height: 500px;
+                margin: 0 auto;
+                border-radius: 50px;
+                box-shadow: inset 0 0 10px rgba(255, 192, 203, 0.718);
+            }
+        </style>
+    </head>
+    <body>
+        <h2 class="title">网络状态</h2>
+        <h3 class="content">
+            标准js判断网络状态的属性: <br>
+            console.log('当前网络状态:',window.navigator.onLine); <br>
+            true: 表示网络连接 <br>
+            false: 表示网络断开 <br>
+            h5验证网络状态的事件: <br>
+            事件监听: <br>
+            online: 网络连接时触发 <br>
+            offline: 网络断开时触发 <br>
+            注意:调试的时候 本地打开文件 在控制台中, 网络, 节流那里勾选离线状态 <br>
+            这个目前也就能判断一下浏览器有没有连接到电脑网卡 <br>
+            正常判断是由ajax做心跳检测
+        </h3>
+        <div class="demobox">
+            <p id="demo1"></p>
+        </div>
+
+        <h2 class="title">全屏展示和取消全屏</h2>
+        <h3 class="content">
+            webkitCancelFullScreen() 用于取消全屏 <br>
+            webkitRequestFullScreen() 用于全屏 <br>
+            注意兼容性 <br>
+        </h3>
+        <div class="demobox" id="demo2">
+            <img src="../img/01.jpg" alt="" id="demo2_img">
+            <button id="demo2_btn1">点击全屏</button>
+            <button id="demo2_btn2">取消全屏</button>
+        </div>
+
+        <h2 class="title">txt文件读取</h2>
+        <h3 class="content">
+            console.dir 用于打印对象 <br>
+            创建文件读取对象: <br>
+            var fileReader = new FileReader(); <br>
+            accept 属性定义了上传文件的指定文件类型 <br>
+            multiple 属性可以上传多个文件
+        </h3>
+        <div class="demobox">
+            <input type="file" id="demo3_input" accept=".txt">
+            <div id="demo3_content"></div>
+        </div>
+
+        <h2 class="title">图片文件读取</h2>
+        <h3 class="content">
+            readAsDataURL() 读取数据地址, 返回的结果是一个base64格式编码字符串 <br>
+            base64格式编码最大的特点就是: 可以让多媒体标签中的src属性识别 <br>
+            压缩更高，有损压缩
+            图片转base64编码体积会变大1/3左右
+            作为前端优化方案之一, 减少了http的请求, 但是会增大css属性加载的时间
+        </h3>
+        <div class="demobox">
+            <input type="file" id="demo4_input">
+            <div id="demo4_content"></div>
+        </div>
+
+        <h2 class="title">通知管理</h2>
+        <h3 class="content">
+            创建通知对象: <br>
+            var notify = new Notification('标题', { 
+                icon: '', 
+                body: '主体内容', 
+                tag: 0 
+            }); <br>
+            icon: 可以传入图片 <br>
+            tag: 消息的标识，一般是后台传进来的 <br>
+            
+            Notification.permission 作用：判断用户是否点击过允许或者拒绝 <br>
+            属性值包括三个 <br>
+            granted 允许 <br>
+            denied 拒绝 <br>
+            default 默认, 用户没有点击过 允许或者拒绝<br>
+        </h3>
+
+        <h2 class="title">窗口的失焦和聚焦</h2>
+        <h3 class="content">
+            document.hidden 这个属性会返回两个结果 <br>
+            true  表示当前页面状态为 失焦 <br>
+            false 表示当前页面为 聚焦 <br>
+            事件监听: <br>
+            visibilitychange: 当页面状态发生改变时触发 <br>
+            注意: 该事件不兼容IE9以下版本 <br>
+        </h3>
+
+        <h2 class="title">地理位置信息</h2>
+        <h3 class="content">
+            调用地理位置信息的方法: <br>
+            window.navigator.geolocation.getCurrentPosition(successMsg, erroMsg, obj); <br>
+            getCurrentPosition(请求成功的回调函数，请求失败的回调函数，参数对象) <br>
+        </h3>
+        <div class="demobox">
+            <textarea id="demo5_text"></textarea>
+        </div>
+
+        <h2 class="title">百度地图api调用</h2>
+        <h3 class="content">
+            注册, 拿key, 引入, 按文档初始化 <br>
+            闫哥的key: https://api.map.baidu.com/api?v=3.0&ak=EX74K66CoT7eiHqNzb6b5Ayij3rQmS1h <br>
+        </h3>
+        <div class="demobox">
+            <div id="demo6_map"></div>
+            <p id="demo6_msg"></p>
+        </div>
+
+
+
+        <script src="./jq 3.6.0 jquery.min.js"></script>
+        <script>
+            // 网络状态判断
+            // 标准js判断
+            // window.onload = function(){
+            //     console.log(window.navigator.onLine);
+            // }
+            // h5判断
+            $(
+                function(){
+                    // 判断变化
+                    if(window.navigator.onLine == true){
+                        console.log('当前状态: 已连接')
+                    } else{
+                        console.log('当前状态: 已断开')
+                    }
+                    // 监听变化
+                    window.addEventListener(
+                        'online',
+                        function(){
+                            $('#demo1')
+                            .text('network online')
+                            .css('color', 'green')
+                            .fadeIn(1000) // 淡入
+                            .delay(2000) // 延迟
+                            .fadeOut(800); // 淡出
+                        },
+                        false
+                    );
+                    window.addEventListener(
+                        'offline',
+                        function(){
+                            $('#demo1')
+                            .text('network offline')
+                            .css('color', 'red')
+                            .fadeIn(1000) // 淡入
+                            .delay(2000) // 延迟
+                            .fadeOut(800); // 淡出
+                        },
+                        false
+                    );
+                }
+            );
+            
+            // 全屏展示和取消全屏
+            var demo2_img = document.querySelector('demo2_img');
+            var btn1 = document.querySelector('#demo2_btn1');
+            var btn2 = document.querySelector('#demo2_btn2');
+            var demo2 = document.querySelector('#demo2');
+            btn1.onclick = function(){
+                // 兼容性处理
+                if(demo2.webkitRequestFullScreen){
+                    demo2.webkitRequestFullScreen();
+                } else if(demo2.mozRequestFullScreen){
+                    demo2.mozRequestFullScreen();
+                } else if(demo2.msRequestFullscreen){
+                    demo2.msRequestFullscreen();
+                } else{
+                    demo2.requestFullScreen();
+                }
+            }
+            btn2.onclick = function(){
+                // 兼容性处理
+                if(document.webkitCancelFullScreen){
+                    document.webkitCancelFullScreen();
+                } else if(document.mozCancelFullScreen){
+                    document.mozCancelFullScreen();
+                } else if(document.msExitFullscreen){
+                    document.msExitFullscreen();
+                } else{
+                    document.cancelFullScreen();
+                }
+            }
+
+
+
+
+            // 文件读取
+            var demo3_input = document.querySelector('#demo3_input');
+            var demo3_content = document.querySelector('#demo3_content');
+            // onchange事件在文件上传时有一个缺点
+            // 如果当前这次上传的文件名和上一次一样的话，这个事件不会执行
+            // 一般会给文件的文件名加一个时间戳，这样文件就都不一样
+            // 这样还能看见文件上传时间
+            demo3_input.onchange = function(){
+                console.dir(this.files[0]);
+                // 创建文件读取对象
+                var fileReader = new FileReader();
+                // 读取文件
+                // readAsText() 读取.txt文件
+                fileReader.readAsText(this.files[0]); // files[0] 读取第一个文件
+                // 读取完毕
+                fileReader.onload = function(){ // onload事件表示文件读取完毕时调用
+                    // this.result 读取到的内容
+                    demo3_content.innerText = this.result; // result 读取到的内容
+                }
+            }
+
+
+            // 图片文件读取
+            var demo4_input = document.querySelector('#demo4_input');
+            var demo4_content = document.querySelector('#demo4_content');
+            demo4_input.onchange = function(){
+                var fileReader = new FileReader();
+                fileReader.readAsDataURL(this.files[0]);
+                fileReader.onload = function(){
+                    demo4_content.innerHTML = '<img src='+this.result+'>';
+                }
+            }
+
+            
+            
+            window.onload = function(){
+                // 通知管理
+                var str = Notification.permission;
+                console.log(str);
+                if(str == 'default'){
+                    var notify = Notification.requestPermission();
+                } else if(str == 'granted'){
+                    // 用户允许发送通知
+                    var notify = new Notification('您有一条消息未读', {
+                        icon: '', // 可以传入图片
+                        body: '消息来咯~', // 主体内容
+                        tag: 0 // 消息的标识，一般是后台传进来的
+                    });
+                } else if(str == 'denied'){
+                    console.log('您拒绝了通知权限');
+                }
+
+
+
+                //窗口失焦
+                document.addEventListener(
+                    'visibilitychange', 
+                    function(){
+                        // document.hidden 这个属性会返回两个结果
+                        // true  表示当前页面状态为 失焦
+                        // false 表示当前页面为 聚焦
+                        if(document.hidden){
+                            // 更改icon
+                            document.querySelector('link').href = '../img/icon2.png';
+                        } else{
+                            // 聚焦更改
+                            document.querySelector('link').href = '../img/icon.png';
+                        }
+                    }
+                );
+
+                
+                // 地理位置信息
+                var demo5_text = document.querySelector('#demo5_text');
+                // 判断当前浏览器是否支持地理位置功能
+                if('geolocation' in navigator){
+                    console.log('当前浏览器支持地理调用');
+                    var obj = {};
+                    // 单次请求
+                    // window.navigator.geolocation.getCurrentPosition(successMsg, erroMsg, obj);
+                    // 多次请求
+                    window.navigator.geolocation.watchPosition(successMsg, erroMsg, obj);
+                    // getCurrentPosition(请求成功的回调函数，请求失败的回调函数，参数对象)
+                    // 下面这两个函数 ，只会执行其中一个   要不成功 要不失败
+                    function successMsg(position){
+                        // 请求成功会执行这个函数  将成功后返回的结果放到position参数中
+                        demo5_text.value += '经度 :'+position.coords.longitude+'\n';
+                        demo5_text.value += '纬度 :'+position.coords.latitude+'\n';
+                        demo5_text.value += '准确度 :'+position.coords.accuracy+'\n';
+                        demo5_text.value += '海拔 :'+position.coords.altitude+'\n';
+                        demo5_text.value += '行进方向 :'+position.coords.heading+'\n';
+                        demo5_text.value += '地面速度  :'+position.coords.speed+'\n';
+                        demo5_text.value += '时间戳  :'+new Date(position.timestamp)+'\n'; // 时间戳
+                    }
+                    function erroMsg(error){
+                        // 请求失败会执行的函数，这个参数里有一个code属性，会返回失败的状态码
+                        console.log(error.code);
+                        window.navigator.geolocation.clearWatch();
+                    }
+                } else{
+                    console.log('当前浏览器不支持地理调用')
+                }
+            }
+        </script>
+        <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=EX74K66CoT7eiHqNzb6b5Ayij3rQmS1h"></script>
+        <script>
+            // baidu地图api调用
+            var demo6_msg = document.querySelector('#demo6_msg');
+            var map = new BMap.Map('demo6_map');
+            var point = new BMap.Point(116.1330372214297, 40.238474126309); // 设置中心点，经纬度
+            map.centerAndZoom(point, 15); // 设置中心点和缩放级别 参数1：中心点 参数2：缩放级别
+            map.enableScrollWheelZoom(); // 启用滚轮放大缩小
+            var marker = new BMap.Marker(point); // 创建标注
+            map.addOverlay(marker); // 将标注添加到地图中
+            marker.addEventListener('click', function(){
+                alert('您点击了标注');
+            });
+            marker.enableDragging(); // 允许拖拽
+            marker.addEventListener('dragend', function(e){
+                // 拖拽结束时触发
+                // 写在p标签中
+                // demo6_msg.innerText = ""; // 清空
+                demo6_msg.innerText = '当前位置：'+e.point.lng+', '+e.point.lat;
+            });
+            var opts = {
+                width: 100, // 信息窗口宽度, 默认单位px
+                height: 150, // 信息窗口高度
+                title: '当前位置喵'
+            }
+            var opt_inner = '<h1 style="color:skyblue;font-size: 20px;">这是h1标签</h1>'+
+                            '<img style="width:50px;height:50px; diplay:block; border-radius: 10px" src="../img/icon.png"/>'+
+                            '<p style="font-size: 16px">公司地址：昌平区南口镇南口南大街21号</p>';
+            var infoWindow = new BMap.InfoWindow(opt_inner, opts); // 创建信息窗口对象 // 参数1：内容 参数2：配置项
+            map.openInfoWindow(infoWindow, map.getCenter()); // 打开信息窗口
+            map.onclick = function(e){
+                map.clearOverlays(); // 清除所有覆盖物
+                var point = new BMap.Point(e.point.lng, e.point.lat); // 创建标注
+                var marker = new BMap.Marker(point); // 创建标注
+                map.addOverlay(marker); // 将标注添加到地图中
+                demo6_msg.innerText = '当前位置：'+e.point.lng+', '+e.point.lat;
+            }
+        </script>
+    </body>
+</html>
