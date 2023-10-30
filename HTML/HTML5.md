@@ -975,6 +975,16 @@
  - measureText(text): 测量文字宽度
      - text: 文字内容
 
+### 书写顺序
+
+    1. 设置样式
+    2. 开始路径
+    3. 绘制路径
+    4. 闭合路径
+    5. 填充或描边
+    6. 绘制图片
+    7. 绘制文字
+
 ## SVG 矢量图
 
  - [案例文件](../study-codefile/new/Code/HTML5/code/10.svg基础.html)
@@ -1379,3 +1389,64 @@
  - 注意:
      - getCurrentPosition()和watchPosition()方法必须在https协议下才能使用
      - getCurrentPosition()和watchPosition()方法必须在服务器上才能使用
+
+
+## 拖放
+
+ - [案例文件](../study-codefile/new/Code/HTML5/code/12.拖放.html)
+
+### 拖放事件
+
+ - 第一步: 拖放标签添加属性 draggable="true"
+ - `.ondragstart` 事件在拖动元素时触发
+ - `.ondrag` 事件在元素正在拖动时触发
+ - `.ondragend` 事件在完成元素拖动后触发
+ - `.ondragnter` 事件在拖动元素 进入 放置元素 的 可释放目标时触发
+ - `.ondragover` 事件在拖动元素 在 放置元素 的 可释放目标 上 时触发
+ - `.ondragleave` 事件在拖动元素 离开 放置元素 的 可释放目标时触发
+ - `.ondrop` 事件在拖动元素 放置到 可释放目标 时 触发
+
+### 书写顺序
+
+    1. 拖放标签添加属性 draggable="true"
+    2. 拖动元素时触发
+    3. 元素正在拖动时触发
+    4. 完成元素拖动后触发
+    5. 拖动元素 进入 放置元素 的 可释放目标时触发
+    6. 拖动元素 在 放置元素 的 可释放目标 上 时触发
+    7. 拖动元素 离开 放置元素 的 可释放目标时触发
+    8. 拖动元素 放置到 可释放目标 时 触发
+
+### 事件对象的dataTransfer属性操作拖动元素
+
+ - dataTransfer.setData("type", "value"): 设置数据
+ - dataTransfer.getData("type"): 获取数据
+ - dataTransfer.clearData("type"): 清除数据
+
+### 事件监听用法例:
+
+ - ```js
+    元素1.addEventListener.addEventListener('dragenter',fn); // 拖拽到目标对象范围内执行
+    元素1.addEventListener.addEventListener('dragover',fn); // 拖拽到目标对象范围内悬停时执行
+    元素1.addEventListener.addEventListener('dragleave',fn); // 拖拽到目标对象范围内离开时执行
+    元素1.addEventListener.addEventListener('drop',fn); // 拖拽到目标对象释放时执行
+
+    function fn(e){
+        // 先取消默认行为
+        e.preventDefault();
+        switch (e.type){
+            case 'dragenter':
+                // 拖拽到目标对象范围内执行
+                break;
+            case 'dragover':
+                // 拖拽到目标对象范围内悬停时执行
+                break;
+            case 'dragleave':
+                // 拖拽到目标对象范围内离开时执行
+                break;
+            case 'drop':
+                // 拖拽到目标对象释放时执行
+                break;
+        }
+    }
+    ```
