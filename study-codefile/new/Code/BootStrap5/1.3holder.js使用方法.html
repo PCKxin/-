@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="./css/bootstrap.min.css">
+        <script src="./js/holder.min.js"></script>
+        <style>
+            .yuki_title{
+                margin-top: 20px;
+                font-size: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: pink;
+            }
+            .yuki_content{
+                margin-top: 20px;
+                font-size: 20px;
+                line-height: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: skyblue;
+            }
+            .yuki_demobox{
+                margin-top: 20px;
+                width: 100%;
+                height: auto;
+                text-align: center;
+                font-size: 20px;
+                color: white;
+                background: rgba(185, 185, 185, 0.568);
+            }
+        </style>
+    </head>
+    <body>
+        <h2 class="yuki_title">holder.js</h2>
+        <h3 class="yuki_content">
+            holder.js当实际的图片没有设计出来之前 需要img去占用页面空间
+            可以使用holderjs模拟图片内容, 优点:可以看到图片的尺寸大小
+            用法:
+            1.src属性:固定写法 holder.js/宽x高 注意: x是字母! 'x'不是乘号
+            2.可以给图片设置背景颜色 在尺寸后面添加?theme=颜色
+            颜色包含(sky, vine, lava, gray, industrial, social)
+            3.可以设置随机颜色 random=yes
+            4.图片尺寸可以设置成百分比 100p 表示百分之百
+            5.bg和fg bg背景颜色 fg 前景色(文字的颜色)值为 十六进制
+            6.可以自定义文字内容 text=自定义文字内容 定义文字的对齐 align=left 只有向左对齐
+            font定义文字类型 size定义文字大小
+            7.对角线 outline=yes 样式类似于邮件
+        </h3>
+        <div class="container">
+            <img src="holder.js/100px200" alt="">
+            <img src="holder.js/400x200?theme=industrial" alt="">
+            <img src="holder.js/200x200?random=yes" alt="">
+            <img src="holder.js/100px200?random=yes" alt="">
+            <img src="holder.js/100px200?bg=62e226&fg=e650ae" alt="">
+            <img src="holder.js/100px200?random=yes&text=广告图w100h200&align=left&font=隶书&size=50" alt="">
+            <img src="holder.js/300x200?random=yes&outline=yes" alt="">
+        </div>
+    </body>
+</html>

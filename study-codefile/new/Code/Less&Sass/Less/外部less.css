@@ -1,0 +1,245 @@
+/* 这种注释, 会编译到css文件中 */
+/* 使用 */
+* {
+  margin: 0;
+  padding: 0;
+}
+/* 1 定义变量 */
+/* 2 使用变量 */
+.title {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 30px;
+  color: white;
+  font-weight: bold;
+  background-color: pink;
+}
+.content {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+  background-color: skyblue;
+}
+.demobox {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+  background-color: rgba(185, 185, 185, 0.881);
+}
+#demo1_box1 {
+  color: pink;
+  background: skyblue;
+  width: 200px;
+  height: 40px;
+  margin: 0 auto;
+  line-height: 40px;
+}
+/*选择器变量*/
+#demo2 {
+  margin: 0 auto;
+  color: #ccc;
+  width: 50%;
+  background: red;
+}
+.demo2 {
+  margin: 0 auto;
+  color: #ccc;
+  width: 50%;
+  background: yellow;
+}
+.demo3 {
+  margin: 0 auto;
+  color: #ccc;
+  width: 50%;
+  background: blue;
+}
+#demo4 {
+  margin: 0 auto;
+  color: #ccc;
+  width: 50%;
+  background: blue;
+}
+/* 属性变量 */
+#demo5 {
+  margin: 0 auto;
+  border: 3px solid pink;
+  font-size: 24px;
+  width: 200px;
+  height: 40px;
+}
+body {
+  background: url("../img/bg.png");
+  background-size: cover;
+}
+/* 声明变量 */
+#demo6 {
+  width: 200px;
+  height: 100px;
+  line-height: 100px;
+  margin: 0 auto;
+  background: skyblue;
+}
+/* 变量运算 */
+#demo7 {
+  margin: 0 auto;
+  width: 300px;
+  height: 100px;
+  line-height: 100px;
+  background: #ff00ff;
+}
+/* 变量作用域 */
+/* 7 用变量去定义变量 */
+#demo8 {
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+}
+/* 嵌套 */
+#demo9 {
+  margin: 0 auto;
+  width: 200px;
+  height: 100px;
+  line-height: 100px;
+  background: skyblue;
+}
+#demo9:hover {
+  background: pink;
+}
+#demo9 a {
+  text-decoration: none;
+}
+#demo9 a:hover {
+  color: red;
+}
+/* 混合 */
+#demo10 {
+  margin: 0 auto;
+  width: 200px;
+  height: 100px;
+  line-height: 100px;
+  background: skyblue;
+}
+#demo10 .demo10_link {
+  text-decoration: none;
+  color: #000;
+}
+#demo10 .demo10_link:hover {
+  color: red;
+}
+/* 混合带参数 */
+#demo11 {
+  margin: 0 auto;
+  width: 200px;
+  height: 100px;
+  line-height: 100px;
+  background: skyblue;
+}
+#demo11 .demo11_link {
+  text-decoration: none;
+  color: #fff;
+  font-size: 30px;
+}
+#demo11 .demo11_link:hover {
+  color: red;
+}
+/* 方法匹配模式 */
+#demo12 {
+  border-color: #00ffcc transparent transparent transparent;
+  margin: 0 auto;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 50px;
+}
+/* 4 方法的命名空间 让方法更加规范 */
+#demo13_wrap {
+  height: 100px;
+}
+#demo13_main {
+  width: 300px;
+}
+#demo13_con {
+  background: red;
+  width: 20px;
+}
+/* 方法的条件筛选 */
+#demo14 {
+  margin: 0 auto;
+  width: 200px;
+  height: 100px;
+  line-height: 100px;
+  background: gray;
+  border: 105px solid #999;
+  font-size: 20px;
+}
+#demo14 #demo14_link {
+  text-decoration: none;
+  color: skyblue;
+}
+#demo14 #demo14_link:hover {
+  color: pink;
+  transition: all 1s linear;
+}
+/* 继承 extend 关键字的使用 */
+.demo15_animation,
+#demo15_link:hover {
+  color: pink;
+  transition: all 1s linear;
+}
+.demo15_animation .hide {
+  transform: scale(0);
+}
+#demo15_style,
+#demo15,
+#demo15 {
+  margin: 0 auto;
+  width: 200px;
+  height: 100px;
+  line-height: 100px;
+  background: gray;
+}
+#demo15_link {
+  color: black;
+  text-decoration: none;
+}
+/* all 继承所有的状态 all关键字 */
+#demo15 {
+  border-radius: 15px;
+}
+/* 导入外部文件 */
+#demo_outer {
+  margin: 0 auto;
+  width: 200px;
+  height: 150px;
+  line-height: 150px;
+  border-radius: 15px;
+  background: pink;
+}
+/* reference 调用的时候才会编译 */
+#demo16 {
+  margin: 0 auto;
+  width: 200px;
+  height: 150px;
+  line-height: 150px;
+  border-radius: 15px;
+  background: pink;
+}
+/* 函数 */
+/* color() 用于解析颜色 */
+#demo17 {
+  margin: 0 auto;
+  width: 200px;
+  height: 150px;
+}
+#demo_outer {
+  margin: 0 auto;
+  width: 200px;
+  height: 150px;
+  line-height: 150px;
+  border-radius: 15px;
+  background: pink;
+}

@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <!-- bootstrap css -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    
+  </head>
+  <body>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="getLocation()">
+        Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="--bs-modal-width: 1000px;">
+        <div class="modal-content" style="height: 800px;">
+          <div class="modal-body" style="height: 800px;" id="container">
+                
+          </div>
+        </div>
+        </div>
+    </div>
+    
+    <!-- bootstrap js -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    
+    <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=EX74K66CoT7eiHqNzb6b5Ayij3rQmS1h"></script>
+    <script>
+            // 1)检测是否支持地理定位
+            // 2)如果支持，则运行 getCurrentPosition() 方法。如果不支持，则向用户显示一段消息。
+            // 3)如果getCurrentPosition()运行成功,则向参数showPosition中规定的函数返回一个coords对象
+            // 4)showPosition() 函数获得并显示经度和纬度
+            var x = null;
+            var y = null;
+            // var x = document.getElementById('demo');
+            function getLocation() {
+                if(navigator.geolocation){
+                    console.log(x)
+                    navigator.geolocation.getCurrentPosition(showPosition,showError);
+                }else{
+                    // 不支持
+                    x.innerHTML= "当前浏览器不支持";
+                }
+            }
+
+            // 获取定位成功，显示位置信息
+            function showPosition(position){
+                x = position.coords.longitude;
+                y = position.coords.latitude;
+                console.log(1)
+            }
+
+            function showError(error){
+                switch(error.code){
+                    case error.PERMISSION_DENIED:
+                        x.innerHTML = "用户拒绝地理定位"
+                        break;
+                }
+                console.log(2)
+            }
+
+            // 三秒检测一次，如果x不为空，则显示x的值，并停止检测
+            var t1 = setInterval(function(){
+                if(x){
+                  // 1 创建地图实例
+                  var map = new BMap.Map("container");
+
+                  // 2 设置中心点坐标
+                  var point = new BMap.Point(x, y);
+
+                  // 3 地图初始化，同时设置地图展示级别 级别是放大3-19倍
+                  map.centerAndZoom(point, 15);
+
+                  // 4 开启鼠标滚轮缩放
+                  map.enableScrollWheelZoom(true);
+
+                  // 创建标注
+                  var marker = new BMap.Marker(point);
+                  // 将标注添加到地图中
+                  map.addOverlay(marker);
+
+                  // 6 信息窗口
+                  var opts = {
+                      width: 250, // 信息窗口宽度
+                      height: 100, // 信息窗口高度
+                      title: "Hello", // 信息窗口标题
+                  };
+                  // 第一个参数"World"是要创建的内容 可以是字符串也可以是一个变量
+                  // 第二个参数opts是信息窗口配置
+                  // 创建信息窗口对象
+                  var infoWindow = new BMap.InfoWindow("World", opts); 
+                  // 打开信息窗口
+                  // 第一个参数 infoWindow 要打开的窗口
+                  // 第二个参数 map.getCenter() 在地图正中心打开
+                  map.openInfoWindow(infoWindow, map.getCenter());
+
+                  // 停止检测
+                  clearInterval(t1);
+                }
+            },3000)
+
+            
+
+        
+
+
+        
+
+        
+    </script>
+  </body>
+</html>

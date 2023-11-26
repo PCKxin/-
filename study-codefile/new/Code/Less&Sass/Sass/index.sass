@@ -1,0 +1,139 @@
+//这种双斜杠单行注释，在编译后不会出现在css文件上
+/* 这种多行注释，编译后会出现在css文件上 */
+// sass支持两种语法:
+    // sass 是缩进语法
+    // scss 是大括号语法 ，和less语法一样
+
+// 变量
+
+// 使用美元符号 $ 来命名变量
+
+// 可以在一个变量中引入另一个变量
+
+// 调用用$符号加变量名
+
+/* 定义变量 */
+
+$headerMarginTop: 20px
+$headerTextAlign: center
+$headerConFontSize: 20px
+$headerFontColor: white
+$headerFontWeight: bold
+
+$titleBgColor: pink
+$contentBgColor: skyblue
+$demoboxBgColor: rgba(185, 185, 185, 0.881)
+$demoboxmargin: 0 auto
+
+/* 使用变量 */
+
+.title
+    margin-top: $headerMarginTop
+    text-align: $headerTextAlign
+    font-size: $headerConFontSize
+    color: $headerFontColor
+    font-weight: $headerFontWeight
+    background-color: $titleBgColor
+
+.content
+    margin-top: $headerMarginTop
+    text-align: $headerTextAlign
+    font-size: $headerConFontSize
+    color: $headerFontColor
+    font-weight: $headerFontWeight
+    background-color: $contentBgColor
+
+.demobox
+    margin-top: $headerMarginTop
+    text-align: $headerTextAlign
+    font-size: $headerConFontSize
+    color: $headerFontColor
+    font-weight: $headerFontWeight
+    background-color: $demoboxBgColor
+
+
+// 嵌套
+
+#demo1_box1
+    width: 200px
+    height: 100px
+    line-height: 100px
+    background: pink
+    margin: 0 auto
+    #demo1_link
+        color: white
+        text-decoration: none
+        &:hover
+            color: red
+            text-decoration: underline
+
+// 多种选择器
+// + 相邻选择器
+
+#demo2_box1
+    + div
+        width: 200px
+        height: 30px
+        margin: 0 auto
+        background: skyblue
+
+
+// 多属性
+#demo3_box1
+    width: 200px
+    height: 100px
+    margin: 0 auto
+    background: skyblue
+    border:
+        width: 1px
+        style: solid
+        color: pink
+    border-radius: 20px
+
+// !default 默认值
+// 如果之前没有赋值，则使用默认值
+
+$demo4_box1_height: 100px !default
+$demo4_box1_margin: 0 auto !default // !default 用于设置默认值
+$demo4_box1_background: skyblue !default
+
+// 如果之前已经赋值，则使用已经赋值的值
+$demo4_box1_width: 300px 
+$demo4_box1_width: 200px !default
+
+
+#demo4_box1
+    width: $demo4_box1_width
+    height: $demo4_box1_height
+    margin: $demo4_box1_margin
+    background: $demo4_box1_background
+    border-radius: 20px
+
+// @mixin 定义混合宏
+// @ mixin 声明名称后, 形参写在小括号中, 用逗号隔开
+// 调用时, 传入实参, 用逗号隔开
+// 可以定义带有默认值的形参
+
+@mixin box($width, $height, $margin, $background, $borderRadius: 20px)
+    width: $width
+    height: $height
+    margin: $margin
+    background: $background
+    border-radius: $borderRadius
+
+#demo5_box1
+    @include box(200px, 100px, 0 auto, pink)
+
+// 继承
+
+// @extend 用于继承
+
+.box1
+    width: 200px
+    height: 100px
+    margin: 0 auto
+    background: pink
+    border-radius: 20px
+
+#demo6_box1
+    @extend .box1

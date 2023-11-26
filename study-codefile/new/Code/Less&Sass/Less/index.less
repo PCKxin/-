@@ -1,0 +1,426 @@
+// 这种注释, 编译后不会出现在 css 文件中
+/* 这种注释, 会编译到css文件中 */
+
+// 只要往 .less 文件里写东西, 就会自己生成一个 .css 文件
+// 只要在这里写样式就会自动更新到 css 文件里
+
+/* 使用 */
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* 1 定义变量 */
+
+@headerMarginTop: 20px;
+@headerTextAlign: center;
+@headerConFontSize: 20px;
+@headerFontColor: white;
+@headerFontWeight: bold;
+
+@titleBgColor: pink;
+@contentBgColor: skyblue;
+@demoboxBgColor: rgba(185, 185, 185, 0.881);
+@demoboxmargin: 0 auto;
+
+/* 2 使用变量 */
+.title{
+    margin-top: @headerMarginTop;
+    text-align: @headerTextAlign;
+    font-size: 30px;
+    color: @headerFontColor;
+    font-weight: @headerFontWeight;
+    background-color: @titleBgColor;
+}
+.content{
+    margin-top: @headerMarginTop;
+    text-align: @headerTextAlign;
+    font-size: @headerConFontSize;
+    color: @headerFontColor;
+    font-weight: @headerFontWeight;
+    background-color: @contentBgColor;
+}
+.demobox{
+    margin-top: @headerMarginTop;
+    text-align: @headerTextAlign;
+    font-size: @headerConFontSize;
+    color: @headerFontColor;
+    font-weight: @headerFontWeight;
+    background-color: @demoboxBgColor;
+}
+
+
+@demo1Color: pink;
+@demo1BgColor: skyblue;
+
+#demo1_box1{
+    color: @demo1Color;
+    background: @demo1BgColor;
+    width: 200px;
+    height: 40px;
+    margin: 0 auto;
+    line-height: 40px;
+}
+
+
+/*选择器变量*/
+
+// id选择器
+@idSelectorDemo: #demo2;
+// 类选择器
+@classSelectorDemo: .demo2;
+// 标签选择器
+@tagSelectorDemo: div;
+// id和类都能调用
+@mySelectorDemo: demo3;
+@mySelectorDemo2: demo4;
+
+// 变量名用大括号包裹
+@{idSelectorDemo} {
+    margin: @demoboxmargin;
+    color: #ccc;
+    width: 50%;
+    background: red;
+}
+
+@{classSelectorDemo} {
+    margin: @demoboxmargin;
+    color: #ccc;
+    width: 50%;
+    background: yellow;
+}
+
+// 两种方式，用哪个都可以
+// 类名的话前面加个点
+.@{mySelectorDemo} {
+    margin: @demoboxmargin;
+    color: #ccc;
+    width: 50%;
+    background: blue;
+}
+// id的话前面加个井号
+#@{mySelectorDemo2} {
+    margin: @demoboxmargin;
+    color: #ccc;
+    width: 50%;
+    background: blue;
+}
+
+/* 属性变量 */
+
+@borderDemo: border;
+
+@solidDemo: 3px solid pink;
+
+@Demo5FontSize: 24px;
+
+#demo5{
+    margin: @demoboxmargin;
+    @{borderDemo}: @solidDemo;
+    font-size: @Demo5FontSize;
+    width: 200px;
+    height: 40px;
+}
+
+// url变量
+
+@BodyImages: "../img";
+
+body {
+    background: url("@{BodyImages}/bg.png");
+    background-size: cover;
+}
+
+/* 声明变量 */
+
+@Demo6Style: {
+    width: 200px;
+    height: 100px;
+    line-height: 100px;
+    margin: 0 auto;
+    background: skyblue;
+}
+
+#demo6{
+    margin: @demoboxmargin;
+    @Demo6Style();
+}
+
+/* 变量运算 */
+
+@Demo7Width: 200px;
+@Demo7Color: #ff0000;
+
+#demo7{
+    margin: @demoboxmargin;
+    width: @Demo7Width + 100px;
+    height: 100px;
+    line-height: 100px;
+    background: @Demo7Color + #0000ff;
+}
+
+/* 变量作用域 */
+
+// 就近原则没变
+
+/* 7 用变量去定义变量 */
+
+@Demo8Var: @Demo8A;
+@Demo8A: 50%;
+
+#demo8{
+    margin: @demoboxmargin;
+    width: @Demo8Var;
+    @Demo8A: 100%;
+    height: @Demo8Var;
+}
+
+/* 嵌套 */
+
+// 嵌套的时候，父级选择器可以用&代替
+// 可以多层嵌套, 媒体查询也能嵌
+
+#demo9{
+    margin: @demoboxmargin;
+    width: 200px;
+    height: 100px;
+    line-height: 100px;
+    background: skyblue;
+    &:hover{
+        background: pink;
+    }
+    & a{
+        text-decoration: none;
+    }
+    & a:hover{
+        color: red;
+    }
+}
+
+/* 混合 */
+
+// 混合就是把一些样式放在一起，然后调用
+
+.demo10_link(){
+    text-decoration: none;
+    color: #000;
+    &:hover{
+        color: red;
+    }
+}
+
+#demo10{
+    margin: @demoboxmargin;
+    width: 200px;
+    height: 100px;
+    line-height: 100px;
+    background: skyblue;
+    .demo10_link{
+        .demo10_link();
+    }
+}
+
+/* 混合带参数 */
+
+// 混合带参数就是把一些样式放在一起，然后调用的时候可以传参
+// less 可以使用默认参数，如果没传参就用默认参数
+// @arguments犹如JS中的arguments指代的是全部参数
+// 传的参数可以是变量，也可以是属性，必须带单位
+
+.demo11_link(@color: #000, @fontSize: 20px){ // 默认参数
+    text-decoration: none;
+    color: @color;
+    font-size: @fontSize;
+    &:hover{
+        color: red;
+    }
+}
+
+#demo11{
+    margin: @demoboxmargin;
+    width: 200px;
+    height: 100px;
+    line-height: 100px;
+    background: skyblue;
+    .demo11_link{
+        .demo11_link(#fff, 30px); // 传参
+    }
+}
+
+/* 方法匹配模式 */
+
+// 方法匹配模式就是根据传参的不同，调用不同的方法
+
+// top 朝上三角形
+.triangle(top,@width:20px,@color:#000){
+    border-color: transparent transparent @color transparent;
+}
+//right 朝右的三角形
+.triangle(right,@width:20px,@color:#000){
+    border-color: transparent transparent transparent @color;
+}
+//bottom 朝下的三角形
+.triangle(bottom,@width:20px,@color:#000){
+    border-color:@color transparent transparent transparent;
+}
+//left 朝左的三角形
+.triangle(left,@width:20px,@color:#000){
+    border-color: transparent @color transparent transparent;
+}
+.triangle(@_,@width:20px,@color:#000){
+    margin: @demoboxmargin;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: @width;
+}
+
+#demo12{
+    .triangle(bottom,50px,#00ffcc);
+}
+
+/* 4 方法的命名空间 让方法更加规范 */
+
+// 在 CSS 中 > 选择器，选择的是儿子元素，就是必须与父元素有直接关系的元素
+// 在引入命令空间时，如使用 > 选择器，父元素不能加 括号。
+// 不得单独使用命名空间的方法 必须先引入命名空间，才能使用其中方法
+// 子方法 可以使用上一层传进来的方法
+
+#demo13_box(){
+    background: red;
+    .d(@w:300px){
+        width: @w;
+        #a(@h:300px){
+            height: @h;
+        }
+    }
+}
+//调用 父级方法不加括号
+#demo13_wrap{
+    #demo13_box > .d > #a(100px);
+}
+#demo13_main{
+    #demo13_box.d();
+}
+#demo13_con{
+    #demo13_box();
+    .d(20px);
+}
+
+/* 方法的条件筛选 */
+
+// less 不用 if else, 用有when
+
+#demo14_fun{
+
+    // when 方法 加 and
+    .border(@width,@color,@style) when (@width>100px) and (@color=#999){
+        border:@width @style @color ;
+    }
+    //when not !取反的意思
+    .width(@width) when not(@width>100px){
+        border-width: @width;
+    }
+    //逗号分隔符方法 两个逗号是或者
+    .font(@size:20px) when(@size>50px),(@size<100px){
+        font-size: @size;
+    }
+    #demo14_link_check(@color) when (@color = pink){
+        color: @color;
+        transition: all 1s linear;
+    }
+}
+
+#demo14{
+    margin: @demoboxmargin;
+    width: 200px;
+    height: 100px;
+    line-height: 100px;
+    background: gray;
+    #demo14_fun>.border(105px,#999,solid);
+    #demo14_fun>.width(200px);
+    #demo14_fun>.font(20px);
+    #demo14_link{
+        text-decoration: none;
+        color: skyblue;
+        &:hover{
+            #demo14_fun>#demo14_link_check(pink);
+        }
+    }
+}
+
+
+/* 继承 extend 关键字的使用 */
+
+// extend 是 less 的伪类,它可以继承所有匹配声明中的全部模式
+.demo15_animation{
+    color: pink;
+    transition: all 1s linear;
+    .hide{
+        transform: scale(0);
+    }
+}
+
+#demo15_style{
+    margin: @demoboxmargin;
+    width: 200px;
+    height: 100px;
+    line-height: 100px;
+    background: gray;
+}
+
+#demo15_link{
+    color: black;
+    text-decoration: none;
+    &:hover{
+        // &:代表上一层(接是父级)选择器(#)
+        &:extend(.demo15_animation);
+    }
+}
+
+/* all 继承所有的状态 all关键字 */
+// 使用选择器匹配到的全部声明
+
+// 第一种调用方法
+#demo15{
+    &:extend(#demo15_style all);
+}
+
+// 第二种调用方法
+#demo15:extend(#demo15_style all){
+    border-radius: 15px;
+}
+
+/* 导入外部文件 */
+
+@import "./外部less.less";
+
+/* reference 调用的时候才会编译 */
+@import (reference) "./外部less.less";
+
+#demo16 {
+    #demo_outer;
+}
+
+// /* 导入一次 */
+// @import (once) "./外部less.less";
+
+// /* 导入多个同名文件 multiple */
+// @import (multiple) "./外部less.less";
+
+/* 函数 */
+// less中封装了非常多函数库，例如颜色定义、颜色操作、颜色混合、字符串处理等等。
+// 例如color(): 用于解析颜色，将代表颜色的字符串转换为颜色值。
+
+/* color() 用于解析颜色 */
+#demo17{
+    margin: @demoboxmargin;
+    // 向上取整
+    width: ceil(199.9999px);
+    // 向下取整
+    height: floor(150.9797px);
+    line-height: 150px;
+    background: color(pink);
+    border-radius: 15px;
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="./css/index.css">
+    </head>
+    <body>
+        <h2 class="title">Sass</h2>
+        <h3 class="content">
+            Sass分两种文件 <br>
+            一种是.scss文件, 一种是.sass文件 <br>
+            .scss文件是以css语法为基础 <br>
+            .sass文件是以缩进为基础 <br>
+        </h3>
+        <div class="demobox">
+            <div id="demo1_box1">
+                <a href="#" id="demo1_link">嵌套</a>
+            </div>
+        </div>
+        <h3 class="content">
+            多种选择器 <br>
+        </h3>
+        <div class="demobox">
+            <div id="demo2_box1"></div>
+            <div>相邻兄弟</div>
+        </div>
+        <h3 class="content">
+            多属性 <br>
+        </h3>
+        <div class="demobox">
+            <div id="demo3_box1"></div>
+        </div>
+        <h3 class="content">
+            !default 默认值<br>
+            如果没有被声明, 则使用默认值<br>
+            如果之前段落中声明了, 则使用之前声明的值<br>
+        </h3>
+        <div class="demobox">
+            <div id="demo4_box1"></div>
+        </div>
+        <h3 class="content">
+            @mixin 定义混合器<br>
+            sass用法：<br>
+            @mixin 混合器名字 (可选形参)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;样式表<br>
+            @include 调用混合器<br>
+            sass用法：<br>
+            @include 混合器名字<br>
+        </h3>
+        <div class="demobox">
+            <div id="demo5_box1">@mixin 定义混合器</div>
+        </div>
+        <h3 class="content">
+            @extend 继承<br>
+            用法：<br>
+            .选择器名 {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;样式表<br>
+            }<br>
+            .选择器名 {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;@extend 选择器名<br>
+            }<br>
+        </h3>
+        <div class="demobox">
+            <div id="demo6_box1"></div>
+        </div>
+    </body>
+</html>

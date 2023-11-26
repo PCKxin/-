@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="./css/bootstrap.min.css">
+        <script src="./js/bootstrap.bundle.min.js"></script>
+        <link rel="stylesheet" href="./css/bootstrap-icons.css">
+        <script src="./js/holder.min.js"></script>
+        <style>
+            .yuki_title{
+                margin-top: 20px;
+                font-size: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: pink;
+            }
+            .yuki_content{
+                margin-top: 20px;
+                font-size: 20px;
+                line-height: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: skyblue;
+            }
+            .yuki_demobox{
+                margin-top: 20px;
+                width: 100%;
+                height: auto;
+                font-size: 18px;
+                color: rgb(117, 117, 117);
+                background: rgba(185, 185, 185, 0.568);
+            }
+        </style>
+    </head>
+    <body>
+        <h2 class="yuki_title">
+            表单 <br>
+            链接：https://v5.bootcss.com/docs/5.3/forms/overview/ <br>
+        </h2>
+        <h3 class="yuki_content">
+            form-control 表单的类名 <br>
+            form-control-lg 表单控件大 <br>
+            form-control-sm 表单控件小 <br>
+            form-text 表单的说明文字 <br>
+            form-control-plaintext 表单控件纯文本 <br>
+            form-control-color 表单控件颜色 <br>
+            form-control-range 表单控件范围 <br>
+            form-check-input 表单检查输入 <br>
+            form-check-label 表单检查标签 <br>
+            form-check-inline 表单检查内联 <br>
+            form-label 表单标签 <br>
+            form-select 表单选择 <br>
+            form-select-lg 表单选择大 <br>
+            form-select-sm 表单选择小 <br>
+            form-select-multiple 表单选择多个 <br>
+            form-select-disabled 表单选择禁用 <br>
+            form-select-plaintext 表单选择纯文本 <br>
+            form-select-sm-plaintext 表单选择小纯文本 <br>
+            form-select-lg-plaintext 表单选择大纯文本 <br>
+            form-select-sm-multiple 表单选择小多个 <br>
+            form-select-lg-multiple 表单选择大多个 <br>
+            ~ <br>
+            form-switch 表单开关 <br>
+            multiple 多个 <br>
+            aria-describedby : 设置表单组的id <br>
+            aria-label : 设置表单组的标签 <br>
+            form-floating : 聚焦时动画 <br>
+            is-invalid : 设置表单控件的状态为无效 <br>
+            input-group : 表单组 <br>
+            input-group-text : 表单组的文本 <br>
+            input-group-addon : 表单组的附加项 <br>
+        </h3>
+        <div class="yuki_demobox">
+            <div class="container">
+                <p>1.带动画表单</p>
+                <!--  
+                    实现这个浮动动画效果需要input在前，lābel在后
+                -->
+                <div class="mb-3 form-floating">
+                    <input type="text" 
+                        class="form-control is-invalid" 
+                        placeholder="email" 
+                        id="yuki-formtest"
+                        >
+                    <label for="yuki-formtest" class="form-label">email address</label>
+                </div>
+                <p>2.普通表单</p>
+                <div class="mb-3">
+                    <label for="yuki-formtest1">Example textarea</label>
+                    <textarea class="form-control" id="yuki-formtest1" rows="3"></textarea>
+                </div>
+                <p class="mt-5">3.设置宽高</p>
+                <input class="form-control form-control-lg" 
+                    placeholder=".form-control-lg" 
+                    aria-label=".form-control-lg example"
+                    >
+                <input class="form-control"
+                    type="text" 
+                    placeholder="Default input" 
+                    aria-label="default input example"
+                    >
+                <input class="form-control form-control-sm"
+                    placeholder=".form-control-sm"
+                    aria-label=".form-control-sm example"
+                    >
+                <p class="mt-5">4.禁用</p>
+                <input class="form-control form-control-lg"
+                    disabled
+                    placeholder=".form-control-lg"
+                    aria-label=".form-control-lg example"
+                    >
+                <input type="text" class="form-control" 
+                    placeholder="Default input" 
+                    disabled aria-label="default input example"
+                    >
+                <input type="text" class="form-control form-control-sm"
+                    placeholder=".form-control-sm"
+                    aria-label=".form-control-sm example"
+                    >
+                <p class="mt-5">5.只读</p>
+                <input type="text" class="form-control form-control-sm" 
+                readonly 
+                placeholder=".form-control-sm"
+                aria-label=".form-control-sm example"
+                >
+                <p class="mt-5">5-2.只读纯文本(除汉语)</p>
+                <div class="mb-3 row">
+                    <label for="yuki-formtest-3" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="text" 
+                        readonly
+                        class="form-control-plaintext"
+                        id="yuki-formtest-3"
+                        value="email@example.com"
+                        >
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="yuki-formtest-4" class="col-sm-2 col-form-label">Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" 
+                        class="form-control"
+                        id="yuki-formtest-4"
+                        >
+                    </div>
+                </div>
+
+                <p class="mt-5">6.文件输入</p>
+                <div class="mb-3">
+                    <label for="yuki-formfile1" class="form-label">单文件输入</label>
+                    <input class="form-control" type="file" id="yuki-formfile1">
+                </div>
+                <div class="mb-3">
+                    <label for="yuki-formfile2" class="form-label">多文件输入 只显示文件个数 不依次显示</label>
+                    <input type="file" class="form-control" id="yuki-formfile2">
+                </div>
+                <div class="mb-3">
+                    <label for="yuki-formfile3" class="form-label">禁用 file</label>
+                    <input class="form-control" type="file" id="yuki-formfile3" disabled>
+                </div>
+                <div class="mb-3">
+                    <label for="yuki-formfile4" class="form-label">小尺寸</label>
+                    <input class="form-control form-control-sm" type="file" id="yuki-formfile4">
+                </div>
+                <div class="mb-3">
+                    <label for="yuki-formfile5" class="form-label">大尺寸</label>
+                    <input class="form-control form-control-lg" type="file" id="yuki-formfile5">
+                </div>
+
+                <p class="mt-5">7.着色器</p>
+                <label for="yuki-formcolor1" class="form-label">着色器</label>
+                <input type="color" class="form-control form-control-color" id="yuki-formcolor1" 
+                    title="choose your color">
+                
+                <p class="mt-5">8.数据列表</p>
+                <label for="yuki-formDataList1" class="form-label">DataList</label>
+                <input type="text" class="form-control" list="yuki-options1" id="yuki-formDataList1" placeholder="Type to search...">
+                <datalist id="yuki-options1">
+                    <option value="red">
+                    <option value="blue">
+                    <option value="yellow">
+                    <option value="green">
+                    <option value="pink">
+                </datalist>
+
+                <p class="mt-5">9-1单选框和复选框</p>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="yuki-checkbox1">
+                    <label for="yuki-checkbox1" class="form-check-label">
+                        默认复选框
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="yuki-checkbox2" checked>
+                    <label for="form-check-label" for="yuki-checkbox2">
+                        默认选中
+                    </label>
+                </div>
+                <p class="mt-5">9-2单选框</p>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" name="yuki-radio" id="yuki-formradio">
+                    <label for="yuki-formradio">
+                        默认单选框
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" name="yuki-radio" id="yuki-formradio2" checked>
+                    <label for="yuki-formradio2">
+                        默认选中
+                    </label>
+                </div>
+                <p class="mt-5">10.不确定复选框</p>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="yuki-formcheck1">
+                    <label for="yuki-formcheck1" class="form-check-label">
+                        不确定复选框,默认不确定
+                    </label>
+                </div>
+
+                <p class="mt-5">11.开关</p>
+                <div class="form-check form-switch">
+                    <input type="checkbox" role="switch" class="form-check-input" id="yuki-switch1">
+                    <label for="yuki-switch1" class="form-check-label">
+                        默认开关
+                    </label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="yuki-switch1" checked>
+                    <label class="form-check-label" for="yuki-switch1">
+                        默认开关 状态开
+                    </label>
+                </div>
+                
+                <p class="mt-5">12.下拉菜单</p>
+                <select class="form-select" aria-label="default-select">
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+                
+                <p class="mt-5">13.全部展开</p>
+                <select class="form-select" multiple aria-label="multiple select example">
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+
+                <p class="mt-5">14.限制行数</p>
+                <select class="form-select" size="3" aria-label="size 3 select example">
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+        </div>
+    </body>
+</html>

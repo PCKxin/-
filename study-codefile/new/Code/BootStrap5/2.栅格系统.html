@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="./css/bootstrap.min.css">
+        <script src="./js/bootstrap.bundle.min.js"></script>
+        <style>
+            .yuki_title{
+                margin-top: 20px;
+                font-size: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: pink;
+            }
+            .yuki_content{
+                margin-top: 20px;
+                font-size: 20px;
+                line-height: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: skyblue;
+            }
+            .yuki_demobox{
+                margin-top: 20px;
+                width: 100%;
+                height: auto;
+                text-align: center;
+                font-size: 20px;
+                color: white;
+                background: rgba(185, 185, 185, 0.568);
+            }
+            .row img{
+                width:100%;
+            }
+        </style>
+    </head>
+    <body>
+        <h2 class="yuki_title">栅格系统</h2>
+        <h3 class="yuki_content">
+            实现方法：<br>
+            找出对应类名 <br>
+            row 开启弹性布局 子元素换行<br>
+            col-数字 1-12 代表占用的列数<br>
+            col-断点-数字<br>
+            col-断点(不加数字) xs sm md lg xl<br>
+            当小于断点时, 独占一行 <br>
+            当大于等于断点时, 会有响应式的变化 <br>
+            xs 小于576px<br>
+            sm 576 540<br>
+            md 768 720<br>
+            lg 992 960<br>
+            xl 1200 1140<br>
+            xxl 1400 1320<br>
+            栅格体系中的嵌套 <br>
+            正常情况: 一行分为12列 <br>
+            每一列可以用col/col-数字 <br>
+            每一列再分为12列 <br>
+        </h3>
+        <h3 class="yuki_content">
+            g表示列间距 <br>
+            rem 单位可以和px相互转换 <br>
+            1rem 默认情况下 = 16px <br>
+            浏览器默认的font-size的值有关系 <br>
+            可以手动修改rem和px的比例关系 <br>
+            只需要在html标签中设置font-size的值 <br>
+            1rem = 16px <br>
+            g-0 0rem 0 <br>
+            g-1 0.25rem 4px <br>
+            g-2 0.5rem 8px <br>
+            g-3 1rem 16px <br>
+            g-4 1.5rem 24px <br>
+            g-5 3rem 48px <br>
+            gx 指的是左右的列间距 <br>
+            gy 指的是上下的列间距 <br>
+            g 指的是上下左右的列间距 <br>
+        </h3>
+        <h3 class="yuki_content">
+            t = top <br>
+            b = bottom <br>
+            s = left <br>
+            e = right <br>
+            外边距: m <br>
+            内边距: p <br>
+            mx-auto = margin: 0 auto <br>
+            me-auto = margin-left: auto <br>
+            start end 代表的是文本的方向 <br>
+
+        </h3>
+        <h3 class="yuki_content">
+            d-flex 开启弹性布局 <br>
+            flex-row/column 定义主轴的方向 <br>
+            justify-content-start/end/center/between/around/evenly <br>
+            定义主轴的对齐方式 <br>
+        </h3>
+        <div class="yuki_demobox">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                        <div>
+                            <img src="./img/04.jpg" alt="">
+                            <h2>Blue Dress</h2>
+                            <p class="price">$29.00</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                        <div>
+                            <img src="./img/04.jpg" alt="">
+                            <h2>Blue Dress</h2>
+                            <p class="price">$29.00</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                        <div>
+                            <img src="./img/04.jpg" alt="">
+                            <h2>Blue Dress</h2>
+                            <p class="price">$29.00</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                        <div>
+                            <img src="./img/04.jpg" alt="">
+                            <h2>Blue Dress</h2>
+                            <p class="price">$29.00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="yuki_demobox">
+            <div class="d-flex flex-row justify-content-evenly">
+                <div class="p-2 bg-info">item-1</div>
+                <div class="p-2 bg-dark text-light">item-2</div>
+                <div class="p-2 bg-warning">item-3</div>
+                <div class="p-2 bg-danger">item-4</div>
+            </div>
+        </div>
+    </body>
+</html>

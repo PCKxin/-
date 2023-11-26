@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <!-- 安装与使用 -->
+        <h2 class="title">安装与使用</h2>
+        <h3 class="content">
+            vscode中安装less插件或者node.js中安装less <br>
+            vscode中安装插件后 只需要新建一个less文件 然后写样式会生成一个同名css文件, 同步更新
+        </h3>
+        <div class="demobox">
+            <div id="demo1_box1">定义变量</div>
+        </div>
+
+        <!-- ------------------------------------------- -->
+
+        <!-- 变量 -->
+        <h2 class="title">变量</h2>
+        <h3 class="content">
+            定义&使用变量 <br>
+            定义变量: @变量名: 值; <br>
+            使用变量: @变量名; <br>
+            <br>
+            选择器变量: <br>
+            用处: 用于定义选择器, 以便于在多个选择器中使用 <br>
+            id选择器: @自定义变量名: #id选择器; <br>
+            class选择器: @自定义变量名: .class选择器; <br>
+            也可以: @自定义变量名: 选择器名; <br>
+        </h3>
+        <div class="demobox">
+            <div id="demo2">less id选择器</div>
+            <div class="demo2">less class选择器</div>
+            <div class="demo3">第二种方法</div>
+            <div id="demo4">@符号前面加点或井号或其他</div>
+        </div>
+        <h3 class="content">
+            属性变量: <br>
+            用处: 用于定义属性<br>
+            用法: @自定义变量名: 属性名; <br>
+        </h3>
+        <div class="demobox">
+            <div id="demo5">属性变量</div>
+        </div>
+        <h3 class="content">
+            声明变量: <br>
+            用法: @自定义变量名: {样式表}<br>
+            调用: @自定义变量名(); <br>
+        </h3>
+        <div class="demobox">
+            <div id="demo6">声明变量</div>
+        </div>
+        <h3 class="content">
+            变量运算: <br>
+            用法: @自定义变量名: 值1 运算符 值2; <br>
+        </h3>
+        <div class="demobox">
+            <div id="demo7">变量运算</div>
+        </div>
+        <h3 class="content">
+            变量作用域: <br>
+            用法: <br>
+            1. 局部变量: 在选择器内定义的变量, 只能在该选择器内使用 <br>
+            2. 全局变量: 在选择器外定义的变量, 可以在任意选择器内使用 <br>
+
+            用变量定义变量 <br>
+            用法: @自定义变量名: @变量名; <br>
+        </h3>
+        <div class="demobox">
+            <div id="demo8">变量作用域</div>
+            <div id="demo8">用变量定义变量</div>
+        </div>
+        <h3 class="content">
+            嵌套变量: <br>
+            用法: @自定义变量名: {<br>
+                缩进@变量名: 值; <br>
+            } <br>
+            媒体查询也能嵌套
+        </h3>
+        <div class="demobox">
+            <div id="demo9">
+                <a href="#">嵌套变量</a>
+            </div>
+        </div>
+        <h3 class="content">
+            混合方法: <br>
+            用法: .class名{<br>
+                .class名(); <br>
+            } <br>
+        </h3>
+        <div class="demobox">
+            <div id="demo10">
+                <a href="#" class="demo10_link">混合方法</a>
+            </div>
+        </div>
+        <h3 class="content">
+            混合方法传参: <br>
+            用法: .class名(@参数名: 默认值){<br>
+                .class名(); <br>
+            } <br>
+        </h3>
+        <div class="demobox">
+            <div id="demo11">
+                <a href="#" class="demo11_link">混合方法传参</a>
+            </div>
+        </div>
+        <h3 class="content">
+            方法匹配模式: <br>
+            根据传参的不同, 选择不同的方法 <br>
+        </h3>
+        <div class="demobox">
+            <div id="demo12"></div>
+        </div>
+        <h3 class="content">
+            方法的命名空间: <br>
+            在 CSS 中 > 选择器表示一层子选择器 <br>
+            在引入命名空间时, 如使用 > 选择器, 父元素不能加括号 <br>
+            不得单独使用命名空间的方法 必须先引入命名空间 <br>
+            子方法可以使用上一层传进来的方法 <br>
+        </h3>
+        <h3 class="content">
+            方法的条件筛选: <br>
+        </h3>
+        <div class="demobox">
+            <div id="demo14">
+                <a href="#" id="demo14_link">方法的条件筛选</a>
+            </div>
+        </div>
+        <h3 class="content">
+            继承: <br>
+            用法: .class名:extend(父类名){<br>
+                样式表 <br>
+            } <br>
+        </h3>
+        <div class="demobox">
+            <div id="demo15">
+                <a href="#" id="demo15_link">继承</a>
+            </div>
+        </div>
+        <h3 class="content">
+            外部导入: <br>
+            用法: @import "less文件路径"; <br>
+        </h3>
+        <div class="demobox">
+            <div id="demo16">
+                外部导入
+            </div>
+        </div>
+        <h3 class="content">
+            函数: <br>
+            可以做数学函数运算 <br>
+        </h3>
+        <div class="demobox">
+            <div id="demo17">函数</div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .yuki_title{
+                margin-top: 20px;
+                font-size: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: pink;
+            }
+            .yuki_content{
+                margin-top: 20px;
+                font-size: 20px;
+                line-height: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: skyblue;
+            }
+            .yuki_demobox{
+                margin-top: 20px;
+                width: 100%;
+                height: auto;
+                font-size: 18px;
+                color: rgb(117, 117, 117);
+                background: rgba(185, 185, 185, 0.568);
+            }
+        </style>
+    </head>
+    <body>
+        <h2 class="yuki_title">介绍</h2>
+        <h3 class="yuki_content">
+            布局方式：<br>
+            响应式布局<br>
+            百分比布局(流式布局)<br>
+            弹性(flex)布局(主要)<br>
+            <br>
+            适配方案：<br>
+            em 适配 <br>
+            rem 适配(主要) <br>
+            viewport 适配 <br>
+            <br>
+            调试方式：<br>
+            chrome DevTools <br>
+            vConsole <br>
+            eruda <br>
+            weinre <br>
+            Charles <br>
+            Vorlon.JS <br>
+            BrowserSync <br>
+            <br>
+            性能优化：<br>
+            取消系统事件默认行为 <br>
+            图片防抖动：图片不会随着页面的缩放而变模糊 <br>
+            懒加载：当图片出现在视口中时才加载图片 <br>
+            函数防抖节流：防止函数被频繁调用 <br>
+            防止重绘重排：减少重绘重排次数 <br>
+            <br>
+            常用的移动端开发框架：<br>
+            jQuery Mobile <br>
+            Zepto.js <br>
+            swiper.js <br>
+            Bootstrap <br>
+            Amaze UI <br>
+            <br>
+            常见问题：<br>
+            图片和其他优化 <br>
+            css 优化 <br>
+            dom 操作优化 <br>
+            资源懒加载和预加载 <br>
+        </h3>
+        <h2 class="yuki_title">基础概念</h2>
+        <h3 class="yuki_content" style="background: pink;">
+            背景介绍
+        </h3>
+        <h3 class="yuki_content">
+            产品三种主要形式：<br>
+            Native App 原生应用<br>
+            IOS: object C<br>
+            Android: Java<br>
+            页面存放在本地, 基于操作系统运行<br>
+            优点: 能调用原声api 性能很好<br>
+            缺点: 开发成本高, 发布流程繁琐, 不能跨平台<br>
+            <br>
+            Web App 网页应用<br>
+            html css js<br>
+            受限于UIwebview<br>
+            页面存放在服务器 基于浏览器运行<br>
+            优点: 开发成本低, 发布流程简单, 能跨平台<br>
+            缺点: 不能调用原声api 性能一般 <br>
+            <br>
+            Hybrid App 混合应用<br>
+            object C + html + css + js <br>
+            通过UIwebview加载html页面 <br>
+            页面可以存放在本地，也可以存放在服务器 <br>
+            优点: 开发成本低, 发布流程简单, 能调用原声api, 能跨平台<br>
+            缺点: 性能一般 <br>
+        </h3>
+        <h3 class="yuki_content" style="background-color: pink;">
+            屏幕
+        </h3>
+        <h3 class="yuki_content">
+            屏幕尺寸 <br>
+            屏幕对角线的长度 <br>
+            以英寸为单位 <br>
+            1英寸(inch) = 2.54 厘米 <br>
+            常见尺寸: 3.5, 4.0, 4.7, 5.0, 5.5, 6.0, 6.5, 7.0, 7.9, 9.7, 10.1, 12.9 <br>
+        </h3>
+        <h3 class="yuki_content">
+            屏幕分辨率 <br>
+            屏幕水平方向和垂直方向上的像素点数 <br>
+            以像素px为单位 <br>
+            常见分辨率: 320x480, 640x960, 640x1136, 750x1334, 1080x1920, 1125x2436, 1242x2208, 1536x2048, 2048x2732 <br>
+        </h3>
+        <h3 class="yuki_content">
+            屏幕像素密度 <br>
+            密度越大, 屏幕越清晰 <br>
+            屏幕上每英寸的像素点数 <br>
+            以ppi为单位 <br>
+            计算公式: 屏幕像素密度 = (屏幕分辨率 / 屏幕尺寸的平方) <br>
+            常见像素密度: 163, 326, 401, 458, 264, 326, 401, 264, 326, 264 <br>
+        </h3>
+        <h3 class="yuki_content">
+            屏幕像素比 <br>
+            屏幕上每个逻辑像素对应的物理像素点数 <br>
+            以dpr为单位 <br>
+            常见像素比: 1, 2, 3 <br>
+        </h3>
+        <h3 class="yuki_content">
+            视网膜屏(Retina) <br>
+            也叫高清屏 <br>
+            像素点数是普通屏幕的2倍 <br>
+        </h3>
+        <h3 class="yuki_content" style="background-color: pink;"> 
+            像素
+        </h3>
+        <h3 class="yuki_content">
+            物理像素 <br>
+            也叫设备像素 <br>
+            以pt为单位 <br>
+            常见物理像素: 320, 640, 750, 1080, 1125, 1242, 1536, 2048 <br>
+        </h3>
+        <h3 class="yuki_content">
+            逻辑像素 <br>
+            也叫设备独立像素 <br>
+            以px为单位 <br>
+            逻辑像素 = 物理像素 * 像素比 <br>
+        </h3>
+        <h3 class="yuki_content">
+            css像素 <br>
+            也叫设备无关像素(device-independent)简称DIPS<br>
+            主要应用在浏览器上 <br>
+            标准密度下, 一个css像素等于一个设备像素，1px = 1dp <br>
+            2倍高清屏下, 一个css像素等于4个设备像素，1px = 4dp <br>
+            以px为单位 <br>
+            css像素 = 逻辑像素 / 像素比 <br>
+        </h3>
+        <h3 class="yuki_content">
+            像素比 <br>
+            屏幕上每个逻辑像素对应的物理像素点数 <br>
+            以dpr为单位 <br>
+            devicePixelRatio = 物理像素 / 设备独立像素 <br>
+            可以通过window.devicePixelRatio获取 <br>
+        </h3>
+        <h3 class="yuki_content" style="background-color: pink;">
+            视口
+        </h3>
+        <h3 class="yuki_content">
+            布局视口 <br>
+            layout viewport <br>
+            一般移动设备的浏览器都默认设置了一个 viewport 元标签 <br>
+            定义一个虚拟的布局视口, 用于解决早期的页面在手机上显示的问题。 <br>
+            iOS, Android 基本都将这个视口分辨率设置为 980px <br>
+            所以 PC 上的网页基本能在手机上呈现，只不过元素看上去很小，一般默认可以通过手动缩放网页。<br>
+            布局视口高度可以通过document.documentElement.clientHeight获取 <br>
+            设置布局视口: <br>
+            使用meta标签 <br>
+            属性: 
+            name="viewport" <br>
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" <br>
+            width 设置布局视口的宽度 取值: 正整数 或 device-width, device-width表示布局视口的宽度等于设备独立像素 <br>
+            initial-scale 设置页面的初始缩放值 取值: 0.0-10.0 <br>
+            minimum-scale 设置页面的最小缩放值 取值: 0.0-10.0 <br>
+            maximum-scale 设置页面的最大缩放值 取值: 0.0-10.0 <br>  
+            user-scalable 是否允许用户缩放页面 取值: yes/no <br>
+        </h3>
+        <h3 class="yuki_content">
+            视觉视口 <br>
+            visual viewport <br>
+            移动设备上浏览器可视区域的大小 <br>
+            视觉视口宽度可以通过window.innerWidth获取 <br>
+            视觉视口高度可以通过window.innerHeight获取 <br>
+            视觉视口宽度可以通过document.documentElement.clientWidth获取 <br>
+            视觉视口高度可以通过document.documentElement.clientHeight获取 <br>
+        </h3>
+        <h3 class="yuki_content">
+            理想视口 <br>
+            ideal viewport <br>
+            布局视口的默认宽度并不是一个理想的宽度 <br>
+            于是 Apple 和其他浏览器厂商引入了理想视口的概念, 它对设备而言是最理想的布局视口尺寸<br>
+            显示在理想视口中的网站具有最理想的宽度, 用户无需进行缩放<br>
+            为了让布局视口和视觉视口的大小相同 <br>
+            设置理想视口: <br>
+            使用meta标签 <br>
+            属性: 
+            name="viewport" <br>
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" <br>
+        </h3>
+    </body>
+</html>

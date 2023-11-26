@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .yuki_title{
+                margin-top: 20px;
+                font-size: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: pink;
+            }
+            .yuki_content{
+                margin-top: 20px;
+                font-size: 20px;
+                line-height: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: skyblue;
+            }
+            .yuki_demobox{
+                margin-top: 20px;
+                text-align: center;
+                width: 100%;
+                height: auto;
+                font-size: 18px;
+                color: rgb(117, 117, 117);
+                background: rgba(185, 185, 185, 0.568);
+            }
+        </style>
+    </head>
+    <body>
+        <h2 class="yuki_title">介绍</h2>
+        <h3 class="yuki_content">
+            Zepto是一个轻量级的、针对现代高级浏览器的JavaScript工具库，它兼容jQuery的API。<br>
+            Zepto是一款开源软件，它采用的是对开发者和商业都很友好的开源协议 <br>
+            移动端开发框架，API及语向同jquery相似，但文件更小(可压缩至9KB)。是目前功能完备的库中，最小的一个 <br>
+            更新截止日期：2016年11月 <br>
+        </h3>
+        <h2 class="yuki_title">基础用法</h2>
+        <h3 class="yuki_content">
+            包裹方式: <br>
+            Zepto(function($){}) <br>
+            兼容jQuery的: $(document).ready()方法 <br>
+            也可以简写为: $(function(){}) <br>
+        </h3>
+        <h3 class="yuki_title">点击事件</h3>
+        <div class="yuki_demobox">
+            <button id="demo1">button</button>
+            <p id="demo1_con"></p>
+        </div>
+        <h3 class="yuki_title">
+            touch事件
+            touchstart 手指触摸屏幕时触发，即使已经有一个手指放在了屏幕上也会触发。
+            touchmove 手指在屏幕上滑动时连续地触发。在这个事件发生期间，调用preventDefault()事件可以阻止滚动。
+            touchend 手指从屏幕上移开时触发。
+
+        </h3>
+        <div class="yuki_demobox">
+            <button id="demo2" style="width: 50px;height: 30px; background: skyblue; border: 0; margin: 10px;">button</button>
+            <p id="demo2_con"></p>
+            
+        </div>
+
+
+
+        <script src="./js/zepto.min.js"></script>
+        <script>
+
+            // 可以兼容jQuery的写法
+            // 执行顺序是先执行Zepto的，再执行jQuery的，先执行未用function包裹的，再执行用function包裹的
+            var demo1_c = "";
+            Zepto(
+                // 点击事件
+                function($){
+                    $('#demo1').on('click',function(){
+                        demo1_c = demo1_c + "你点击了按钮 - 1<br>";
+                        console.log(1)
+                    })
+                }
+            )
+            $(function(){
+                $('#demo1').on('click',function(){
+                    demo1_c = demo1_c + "你点击了按钮 - 2<br>";
+                    console.log(2)
+                })
+            })
+            $(document).ready(function(){
+                $('#demo1').on('click',function(){
+                    demo1_c = demo1_c + "你点击了按钮 - 3<br>";
+                    console.log(3)
+                    $('#demo1_con').html(demo1_c);
+                })
+            })
+            $('#demo1').on('click',function(){
+                demo1_c = demo1_c + "你点击了按钮 - 4<br>";
+                console.log(4)
+            })
+
+
+
+
+
+            Zepto(
+                // touch事件
+                function($){
+                    // 开始触控事件
+                    $('#demo2').on('touchstart',function(){
+                        $('#demo2_con').html('你触摸了按钮');
+                    })
+                    // 触控连续事件
+                    $('#demo2').on('touchmove',function(){
+                        $('#demo2_con').html('你滑动了按钮');
+                    })
+                    // 触控结束事件
+                    $('#demo2').on('touchend',function(){
+                        $('#demo2_con').html('你离开了按钮');
+                    })
+                }
+            )
+        </script>
+    </body>
+</html>

@@ -1,0 +1,21 @@
+{
+    "code": 200,
+    "msg": "success",
+    "arr": [
+        {
+            "img": "img/1.jpg",
+            "title": "First slide label Some",
+            "content": "representative placeholder content for the first slide."
+        },
+        {
+            "img": "img/2.jpg",
+            "title": "Second slide label",
+            "content": "representative placeholder content for the first slide."
+        },
+        {
+            "img": "img/3.jpg",
+            "title": "Third slide label",
+            "content": "representative placeholder content for the first slide."
+        }
+    ]
+}
