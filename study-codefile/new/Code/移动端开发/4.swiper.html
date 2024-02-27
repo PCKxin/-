@@ -5,8 +5,148 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
         <link rel="stylesheet" href="./css/swiper-bundle.min.css">
+        <link rel="stylesheet" href="./css/animate.min.css">
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .yuki_title{
+                margin-top: 20px;
+                font-size: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: pink;
+            }
+            .yuki_content{
+                margin-top: 20px;
+                font-size: 20px;
+                line-height: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: skyblue;
+            }
+            .yuki_demobox{
+                margin-top: 20px;
+                text-align: center;
+                width: 100%;
+                height: auto;
+                font-size: 18px;
+                color: rgb(117, 117, 117);
+                background: rgba(185, 185, 185, 0.568);
+            }
+            img{
+                width: 75%;
+                height: 75%;
+            }
+        </style>
     </head>
     <body>
+        <h2 class="yuki_title">使用</h2>
+        <h3 class="yuki_content">
+            初始化Swiper <br>
+            new Swiper(swiperContainer, [options]) <br>
+            swiperContainer : 必选, HTML元素或者string类型, Swiper容器的css选择器, 例如“.swiper” <br>
+            Swiper7使用的默认容器是'.swiper', Swiper6以下使用的是'.swiper-container'
+            options : 可选, Swiper参数, 例如, direction: 'vertical' <br>
+        </h3>
+        <div class="yuki_demobox">
+            <div class="swiper">
+
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="./img/T113BG.png">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./img/T117BG.png">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./img/T120BG.jpg">
+                    </div>
+                </div>
+                <!-- 分页器 -->
+                <div class="swiper-pagination"></div>
+                <!-- 导航按钮 -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <!-- 滚动条 -->
+                <div class="swiper-scrollbar"></div>
+            </div>
+        </div>
+        <h2 class="yuki_title">swiper-animate</h2>
+        <h3 class="yuki_content">
+            swiper-animate是一个Swiper的动画插件, 用于实现Swiper的动画效果 <br>
+            swiper-animate的使用方法: <br>
+            1. 引入swiper-animate.min.css文件 <br>
+            2. 引入swiper-animate.min.js文件 <br>
+            3. 在swiper-slide中添加swiper-animate的class <br>
+        </h3>
+        <div class="yuki_demobox">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <p class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s" style="margin: 20px; font-size: 25px;">内容</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+        <script src="./js/jquery-2.1.4.min.js"></script>
         <script src="./js/swiper-bundle.min.js"></script>
+        <script src="./js/swiper.animate1.0.3.min.js"></script>
+        <script>
+            var SwiperDemo0 =new Swiper('.swiper', 
+                {
+                    // autoplay: true,//可选选项，自动滑动
+                    autoplay: {
+                        delay: 3000,//1秒切换一次
+                        stopOnLastSlide: false,//停止在最后一个滑块上
+                        disableOnInteraction: false,//用户操作swiper之后，是否禁止autoplay。默认为true：停止。
+                    },
+                    loop: true,//可选选项，开启循环
+                    navigation: {
+                        nextEl: '.swiper-button-next', // 下一个按钮的class或者id
+                        prevEl: '.swiper-button-prev',
+                    },
+                    // 分页器
+                    pagination: {
+                        el: '.swiper-pagination', // 分页器的class
+                        clickable: true, // 点击分页器的指示点分页器会控制Swiper切换
+                    },
+                    // 切换效果
+                    // effect: 'fade', // 淡入淡出，图片尺寸不同会透出下面的图片
+
+
+                    // swiper-animate
+                    on: {
+                        init: function(){
+                            swiperAnimateCache(this); //隐藏动画元素 
+                            swiperAnimate(this); //初始化完成开始动画
+                        }, 
+                        slideChangeTransitionEnd: function(){ 
+                            swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+                        } 
+                    }
+                }
+            )
+            // // 鼠标移入停止自动切换
+            // $('.swiper').mouseenter(function(){
+            //     SwiperDemo0.autoplay.stop();
+            // })
+            // // 鼠标移出开始自动切换
+            // $('.swiper').mouseleave(function(){
+            //     SwiperDemo0.autoplay.start();
+            // })
+
+            
+
+        </script>
     </body>
 </html>

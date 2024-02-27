@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="referrer" content="no-referrer">
+        <title>Document</title>
+        <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_4354016_azi66qe9xjo.css">
+        <link rel="stylesheet" href="./css/swiper-bundle.min.css">
+        <link rel="stylesheet" href="./css/animate.min.css">
+        <link rel="stylesheet" href="./css/case.css">
+    </head>
+    <body>
+        <!-- header区域 -->
+        <header>
+            <!-- 打开app横幅 -->
+            <div class="AppDown">
+                <div class="AppDownClose">
+                    <i class="iconfont icon-cha"></i>
+                </div>
+                <div class="AppDownImg">
+                    <img src="https://img13.360buyimg.com/img/jfs/t1/185008/26/33606/2587/641973cbFd5acd3e9/ad0294917f47e6b8.png" class="AppDownLogo">
+                </div>
+                <div class="AppDownTitle">打开京东APP, 实惠又轻松</div>
+                <div class="AppDownButton"><a href="#">立即打开</a></div>
+            </div>
+            <!-- 导航栏 -->
+            <div class="SearchBox">
+                <div class="SearchBar">
+                    <div class="SearchBarLeft">
+                        <i class="iconfont icon-menu"></i>
+                    </div>
+                    <div class="SearchBarCenter">
+                        <i class="iconfont icon-jingdong"></i>
+                        <i class="cutoff"></i>
+                        <i class="iconfont icon-sousuo"></i>
+                        <input type="text" placeholder="请输入商品名称" maxlength="20" class="SearchBarIn">
+                    </div>
+                    <div class="SearchBarRight">登录</div>
+                </div>
+            </div>
+        </header>
+
+        <main class="MainContainer">
+            <div class="CarouselCon">
+                <!-- 头部背景 -->
+                <div class="headerBg"></div>
+                <!-- 轮播图 -->
+                <div class="swiper slideGo">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="" class="slideItems">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="" class="slideItems">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="" class="slideItems">
+                        </div>
+                    </div>
+                    <!-- 分页器 -->
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+            <!-- 分类导航栏 -->
+            <div class="swiper ClassNav">
+                <div class="swiper-wrapper ClassNavList">
+
+                </div>
+                <div class="CNV-pageation"></div>
+            </div>
+            <!-- 京东秒杀 -->
+            <div class="SeckillBox">
+                <div class="Seckill">
+                    <div class="Seckill-header">
+                        <div class="Seckill-title">京东秒杀</div>
+
+                        <div class="Seckill-timebox">
+                            <div id="SeckillStartTime">00</div>
+                            <div class="Seckill-lastTime">
+                                <div class="seckillTime" id="seckillH">00</div>
+                                <div class="seckill-time-separator">:</div>
+                                <div class="seckillTime" id="seckillM">00</div>
+                                <div class="seckill-time-separator">:</div>
+                                <div class="seckillTime" id="seckillS">00</div>
+                            </div>
+                        </div>
+                        <a class="Seckill-H-right">
+                            <i class="iconfont icon-youjiantou"></i>
+                        </a>
+                    </div>
+                    <div class="Seckill-swiper Seckill-list-box">
+                        <div class="swiper-wrapper">
+                            <ul class="swiper-slide Seckill-list">
+                                <li class="SeckillItems">
+                                    <a href="#">
+                                        <img src="./img/seckill-img1.jpeg" alt="">
+                                        <div class="SeckillItems-price">¥ 1643</div>
+                                    </a>
+                                </li>
+                                <li class="SeckillItems">
+                                    <a href="#">
+                                        <img src="./img/seckill-img2.jpeg" alt="">
+                                        <div class="SeckillItems-price">¥ 120</div>
+                                    </a>
+                                </li>
+                                <li class="SeckillItems">
+                                    <a href="#">
+                                        <img src="./img/seckill-img1.jpeg" alt="">
+                                        <div class="SeckillItems-price">¥ 1643</div>
+                                    </a>
+                                </li>
+                                <li class="SeckillItems">
+                                    <a href="#">
+                                        <img src="./img/seckill-img2.jpeg" alt="">
+                                        <div class="SeckillItems-price">¥ 120</div>
+                                    </a>
+                                </li>
+                                <li class="SeckillItems">
+                                    <a href="#">
+                                        <img src="./img/seckill-img1.jpeg" alt="">
+                                        <div class="SeckillItems-price">¥ 1643</div>
+                                    </a>
+                                </li>
+                                <li class="SeckillItems">
+                                    <a href="#">
+                                        <img src="./img/seckill-img2.jpeg" alt="">
+                                        <div class="SeckillItems-price">¥ 120</div>
+                                    </a>
+                                </li>
+                                <li class="SeckillItems">
+                                    <a href="#">
+                                        <img src="./img/seckill-img1.jpeg" alt="">
+                                        <div class="SeckillItems-price">¥ 1643</div>
+                                    </a>
+                                </li>
+                                <li class="SeckillItems">
+                                    <a href="#">
+                                        <img src="./img/seckill-img2.jpeg" alt="">
+                                        <div class="SeckillItems-price">¥ 120</div>
+                                    </a>
+                                </li>
+                                <li class="SeckillItems">
+                                    <a href="#">
+                                        <img src="./img/seckill-img1.jpeg" alt="">
+                                        <div class="SeckillItems-price">¥ 1643</div>
+                                    </a>
+                                </li>
+                                <li class="SeckillItems">
+                                    <a href="#">
+                                        <img src="./img/seckill-img2.jpeg" alt="">
+                                        <div class="SeckillItems-price">¥ 120</div>
+                                    </a>
+                                </li>
+                                <li class="SeckillItems">
+                                    <a href="#">
+                                        <img src="./img/seckill-img1.jpeg" alt="">
+                                        <div class="SeckillItems-price">¥ 1643</div>
+                                    </a>
+                                </li>
+                                <li class="SeckillItems">
+                                    <a href="#">
+                                        <img src="./img/seckill-img2.jpeg" alt="">
+                                        <div class="SeckillItems-price">¥ 120</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 猜你喜欢 -->
+            <div class="jdRecommend">
+                <div class="RecommendBox">
+                    <div class="RecommendCon">
+                        <div class="RC_left">
+                            <div class="ReItems">
+                                <a href="#" class="goods">
+                                    <div class="goodsImg">
+                                        <img src="./img/re-long1.webp">
+                                        <div class="goodsTag"></div>
+                                    </div>
+                                    <div class="goodsInfo">
+                                        <div class="goodsName">
+                                            <div class="goods_icon">
+                                                <img src="./img/re-nameicons.png">
+                                            </div>
+                                            佳贝艾特（Kabrita）悦白幼儿配方羊奶粉3段(1-3岁婴幼儿适用)150克（荷兰原装进口）
+                                        </div>
+                                        <!-- <div class="goodsRowTitleBottom">
+                                            90天低价标签
+                                            <div class="preTags">
+                                                <img src="./img/pricedown.png">
+                                                <div class="preTagsText">90天最低价</div>
+                                            </div>
+                                        </div> -->
+                                        <div class="goodsRow">
+                                            <div class="goodsPrice">
+                                                ¥
+                                                <em class="goodPriceInit">999</em>
+                                                .90
+                                            </div>
+                                        </div>
+                                        <div class="goodsRowBottom">
+                                            <!-- 自营标签 -->
+                                            <img src="./img/re-zytag.png">
+                                            <!-- <div class="commentText">
+                                                50万+条评价
+                                            </div> -->
+                                        </div>
+                                        <div class="feed_back">看相似</div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="ReItems">
+                                <a href="#" class="goods">
+                                    <div class="goodsImg">
+                                        <img src="./img/re4.webp">
+                                        <div class="goodsTag"></div>
+                                    </div>
+                                    <div class="goodsInfo">
+                                        <div class="goodsName">
+                                            <div class="goods_icon">
+                                                <img src="./img/re-nameicons.png">
+                                            </div>
+                                            佳贝艾特（Kabrita）悦白幼儿配方羊奶粉3段(1-3岁婴幼儿适用)150克（荷兰原装进口）
+                                        </div>
+                                        <!-- <div class="goodsRowTitleBottom">
+                                            90天低价标签
+                                            <div class="preTags">
+                                                <img src="./img/pricedown.png">
+                                                <div class="preTagsText">90天最低价</div>
+                                            </div>
+                                        </div> -->
+                                        <div class="goodsRow">
+                                            <div class="goodsPrice">
+                                                ¥
+                                                <em class="goodPriceInit">999</em>
+                                                .90
+                                            </div>
+                                        </div>
+                                        <div class="goodsRowBottom">
+                                            <!-- 自营标签 -->
+                                            <img src="./img/re-zytag.png">
+                                            <div class="commentText">
+                                                50万+条评价
+                                            </div>
+                                        </div>
+                                        <div class="feed_back">看相似</div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="ReItems">
+                                <a href="#" class="goods">
+                                    <div class="goodsImg">
+                                        <img src="./img/re2.webp">
+                                        <div class="goodsTag"></div>
+                                    </div>
+                                    <div class="goodsInfo">
+                                        <div class="goodsName">
+                                            <div class="goods_icon">
+                                                <img src="./img/re-nameicons.png">
+                                            </div>
+                                            佳贝艾特（Kabrita）悦白幼儿配方羊奶粉3段(1-3岁婴幼儿适用)150克（荷兰原装进口）
+                                        </div>
+                                        <div class="goodsRowTitleBottom">
+                                            <!-- 90天低价标签 -->
+                                            <div class="preTags">
+                                                <img src="./img/pricedown.png">
+                                                <div class="preTagsText">90天最低价</div>
+                                            </div>
+                                        </div>
+                                        <div class="goodsRow">
+                                            <div class="goodsPrice">
+                                                ¥
+                                                <em class="goodPriceInit">999</em>
+                                                .90
+                                            </div>
+                                        </div>
+                                        <div class="goodsRowBottom">
+                                            <!-- 自营标签 -->
+                                            <!-- <img src="./img/re-zytag.png"> -->
+                                            <div class="commentText">
+                                                50万+条评价
+                                            </div>
+                                        </div>
+                                        <div class="feed_back">看相似</div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="ReItems">
+                                <a href="#" class="goods">
+                                    <div class="goodsImg">
+                                        <img src="./img/re3.webp">
+                                        <div class="goodsTag"></div>
+                                    </div>
+                                    <div class="goodsInfo">
+                                        <div class="goodsName">
+                                            <div class="goods_icon">
+                                                <img src="./img/re-nameicons.png">
+                                            </div>
+                                            佳贝艾特（Kabrita）悦白幼儿配方羊奶粉3段(1-3岁婴幼儿适用)150克（荷兰原装进口）
+                                        </div>
+                                        <div class="goodsRowTitleBottom">
+                                            <!-- 90天低价标签 -->
+                                            <div class="preTags">
+                                                <img src="./img/pricedown.png">
+                                                <div class="preTagsText">90天最低价</div>
+                                            </div>
+                                        </div>
+                                        <div class="goodsRow">
+                                            <div class="goodsPrice">
+                                                ¥
+                                                <em class="goodPriceInit">999</em>
+                                                .90
+                                            </div>
+                                        </div>
+                                        <div class="goodsRowBottom">
+                                            <!-- 自营标签 -->
+                                            <!-- <img src="./img/re-zytag.png"> -->
+                                            <div class="commentText">
+                                                50万+条评价
+                                            </div>
+                                        </div>
+                                        <div class="feed_back">看相似</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="RC_right">
+                            <div class="ReItems">
+                                <a href="#" class="goods">
+                                    <div class="goodsImg">
+                                        <img src="./img/re2.webp">
+                                        <div class="goodsTag"></div>
+                                    </div>
+                                    <div class="goodsInfo">
+                                        <div class="goodsName">
+                                            <div class="goods_icon">
+                                                <img src="./img/re-nameicons.png">
+                                            </div>
+                                            佳贝艾特（Kabrita）悦白幼儿配方羊奶粉3段(1-3岁婴幼儿适用)150克（荷兰原装进口）
+                                        </div>
+                                        <div class="goodsRowTitleBottom">
+                                            <!-- 90天低价标签 -->
+                                            <div class="preTags">
+                                                <img src="./img/pricedown.png">
+                                                <div class="preTagsText">90天最低价</div>
+                                            </div>
+                                        </div>
+                                        <div class="goodsRow">
+                                            <div class="goodsPrice">
+                                                ¥
+                                                <em class="goodPriceInit">999</em>
+                                                .90
+                                            </div>
+                                        </div>
+                                        <div class="goodsRowBottom">
+                                            <!-- 自营标签 -->
+                                            <img src="./img/re-zytag.png">
+                                            <div class="commentText">
+                                                50万+条评价
+                                            </div>
+                                        </div>
+                                        <div class="feed_back">看相似</div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="ReItems">
+                                <a href="#" class="goods">
+                                    <div class="goodsImg">
+                                        <img src="./img/re3.webp">
+                                        <div class="goodsTag"></div>
+                                    </div>
+                                    <div class="goodsInfo">
+                                        <div class="goodsName">
+                                            <div class="goods_icon">
+                                                <img src="./img/re-nameicons.png">
+                                            </div>
+                                            佳贝艾特（Kabrita）悦白幼儿配方羊奶粉3段(1-3岁婴幼儿适用)150克（荷兰原装进口）
+                                        </div>
+                                        <div class="goodsRowTitleBottom">
+                                            <!-- 90天低价标签 -->
+                                            <div class="preTags">
+                                                <img src="./img/pricedown.png">
+                                                <div class="preTagsText">90天最低价</div>
+                                            </div>
+                                        </div>
+                                        <div class="goodsRow">
+                                            <div class="goodsPrice">
+                                                ¥
+                                                <em class="goodPriceInit">999</em>
+                                                .90
+                                            </div>
+                                        </div>
+                                        <div class="goodsRowBottom">
+                                            <!-- 自营标签 -->
+                                            <!-- <img src="./img/re-zytag.png"> -->
+                                            <div class="commentText">
+                                                50万+条评价
+                                            </div>
+                                        </div>
+                                        <div class="feed_back">看相似</div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="ReItems">
+                                <a href="#" class="goods">
+                                    <div class="goodsImg">
+                                        <img src="./img/re1.webp">
+                                        <div class="goodsTag"></div>
+                                    </div>
+                                    <div class="goodsInfo">
+                                        <div class="goodsName">
+                                            <div class="goods_icon">
+                                                <img src="./img/re-nameicons.png">
+                                            </div>
+                                            佳贝艾特（Kabrita）悦白幼儿配方羊奶粉3段(1-3岁婴幼儿适用)150克（荷兰原装进口）
+                                        </div>
+                                        <div class="goodsRowTitleBottom">
+                                            <!-- 90天低价标签 -->
+                                            <div class="preTags">
+                                                <img src="./img/pricedown.png">
+                                                <div class="preTagsText">90天最低价</div>
+                                            </div>
+                                        </div>
+                                        <div class="goodsRow">
+                                            <div class="goodsPrice">
+                                                ¥
+                                                <em class="goodPriceInit">999</em>
+                                                .90
+                                            </div>
+                                        </div>
+                                        <div class="goodsRowBottom">
+                                            <!-- 自营标签 -->
+                                            <img src="./img/re-zytag.png">
+                                            <div class="commentText">
+                                                50万+条评价
+                                            </div>
+                                        </div>
+                                        <div class="feed_back">看相似</div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="ReItems">
+                                <a href="#" class="goods">
+                                    <div class="goodsImg">
+                                        <img src="./img/re-long1.webp">
+                                        <div class="goodsTag"></div>
+                                    </div>
+                                    <div class="goodsInfo">
+                                        <div class="goodsName">
+                                            <div class="goods_icon">
+                                                <img src="./img/re-nameicons.png">
+                                            </div>
+                                            佳贝艾特（Kabrita）悦白幼儿配方羊奶粉3段(1-3岁婴幼儿适用)150克（荷兰原装进口）
+                                        </div>
+                                        <!-- <div class="goodsRowTitleBottom">
+                                            90天低价标签
+                                            <div class="preTags">
+                                                <img src="./img/pricedown.png">
+                                                <div class="preTagsText">90天最低价</div>
+                                            </div>
+                                        </div> -->
+                                        <div class="goodsRow">
+                                            <div class="goodsPrice">
+                                                ¥
+                                                <em class="goodPriceInit">999</em>
+                                                .90
+                                            </div>
+                                        </div>
+                                        <div class="goodsRowBottom">
+                                            <!-- 自营标签 -->
+                                            <img src="./img/re-zytag.png">
+                                            <!-- <div class="commentText">
+                                                50万+条评价
+                                            </div> -->
+                                        </div>
+                                        <div class="feed_back">看相似</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="m_commonFooter">
+                    <ul class="commonLinks">
+                        <li><a href="#">登录</a></li>
+                        <li><a href="#">注册</a></li>
+                        <li><a href="#">客户服务</a></li>
+                        <li><a href="#">返回顶部</a></li>
+                    </ul>
+                    <div class="commonicons">
+                        <li><a href="#"><img src="./img/footer-icon1.png"></a></li>
+                        <li><a href="#"><img src="./img/footer-icon2.png"></a></li>
+                        <li><a href="#"><img src="./img/footer-icon3.png"></a></li>
+                    </div>
+                    <div class="copyright">
+                        Copyright © 2004-2023 京东JD.com 版权所有
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <footer class="BottomBox">
+            <div class="BottomNav">
+                <a href="#" class="footerItems">
+                    <i class="iconfont icon-JD"></i>
+                    <div class="footerItemText">首页</div>
+                </a>
+                <a href="#" class="footerItems">
+                    <i class="iconfont icon-yingyong"></i>
+                    <div class="footerItemText">分类</div>
+                </a>
+                <a href="#" class="footerItems">
+                    <i class="iconfont icon-gouwuchekong"></i>
+                    <div class="footerItemText">购物车</div>
+                </a>
+                <a href="#" class="footerItems">
+                    <i class="iconfont icon-account"></i>
+                    <div class="footerItemText">未登录</div>
+                </a>
+            </div>
+        </footer>
+
+
+
+        <script src="./jquery-2.1.4.min.js"></script>
+        <script src="./rem_reload.js"></script>
+        <!-- <script src="./flexible.js"></script> -->
+        <script src="./swiper-bundle.min.js"></script>
+        <script src="./swiper.animate1.0.3.min.js"></script>
+        <script>
+            // 关闭app横幅
+            var AppDown = document.querySelector('.AppDown');
+            var AppDownClose = document.querySelector('.AppDownClose');
+            var search_box = document.querySelector('.SearchBox');
+            var main_container = document.querySelector('.MainContainer');
+            AppDownClose.addEventListener('click', function(){
+                AppDown.style.display = 'none';
+                search_box.style.position = 'fixed';
+                search_box.style.top = '0';
+                search_box.style.zIndex = '999';
+                search_box.style.marginTop = '0';
+                main_container.style.top = '0';
+            })
+            // 导航栏
+
+            window.addEventListener(
+                'scroll',
+                function(){
+                    console.log(1)
+                    if(document.documentElement.scrollTop > 0){
+                        search_box.style.position = 'fixed';
+                        search_box.style.top = '0';
+                        search_box.style.zIndex = '999';
+                        AppDown.style.display = 'none';
+                        search_box.style.marginTop = '0';
+                        search_box.style.backgroundColor = '#f63515';
+                        main_container.style.top = '0';
+                    }else{
+                        search_box.style.position = 'fixed';
+                        search_box.style.top = '45px';
+                        search_box.style.zIndex = '999';
+                        AppDown.style.display = '';
+                        search_box.style.backgroundColor = '';
+                        main_container.style.top = '45px';  
+                    }
+                }
+            )
+
+            // 轮播图
+            var swiper1 = new Swiper('.slideGo', {
+                autoplay: {
+                    delay: 3000,
+                    stopOnLastSlide: false,
+                    disableOnInteraction: false,
+                },
+                loop: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+            });
+
+
+            // 分类导航栏
+            // 监听触摸拖拽事件，实现左右滑动
+            var swiper2 = new Swiper('.ClassNav', {
+                pagination: {
+                    el: '.swiper-pageation',
+                    clickable: true,
+                },
+                on: {
+                    slideChangeTransitionEnd: function(){ // 监听滑动结束事件
+                        var index = this.activeIndex + 1; // 获取当前滑动的索引值
+                        
+                    }
+                },
+                // 分页器
+                pagination: {
+                    el: '.CNV-pageation',
+                    clickable: true,
+                },
+            });
+            
+            // 秒杀计时器
+            // 倒计时为当前小时的下2个小时，比如现在是12点，那么倒计时时间就是14点-12点
+            // 开始时间
+            var start_time_html = document.querySelector('#SeckillStartTime');
+            // 剩余时间
+            var seckill_h = document.querySelector('#seckillH');
+            var seckill_m = document.querySelector('#seckillM');
+            var seckill_s = document.querySelector('#seckillS');
+            // 封装函数
+            function seckill_time(){
+                var time = new Date();
+                var h = time.getHours();
+                // console.log(h)
+                var m = time.getMinutes();
+                var s = time.getSeconds();
+                // console.log(time)
+                // 开始时间
+                var hs = h;
+                // console.log(hs)
+                if(hs < 10 && hs >= 0 && hs % 2 == 0){
+                    hs = '0' + hs;
+                    start_time_html.innerHTML = hs;
+                }else if(hs % 2 == 0){
+                    start_time_html.innerHTML = hs;
+                }else{
+                    hs = hs - 1;
+                    if(hs < 10){
+                        hs = '0' + hs;
+                    }
+                    start_time_html.innerHTML = hs;
+                }
+                // 剩余时间 = 下一个开始时间 - 当前时间
+                var next_h = (Number(hs) + 1) - h;
+                // console.log(next_h)
+                var next_m = 59 - m;
+                var next_s = 60 - s;
+                if(next_h < 0){
+                    next_h = '00';
+                }else if(next_h < 3){
+                    next_h = '0' + next_h;
+                }
+                if(next_m < 10){
+                    next_m = '0' + next_m;
+                }
+                if(next_s < 10){
+                    next_s = '0' + next_s;
+                }
+                seckill_h.innerHTML = next_h;
+                seckill_m.innerHTML = next_m;
+                seckill_s.innerHTML = next_s;
+                
+            }
+            setInterval(seckill_time, 1000);    
+            // 横向滚动栏
+            var swiper3 = new Swiper('.Seckill-swiper', {
+                direction: "horizontal", // 横向滚动
+                slidesPerView: "auto", // 显示的个数
+                freeMode: true, // 是否自由滑动
+                // scrollbar: {
+                //     el: '.swiper-scrollbar',
+                // },
+                // mousewheel: true, // 鼠标滚轮控制
+            });
+            
+            
+            // json渲染轮播图
+            var slide_items = document.querySelectorAll('.slideItems');
+            $.ajax(
+                {
+                    url:'./slide.json',
+                    type:'get',
+                    dataType:'json',
+                    success: function(data){
+                        console.log(data)
+                        slide_items.forEach(
+                            function(item, index){
+                                // console.log(item)
+                                // console.log(data.data[index].url)
+                                item.src = data.data[index].url;
+                            }
+                        )
+                    },
+                    error: function(err){ // 发生错误时调用的函数
+                        console.log('error_content'+err);
+                    },
+                }
+            )
+            // json渲染分类导航栏
+            var class_nav_list = document.querySelector('.ClassNavList');
+            $.ajax(
+                {
+                    url:'./iconLink.json',
+                    type:'get',
+                    dataType:'json',
+                    success: function(data){
+                        console.log(data)
+                        var inner_htm1 = '';
+                        let key = 0;
+                        let key_index = 0;
+                        for(let i = 0; i < data.data.length; i++){
+                            // console.log(i)
+                            // console.log(data.data[i].url)
+                            var inner_htm2 = `
+                                    <div class="swiper-slide">
+                                        <div class="ClassNavinner">
+                                        </div>
+                                    </div>
+                            `;
+                            if (i == 0) {
+                                class_nav_list.innerHTML += inner_htm2;
+                            }
+                            if ((i + 1) % 10 == 0) {
+                                key += 1;
+                                class_nav_list.innerHTML += inner_htm2;
+                            }
+                        }
+                        inner_htm();
+                        function inner_htm() {
+                            var class_nav_inner = document.querySelectorAll('.ClassNavinner');
+                            for (let i = 0; i < data.data.length; i++) {
+                                inner_htm1 += `
+                                    <a href="#" class="ClassNavLink">
+                                        <div class="ClassNav-img">
+                                            <img src="${data.data[i].url}">
+                                        </div>
+                                        <div class="ClassNav-title">${data.data[i].title}</div>
+                                    </a>
+                                `;
+                                if ((i + 1) % 10 == 0) {
+                                    class_nav_inner[key_index].innerHTML = inner_htm1;
+                                    key_index += 1;
+                                    inner_htm1 = '';
+                                } else {
+                                    class_nav_inner[key_index].innerHTML = inner_htm1;
+                                }
+                            }
+                        }
+                    },
+                    error: function(err){ // 发生错误时调用的函数
+                        console.log('error_content'+err);
+                    },
+                }
+            )
+
+        </script>
+    </body>
+</html>

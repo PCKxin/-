@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // ES6 允许使用就箭头函数 => 定义箭头函数
+            // 1 声明函数 ES5
+            let fn = function(a , b){
+                return a+b;
+            }
+
+            // 对比 省略了function
+            // 2 ES6 箭头函数
+            let fn2 = (a , b) => {return a+b;}
+            let fn3 = a => a+b;
+
+            // 3 箭头函数this的指向
+            // 3-1 普通函数
+            function getName(){
+                console.log(this.name);
+            }
+
+            // 箭头函数
+            let getName2 = () => {
+                console.log(this.name);
+            }
+
+            window.name = "2209A";
+            const school = {
+                name:"北京工商管理专修学院"
+            }
+
+            // getName();
+            // getName2();
+
+            // 借用call()来改变this的指向
+            getName.call(school);
+            getName2.call(school);  
+
+            // 4 不能作为构造函数实例化对象
+            // let Person = (name,age) => {
+            //     this.name = name;
+            //     this.age = age;
+            // }
+            // let student = new Person("shiroko",17); // 报错
+            // console.log(student); // 报错
+
+            // 4-2 普通函数
+            function Person(name,age){
+                this.name = name;
+                this.age = age;
+            }
+            let student = new Person("shiroko",17);
+            console.log(student); // Person {name: "shiroko", age: 17}
+
+            // 5 箭头函数没有arguments
+            // let fn5 = () => {
+            //     console.log(arguments);
+            // }
+            // fn5(1,2,3); // 报错
+
+            // 6 普通函数
+            let add5 = function(n){
+                return n+n;
+            };
+            // 6-2 es6 简洁写法
+            let add6 = n => n+n;
+        </script>
+    </body>
+</html>

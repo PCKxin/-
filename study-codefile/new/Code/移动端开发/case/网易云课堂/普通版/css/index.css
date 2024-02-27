@@ -1,0 +1,229 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.wyHeader {
+  font-size: 0.18rem;
+  width: 100%;
+  height: 1.3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  color: white;
+}
+
+.wyLogo {
+  display: block;
+  width: 3.06rem;
+  height: 0.64rem;
+  margin-left: 0.3rem;
+  background: url(../img/WYSlogo.png) center center no-repeat;
+  background-size: 100% 100%;
+}
+
+.appDowButton {
+  display: block;
+  width: 1.65rem;
+  height: 0.53rem;
+  border: 1px solid red;
+  border-radius: 0.53rem;
+  line-height: 0.53rem;
+  text-align: center;
+  color: red;
+  font-size: 12px;
+  text-decoration: none;
+  margin-left: 0.3rem;
+}
+
+.wySearch {
+  display: block;
+  position: absolute;
+  right: 0.3rem;
+}
+
+.icon-sousuo {
+  color: #ccc;
+  font-size: 16px;
+  margin-right: 0.5rem;
+}
+
+.wyFooter {
+  width: 100%;
+  height: 1.3rem;
+  position: fixed;
+  bottom: 0rem;
+  background: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  border-top: 1px solid #ebebeb;
+}
+
+.footerItem {
+  color: black;
+  text-decoration: none;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  height: 0.85rem;
+  text-align: center;
+  font-size: 0.26rem;
+  text-decoration: none;
+}
+
+.footerItem .iconfont {
+  font-size: 0.5rem;
+}
+
+.footerItemText {
+  height: 0.3rem;
+  font-size: 0.2rem;
+}
+
+.iconBox {
+  width: 92%;
+  height: auto;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.icon-cell {
+  font-size: 14px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 22%;
+  margin-top: 0.6rem;
+  text-align: center;
+}
+
+.iconCellLink {
+  text-decoration: none;
+  display: block;
+}
+
+.iconCellLink img {
+  width: 0.85rem;
+  height: 0.85rem;
+}
+
+.iconCellText {
+  height: 0.4rem;
+  line-height: 0.4rem;
+  text-align: center;
+  color: black;
+}
+
+.cutOffLine {
+  width: 100%;
+  height: 12px;
+  background: #f2f4f7;
+  margin: 0.8rem 0;
+}
+
+.study-module {
+  width: 92%;
+  margin: 0 auto;
+  height: auto;
+  background: white;
+}
+
+.study-module-title {
+  width: 92%;
+  height: 0.4rem;
+  line-height: 0.4rem;
+  font-size: 17px;
+  font-weight: bold;
+  margin: 0.2rem 0.2rem 0.4rem 0.2rem;
+}
+
+.moduleGroup {
+  width: 100%;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 0.95rem;
+}
+
+.module-cell {
+  width: 50%;
+  height: auto;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  border-radius: 0.1rem;
+  padding: 0rem 0.2rem 0.2rem 0.2rem;
+}
+
+.module-cell img {
+  width: 100%;
+  height: 100%;
+}
+
+.moduleCellLink {
+  color: black;
+  text-decoration: none;
+  font-size: 20px;
+  display: block;
+}
+
+.courseTitle {
+  line-height: 22px;
+  font-size: 17px;
+  margin-top: 0.1rem;
+}
+
+.coursePrice {
+  font-size: 16px;
+  color: red;
+}
+
+.wy-copyright {
+  width: 100%;
+  height: 1.26rem;
+  line-height: 1.26rem;
+  text-align: center;
+  font-size: 0.26rem;
+  background: #f2f4f7;
+  color: #adb3c1;
+  margin-top: 0.2rem;
+}/*# sourceMappingURL=index.css.map */

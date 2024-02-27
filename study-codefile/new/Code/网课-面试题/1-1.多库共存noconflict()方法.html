@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="./jquery-2.1.4.min.js"></script>
+    </head>
+    <body>
+        <script>
+            // 一个html文件引入多个js文件, 会出现变量冲突的问题
+            // 为了解决这个问题, 可以使用noConflict()方法
+            console.log($); // jQuery
+            // var $ = 1; // 会报错
+
+            // $(
+            //     function(){
+            //         $("#btn").click(
+            //             function(){
+            //                 alert("hello");
+            //             }
+            //         )
+            //     }
+            // )
+
+            // 第一种解决方法 $ 等价于 jQuery
+            // jQuery(
+            //     function(){
+            //         jQuery("#btn").click(
+            //             function(){
+            //                 alert("hello");
+            //             }
+            //         )
+            //     }
+            // )
+
+            // 第二种解决方法 $.noConflict()方法 等价于 让权 $ 的使用权
+            var jq = $.noConflict();
+            var $ = 1;
+            console.log($); // 1
+            jq(
+                function(){
+                    jq("#btn").click(
+                        function(){
+                            alert("hello");
+                        }
+                    )
+                }
+            )
+            
+        </script>
+        <button id="btn">按钮</button>
+    </body>
+</html>

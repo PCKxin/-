@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // 定义属性方法
+
+            //1
+            let obj = {};
+
+            //1-2 点标符
+            // obj.name="shiroko";
+            // console.log(obj);//整个对象体
+            // console.log(obj.name);//shiroko
+
+            // 2 中括号[]
+            // obj["name"] = "shiroko2";
+            // console.log(obj.name);//shiroko2
+
+            //3 字面量创建对象定义属性
+            let ves5 = {
+                name:"shiroko",
+                age:17,
+                ["this"]:"test",
+            }
+            console.log(ves5.name); // shiroko
+            console.log(ves5.age); // 17
+            console.log(ves5["this"]); // test
+            console.log(ves5.this); // test
+
+            // 3-2
+            let propkey = "foo";
+            let obj3 = {
+                [propkey]:true,
+                // propkey:true  这样写也可以
+                ["a"+"bc"]:123
+            }
+            console.log(obj3[propkey]); // true
+            console.log(obj3.abc); // 123
+
+            // 扩展
+            let propName = "name3";
+            let obj4 = {
+                [propName]:"shiroko"
+            }   
+            console.log(obj4[propName]); // shiroko
+            console.log(obj4.name3); // shiroko
+
+            // 4 属性名表达式与简洁表达式 不能同时使用
+            let a = "a";
+            // let obj5 = {[a]} // 报错
+            // let obj5 = {
+            //     [a]:"1"
+            // }
+
+            let obj6 = {
+                [a]:"1"
+            }
+            let obj7 = {a}
+            console.log(obj6); // {a: "1"}
+            console.log(obj7); // {a: "a"}
+
+
+            // 5 属性名如果是一个对象, 默认情况下会将对象转换为字符串[object Object]
+            let key1 = {};
+            let obj8 = {
+                [key1]:"shiroko"
+            }
+            console.log(obj8); // [object Object]: "shiroko"
+        </script>
+    </body>
+</html>

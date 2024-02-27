@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- 绕过来源验证 -->
+        <meta name="referrer" content="no-referrer" /> 
+        <title>Document</title>
+        <link rel="stylesheet" href="../普通版/font/iconfont.css">
+        <link rel="stylesheet" href="../普通版/css/index.css">
+    </head>
+    <body>
+        <!-- 头部 -->
+        <header class="wyHeader">
+            <a href ="#" class="wyLogo"></a>
+            <a href="#" class="appDowButton">App查看</a>
+            <div class="wySearch">
+                <i class="iconfont icon-sousuo"></i>
+            </div>
+        </header>
+        <!-- 内容 -->
+        <main>
+            <div class="iconBox">
+                <!-- jq 填入 -->
+            </div>
+
+            <div class="cutOffLine"></div>
+
+            <div class="study-module">
+
+            </div>
+            <div class="wy-copyright">©1997-2023 网易公司 版权所有</div>
+        </main>
+        <!-- 底部 -->
+        <footer class="wyFooter">
+            <a href="#" class="footerItem">
+                <i class="iconfont icon-home"></i>
+                <div class="footerItemText">首页</div>
+            </a>    
+            <a href="#" class="footerItem">
+                <i class="iconfont icon-book-openshu-fankai"></i>
+                <div class="footerItemText">我的学习</div>
+            </a>
+            <a href="#" class="footerItem">
+                <i class="iconfont icon-account"></i>
+                <div class="footerItemText">账号</div>
+            </a>
+        </footer>
+
+        <script src="../普通版/rem_reload.js"></script>
+        <script src="./jquery-2.1.4.min.js"></script>
+        <script>
+            // 将content.json内容解析渲染
+            // jq ajax
+            
+            $.ajax(
+                {   
+                    url: './data/content.json',
+                    type: 'get',
+                    dataType: 'json',   
+                    success: function(data){
+                        console.log(data);
+                        console.log(data.result.sectionDtoList);// 畅销好课
+                        console.log(data.result.iconDtoList);// icon板块
+                        // iconCellText = data.result.iconDtoList.name
+                        // iconLinkImg = data.result.iconDtoList.photoUrl
+                        // icon板块
+                        for (let i = 0; i < data.result.iconDtoList.length; i++) {
+                            let icon_cell_htm = `
+                                <div class="icon-cell">
+                                    <a href="#" class="iconCellLink">
+                                        <img src="${data.result.iconDtoList[i].photoUrl}" class="iconLinkImg">
+                                    </a>    
+                                    <div class="iconCellText">${data.result.iconDtoList[i].name}</div>
+                                </div>
+                            `
+                            $('.iconBox').append(icon_cell_htm)
+                        }
+                        for (let i = 0; i < data.result.sectionDtoList.length; i++){
+                            var inner_htm = "";
+                            if(i == 0){
+                                inner_htm += "<div class='study-module-title'>" + data.result.sectionDtoList[i].sectionName + "</div>"
+                                // console.log(main_htm_fun(i))
+                                inner_htm += main_htm_fun(i)
+                            }
+                            else{
+                                inner_htm += "<div class='cutOffLine'></div>"
+                                inner_htm += "<div class='study-module-title'>" + data.result.sectionDtoList[i].sectionName + "</div>"
+                                inner_htm += main_htm_fun(i)
+                            }
+                            $('.study-module').append(inner_htm)
+
+                        }
+                        // 懒加载
+                        lazyload_go()
+                        // 内容板块
+                        // 一次性渲染完成
+                        /**
+                         * 结构
+                         * <div class="cutOffLine"></div>
+                         * <div class="study-module-title">
+                         * study-module-title = data.result.sectionDtoList[i].sectionName
+                         * 第一个module-title上一行不加cutOffLine
+                         * **/
+                        /**
+                         * 基本结构
+                         *  <div class="moduleGroup">
+                                <div class="module-cell">
+                                    <a href="#" class="moduleCellLink">
+                                        <img src="" class="moduleCellImg">
+                                        <div class="courseTitle"></div>
+                                        <div class="coursePrice"></div>
+                                    </a>
+                                </div>
+                            </div>
+                            courseTitle = data.result.sectionDtoList[i].elementDtoList[i].name
+                            判断如果data.result.sectionDtoList[i].elementDtoList[i].courseCardVo != null
+                         * 
+                         * **/
+                        /**
+                         * 分三种板块
+                         * 判断如果elementDtoList.length == 3
+                         * 每个group放一个cell
+                         * 如果elementDtoList.length == 5
+                         * 第一个group放一个cell, 其他group放两个cell
+                         * 如果elementDtoList.length == 双数
+                         * 每个group放两个module-cell
+                         * **/
+                        function main_htm_fun(i){
+                            let main_htm = "";
+                                // 循环elementDtoList,判断列表类型
+                                if(data.result.sectionDtoList[i].elementDtoList.length == 3){
+                                    console.log("3")
+                                    // 每个group放一个cell
+                                    for(let j = 0; j < data.result.sectionDtoList[i].elementDtoList.length; j++){
+                                        main_htm += `
+                                            <div class="moduleGroup">
+                                                <div class="module-cell">
+                                                    <a href="#" class="moduleCellLink">
+                                                        <img src="" data-src="${data.result.sectionDtoList[i].elementDtoList[j].photoUrl}" class="moduleCellImg lazyImg">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        `
+                                    }
+                                }
+                                else if(data.result.sectionDtoList[i].elementDtoList.length == 5){
+                                    console.log("5")
+                                    let price_list = [];
+                                    for(let j = 0; j < data.result.sectionDtoList[i].elementDtoList.length; j++){
+                                        if(data.result.sectionDtoList[i].elementDtoList[j].courseCardVo != null){
+                                            price_list.push(data.result.sectionDtoList[i].elementDtoList[j].courseCardVo.yktCourseCardv.price)
+                                        }else{
+                                            price_list.push("")
+                                        }
+                                    }
+                                    main_htm += `
+                                        <div class="moduleGroup">
+                                            <div class="module-cell">
+                                                <a href="#" class="moduleCellLink">
+                                                    <img src="" data-src="${data.result.sectionDtoList[i].elementDtoList[0].photoUrl}" class="moduleCellImg lazyImg">
+                                                    <div class="courseTitle">${data.result.sectionDtoList[i].elementDtoList[0].name}</div>
+                                                    <div class="coursePrice">${price_list[0]}</div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="moduleGroup">
+                                            <div class="module-cell">
+                                                <a href="#" class="moduleCellLink">
+                                                    <img src="" data-src="${data.result.sectionDtoList[i].elementDtoList[1].photoUrl}" class="moduleCellImg lazyImg">
+                                                    <div class="courseTitle">${data.result.sectionDtoList[i].elementDtoList[1].name}</div>
+                                                    <div class="coursePrice">${price_list[1]}</div>
+                                                </a>
+                                            </div>
+                                            <div class="module-cell">
+                                                <a href="#" class="moduleCellLink">
+                                                    <img src="" data-src="${data.result.sectionDtoList[i].elementDtoList[2].photoUrl}" class="moduleCellImg lazyImg">
+                                                    <div class="courseTitle">${data.result.sectionDtoList[i].elementDtoList[2].name}</div>
+                                                    <div class="coursePrice">${price_list[2]}</div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="moduleGroup">
+                                            <div class="module-cell">
+                                                <a href="#" class="moduleCellLink">
+                                                    <img src="" data-src="${data.result.sectionDtoList[i].elementDtoList[3].photoUrl}" class="moduleCellImg lazyImg">
+                                                    <div class="courseTitle">${data.result.sectionDtoList[i].elementDtoList[3].name}</div>
+                                                    <div class="coursePrice">${price_list[3]}</div>
+                                                </a>
+                                            </div>
+                                            <div class="module-cell">
+                                                <a href="#" class="moduleCellLink">
+                                                    <img src="" data-src="${data.result.sectionDtoList[i].elementDtoList[4].photoUrl}" class="moduleCellImg lazyImg">
+                                                    <div class="courseTitle">${data.result.sectionDtoList[i].elementDtoList[4].name}</div>
+                                                    <div class="coursePrice">${price_list[4]}</div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    `
+                                }else if(data.result.sectionDtoList[i].elementDtoList.length == 6){
+                                    // console.log("6")
+                                    // 定个数组存价格
+                                    let price_list = [];
+                                    for(let j = 0; j < data.result.sectionDtoList[i].elementDtoList.length; j++){
+                                        if(data.result.sectionDtoList[i].elementDtoList[j].courseCardVo != null){
+                                            price_list.push(data.result.sectionDtoList[i].elementDtoList[j].courseCardVo.yktCourseCardv.price)
+                                        }else{
+                                            price_list.push("")
+                                        }
+                                    };
+                                    main_htm +=`
+                                        <div class="moduleGroup">
+                                            <div class="module-cell">
+                                                <a href="#" class="moduleCellLink">
+                                                    <img src="" data-src="${data.result.sectionDtoList[i].elementDtoList[0].photoUrl}" class="moduleCellImg lazyImg">
+                                                    <div class="courseTitle">${data.result.sectionDtoList[i].elementDtoList[0].name}</div>
+                                                    <div class="coursePrice">${price_list[0]}</div>
+                                                </a>
+                                            </div>
+                                            <div class="module-cell">
+                                                <a href="#" class="moduleCellLink">
+                                                    <img src="" data-src="${data.result.sectionDtoList[i].elementDtoList[1].photoUrl}" class="moduleCellImg lazyImg">
+                                                    <div class="courseTitle">${data.result.sectionDtoList[i].elementDtoList[1].name}</div>
+                                                    <div class="coursePrice">${price_list[1]}</div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="moduleGroup">
+                                            <div class="module-cell">
+                                                <a href="#" class="moduleCellLink">
+                                                    <img src="" data-src="${data.result.sectionDtoList[i].elementDtoList[2].photoUrl}" class="moduleCellImg lazyImg">
+                                                    <div class="courseTitle">${data.result.sectionDtoList[i].elementDtoList[2].name}</div>
+                                                    <div class="coursePrice">${price_list[2]}</div>
+                                                </a>
+                                            </div>
+                                            <div class="module-cell">
+                                                <a href="#" class="moduleCellLink">
+                                                    <img src="" data-src="${data.result.sectionDtoList[i].elementDtoList[3].photoUrl}" class="moduleCellImg lazyImg">
+                                                    <div class="courseTitle">${data.result.sectionDtoList[i].elementDtoList[3].name}</div>
+                                                    <div class="coursePrice">${price_list[3]}</div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="moduleGroup">
+                                            <div class="module-cell">
+                                                <a href="#" class="moduleCellLink">
+                                                    <img src="" data-src="${data.result.sectionDtoList[i].elementDtoList[4].photoUrl}" class="moduleCellImg lazyImg">
+                                                    <div class="courseTitle">${data.result.sectionDtoList[i].elementDtoList[4].name}</div>
+                                                    <div class="coursePrice">${price_list[4]}</div>
+                                                </a>
+                                            </div>
+                                            <div class="module-cell">
+                                                <a href="#" class="moduleCellLink">
+                                                    <img src="" data-src="${data.result.sectionDtoList[i].elementDtoList[5].photoUrl}" class="moduleCellImg lazyImg">
+                                                    <div class="courseTitle">${data.result.sectionDtoList[i].elementDtoList[5].name}</div>
+                                                    <div class="coursePrice">${price_list[5]}</div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    `;
+                                }
+                                // console.log(main_htm)
+                                return main_htm
+                        }
+                        function lazyload_go(){ 
+                            // var lazyImgs = document.querySelectorAll('.lazyImg');
+                            var lazy_img_demo = document.querySelectorAll('.lazyImg');
+                            console.log(lazy_img_demo)
+                            for(var i = 0; i < lazy_img_demo.length; i++){
+                                if(check_show(lazy_img_demo[i]) && !is_loaded(lazy_img_demo[i])){ // 如果图片出现在可视区域内, 并且没有被加载过
+                                    load_img(lazy_img_demo[i]); // 加载图片
+                                }
+                            }
+                            // 滚动事件
+                            window.addEventListener(
+                                'scroll',
+                                function(){
+                                    for(var i = 0; i < lazy_img_demo.length; i++){
+                                        if(check_show(lazy_img_demo[i]) && !is_loaded(lazy_img_demo[i])){ // 如果图片出现在可视区域内, 并且没有被加载过
+                                            load_img(lazy_img_demo[i]); // 加载图片
+                                            // 时间戳,用于输出到控制台调试
+                                            console.log(Date.now());
+                                        }
+                                    }
+                                },
+                            )
+                            // 判断图片是否出现在可视区域内
+                            function check_show(img){
+                                var scrollTop = window.pageYOffset; // 滚动条距离顶部的高度，也就是滚动条滚动的距离
+                                var windowHeight = window.innerHeight; // 窗口的高度
+                                var offsetTop = img.offsetTop; // 元素距离顶部(document顶部)的高度
+                                if(offsetTop < (scrollTop + windowHeight) && offsetTop > scrollTop){
+                                    return true;
+                                }
+                                return false;
+                            }
+                            // 判断图片是否已经加载过
+                            function is_loaded(img){
+                                // 如果图片的src属性和data-src属性相等, 说明已经加载过了
+                                return img.getAttribute('src') === img.getAttribute('data-src');
+                            }
+                            // 加载图片
+                            function load_img(img){
+                                img.setAttribute('src', img.getAttribute('data-src'));
+                            }
+                        }
+                    },
+                    error: function(err){ // 发生错误时调用的函数
+                        console.log('error_content'+err);
+                    },
+                    // complete: function(data){ // 不管成功或失败都调用的函数
+                    //     console.log('complete_content'+data);
+                    // },
+                    timeout: 1000, // 超时时间
+                }
+            )
+
+        </script>
+    </body>
+</html>

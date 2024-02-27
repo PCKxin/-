@@ -1,0 +1,77 @@
+(function (designWidth, maxWidth) { // 参数一：设计稿宽度，参数二：允许最大宽度（一般为设计稿宽度的两倍）
+	var doc = document,
+		win = window;
+	var docEl = doc.documentElement;
+	var metaEl,
+		metaElCon;
+	var styleText,
+		remStyle = document.createElement("style");
+	var tid;
+
+	function refreshRem() {  // 重新计算rem的值
+		// var width = parseInt(window.screen.width); 
+		var width = docEl.getBoundingClientRect().width; // 获取文档根元素html标签的宽度
+		if (!maxWidth) {
+			maxWidth = 540;
+		};
+		if (width > maxWidth) { // 淘宝做法：限制在540的屏幕下，这样100%就跟10rem不一样了
+			width = maxWidth;
+		}
+		var rem = width * 40 / designWidth;
+		// var rem = width / 10; // 如果要兼容vw的话分成10份
+		//docEl.style.fontSize = rem + "px"; //旧的做法，在uc浏览器下面会有切换横竖屏时定义了font-size的标签不起作用的bug
+		remStyle.innerHTML = 'html{font-size:' + rem + 'px;}';
+	}
+
+	// 设置 viewport ，有的话修改 没有的话设置
+	metaEl = doc.querySelector('meta[name="viewport"]');
+	// 增加 viewport-fit=cover ，用于适配iphoneX
+	metaElCon = "width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no,viewport-fit=cover";
+	if (metaEl) {
+		metaEl.setAttribute("content", metaElCon);
+	} else {
+		metaEl = doc.createElement("meta");
+		metaEl.setAttribute("name", "viewport");
+		metaEl.setAttribute("content", metaElCon);
+		if (docEl.firstElementChild) {
+			docEl.firstElementChild.appendChild(metaEl);
+		} else {
+			var wrap = doc.createElement("div");
+			wrap.appendChild(metaEl);
+			doc.write(wrap.innerHTML);
+			wrap = null;
+		}
+	}
+
+	//要等 wiewport 设置好后才能执行 refreshRem，不然 refreshRem 会执行2次；
+	refreshRem();
+
+	if (docEl.firstElementChild) {
+		docEl.firstElementChild.appendChild(remStyle); 
+	} else {
+		var wrap = doc.createElement("div");
+		wrap.appendChild(remStyle);
+		doc.write(wrap.innerHTML);
+		wrap = null;
+	}
+
+	win.addEventListener("resize", function () {
+		clearTimeout(tid); //防止执行两次
+		tid = setTimeout(refreshRem, 300);
+	}, false);
+
+	win.addEventListener("pageshow", function (e) {
+		if (e.persisted) { // 浏览器后退的时候重新计算
+			clearTimeout(tid);
+			tid = setTimeout(refreshRem, 300);
+		}
+	}, false);
+
+	if (doc.readyState === "complete") {  // 如果文档加载完成，则直接设置html标签的字体大小
+		doc.body.style.fontSize = "16px";
+	} else { // 否则添加事件监听，当文档加载完成时，重新计算rem的值
+		doc.addEventListener("DOMContentLoaded", function (e) {
+			doc.body.style.fontSize = "16px";
+		}, false);
+	}
+})(750, 750);

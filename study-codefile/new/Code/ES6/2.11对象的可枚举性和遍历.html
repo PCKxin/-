@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // 方法: Object.defineProperties(obj, props)
+            // defineProperties 与 defineProperty 的区别是可以定义多个属性
+            // 作用: 直接在一个对象上定义一个或多个新属性或修改现有属性，并返回该对象。
+            let obj = {
+                name: "shiroko",
+                age: 17,
+                sex: 'girl'
+            }
+            Object.defineProperties(obj,
+                {
+                    name:{
+                        value: "shiroko",
+                        writable: true, // 可写 默认为false
+                        enumerable: true, // 可枚举
+                        configurable: true // 可配置, 意思是可以通过delete删除属性, 可以通过defineProperty修改属性描述符
+                    },
+                    age:{
+                        value: 17,
+                        writable: true,
+                        enumerable: true,
+                        configurable: true
+                    },
+                }
+            )
+            console.log(delete obj.age) // true
+            console.log(obj);
+
+            // 浅拷贝与深拷贝
+            // 浅拷贝: 只复制指向某个对象的指针, 而不复制对象本身, 新旧对象还是共享同一块内存, 修改新对象原对象也会改变
+            // 深拷贝: 完全复制一个对象, 新对象和原对象不共享内存, 修改新对象不会改变原对象
+
+            // 2 assign() 
+            // 浅拷贝
+            // 作用: 用于对象的合并, 将所有可枚举属性的值从yi个或多个源(source)对象复制到目标(target)对象。它将返回目标对象。
+            // 参数:
+                // 1 target: 目标对象
+                // 2 source: 源对象
+                // 如果目标对象和源对象有相同的属性, 源对象的属性会覆盖目标对象的属性, 如果有多个同名属性, 则后面的会覆盖前面的
+            const target = {a:1};
+            const source1 = {b:2, c:3};
+            const source2 = {c:3};
+            Object.assign(target, source1, source2); 
+            console.log(target); // {a:1, b:2, c:3}
+
+            // 2-2 嵌套的对象, 一旦遇到同名属性, Object.assign()会替换掉目标对象的属性, 而不是进行添加
+            const target2 = {a: {b: 'c', d: 'e'}};
+            const source3 = {a: {b: 'hello'}};
+            Object.assign(target2, source3);
+            console.log(target2); // {a: {b: 'hello'}}
+
+            // 2-3 数组的处理 会把数组视为对象, 数组的索引会被视为属性名, 会被复制
+            let arr = [1, 2, 3];
+            // let arr2 = [4, 5, 6];
+            Object.assign(arr, [4,5]);
+            console.log(arr); 
+
+            // 2-4 只能进行值的复制, 如果源对象是一个取值函数, 那么目标对象会得到这个取值函数的返回值
+            const source4 = {
+                get foo() { return 1 }
+            };
+            const target3 = {};
+            Object.assign(target3, source4);
+            console.log(target3); // {foo: 1}
+        </script>
+    </body>
+</html>

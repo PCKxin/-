@@ -1,0 +1,86 @@
+{
+    "msg": "success",
+    "code": 200,
+    "data":[
+        {
+            "id": 1,
+            "title": "京东超市",
+            "url": "./img/img/m-1.png"
+        },
+        {
+            "id":2,
+            "title": "京东电器",
+            "url": "./img/img/m-2.png"
+        },
+        {
+            "id":3,
+            "title": "京东服饰",
+            "url": "./img/img/m-3.png"
+        },
+        {
+            "id":4,
+            "title": "京东生鲜",
+            "url": "./img/img/m-4.png"
+        },
+        {
+            "id":5,
+            "title": "京东到家",
+            "url": "./img/img/m-5.png"
+        },
+        {
+            "id":6,
+            "title": "充值缴费",
+            "url": "./img/img/m-6.png"
+        },
+        {
+            "id":7,
+            "title": "附近好店",
+            "url": "./img/img/m-7.png"
+        },
+        {
+            "id":8,
+            "title": "PLUS会员",
+            "url": "./img/img/m-8.png"
+        },
+        {
+            "id":9,
+            "title": "京东国际",
+            "url": "./img/img/m-9.png"
+        },
+        {
+            "id":10,
+            "title": "京东拍卖",
+            "url": "./img/img/m-10.png"
+        },
+        {
+            "id":11,
+            "title": "玩3C",
+            "url": "./img/img/m-11.png"
+        },
+        {
+            "id":12,
+            "title": "沃尔玛",
+            "url": "./img/img/m-12.png"
+        },
+        {
+            "id":13,
+            "title": "美妆馆",
+            "url": "./img/img/m-13.png"
+        },
+        {
+            "id":14,
+            "title": "京东旅行",
+            "url": "./img/img/m-14.png"
+        },
+        {
+            "id":15,
+            "title": "拍拍二手",
+            "url": "./img/img/m-15.png"
+        },
+        {
+            "id":16,
+            "title": "全部",
+            "url": "./img/img/m-16.png"
+        }
+    ]
+}

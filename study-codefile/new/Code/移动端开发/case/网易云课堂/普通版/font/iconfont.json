@@ -1,0 +1,72 @@
+{
+  "id": "4354016",
+  "name": "study",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "122721",
+      "name": "account",
+      "font_class": "account",
+      "unicode": "e6b8",
+      "unicode_decimal": 59064
+    },
+    {
+      "icon_id": "2987227",
+      "name": "home",
+      "font_class": "home",
+      "unicode": "e64e",
+      "unicode_decimal": 58958
+    },
+    {
+      "icon_id": "14629295",
+      "name": "ykt-logo",
+      "font_class": "ykt-logo",
+      "unicode": "e634",
+      "unicode_decimal": 58932
+    },
+    {
+      "icon_id": "35162604",
+      "name": "book-open书-翻开",
+      "font_class": "book-openshu-fankai",
+      "unicode": "e84a",
+      "unicode_decimal": 59466
+    },
+    {
+      "icon_id": "19729594",
+      "name": "更多",
+      "font_class": "menu",
+      "unicode": "ec09",
+      "unicode_decimal": 60425
+    },
+    {
+      "icon_id": "25545343",
+      "name": "京东",
+      "font_class": "jingdong",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "6529907",
+      "name": "搜索",
+      "font_class": "sousuo",
+      "unicode": "e70a",
+      "unicode_decimal": 59146
+    },
+    {
+      "icon_id": "11560179",
+      "name": "京东",
+      "font_class": "jingdong1",
+      "unicode": "e63d",
+      "unicode_decimal": 58941
+    },
+    {
+      "icon_id": "11888007",
+      "name": "京东",
+      "font_class": "JD",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    }
+  ]
+}

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .yuki_title{
+                margin-top: 20px;
+                font-size: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: pink;
+            }
+            .yuki_content{
+                margin-top: 20px;
+                font-size: 20px;
+                line-height: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: skyblue;
+            }
+            .yuki_demobox{
+                margin-top: 20px;
+                text-align: center;
+                width: 100%;
+                height: auto;
+                font-size: 18px;
+                color: rgb(117, 117, 117);
+                background: rgba(185, 185, 185, 0.568);
+            }
+            .yuki_demobox img{
+                margin-top: 20px;
+                width: 100%;
+                height: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <h2 class="yuki_title">函数节流</h2>
+        <h3 class="yuki_content">
+            函数节流: <br>
+            一个函数在一定时间内只执行一次 <br>
+            适用于一些频繁触发的事件, 比如: <br>
+            滚动, 拖拽, 缩放, 动画, 触摸事件等 <br>
+            用法: <br>
+            1. 定义一个变量, 用于记录上一次触发事件的时间戳 <br>
+            2. 在事件处理函数中, 获取当前时间戳 <br>
+            3. 将当前时间戳与上一次触发事件的时间戳进行比较 <br>
+            4. 如果时间差大于等于指定的时间间隔, 则执行事件处理函数, 并更新上一次触发事件的时间戳 <br>
+            5. 如果时间差小于指定的时间间隔, 则不执行事件处理函数 <br>
+        </h3>
+        <div class="yuki_demobox">
+            <button id="demo2" style="width: 500x; height: 30px;">button</button>
+            <p id="demo2_con"></p>
+        </div>
+        <h2 class="yuki_title">函数防抖</h2>
+        <h3 class="yuki_content">
+            和函数节流不同的是, 函数防抖是指在一定时间内, 只执行最后一次触发的事件 <br>
+            在n秒内执行一次, 如果在n秒内再次触发, 则重新计算时间(重新计算n秒, 从0开始计算, 前面计数作废) <br>
+            比如某些场景会弹出一个提示: xx秒内只能点击一次 <br>
+            使用场景: <br>
+            1. 搜索框输入搜索内容, 间隔一定时间后才发送请求 <br>
+            2. 窗口大小改变, 间隔一定时间后才触发resize事件 <br>
+            3. 按钮提交事件, 间隔一定时间后才能再次提交 <br>
+            4. 滚动事件, 间隔一定时间后才触发滚动事件 <br>
+            用法: <br>
+            1. 定义一个变量, 用于记录定时器的返回值 <br>
+            2. 在事件处理函数中, 清除上一次的定时器 <br>
+            3. 重新设置定时器, 并执行事件处理函数 <br>
+        </h3>
+        <div class="yuki_demobox">
+            <button id="demo1" style="width: 500x; height: 30px;">button</button>
+            <p id="demo1_con"></p>
+        </div>
+        <h2 class="yuki_title">懒加载</h2>
+        <h3 class="yuki_content">
+            指的是延迟或按需加载图片, 而不是在页面加载时一次性加载所有图片 <br>
+            用法: <br>
+            1. 将img标签的src属性设置为占位图 <br>
+            2. 将图片的真实路径设置为自定义属性data-src <br>
+            3. 在页面加载时, 获取所有的img标签 <br>
+            4. 遍历所有的img标签, 判断img标签是否在可视区域内 <br>
+            5. 如果在可视区域内, 则将自定义属性data-src的值赋值给src属性 <br>
+            思路和实现: <br>
+            加载loding的图片, 然后判断图片是否在可视区域内, 如果在, 则将自定义属性data-src的值赋值给src属性 <br>
+            判断需要加载的图片 <br>
+            隐形加载图片 <br>
+        </h3>
+        <div class="yuki_demobox">
+            <img src="./img/loading.gif" data-src="./img/T113BG.png" class="lazyImgDemo">
+            <img src="./img/loading.gif" data-src="./img/T117BG.png" class="lazyImgDemo">
+            <img src="./img/loading.gif" data-src="./img/T120BG.jpg" class="lazyImgDemo">
+        </div>
+
+
+        <script src="./js/holder.min.js"></script>
+        <script src="./js/jquery-2.1.4.min.js"></script>
+        <script src="./js/vconsole.min.js"></script>
+        <script src="./js/1.Jq封装防抖节流.js"></script>
+        
+        <script>
+            const vConsole = new VConsole();
+
+            // 函数节流
+            var demo2 = document.querySelector('#demo2');
+            var demo2_con = document.querySelector('#demo2_con');
+            // var lastTime = 0;
+            // demo2.addEventListener('touchstart', function () {
+            //     var nowTime = Date.now();
+            //     if (nowTime - lastTime >= 1000) {
+            //         demo2_con.innerHTML = '执行:'+nowTime;
+            //         lastTime = nowTime;
+            //     }
+            // })
+            // // 写法2 封装函数
+            // var throttle = function(fn, wait){
+            //     // // 使用开关
+            //     // var flag = true;
+            //     // return function(){
+            //     //     if(!flag) return; // 意思是如果flag为false，也就是上一个定时器还没执行完，那么就不执行下面的代码
+            //     //     flag = false;
+            //     //     setTimeout(
+            //     //         function(){
+            //     //             fn();
+            //     //             flag = true;
+            //     //         },
+            //     //         wait
+            //     //     )
+            //     // }
+            //     // 定时器
+            //     var timer = null;
+            //     return function(){
+            //         if(timer) return; // 如果定时器存在, 则不执行
+            //         timer = setTimeout(
+            //             function(){
+            //                 fn();
+            //                 timer = null;
+            //             },
+            //             wait
+            //         )
+            //     }
+            // }
+            // demo2.addEventListener(
+            //     'touchstart',
+            //     throttle(
+            //         function(){
+            //             demo2_con.innerHTML = '执行:'+Date.now();
+            //         },
+            //         1000
+            //     )
+            // )
+            // 写法3 调用外部jq封装的函数
+            demo2.addEventListener(
+                'touchstart',
+                $.throttle(
+                    function(){
+                        demo2_con.innerHTML = '执行:'+Date.now();
+                    },
+                    1000
+                )
+            )
+
+
+
+
+            // 函数防抖
+            var demo1 = document.querySelector('#demo1');
+            var demo1_con = document.querySelector('#demo1_con');
+            // var timer = null;
+            // demo1.addEventListener(
+            //     'touchstart',
+            //     function(e){
+            //         clearTimeout(timer);
+            //         timer = setTimeout(
+            //             function(){
+            //                 demo1_con.innerHTML = '执行:'+Date.now();
+            //             },
+            //             1000
+            //         )
+            //     }
+            // )
+            // // 写法2 封装函数
+            // var debounce = function(fn, wait){
+            //     var timer = null;
+            //     return function(){
+            //         clearTimeout(timer);
+            //         timer = setTimeout(
+            //             function(){
+            //                 fn();
+            //             },
+            //             wait
+            //         )
+            //     }
+            // }
+            // demo1.addEventListener(
+            //     'touchstart',
+            //     debounce(
+            //         function(){
+            //             demo1_con.innerHTML = '执行:'+Date.now();
+            //         },
+            //         1000
+            //     )
+            // )
+            // 写法3 调用外部jq封装的函数
+            demo1.addEventListener(
+                'touchstart',
+                $.debounce(
+                    function(){
+                        demo1_con.innerHTML = '执行:'+Date.now();
+                    },
+                    1000
+                )
+                
+            )
+            
+            // 懒加载
+            // // 写法1 jq
+            // // 在未触发滚动前判断图片是否已经出现，打开先遍历一次
+            // $('.lazyImgDemo').each(
+            //     function(){
+            //         if(checkShow($(this)) && !isLoaded($(this))){ // 如果图片出现在可视区域内, 并且没有被加载过
+            //             loadImg($(this)); // 加载图片
+            //         }
+            //     }
+            // )
+            // // 滚动事件
+            // $(window).on(
+            //     'scroll',
+            //     function(){
+            //         $('.lazyImgDemo').each(
+            //             function(){
+            //                 if(checkShow($(this)) && !isLoaded($(this))){ // 如果图片出现在可视区域内, 并且没有被加载过
+            //                     loadImg($(this)); // 加载图片
+            //                     // 时间戳,用于输出到控制台调试
+            //                     console.log(Date.now());
+
+            //                 }
+            //             }
+            //         )
+            //     }
+            // )
+            // // 判断图片是否出现在可视区域内
+            // function checkShow($img){
+            //     var scrollTop = $(window).scrollTop(); // 滚动条距离顶部的高度，也就是滚动条滚动的距离
+            //     var windowHeight = $(window).height(); // 窗口的高度
+            //     var offsetTop = $img.offset().top; // 元素距离顶部(document顶部)的高度
+            //     if(offsetTop < (scrollTop + windowHeight) && offsetTop > scrollTop){
+            //         return true;
+            //     }
+            //     return false;
+            // }
+            // // 判断图片是否已经加载过
+            // function isLoaded($img){
+            //     // 如果图片的src属性和data-src属性相等, 说明已经加载过了
+            //     return $img.attr('src') === $img.attr('data-src');
+            // }
+            // // 加载图片
+            // function loadImg($img){
+            //     $img.attr('src', $img.attr('data-src'));
+            // }
+
+            // 写法2 原生js
+            // 在未触发滚动前判断图片是否已经出现，打开先遍历一次
+            var lazy_img_demo = document.querySelectorAll('.lazyImgDemo');
+            for(var i = 0; i < lazy_img_demo.length; i++){
+                if(check_show(lazy_img_demo[i]) && !is_loaded(lazy_img_demo[i])){ // 如果图片出现在可视区域内, 并且没有被加载过
+                    load_img(lazy_img_demo[i]); // 加载图片
+                }
+            }
+            // 滚动事件
+            window.addEventListener(
+                'scroll',
+                function(){
+                    for(var i = 0; i < lazy_img_demo.length; i++){
+                        if(check_show(lazy_img_demo[i]) && !is_loaded(lazy_img_demo[i])){ // 如果图片出现在可视区域内, 并且没有被加载过
+                            load_img(lazy_img_demo[i]); // 加载图片
+                            // 时间戳,用于输出到控制台调试
+                            console.log(Date.now());
+                        }
+                    }
+                },
+            )
+            // 判断图片是否出现在可视区域内
+            function check_show(img){
+                var scrollTop = window.pageYOffset; // 滚动条距离顶部的高度，也就是滚动条滚动的距离
+                var windowHeight = window.innerHeight; // 窗口的高度
+                var offsetTop = img.offsetTop; // 元素距离顶部(document顶部)的高度
+                if(offsetTop < (scrollTop + windowHeight) && offsetTop > scrollTop){
+                    return true;
+                }
+                return false;
+            }
+            // 判断图片是否已经加载过
+            function is_loaded(img){
+                // 如果图片的src属性和data-src属性相等, 说明已经加载过了
+                return img.getAttribute('src') === img.getAttribute('data-src');
+            }
+            // 加载图片
+            function load_img(img){
+                img.setAttribute('src', img.getAttribute('data-src'));
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,408 @@
+*
+    margin: 0
+    padding: 0
+    list-style: none
+    text-decoration: none
+    box-sizing: border-box
+
+.topBar
+    width: 100%
+    height: 50px
+    background: #f4f4f4ee
+    position: fixed
+    top: 0
+    z-index: 101
+    display: flex
+
+.topBarL
+    width: 25%
+    height: 100%
+    display: flex
+    justify-content: center
+    align-items: center
+
+.topBarL img
+    width: 41px
+    height: 41px
+
+.topBarR    
+    position: absolute
+    right: 0
+    width: 25%
+    height: 100%
+    display: flex
+    justify-content: center
+    align-items: center // 子元素垂直居中
+
+.topBarR .iconfont
+    font-size: 35px
+    color: #aaaaaa
+    display: none
+
+
+// slide
+
+.slideGo
+    width: 100%
+    height: 8.47rem
+    position: relative
+    top: 0
+    left: 0
+    z-index: 100
+    background: #000000c4
+    display: flex
+    justify-content: center
+    align-items: center
+
+.slideGo img
+    width: 100%
+    height: 100%
+
+// cutoff
+.cutoff
+    position: relative
+    width: 100%
+    height: 40px
+    background: #f4f4f4c4
+    overflow: hidden
+
+.cutoff img
+    position: absolute
+    left: -7%
+    width: 112%
+    height: 112%
+
+// mainGoods
+.mainGoods
+    position: relative
+    top: 0.15rem
+    width: calc( 100% - 20px )
+    margin: 0 auto
+    height: 4.51rem
+    background: #625e5e3a
+
+.GoodsItemL
+    position: absolute
+    left: 0
+    width: 49%
+    height: 100%
+    display: flex
+    align-items: center
+
+.GoodsItemL img
+    width: 100%
+    height: 100%
+
+.GoodsItemR
+    position: absolute
+    right: 0
+    width: 50%
+    height: 100%
+    overflow: hidden
+    display: flex
+    align-items: center
+
+.GIRItemsF
+    position: absolute
+    top: 0
+    width: 100%
+    height: 33%
+    display: flex
+    justify-content: center
+    align-items: center
+
+.GIRItemsS
+    position: absolute
+    top: 34%
+    width: 100%
+    height: 33%
+    display: flex
+    justify-content: center
+    align-items: center
+
+.GIRItemsT
+    position: absolute
+    top: 68%
+    width: 100%
+    height: 33%
+    display: flex
+    justify-content: center
+    align-items: center
+
+// cutoffGoods
+
+.cutoffGoods
+    position: relative
+    top: 0.35rem
+    width: calc( 100% - 20px )
+    margin: 0 auto
+    height: 30px
+    background: #f4f4f4c4
+    display: flex
+    justify-content: center
+    align-items: center
+
+.cutoffGoods img
+    position: absolute
+    left: 0
+    width: 1.28rem
+    height: 30px
+
+.COGText
+    font-size: 12px
+    color: #000000
+    margin-left: 0.2rem
+
+
+// goodsNews
+.goodsNews
+    position: relative
+    top: 0.55rem
+    width: calc( 100% - 20px )
+    margin: 0 auto
+    height: 100%
+    // background: #f4f4f4c4
+
+.NewsItems
+    width: 100%
+    height: 1.1rem
+    border-top: 1.5px solid #d0d0d0ac
+    display: flex
+    justify-content: center // 子元素垂直居中
+    align-items: center
+    flex-wrap: nowrap
+
+.NIText
+    // 文本不换行省略号显示
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrap
+    font-size: 12px
+    color: #787878
+    // margin-left: 0.2rem
+
+.NIcount
+    font-size: 12px
+    color: #787878
+    margin-left: 0.2rem
+
+.NewsAllBtn
+    width: 100%
+    height: 1.35rem
+    border-top: 1.5px solid #d0d0d0ac
+    display: flex
+    justify-content: center // 子元素垂直居中
+    align-items: center
+
+.NABText
+    font-size: 16px
+    color: #787878
+    width: 100%
+    height: 0.85rem
+    line-height: 0.85rem
+    text-align: center
+    background: #f4f4f4c4
+
+// gamesList
+
+.GamesListBox
+    position: relative
+    top: 0.65rem
+    width: 100% 
+    margin: 0 auto
+    height: 100%
+    // background: #f4f4f4c4
+
+.GLBar
+    width: 100%
+    height: 1.22rem
+    // background: #f4f4f4c4
+    display: flex
+    justify-content: center // 子元素垂直居中
+    align-items: center
+    border-bottom: 1.5px solid red
+
+.GLBItems
+    position: relative
+    width: 25%
+    height: 1.22rem
+    font-size: 10px
+    color: #787878
+    display: flex
+    justify-content: center // 子元素垂直居中
+    align-items: center
+    overflow: hidden
+
+.GLBIborder
+    display: none
+    width: 80%
+    height: 0.5rem
+    background: red
+    border-radius: 0.1rem
+    position: absolute
+    bottom: -0.38rem
+
+.GamesList
+    width: calc( 100% - 20px )
+    margin: 0 auto
+    height: 100%
+    // background: #f4f4f4c4
+    display: flex
+    justify-content: center // 子元素垂直居中
+    align-items: center
+
+.newGameList, .hotGameList, .pcGameList, .mobileGameList
+    width: 100%
+    height: 100%
+
+
+
+.hotGameList
+    display: none
+.pcGameList
+    display: none
+.mobileGameList
+    display: none
+
+.NGLItems, .HGLItems
+    width: 100%
+    height: 2.07rem
+    border-bottom: 1.5px solid #d0d0d0ac
+    display: flex
+    justify-content: center // 子元素垂直居中
+    align-items: center
+
+.NGLItems img
+    width: 1.5rem
+    height: 1.5rem
+    position: absolute
+    left: 0.2rem
+
+.HGLItems img
+    width: 1.5rem
+    height: 1.5rem
+    position: absolute
+    left: 0.2rem
+
+
+
+.NGLIinfo, .HGLIinfo
+    width: 100%
+    height: 1.5rem
+    margin-left: 2rem
+    display: flex
+    flex-direction: column // 子元素垂直排列
+    justify-content: center // 子元素垂直居中
+    align-items: flex-start
+
+.NGLIinfo .iconfont
+    position: absolute
+    right: 0.5rem
+    font-size: 12px
+    color: #b4b4b4
+    background: none
+    
+.HGLIinfo .iconfont
+    position: absolute
+    right: 0.5rem
+    font-size: 12px
+    color: #b4b4b4
+    background: none
+
+
+.NGLItag, .HGLItag
+    width: 1.5rem
+    height: 0.8rem
+    background: #71c43a
+    border-radius: 0.1rem
+    font-size: 12px
+    color: #ffffff
+    font-weight: 600
+    display: flex
+    justify-content: center // 子元素垂直居中
+    align-items: center
+
+.NGLIname, .HGLIname
+    margin-top: 0.08rem
+    font-size: 16px
+
+.NGLImsg, .HGLImsg
+    margin-top: 0.08rem
+    font-size: 12px
+    color: #b4b4b4
+
+.gamedemopic
+    width: 100%
+    // height: 
+
+
+// footer
+
+.footer
+    position: relative
+    top: 0.65rem
+    color: #b9b9b9
+    width: 100%
+    height: 3rem
+    background: #000
+
+
+.copyright
+    width: 100%
+    height: 0.6rem
+    font-size: 12px
+    display: flex
+    justify-content: center // 子元素垂直居中
+    align-items: center
+
+.Fmsg
+    width: 100%
+    height: 0.6rem
+    font-size: 12px
+    display: flex
+    justify-content: center // 子元素垂直居中
+    align-items: center
+
+// totop
+
+.topBtn
+    position: fixed
+    right: 0.2rem
+    bottom: 0.2rem
+    width: 1.2rem
+    height: 1.2rem
+    background: #3b3b3bc4
+    color: #ffffff
+    border-radius: 0.2rem
+    display: flex
+    justify-content: center // 子元素垂直居中
+    align-items: center
+
+.topBtn .iconfont
+    font-size: 30px
+    color: #ffffff
+
+
+// tBRcon
+
+.tBRcon
+    position: fixed
+    top: -500px
+    width: 100%
+    height: auto
+    background: #f4f4f4e8
+    z-index: -8
+    // display: none
+
+.tBRClink
+    width: 100%
+    height: 1.2rem
+    margin: 10px 0
+    display: flex
+    justify-content: center // 子元素垂直居中
+    align-items: center
+
+.tBRClink a
+    color: black
+    font-size: 16px
+

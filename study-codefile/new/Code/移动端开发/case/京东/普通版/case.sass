@@ -1,0 +1,646 @@
+*
+    margin: 0
+    padding: 0
+    list-style: none
+    cursor: pointer!important
+    outline: none   
+    text-decoration: none
+
+html
+    font-size: 100px
+    background: #f6f6f6
+
+// app下载横幅
+// flex布局
+.AppDown
+    position: fixed
+    left: 0
+    top: 0
+    width: 100%
+    height: 45px
+    background: #333
+    display: flex
+    align-items: center
+    justify-content: space-between
+    font-size: 14px
+    color: white   
+    // display: none
+
+.AppDownClose
+    width: 8%
+    height: 100%
+    display: flex
+    align-items: center
+    justify-content: center
+    cursor: pointer
+
+.AppDownImg
+    width: 10%
+    height: 100%
+    display: flex
+    align-items: center
+    justify-content: center
+
+.AppDownImg img
+    width: 30px
+    height: 30px   
+
+.AppDownTitle
+    width: 57%
+    height: 100%
+    text-align: center
+    line-height: 45px
+
+.AppDownButton
+    width: 25%
+    height: 100%
+    flex: 1
+    background: #f63515
+    text-align: center
+    line-height: 45px
+
+.AppDownButton a
+    color: white
+    text-decoration: none
+
+// 导航栏
+
+.SearchBox
+    z-index: 999
+    margin-top: 45px
+    border-top: 0.1px solid #ccc
+    width: 100%
+    position: fixed
+    top: 0
+
+.SearchBar
+    width: 100%
+    height: 45px
+    // background: #f63515
+    display: flex
+    align-items: center
+    justify-content: space-between
+    color: white
+    font-size: 14px
+
+.SearchBarLeft
+    margin: 0.3rem
+
+.SearchBarLeft .icon-menu
+    font-size: 0.8rem
+    margin: 0.1rem
+
+.SearchBarCenter
+    flex: 1
+    background: white
+    height: 30px
+    border-radius: 0.6rem
+    display: flex
+    align-items: center
+    padding: 0 0.1rem
+
+.SearchBarRight
+    font-size: 14px
+    margin: 0 0.4rem
+
+.SearchBarCenter .icon-jingdong
+    display: inline-block
+    color: red
+    font-size: 0.45rem
+    margin-left: 0.3rem
+    position: relative
+
+// .SearchBarCenter .icon-jingdong::after
+//     content: ""
+//     border-left: 1px solid #ccc
+//     width: 2rem
+//     height: 0.3rem
+//     margin: 0.25rem
+
+.SearchBarCenter .cutoff
+    width: 1px
+    height: 0.55rem
+    background: #ccc
+    border-radius: 25%
+    margin: 0 0.2rem
+
+.SearchBarCenter input
+    border: none
+    outline: none
+    width: 80%
+    height: 100%
+    background: none
+    font-size: 0.35rem
+
+.SearchBarCenter .icon-sousuo
+    color: #ccc
+    font-size: 0.5rem
+    margin-right: 0.1rem
+
+// 主题内容区
+
+.MainContainer
+    box-sizing: border-box
+    position: relative
+    top: 45px
+    width: 100%
+    height: auto
+    background: #979797
+
+
+.CarouselCon
+    position: absolute
+    width: 100%
+    height: 9.35rem
+    overflow-x: hidden
+
+.headerBg
+    z-index: 1
+    position: absolute
+    top: 0px
+    left: -25%
+    height: 7.25rem
+    width: 150%
+    background-image: linear-gradient(0deg,#f1503b,#c82519 50%)
+    border-bottom-left-radius: 100%
+    border-bottom-right-radius: 100%
+
+.slideGo
+    position: relative
+    top: 2.25rem
+    left: 0
+    width: calc(100% - 1.25rem)
+    // calc() 函数用于动态计算长度值。
+    border-radius: 0.5rem
+    margin: 0 auto
+    height: 7rem
+    overflow: hidden
+
+.slideGo img
+    width: 100%
+    height: 100%
+
+// 分页导航栏
+.ClassNav
+    position: absolute
+    top: 10rem
+    left: 0
+    width: 100%
+    height: 8.1rem
+    // overflow: hidden
+
+// .icon-inner
+//     position: absolute
+//     top: 0
+//     left: 0
+//     width: 100%
+//     height: 100%
+
+.ClassNavinner
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+
+.ClassNav-2
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+
+.ClassNavLink
+    display: block
+    width: 20%
+    height: 3.7rem
+    float: left
+    text-align: center
+    color: #666
+    text-decoration: none
+    font-size: 0.6rem
+
+.ClassNavLink img
+    width: 2rem
+    height: auto
+
+.ClassNav-title
+    margin-top: 0.3rem
+
+.CNV-pageation
+    position: relative
+    width: 100%
+    height: 20px
+    text-align: center
+    // background: gray
+
+.CNV-pageation span
+    position: relative
+    top: -1rem
+
+.swiper
+    --swiper-pagination-color: #ff6600
+
+// 底部导航栏
+.BottomNav
+    width: 100%
+    height: 2.5rem
+    position: fixed
+    bottom: 0
+    left: 0
+    z-index: 31
+    background: white
+    display: flex
+    align-items: center
+    justify-content: space-between
+
+.footerItems:nth-child(1)
+    color: red
+
+.footerItems
+    text-align: center
+    width: 25%
+    height: 100%
+    text-decoration: none
+    color: gray
+
+.footerItems .iconfont
+    font-size: 0.85rem
+
+.footerItems .footerItemText
+    font-size: 16px
+
+// 京东秒杀
+
+.SeckillBox
+    position: absolute
+    top: 18.3rem
+    width: 100%
+    height: 6.8rem
+
+.Seckill
+    width: calc( 100% - 1rem )
+    margin: 0 auto
+    height: 100%
+    background: white
+    border-radius: 0.8rem
+    font-size: 14px
+
+.Seckill-header
+    width: 100%
+    height: 1.7rem
+    background-image: url('../img/seckill-bg.png')
+    background-size: 100% 100%
+
+.Seckill-title
+    float: left
+    display: inline-block
+    height: 1.35rem
+    margin-top: 0.4rem
+    margin-right: 0.25rem
+    margin-left: 0.5rem
+    font-size: 0.7rem
+    color: #333
+    line-height: 1.2rem
+    // letter-spacing 用来设置字间距，默认值是 normal，表示使用字体自带的间距。
+    letter-spacing: 0
+    font-weight: 700
+
+#SeckillStartTime
+    float: left
+    position: relative
+    top: 0.3rem
+    left: -1px
+    height: 100%
+    line-height: 1.4rem
+    border-radius: 0.4rem
+    font-size: 0.65rem
+    color: #ff2727
+    letter-spacing: 0rem
+    padding-right: 0.25rem
+    padding-left: 0.25rem
+    margin-right: 0.2rem
+
+#SeckillStartTime::after
+    content: ""
+    width: 1.025rem
+    height: 0.875rem
+    display: inline-block
+    // vertical-align 属性设置元素的垂直对齐方式。 middle: 元素的中部与父元素中部对齐。
+    vertical-align: middle
+    background-image: url(../img/seckill-time-text.png)
+    // contain: 保持宽高比缩放图片，使图片的长边能完全显示出来。
+    background-size: contain
+    background-repeat: no-repeat
+    background-position: 50%
+
+.Seckill-lastTime
+    float: left
+    position: relative
+    top: 0.5rem
+    height: 0.9rem
+
+.seckillTime
+    display: inline-block
+    float: left
+    width: 0.75rem
+    height: 0.9rem   
+    line-height: 0.8rem
+    text-align: center
+    border-radius: 0.2rem
+    background-image: linear-gradient(-140deg,#ff6152,#fa2c19)
+    background: #fa2c19
+    color: #fff
+    font-size: 0.6rem       
+    font-weight: 400
+
+.seckill-time-separator
+    float: left
+    display: inline-block
+    width: 0.3rem
+    height: 100%
+    font-size: 0.6rem
+    text-align: center
+    color: #f2270c
+    letter-spacing: 0
+    font-weight: 700
+
+.Seckill-H-right
+    float: right
+    display: inline-block
+    margin-right: 0.5rem
+    margin-top: 0.6rem
+    color: #f2270c
+
+.Seckill-list-box
+    width: calc(100% - 0.625rem)
+    margin: 0 auto
+    overflow: hidden
+
+.Seckill-list
+    width: auto
+    height: auto
+    margin-top: 0.5rem
+    position: relative
+    list-style: none
+    
+.Seckill-list a
+    display: block
+    text-decoration: none
+    color: #f2270c
+
+.SeckillItems
+    // float: left  
+    display: inline-block
+    width: 2.6rem
+    height: auto
+    text-align: center
+    background: white
+    margin-right: 0.05rem
+    margin-left: 0.05rem
+
+.SeckillItems-price
+    margin-top: 0.3rem
+    font-size: 0.65rem
+    color: #f2270c
+    font-weight: 700
+
+.Seckill-list-box img
+    width:100%
+    height: auto
+
+// 猜你喜欢区域
+
+.jdRecommend
+    box-sizing: border-box
+    position: absolute
+    top: 26rem
+    width: 100%
+    height: auto
+    // background: white    
+
+
+.RecommendBox
+    box-sizing: border-box
+    width: calc(100% - 1rem)
+    margin: 0 auto
+    height: auto
+    // background: gray 
+    border-radius: 0.8rem
+    font-size: 14px
+
+.RecommendCon
+    box-sizing: border-box
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between 
+
+.RC_left, .RC_right
+    box-sizing: border-box
+    // box-sizing: border-box
+    width: 50%
+    height: auto
+    // background: white
+
+// 商品盒子
+.ReItems
+    box-sizing: border-box
+    padding: 0.25rem
+
+
+.goods
+    display: block
+    width: 100%
+    background: #fff
+    border-radius: 0.4rem
+    overflow: hidden
+    position: relative
+
+.goodsImg
+    background: #fff url(https://img10.360buyimg.com/wq/jfs/t24601/190/890984006/4559/731564fc/5b7f9b7bN3ccd29ab.png)
+    background-repeat: no-repeat
+    background-position: 50%
+    background-size: 8.625rem
+    margin-bottom: 0.25rem
+    position: relative
+    overflow: hidden
+
+.goodsImg img
+    width: 100%
+    height: auto
+    margin: 0 auto
+    display: block
+
+// .goodsTag
+//     position: absolute
+//     top: 0
+//     left: 0
+//     right: 0
+//     display: flex
+//     flex-wrap: wrap
+//     align-items: center
+//     overflow: hidden
+//     max-width: 100%
+//     -webkit-box-align: center
+
+.goodsInfo
+    padding: 0 0.25rem 0.25rem // 上 右下 左
+
+.goodsName
+    text-align: left
+    height: 2.1rem
+    font-size: 0.7rem
+    line-height: 1.05rem
+    overflow: hidden
+    color: #434343
+    text-overflow: ellipsis // 超出部分用省略号代替
+    display: -webkit-box // 将对象作为弹性伸缩盒子模型显示
+    -webkit-line-clamp: 2 // 显示的行数
+    word-break: break-all // 任何非CJK（中日韩）文本都将在两个字母间断开
+    -webkit-box-orient: vertical // 设置或检索伸缩盒对象的子元素的排列方式 vertical: 从上到下
+
+.goods_icon
+    position: relative
+    top: 0.05rem
+    display: inline-block
+    vertical-align: middle
+    // margin-right: 0.2rem
+
+
+.goods_icon img
+    width: 2.2rem
+    height: 0.7rem
+
+.goodsRowTitleBottom
+    height: 1.25rem
+    display: flex
+    align-items: center
+    flex-wrap: wrap // 换行
+    overflow: hidden
+
+.goodsRowTitleBottom .preTags
+    display: flex
+    align-items: center
+    padding: 0 0.1rem
+    border-radius: 0.1rem
+    background: rgba(255, 32, 120, 0.07)
+    font-size: 0.6rem
+.goodsRowTitleBottom .preTags img
+    width: 0.6rem
+    height: 0.6rem
+
+.goodsRowTitleBottom .preTags .preTagsText
+    margin-left: 0.1rem
+    color: #ff2078
+
+.goodsRow
+    height: 1.5rem
+    display: flex
+    align-items: center
+    flex-wrap: wrap
+    overflow: hidden
+
+.goodsRow .goodsPrice
+    font-style: normal
+    display: inline-block
+    font-size: 0.7rem
+    line-height: 1.5rem
+    color: #ff4142
+
+.goodsRow .goodsPrice .goodPriceInit
+    font-size: 1rem
+    font-style: normal
+
+.goodsRowBottom
+    width: calc( 100% - 2.5rem )
+    height: 1rem
+    display: flex
+    align-items: center
+    flex-wrap: wrap
+    overflow: hidden
+
+.goodsRowBottom img
+    width: 1.2rem
+    height: 0.7rem
+    margin-left: 0.2rem
+
+.goodsRowBottom .commentText
+    margin-left: 0.2rem
+    margin-right: 0.02rem
+    max-width: 100%
+    color: #999
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrap
+    font-size: 0.6rem
+
+
+.feed_back
+    position: absolute
+    right: 0.5rem
+    bottom: 0.3rem
+    background: #f2f2f2
+    color: #262626
+    font-size: 0.55rem
+    width: 2.5rem
+    height: 1rem
+    border-radius: 0.5rem
+    display: flex
+    align-items: center
+    justify-content: center
+
+.m_commonFooter
+    // padding-bottom: 54px
+    margin: 0 auto
+    background: #fff
+    width: 100%
+
+.m_commonFooter .commonLinks
+    font-size: 0.7rem
+    padding: 1rem 2rem
+    display: flex
+    justify-content: space-between
+    align-items: center
+    border-bottom: 1px solid #e5e5e5
+    border-top: 1px solid #e5e5e5
+
+.m_commonFooter .commonLinks li
+    width: 25%
+    text-align: center
+
+.m_commonFooter .commonLinks li a
+    position: relative
+    display: block
+    box-sizing: border-box
+    overflow: hidden
+    white-space: nowrap
+    text-overflow: ellipsis
+    color: #848689
+
+.commonicons
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 100%
+    height: auto
+    border-bottom: 1px solid #e5e5e5
+    padding: 0.5rem 0
+
+.commonicons li
+    flex: 1
+    text-align: center
+
+.commonicons a
+    display: block
+    flex: 1
+    text-align: center
+    // padding: 0.5rem 0
+.commonicons a img
+    width: 3rem
+    height: 3rem
+
+.copyright
+    font-size: 0.4rem
+    color: #848689
+    text-align: center
+    padding: 0.5rem 0

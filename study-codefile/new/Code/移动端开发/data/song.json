@@ -1,0 +1,34 @@
+{
+    "code" : 200,
+    "msg" : "请求成功",
+    "data" : [
+        {
+            "id" : 0,
+            "title" : "T117不忍ノ心",
+            "author" : "BlueArchive",
+            "href" : "./video/T117不忍ノ心.mp3",
+            "img" : "img/T117BG.png"
+        },
+        {
+            "id" : 1,
+            "title" : "T120アビドス",
+            "author" : "BlueArchive",
+            "href" : "video/T120アビドス.mp3",
+            "img" : "./img/T120BG.jpg"
+        },
+        {
+            "id" : 2,
+            "title" : "幻昼",
+            "author" : "幻昼",
+            "href" : "video/test.mp3",
+            "img" : "./img/TESTBG.jpg"
+        },
+        {
+            "id" : 3,
+            "title" : "T113カルバノグの兎",
+            "author" : "BlueArchive",
+            "href" : "video/T113カルバノグの兎.mp3",
+            "img" : "./img/T113BG.png"
+        }
+    ]
+}

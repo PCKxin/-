@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .yuki_title{
+                margin-top: 20px;
+                font-size: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: pink;
+            }
+            .yuki_content{
+                margin-top: 20px;
+                font-size: 20px;
+                line-height: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: skyblue;
+            }
+            .yuki_demobox{
+                margin-top: 20px;
+                text-align: center;
+                width: 100%;
+                height: auto;
+                font-size: 18px;
+                color: rgb(117, 117, 117);
+                background: rgba(185, 185, 185, 0.568);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="yuki_title">2.4 函数扩展</div>
+        <div class="yuki_content">
+            <p>1.函数参数默认值</p>
+            <p>2.rest参数</p>
+            <p>3.扩展运算符</p>
+            <p>4.箭头函数</p>
+            <p>5.函数绑定</p>
+            <p>6.尾调用优化</p>
+        </div>
+        <h2 class="yuki_title">
+            es6 允许函数设置参数默认值 <br>
+            通常情况下, 设置默认值的参数要靠后 <br>
+            非尾部的参数设置默认值, 不能省略参数, 否则会报错 <br>
+            省略参数报错例: <br>
+            function fn(x,y=1,z){<br>
+                return [x,y,z];<br>
+            }<br>
+            console.log(fn(1,,2)); // 报错<br>
+        </h2>
+        <h3 class="yuki_content">
+            用法: <br>
+            function fn(a,b=1){<br>
+                return a+b;<br>
+            }<br>
+            console.log(fn(1)); // 2<br>
+            console.log(fn(1,2)); // 3<br>
+            console.log(fn(1,undefined)); // 2<br>
+            console.log(fn(1,null)); // 1<br>
+            console.log(fn(1,NaN)); // NaN<br>
+            console.log(fn(1,0)); // 1<br>
+        </h3>
+        <h2 class="yuki_title">
+            rest参数 <br>
+            用于获取函数的多余参数,这样就不需要使用arguments对象了 <br>
+        </h2>
+        
+
+
+
+        <script>
+            // es6 允许函数设置参数默认值
+            console.log('es6 允许函数设置参数默认值')
+            function fn(a,b=1){
+                return a+b;
+            }
+            console.log(fn(1)); // 2
+            console.log(fn(1,2)); // 3
+            console.log(fn(1,undefined)); // 2
+            console.log(fn(1,null)); // 1
+            console.log(fn(1,NaN)); // NaN
+            console.log(fn(1,0)); // 1
+        </script>
+    </body>
+</html>

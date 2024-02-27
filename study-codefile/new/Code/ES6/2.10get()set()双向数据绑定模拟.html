@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- 输入框, 用户输入的内容 -->
+        <input type="text" id="input" placeholder="请输入文本">
+        <!-- 视图, 显示数据模型中的文本 -->
+        <div id="view"></div>
+
+        <script>
+            // 1 创建一个空对象
+            let person = {}
+            // 初始化视图, 绑定DOM元素到数据模型
+            const inputElement = document.getElementById('input')
+            const viewElement = document.getElementById('view')
+            // 2 初始化数据模型的属性值 储存文本值 将get和set关联到数据模型的属性
+            let _value = '';
+            // 3 使用Object.defineProperty()方法设置属性的gettter和setter
+            Object.defineProperty(person, "text", {
+                get() {
+                    return _value;
+                },
+                set(newValue) {
+                    _value = newValue;
+                    updateView();
+                }
+            })
+            // 4 更新视图
+            function updateView() {
+                viewElement.innerHTML = person.text;
+            }
+            // 5 监听输入框
+            inputElement.addEventListener('keyup', function (event) {
+                person.text = event.target.value;
+            })
+            // 6 初始化视图
+            // 进入网页两秒后显示默认文本
+            setTimeout(() => {
+                person.text = 'Hello, World!';
+            }, 2000)
+
+            
+        </script>
+    </body>
+</html>

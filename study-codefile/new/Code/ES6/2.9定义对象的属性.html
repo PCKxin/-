@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // 方法: Object.defineProperty(obj, prop, descriptor)
+            // 作用: 直接在一个对象上定义一个新属性，或者修改一个对象的现有属性，并返回这个对象。
+            // 参数: 
+            // obj: 要在其上定义属性的对象。
+            // prop: 要定义或修改的属性的名称。
+            // descriptor: 将被定义或修改的属性描述符。
+                // descriptor默认四个参数
+                // value: 属性的值。默认为undefined。
+                // writable: 当且仅当该属性的 writable 为 true 时，属性的值，也就是上面的 value，才能被赋值运算符改变。默认为false。
+                // enumerable: 当且仅当该属性的 enumerable 为 true 时，该属性才会出现在对象的枚举属性中。默认为false。
+                // configurable: 当且仅当该属性的 configurable 为 true 时，该属性描述符才能够被改变，也能够被删除。默认为false。
+            // 返回值: 被传递给函数的对象。
+
+            // 0
+            var obj = {
+                name: "shiroko",
+                age: 17,
+                sex: "girl"
+            };
+            // 1 getOwnPropertyNames() 获取当前对象的所有属性名, 包括不可枚举的属性, 返回一个数组
+            console.log(Object.getOwnPropertyNames(obj)); // ['name', 'age', 'sex']
+
+            // 2 打印obj.name属性描述 
+            // Object.getOwnPropertyDescriptor(obj, "name") // 打印obj.name属性描述
+            // Object.getOwnPropertyDescriptors(obj) 返回一个对象，该对象的键是obj的所有属性名，值是对应属性的描述对象
+
+            console.log(Object.getOwnPropertyDescriptor(obj, "name")); // {value: "shiroko", writable: true, enumerable: true, configurable: true}
+            console.log(Object.getOwnPropertyDescriptors(obj)); // {name: {value: "shiroko", writable: true, enumerable: true, configurable: true}, age: {value: 17, ...}}
+
+            // 3 isExtensible() 判断对象是否可扩展 false:不能添加和删除属性 true:可以
+            console.log(Object.isExtensible(obj)); // true
+
+            // 3-2 isSealed() 判断对象是否加密 false:没有加密 true:加密 加密后不能添加和删除属性
+            console.log(Object.isSealed(obj)); // false
+
+            // 3-3 isFrozen() 判断对象是否冻结 false:没有冻结 true:冻结 冻结后不能添加和删除属性, 不能修改属性的值
+            console.log(Object.isFrozen(obj)); // false
+
+            // 3-4 preventExtensions() 阻止对象可扩展性，不能添加新属性
+            // Object.preventExtensions(obj);
+            // obj.height = 168;
+            // console.log(delete obj.age); // true
+            // console.log(obj); // {name: 'shiroko', sex: 'girl'}
+            // console.log(Object.isExtensible(obj)); // false
+
+            // 3-5 seal() 密封对象，不能添加和删除属性 可以修改
+            // Object.seal(obj);
+            // obj.height = 168;
+            // obj.name = "hoshino";
+            // console.log(delete obj.age); // false
+            // console.log(obj); // {name: 'hoshino', age: 17, sex:'girl'}
+
+            // 3-6 freeze() 冻结对象，不能添加和删除属性，不能修改属性的值
+            // Object.freeze(obj);
+            // obj.height = 168;
+            // obj.name = "hoshino";
+            // console.log(delete obj.age); // false
+            // console.log(Object.isFrozen(obj)); // true
+
+            // 3-7 entries() 返回一个数组, 获取对象的所有成员
+            // var obj2 = {
+            //     name: "hina",
+            //     age: 17,
+            //     sex: 'girl',
+            //     fun(){
+            //         console.log("fun");
+            //     }
+            // }
+            // console.log(Object.entries(obj2)); // [['name', 'hina'], ['age', 17], ['sex', girl], ['fun', [Function: fun]]]
+
+            // 4 writable 该属性是否为可修改的(默认为false)
+            let person = {};
+            Object.defineProperty(person, "name", { 
+                value: "hoshino",
+                writable: false // 不能修改
+            });
+            person.name = "shiroko";
+            console.log(person.name); // hoshino
+
+            // 5 enumerable 该属性是否可枚举(默认为false)
+            // 枚举的意思是可以通过for...in循环遍历到
+            
+            Object.defineProperty(obj, "name", { 
+                enumerable: false // 不能枚举
+            });
+            for (var key in obj) {
+                console.log(obj[key]); // 17 girl
+            }
+            console.log(Object.keys(obj)); // ['age', 'sex']
+
+            // 6 configurable 该属性是否可删除(默认为false)
+            Object.defineProperty(obj, "name", { 
+                configurable: false // 不能删除
+            });
+            delete obj.name;
+            console.log(obj.name); // shiroko
+
+            // 7 get与set
+            // get 获取属性值
+            // set 设置属性值
+            // 简单来说, get和set允许你自定义属性的读取和写入行为。
+            // 在代码中, 每次你设置属性的值里, 它实际上只是在内存中的value变量上设置或获取值。
+            let person2 = {
+                _sex:"",
+                name: "shiroko",
+                age: 17,
+                // 尝试访问person2.sex属性时, 会自动调用get方法
+                get sex(){
+                    return this._sex
+                },
+                // setter方法应该有一个参数, 用来接收设置的值
+                set sex(v){
+                    if(v == "girl"){
+                        this._sex = v;
+                    }
+                }
+            };
+            console.log(person2.sex) // ""
+            person2.sex = "girl";
+            console.log(person2.sex) // girl
+        </script>
+    </body>
+</html>

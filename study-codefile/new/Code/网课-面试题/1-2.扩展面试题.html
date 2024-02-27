@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // 扩展面试题 字符串类型加上 + 正号和 - 负号
+            // + 正号: 将字符串转换为数字类型
+            // - 负号: 将字符串转换为数字类型, 并且取反
+
+            var str = "123";
+
+            console.log(typeof str); // string
+            console.log(typeof +str); // number
+            console.log(typeof -str); // number
+
+            var str1 = "12abc";
+            console.log(typeof str1); // string
+            console.log(+str1); // NaN
+            console.log(typeof +str1); // number
+            console.log(-str1); // NaN
+            console.log(typeof -str1); // number
+
+            console.log(str - 0); // 123
+            console.log(str1 - 0); // NaN
+            console.log(str1 + 0); // 12abc0 字符串拼接
+
+            console.log("===============");
+
+            // 转换为布尔类型为false的有哪些？
+            // 0, NaN, "", null, undefined
+            console.log(Boolean(0)); // false
+            console.log(Boolean(NaN)); // false
+            console.log(Boolean("")); // false
+            console.log(Boolean(null)); // false
+            console.log(Boolean(undefined)); // false
+        </script>
+    </body>
+</html>

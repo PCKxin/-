@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .yuki_title{
+                margin-top: 20px;
+                font-size: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: pink;
+            }
+            .yuki_content{
+                margin-top: 20px;
+                font-size: 20px;
+                line-height: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: skyblue;
+            }
+            .yuki_demobox{
+                margin-top: 20px;
+                text-align: center;
+                width: 100%;
+                height: auto;
+                font-size: 18px;
+                color: rgb(117, 117, 117);
+                background: rgba(185, 185, 185, 0.568);
+            }
+        </style>
+    </head>
+    <body>
+        <p>1</p>
+        <p>2</p>
+        <p>4</p>
+        <h2 class="yuki_title">
+            Array.isArray()<br>
+            用于判断是否为数组<br>
+        </h2>
+        <h3 class="yuki_content">
+            用法: <br>
+            let arr = [1, 2, 3] <br>
+            let res = Array.isArray(arr) <br>
+            // res = true <br>
+        </h3>
+        <h2 class="yuki_title">
+            Array.of()<br>
+            用于将一组值, 转换为数组<br>
+        </h2>
+        <h3 class="yuki_content">
+            用法: <br>
+            let arr = Array.of(1, 2, 3) <br>
+            // arr = [1, 2, 3] <br>
+        </h3>
+        <h2 class="yuki_title">
+            Array.from()<br>
+            用于将类数组对象, 转换为数组<br>
+        </h2>
+        <h3 class="yuki_content">
+            用法: <br>
+            let arr = Array.from('hello') <br>
+            // arr = ['h', 'e', 'l', 'l', 'o'] <br>
+            <br>
+            let arr = Array.from({length: 3}) <br>
+            // arr = [undefined, undefined, undefined] <br>
+            <br>
+            let arr = Array.from({length: 3}, () => 1) <br>
+            // arr = [1, 1, 1] <br>
+            <br>
+            let arr = Array.from({length: 3}, (item, index) => index) <br>
+            // arr = [0, 1, 2] <br>
+            例如获取标签<br>
+            let p = document.querySelectorAll('p') <br>
+            let arr = Array.from(p) <br>
+            
+        </h3>
+        <h2 class="yuki_title">
+            Array.from()<br>
+            第二个参数, 用于对数组中的每一项进行处理, 类似数组的map方法<br>
+        </h2>
+        <h3 class="yuki_content">
+            用法: <br>
+            let arr = Array.from([1, 2, 3], (item) => item * 2) <br>
+            // arr = [2, 4, 6] <br>
+        </h3>
+        <h2 class="yuki_title">
+            map()<br>
+            用于对数组中的每一项进行处理, 返回一个新数组<br>
+        </h2>
+        <h3 class="yuki_content">
+            用法: <br>
+            let arr = [1, 2, 3].map((item) => item * 2) <br>
+            // arr = [2, 4, 6] <br>
+        </h3>
+        <h2 class="yuki_title">
+            filter()<br>
+            用于对数组中的每一项进行过滤, 返回一个新数组<br>
+        </h2>
+        <h3 class="yuki_content">
+            用法: <br>
+            let arr = [1, 2, 3].filter((item) => item > 1) <br>
+            // arr = [2, 3] <br>
+        </h3>
+        <h2 class="yuki_title">
+            find()<br>
+            用于对数组中的每一项进行查找, 返回第一个符合条件的值<br>
+        </h2>
+        <h3 class="yuki_content">
+            用法: <br>
+            let arr = [1, 2, 3].find((item) => item > 1) <br>
+            // arr = 2 <br>
+        </h3>
+        <h2 class="yuki_title">
+            includes()<br>
+            用于判断数组中是否包含某个值, 返回一个布尔值<br>
+            参数1: 要查找的值<br>
+            参数2: 查找的起始位置(可选)<br>
+        </h2>
+        <h3 class="yuki_content">
+            用法: <br>
+            let arr = [1, 2, 3].includes(2) <br>
+            // arr = true <br>
+        </h3>
+        <h2 class="yuki_title">
+            indexOf()<br>
+            用于判断数组中是否包含某个值, 返回一个索引值<br>
+            索引从0开始, 如果没有找到, 返回-1<br>
+            参数1: 要查找的值<br>
+            参数2: 查找的起始位置(可选)<br>
+        </h2>
+        <h3 class="yuki_content">
+            用法: <br>
+            let arr = [1, 2, 3].indexOf(2) <br>
+            // arr = 1 <br>
+        </h3>
+        <h2 class="yuki_title">
+            includes()和indexOf()的区别<br>
+        </h2>
+        <h3 class="yuki_content">
+            includes()返回布尔值 <br>
+            indexOf()返回索引值
+            indexOf() 还返回隐形布尔值, -1为false, 其他为true, 通过判断是否为-1, 来返回布尔值<br>
+            indexOf()判断例: <br>
+            let condition = [1, 2, 3].indexOf(2) !== -1 <br>
+            console.log(condition) // true <br>
+            <br>
+            includes()可以判断NaN, indexOf()不可以判断NaN<br>
+        </h3>
+        <h2 class="yuki_title">
+            fill()<br>
+            用于填充数组, 返回一个新数组<br>
+            参数1: 填充的值<br>
+            参数2: 填充的起始位置(可选)<br>
+            参数3: 填充的结束位置(可选)<br>
+        </h2>
+        <h3 class="yuki_content">
+            用法: <br>
+            let arr = [1, 2, 3].fill(0) <br>
+            // arr = [0, 0, 0] <br>
+            <br>
+            let arr = [1, 2, 3].fill(0, 1, 2) <br>
+            // arr = [1, 0, 3] <br>
+            <br>
+            let arr = [1, 2, 3].fill(0, 1) <br>
+            // arr = [1, 0, 0] <br>
+        </h3>
+        <h2 class="yuki_title">
+            copyWithin()<br>
+            用于复制数组中的一部分, 替换到数组中的另一部分, 返回一个新数组<br>
+            参数1: 从该位置开始替换数据, 如果为负数, 则从数组末尾开始计算<br>
+            参数2(可选): 从该位置开始读取数据, 默认为0, 如果为负数, 则从数组末尾开始计算<br>
+            参数3(可选): 到该位置前停止读取数据, 默认为数组长度<br>
+        </h2>
+        <h3 class="yuki_content">
+            用法: <br>
+            let arr = [1, 2, 3, 4, 5].copyWithin(0, 3) <br>
+            // 从索引3开始复制, 复制到数组末尾, 然后替换到索引0开始的位置 <br>
+            // arr = [4, 5, 3, 4, 5] <br>
+            <br>
+            let arr = [1, 2, 3, 4, 5].copyWithin(0, 3, 4) <br>
+            // 从索引3开始复制, 复制到索引4前停止, 然后替换到索引0开始的位置 <br>
+            // arr = [4, 2, 3, 4, 5] <br>
+            let arr = [1, 2, 3, 4, 5].copyWithin(0, -2, -1) <br>
+            // 从索引-2开始复制, 复制到索引-1前停止, 然后替换到索引0开始的位置 <br>
+            // arr = [4, 2, 3, 4, 5] <br>
+        </h3>
+        <h2 class="yuki_title">
+            some()<br>
+            用于判断数组中是否有一项符合条件, 返回一个布尔值<br>
+        </h2>
+        <h3 class="yuki_content">
+            用法: <br>
+            let arr = [1, 2, 3].some((item) => item > 1) <br>
+            // arr = true <br>
+        </h3>
+        <h2 class="yuki_title">
+            every()<br>
+            用于判断数组中是否所有项都符合条件, 返回一个布尔值<br>
+        </h2>
+        <h3 class="yuki_content">
+            用法: <br>
+            let arr = [1, 2, 3].every((item) => item > 1) <br>
+            // arr = false <br>
+        </h3>
+        <h2 class="yuki_title">
+            Object.values()<br>
+            用于获取对象中的所有值, 返回一个数组<br>
+        </h2>
+        <h3 class="yuki_content">
+            用法: <br>
+            let obj = {name: 'yuki', age: 18} <br>
+            let arr = Object.values(obj) <br>
+            // arr = ['yuki', 18] <br>
+        </h3>
+        <h2 class="yuki_title">
+            entries()<br>
+            用于获取对象中的所有键值对, 返回一个数组<br>
+        </h2>
+        <h3 class="yuki_content">
+            用法: <br>
+            let obj = {name: 'yuki', age: 18} <br>
+            let arr = Object.entries(obj) <br>
+            // arr = [['name', 'yuki'], ['age', 18]] <br>
+        </h3>
+        <h2 class="yuki_title">
+            keys()<br>
+            用于获取对象中的所有键名, 返回一个数组<br>
+        </h2>
+        <h3 class="yuki_content">
+            用法: <br>
+            let obj = {name: 'yuki', age: 18} <br>
+            let arr = Object.keys(obj) <br>
+            // arr = ['name', 'age'] <br>
+        </h3>
+        <h2 class="yuki_title">
+            fromEntries()<br>
+            用于将键值对转换为对象, 返回一个对象<br>
+        </h2>
+        <h3 class="yuki_content">
+            用法: <br>
+            let arr = [['name', 'yuki'], ['age', 18]] <br>
+            let obj = Object.fromEntries(arr) <br>
+            // obj = {name: 'yuki', age: 18} <br>
+        </h3>
+        <h2 class="yuki_title">
+            values()<br>
+            用于获取对象中的所有值, 返回一个数组<br>
+        </h2>
+        <h3 class="yuki_content">
+            用法: <br>
+            let obj = {name: 'yuki', age: 18} <br>
+            let arr = Object.values(obj) <br>
+            // arr = ['yuki', 18] <br>
+        </h3>
+        <h2 class="yuki_title">
+            find()<br>
+            用于对数组中的每一项进行查找, 返回第一个符合条件的值<br>
+            参数是一个回调函数, 回调函数中有三个参数<br>
+            参数1: 当前项的值<br>
+            参数2: 当前项的索引<br>
+            参数3: 当前数组<br>
+        </h2>
+        <h3 class="yuki_content">
+            用法: <br>
+            let arr = [1, 2, 3].find((item) => item > 1) <br>
+            // arr = 2 <br>
+            三个参数的用法: <br>
+            let arr = [1, 2, 3].find((item, index, arr) => { <br>
+                console.log(item) <br>
+                console.log(index) <br>
+                console.log(arr) <br>
+            }) <br>
+        </h3>
+        <script>
+            // Array.isArray()
+            console.log('Array.isArray()方法')
+            let arr0 = [1, 2, 3]
+            let res = Array.isArray(arr0)
+            console.log(res)
+            // Array.of() // 将一组值, 转换为数组
+            console.log('Array.of()方法')
+            let arr1 = Array.of(1, 2, 3)
+            console.log(arr1)
+            // Array.from() // 将类数组对象, 转换为数组
+            console.log('Array.from()方法')
+            let arr2 = Array.from('hello')
+            console.log(arr2)
+            let arr3 = Array.from({length: 3})
+            console.log(arr3)
+            let arr4 = Array.from({length: 3}, () => 1)
+            console.log(arr4)
+            let arr5 = Array.from({length: 3}, (item, index) => index)
+            console.log(arr5)
+            // 获取标签
+            let p = document.querySelectorAll('p')
+            let arr6 = Array.from(p)
+            console.log(arr6)
+            // es5
+            // arr6.forEach(function(item){ // item 为每个标签zhan
+            //     console.log(item)
+            // })
+            //es6
+            arr6.forEach(item => {
+                console.log(item)
+            })
+
+            // map() // 对数组中的每一项进行处理, 返回一个新数组
+            console.log('map()方法')
+            let arr7 = [1, 2, 3].map((item) => item * 2)
+            console.log(arr7)
+            // filter() // 对数组中的每一项进行过滤, 返回一个新数组
+            console.log('filter()方法')
+            let arr8 = [1, 2, 3].filter((item) => item > 1)
+            console.log(arr8)
+            // find() // 对数组中的每一项进行查找, 返回第一个符合条件的值
+            console.log('find()方法')
+            let arr9 = [1, 2, 3].find((item) => item > 1)
+            console.log(arr9)
+            // includes() // 判断数组中是否包含某个值, 返回一个布尔值
+            console.log('includes()方法')
+            let arr10 = [1, 2, 3].includes(2)
+            console.log(arr10)
+            // indexOf() // 判断数组中是否包含某个值, 返回一个索引值
+            console.log('indexOf()方法')
+            let arr11 = [1, 2, 3].indexOf(2)
+            console.log(arr11)
+            // includes()和indexOf()的区别
+            // includes()返回布尔值
+            // indexOf()返回索引值
+            // indexOf() 还返回隐形布尔值, -1为false, 其他为true, 通过判断是否为-1, 来返回布尔值
+            // indexOf()判断例:
+            let condition = [1, 2, 3].indexOf(2) !== -1
+            console.log(condition) // true
+            // includes()可以判断NaN, indexOf()不可以判断NaN
+            // fill() // 用于填充数组, 返回一个新数组
+            console.log('fill()方法')
+            let arr12 = [1, 2, 3].fill(0)
+            console.log(arr12)
+            let arr13 = [1, 2, 3].fill(0, 1, 2)
+            console.log(arr13)
+            let arr14 = [1, 2, 3].fill(0, 1)
+            console.log(arr14)
+            // copyWithin() // 用于复制数组中的一部分, 替换到数组中的另一部分, 返回一个新数组
+            console.log('copyWithin()方法')
+            let arr15 = [1, 2, 3, 4, 5].copyWithin(0, 3)
+            console.log(arr15)
+            let arr16 = [1, 2, 3, 4, 5].copyWithin(0, 3, 4)
+            console.log(arr16)
+            let arr17 = [1, 2, 3, 4, 5].copyWithin(0, -2, -1)
+            console.log(arr17)
+            // some() // 判断数组中是否有一项符合条件, 返回一个布尔值
+            console.log('some()方法')
+            let arr18 = [1, 2, 3].some((item) => item > 1)
+            console.log(arr18)
+            // every() // 判断数组中是否所有项都符合条件, 返回一个布尔值
+            console.log('every()方法')
+            let arr19 = [1, 2, 3].every((item) => item > 1)
+            console.log(arr19)
+            // Object.values() // 用于获取对象中的所有值, 返回一个数组
+            console.log('Object.values()方法')
+            let obj = {name: 'yuki', age: 18}
+            let arr20 = Object.values(obj)
+            console.log(arr20)
+
+            // Object.entries() // 用于获取对象中的所有键值对, 返回一个数组
+            console.log('Object.entries()方法')
+            let arr21 = Object.entries(obj)
+            console.log(arr21)
+            // 简便一点的方法
+            Object.entries(obj).forEach((item) => {
+                console.log(item)
+            })
+            
+            // Object.keys() // 用于获取对象中的所有键名, 返回一个数组
+            console.log('Object.keys()方法')
+            let arr22 = Object.keys(obj)
+            console.log(arr22)
+            // Object.fromEntries() // 用于将键值对转换为对象, 返回一个对象
+            console.log('Object.fromEntries()方法')
+            let arr23 = [['name', 'yuki'], ['age', 18]]
+            let obj1 = Object.fromEntries(arr23)
+            console.log(obj1)
+            // Object.values() // 用于获取对象中的所有值, 返回一个数组
+            console.log('Object.values()方法')
+            let arr24 = Object.values(obj)
+            console.log(arr24)
+
+            // find() // 对数组中的每一项进行查找, 返回第一个符合条件的值
+            console.log('find()方法')
+            let arr25 = [1, 2, 3].find((item) => item > 1)
+            console.log(arr25)
+            // 三个参数的用法:
+            let arr26 = [1, 2, 3].find((item, index, arr) => {
+                console.log(item)
+                console.log(index)
+                console.log(arr)
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .yuki_title{
+                margin-top: 20px;
+                font-size: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: pink;
+            }
+            .yuki_content{
+                margin-top: 20px;
+                font-size: 20px;
+                line-height: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: skyblue;
+            }
+            .yuki_demobox{
+                margin-top: 20px;
+                text-align: center;
+                width: 100%;
+                height: auto;
+                font-size: 18px;
+                color: rgb(117, 117, 117);
+                background: rgba(185, 185, 185, 0.568);
+            }
+        </style>
+    </head>
+    <body>
+        <h2 class="yuki_title">meta视口标签</h2>
+        <h3 class="yuki_content">
+            meta 标签用来描述一个HTML网页文档的属性, 例如作者 日期和时间 网页描述 关键词 页面刷新等。<br>
+            meta 标签位于文档的头部, 不包含任何内容, 其作用是告诉浏览器和搜索引擎有关网页的信息。<br>
+            例子: <br>
+            缩放: <br>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"> <br>
+            width: 设置viewport宽度, 可以为数字或device-width <br>
+            initial-scale: 设置页面的初始缩放值, 可以为数字, 也可以为小数 <br>
+            user-scalable: 是否允许用户缩放页面, 可以为yes或no <br>
+            maximum-scale: 允许用户缩放到的最大比例 <br>
+            minimum-scale: 允许用户缩放到的最小比例 <br>
+            操作页面是否缓存: <br>
+            <meta http-equiv="pragma" content="no-cache"> <br>
+            <meta http-equiv="cache-control" content="no-cache"> <br>
+            <meta http-equiv="expires" content="0"> <br>
+            <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT"> <br>
+            http-equiv: 用来设置消息头, 用来模拟http消息头, 常用的有content-type, expires, refresh, set-cookie, 等等 <br>
+            pragma: 设置是否缓存, no-cache表示不缓存 <br>
+            cache-control: 设置是否缓存, no-cache表示不缓存 <br>
+            expires: 设置缓存过期时间, 0表示立即过期, 一般配合cache-control使用 <br>
+        </h3>
+    </body>
+</html>

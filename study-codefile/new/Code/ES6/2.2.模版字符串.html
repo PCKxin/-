@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .yuki_title{
+                margin-top: 20px;
+                font-size: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: pink;
+            }
+            .yuki_content{
+                margin-top: 20px;
+                font-size: 20px;
+                line-height: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: skyblue;
+            }
+            .yuki_demobox{
+                margin-top: 20px;
+                text-align: center;
+                width: 100%;
+                height: auto;
+                font-size: 18px;
+                color: rgb(117, 117, 117);
+                background: rgba(185, 185, 185, 0.568);
+            }
+        </style>
+    </head>
+    <body>
+        <h2 class="yuki_title">
+            模版字符串: <br>
+        </h2>
+        <h3 class="yuki_content">
+            ${} <br>
+            用于拼接字符串 <br>
+            可以搭配``使用 <br>
+            用法: <br>
+            let a = 1 <br>
+            let b = 2 <br>
+            let c = `${a} + ${b} = ${a + b}` <br>
+            函数: <br>
+            function fn(){ <br>
+                return 'Hello World' <br>
+            } <br>
+            // es6 函数写法 <br>
+            let fn = () => 'Hello World' <br>
+            let c = `${fn()}` <br>
+            函数带参数 <br>
+            function fn(a, b){ <br>
+                return `${a} + ${b} = ${a + b}` <br>
+            } <br>
+            // es6 函数写法 <br>
+            let fn = (a, b) => `${a} + ${b} = ${a + b}` <br>
+            let c = `${fn(1, 2)}` <br>
+        </h3>
+        <script>
+            let demo0 = "hello "
+            let demo1 = "world"
+            let demo_output0 = `${demo0} ${demo1}`
+            console.log(demo_output0)
+            // 函数
+            function demofn1(){
+                return "模版字符串函数demo2"
+            }
+            let demo_output1 = `${demofn1()}`
+            console.log(demo_output1)
+            // 函数带参数
+            function demofn2(a, b){
+                return `${a} + ${b} = ${a + b}`
+            }
+            let demo_output2 = `${demofn2(1, 2)}`
+            console.log(demo_output2)
+            // es6 函数写法
+            let demofn3 = (a, b) => `${a} + ${b} = ${a + b}`
+            let demo_output3 = `${demofn3(1, 2)}`
+            console.log(demo_output3)
+        </script>
+    </body>
+</html>

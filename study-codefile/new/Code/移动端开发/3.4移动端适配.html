@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_4352600_vsthwfguf0i.css">
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                font-size: 0.25rem;
+            }
+            .yuki_title{
+                margin-top: 20px;
+                font-size: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: pink;
+            }
+            .yuki_content{
+                margin-top: 20px;
+                font-size: 20px;
+                line-height: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: skyblue;
+            }
+            .yuki_demobox{
+                margin-top: 20px;
+                text-align: center;
+                width: 100%;
+                height: auto;   
+                font-size: 18px;
+                color: rgb(117, 117, 117);
+                background: rgba(185, 185, 185, 0.568);
+            }
+
+            .remdemo{
+                margin-top: 20px;
+            }
+            .remBox1{
+                width: 100%;
+                height: 0.8rem;
+                background-color: rgb(255, 60, 60);
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                text-align: center;
+                color: white;
+            }
+            .remBox1>section:nth-child(1){
+                margin: 0.2rem;
+
+            }
+            .remBox1>section:nth-child(1) .icon-menu{
+                font-size: 0.4rem;
+            }
+            .remBox1>section:nth-child(3){
+                font-size: 0.25rem;
+                margin: 0 0.2rem;
+            }
+            .remBox1>section:nth-child(2){
+                flex: 1;
+                background: white;
+                height: 0.55rem;
+                border-radius: 0.25rem;
+                display: flex;
+                align-items: center;
+                padding: 0 0.2rem;
+            }
+            .icon-jingdong{
+                color: red;
+                font-size: 0.3rem;
+                margin-left: 0.2rem;
+                position: relative;
+            }
+            .icon-jingdong::after{
+                content: "";
+                border-left: 2px solid #ccc;
+                width: 2rem;
+                height: 0.3rem;
+                margin: 0.15rem;
+            }
+            .icon-sousuo{
+                color: #ccc;
+                font-size: 0.3rem;
+                margin-right: 0.1rem;
+            }
+            .remDemoSearch{
+                border: none;
+                outline: none;
+                flex: 1;
+                height: 0.4rem;
+                font-size: 0.25rem;
+            }
+        </style>
+    </head>
+    <body>
+        <h2 class="yuki_title">em适配</h2>
+        <h3 class="yuki_content">
+            1em = 16px <br>
+            em大小根据自身的字体大小来计算 <br>
+            如果没有设置字体大小, 则会一直向上冒泡, 直到body, 都没有就是默认16px <br>   
+        </h3>
+        <h2 class="yuki_title">rem适配</h2>
+        <h3 class="yuki_content">
+            rem 是根据根元素(节点)的字体大小来计算的 <br>
+            默认1rem = 16px <br>
+            如需设置需要在html中设置font-size <br>
+            html{
+                font-size: 100px;
+            } <br>
+            1rem = 100px <br>
+
+            针对不同尺寸设备的适配等比例显示, 需要计算不同的rem值 <br>
+            比如设计稿尺寸是 640 * 1080 font-size是100px <br>
+            这个设计稿的rem值就是 6.4rem * 10.8rem <br>
+            如果想在宽 X 的屏幕上使用 <br>
+            计算公式就是 X / 640 * 100 <br>
+        </h3>
+        <h3 class="yuki_content">导航栏案例</h3>
+        <div class="remdemo">
+            <header class="remBox1">
+                <section data-text="左边">
+                    <i class="iconfont icon-menu"></i>
+                </section>
+                <section data-text="中间">
+                    <i class="iconfont icon-jingdong"></i>
+                    <i class="iconfont icon-sousuo"></i>
+                    <input type="text" placeholder="请输入商品名称" maxlength="20" class="remDemoSearch">
+                </section>
+                <section data-text="右边">登录</section>
+            </header>
+        </div>
+
+
+
+
+
+
+        <h2 class="yuki_title">vw适配</h2>
+        <h3 class="yuki_content">
+            vw 是根据视口宽度来计算的 <br>
+            1vw = 1%的视口宽度 <br>
+            1vh = 1%的视口高度 <br>
+            1vmin = 1vw和1vh中较小的那个 <br>
+            1vmax = 1vw和1vh中较大的那个 <br>
+        </h3>
+
+        <h2 class="yuki_title">pt适配</h2>
+        <h3 class="yuki_content">
+            pt 是根据屏幕分辨率来计算的 <br>
+            1pt = 1/72英寸 <br>
+            1英寸 = 2.54cm <br>
+            1cm = 10mm <br>
+            1pt = 1/72 * 2.54 * 10 * 10 <br>
+            1pt = 0.3528mm <br>
+            1mm = 2.8346pt <br>
+            1px = 0.75pt <br>
+            1pt = 1.3333px <br>
+        </h3>
+
+        <script src="./js/2.移动端rem换算封装.js"></script>
+    </body>
+</html>

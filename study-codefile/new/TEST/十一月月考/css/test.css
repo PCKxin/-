@@ -1,0 +1,558 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.topBar {
+  width: 100%;
+  height: 50px;
+  background: rgba(244, 244, 244, 0.9333333333);
+  position: fixed;
+  top: 0;
+  z-index: 101;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.topBarL {
+  width: 25%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.topBarL img {
+  width: 41px;
+  height: 41px;
+}
+
+.topBarR {
+  position: absolute;
+  right: 0;
+  width: 25%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.topBarR .iconfont {
+  font-size: 35px;
+  color: #aaaaaa;
+  display: none;
+}
+
+.slideGo {
+  width: 100%;
+  height: 8.47rem;
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.768627451);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.slideGo img {
+  width: 100%;
+  height: 100%;
+}
+
+.cutoff {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  background: rgba(244, 244, 244, 0.768627451);
+  overflow: hidden;
+}
+
+.cutoff img {
+  position: absolute;
+  left: -7%;
+  width: 112%;
+  height: 112%;
+}
+
+.mainGoods {
+  position: relative;
+  top: 0.15rem;
+  width: calc(100% - 20px);
+  margin: 0 auto;
+  height: 4.51rem;
+  background: rgba(98, 94, 94, 0.2274509804);
+}
+
+.GoodsItemL {
+  position: absolute;
+  left: 0;
+  width: 49%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.GoodsItemL img {
+  width: 100%;
+  height: 100%;
+}
+
+.GoodsItemR {
+  position: absolute;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.GIRItemsF {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 33%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.GIRItemsS {
+  position: absolute;
+  top: 34%;
+  width: 100%;
+  height: 33%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.GIRItemsT {
+  position: absolute;
+  top: 68%;
+  width: 100%;
+  height: 33%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.cutoffGoods {
+  position: relative;
+  top: 0.35rem;
+  width: calc(100% - 20px);
+  margin: 0 auto;
+  height: 30px;
+  background: rgba(244, 244, 244, 0.768627451);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.cutoffGoods img {
+  position: absolute;
+  left: 0;
+  width: 1.28rem;
+  height: 30px;
+}
+
+.COGText {
+  font-size: 12px;
+  color: #000000;
+  margin-left: 0.2rem;
+}
+
+.goodsNews {
+  position: relative;
+  top: 0.55rem;
+  width: calc(100% - 20px);
+  margin: 0 auto;
+  height: 100%;
+}
+
+.NewsItems {
+  width: 100%;
+  height: 1.1rem;
+  border-top: 1.5px solid rgba(208, 208, 208, 0.6745098039);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+}
+
+.NIText {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 12px;
+  color: #787878;
+}
+
+.NIcount {
+  font-size: 12px;
+  color: #787878;
+  margin-left: 0.2rem;
+}
+
+.NewsAllBtn {
+  width: 100%;
+  height: 1.35rem;
+  border-top: 1.5px solid rgba(208, 208, 208, 0.6745098039);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.NABText {
+  font-size: 16px;
+  color: #787878;
+  width: 100%;
+  height: 0.85rem;
+  line-height: 0.85rem;
+  text-align: center;
+  background: rgba(244, 244, 244, 0.768627451);
+}
+
+.GamesListBox {
+  position: relative;
+  top: 0.65rem;
+  width: 100%;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.GLBar {
+  width: 100%;
+  height: 1.22rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1.5px solid red;
+}
+
+.GLBItems {
+  position: relative;
+  width: 25%;
+  height: 1.22rem;
+  font-size: 10px;
+  color: #787878;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: hidden;
+}
+
+.GLBIborder {
+  display: none;
+  width: 80%;
+  height: 0.5rem;
+  background: red;
+  border-radius: 0.1rem;
+  position: absolute;
+  bottom: -0.38rem;
+}
+
+.GamesList {
+  width: calc(100% - 20px);
+  margin: 0 auto;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.newGameList, .hotGameList, .pcGameList, .mobileGameList {
+  width: 100%;
+  height: 100%;
+}
+
+.hotGameList {
+  display: none;
+}
+
+.pcGameList {
+  display: none;
+}
+
+.mobileGameList {
+  display: none;
+}
+
+.NGLItems, .HGLItems {
+  width: 100%;
+  height: 2.07rem;
+  border-bottom: 1.5px solid rgba(208, 208, 208, 0.6745098039);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.NGLItems img {
+  width: 1.5rem;
+  height: 1.5rem;
+  position: absolute;
+  left: 0.2rem;
+}
+
+.HGLItems img {
+  width: 1.5rem;
+  height: 1.5rem;
+  position: absolute;
+  left: 0.2rem;
+}
+
+.NGLIinfo, .HGLIinfo {
+  width: 100%;
+  height: 1.5rem;
+  margin-left: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.NGLIinfo .iconfont {
+  position: absolute;
+  right: 0.5rem;
+  font-size: 12px;
+  color: #b4b4b4;
+  background: none;
+}
+
+.HGLIinfo .iconfont {
+  position: absolute;
+  right: 0.5rem;
+  font-size: 12px;
+  color: #b4b4b4;
+  background: none;
+}
+
+.NGLItag, .HGLItag {
+  width: 1.5rem;
+  height: 0.8rem;
+  background: #71c43a;
+  border-radius: 0.1rem;
+  font-size: 12px;
+  color: #ffffff;
+  font-weight: 600;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.NGLIname, .HGLIname {
+  margin-top: 0.08rem;
+  font-size: 16px;
+}
+
+.NGLImsg, .HGLImsg {
+  margin-top: 0.08rem;
+  font-size: 12px;
+  color: #b4b4b4;
+}
+
+.gamedemopic {
+  width: 100%;
+}
+
+.footer {
+  position: relative;
+  top: 0.65rem;
+  color: #b9b9b9;
+  width: 100%;
+  height: 3rem;
+  background: #000;
+}
+
+.copyright {
+  width: 100%;
+  height: 0.6rem;
+  font-size: 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.Fmsg {
+  width: 100%;
+  height: 0.6rem;
+  font-size: 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.topBtn {
+  position: fixed;
+  right: 0.2rem;
+  bottom: 0.2rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  background: rgba(59, 59, 59, 0.768627451);
+  color: #ffffff;
+  border-radius: 0.2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.topBtn .iconfont {
+  font-size: 30px;
+  color: #ffffff;
+}
+
+.tBRcon {
+  position: fixed;
+  top: -500px;
+  width: 100%;
+  height: auto;
+  background: rgba(244, 244, 244, 0.9098039216);
+  z-index: -8;
+}
+
+.tBRClink {
+  width: 100%;
+  height: 1.2rem;
+  margin: 10px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.tBRClink a {
+  color: black;
+  font-size: 16px;
+}/*# sourceMappingURL=test.css.map */

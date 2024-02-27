@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box">
+            num1: <input type="text" id="num1"><br>
+            <br>
+            num2: <input type="text" id="num2"><br>
+            <br>
+            <button class="btn">加</button>
+            <button class="btn">减</button>
+            <button class="btn">乘</button>
+            <button class="btn">除</button>
+            
+            <div id="result">重置</div>
+
+            <span id="res" data-text="显示结果"></span>
+
+            <script>
+                // 获取元素
+
+                var num1 = document.getElementById("num1");
+                var num2 = document.getElementById("num2");
+                var btns = document.querySelectorAll(".btn");
+                var result = document.getElementById("result");
+                var res = document.getElementById("res");
+
+                // es6封装函数
+                var n1 = Number(num1.value);
+                var n2 = Number(num2.value);
+                let add = (n1,n2) => {
+                    var str = n1 + " + " + n2 + " = " + (n1 + n2);
+                    res.innerHTML = str;
+                };
+                let sub = (n1,n2) => {
+                    var str = n1 + " - " + n2 + " = " + (n1 - n2);
+                    res.innerHTML = str;
+                };
+                let mul = (n1,n2) => {
+                    var str = n1 + " * " + n2 + " = " + (n1 * n2);
+                    res.innerHTML = str;
+                };
+                let div = (n1,n2) => {
+                    var str = n1 + " / " + n2 + " = " + (n1 / n2);
+                    res.innerHTML = str;
+                };
+                
+                // 事件监听
+                for(var i = 0; i < btns.length; i++){
+                    btns[i].addEventListener("click",function(){
+                        var n1 = Number(num1.value);
+                        var n2 = Number(num2.value);
+                        // 输入值不为空
+                        if(num1.value == "" || num2.value == ""){
+                            res.innerHTML = "输入值不能为空";
+                            return;
+                        }else{
+                            // 判断输入值是否为数字
+                            if(isNaN(n1) || isNaN(n2)){
+                                res.innerHTML = "输入值必须为数字";
+                                return;
+                            }else{
+                                // 判断点击的是哪个按钮
+                                switch(this.innerHTML){
+                                    case "加":
+                                        add(n1,n2);
+                                        break;
+                                    case "减":
+                                        sub(n1,n2);
+                                        break;
+                                    case "乘":
+                                        mul(n1,n2);
+                                        break;
+                                    case "除":
+                                        // 判断除数是否为0  
+                                        if(n2 == 0){
+                                            res.innerHTML = "除数不能为0";
+                                            return;
+                                        }else{
+                                            div(n1,n2);
+                                        }
+                                }
+                            }
+                        }
+
+                    })
+                }
+
+                // 重置
+                result.addEventListener("click",function(){
+                    num1.value = "";
+                    num2.value = "";
+                })
+            </script>
+        </div>
+    </body>
+</html>

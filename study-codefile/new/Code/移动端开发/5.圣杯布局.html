@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>圣杯布局</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .yuki_title{
+                margin-top: 20px;
+                font-size: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: pink;
+            }
+            .yuki_content{
+                margin-top: 20px;
+                font-size: 20px;
+                line-height: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: skyblue;
+            }
+            .yuki_demobox{
+                margin-top: 20px;
+                text-align: center;
+                width: 100%;
+                height: auto;
+                font-size: 18px;
+                color: rgb(117, 117, 117);
+                background: rgba(185, 185, 185, 0.568);
+            }
+
+            .demobox{
+                margin-top: 20px;
+                width: 100%;
+                display: flex; /* 弹性布局 */
+                flex-direction: row; /* 水平排列 */
+                justify-content: space-between; /* 两端对齐 */
+                align-items: center; /* 垂直居中 */
+                height: 150px;
+            }
+            .left{
+                width: 150px;
+                height: 100%;
+                background-color: pink;
+            }
+            .right{
+                width: 200px;
+                height: 100%;
+                background-color: deeppink;
+            }
+            .center{
+                flex: 1;
+                height: 100%;
+                background-color: skyblue;
+            }
+        </style>
+    </head>
+    <body>
+        <h2 class="yuki_title">圣杯布局</h2>
+        <h3 class="yuki_content">
+            圣杯布局是一种常见的页面布局方式，它的特点是：中间的内容区域宽度自适应，两边的侧边栏宽度固定。
+            适用于移动端的搜索框布局。
+            核心思路: <br>
+            三栏布局，左右两栏宽度固定，中间栏宽度自适应；<br>
+            两边固定大小, 中间flex: 1; <br>
+        </h3>
+        <div class="demobox">
+            <div class="left"></div>
+            <div class="center"></div>
+            <div class="right"></div>
+        </div>
+    </body>
+</html>

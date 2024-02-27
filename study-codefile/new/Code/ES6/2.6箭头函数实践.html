@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            #box{
+                width: 200px;
+                height: 200px;
+                background-color: rgb(255, 225, 0);
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box">
+            
+        </div>
+        <script>
+            // 需求：点击div 2s后变色
+            var box = document.getElementById("box");
+            // box.onclick = () => {
+            //     setTimeout(() => {
+            //         box.style.backgroundColor = "red";
+            //     },1000);
+            // }
+            // 2
+            // box.addEventListener("click",() => { // 箭头函数没有自己的this，它的this是继承自上一层的this,所以这里的this指向window
+            box.addEventListener("click",function(){ // 这里的this指向box
+                setTimeout(() => {
+                    console.log(this); 
+                    this.style.background = "pink";
+                },1000);
+            });
+
+            // 需求：从数组中返回偶数
+            const arr = [1,2,3,4,5,6,7,8,9,10];
+            // 1
+            // const re = arr.filter(item => { // filter() 方法创建一个新的数组，新数组中的元素是通过检查指定数组中符合条件的所有元素。
+            //     return item % 2 === 0;
+            // });
+            // 1-2
+            const re = arr.filter(item => item % 2 === 0);
+            console.log(re); // [2, 4, 6, 8, 10]
+            // 2
+            const re2 = arr.filter(function(item){
+                if(item % 2 === 0){
+                    return true; // 返回true的元素会被保留在新数组中
+                }else{
+                    return false;
+                }
+            });
+            console.log(re2); // [2, 4, 6, 8, 10]
+        </script> 
+    </body>
+</html>

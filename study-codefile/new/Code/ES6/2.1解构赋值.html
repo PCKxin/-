@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .yuki_title{
+                margin-top: 20px;
+                font-size: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: pink;
+            }
+            .yuki_content{
+                margin-top: 20px;
+                font-size: 20px;
+                line-height: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: skyblue;
+            }
+            .yuki_demobox{
+                margin-top: 20px;
+                text-align: center;
+                width: 100%;
+                height: auto;
+                font-size: 18px;
+                color: rgb(117, 117, 117);
+                background: rgba(185, 185, 185, 0.568);
+            }
+        </style>
+    </head>
+    <body>
+        <h2 class="yuki_title">
+            解构赋值: <br>
+            用于从数组或者对象中提取值, 对变量进行赋值, 称为解构赋值 <br>
+            解构赋值的本质是右边的值, 赋值给左边的变量 <br>
+            解构的源是右边的值, 解构的目标是左边的变量 <br>
+            解构赋值的语法: <br>
+        <h2>
+        <h3 class="yuki_content">
+            普通: <br>
+            let [a, b, c] = [1, 2, 3] <br>
+            // a = 1, b = 2, c = 3 <br>
+            let {a, b, c} = {a: 1, b: 2, c: 3} <br>
+            // a = 1, b = 2, c = 3 <br>
+            <br>
+            嵌套: <br>
+            let [a, [b, c], d] = [1, [2, 3], 4] <br>
+            // a = 1, b = 2, c = 3, d = 4 <br>
+            let {a, b: {c, d}} = {a: 1, b: {c: 2, d: 3}} <br>
+            // a = 1, c = 2, d = 3 <br>
+            <br>
+            默认值: <br>
+            匹配结果为undefined时, 变量的默认值才会生效 <br>
+            let [a, b = 2] = [1] <br>
+            // a = 1, b = 2 <br>
+            let {a, b = 2} = {a: 1} <br>
+            // a = 1, b = 2 <br>
+            let [a, b = 2] = [1, undefined] <br>
+            // a = 1, b = 2 <br>
+            let {a, b = 2} = {a: 1, b: undefined} <br>
+            // a = 1, b = 2 <br>
+            <br>
+            忽略: <br>
+            let [a, , b] = [1, 2, 3] <br>
+            // a = 1, b = 3 <br>
+            let {a, , b} = {a: 1, b: 2, c: 3} <br>
+            // a = 1, b = 3 <br>
+            <br>
+            交换: <br>
+            var a = 1, b = 2 <br>
+            var [a, b] = [b, a] <br>
+            // a = 2, b = 1 <br>
+            var a = 1, b = 2 <br>
+            var temp = a <br>
+            var a = b <br>
+            var b = temp <br>
+            // a = 2, b = 1 <br>
+            <br>
+            不完全解构: <br>
+            let [a, [b], c] = [1, [2, 3], 4] <br>
+            // a = 1, b = 2, c = 4 <br>
+            let [a, [b], c] = [1, [2, 3]] <br>
+            // a = 1, b = 2, c = undefined <br>
+            <br>
+            剩余运算符: <br>
+            let [a, ...b] = [1, 2, 3] <br>
+            // a = 1, b = [2, 3] <br>
+            let {a, ...b} = {a: 1, b: 2, c: 3} <br>
+            // a = 1, b = {b: 2, c: 3} <br>
+            <br>
+            解构默认值 <br>
+            let {a = 10, b = 5} = {a: 3};
+            // a = 3; b = 5;
+            let {a: aa = 10, b: bb = 5} = {a: 3};
+            // aa = 3; bb = 5;
+            <br>
+        </h3>
+
+        <script>
+            // 普通
+            function demo0(){
+                let [a, b, c] = [1, 2, 3]
+                console.log("普通解构"+a,b,c) // 123
+                let {e, f, g} = {e: 1, f: 2, g: 3}
+                console.log("普通解构"+a,b,c) // 123
+            };
+            demo0();
+            // 嵌套
+            function demo1(){
+                let [a, [b, c], d] = [1, [2, 3], 4]
+                console.log("嵌套解构"+a,b,c,d) // 1234
+                let {e, f: {g, h}} = {e: 1, f: {g: 2, h: 3}}
+                console.log("嵌套解构"+e,g,h) // 123
+                let {i:[j,{k}]} = {i:["嵌套",{k:"解构"}]}
+                console.log(j,k)
+            };
+            demo1();
+            // 默认值
+            function demo2(){
+                let [a, b = 2] = [1]
+                console.log("默认值解构"+a,b) // 12
+                let {c, d = 2} = {c: 1}
+                console.log("默认值解构"+c,d) // 12
+                let [e, f = 2] = [1, undefined]
+                console.log("默认值解构"+e,f) // 12
+                let {g, h = 2} = {g: 1, h: undefined}
+                console.log("默认值解构"+g,h) // 12
+            };
+            demo2();
+            // 忽略
+            function demo3(){
+                let [a, , b] = [1, 2, 3]
+                console.log("忽略解构"+a,b) // 13
+            };
+            demo3();
+            // 交换
+            function demo4(){
+                var a = 1
+                var b = 2
+                var [a, b] = [b, a]
+                console.log("交换解构"+a,b) // 21
+            };
+            demo4();
+            // 不完全解构
+            function demo5(){
+                let [a, [b], c] = [1, [2, 3], 4]
+                console.log("不完全解构"+a,b,c) // 124
+                let [d, [e], f] = [1, [2, 3]]
+                console.log("不完全解构"+d,e,f) // 12undefined
+            };
+            demo5();
+            // 剩余运算符
+            function demo6(){
+                let [a, ...b] = [1, 2, 3]
+                console.log("剩余运算符解构"+a,b) // 1[2, 3]
+                let {c, ...d} = {c: 1, d: 2, e: 3}
+                console.log("剩余运算符解构"+c,d) // 1{d: 2, e: 3}
+            };
+            demo6();
+            // 解构默认值
+            function demo7(){
+                let {a = 10, b = 5} = {a: 3};
+                console.log("解构默认值"+a,b) // 35
+                let {c: cc = 10, d: dd = 5} = {c: 3};
+                console.log("解构默认值"+cc,dd) // 35
+            };
+            demo7();
+        </script>
+    </body>
+</html>

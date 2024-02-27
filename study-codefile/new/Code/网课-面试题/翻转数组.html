@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            var arr = [10, 20, 30, 40, 50];
+            for(var i = 0; i < arr.length; i++){
+                var temp = arr[i]; // 第三方变量
+                arr[i] = arr[arr.length - 1 - i]; // 交换位置 将当前位置的值设置为数组末尾的反方向位置的值
+                arr[arr.length - 1 - i] = temp; // 将数组末尾的反方向位置的值设置为第三方变量的值
+            };
+        </script>
+    </body>
+</html>

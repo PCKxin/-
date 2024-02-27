@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>移动端事件</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .yuki_title{
+                margin-top: 20px;
+                font-size: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: pink;
+            }
+            .yuki_content{
+                margin-top: 20px;
+                font-size: 20px;
+                line-height: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: skyblue;
+            }
+            .yuki_demobox{
+                margin-top: 20px;
+                text-align: center;
+                width: 100%;
+                height: auto;
+                font-size: 18px;
+                color: rgb(117, 117, 117);
+                background: rgba(185, 185, 185, 0.568);
+            }
+
+            #demo4Box{
+                position: relative;
+                top: -25px;
+                width: 300px;
+                height: 200px;
+                background-color: rgb(255, 255, 255);
+                margin: 0 auto;
+                opacity: 0.5;
+            }
+        </style>
+    </head>
+    <body>
+        <h2 class="yuki_title">所有移动端调试以真机为主</h2>
+        <h2 class="yuki_title">4个基本事件类型</h2>
+        <h3 class="yuki_content">
+            touchstart: 手指触摸屏幕时触发<br>
+            touchmove: 手指在屏幕上滑动时连续触发<br>
+            touchend: 手指离开屏幕时触发<br>
+            touchcancel: 系统取消touch事件的时候触发<br>
+            <a href="./3.1zepto.html">详细</a>
+            移动端最好使用 addEventListener 也就是 DOM2级 绑定事件 <br>
+            因为不会存在事件前后覆盖的问题 <br>
+            使用chromium内核浏览器都可以直接识别<br>
+        </h3>
+        <h3 class="yuki_content">
+            原生touchcancel事件是在系统取消touch事件的时候触发 <br>
+            比如来电时, 手指在屏幕上, 会触发touchcancel事件<br>
+            触点离开了窗口,或是离开了浏览器的可视区域, 会触发touchcancel事件<br>
+            用户产生的触电超出屏幕支持的触点数量时, 会触发touchcancel事件<br>
+        </h3>
+        <div class="yuki_demobox">
+            <button id="demo1" style="width: 500x; height: 30px;">button</button>
+            <p id="demo1_con"></p>
+        </div>
+
+        <h2 class="yuki_title">禁止默认行为</h2>
+        <h3 class="yuki_content">
+            1. 阻止默认行为: <br>
+            e.preventDefault(); <br>
+            2. 阻止冒泡: <br>
+            e.stopPropagation(); <br>
+            3. 阻止默认行为和冒泡: <br>
+            e.preventDefault(); <br>
+            e.stopPropagation(); <br>
+            使用触摸事件时可以使用e.preventDefault来阻止鼠标事件的触发 <br>
+            不是所有的事件都支持阻止默认行为 <br>
+            可以使用e.cancelable来判断是否支持阻止默认行为 <br>
+            使用e.defaultPrevented来判断默认行为是否被阻止 <br>
+        </h3>
+        <div class="yuki_demobox">
+            <button id="demo3" style="width: 500x; height: 30px;">button</button>
+            <p id="demo3_con"></p>
+        </div>
+
+        <h2 class="yuki_title">事件点透</h2>
+        <h3 class="yuki_content">
+            事件点透: <br>
+            1. 事件点透是指, 当一个元素被点击时, 会触发该元素下面的所有元素的点击事件 <br>
+            2. 事件点透的原因是, PC端的点击事件在移动端有300ms的判断延迟, 因为PC端事件比较多 <br>
+            3. 事件点透的解决方案: <br>
+            3.1. 使用fastclick.js <br>
+            3.2. 使用touchend事件代替click事件 <br>
+            3.3. 使用touchend事件代替click事件, 并且阻止默认行为 <br>
+            3.4. touchend事件阻止默认行为, 重新绑定事件, 并且阻止事件冒泡 <br>
+            4.以上解决后还会有一个touchmove误触的问题 <br>
+            4.1. 解决点透加误触问题的方法: <br>
+            加个判断, 如果是移动了, 就不执行点击事件 <br>
+            this.isMove = false; 意思是没有移动 <br>
+            this.isMove = true; 意思是移动了 <br>
+        </h3>
+        <h3 class="yuki_content">
+            案例: <br>
+            移动端事件 <br>
+            demo4_box.addEventListener(
+                "touchstart", 
+                function(e){
+                    demo4_box.style.display = "none";
+                } <br>
+                // 当使用JS代码将点击的盒子隐藏掉的时候，再测试 <br>
+                // 会发现在隐藏掉盒子的同时，直接出发了a标签的跳转 <br>
+                // 无论点击的有多快，依旧会触发a标签 <br>
+                // 事件穿过盒子直接触发跳转事件 <br>
+            )
+            PC端事件 <br>
+            demo4_box.addEventListener(
+                "click",
+                function(e){
+                    demo4_box.style.display = "none";
+                } <br>
+                // 只是单纯隐藏掉了盒子，没有触发a标签的跳转事件 <br>
+                // 根本原因: PC端的点击事件在移动端有300ms的判断延迟 <br>
+                // 而touchstart事件没有延迟，点击隐藏掉盒子同时触发了a标签的跳转事件 <br>
+                // click事件在点击后会有300ms判断延迟，直接阻止了点击事件向a标签的传递 <br>
+            )
+        </h3>
+        <div class="yuki_demobox">
+            <a href="https://www.baidu.com">点我跳转百度</a>
+            <div id="demo4Box"></div>
+        </div>
+
+        <h2 class="yuki_title">事件对象</h2>
+        <h3 class="yuki_content">
+            TouchEvent: <br>
+            用于检测触点的移动和增减 <br>
+            0.isTrusted: 事件是否由用户代理触发 , 用户代理触发是指用户的行为 <br>
+            1. touches: 当前屏幕上所有触摸点的列表 <br>
+            2. targetTouches: 当前元素上所有触摸点的列表 <br>
+            3. changedTouches: 涉及当前事件的触摸点的列表 <br>
+            用法: <br>
+            demo.addEventListener("touchstart", function(e){ <br>
+                e = e || window.event; <br>
+                console.log(e); <br>
+            }) <br>
+        </h3>
+        <h3 class="yuki_content">
+            TouchList: <br>
+            用于存储触摸点的列表 <br>
+            每个触发的触点会产生一个Touch对象 <br>
+            每个Touch对象标准包含3个信息: <br>
+            1.touches 当前位于屏幕的所有手指(触点)的列表 ,数组格式<br>
+            2.targetTouches 当前DOM元素上所有触摸点的列表 ,数组格式<br>
+            3.changedTouches 涉及当前事件的触摸点的列表 ,数组格式<br>
+        </h3>
+        <h2 class="yuki_title">坐标对象</h2>
+        <h3 class="yuki_content">
+            触摸目标在视口中的坐标: <br>
+            clientX <br>
+            clientY <br>
+            触摸目标在页面中的坐标: <br>
+            pageX <br>
+            pageY <br>
+            触摸目标在屏幕中的坐标: <br>
+            screenX <br>
+            screenY <br>
+        </h3>
+
+        <script src="./js/vconsole.min.js"></script>
+        <script>
+            const vConsole = new VConsole();
+            /* 用户在触摸屏幕时移动手指离开屏幕，或者浏览器接收到一个新的 touch 事件，就会触发 touchcancel 事件。 */
+            var demo1 = document.getElementById("demo1");
+            var demo1_con = document.getElementById("demo1_con");
+
+            // 原生touchcancel事件
+            // 1
+            demo1.addEventListener("touchstart", function () {
+                demo1_con.innerHTML = "触摸开始";
+            });
+            // 2
+            demo1.addEventListener("touchmove", function () {
+                alert("触摸移动");
+            });
+            // 3
+            demo1.addEventListener("touchend", function () {
+                demo1_con.innerHTML = "触摸结束";
+            });
+            // 4
+            demo1.addEventListener("touchcancel", function () {
+                demo1_con.innerHTML = "触摸取消";
+            });
+
+            
+            // 禁止默认行为
+            var demo3 = document.getElementById("demo3");
+            var demo3_con = document.getElementById("demo3_con");
+            demo3.addEventListener("touchstart", function (e) {
+                e.preventDefault(); // 阻止默认行为
+                demo3_con.innerHTML = "阻止了鼠标事件的触发";
+                // 查询是否支持阻止默认行为
+                console.log(e.cancelable);
+                // 查询默认行为是否被阻止
+                console.log(e.defaultPrevented);
+            });
+
+            // 事件点透案例
+            var demo4_box = document.getElementById("demo4Box");
+            // // 移动端事件
+            // demo4_box.addEventListener(
+            //     "touchstart", 
+            //     function(e){
+            //         demo4_box.style.display = "none";
+            //     }
+            //     // 当使用JS代码将点击的盒子隐藏掉的时候，再测试
+            //     // 会发现在隐藏掉盒子的同时，直接出发了a标签的跳转
+            //     // 无论点击的有多快，依旧会触发a标签
+            //     // 事件穿过盒子直接触发跳转事件
+            // )
+            // // PC端事件
+            // demo4_box.addEventListener(
+            //     "click",
+            //     function(e){
+            //         demo4_box.style.display = "none";
+            //     }
+            //     // 只是单纯隐藏掉了盒子，没有触发a标签的跳转事件
+            //     // 根本原因: PC端的点击事件在移动端有300ms的判断延迟
+            //     // 而touchstart事件没有延迟，点击隐藏掉盒子同时触发了a标签的跳转事件
+            //     // click事件在点击后会有300ms判断延迟，直接阻止了点击事件向a标签的传递
+            // )
+            // 解决1
+            // demo4_box.addEventListener(
+            //     "touchstart", 
+            //     function(e){
+            //         demo4_box.style.display = "none";
+            //         e.preventDefault(); // 阻止默认行为
+            //     }
+            // )
+            // 解决2
+            // demo4_box.addEventListener(
+            //     "touchend", 
+            //     function(e){
+            //         demo4_box.style.display = "none";
+            //         e.preventDefault(); // 阻止默认行为
+            //     }
+            // )
+            // // 解决3
+            // // 组织所有页面的默认行为
+            // document.addEventListener(
+            //     "touchstart", 
+            //     function(e){
+            //         e.preventDefault(); // 阻止默认行为
+            //     },
+            //     {passive: false} // passive意思是被动的，passive: false意思是不被动的，也就是主动的
+            // )
+            // demo4_box.addEventListener(
+            //     "touchstart", 
+            //     function(e){
+            //         demo4_box.style.display = "none";
+            //     }
+            // )
+            // // 获取所有a标签，遍历绑定对应事件
+            // var aList = document.querySelectorAll("a");
+            // for(var i = 0; i < aList.length; i++){
+            //     aList[i].addEventListener(
+            //         "touchend", 
+            //         function(e){
+            //             window.location.href = this.href;
+            //         },
+            //         false // 作用是阻止事件冒泡
+            //     )
+            // }
+            // 解决4.1, 解决点透加误触
+            demo4_box.addEventListener(
+                "touchstart", 
+                function(e){
+                    this.isMove = false; // 没有移动
+                    // setTimeout(function(){
+                    //     demo4_box.style.display = "none";
+                    // }, 1000)
+                }
+            )
+            demo4_box.addEventListener(
+                "touchmove", 
+                function(e){
+                    this.isMove = true; // 移动了
+                }
+            )
+            demo4_box.addEventListener(
+                "touchend", 
+                function(e){
+                    if(!this.isMove){
+                        window.location.href = this.href;
+                    }
+                }
+            )
+            // // 解决4.2 遍历所有a标签 判断 解决4.1 方法
+            // var aList = document.querySelectorAll("a");
+            // for(var i = 0; i < aList.length; i++){
+            //     aList[i].addEventListener(
+            //         "touchstart", 
+            //         function(e){
+            //             this.isMove = false; // 没有移动
+            //         }
+            //     )
+            //     aList[i].addEventListener(
+            //         "touchmove", 
+            //         function(e){
+            //             this.isMove = true; // 移动了
+            //         }
+            //     )
+            //     aList[i].addEventListener(
+            //         "touchend", 
+            //         function(e){
+            //             if(!this.isMove){
+            //                 window.location.href = this.href;
+            //             }
+            //         }
+            //     )
+            // }
+        </script>
+    </body>
+</html>

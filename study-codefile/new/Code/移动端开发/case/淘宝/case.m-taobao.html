@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="./css/swiper-bundle.min.css">
+        <link rel="stylesheet" href="./css/animate.min.css">
+        <link rel="stylesheet" href="./css/case.css">
+    </head>
+    <body>
+        <!-- 导航栏 -->
+        <div class="tbTopBar">
+            <div class="TopBarL">
+                <img src="./img/taobao-logo.png">
+            </div>
+            <div class="TopBarC">
+                <div class="TopBarSearch">
+                    <div class="placeholder">寻找宝贝店铺</div>
+                    <div class="SearchBtn">搜索</div>
+                </div>
+            </div>
+            <div class="TopBarR">
+                <img src="./img/qiandao.png">
+            </div>
+        </div>
+        <div class="main_container">
+            <!-- 分类导航栏 -->
+            <div class="iconWrapper">
+                <div class="iconWrapperInner">
+
+                </div>
+                <div class="iconNavBar">
+                    <div class="iconNavBtn"></div>
+                </div>
+            </div>
+            <!-- 精选双板块 -->
+            <div class="goodsWrapper">
+                <div class="goodsItemBox">
+                    <div class="GIHdeader">
+                        <img src="./img/goods-bg1.png" class="GIHbg">
+                        <img src="./img/goods-hbg1.png" class="GIHhbg">
+                        <div class="GIHdeaderTitle">
+                            <div class="GITContent">淘宝直播</div>
+                            <img src="./img/goods1-gif1.apng" class="GITTag">
+                        </div>
+                    </div>
+                    <img src="./img/goods-bg1-m.png" class="GIHCbg">
+                    <div class="mainGoods">
+                        <img src="./img/goods-img1-1.jpg">
+                        <div class="MGTitle">直播爆品推荐</div>
+                        <div class="MGTag">
+                            <div class="TagCon">
+                                <span class="TCText">直播爆品推荐</span>
+                                <img src="./img/goods-img1-b.png" class="TCimg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="RightTopGood subGoods">
+                        <img src="./img/goods-img1-2.jpg">
+                    </div>
+                    <div class="RightBottomGood subGoods">
+                        <img src="./img/goods-img1-3.jpg">
+                    </div>
+                </div>
+                <div class="goodsItemBox">
+                    <div class="GIHdeader">
+                        <img src="./img/goods-bg2.png" class="GIHbg">
+                        <img src="./img/goods-hbg2.png" class="GIHhbg">
+                        <div class="GIHdeaderTitle">
+                            <div class="GITContent">淘宝好价</div>
+                            <!-- <img src="./img/goods1-gif1.apng" class="GITTag"> -->
+                            <div class="GITTagBox">便宜</div>
+                        </div>
+                    </div>
+                    <img src="./img/goods-bg2-m.png" class="GIHCbg">
+                    <div class="mainGoods">
+                        <img src="./img/goods-img2-1.webp">
+                        <div class="MGTitle">性价比精选</div>
+                        <div class="MGTag">
+                            <div class="TagCon">
+                                <span class="TCText">好货真便宜</span>
+                                <img src="./img/goods-img2-b.png" class="TCimg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="RightTopGood subGoods">
+                        <img src="./img/goods-img2-2.jpg">
+                    </div>
+                    <div class="RightBottomGood subGoods">
+                        <img src="./img/goods-img2-3.jpeg">
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+
+        
+        <script src="./js/jquery-2.1.4.min.js"></script>
+        <script src="./js/flexible.js"></script>
+        <!-- <script src="./js/swiper-bundle.min.js"></script>
+        <script src="./js/swiper.animate1.0.3.min.js"></script> -->
+        <script>
+            // 分类导航栏滚动条
+            var icon_wrapper = document.querySelector('.iconWrapper');
+            var icon_wrapper_inner = document.querySelector('.iconWrapperInner');
+            var icon_nav_bar = document.querySelector('.iconNavBar');
+            var icon_items = document.querySelectorAll('.iconItems');
+            var icon_nav_btn = document.querySelector('.iconNavBtn');
+            // json渲染
+            /**
+             * 结构
+             * 每个
+             * <div class="iconItems">
+             * 内含两个
+             *  <a href="#" class="iconItemsLink">
+             *          <img src="url">
+             *          <p class="iconItemsTitle">title</p>
+             *  </a>
+             * </div>
+             * **/
+            $.ajax(
+                {
+                    url: './data/icon_wrapper.json',
+                    type: 'get',
+                    dataType: 'json',
+                    success: function (data){
+                        console.log(data)
+                        var _htm = '';
+                        for(let i = 0; i < data.data.length; i++){
+                            // console.log(data.data[i])
+                            var inner_htm = '';
+                            if(i == data.data.length - 1){
+                                inner_htm += `
+                                    <div class = "iconItems">
+                                        <a href="#" class="iconItemsLink">
+                                            <img src="${data.data[i].img}">
+                                            <p class="iconItemsTitle">${data.data[i].title}</p>
+                                        </a>
+                                    </div>
+                                `;
+                                _htm += inner_htm;
+                                break;
+                            }
+                            inner_htm += `
+                                    <div class = "iconItems">
+                                        <a href="#" class="iconItemsLink">
+                                            <img src="${data.data[i].img}">
+                                            <p class="iconItemsTitle">${data.data[i].title}</p>
+                                        </a>
+                                `;
+                            i++;
+                            inner_htm += `
+                                        <a href="#" class="iconItemsLink">
+                                            <img src="${data.data[i].img}">
+                                            <p class="iconItemsTitle">${data.data[i].title}</p>
+                                        </a>
+                                    </div>
+                                `;
+                            
+                            // console.log(inner_htm)
+                            _htm += inner_htm;
+                        }
+                        // console.log(_htm)
+                        icon_wrapper_inner.innerHTML = _htm;
+                        if(data.data.length > 11){
+                            console.log(data.data.length)
+                            icon_nav_bar.style.display = 'block';
+                        }else{
+                            icon_nav_bar.style.display = 'none';
+                        }
+                    }
+                }
+            );
+
+
+            /**
+             * 导航栏横向滚动, 滚动条同步滚动
+             * 滑块最大滑动距离为: 0.08rem
+             * 滑块等比例滑动距离 = 滚动距离 / 最大滚动距离 * 滑块最大滑动距离
+             * **/
+
+            function setTranslateX(element,translateX){ // 设置元素的translateX
+                element.style.transform = 'translateX('+translateX+'px)'; // 设置元素的translateX
+                element.style.webkitTransform = 'translateX('+translateX+'px)'; // 设置元素的translateX
+            }
+            // 监听iconWrapperInner导航条的滚动事件，并打印滚动距离
+            icon_wrapper_inner.addEventListener('scroll',function(){
+                // console.log("iconWrapperInner导航条滚动距离" + this.scrollLeft);
+                // console.log("iconWrapperInner导航条最大滚动距离" + this.scrollWidth);
+                // console.log("元素可视宽度" + this.clientWidth);
+                // clientWidth 用来获取元素的可视宽度
+                var scrollLeft = this.scrollLeft; // 获取滚动距离
+                var maxScrollLeft = this.scrollWidth - this.clientWidth; // 获取最大滚动距离
+                var maxTranslateX = icon_nav_bar.clientWidth - icon_nav_btn.clientWidth; // 获取滑块最大滑动距离
+                var translateX = scrollLeft / maxScrollLeft * maxTranslateX; // 滑块等比例滑动距离
+                setTranslateX(icon_nav_btn,translateX); // 设置滑块的translateX
+                // console.log("滑块滚动距离" + translateX);
+            });
+        </script>
+    </body>
+</html>

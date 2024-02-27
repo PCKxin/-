@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .yuki_title{
+                margin-top: 20px;
+                font-size: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: pink;
+            }
+            .yuki_content{
+                margin-top: 20px;
+                font-size: 20px;
+                line-height: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: skyblue;
+            }
+            .yuki_demobox{
+                margin-top: 20px;
+                text-align: center;
+                width: 100%;
+                height: auto;
+                font-size: 18px;
+                color: rgb(117, 117, 117);
+                background: rgba(185, 185, 185, 0.568);
+            }
+        </style>
+    </head>
+    <body>
+        <h2 class="yuki_title">let关键字</h2>
+        <h3 class="yuki_content">
+            let关键字用于声明变量, 与var不同的是, let声明的变量只在let命令所在的代码块内有效 <br>
+            就是在一个代码块内能访问,比如很适合for(let i = 0; i < 10; i++)这种循环中使用 <br>
+            let声明的变量不存在变量提升, 也就是说, let声明的变量一定要在声明后使用, 否则报错 <br>
+            比如用var的时候: <br>
+            console.log(a) // undefined <br>
+            var a = 1 <br>
+            变量a会被提升到代码块的头部, 但是用let的时候: <br>
+            console.log(a) // 报错 <br>
+            let a = 1 <br>
+            因为let声明的变量不会被提升, 所以在声明前使用会报错 <br>
+            let声明的变量不允许重复声明, 也就是说, 在同一个作用域内, 不能用let重复声明同一个变量 <br>
+            let声明的变量不会成为window对象的属性, 也就是说, let声明的变量不会挂载到window对象上 <br>
+            window对象的属性与全局变量是等价的, 在全局作用域声明的变量, 会成为window对象的属性 <br>
+        </h3>
+        <h2 class="yuki_title">const关键字</h2>
+        <h3 class="yuki_content">
+            常量的意思是, 值不变的量 <br>
+            const关键字用于声明常量, 声明的常量的值不能改变, 一旦声明, 常量的值就不能改变 <br>
+            const声明的常量也是块级作用域, 也不存在变量提升, 也不会成为window对象的属性 <br>
+            const声明的常量必须初始化, 也就是说, const声明的常量必须赋值, 否则报错 <br>
+            const声明的常量不能重复声明, 也就是说, 在同一个作用域内, 不能用const重复声明同一个常量 <br>
+            const声明的常量不能修改, 也就是说, const声明的常量不能重新赋值, 否则报错 <br>
+            const声明的常量只是保证变量名指向的内存地址不变, 并不保证该内存地址的数据不变 <br>
+            const声明的变量在声明之前调用会报错 <br>
+            比如: <br>
+            const a = {name: 'yuki'} <br>
+            a.name = 'yuki2' <br>
+            console.log(a.name) // yuki2 <br>
+            a = {name: 'yuki2'} // 报错 <br>
+            因为const声明的常量只是保证变量名指向的内存地址不变, 并不保证该内存地址的数据不变 <br>
+        </h3>
+    </body>
+    <script>
+        // let关键字
+        // 适合for循环使用
+        for(let i = 0; i < 10; i++){
+            console.log(i)
+            // 因为不会重复声明，所以会依次输出0-9
+            // 普通for循环中，i是全局变量，所以会输出10个10
+        }
+        // console.log(i) // 报错，因为i只在for循环内有效
+
+        // const关键字
+        const a = {name: 'yuki'}
+        a.name = 'yuki2' // 内存数据可以修改，因为const只保证变量名指向的内存地址不变
+        console.log(a.name) // yuki2
+        // const b; // 报错，因为const声明的常量必须初始化,也就是说, const声明的常量必须赋值
+    </script>
+</html>
