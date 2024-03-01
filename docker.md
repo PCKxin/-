@@ -325,29 +325,82 @@ Docker是一个用于 **构建(bulid)** **运行(run)** **传送(share)** 应用
     - `docker run -it -p 3316:3306 -v /data/date -d mysql:latest`
 
 
-
-
-
-
-
-
-
-
-
-
-
-### 容器管理
-
-### 容器运行
-
-### 容器操作
-
 ### 网络管理
+
+#### 列出可用网络
+
+- `docker network ls`
+
+#### 查看网络详细信息
+
+- `docker network inspect <网络名>`
+
+#### 创建一个新的网络
+
+- `docker network create <网络名>`
+
+#### 创建一个新的网络
+
+- `docker network create <网络名>`
+
+#### 删除一个网络
+
+- `docker network rm <网络名>`
+
+#### 将容器连接到网络
+
+- `docker network connect <网络名> <容器名>`
+
+#### 将容器从网络断开
+
+- `docker network disconnect <网络名> <容器名>`
+
 
 ### 数据卷管理
 
+#### 创建一个数据卷
+
+- `docker volume create <数据卷名>`
+
+#### 删除一个数据卷
+
+- `docker volume rm <数据卷名>`
+
+#### 查看数据卷
+
+- `docker volume ls`
+
+#### 查看数据卷详细信息
+
+- `docker volume inspect <数据卷名>`
+
+#### 删除所有悬空(不再使用)的数据卷
+
+- `docker volume prune`
+
+
+
 ### 插件管理
 
+#### 列出插件
+
+- `docker plugin ls`
+
+#### 安装插件
+
+- `docker plugin install <插件名>`
+
+#### 卸载插件
+
+- `docker plugin rm <插件名>`
+
+#### 启用插件
+
+- `docker plugin enable <插件名>`
+
+#### 禁用插件
+
+- `docker plugin disable <插件名>`
 
 
 
