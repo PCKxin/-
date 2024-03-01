@@ -132,7 +132,6 @@ Docker是一个用于 **构建(bulid)** **运行(run)** **传送(share)** 应用
     - 参数: `ENV <键1>=<值1> <键2>=<值2> ...`
     - 例: `ENV NODE_ENV production`
 
-
 - `CMD` 容器启动命令
     - ⽤于指定默认的容器主进程，每个 Dockerfile中只能有⼀条 CMD指令，如果有多条，则只有最后⼀条会⽣效
     - 参数: `CMD <命令> /`
@@ -151,6 +150,191 @@ Docker是一个用于 **构建(bulid)** **运行(run)** **传送(share)** 应用
     - 例: `VOLUME /app/public`
 
 ### 镜像管理
+
+- `docker images` & `docker images ls` 查看镜像
+
+- `docker search <镜像名>` 搜索镜像
+
+- `docker pull <镜像名>:<标签>` 拉取镜像
+
+- `docker push <镜像名>:<标签>` 推送镜像
+
+- 删除镜像
+    - `docker rmi <镜像名>:<标签>` 删除镜像
+    - `docker rmi -f <镜像名>:<标签>` 强制删除镜像
+    - `docker image rm <镜像名>:<标签>` 删除镜像
+    - `docker image prune` 删除所有悬空(不再使用)的镜像
+    - `docker rmi $(docker images -q)` 删除所有镜像
+    - `docker rmi $(docker images -q -f "dangling=true")` 删除所有悬空(不再使用)的镜像
+    - `docker rmi $(docker images -q -f "before=<镜像名>:<标签>")` 删除所有早于指定镜像的镜像
+    - `docker rmi $(docker images -q -f "label=<标签>")` 删除所有指定标签的镜像
+    - `docker rmi $(docker images -q -f "reference=<镜像名>:<标签>")` 删除所有指定镜像的镜像
+    - `docker rmi $(docker images -q -f "since=<镜像名>:<标签>")` 删除所有晚于指定镜像的镜像
+
+- 保存镜像
+    - `docker save <镜像名> -o 文件名` 保存镜像到文件
+        - -o 指定输出文件
+    - `docker save <镜像名> > 文件名` 保存镜像到文件
+        - > 指定输出文件 
+    - 例: `docker save -o node:14-alpine node:14-alpine.tar`
+
+- 导入(加载)对象
+    - `docker load -i 文件名` 从文件加载镜像
+        - -i 指定输入文件
+    - 例: `docker load -i node:14-alpine.tar`
+
+- 查看镜像历史
+    - `docker history <镜像名>:<标签>` 查看镜像历史
+
+- 查看镜像信息
+    - `docker inspect <镜像名>:<标签>` 查看镜像信息
+
+- 将文件系统导入为镜像
+    - `docker import <文件名>` 将文件系统导入为镜像
+    - 文件系统可以是一个文件, 也可以是一个目录
+
+- 从容器创建镜像
+    - `docker commit <容器名> <镜像名>:<标签>` 提交容器为镜像
+    - 例: `docker commit mycontainer node:14-alpine`
+
+### 容器管理
+
+- `docker create <镜像名>:<标签>` 创建容器
+    - 创建容器, 但不启动容器
+    - 返回容器ID
+
+- `docker run <镜像名>:<标签>` 运行容器
+    - 创建并启动容器
+    - 返回容器ID
+
+- `docker start <容器ID>` 启动容器
+    - 启动已经停止的容器
+
+- `docker stop <容器ID>` 停止容器
+    - 停止正在运行的容器
+
+- `docker kill <容器ID>` 强制停止容器
+    - 强制停止正在运行的容器
+
+- `docker restart <容器ID>` 重启容器
+
+- 查看正在运行的容器
+    - `docker ps`
+    - `docker container ls`
+
+- 查看所有容器, 包括正在运行的容器和已经停止的容器
+    - `docker ps -a`
+    - `docker container ls -a`
+
+- 以交互模式进入容器
+    - `docker exec it <容器ID> bash` bash是容器中的shell, 也可以用/bin/bash
+    - `docker attach <容器ID>` 
+
+- 导出容器
+    - `docker export <容器ID> -o 文件名` 导出容器为文件
+    - `docker export <容器ID> > 文件名` 导出容器为文件
+
+- 删除容器
+    - `docker rm <容器ID>` 删除容器
+    - `docker rm -f <容器ID>` 强制删除容器
+    - `docker container rm <容器ID>` 删除容器
+    - `docker container rm -f <容器ID>` 强制删除容器
+
+- `docker import <文件名>` 导入容器快照
+    - 从文件导入容器快照
+
+- `docker port <容器ID>` 查看容器端口映射
+
+- `docker top <容器ID>` 查看容器进程
+
+- `docker cp 文件名 <容器ID>:<目标路径>` 从容器复制文件到宿主机
+    - 从容器复制文件到宿主机指定路径
+
+- `docker diff <容器ID>` 查看容器文件系统的变化
+
+- `docker stats <容器ID>` 查看容器资源使用情况
+
+
+### 容器运行
+
+- **语法格式:**
+    - `docker run [OPTIONS] IMAGE [COMMAND] [ARG...]`
+        - `[OPTIONS]` 选项
+        - `IMAGE` 镜像
+        - `[COMMAND]` 容器启动命令
+        - `[ARG...]` 容器启动命令参数
+        - 选项和参数可以有多个
+
+#### 创建 运行并命名容器
+
+- `docker run --name <容器名> <镜像名>:<标签>` 创建并运行容器
+    - `--name` 指定容器名
+    - `<镜像名>:<标签>` 指定镜像名和标签
+
+#### 创建一个容器并后台运行
+
+- `docker run -d <镜像名>:<标签>` 创建并后台运行容器
+    - `-d` 后台运行
+    - `<镜像名>:<标签>` 指定镜像名和标签
+
+#### 创建一个容器并指定容器端口和宿主机端口映射
+
+- `docker run -p <宿主机端口>:<容器端口> <镜像名>:<标签>` 创建并指定容器端口和宿主机端口映射
+    - `-p` 指定宿主机端口和容器端口的映射
+
+#### 创建一个容器并指定端口映射(随机分配)
+
+- `docker run -P <镜像名>:<标签>` 创建并指定端口映射(随机分配)
+    - `-P` 随机分配宿主机端口
+
+#### 创建⼀个容器并指定环境变量
+
+- `docker run -e <key=value> <镜像名>:<标签>` 创建并指定环境变量
+    - `-e` 指定环境变量
+
+#### 创建⼀个容器并指定⼯作⽬录
+
+- `docker run -w <⽬录路径> <镜像名>:<标签>` 创建并指定⼯作⽬录
+    - `-w` 指定⼯作⽬录
+
+#### 创建一个容器并指定容器名称
+
+- `docker run --name <容器名> <镜像名>:<标签>` 创建并指定容器名称
+    - `--name` 指定容器名称
+
+#### 创建一个容器并在容器中执行命令(交互模式)
+
+- `docker run <镜像名>:<标签> [command]` 创建并在容器中执行命令
+    - `[command]` 容器启动命令
+
+#### 创建⼀个容器，并指定容器名称、后台运⾏、端⼝映射、环境变量和⼯作⽬录
+
+- `docker run -d -p <宿主机端口>:<容器端口> -e <key=value> -w <⽬录路径> --name <容器名> <镜像名>:<标签>`
+    - `-d` 后台运行
+    - `-p` 指定宿主机端口和容器端口的映射
+    - `-e` 指定环境变量
+    - `-w` 指定⼯作⽬录
+    - `--name` 指定容器名称
+
+#### 案例
+
+- 使用镜像`nginx:latest`启动一个容器, 并在容器中执行交互式`bash shell`
+    - `docker run -it nginx:latest /bin/bash`
+
+- 创建⼀个 mysql容器，后台模式启动，主机 3316端⼝映射到容器 3306端⼝，主机 /data⽬录映射到容器 /data⽬录
+    - `docker run -it -p 3316:3306 -v /data/date -d mysql:latest`
+
+
+
+
+
+
+
+
+
+
+
+
 
 ### 容器管理
 
