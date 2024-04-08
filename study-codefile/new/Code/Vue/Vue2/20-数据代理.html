@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title></title>
+        <script src="./js/vue.js"></script>
+    </head>
+        <body>
+            <!--  
+                数据代理:
+                通过一个对象代理对另一个对象中属性的操作(读/写)
+            -->
+
+
+            <script>
+                Vue.config.productionTip = false;
+                let obj = {
+                    name: 'Yuki',
+                    age: 18
+                }
+                let obj2 = {};
+                // 数据代理
+                Object.defineProperty(obj,'name',{
+                    get(){
+                        console.log('get');
+                        return obj2.name;
+                    },
+                    set(val){
+                        console.log('set');
+                        obj2.name = val;
+                    }
+                });
+                obj.name = 'Hoshino';
+                console.log(obj.name);
+            </script>
+        </body>
+</html>

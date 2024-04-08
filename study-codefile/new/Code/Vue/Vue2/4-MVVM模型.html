@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MVVM模型</title>
+        <script src="./js/vue.js"></script>
+    </head>
+    <body>
+        <!--  
+            MVVM模型 解释
+            M: Model 数据模型 数据层
+            V: View 视图 展示层
+            VM: ViewModel 视图模型 业务逻辑层 数据和视图之间的桥梁(数据绑定 事件监听 数据变化视图自动更新 )(主要)
+            Vue.js是一个MVVM框架 通过Vue.js可以实现数据的双向绑定 也就是数据的变化会影响视图的变化 视图的变化也会影响数据的变化
+
+        -->
+        <div id="app">
+            <h1>{{message}}</h1>
+            <input type="text" v-model="message">
+        </div>
+        <script>
+            // 创建一个vue实例
+            new Vue({ // ViewModel 视图模型
+                el: '#app', // 挂载点 选择器
+                // 数据层
+                data: { // 数据
+                    message: 'Yuki online'
+                }
+            })
+        </script>
+    </body>
+</html>

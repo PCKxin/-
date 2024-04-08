@@ -32,7 +32,7 @@
             xhr.onreadystatechange = function () {
               alert(xhr.readyState);
               alert(xhr.status);
-              if (xhr.readyState == 4 && xhr.status == 200) {
+              if (xhr.readyState == 4 && xhr.status == 200) { // && 与
                 //代码
                 obj = JSON.parse(xhr.responseText);
                 //回调函数

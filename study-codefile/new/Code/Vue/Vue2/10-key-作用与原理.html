@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>key-作用与原理</title>
+        <script src="./js/vue.js"></script>
+    </head>
+    <body>
+        <!-- 视图 -->
+        <div id="app">
+            <h2>人员列表</h2>
+
+            <!-- 
+                遍历列表时key的作用:
+                    1. 提高渲染效率
+                    2. 用于标识元素, 便于操作
+            -->
+
+            姓名: <input type="text" v-model="name">
+            年龄: <input type="text" v-model="age">
+            <button @click="addPerson">添加一个人</button>
+            <button @click.once="add">添加一个人(motheds)</button>
+            <ul>
+                <li v-for="item in list" :key="item.id">
+                    {{item.id}}: {{item.name}} {{item.age}}
+                </li>
+                
+            </ul>
+        </div>
+
+
+
+
+        <script>
+                var vm = new Vue({
+                    el: '#app',
+                    data:{
+                        name: '',
+                        age: '',
+                        list: [
+                            {id: "01", name: 'shiroko', age: 17},
+                            {id: "02", name: 'hoshino', age: 18},
+                            {id: "03", name: 'arona', age: 16}
+                        ]
+                    },
+                    methods:{
+                        // id递增
+                        addPerson(){
+                            this.list.push({
+                                id:"0" + (this.list.length + 1),
+                                name: this.name,
+                                age: this.age
+                            });
+                        },
+                        add(){
+                                
+                            const p = {id:"0" + (this.list.length + 1), name: 'yukka', age: 17};
+                            this.list.push(p);
+                        }
+
+                    }
+                });
+        </script>
+    </body>
+</html>

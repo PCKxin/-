@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            body:before{
+                content: "\6f58\4f73\5b9d\0020\65e0\81ea\9002\5e94\002c\0020\8bf7\5168\5c4f\67e5\770b";
+                font-size: 80px;
+                color: rgba(255, 192, 203, 0.792);
+                z-index: -1;
+            }
+
+            .box{
+                width: 1000px;
+                height: 540px;
+                position: relative;
+                margin: 0 auto;
+                display: flex;
+            }
+
+            .left{
+                box-sizing: border-box;
+                width: 500px;
+                height: 540px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            .right{
+                width: 500px;
+                height: 540px;
+                
+                overflow: hidden;
+                /* display: none; */
+            }
+
+            #bigpic{
+                position: absolute;
+                left: 0;
+                top: 0;
+                display: none;
+            }
+            
+            .main_pic{
+                width: 500px;
+                height: 500px;
+                overflow: hidden;
+            }
+
+            .main_pic img{
+                width: 500px;
+                height: 500px;
+            }
+
+            .pic_pie{
+                width: 500px;
+                height: 400px;
+                background: rgba(255, 255, 0, 0.5);
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: none;
+            }
+
+            .small_pic{
+                width: 500px;
+                height: 40px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .left_arrow, .right_arrow{
+                width: 30px;
+                height: 40px;
+                text-align: center;
+                line-height: 35px;
+                font-size: 20px;
+                cursor: pointer;
+                color: rgb(125, 125, 125);
+                font-weight: bold;
+            }
+
+            .small_pic_box{
+                width: 440px;
+                height: 40px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .small_pic_box img{
+                width: 55px;
+                height: 55px;
+                cursor: pointer;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <div class="box">
+            <div class="left">
+                <div class="main_pic">
+                    <img src="./img/01.png" id="mpic">
+                    <div class="pic_pie"></div>
+                </div>
+                <div class="small_pic">
+                    <div class="left_arrow"> < </div>
+                    <div class="small_pic_box">
+                        <img src="./img/01.png">
+                        <img src="./img/02.png">
+                        <img src="./img/03.png">
+                        <img src="./img/04.png">
+                        <img src="./img/05.png">
+                    </div>
+                    <div class="right_arrow"> > </div>
+                </div>
+            </div>
+            <div class="right">
+                <img src="./img/01.png" id="bigpic">
+            </div>
+        </div>
+        <script>
+            // 要求
+            // 点击左右箭头，切换图片
+            // 点击缩略图，切换图片
+            // 图片切换时，缩略图对应的图片也要加上红色边框
+            // 鼠标悬浮在大图上pic_pie显示, 跟随鼠标移动, 同时放大的区域也要跟着移动
+
+            var mpic = document.getElementById('mpic');
+            var bigpic = document.getElementById('bigpic');
+            var pic_pie = document.querySelector('.pic_pie');
+            var small_pic_box = document.querySelector('.small_pic_box');
+            var small_pic = document.querySelectorAll('.small_pic_box img');
+            var left_arrow = document.querySelector('.left_arrow');
+            var right_arrow = document.querySelector('.right_arrow');
+            var right = document.querySelector('.right');
+
+            
+            // 点击左右箭头，切换图片
+            var index = 0;
+            left_arrow.onclick = function(){
+                index--;
+                if(index < 0){
+                    index = 4;
+                }
+                mpic.src = small_pic[index].src;
+                bigpic.src = small_pic[index].src;
+            }
+            right_arrow.onclick = function(){
+                index++;
+                if(index > 4){
+                    index = 0;
+                }
+                mpic.src = small_pic[index].src;
+                bigpic.src = small_pic[index].src;
+            }
+
+            // 点击缩略图，切换图片
+            for(var i = 0; i < small_pic.length; i++){
+                small_pic[i].index = i;
+                small_pic[i].onclick = function(){
+                    mpic.src = this.src;
+                    bigpic.src = this.src;
+                    index = this.index;
+                }
+            }
+
+            // 图片切换时，缩略图对应的图片也要加上红色边框
+            setInterval(function(){
+                for(var i = 0; i < small_pic.length; i++){
+                    small_pic[i].style.border = 'none';
+                }
+                small_pic[index].style.border = '2px solid red';
+            }, 100)
+
+
+            
+
+            
+        </script>
+    </body>
+</html>

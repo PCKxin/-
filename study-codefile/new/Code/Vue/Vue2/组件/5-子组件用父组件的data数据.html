@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title></title>
+        <script src="../js/vue.js"></script>
+    </head>
+        <body>
+
+            <div id="app">
+                <Ycom :xxx="num"></Ycom>
+            </div>
+
+            <template id="temp">
+                <div>
+                    <h2>子组件:{{xxx}}</h2>
+                    <h3>全局自定义组件</h3>
+                    <button>按钮</button>
+                </div>
+            </template>
+
+            <!--  
+                1.在子组件中使用父组件的数据
+                <Ycom :xxx="num"></Ycom>
+                2.在子组件中通过props接收父组件传递的数据
+                在template同级的地方，写props:['xxx']
+                props:['xxx']
+            -->
+            <script>
+                Vue.config.productionTip = false;
+
+                // 注册全局组件
+                var temp = {
+                    template:"#temp",
+                    props:['xxx']
+                }
+                var vm = new Vue({
+                    el:"#app",
+                    data:{
+                        num:10
+                    },
+                    components:{
+                        // 两种写法都可以
+                        // "Ycom":temp
+                        Ycom:temp
+
+                    },
+                });
+            </script>
+        </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>其他插值指令的写法</title>
+        <script src="./js/vue.js"></script>
+        <style>
+            #app {
+                margin: 100 auto;
+                width: 100px;
+                height: 100px;
+                background-color: #f40;
+            }
+            /* 防止闪烁 */
+            /*  
+            闪烁问题是由于Vue加载的时候，会先加载html，然后再加载Vue的js文件，所以会出现闪烁问题
+            */
+            [v-cloak] {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <p>{{num1}}</p>
+            <!--  
+                v-html: 用于输出html代码
+                v-text: 用于输出纯文本
+            -->
+            <p v-html="htmlText"></p>
+            <p v-text="htmlText"></p>
+
+            <!--  
+                v-pre: 不解析标签内的内容
+            -->
+            <p v-pre>{{num1}}</p>
+            
+            <!--  
+                v-once: 只渲染一次
+            -->
+            <p v-once>{{num1}}</p>
+
+            <!--  
+                v-clock: 防止闪烁
+            -->
+            <p v-clock>{{num1}}</p>
+        </div>
+
+
+        <script>
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    num1: 100,
+                    htmlText: '<a href="http://www.baidu.com">百度</a>'
+                }
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+
+            let obj = {
+                name: "shiroko",
+                age: 17
+            }
+
+            // es5 逻辑与(&&)
+            console.log(obj && obj.name); // shiroko
+            // es6 链判断运算符 ?. 作用是判断对象的属性是否存在
+            console.log(obj?.name); // shiroko
+            console.log(obj?.age); // 17
+
+            // 判断属性
+            let obj2 = {
+                name: {
+                    value: "shiroko",
+                    prop: "prop", // 属性
+                    ["school"]: "ABYDOS" // 表达式
+                },
+                age: 17,
+            }
+            console.log(obj2?.name.value); // prop
+
+            // 判断对象的属性(中括号访问法)
+            console.log(obj2?.name["school"]); // expr
+
+            // 函数或对象方法的调用
+            function getName(name) {
+                console.log(name);
+            }
+            getName?.(obj2?.name.value); // shiroko
+
+            
+        </script>
+    </body>
+</html>

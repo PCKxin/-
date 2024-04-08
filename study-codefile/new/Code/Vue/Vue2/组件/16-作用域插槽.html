@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title></title>
+        <script src="../js/vue.js"></script>
+    </head>
+        <body>
+            <!-- 作用域可以拿到父级组件中data的值 -->
+            <div id="app">
+                <Ycom>
+                    <!-- 第一种写法 -->
+                    <!-- 
+                        slot="yslot" 接收插槽名字
+                        slot-scope="xxx" 作用域插槽，xxx为自定义名字用于接收父级组件中的值
+                    -->
+                    <!-- <button slot="btn" slot-scope="xxx">按钮{{xxx.ynum}}</button> -->
+
+
+                    <!-- 第二种写法 -->
+                    <!-- 
+                        template slot="btn" slot-scope="xxx" 作用域插槽
+                        xxx为自定义名字用于接收父级组件中的值
+                    -->
+                    <!-- <template slot="btn" slot-scope="xxx">
+                        <button>按钮{{xxx.ynum}}</button>
+                    </template> -->
+
+                    <!-- 第三种写法 -->
+                    <!-- 
+                        v-slot:btn="xxx" 作用域插槽
+                        xxx为自定义名字用于接收父级组件中的值
+                    -->
+                    <template v-slot:btn="xxx">
+                        <button>按钮{{xxx.ynum}}</button>
+                    </template>
+
+
+                    <!-- 第四种 匿名合并 常用-->
+                    <!-- <template v-slot:default="xxx">
+                        <button>按钮{{xxx.ynum}}</button>
+                    </template> -->
+  
+                    <!-- 第五种 后备插槽 -->
+                    <!-- 
+                        后备插槽是指在子组件的<slot>标签中提供内容
+                        如果父组件没有提供内容，就会显示后备插槽中的内容
+                    -->
+                    <template v-slot="xxx">
+                        <p>这里p不写就会显示子组件里的插槽内容</p>
+                    </template>
+                </Ycom>
+            </div>
+
+            <template id="temp">
+                <div>
+                    <h2>这是一个标题{{num}}</h2>
+                    <!--  
+                        name="btn" 插槽名字
+                        :自定义名="num" 传递父级组件中的值
+                    -->
+                    <slot name="btn" :ynum="num"></slot>
+
+                    <!-- 第四种 匿名合并 -->
+                    <!--  
+                        因为用了default，所以不需要name="btn"
+                    -->
+                    <!-- <slot :ynum="num"></slot> -->
+                    
+                    <!-- 第五种 后备插槽 -->
+                    <slot>
+                        <p>如果没有提供自定义内容，就会显示这里的内容</p>
+                    </slot>
+                    
+                </div>
+            </template>
+
+            <script>
+                Vue.config.productionTip = false;
+                var temp = {
+                    template:"#temp",
+                    data(){
+                        return{
+                            num:100
+                        }
+                    },
+                }
+                var vm = new Vue({
+                    el:"#app",
+                    data:{},
+                    components:{
+                        Ycom:temp,
+                    },
+                });
+            </script>
+        </body>
+</html>

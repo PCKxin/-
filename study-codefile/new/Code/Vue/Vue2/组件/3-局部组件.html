@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title></title>
+        <script src="../js/vue.js"></script>
+    </head>
+        <body>
+
+            <div id="app"></div>
+
+
+            <template id="temp">
+                <div>
+                    <h3>全局自定义组件</h3>
+                    <button>按钮</button>
+                </div>
+            </template>
+
+            <script>
+                Vue.config.productionTip = false;
+
+                var temp = {
+                    template:"#temp",
+                }
+
+                var vm = new Vue({
+                    el:"#app",
+                    data:{},
+                    components:{
+                        "Ycom":temp
+                    }
+                });
+            </script>
+        </body>
+</html>

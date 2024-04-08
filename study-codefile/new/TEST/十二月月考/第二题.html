@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            body:before{
+                content: "\6f58\4f73\5b9d\0020\65e0\81ea\9002\5e94\002c\0020\8bf7\5168\5c4f\67e5\770b";
+                font-size: 80px;
+                color: rgba(255, 192, 203, 0.792);
+                z-index: -1;
+            }
+            /* 
+            flex布局
+            盒子宽度940px
+            盒子高度710px
+            盒子在页面中居中
+            内容不居中
+
+            价格区间块
+            价格区间块宽度100px
+            价格区间块高度40px
+            价格区间块文字居中
+            价格区间块文字大小14.5px
+            价格区间块文字颜色灰色
+            价格区间块背景颜色rgba(233, 233, 233, 0.557)
+            价格区间块间距20px
+
+            商品价格区域
+            宽度940px
+            高度600px
+            内边距20px
+            up和down两行
+            up和down行内商品四个
+            商品宽度180px
+            商品高度266px
+            c_img180px * 180px
+            c_name180px * 40px
+            c_price180px * 20px
+            */
+            /* img{
+                display: none;
+            } */
+            .box{
+                width: 940px;
+                height: 710px;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                /* justify-content: space-between; */
+            }
+            .price_piece{
+                display: flex;
+                /* justify-content: space-between; */
+                margin-top: 20px;
+                margin-bottom: 40px;
+            }
+            .pp{
+                width: 100px;
+                height: 40px;
+                line-height: 40px;
+                margin-right: 20px;
+                text-align: center;
+                font-size: 14.5px;
+                color: gray;
+                background: rgba(233, 233, 233, 0.557);
+                cursor: pointer;
+            }
+
+            .commodity_price{
+                box-sizing: border-box;
+                width: 940px;
+                height: 600px;
+                padding: 20px;
+            }
+            .cp_up{
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+            }
+            .cp_down{
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+            }
+            .commodity{
+                width: 180px;
+                height: 266px;
+                display: flex;
+                flex-direction: column;
+                /* justify-content: space-between; */
+            }
+            .c_img{
+                width: 180px;
+                height: 180px;
+                overflow: hidden;
+            }
+            .c_img img{
+                width: 100%;
+                height: 100%;
+            }
+            .c_name{
+                width: 180px;
+                height: 40px;
+                margin-top: 5px;
+                font-size: 17px;
+            }
+            .c_price{
+                width: 180px;
+                height: 20px;
+                font-size: 20px;
+                color: #f40;
+                margin-top: 20px;
+            }
+            .cp_up{
+                margin-bottom: 60px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <div class="price_piece">
+                <div class="pp">0-100元</div>
+                <div class="pp">100-300元</div>
+                <div class="pp">300元以上</div>
+                <div class="pp">全部区间</div>
+            </div>
+            <div class="commodity_price">
+                <div class="cp_up">
+                    <!-- <div class="commodity">
+                        <div class="c_img">
+                            <img src="https://yanxuan-item.nosdn.127.net/84a59ff9c58a77032564e61f716846d6.jpg">
+                        </div>
+                        <div class="c_name">
+                            <a href="">称心如意手摇咖啡磨豆机咖啡豆研磨机</a>
+                        </div>
+                        <div class="c_price">289.00</div>
+                    </div> -->
+                </div>
+                <div class="cp_down"></div>
+            </div>
+        </div>
+        <script>
+            // 使用es6语法规范
+            // 使用foreach，数据结构等方法
+            // 实现数据渲染
+            const goodsList = [
+                {
+                    id: '4001172',
+                    name: '称心如意手摇咖啡磨豆机咖啡豆研磨机',
+                    price: '289.00',
+                    picture: 'https://yanxuan-item.nosdn.127.net/84a59ff9c58a77032564e61f716846d6.jpg',
+                },
+                {
+                    id: '4001594',
+                    name: '日式黑陶功夫茶组双侧把茶具礼盒装',
+                    price: '288.00',
+                    picture: 'https://yanxuan-item.nosdn.127.net/3346b7b92f9563c7a7e24c7ead883f18.jpg',
+                },
+                {
+                    id: '4001009',
+                    name: '竹制干泡茶盘正方形沥水茶台品茶盘',
+                    price: '109.00',
+                    picture: 'https://yanxuan-item.nosdn.127.net/2d942d6bc94f1e230763e1a5a3b379e1.png',
+                },
+                {
+                    id: '4001874',
+                    name: '古法温酒汝瓷酒具套装白酒杯莲花温酒器',
+                    price: '488.00',
+                    picture: 'https://yanxuan-item.nosdn.127.net/44e51622800e4fceb6bee8e616da85fd.png',
+                },
+                {
+                    id: '4001649',
+                    name: '大师监制龙泉青瓷茶叶罐',
+                    price: '139.00',
+                    picture: 'https://yanxuan-item.nosdn.127.net/4356c9fc150753775fe56b465314f1eb.png',
+                },
+                {
+                    id: '3997185',
+                    name: '与众不同的口感汝瓷白酒杯套组1壶4杯',
+                    price: '108.00',
+                    picture: 'https://yanxuan-item.nosdn.127.net/8e21c794dfd3a4e8573273ddae50bce2.jpg',
+                },
+                {
+                    id: '3997403',
+                    name: '手工吹制更厚实白酒杯壶套装6壶6杯',
+                    price: '100.00',
+                    picture: 'https://yanxuan-item.nosdn.127.net/af2371a65f60bce152a61fc22745ff3f.jpg',
+                },
+                {
+                    id: '3998274',
+                    name: '德国百年工艺高端水晶玻璃红酒杯2支装',
+                    price: '139.00',
+                    picture: 'https://yanxuan-item.nosdn.127.net/8896b897b3ec6639bbd1134d66b9715c.jpg',
+                },
+            ]
+            const box = document.querySelector('.box');
+            const commodity_price = document.querySelector('.commodity_price');
+            const cp_up = document.querySelector('.cp_up');
+            const cp_down = document.querySelector('.cp_down');
+            const price_piece = document.querySelector('.price_piece');
+            const pp_1 = document.querySelector('.pp_1');
+            const pp_2 = document.querySelector('.pp_2');
+            const pp_3 = document.querySelector('.pp_3');
+            const pp_all = document.querySelector('.pp_all');
+            
+            // 渲染商品
+            // 一行渲染四个商品
+            // 一共渲染两行 cp_up 和 cp_down
+            function renderGoods(goodsList){
+                let cp_up_html = '';
+                let cp_down_html = '';
+
+                goodsList.forEach((goods, index) => {
+                    var CinnerHTML = `
+                            <div class="commodity">
+                                <div class="c_img">
+                                    <img src="${goods.picture}">
+                                </div>
+                                <div class="c_name">
+                                    ${goods.name}
+                                </div>
+                                <div class="c_price">${goods.price}</div>
+                            </div>
+                        `;
+                    if(index < 4){
+                        cp_up_html += CinnerHTML;
+                    }else{
+                        cp_down_html += CinnerHTML;
+                    }
+                });
+                cp_up.innerHTML = cp_up_html;
+                cp_down.innerHTML = cp_down_html;
+            };
+            renderGoods(goodsList);
+
+            // 价格区间块点击变色
+            // background: #05943c; color: #fff;
+            price_piece.addEventListener('click', function(e){
+                if(e.target.className === 'pp'){
+                    let pp = document.querySelectorAll('.pp');
+                    pp.forEach((item) => {
+                        item.style.background = 'rgba(233, 233, 233, 0.557)';
+                        item.style.color = 'gray';
+                    });
+                    e.target.style.background = '#05943c';
+                    e.target.style.color = '#fff';
+                }
+            });
+        </script>
+    </body>
+</html>

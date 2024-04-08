@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title></title>
+        <script src="../js/vue.js"></script>
+    </head>
+        <body>
+
+            <div id="app">
+                <!-- <Ycom :numb="num" :ageb="age"></Ycom> -->
+                <!--  
+                    :可以自己起名但是不能用驼峰命名法，会报错="data里面的名字"
+                    :tobj="obj"  tobj是子组件的属性名 obj是父组件的数据
+                    接收一下，然后在子组件中使用
+                -->
+                <Ycom :tobj="obj"></Ycom>
+            </div>
+
+            <template id="temp"> 
+                <!-- <h3>我是子组件{{numb}},{{ageb}}</h3> -->
+                <h3>我是子组件{{tobj.name}},{{tobj.age}}</h3>
+                <!-- <h2>父组件传递过来的数据:{{num}}</h2> -->
+            </template>
+            <script>
+                Vue.config.productionTip = false;
+
+                var tempObj = {
+                    template: '#temp',
+                    // props:['numb','age']
+                    props:['tobj']
+                };
+
+                var vm = new Vue({
+                    el: '#app',
+                    data: {
+                        num: 10,
+                        age: 17,
+                        obj: {
+                            name: 'Yuki',
+                            age: 18
+                        }
+                    },
+                    components: {   
+                        'Ycom': tempObj
+                    }
+                });
+            </script>
+        </body>
+</html>

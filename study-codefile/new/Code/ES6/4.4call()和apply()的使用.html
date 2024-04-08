@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // call()和apply()的使用
+            // 总结一句话: 借用其他对象的方法, 改变this指向
+
+            // 语法和作用
+            // call语法: 对象.call(要改变this指向的对象, 参数1, 参数2, 参数3, ...)
+            // 作用: 借用其他对象的方法, 改变this指向
+            // 注意: call()和apply()的区别在于参数的传递方式不同,
+            // call()是一个一个传递, apply()是数组传递
+            // apply语法: 对象.apply(要改变this指向的对象, [参数1, 参数2, 参数3, ...])
+
+            // 例子
+            // call()的使用
+            var obj = {
+                name: 'hoshino',
+                age: 18
+            }
+            function show() {
+                console.log('我是' + this.name + ', 今年' + this.age + '岁');
+            }
+            show.call(obj); // 我是hoshino, 今年18岁
+
+            // apply()的使用
+            var obj = {
+                name: 'hoshino',
+                age: 18
+            }
+            function show2(a, b) {
+                console.log('我是' + this.name + ', 今年' + this.age + '岁, 我的成绩是' + a + ', 我的排名是' + b);
+            }
+            show2.apply(obj, ["A+", 1]); // 我是hoshino, 今年18岁, 我的成绩是A+, 我的排名是1
+
+            // 区别例
+            var obj = {
+                name: 'hoshino',
+                age: 18
+            }
+            function show3(a, b) {
+                console.log('我是' + this.name + ', 今年' + this.age + '岁, 我的成绩是' + a + ', 我的排名是' + b);
+            }
+            show3.call(obj, "A+", 1); // 我是hoshino, 今年18岁, 我的成绩是A+, 我的排名是1
+            show3.apply(obj, ["A+", 1]); // 我是hoshino, 今年18岁, 我的成绩是A+, 我的排名是1
+
+
+        </script>
+    </body>
+</html>

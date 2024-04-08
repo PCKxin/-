@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title></title>
+        <script src="./js/vue.js"></script>
+    </head>
+        <body>
+            <!--  
+                生命周期顺序及解释
+                1. beforeCreate: 在实例初始化之后，数据观测(data observer)和event/watcher事件配置之前被调用
+                2. created: 实例已经创建完成之后被调用，实例已完成以下的配置：数据观测(data observer)，属性和方法的运算，watch/event事件回调
+                3. beforeMount: 在挂载开始之前被调用：相关的render函数首次被调用
+                4. mounted: el被新创建的vm.$el替换，并挂载到实例上去之后调用该钩子  
+                5. beforeUpdate: 数据更新时调用，发生在虚拟DOM重新渲染和打补丁之前
+                6. updated: 由于数据更改导致的虚拟DOM重新渲染和打补丁，在这之后组件DOM已经更新
+                7. beforeDestroy: 实例销毁之前调用。在这一步，实例仍然完全可用
+                8. destroyed: 实例销毁之后调用，调用后，所有的事件监听器会被移除，所有的子实例也会被销毁
+            -->
+            <!--  
+                第一次页面加载会触发哪几个钩子？
+                beforeCreate, created, beforeMount, mounted
+            -->
+            <div id="app">
+                <!-- <h2>当前n值是: {{n}}</h2>
+                <button @click="add">点我n+1</button>
+                <button @click="vstop">点我销毁</button> -->
+            </div>
+
+            <script>
+                Vue.config.productionTip = false;
+
+                var vm = new Vue({
+                    el:"#app",
+                    template:`
+                        <div>
+                            <h2>当前n值是: {{n}}</h2>
+                            <button @click="add">点我n+1</button>
+                            <button @click="vstop">点我销毁</button>
+                        </div>
+                    `,
+                    data:{
+                        n:0
+                    },
+                    methods:{
+                        add(){
+                            this.n++;
+                        },
+                        vstop(){
+                            this.$destroy();
+                        }
+                    },
+                    //1 创建前
+                    beforeCreate(){
+                        console.log("beforeCreate");
+                        console.log(this);
+                    },
+                    //2 创建后
+                    created(){
+                        console.log("created");
+                        console.log(this);
+                        console.log(this.n);
+                    },
+                    //3 挂载前
+                    beforeMount(){
+                        console.log("beforeMount");
+                        // document.querySelector("h2").style.color = "red";
+                        console.log(this.$el);
+                    },
+                    //4 挂载后
+                    mounted(){
+                        console.log("mounted");
+                        // document.querySelector("h2").style.color = "pink";
+                        console.log(this.$el);
+                    },
+                    //5 更新前
+                    beforeUpdate(){
+                        console.log("beforeUpdate");
+                        // document.querySelector("h2").style.color = "blue";
+                        console.log(this);
+                        console.log(this.n);
+                    },
+                    //6 更新后
+                    updated(){
+                        console.log("updated");
+                        // document.querySelector("h2").style.color = "pink";
+                        console.log(this.n);
+                    },
+                    //7 销毁前, 销毁意思是把Vue实例从页面上移除
+                    beforeDestroy(){
+                        console.log("beforeDestroy");
+                        console.log(this);
+                        console.log("销毁前");
+                    },
+                    //8 销毁后
+                    destroyed(){
+                        console.log("destroyed");
+                        console.log(this);
+                        console.log("销毁后");
+                    }
+                });
+            </script>
+        </body>
+</html>

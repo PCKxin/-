@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title></title>
+        <script src="../js/vue.js"></script>
+    </head>
+        <body>
+            <div id="app">
+                <!-- 
+                    Q: 哪里是子组件哪里是父组件
+                    A: 父组件是Ycom, 子组件是temp
+                -->
+                <!--  
+                    具名插槽
+                    1. 在子组件中定义插槽
+                    2. 在父组件中使用slot标签，并且添加name属性
+                    3. 在父组件中使用slot标签的时候，添加slot属性，值为插槽的name属性值
+                -->
+                <Ycom>
+                    <button slot="btn">按钮</button>
+                    <a slot="link" href="">link</a>
+                </Ycom>
+                <!-- 
+                    单标签写多少个都只显示一个
+                -->
+                <!-- <Ycom /> -->
+            </div>
+            <template id="temp">
+                <div>
+                    <slot name="btn"></slot>
+                    <h2>子组件标题</h2>
+                    <slot name="link"></slot>
+                </div>
+
+            </template>
+
+            <script>
+                Vue.config.productionTip = false;
+
+                var temp = {
+                    template:"#temp",
+                    // 匿名插槽 
+                }
+                var vm = new Vue({
+                    el:"#app",
+                    data:{},
+                    components:{
+                        Ycom:temp
+                    }
+                });
+            </script>
+        </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title></title>
+        <script src="./js/vue.js"></script>
+    </head>
+        <body>
+            <!--  
+                prevent: 阻止默认事件
+                stop: 阻止事件冒泡
+                once: 事件只触发一次
+                caputer: 使用事件的捕获模式
+                
+            -->
+            <div id="app">
+                <h2>{{name}}</h2>
+                <!-- prevent: 组织默认事件 -->
+                <a href="http://www.taobao.com" @click.prevent="showInfo">点我提示信息</a>
+
+                <!-- stop: 阻止事件冒泡 -->
+                <div class="demo1" @click="showInfo">
+                    <!-- 
+                        不加stop会触发两次
+                    -->
+                    <button @click.stop="showInfo">点我提示信息stop</button>
+                    <a href="http://www.taobao.com" @click.prevent.stop="showInfo">点击提示信息</a>
+                </div>
+
+
+                <hr>
+
+                <!-- once: 事件只触发一次 -->
+                <h3>once 事件只触发一次</h3>
+                <button @click.once="showInfo">点我提示信息</button>
+
+                <hr>
+
+                <!-- capture: 使用事件的捕获模式 -->
+                <h3>capture 使用事件的捕获模式</h3>
+                <div class="box1" @click.capture="showMsg(1)">
+                    div1
+                    <div class="box2" @click="showMsg(2)">div2</div>
+                </div>
+            </div>
+
+            <script>
+                Vue.config.productionTip = false;
+                var vm = new Vue({
+                    el:'#app',
+                    data:{
+                        name:"UserName"
+                    },
+                    methods:{
+                        showInfo(e){
+                            alert("同学你好！");
+                        },
+                        showMsg(num){
+                            alert(num);
+                        }
+                    },
+                });
+            </script>
+        </body>
+</html>

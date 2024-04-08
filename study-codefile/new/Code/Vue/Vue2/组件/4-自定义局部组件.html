@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title></title>
+        <script src="../js/vue.js"></script>
+    </head>
+        <body>
+
+            <div id="app">
+                <Ycom></Ycom>
+            </div>
+
+            <template id="temp">
+                <div>
+                    <h2>子组件</h2>
+                    <h3>全局自定义组件</h3>
+                    <button>按钮</button>
+                </div>
+            </template>
+            <script>
+                Vue.config.productionTip = false;
+
+                // 注册全局组件
+                var temp = {
+                    template:"#temp",
+                }
+                var vm = new Vue({
+                    el:"#app",
+                    data:{},
+                    components:{
+                        // 两种写法都可以
+                        // "Ycom":temp
+                        Ycom:temp
+
+                    },
+                });
+            </script>
+        </body>
+</html>

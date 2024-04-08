@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title></title>
+        <script src="../js/vue.js"></script>
+    </head>
+        <body>
+            <!--  
+                1、定义全局组件
+                    通过Vue类的 component 静态方法定义全局组件
+
+                语法格式：
+                Vue.component("组件名称" , {
+                    template:"组件HTML内容"
+                })
+            -->
+            <div id="app">
+                <Ycom></Ycom>
+            </div>
+
+
+            <script>
+                Vue.config.productionTip = false;
+
+                Vue.component("Ycom" , {
+                    // 按钮外面必须有一个根元素包裹，否则会报错
+                    template:`
+                        <div>
+                            <h1>全局自定义组件</h1>
+                            <p>全局自定义组件</p>
+                            <button>按钮</button>
+                        </div>
+                    `,
+                })
+
+                var vm = new Vue({
+                    el:"#app",
+                    data:{
+
+                    },
+                })
+            </script>
+        </body>
+</html>

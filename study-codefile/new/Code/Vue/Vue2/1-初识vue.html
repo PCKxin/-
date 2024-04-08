@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <!-- 引入vue 引入之后 全局就多了一个名为Vue的构造函数 -->
+        <script src="./js/vue.js"></script>
+    </head>
+    <body>
+        <!-- 容器 -->
+        <div id="app">
+            <!-- 插值表达式 -->
+            <h1>{{message}}</h1>
+            <!-- v-model 指令 用于表单元素 双向绑定 -->
+            <input type="text" v-model="message">
+        </div>
+
+        <script>
+            // 关闭生成环境下的提示
+            Vue.config.productionTip = false;
+            console.log(Vue.config.productionTip);
+            /*
+            Vue.config.productionTip 不起作用原因
+            最新版Chrome中, 在script中使用settimeout, 将在允许第一个js完成后立即回调, 也就是说setTimeout的时间设置为0
+            但是在Vue.config.productionTip = false;之后立即回调
+            比如在Vue.config.productionTip 上面加上一行console.log(123);
+            浏览器刷新几次会出现两种情况
+            1. 123在Vue.config.productionTip之前打印 Vue.config.productionTip = false 起效
+            2. 123在Vue.config.productionTip之后打印 Vue.config.productionTip = false 无效
+            */ 
+            /*
+            解决方法
+            1. 直接源码修改productionTip = false;
+            2. 把源码中判断productionTip的setTimeout时间改长
+            */
+
+
+
+
+            // 创建一个vue实例
+            var app = new Vue({ // 选项对象
+                // el elemenet简称 选择器
+                el: '#app', // 挂载点 选择器
+                data: { // 数据
+                    message: 'Hello Vue!'
+                }
+            })
+        </script>
+    </body>
+</html>

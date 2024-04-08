@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>插值语法</title>
+        <script src="./js/vue.js"></script>
+    </head>
+    <body>
+        <!-- 视图层 -->
+        <div id="app">
+            <h1>{{name}}</h1>
+            <h2>{{message}}</h2>
+            <p>{{num1}}</p>
+            <p>{{num2}}</p>
+            <!--  
+                三元表达式
+                语法: {{条件 ? 结果1 : 结果2}}
+            -->
+            <p>num1和num2较大的是: {{num1 > num2 ? num1 : num2}}</p>
+            <!-- 
+                翻转 
+                split('') 以空字符串分割成数组
+                reverse() 翻转数组
+                join('') 以空字符串连接成字符串
+            -->
+            <p>{{message.split('').reverse().join('')}}</p>
+
+            <!-- 链接 -->
+            <p>
+                <a v-bind:href="bdurl">baidu</a>
+                <a :href="bdurl.toUpperCase()">百度</a>
+            </p>
+
+            <!-- v-on事件 -->
+            <button v-on:click="num1+=10">点一下num1+10</button>
+            <button @click="num2+=10">点一下num2+10</button>
+            <button @click="changeMessage">改变消息</button>
+            <button @click="add(20)">num1+20</button>
+        </div>
+
+        <script>
+            Vue.config.productionTip = false
+            // vm  ViewModel 视图层
+            var vm = new Vue({
+                el: '#app', // 挂载点 选择器
+                data: { // 数据
+                    name: 'Yuki',
+                    message: 'Yuki online',
+                    num1: 100,
+                    num2: 200,
+                    bdurl: 'http://www.baidu.com'
+                },
+                methods: { // 事件处理
+                    changeMessage: function() {
+                        this.message = 'Yuki offline'
+                    },
+                    add(n){
+                        this.num1 += n
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

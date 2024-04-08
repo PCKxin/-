@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title></title>
+        <script src="../js/vue.js"></script>
+    </head>
+        <body>
+            <!-- 
+                2、抽离模版
+                通过template属性抽离模版
+                作用：提高代码的可维护性
+            -->
+            <div id="app">
+                <Ycom></Ycom>
+            </div>
+            <template id="temp">
+                <div>
+                    <h3>全局自定义组件</h3>
+                    <button>按钮</button>
+                </div>
+            </template>
+
+
+            <script>
+                Vue.config.productionTip = false;
+
+                /*
+                格式
+                1
+                var 变量名 = {
+                    template:"模版内容"
+                }
+                Vue.component("组件名称" , 变量名)
+
+
+                2
+                Vue.component("组件名称" , {
+                    template:"模版内容"
+                })
+                */ 
+
+
+                // Vue.component("Ycom" , {
+                //     // 按钮外面必须有一个根元素包裹，否则会报错
+                //     template:"#temp",
+                // })
+
+                var temp = {
+                    template:"#temp",
+                }
+                Vue.component("Ycom" , temp);
+
+                var vm = new Vue({
+                    el:"#app",
+                    data:{
+
+                    },
+                });
+            </script>
+        </body>
+</html>

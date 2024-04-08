@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title></title>
+        <script src="../js/vue.js"></script>
+    </head>
+        <body>
+            <div id="app">
+                <Ytable 
+                    :arr="applist" 
+                    @addnumfn="fatherAddfn" 
+                    @cutnumfn="fatherCutfn"
+                    @delfn="fatherDelfn"
+                    ></Ytable>
+            </div>
+            <template id="temp">
+                <div>
+                    <table border="1" cellspacing="0" width="500">
+                        <thead>
+                            <tr>
+                                <th>编号</th>
+                                <th>书本名称</th>
+                                <th>单价</th>
+                                <th>数量</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(item,index) in arr" :key="item.id">
+                                <td>{{item.id}}</td>
+                                <td>{{item.name}}</td>
+                                <td>{{item.price}}</td>
+                                <td>
+                                    <button @click="cutNumFn(index)">-</button>
+                                    {{item.num}}
+                                    <button @click="addNumFn(index)">+</button>
+                                </td>
+                                <td @click="delFn">删除</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="5">总价：{{total | Money}}</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </template>
+
+            <script>
+                Vue.config.productionTip = false;
+                var vm = new Vue({
+                    el:"#app",
+                    components:{ // 注册局部组件
+                        "Ytable":{
+                            template:"#temp", // 使用模版
+                            props:["arr"], // 接收父组件传递的数据
+                            
+                            // 计算属性
+                            computed:{
+                                total(){
+                                    return this.arr.reduce((pre, cur) => { 
+                                        // reduce() 方法对数组中的每个元素执行一个由您提供的函数(升序执行)，将其结果汇总为单个返回值。
+                                            return pre + cur.price * cur.num;
+                                        }, 0
+                                    );
+                                },
+                            },
+
+                            // 事件
+                            methods:{
+                                addNumFn(index){
+                                    this.$emit("addnumfn" , index);
+                                },
+                                cutNumFn(index){
+                                    this.$emit("cutnumfn" , index)
+                                },
+                                delFn(index){
+                                    this.$emit("delfn" , index)
+                                }
+                            },
+
+                            // 过滤器
+                            filters:{
+                                Money(value){
+                                    return "￥" + value.toFixed(2) + "元";
+                                },
+                            },
+                        },
+                        
+
+                    },
+                    data:{
+                        applist:[
+                            {id:"001", name: "算法导论", price: 85, num: 1},
+                            {id:"002", name: "UNIX编程艺术", price: 59, num: 1},
+                            {id:"003", name: "代码大全", price: 99, num: 1},
+                            {id:"004", name: "重构", price: 69, num: 1},
+                        ],
+                    },
+                    methods:{
+                        fatherAddfn(index){
+                            this.applist[index].num++;
+                        },
+                        fatherCutfn(index){
+                            // if(this.applist[index].num > 1){
+                            //     this.applist[index].num--;
+                            // }
+                            // 三元表达式
+                            this.applist[index].num > 1 ? this.applist[index].num-- : null;
+                        },
+                        fatherDelfn(index){
+                            this.applist.splice(index, 1);
+                        },
+                    },
+                });
+            </script>
+        </body>
+</html>

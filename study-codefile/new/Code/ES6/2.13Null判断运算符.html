@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // es5 逻辑或(||)
+            // 作用是判断一个值是否为假值, 如果是, 则返回右侧的值, 否则返回左侧的值
+            // 假值: 0, NaN, "", false, null, undefined
+            let a = 0;
+            let b = 1;
+            let re = a || b;
+            console.log(re); // 1
+
+            // es6 Null空值判断运算符 ?? 也叫空值合并运算符
+            // 作用是判断一个值是否为null或undefined, 如果是, 则返回右侧的值, 否则返回左侧的值
+            let obj = {
+                name: "shiroko",
+                age: null,
+                school: undefined,
+                sex: NaN
+            }
+            let re1 = obj.age ?? 17;
+            console.log(re1); // 17
+            let re2 = obj.school ?? "ABYDOS";
+            console.log(re2); // ABYDOS
+
+            // Object新增的方法 is()
+            // 作用是判断两个值是否完全相等 和 === 一样, 但是对于NaN和+0, -0的判断不同
+            // Object.is(NaN, NaN) // true 
+            // Object.is(+0, -0) // false 
+            // Object.is(0, -0) // false
+            // NaN === NaN // false
+            // +0 === -0 // true
+            console.log(Object.is(NaN, NaN)); // true
+            console.log(Object.is(+0, -0)); // false
+            console.log(Object.is(0, -0)); // false
+            console.log(0 === -0); // true
+            console.log(NaN === NaN); // false
+            let [a2,b2] = [1,2];
+            console.log(Object.is(a2, b2)); // false
+            let [a3,b3] = [
+                {name: "shiroko"},
+                {name: "shiroko"}
+            ];
+            console.log(Object.is(a3, b3)); // false 两个对象的内存地址不同
+            let [a4] = [
+                {name: "shiroko", name: "shiroko"},
+            ];
+            console.log(a4);
+            // 因为对象的属性名相同, 所以会覆盖, 但是内存地址是相同的
+            console.log(Object.is(a4, a4)); // true 两个对象的内存地址相同
+
+        </script>
+    </body>
+</html>

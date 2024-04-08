@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title></title>
+        <script src="../js/vue.js"></script>
+    </head>
+        <body>
+
+            <div id="app">
+                <Ycom></Ycom>
+            </div>
+
+
+            <template id="temp">
+                <div>
+                    <h3>title{{num}}</h3>
+                </div>
+            </template>
+
+
+            <script>
+                Vue.config.productionTip = false;
+
+                var temp = {
+                    template: "#temp",
+                    data(){ 
+                        // data必须是一个函数,
+                        // 因为组件是可以复用的, 
+                        // 如果data是一个对象, 
+                        // 那么多个组件就会共享一个data对象, 这样就会出现数据混乱
+                        return {
+                            num: 100
+                        }
+                    }
+                }
+                var vm = new Vue({
+                    el:"#app",
+                    data(){ 
+                        // 用函数形式就可以避免其他组件调用修改后数据混乱
+                        // 这样每个组件都有自己的data对象
+                        return {
+                            num: 10,
+                            age: 17
+                        }
+                    },
+                    components:{
+                        Ycom:temp
+                    }
+                });
+            </script>
+        </body>
+</html>

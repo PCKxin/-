@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .yuki_title{
+                margin-top: 20px;
+                font-size: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: pink;
+            }
+            .yuki_content{
+                margin-top: 20px;
+                font-size: 20px;
+                line-height: 30px;
+                text-align: center;
+                color: white;
+                font-weight: bold;
+                background-color: skyblue;
+            }
+            .yuki_demobox{
+                margin-top: 20px;
+                text-align: center;
+                width: 100%;
+                height: auto;
+                font-size: 18px;
+                color: rgb(117, 117, 117);
+                background: rgba(185, 185, 185, 0.568);
+            }
+        </style>
+    </head>
+    <body>
+        <h2 class="yuki_title">Map对象</h2>
+        <h3 class="yuki_content">
+            用于保存键值对, 任何值(对象或者原始值)都可以作为键或者值 <br>
+            与Object的区别: <br>
+            1. Object的键只能是字符串或者Symbol, 而Map的键可以是任意值 <br>
+            2. Map的键值对是有序的, 而添加到Object中的键值对是无序的 <br>
+            3. Map的键值对可以通过size属性获取, 而Object的键值对只能手动计算 <br>
+            4. Map可以直接进行迭代, 而对象需要先获取键值对数组, 再进行迭代, 迭代的意思就是循环 <br>
+            5. Object都有自己的原型, 所以原型链上的键名和你自己在Object上的设置的键名可能产生冲突 <br>
+        </h3>
+        <h3 class="yuki_content">
+            Map中的key <br>
+            <br>
+            Map中的key可以是任意值, 包括函数, 对象, 基本类型 <br>
+            <br>
+            key是字符串 <br>
+            var Map_demo = new Map(); <br>
+            var name = 'Map_demo_name'
+            Map_demo.set(name, 'yukiice'); <br>
+            console.log(Map_demo.get('Map_demo_name')); // yukiice <br>
+            console.log(Map_demo.get(name)) // yukiice <br>
+            // 因为name是字符串, 所以name === 'Map_demo_name' <br>
+            <br>
+            key是对象 <br>
+            var Map_demo = new Map(); <br>
+            var Map_demo_obj = {}; <br>
+            Map_demo.set(Map_demo_obj, 'yukiice'); <br>
+            console.log(Map_demo.get(Map_demo_obj)); // yukiice <br>
+            console.log(Map_demo.get({})); // undefined <br>
+            // 因为对象是引用类型, 所以Map_demo_obj !== {} <br>
+            <br>
+            key是函数 <br>
+            var Map_demo = new Map(); <br>
+            var Map_demo_fun = function(){}; <br>
+            Map_demo.set(Map_demo_fun, 'yukiice'); <br>
+            console.log(Map_demo.get(Map_demo_fun)); // yukiice <br>
+            console.log(Map_demo.get(function(){})); // undefined <br>
+            // 因为函数是引用类型, 所以Map_demo_fun !== function(){} <br>
+            <br>
+            key是NaN <br>
+            var Map_demo = new Map(); <br>
+            Map_demo.set(NaN, 'yukiice'); <br>
+            console.log(Map_demo.get(NaN)); // yukiice <br>
+            var Map_demo_nan = Number('yukiice') <br>
+            console.log(Map_demo.get(Map_demo_nan)); // yukiice <br>
+            // 因为NaN是特殊的数字, 所以NaN === Number('yukiice') <br>
+            // 虽然NaN和任何值和自己都不相等, 但NaN在Map中作为key时, 是相等的 <br>
+            
+        </h3>
+        <h2 class="yuki_title">Map对象的属性和方法</h2>
+        <h3 class="yuki_content">
+            属性: <br>
+            size: 返回Map对象键值对的数量 <br>
+            方法: <br>
+            set(key, value): 向Map对象添加或者更新一个指定的元素, 返回Map对象 <br>
+            get(key): 返回某个键对应的值, 如果不存在则返回undefined <br>
+            has(key): 返回一个布尔值, 表示Map对象是否包含键对应的值 <br>
+            delete(key): 删除某个键, 返回true, 如果删除失败, 则返回false <br>
+            clear(): 清除所有键值对, 没有返回值 <br>
+        </h3>
+        <h3 class="yuki_content">
+            Map的迭代 <br>
+            对Map进行遍历 <br>
+            两个常用方法: <br>
+            for...of <br>
+            var Map_demo = new Map(); <br>
+            Map_demo.set('name', 'yukiice'); <br>
+            Map_demo.set('age', 18); <br>
+            // 会显示两个log, 一个是name = "yukiice", 一个是"age = 18" <br>
+            for (let [key, value] of Map_demo) { <br>
+                console.log(key + " = " + value); <br>
+            } <br>
+            // entries()方法返回一个新的Iterator对象, 它按插入顺序包含了Map对象中每个元素的[key, value]数组 <br>
+            for (let [key, value] of Map_demo.entries()) { <br>
+                console.log(key + " = " + value); <br>
+            } <br>
+
+            // key()方法返回一个Iterator对象, 按插入顺序返回每个元素的键 <br>
+            // 显示两个log, 一个是"name", "一个是age" <br>
+            for (var key of Map_demo.key()) { <br>
+                console.log(key)  <br>
+            } <br>
+
+            // values()方法返回一个Iterator对象, 按插入顺序返回每个元素的值 <br>
+            // 显示两个log, 一个是"yukiice", "一个是18" <br>
+            for (var value of Map_demo.values()) { <br>
+                console.log(value)  <br>
+            } <br>
+        </h3>
+        <h3 class="yuki_content">
+            Map对象的操作 <br>
+            Map和Array转换 <br>
+            var Map_demo_arr = [["key1","value1"],["key2","value2"]]; <br>
+            // Map 构造函数可以将一个二维键值对数组转换成一个Map对象 <br>
+            var Map_demo = new Map(Map_demo_arr); <br>
+            // 使用Array.from方法可以将一个Map对象转换成一个二维键值对数组 <br>
+            var Map_demo_arr2 = Array.from(Map_demo); <br>
+        </h3>
+        <h3 class="yuki_content">
+            Map克隆 <br>
+            var Map_demo = new Map([["key1","value1"],["key2","value2"]]); <br>
+            var Map_demo_clone = new Map(Map_demo); <br>
+            console.log(Map_demo_clone === Map_demo); // false <br>
+            // 因为Map构造函数生成的是一个新的Map对象, 所以Map_demo_clone !== Map_demo <br>
+        </h3>
+        <h3 class="yuki_content">
+            ...运算符 <br>
+            ...运算符可以将一个Map对象转换成一个二维键值对数组 <br>
+            Map合并 <br>
+            合并两个Map对象, 如果有重复的键值, 后面的会覆盖前面的 <br>
+            var Map_demo_merge1 = new Map([["key1","合并值1"],["key2","合并值1"],["key3", "合并值1"]]); <br>
+            var Map_demo_merge2 = new Map([["key1","合并值2"],["key2","合并值2"],["key4", "合并值2"]]); <br>
+            var Map_demo_merge = new Map([...Map_demo_merge1, ...Map_demo_merge2]); <br>
+            console.log(Map_demo_merge); // Map(4) {"key1" => "合并值2", "key2" => "合并值2", "key3" => "合并值1", "key4" => "合并值2"} <br>
+        </h3>
+
+        <h2 class="yuki_title">Set 对象</h2>
+        <h3 class="yuki_content">
+            Set对象允许存储任何类型的唯一值, 无论是原始值或者是对象引用 <br>
+            Set对象是值的集合, 你可以按照插入的顺序迭代它的元素, Set中的元素只会出现一次, 即Set中的元素是唯一的 <br>
+            Set几个特殊值: <br>
+            +0和-0在Set中是相同的 <br>
+            NaN和NaN是不恒等的, NaN在Set中只出现一次, 不重复 <br>
+        </h3>
+        <h3 class="yuki_content">
+            let Set_demo = new Set(); <br>
+            Set_demo.add(1); <br>
+            Set_demo.add(2); // Set(2) {1, 2} <br>
+            Set_demo.add(2); // Set(2) {1, 2} // 重复的值不会被添加进去, 体现了唯一性 <br>
+            // 多样性
+            Set_demo.add('yukiice'); // Set(3) {1, 2, "yukiice"} <br>
+            var Set_demo_obj = {a:1, b:2}; <br>
+            Set_demo.add(Set_demo_obj); // Set(4) {1, 2, "yukiice", {…}}<br>
+            Set_demo.add({a:1, b:2}); // Set(5) {1, 2, "yukiice", {…}, {…}} <br>
+            // 引用不同不恒等, 所以即使值相同, Set也可以存储<br>
+        </h3>
+        <h3 class="yuki_content">
+            类型转换 <br>
+            Array 转 Set <br>
+            var Set_demo_arr = [1, 2, 3, 4, 5]; <br>
+            var Set_demo = new Set(Set_demo_arr); <br>
+            console.log(Set_demo); // Set(5) {1, 2, 3, 4, 5} <br>
+            Set 转 Array <br>
+            用...运算符转换 <br>
+            var Set_demo_arr2 = [...Set_demo]; <br>
+            console.log(Set_demo_arr2); // (5) [1, 2, 3, 4, 5] <br>
+            用Array.from()方法转换 <br>
+            var Set_demo_arr3 = Array.from(Set_demo); <br>
+            console.log(Set_demo_arr3); // (5) [1, 2, 3, 4, 5] <br>
+            String 转 Set <br>
+            var Set_demo_str = new Set('yukiice'); <br>
+            console.log(Set_demo_str) // Set(6) {"y", "u", "k", "i", "c", "e"} <br>
+            // Set 中 toString() 不能将 Set 转换为字符串 会转换成 "[object Set]" <br>
+            // Set中的元素是唯一的, 重复的值不会被添加进去 <br>
+        </h3>
+        <h3 class="yuki_content">
+            对象作用 <br>
+            1. 数组去重 <br>
+            var Set_demo_arr = new Set([1, 2, 3, 4, 5, 5, 5]); <br>
+            [...Set_demo_arr] // [1, 2, 3, 4, 5] <br>
+            2.并集 <br>
+            var Set_demo_arr1 = new Set([1, 2, 3, 4, 5]); <br>
+            var Set_demo_arr2 = new Set([4, 5, 6, 7, 8]); <br>
+            var Set_demo_merge = new Set([...Set_demo_arr1, ...Set_demo_arr2]); <br>
+            console.log(Set_demo_merge); // Set(8) {1, 2, 3, 4, 5, 6, 7, 8} <br>
+            3.交集 <br>
+            意思是两个集合中都有的元素 <br>
+            var Set_demo_arr1 = new Set([1, 2, 3, 4, 5]); <br>
+            var Set_demo_arr2 = new Set([4, 5, 6, 7, 8]); <br>
+            var Set_demo_merge = new Set([...Set_demo_arr1].filter(item => Set_demo_arr2.has(item))); <br>
+            console.log(Set_demo_merge); // Set(2) {4, 5} <br>
+            4.差集 <br>
+            意思是在一个集合中有, 另一个集合中没有的元素 <br>
+            var Set_demo_arr1 = new Set([1, 2, 3, 4, 5]); <br>
+            var Set_demo_arr2 = new Set([4, 5, 6, 7, 8]); <br>
+            var Set_demo_merge = new Set([...Set_demo_arr1].filter(item => !Set_demo_arr2.has(item))); <br>
+            console.log(Set_demo_merge); // Set(3) {1, 2, 3} <br>
+            <br>
+            1、[...a] <br>
+            [...a] 就是将 set 转换成 array。以后需要将 set 转换成 array 基本都使用这种方法。<br>
+            <br>
+            2、[...a].filter()
+            Array.filter(function(x)) 把传入的函数 function(x) 依次作用于每个元素, x 为元素的值, 然后根据返回值是 true 还是 false 决定保留还是丢弃该元素。<br>
+            意思就是遍历当前数组, 当遍历到某个元素时, 返回值为 false 就将该元素从数组中剔除。 <br>
+            filter() 方法创建一个新的数组, 新数组中的元素是通过 检查 指定 数组中符合条件的 所有元素 <br>
+            <br>
+            3、 => 则是一种简写方法。<br>
+            x => x * x <br>
+            相当于：<br>
+            function(x){return x*x} <br>
+            所以 x => b.has(x) 本质是一个函数相当于 function(x){return b.has(x)} <br>
+            <br>
+            4、b.has(x) <br>
+            Set.has(x) 是 set 中的一个方法。即判断当前 set 中是否含有 x, 如果有返回 true, 没有返回 false。<br>
+            所以这段程序也可以写成：<br>
+            var a = new Set([1, 2, 3]); <br>
+            var b = new Set([4, 3, 2]); <br>
+            var arr = [...a];            //将a转换成数组 <br>
+            var fArr = arr.filter(function(x){    //使用filter过滤数组, 并将新数组返回到fArr <br>
+                return b.has(x);        //判断b中是否含有a中的元素, 没有则返回false <br>
+            }) <br>
+            var intersect = new Set(fArr);          //将fArr转换成set <br>
+            console.log(fArr); <br>
+        </h3>
+
+
+        <script>
+            // Map对象
+            // 用于保存键值对, 任何值(对象或原始值)都可以作为键或者值
+            // key可以是任意值, 包括函数, 对象, 基本类型
+
+            var Map_demo = new Map();
+            // key是字符串
+            var Map_demo_name = 'Map_name';
+            Map_demo.set(Map_demo_name, 'key是字符串');
+            console.log(Map_demo.get('Map_name')); // key是字符串
+            console.log(Map_demo.get(Map_demo_name)); // key是字符串
+            console.log(Map_demo.get('Map_name') === Map_demo.get(Map_demo_name)); // true
+            
+            // key是对象
+            var Map_demo_obj = {};
+            Map_demo.set(Map_demo_obj, 'key是对象');
+            console.log(Map_demo.get(Map_demo_obj)); // key是对象
+            console.log(Map_demo.get({})); // undefined
+            console.log(Map_demo.get(Map_demo_obj) === Map_demo.get({})); // false
+
+            // key是函数
+            var Map_demo_fun = function(){};
+            Map_demo.set(Map_demo_fun, 'key是函数');
+            console.log(Map_demo.get(Map_demo_fun)); // key是函数
+            console.log(Map_demo.get(function(){})); // undefined
+            console.log(Map_demo.get(Map_demo_fun) === Map_demo.get(function(){})); // false
+
+            // key是NaN
+            var Map_demo_nan = Number('yukiice');
+            Map_demo.set(NaN, 'key是NaN');
+            console.log(Map_demo.get(NaN)); // key是NaN
+            console.log(Map_demo.get(Map_demo_nan)); // key是NaN
+            console.log(Map_demo.get(NaN) === Map_demo.get(Map_demo_nan)); // true
+
+            // Map对象的属性和方法
+            // Map迭代
+            // for...of
+            var Map_demo2 = new Map();
+            Map_demo2.set('name', 'yukiice');
+            Map_demo2.set('age', 18);
+            // 直接循环
+            for (let [key, value] of Map_demo2) {
+                console.log(key + " = " + value);
+            }
+            // entries()方法返回一个新的Iterator对象, 它按插入顺序包含了Map对象中每个元素的[key, value]数组
+            for (let [key, value] of Map_demo2.entries()) {
+                console.log(key + " = " + value);
+            }
+            // key()方法返回一个Iterator对象, 按插入顺序返回每个元素的键
+            for (let key of Map_demo2.keys()) {
+                console.log(key);
+            }
+            // values()方法返回一个Iterator对象, 按插入顺序返回每个元素的值
+            for (let value of Map_demo2.values()) {
+                console.log(value);
+            }
+
+            // forEach()方法, 遍历Map的所有成员
+            Map_demo2.forEach(
+                function(value, key, Map_demo2){
+                    console.log(key + " = " + value);
+                }
+            )
+
+            // Map对象和Array的转换
+            var Map_demo_arr = [["key1","value1"],["key2","value2"]];
+            // Map 构造函数可以将一个二维键值对数组转换成一个Map对象
+            var Map_demo3 = new Map(Map_demo_arr);
+            console.log(Map_demo3); // Map(2) {"key1" => "value1", "key2" => "value2"}
+            // 使用Array.from方法可以将一个Map对象转换成一个二维键值对数组
+            var Map_demo_arr2 = Array.from(Map_demo3);
+            console.log(Map_demo_arr2); // (2) [Array(2), Array(2)]
+
+            // Map对象的克隆
+            var Map_demo4 = new Map([["key1","value1"],["key2","value2"]]);
+            var Map_demo_clone = new Map(Map_demo4);
+            console.log(Map_demo_clone); // Map(2) {"key1" => "value1", "key2" => "value2"}
+            console.log(Map_demo_clone === Map_demo4); // false
+            // 因为Map构造函数生成的是一个新的Map对象, 所以Map_demo_clone !== Map_demo4
+            
+            // Map对象的合并
+            // 合并两个Map对象, 如果有重复的键值, 后面的会覆盖前面的
+            var Map_demo_merge1 = new Map([["key1","合并值1"],["key2","合并值1"],["key3", "合并值1"]]);
+            var Map_demo_merge2 = new Map([["key1","合并值2"],["key2","合并值2"],["key4", "合并值2"]]);
+            var Map_demo_merge = new Map([...Map_demo_merge1, ...Map_demo_merge2]);
+            console.log(Map_demo_merge); // Map(4) {"key1" => "合并值2", "key2" => "合并值2", "key3" => "合并值1", "key4" => "合并值2"}
+
+
+            // Set对象
+            // 唯一性
+            let Set_demo = new Set();
+            Set_demo.add(1);
+            Set_demo.add(2);
+            Set_demo.add(2);
+            console.log(Set_demo); // Set(2) {1, 2}
+            // 多样性
+            Set_demo.add('Set多样性');
+            var Set_demo_obj = {a:1, b:2};
+            Set_demo.add(Set_demo_obj);
+            Set_demo.add({a:1, b:2});
+            console.log(Set_demo); // Set(4) {1, 2, "Set多样性", {…}}
+            // 引用不同不恒等, 所以即使值相同, Set也可以存储, 所以Set_demo_obj !== {a:1, b:2}
+            
+            // Set类型转换
+            // Array 转 Set
+            var Set_demo_arr = [1, 2, 3, 4, 5];
+            var Set_demo2 = new Set(Set_demo_arr);
+            console.log(Set_demo2); // Set(5) {1, 2, 3, 4, 5}
+            // Set 转 Array
+            // 用...运算符转换
+            var Set_demo_arr2 = [...Set_demo2];
+            console.log(Set_demo_arr2); // (5) [1, 2, 3, 4, 5]
+            // 用Array.from()方法转换
+            var Set_demo_arr3 = Array.from(Set_demo2);
+            console.log(Set_demo_arr3); // (5) [1, 2, 3, 4, 5]
+            // String 转 Set
+            var Set_demo_str = new Set('yukiice');
+            console.log(Set_demo_str) // Set(6) {"y", "u", "k", "i", "c", "e"}
+
+            // Set对象的应用
+            // 数组去重
+            var Set_demo_arr4 = new Set([1, 2, 3, 4, 5, 5, 5]);
+            console.log([...Set_demo_arr4]); // [1, 2, 3, 4, 5]
+            // 并集, 意思是两个集合中的所有元素
+            var Set_demo_arr5 = new Set([1, 2, 3, 4, 5]);
+            var Set_demo_arr6 = new Set([4, 5, 6, 7, 8]);
+            var Set_demo_merge = new Set([...Set_demo_arr5, ...Set_demo_arr6]);
+            console.log("Set并集")
+            console.log(Set_demo_merge); // Set(8) {1, 2, 3, 4, 5, 6, 7, 8}
+            // 交集, 意思是两个集合中都有的元素
+            var Set_demo_arr7 = new Set([1, 2, 3, 4, 5]);
+            var Set_demo_arr8 = new Set([4, 5, 6, 7, 8]);
+            var Set_demo_merge2 = new Set([...Set_demo_arr7].filter(item => Set_demo_arr8.has(item)));
+            console.log("Set交集")
+            console.log(Set_demo_merge2); // Set(2) {4, 5}
+            // 差集, 意思是在一个集合中有, 另一个集合中没有的元素
+            var Set_demo_arr9 = new Set([1, 2, 3, 4, 5]);
+            var Set_demo_arr10 = new Set([4, 5, 6, 7, 8]);
+            var Set_demo_merge3 = new Set([...Set_demo_arr9].filter(item => !Set_demo_arr10.has(item)));
+            console.log("Set差集")
+            console.log(Set_demo_merge3); // Set(3) {1, 2, 3}
+
+            // => 简写法
+            // x => x * x
+            // 相当于
+            // function(x){return x*x}
+            // 所以 x => b.has(x) 本质是一个函数相当于 function(x){return b.has(x)}
+            // has()方法
+            // Set.has(x) 是 set 中的一个方法。即判断当前 set 中是否含有 x, 如果有返回 true, 没有返回 false。
+            var a = new Set([1, 2, 3]);
+            var b = new Set([4, 3, 2]);
+            var arr = [...a];
+            var fArr = arr.filter(function(x){
+                return b.has(x);
+            })
+            var intersect = new Set(fArr);
+            console.log(fArr); // (2) [2, 3]
+
+
+
+            // Map对象的增删改查案例
+        </script>
+    </body>
+</html>

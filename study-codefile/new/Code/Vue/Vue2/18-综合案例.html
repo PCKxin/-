@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="./js/vue.js"></script>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            table{
+                border: 1px solid #666;
+                width: 800px;
+                margin: 0px auto 0;
+                border-collapse: collapse;
+            }
+            th,td{
+                border: 1px solid #666;
+                padding: 5px;
+                text-align: center;
+            }
+            th{
+                background-color: #f9f9f9;
+            }
+            tr:nth-child(2n){
+                background-color: #f9f9f9;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <table>
+                <!-- 标题 -->
+                <thead>
+                    <tr>
+                        <th v-for="title in titles" :key="title">{{title}}</th>
+                    </tr>
+                </thead>
+                <!-- 内容 -->
+                <tbody>
+                    <tr v-for="(item,index) in books" :key="index">
+                        <td>{{index + 1}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.price}}</td>
+                        <td>{{item.date}}</td>
+                        <td>
+                            <button @click="sub(index)"> - </button>
+                            {{item.num}}
+                            <button @click="add(index)"> + </button>
+                        </td>
+                        <td>
+                            <button @click="del(index)">移除</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>总价：{{total}}</p>
+        </div>
+
+        <script>
+            var vm = new Vue({
+                el:"#app",
+                data:{
+                    titles:[
+                        "编号",
+                        "书籍名称",  
+                        "价格",
+                        "出版日期",
+                        "数量",
+                        "操作",
+                    ],
+                    books:[
+                        {name:"算法导论",price:85,num:1,date:"2020-01-01"},
+                        {name:"UNIX编程艺术",price:59,num:1,date:"2018-01-04"},
+                        {name:"代码大全",price:99,num:1,date:"2019-01-02"},
+                        {name:"重构",price:69,num:1,date:"2021-01-03"},
+                    ],
+
+                },
+                methods:{
+                    add(index){
+                        this.books[index].num++;
+                    },
+                    sub(index){
+                        if(this.books[index].num > 1){
+                            this.books[index].num--;
+                        }
+                    },
+                    del(index){
+                        this.books.splice(index,1); // 删除数组中的元素 splice(起始位置, 删除个数, 替换元素)
+                    }
+                },
+                computed: {
+                    total(){
+                        let ret = this.books.reduce( // reduce 从左到右, 依次处理数组的每个元素, 返回一个值
+                            (pre,cur)=>{
+                                return pre + cur.price * cur.num;
+                            },0 // 0是第二个参数就是第一遍历的时候的pre的值，因为第一个没有上一个
+                        )
+                        return ret;
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

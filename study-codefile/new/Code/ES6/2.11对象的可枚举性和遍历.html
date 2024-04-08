@@ -70,6 +70,49 @@
             const target3 = {};
             Object.assign(target3, source4);
             console.log(target3); // {foo: 1}
+
+            // 2-5 assign 将多个对象那个合并到一个对象中并返回
+            var obj2 = {
+                name: "shiroko",
+                age: 17
+            };
+            console.log(Object.assign(
+                obj2,
+                {
+                    school:"ABYDOS",
+                },
+                {
+                    sex:"girl"
+                }
+            ))
+            // 检查toString属性是否是obj2的自身属性(包括继承的属性)
+            console.log(obj2.hasOwnProperty('toString')); // false
+            // Object.getPropertyOf() 方法返回指定对象的原型(内部[[Prototype]]属性的值)
+            // Object.getOwnPropertyDescriptors() 方法用来获取一个对象的所有自身属性的描述符   
+            
+            
+            // 3 数组的length属性
+            var arr2 = [1, 2, 3];
+            console.log(Object.getOwnPropertyDescriptor(arr2, "length")); 
+            // 输出: {value: 3, writable(是否可写): true, enumerable(是否可枚举): false, configurable(是否可配置): false}
+
+            // 4 entries(obj:可枚举属性的键值对) 
+            // 作用: 返回对象自身的(不含继承的)所有可遍历(enumerable)属性的键值对数组
+            let test = {
+                name: "shiroko",
+                age: 17,
+            };
+            for(let [key, value] of Object.entries(test)){
+                console.log(key, value);
+            }
+
+            // 5 Object.fromEntries() 是Object.entries()的逆操作
+            // 作用: 将键值对列表转换为一个对象
+            let obj3 = Object.fromEntries([
+                ['name', 'shiroko'],
+                ['age', 17]
+            ]);
+            console.log(obj3); // {name: 'shiroko', age: 17}
         </script>
     </body>
 </html>

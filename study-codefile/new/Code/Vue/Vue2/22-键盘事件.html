@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title></title>
+        <script src="./js/vue.js"></script>
+    </head>
+        <body>
+
+            <!--  
+                键盘事件语法糖：@keydown , @keyup
+                Vue中常用的按键别名
+                    回车 => enter
+                    删除 => delete(捕获'删除'和'退格键')
+                    退出 => esc
+                    空格 => space
+                    换行 => tab(特殊，必须搭配keydown)
+            -->
+
+            <div id="app">
+                <h2>班级：{{name}}</h2>
+                <input type="text" placeholder="按下回车提示输入" @keydown.kb="isShow">
+            </div>
+
+            <script>
+                Vue.config.productionTip = false;
+                // keyCodes是Vue的一个全局配置对象，可以用来自定义按键别名
+                Vue.config.keyCodes.kb = 13 // hc是自定义的按键别名
+
+
+                var vm = new Vue({
+                    el:'#app',
+                    data:{
+                        name:"UserName"
+                    },
+                    methods:{
+                        isShow(e){
+                            // e.keyCode 输出的是按键的ASCII码
+                            console.log(e.keyCode);
+                        }
+                    },
+                });
+            </script>
+        </body>
+</html>

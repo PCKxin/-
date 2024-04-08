@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            border: 1px solid #666;
+            width: 800px;
+            margin: 0px auto 0;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #666;
+            padding: 5px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f9f9f9;
+        }
+
+        tr:nth-child(2n) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <Ytable :titles="tableT" :books="bookData"></Ytable>
+    </div>
+
+    <!--  
+在子组件上做好模版准备复用
+-->
+    <template id="tempdemo">
+        <table>
+            <!-- 标题 -->
+            <thead>
+                <tr>
+                    <th v-for="title in titles" :key="title">{{title}}</th>
+                </tr>
+            </thead>
+            <!-- 内容 -->
+            <tbody>
+                <tr v-for="(item,index) in books" :key="index">
+                    <td>{{index + 1}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.price}}</td>
+                    <td>{{item.date}}</td>
+                    <td>
+                        <button @click="sub(index)"> - </button>
+                        {{booknums[index]}}
+                        <button @click="add(index)"> + </button>
+                    </td>
+                    <td>
+                        <button @click="del(index)">移除</button>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="6">总价：{{temptotal}}</td>
+                </tr>
+            </tfoot>
+        </table>
+    </template>
+    <script>
+
+        // 注册全局组件
+        var tempdemo = {
+            props: {
+                titles: Array, // 标题数组
+                books: Array, // 书籍数组
+            },
+            data() {
+                return {
+                    // 本地状态，书籍数量
+                    // 书籍数量默认为1
+                    booknums: this.books.map(() => 1) // () => 1 是一个函数，返回1  map() 方法创建一个新数组，其结果是该数组中的每个元素都调用一个提供的函数后返回的结果
+                }
+            },
+            computed: {
+                temptotal() {
+                    let total = 0;
+                    this.books.forEach((item, index) => { // 遍历书籍数组，计算总价
+                        total += item.price * this.booknums[index]; // 书籍数量 * 书籍价格
+                    });
+                    return total;
+                }
+            },
+            methods: {
+                // 书籍数量加减
+                add(index) {
+                    // $set(对象, 属性名, 新值) 用于给对象添加新属性
+                    // (当前书的数量, 当前书的索引, 当前书的数量 + 1)
+                    this.$set(this.booknums, index, this.booknums[index] + 1);
+                },
+                sub(index) {
+                    if (this.booknums[index] > 1) {
+                        this.$set(this.booknums, index, this.booknums[index] - 1);
+                    }
+                },
+                del(index) {
+                    this.books.splice(index, 1); // 删除数组中的元素 splice(起始位置, 删除个数, 替换元素)
+                    this.booknums.splice(index, 1);
+                }
+            },
+            template: "#tempdemo"
+        };
+
+
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                tableT: [
+                    "编号",
+                    "书籍名称",
+                    "价格",
+                    "出版日期",
+                    "数量",
+                    "操作",
+                ],
+                bookData: [
+                    { name: "算法导论", price: 85, num: 1, date: "2020-01-01" },
+                    { name: "UNIX编程艺术", price: 59, num: 1, date: "2018-01-04" },
+                    { name: "代码大全", price: 99, num: 1, date: "2019-01-02" },
+                    { name: "重构", price: 69, num: 1, date: "2021-01-03" },
+                ],
+            },
+            components: {
+                "Ytable": tempdemo
+            }
+        });
+    </script>
+</body>
+
+</html>

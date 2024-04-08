@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            body:before{
+                content: "\6f58\4f73\5b9d\0020\65e0\81ea\9002\5e94\002c\0020\8bf7\5168\5c4f\67e5\770b";
+                font-size: 80px;
+                color: rgba(255, 192, 203, 0.792);
+                z-index: -1;
+            }
+
+            /* 
+            盒子宽度990px
+            盒子高度510px
+            盒子在页面中居中
+            相对定位
+
+
+            商品列表
+            宽度990px
+            高度自适应
+
+            商品列表中的商品
+            宽度990px
+            高度自适应
+            内边距20px
+            上下边框1px solid gray
+
+            c_img 80px * 80px
+            c_name 235px * 80px
+            c_spec 200px * 80px
+            c_price 100px * 80px
+            c_count 100px * 80px
+            c_total 100px * 80px
+            c_gift 100px * 80px
+
+            总计
+            宽度990px
+            高度80px
+            绝对定位
+            bottom 5px
+            */
+
+            .box{
+                width: 990px;
+                height: 510px;
+                margin: 0 auto;
+                position: relative;
+            }
+
+            .commodity_list{
+                width: 990px;
+            }
+            
+            .c_list{
+                width: 990px;
+                padding: 20px 0;
+                border-top: 1px solid rgb(201, 201, 201);
+                border-bottom: 1px solid rgb(201, 201, 201);
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .c_img{
+                width: 80px;
+                height: 80px;
+                /* background-color: pink; */
+            }
+
+            .c_img img{
+                width: 100%;
+                height: 100%;
+            }
+
+            .c_name{
+                width: 235px;
+                color: rgb(55, 54, 54);
+                font-size: 18px;
+                /* background-color: pink; */
+            }
+
+            .c_spec{
+                width: 200px;
+                font-size: 14px;
+                color: rgb(164, 164, 164);
+                /* background-color: pink; */
+            }
+
+            .c_price{
+                width: 100px;
+                font-size: 18px;
+                color: red;
+                /* background-color: pink; */
+            }
+
+            .c_count{
+                width: 100px;
+                font-size: 14px;
+                color: gray;
+                /* background-color: pink; */
+            }
+
+            .c_total{
+                width: 100px;
+                font-size: 18px;
+                color: red;
+                /* background-color: pink; */
+            }
+
+            .c_gift{
+                width: 120px;
+                position: absolute;
+                left: 115px;
+                bottom: 30px;
+                color: gray;
+                font-size: 12px;
+                /* background-color: pink; */
+            }
+
+            .list_total{
+                width: 990px;
+                height: 80px;
+                position: absolute;
+                bottom: -48px;
+                display: flex;
+                justify-content: flex-end;
+            }
+
+            .total_price{
+                width: 200px;
+                height: 80px;
+                line-height: 80px;
+                text-align: center;
+                font-size: 20px;
+                color: red;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <div class="commodity_list">
+                <!-- <div class="c_list">
+                    <div class="c_img"></div>
+                    <div class="c_name"></div>
+                    <div class="c_spec"></div>
+                    <div class="c_price"></div>
+                    <div class="c_count"></div>
+                    <div class="c_total"></div>
+                    
+                    <div class="c_gift"></div>
+                </div> -->
+            </div>
+            <!-- 总计 -->
+            <div class="list_total"></div>
+        </div>
+        <script>
+            // es6语法规范渲染
+            const goodsList = [
+                {
+                    id: '4001172',
+                    name: '称心如意手摇咖啡磨豆机咖啡豆研磨机',
+                    price: "289.90",
+                    picture: 'https://yanxuan-item.nosdn.127.net/84a59ff9c58a77032564e61f716846d6.jpg',
+                    count: 2,
+                    spec: { color: '白色' }
+                },
+                {
+                    id: '4001009',
+                    name: '竹制干泡茶盘正方形沥水茶台品茶盘',
+                    price: "109.80",
+                    picture: 'https://yanxuan-item.nosdn.127.net/2d942d6bc94f1e230763e1a5a3b379e1.png',
+                    count: 3,
+                    spec: { size: '40cm*40cm', color: '黑色' }
+                },
+                {
+                    id: '4001874',
+                    name: '古法温酒汝瓷酒具套装白酒杯莲花温酒器',
+                    price: "488.00",
+                    picture: 'https://yanxuan-item.nosdn.127.net/44e51622800e4fceb6bee8e616da85fd.png',
+                    count: 1,
+                    spec: { color: '青色', sum: '一大四小' }
+                },
+                {
+                    id: '4001649',
+                    name: '大师监制龙泉青瓷茶叶罐',
+                    price: "139.00",
+                    picture: 'https://yanxuan-item.nosdn.127.net/4356c9fc150753775fe56b465314f1eb.png',
+                    count: 1,
+                    spec: { size: '小号', color: '紫色' },
+                    gift: '赠品: 50g茶叶<br>赠品: 清洗球<br>赠品: 宝马<br>赠品: 奔驰'
+                }
+            ];
+            const box = document.querySelector('.box');
+            const commodityList = document.querySelector('.commodity_list');
+            goodsList.forEach(goods => {
+                const cList = document.createElement('div');
+                cList.className = 'c_list';
+                cList.innerHTML = `
+                    <div class="c_img">
+                        <img src="${goods.picture}" alt="">
+                    </div>
+                    <div class="c_name">
+                        ${goods.name}
+                    </div>
+                    <div class="c_spec">
+                        ${
+                            Object.keys(goods.spec) // 获取对象的键
+                                .map(key => `<span>${goods.spec[key]}</span>`) // 遍历键，返回key对应的值
+                                .join('') // 将数组转换为字符串
+                        }
+                    </div>
+                    <div class="c_price">
+                        ¥${goods.price}
+                    </div>
+                    <div class="c_count">
+                        x${goods.count}
+                    </div>
+                    <div class="c_total">
+                        ${goods.price * goods.count}
+                    </div>
+                    <div class="c_gift">
+                        ${goods.gift || ''}
+                    </div>
+                `;
+                commodityList.appendChild(cList);
+            });
+            // 总计
+            // 小数向下取整
+            const listTotal = document.querySelector('.list_total');
+            listTotal.innerHTML = `
+                <div class="total_price">
+                    合计: ${
+                            Math.ceil(
+                                    goodsList.reduce((total, goods) => total + goods.price * goods.count, 0) // reduce()方法对数组中的所有元素执行指定函数, 将其结果汇总为单个返回值 参数1: 回调函数 参数2: 初始值
+                                    // 0为初始值, 0 + 289.9 * 2 + 109.8 * 3 + 488 * 1 + 139 * 1
+                                    // * 100 / 100 意思是保留两位小数
+                                 * 100) / 100
+
+                        }
+                </div>
+            `;
+        </script>
+    </body>
+</html>

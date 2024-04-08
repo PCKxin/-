@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Promise学习案例</title>
+    </head>
+    <body>
+        <script>
+            console.log('开始执行');
+
+            new Promise((resolve, reject) => {
+                console.log('Promise开始执行');
+                setTimeout(() => {
+                    let isDone = Math.random() > 0.5; // 用随机数模拟异步操作的结果
+                    // 如果随机数大于0.5，表示异步操作成功完成；否则表示异步操作失败
+                    if (isDone) {
+                        resolve('异步操作成功完成');
+                    } else {
+                        reject('异步操作失败');
+                    }
+                }, 2000); // 设置2秒的延迟来模拟异步操作
+            })
+            .then(result => {
+                console.log(result);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+
+            console.log('Promise已经创建，但异步操作还未完成'); // 这行代码会先于Promise开始执行，因为Promise是异步操作还有2秒才能完成
+        </script>
+    </body>
+</html>

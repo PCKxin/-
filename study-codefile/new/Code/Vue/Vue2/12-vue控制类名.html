@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="./js/vue.js"></script>
+        <style>
+            .box{
+                width: 100px;
+                height: 100px;
+                background: pink;
+            }
+            .box1{
+                background: greenyellow;
+            }
+            .box2{
+                width: 300px;
+            }
+            .box3{
+                border-radius: 50%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <!--  
+                对象写法
+                1. 对象写法可以控制多个类名
+            -->
+            <div class="box" :class="{box1:bool1,box2:bool2}"></div> <br>
+            <!--  
+                数组写法
+                ["类名1", "类名2", "类名3"]
+            -->
+            <div class="box" :class="['box1','box3']"></div> <br>
+            <!--  
+                意思是
+                如果bool1为true, 就添加box1类名
+                如果bool2为true, 就添加box2类名
+            -->
+            <div class="box" :class="[bool1 ? 'box1' : '', bool2 ? 'box2' : '']"></div> <br>
+            <!--  
+                字符串写法
+                1. 字符串写法可以控制一个类名
+            -->
+            <div class="box" :class="mod"></div> <br>
+            <!--  
+                普通三元表达式
+            -->
+            <div class="box" :class="bool3 ? 'box1' : 'box2'"></div>
+        </div>
+
+        <script>
+            var vm = new Vue({
+                el: '#app',
+                data:{
+                    bool1: true,
+                    bool2: true,
+                    bool3: false,
+                    mod: "box3"
+                }
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="./js/vue.js"></script>
+    </head>
+    <body>
+        <!-- 视图层 -->
+        <div id="app">
+            <!-- 
+                v-show 
+                适用于切换频率较高的场景
+                不展示的DOM元素会被隐藏，但是不会被删除
+            -->
+            <h2>Hello{{name}} 1</h2>
+            <!-- 
+                表达式 
+                v-if v-else v-else-if
+                适用于切换频率较低的场景
+                不展示的DOM元素会被删除
+
+                注意:
+                v-if v-else v-else-if 可以一起使用
+                但是结构不能被打断
+                v-else-if 必须紧跟在 v-if 或 v-else-if 之后
+            -->
+            <h2 v-show="isShow">Hello{{name}} 2</h2>
+            <!-- v-if -->
+            <h2 v-if="isShow">Hello{{name}} 3</h2>
+            <!-- v-else -->
+            <h2 v-else>Hello{{name}} 4</h2>
+            <!-- v-else-if -->
+            <h2 v-else-if="isShow">Hello{{name}} 5</h2>
+            <h2 v-else-if="!isShow">Hello{{name}} 6</h2>
+
+            <!-- 累加 -->
+            <h2>当前n值是{{n}}</h2>
+            <button @click="n++">+1</button>
+
+            <!-- n==1 2 3 显示 对应的div -->
+            <div v-if="n===1">n===1</div>
+            <div v-if="n===2">n===2</div>
+            <div v-if="n===3">n===3</div>
+        </div>
+
+        <!--  
+            template标签 Vue提供的一个标签
+            模版标签
+            1. 作用：用于包裹多个元素
+        -->
+        <template v-if="isShow">
+            <h2>Hello{{name}} 7</h2>
+        </template>
+
+        <!-- 收藏按钮 取消按钮 -->
+        <div id="app">
+            <button v-if="!bool" @click="bool=!bool">收藏</button>
+            <button v-else @click="bool=!bool">取消</button>
+        </div>
+
+
+        <script>
+            // 创建一个vue实例
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    // 用于控制显示隐藏的变量
+                    isShow: true,
+                    name: 'Shiroko',
+                    bool: false,
+                    n: 0
+                }
+            })
+        </script>
+    </body>
+</html>

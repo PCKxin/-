@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TodoList</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+<div id='app'>
+    <!-- 头部搜索 -->
+    <header>
+        <div class="banxin">
+            <h1>TodoList</h1>
+            <!--  
+                .trim 去除前后空格
+            -->
+            <input type="text" placeholder="添加Todo" v-model.trim="userVal" @keyup.enter = "userEnterFn">
+        </div>
+    </header>
+    <!-- list 内容区 -->
+    <section class="banxin">
+        <!-- 正在进行 -->
+        <div class="title">
+            <h3>正在进行</h3>
+            <span>{{goingArr.length}}</span>
+        </div>
+        <!--子组件 正在进行 -->
+        <!--  
+            : 传递数据
+            :arr="goingArr" 传递goingArr数组
+            @ 传递事件
+        -->
+        <ul-comp 
+        :arr="goingArr"
+        @delgoingitem="delGoingItem"
+        @changegoing="changeGoing"
+        @goingdivtoipt="goingDivToipt"
+        @goingipttodiv="goingiptTodiv"
+
+        ></ul-comp>
+
+        <!-- 已完成  -->
+        <div class="title">
+            <h3>已经完成</h3>
+            <span>{{doneArr.length}}</span>
+        </div>
+
+        <!--子组件 已完的 -->
+        <ul-comp 
+        :arr="doneArr"
+        @deldoneitem="delDoneItem"
+        @changedone="changeDone"
+        @donedivtoipt="doneDivToipt"
+        @doneipttodiv="doneiptTodiv"
+        ></ul-comp>
+        
+    </section>
+
+    <!-- 清空按钮 -->
+    <footer>
+        <div class="banxin">
+            <button @click="clearAll" class="clearbtn">清空全部</button>
+            <button @click="clearDone" class="clearbtn">清空已完成</button>
+        </div>
+    </footer>
+
+</div>
+
+<template id="temp">
+    <ul class="list">
+        <li v-for="(item,index) in arr" :key="item.id">
+            <!-- 复选框 -->
+            <!--  
+                :checked 作用是判断是否选中
+                @change 作用是监听是否改变
+            -->
+            <input type="checkbox" class="chx" 
+            :checked="item.ifCheck"
+            @change="chxChange(item,index)"
+            >
+            <!-- input修改框 -->
+            <input type="text" class="txt" v-focus v-if="item.ifShowIpt"
+            @keyup.13 = "keyupEvent(item,index)"
+            v-model="item.content"
+            >
+            <!-- div跟input内容显示一致 -->
+            <div v-else @click="divClick(item,index)">{{item.content}}</div>
+            <!--  
+                label 标签 作用是显示一个标签
+                作用是点击label时，input获取焦点
+                :for 作用是将label和input绑定
+                :for="item.id" 作用是将label和input绑定
+            -->
+            <label :for="item.id"></label>
+            <!-- 删除当前元素 -->
+            <i @click="delItem(item,index)">-</i>
+        </li>
+    </ul>
+</template>
+
+<script src="./生命周期/js/vue.js"></script>
+<script>
+    //阻止 vue在启动时生成生产提示
+    Vue.config.productionTip = false;
+
+    var UlComp={
+        template:"#temp",
+        props:["arr"],
+        methods:{
+            //删除
+            delItem(item,index){
+                if(item.ifCheck){
+                    //已完成的状态
+                    this.$emit("deldoneitem",index)
+                }else{
+                    //正在进行时
+                    this.$emit("delgoingitem",index)
+                }
+            },
+            //勾选框
+            chxChange(item,index){
+                if(item.ifCheck){
+                    //{xxx:item,index}
+                    // changeDone({item,index})
+                    // changeDone(obj)
+                    // $emit("changedone",{item,index}) changedone 事件名 {item,index} 事件对象也就是参数
+                    this.$emit("changedone",{item,index})
+                }else{
+                    this.$emit("changegoing",{item,index})
+                }
+            },
+            //div和input切换的点击事件
+            divClick(item,index){
+                if(item.ifCheck){
+                    this.$emit("donedivtoipt",index)
+                }else{
+                    this.$emit("goingdivtoipt",index)
+                }
+                
+            },
+            //输入回车事件
+            keyupEvent(item,index){
+                if(item.ifCheck){
+                    this.$emit("doneipttodiv",index)
+                }else{
+                    this.$emit("goingipttodiv",index)
+                }
+            },
+        },
+        //自定focus()
+        // 作用是让input获取焦点
+        // directives 自定义指令
+        directives:{
+            focus:{
+                inserted(el){
+                    el.focus();
+                }
+            }
+        }
+    }
+    var vm = new Vue({
+        el:"#app",
+        components:{
+            UlComp
+        },
+        data:{
+            userVal:"",
+            num:0,
+            //正在进行
+            goingArr:[
+                // {id:"001",ifCheck:false,ifShowIpt:false,content:"1111"},
+            ],
+            //已完成
+            doneArr:[
+                // {id:"002",ifCheck:true,ifShowIpt:false,content:"222"},
+            ],
+        },
+        methods: {
+            //删除doneArr中的项
+            delDoneItem(index){
+                this.doneArr.splice(index,1)
+            },
+
+            //删除goingArr中的项
+            delGoingItem(index){
+                this.goingArr.splice(index,1)
+            },
+
+            //doneArr中的项修改
+            changeDone(obj){
+                // console.log(obj)
+                this.doneArr[obj.index].ifCheck = false;
+                this.goingArr.push(obj.item)
+                this.doneArr.splice(obj.index,1)
+            },
+            //goingArr中的项修改了
+            changeGoing(obj){
+                this.goingArr[obj.index].ifCheck = true;
+                this.doneArr.push(obj.item)
+                this.goingArr.splice(obj.index,1)
+            },
+            //将doneArr中的div切换成input
+            doneDivToipt(index){
+                this.doneArr[index].ifShowIpt=true;
+            },
+            //将doneArr中的input切换成div
+            doneiptTodiv(index){
+                this.doneArr[index].ifShowIpt = false
+            },
+            //将doneArr中的div切换成input
+            goingDivToipt(index){
+                this.goingArr[index].ifShowIpt=true;
+            },
+            //将goingArr中的input切换成div
+            goingiptTodiv(index){
+                this.goingArr[index].ifShowIpt = false
+            },
+
+            //清空全部
+            clearAll(){
+                this.goingArr = [];
+                this.doneArr = [];
+            },
+            //清空已完成
+            clearDone(){
+                this.doneArr = [];
+            },
+
+
+           //按回车键发送
+            userEnterFn(){
+                //不能发送空内容
+                if(this.userVal == ""){
+                    alert("内容不能为空")
+                    return // return后面的代码不会执行
+                }
+                this.num++; // 作用是给id赋值
+                let id="";
+                if(this.num<10){
+                    id="00"+this.num
+                }else if(this.num>=10){
+                    id="0"+this.num
+                }else{
+                    id=""+this.num;
+                }
+
+                let obj = {
+                    id:id,
+                    ifCheck:false,
+                    ifShowIpt:false, // 控制div和input的显示
+                    content:this.userVal // 输入的内容
+                }
+
+                this.goingArr.unshift(obj)
+                //发送完成 清空输入框内容
+                this.userVal = "";
+                
+            }
+        },
+        
+        // 监听并保存数据
+        watch:{
+            goingArr:{
+                // 深度监听
+                deep:true,
+                // 当goingArr属性变化时，执行回调函数
+                handler(){
+                    // localStorage只能存储字符串
+                    // .setItem(key,value) key是键名，value是键值
+                    // JSON.stringify() 将对象转换为JSON字符串
+                    localStorage.setItem("goingArr",JSON.stringify(this.goingArr))
+                }
+            },
+            doneArr:{
+                deep:true,
+                handler(){
+                    localStorage.setItem("doneArr",JSON.stringify(this.doneArr))
+                }
+            }
+        },
+        
+        //页面加载时获取数据
+        created(){
+            // 获取并解析本地存储中的数据
+            // parse() 方法用于将一个 JSON 字符串转换为对象
+            let goingArr = JSON.parse(localStorage.getItem("goingArr"));
+            let doneArr = JSON.parse(localStorage.getItem("doneArr"));
+            if(goingArr){ // 如果goingArr有值
+                this.goingArr = goingArr // 将goingArr的值赋给this.goingArr
+            }
+            if(doneArr){
+                this.doneArr = doneArr
+            }
+        }
+
+    })
+</script>
+</body>
+</html>

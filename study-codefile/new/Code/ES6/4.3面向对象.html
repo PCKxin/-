@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // 面向对象: 只注重结果, 不管是如何实现的
+            // 面向过程: 注重过程, 一步一步实现
+
+            // 形象解释
+            // 面向对象: 买车, 买车的人只关心车的性能, 不关心车是怎么制造的
+            // 面向过程: 买车, 买车的人关心车是怎么制造的, 从哪里买的零件, 怎么组装的
+
+
+            // Class写法
+            // es5 写法
+            // function Person(name, age) {
+            //     this.name = name;
+            //     this.age = age;
+            // }
+            // Person.prototype.say = function() {
+            //     console.log('我是' + this.name + ', 今年' + this.age + '岁');
+            // }
+            // var p = new Person('hoshino', 18);
+            // p.say();
+
+            // es6 写法
+            class Person {
+                // constructor是一个构造方法, 用来接收参数
+                constructor(name, age) {
+                    this.name = name;
+                    this.age = age;
+                }
+                say() {
+                    console.log('我是' + this.name + ', 今年' + this.age + '岁');
+                }
+                // 静态方法
+                static show() {
+                    console.log('我是静态方法');
+                }
+
+            }
+            var p = new Person('shiroko', 17);
+            p.say();
+            Person.show();
+
+
+            // class继承
+            class Student extends Person {
+                constructor(name, age, score) {
+                    // super方法, 用来调用父类的构造方法
+                    super(name, age);
+                    this.score = score;
+                }
+                show() {
+                    console.log('我是' + this.name + ', 今年' + this.age + '岁, 成绩是' + this.score);
+                }
+            }
+
+            var s = new Student('shiroko', 17, "A+");
+            s.say(); // 我是shiroko, 今年17岁
+            s.show(); // 我是shiroko, 今年17岁, 成绩是A+
+
+
+
+
+
+
+
+        </script>
+    </body>
+</html>

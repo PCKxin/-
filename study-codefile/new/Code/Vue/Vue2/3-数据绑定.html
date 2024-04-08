@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- 容器 -->
+        <div id="app">
+            单项数据绑定: <input type="text" v-bind:value="name"> <br>
+            <!--  
+                单项数据绑定 意思是数据只能从数据源流向视图
+                双向数据绑定 意思是数据可以从视图流向数据源
+            -->
+            双项数据绑定: <input type="text" v-model:value="name"><br>
+
+            <!--  
+                v-bind 用于绑定元素的属性
+                v-model 用于表单元素的双向绑定
+            -->
+
+            <!-- 简写 -->
+            单项数据绑定<input type="text" :value="name"> <br>
+            双项数据绑定<input type="text" v-model="name">
+
+            <!-- 标签属性绑定 -->
+            <h2 v-bind:class="name">Hello</h2>
+            <h2 :x="name">Hello</h2>
+            
+        </div>
+        <script src="./js/vue.js"></script>
+        <script>
+            // 创建一个vue实例
+            new Vue({
+                el: '#app', // 挂载点 选择器
+                data: { // 数据
+                    name: 'Hoshino',
+                    message: 'hoshino online'
+                }
+            })
+        </script>
+    </body>
+</html>

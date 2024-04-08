@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title></title>
+        <script src="./js/vue.js"></script>
+    </head>
+        <body>
+
+            <div id="app">
+                <!--  
+                    _data是Vue实例的私有属性
+                    Vue的数据都有代理到_data上
+                -->
+                <h2>名字: {{_data.name}}</h2>
+                <h2>地址: {{address}}</h2>
+            </div>
+
+            <script>
+                Vue.config.productionTip = false;
+                var vm = new Vue({
+                    el:'#app',
+                    data:{
+                        name: 'Yuki',
+                        address: 'Tokyo'
+                    },
+                });
+                // 数据代理
+                // 打印vm的get和set
+                console.log(vm.name);
+                console.log(vm.address);
+                console.log("vm._data.name === vm.name")
+                console.log(vm._data.name === vm.name);
+            </script>
+        </body>
+</html>

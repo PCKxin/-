@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="./js/vue.js"></script>
+    </head>
+    <body>
+        <script>
+            // push 在数组最后追加一个元素
+            // pop 从数组最后删除一个元素
+            // shift 从数组最前删除一个元素
+            // unshift 在数组最前追加一个元素
+            // splice(起始位置, 删除个数, 替换元素) 从起始位置删除指定个数的元素, 并替换成新元素
+            // concat 合并数组
+            // slice(起始位置, 结束位置) 截取数组, 返回新数组
+            // sort 排序
+            // reverse 反转
+
+            var arr = [1, 2, 3, 4, 5];
+            console.log(arr);
+            arr.push(6);
+            console.log("数组最后追加一个元素" + arr);
+            arr.pop();
+            console.log("从数组最后删除一个元素" + arr);
+            arr.shift();
+            console.log("从数组最前删除一个元素" + arr);
+            arr.unshift(1);
+            console.log("在数组最前追加一个元素" + arr);
+            arr.splice(1, 2, 2, 3);
+            console.log("从起始位置删除指定个数的元素, 并替换成新元素" + arr);  
+            var arr2 = [7, 8, 9];
+            var arr3 = arr.concat(arr2);
+            console.log("合并数组" + arr3);
+            var arr4 = arr3.slice(1, 3);
+            console.log("截取数组, 返回新数组" + arr4);
+            arr3.sort();
+            console.log("排序" + arr3);
+            arr3.reverse();
+            console.log("反转" + arr3);
+
+            // reduce 从左到右, 依次处理数组的每个元素, 返回一个值
+            // 参数1: 上一次调用回调函数的返回值, 或者初始值
+                // 意思是如果有初始值, 则第一次调用的回调函数返回值是初始值和数组第一个元素的处理结果
+                // 如果没有初始值，那么积累值一开始是数组中第一个元素。然后在每一次迭代时，返回的值作为下一次迭代的 accumulator 积累值。
+            // 参数2: 当前元素
+            // 参数3: 当前元素的索引
+            // 参数4: 数组本身
+            var arr = [
+                {name: "Vuejs入门", price:99, count: 3}, 
+                {name: "Vuejs底层", price:89, count: 1},
+                {name: "Vuejs入门到精通",price:19,count:5},
+            ];
+            let ret = arr.reduce ((pre,current) =>{
+                // console.log(pre,current)
+                //current是当前遍历到的这个元素
+                //pre当前遍历到的元素上一次执行这个函数的return
+                let total = pre + current.price*current.count;
+                return total;
+            },0) // 0是第二个参数就是第一遍历的时候的pre的值，因为第一个没有上一个
+            // ret是最后的返回值
+            console.log(ret)
+        </script>
+    </body>
+</html>

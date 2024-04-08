@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>列表渲染</title>
+        <script src="./js/vue.js"></script>
+    </head>
+    <body>
+        <!--  
+            v-for: 用于循环遍历数组或对象
+            语法: v-for="item in list"
+                v-for="(item, index) in list" // index是索引
+            说明: item是数组中的每一项, list是数组
+            简写: v-for="item in list" 等价于 v-for="(item, index) in list"
+                :key="index" // 用于提高渲染效率
+        -->
+        <div id="app">
+            <ul>
+                <li v-for="item in list">{{item}}</li>
+            </ul>
+            <ul>
+                <li v-for="(item, index) in list">{{index}}: {{item}}</li>
+            </ul>
+            <ul>
+                <li v-for="(item, index) in list" :key="index">{{index}}: {{item}}</li>
+            </ul>
+            <!--  
+                v-for of 
+                语法: v-for="item of list"
+                区别: v-for="item in list" 是遍历数组, v-for="item of list" 是遍历对象
+            -->
+            <ul>
+                <li v-for="item of list">{{item}}</li>
+            </ul>
+            <!--  
+                对象渲染
+                语法: v-for="(value, key, index) in obj"
+                说明: value是对象中的每一项, key是对象中的键, index是索引
+            -->
+            <ul>
+                <li v-for="(value, key, index) in obj">{{index}}: {{key}}: {{value}}</li>
+            </ul>
+            <!-- 遍历次数 -->
+            <ul>
+                <li v-for="(number,index) of 5">{{list}}</li>
+            </ul>
+        </div>
+
+
+
+
+        <script>
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    list: ['a', 'b', 'c', 'd'],
+                    obj: {
+                        name: 'shiroko',
+                        age: 18,
+                    },
+                }
+            });
+        </script>
+    </body>
+</html>

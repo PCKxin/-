@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>姓名案例(mothods)</title>
+        <script src="./js/vue.js"></script>
+    </head>
+    <body>
+        <div id="_name">
+            姓: <input type="text" v-model="last_name"> <br>
+            名: <input type="text" v-model="first_name"> <br>
+            全名: {{get_full_name()}}
+            <button @click="get_full_name">点击事件</button>
+        </div>
+        <script>
+            Vue.config.productionTip = false
+            // 创建一个vue实例
+            var vm = new Vue({
+                el: '#_name',
+                data: {
+                    last_name: 'Sunaokami',
+                    first_name: 'Shiroko'
+                },
+                // 方法 methods
+                // 作用: 用于定义方法, 供模板中调用
+                methods: {
+                    get_full_name: function() {
+                        console.log('get_full_name被调用了')
+                        return this.last_name + '_' + this.first_name
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="./js/vue.js"></script>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            #box{
+                margin: 0 auto;
+                margin-top: 100px;
+                width: 400px;
+                height: 300px;
+                background: rgba(255, 192, 203, 0.692);
+            }
+
+            #btnPiece{
+                width: 400px;
+                height: 50px;
+                display: flex;
+            }
+            .btn{
+                width: 80px;
+                height: 50px;
+                background: skyblue;
+                text-align: center;
+                line-height: 50px;
+                margin-right: 5px;
+            }
+            #conPiece{
+                width: 400px;
+                height: 250px;
+                background: red;
+                text-align: center;
+                line-height: 250px;
+                font-size: 40px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box">
+            <div id="btnPiece">
+                <div class="btn" @click="piece1">选项1</div>
+                <div class="btn" @click="piece2">选项2</div>
+                <div class="btn" @click="piece3()">选项3</div>
+            </div>
+            <div id="conPiece" :style="conSObj">
+                {{message}}
+            </div>
+        </div>
+        <script>
+            // 选项卡案例
+            // 点到对应的选项卡时 显示对应的内容
+            // 例如 点击选项1 显示内容1 点击选项2 显示内容2
+            
+            // 创建一个vue实例
+            new Vue({
+                el: '#box',
+                data: {
+                    message: '',
+                    conSObj: {
+                        display: 'none'
+                    }
+                },
+                methods: {
+                    piece1: function(){
+                        this.message = '选项1'
+                        this.conSObj = {
+                            display: 'block',
+                            background: 'skyblue',
+                        }
+                    },
+                    piece2: function(){
+                        this.message = '选项2'
+                        this.conSObj = {
+                            display: 'block',
+                            background: 'red',
+                        }
+                    },
+                    piece3: function(){
+                        this.message = '选项3'
+                        this.conSObj = {
+                            display: 'block',
+                            background: 'green',
+                        }
+                    }
+                }
+            })
+        
+        </script>
+    </body>
+</html>

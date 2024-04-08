@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title></title>
+        <script src="./js/vue.js"></script>
+    </head>
+        <body>
+            <div id="app">
+                <!--  
+                    原数据 | 过滤器名称
+                    | 管道符 用于连接数据和过滤器
+                -->
+                {{num | yuan}} --- {{num2 | yuan}}
+                <br>
+                {{timetamp | dateForm}}
+            </div>
+            <div id="app2">
+                <!-- 调用全局的 -->
+                {{timetamp | dateForm}}
+            </div>
+
+            <script>
+                Vue.config.productionTip = false
+
+                // 全局过滤器
+                Vue.filter('dateForm',val=>{
+                    let now = new Date(val);
+                    var year = now.getFullYear();
+                    var month = now.getMonth() + 1;
+                    var date = now.getDate();
+                    var hour = now.getHours();
+                    var minute = now.getMinutes();
+                    var second = now.getSeconds();
+                    return (`${year}-${month}-${date} ${hour}:${minute}:${second}`);
+                });
+
+                var vm = new Vue({
+                    el:'#app',
+                    data:{
+                        num:20,
+                        num2:30,
+                        timetamp: new Date().getTime()
+                    },
+                    filters:{ // 过滤器 用于对数据进行加工
+                        yuan(val){
+                            return val + "元"
+                        },
+                    }
+                });
+                var vm2 = new Vue({
+                    el:'#app2',
+                    data:{
+                        timetamp: new Date().getTime()
+                    }
+                });
+            </script>
+        </body>
+</html>

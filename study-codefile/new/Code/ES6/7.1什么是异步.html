@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // 编写两个函数, 第一个执行打印函数内部一个变量, 比方说打印出来hello, 第一个函数执行完毕2s后执行第二个函数, 执行打印hello_world
+            // 要求: hello是拿的第一个函数的数据
+
+            // function fn1(){
+            //     var hello = "hello";
+            //     setTimeout(()=>{
+            //         fn2(hello);
+            //     },2000);
+            // };
+            // function fn2(fn1data){
+            //     console.log(fn1data + "_world");
+            // };
+            // fn1();
+
+            // 异步案例(回调地狱)
+            function fn1(callback){
+                console.log("A 执行完毕");
+                setTimeout(()=>{
+                    callback();
+                },1000);
+            };
+            // fn2
+            function fn2(callback){
+                console.log("B 执行完毕");
+                setTimeout(()=>{
+                    callback();
+                },1000);
+            };
+            // fn3
+            function fn3(callback){
+                console.log("C 执行完毕");
+                setTimeout(()=>{
+                    callback();
+                },1000);
+            };
+            // fn4
+            function fn4(){
+                console.log("D 执行完毕");
+            };
+            // 调用
+            fn1(()=>{
+                fn2(()=>{
+                    fn3(()=>{
+                        fn4();
+                    });
+                });
+            }); 
+        </script>
+    </body>
+</html>

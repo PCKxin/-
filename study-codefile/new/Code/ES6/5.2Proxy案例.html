@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+    <html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="container">默认内容</div>
+        <script>
+            // 需求: 我改一个地方的时候就要进行一个操作, 然后让修改的内容自动更新到页面上, 用代理对象实现
+            const obj = {
+                name: "shiroko",
+                age: 17
+            };
+            const con = document.getElementById("container");
+            con.textContent = obj.name;
+            const p1 = new Proxy(obj, {
+                get(target, key, receiver) { // get方法是在读取对象属性时触发的操作
+                    // target: 目标对象
+                    // key: 属性名
+                    // receiver: 代理对象
+                    console.log("get", key); // 输出读取的属性名
+                    return Reflect.get(target, key, receiver); // Reflect.get方法是获取对象属性的方法
+                    // 返回 Reflect.get方法的结果
+                },
+                set(target, key, value, receiver) { // set方法是在设置对象属性时触发的操作
+                    // target: 目标对象
+                    // key: 属性名
+                    // value: 属性值
+                    // receiver: 代理对象
+                    console.log("set", key, value); // 输出设置的属性名和属性值
+                    con.textContent = value; // 设置页面上的内容
+                    return Reflect.set(target, key, value, receiver); // Reflect.set方法是设置对象属性的方法
+                }
+            })
+            p1.name = "hoshino"; // 设置代理对象的属性值
+            console.log(p1.name); // 读取代理对象的属性值
+
+
+            // 判断用户是否验证
+            const user = {
+                name: "shiroko",
+                age: 17,
+                _password: "123456"
+            };
+            const p2 = new Proxy(user, {
+                get(target, key, receiver) {
+                    if (key === "password") { // 判断属性名是否是password
+                        return "******"; 
+                    }
+                    return Reflect.get(target, key, receiver);
+                    // 返回拿到的属性值
+                },
+                set(target, key, value, receiver) {
+                    if (key === "password") { // 判断属性名是否是password
+                        if (value.length < 6) { // 判断属性值的长度是否小于6
+                            throw new Error("密码长度不能小于6位"); // 抛出错误
+                        }
+                        return Reflect.set(target, "_password", value, receiver);
+                        // 返回设置的属性值
+                    }
+                    return Reflect.set(target, key, value, receiver);
+                }
+            });
+            // 读取代理对象的属性值
+            console.log(p2.name, p2.age, p2.password); // shiroko 17 ******
+        </script>
+    </body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // Promise对象是es6新增的一个构造函数, 用于解决回调地狱问题
+            // Promise对象有三种状态: pending(进行中), resolved(已完成), rejected(已失败)
+            // 回调地狱: 一层层的嵌套回调函数, 代码可读性差, 不易维护
+            // 实例化Promise对象
+            // const p_demo = new Promise(function(resolve,reject){});
+            // 回调函数里面的两个参数可以自定义名称
+            // 一般情况下，resolve表示异步操作成功，reject表示异步操作失败
+
+            const p_demo1 = new Promise(
+                // resolve: 异步操作成功调用
+                // reject: 异步操作失败调用
+                (resolve,reject)=>{
+                    // 异步操作
+                    setTimeout(()=>{
+                        let data = "userdata in database";
+                        let err = "error";
+                        resolve(data);
+                        reject(err); // 忽略 
+                        // 如果同时存在, 只有第一个调用会生效, 因为Promise对象的状态一旦改变就不会再变
+                        // resolve("成功");
+                        // reject("失败");
+                    },1000);
+                }
+            );
+            // 调用then方法
+            // then方法作用是为Promise实例添加状态改变时的回调函数
+            // then方法的第一个参数是resolved状态的回调函数
+            // then方法的第二个参数是rejected状态的回调函数
+            p_demo1.then(
+                // 成功的回调函数
+                result => { // result是resolve方法传递的参数/数据, 也就是异步操作成功的结果
+                            // 名字可以自定义
+                    console.log(result);
+                },
+                // // 失败的回调函数
+                // (err)=>{
+                //     console.error(err);
+                // }
+            );
+            // catch方法是then方法的语法糖
+            // catch方法的参数是rejected(拒绝时的)状态的回调函数
+            p_demo1.catch(
+                error => {
+                    console.error(err);
+                }
+            );
+            // finally方法是不管Promise对象最后状态如何都会执行的操作
+            // finally方法的参数是一个回调函数
+            p_demo1.finally(
+                ()=>{
+                    console.log("无论成功还是失败, 都会执行");
+                }
+            );
+
+            // 回调地狱案例
+            function fn1(callback){
+                console.log("A 执行完毕");
+                setTimeout(()=>{
+                    callback();
+                },1000);
+            };
+            // fn2
+            function fn2(callback){
+                console.log("B 执行完毕");
+                setTimeout(()=>{
+                    callback();
+                },1000);
+            };
+            // fn3
+            function fn3(callback){
+                console.log("C 执行完毕");
+                setTimeout(()=>{
+                    callback();
+                },1000);
+            };
+            // fn4
+            function fn4(){
+                console.log("D 执行完毕");
+            };
+            // 调用
+            fn1(()=>{
+                fn2(()=>{
+                    fn3(()=>{
+                        fn4();
+                    });
+                });
+            });
+
+            // q: 回调地狱简化了以上哪些代码?
+            // a: 以上代码中, fn1, fn2, fn3, fn4都是异步操作, 通过回调函数的方式来实现异步操作的顺序执行
+            //  通过Promise对象可以简化以上代码, 使得代码更加清晰, 便于维护
+
+
+
+            // Generator函数
+            // 返回一个遍历器对象, 可以通过next方法遍历Generator函数内部的每一个状态
+            // 特点: 惰性求值(意思是只有调用next方法时, 才会执行对应的代码), 自动遍历, 可以暂停执行
+            // 语法: function* fn(){}
+            // yield关键字: 暂停执行, 并返回yield后面的值
+            // next方法: 恢复执行, 并返回yield后面的值
+            function* gen(){ // *表示Generator函数
+                console.log("A");
+                // yield "A 暂停执行,返回A的值";
+                console.log("B");
+                // yield "B 暂停执行,返回B的值";
+                console.log("C");
+                yield "C 暂停执行,返回C的值";
+                console.log("D");
+                // yield "D 暂停执行,返回D的值";
+            };
+            // 实例化Generator函数  
+            const g = gen();
+            // 调用next方法
+            console.log(g.next()); // {value: "A 暂停执行,返回A的值", done: false}
+            // done: false表示Generator函数还没有执行完
+
+            // 惰性求值
+            function* add1(a,b){
+                yield a + b;
+            };
+            const a1 = add1(1,2);
+            console.log(a1.next()); // {value: 3, done: false}
+
+            // 自动遍历
+            function * addNum(){
+                yield "1";
+                yield "2";
+                yield "3";
+            };
+            const a2 = addNum();
+            console.log(a2.next()); // {value: "1", done: false}
+            console.log(a2.next()); // {value: "2", done: false}
+            console.log(a2.next()); // {value: "3", done: false}
+
+            for (let value of addNum()){
+                console.log(value); // 1 2 3
+            };
+            // Array.from方法可以将类数组对象或可遍历对象转换为数组
+            console.log(Array.from(addNum())); // ["1", "2", "3"]
+            // 扩展运算符可以将类数组对象或可遍历对象转换为数组
+            console.log([...addNum()]); // ["1", "2", "3"]
+
+            // 生成器函数在调用时返回一个生成器对象, 这个生成器对象实现了iterator接口(可迭代接口)
+            // 生成器函数可以使用for...of循环遍历, 也可以使用扩展运算符转换为数组
+            function * fn1(){
+                yield ["A","B","C"];
+            }
+            const g1 = fn1();
+            console.log(g1.next()); // {value: Array(3), done: false}
+
+            // 可以使用yield*语法将一个生成器函数的返回值插入到另一个生成器函数中
+            function * fn2(){
+                yield "A";
+                yield "B";
+                yield "C";
+            }
+            function * fn3(){
+                yield* fn2(); // 带*号表示插入(指针), 也就是将fn2的返回值插入到fn3中
+                yield "D";
+            }
+            const g2 = fn3();
+            console.log(g2.next()); // {value: "A", done: false}
+            console.log(g2.next()); // {value: "B", done: false}
+            console.log(g2.next()); // {value: "C", done: false}
+            console.log(g2.next()); // {value: "D", done: false}
+
+            // next方法可以传递参数
+            function * fn4(){
+                let a = yield "A";
+                console.log(a);
+                let b = yield "B";
+                console.log(b);
+                let c = yield "C";
+                console.log(c);
+            }
+            const g3 = fn4();
+            console.log(g3.next()); // {value: "A", done: false}
+            console.log(g3.next("A的值")); // A的值 {value: "B", done: false}
+            console.log(g3.next("B的值")); // B的值 {value: "C", done: false}
+            console.log(g3.next("C的值")); // C的值 {value: undefined, done: true}
+
+            
+        </script>
+    </body>
+</html>

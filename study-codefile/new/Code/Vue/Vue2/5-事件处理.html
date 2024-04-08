@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>事件处理</title>
+        <script src="./js/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <h1>{{message}}</h1>
+            <button v-on:click="changeMessage">改变消息</button>
+            <!--  
+                事件的基本使用
+                v-on:xxx or @xxx 绑定事件
+                v-on 用于绑定事件
+                v-on:click="" 绑定点击事件
+
+                事件的回调需要定义在methods中, 事件回调函数中的this指向的是vue实例
+                mothods中的函数, 不要用箭头函数, 因为箭头函数的this指向的是window
+            -->
+            <button @click="showInfo">显示信息</button>
+            <!--  
+                @click="" 绑定事件简写
+            -->
+            <button @click="showEvent">显示事件</button>
+
+            <!--  
+                $ 用于传递参数
+                $event 传递事件对象
+            -->
+            <button @click="showInfo1('gogogo',$event)">显示信息(传参)</button>
+            <button @click="showInfo2()">显示信息(不传参)</button>
+        </div>
+
+
+
+        <script>
+            Vue.config.productionTip = false
+            // 创建一个vue实例
+            var vm = new Vue({ // ViewModel 视图模型
+                el: '#app', // 挂载点 选择器
+                // 数据层
+                data: { // 数据
+                    message: 'Yuki online'
+                },
+                // 事件处理
+                methods: {
+                    changeMessage: function() {
+                        this.message = 'Yuki offline'
+                    },
+                    showInfo: function() {
+                        // 普通函数的this指向的是vue实例
+                        console.log(this)
+                        // this.showInfo = 'showInfo'
+                        console.log('showInfo')
+                    },
+                    showEvent(event){
+                        console.log(this)
+                        console.log(this == vm)
+                        console.log(event.target)
+                        console.log(event.target.innerText)
+                    },
+                    // // 箭头函数
+                    // showInfo: (event)=>{
+                    //     // 箭头函数的this指向的是window
+                    //     console.log(this)
+                    //     console.log('showInfo')
+                    // }
+                    
+                    showInfo1(num, ea) {
+                        console.log(num, ea)
+                        console.log(ea.target);
+                    },
+
+                    // 调用有括号, 下面函数不能有参数, 否则会报错, 因为没有传参
+                    showInfo2() {
+                        console.log(event)
+                        console.log(event.target)
+                        console.log(event.target.innerText)
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

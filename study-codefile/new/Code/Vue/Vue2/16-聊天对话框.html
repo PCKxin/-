@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style type="text/css">
+            .talk_con{
+                width:600px;
+                height:500px;
+                border:1px solid #666;
+                margin:50px auto 0;
+                background:#f9f9f9;
+            }
+            .talk_show{
+                width:580px;
+                height:420px;
+                border:1px solid #666;
+                background:#fff;
+                margin:10px auto 0;
+                overflow:auto;
+            }
+            .talk_input{
+                width:580px;
+                margin:10px auto 0;
+            }
+            .whotalk{
+                width:80px;
+                height:30px;
+                float:left;
+                outline:none;
+            }
+            .talk_word{
+                width:420px;
+                height:26px;
+                padding:0px;
+                float:left;
+                margin-left:10px;
+                outline:none;
+                text-indent:10px;
+            }        
+            .talk_sub{
+                width:56px;
+                height:30px;
+                float:left;
+                margin-left:10px;
+            }
+            .atalk{
+                margin:10px; 
+            }
+            .atalk span{
+                display:inline-block;
+                background:green;
+                border-radius:10px;
+                color:#fff;
+                padding:5px 10px;
+            }
+            .btalk{
+                margin:10px;
+                text-align:right;
+            }
+            .btalk span{
+                display:inline-block;
+                background:blue;
+                border-radius:10px;
+                color:#fff;
+                padding:5px 10px;
+            }
+        </style>
+        <script src="js/vue.js"></script>
+    </head>
+    <body>
+        <!-- 
+            v-model 主要是用于表单上数据的双向绑定
+            v-model实际v-bind和v-on的语法糖
+            v-model可以用在<input>，<select>，<textarea>元素上创建双向数据绑定。它会根据控件类型自动选 取正确的方法来更新元素，它负责监听用户的输入事件以更新数据，并对一些极端场景进行一些特殊处理，本质上不过是语法糖。
+            v-model也可以用在component(自定义组件)，自定义组件里面包含<input>，<select>，<textarea>元素
+        -->
+
+        <div class="talk_con" id="app">
+            <div class="talk_show" id="words">
+                <div class="atalk" v-for="asay in arr" :class="asay.obj === 'A' ? 'atalk' : 'btalk'">
+                    <span>{{asay.obj}}说: {{asay.words}}</span>
+                </div>
+                <!-- <div class="btalk"><span>B说: 还没呢，你呢？</span></div> -->
+            </div>
+            <!-- 功能区 -->
+            <div class="talk_input">
+                <select class="whotalk" id="who" v-model="selectVal">
+                    <option value="0">A说: </option>
+                    <option value="1">B说: </option>
+                </select>
+                <input type="text" class="talk_word" id="talkwords" v-model="textVal">
+                <input type="button" value="发送" class="talk_sub" id="talksub" @click="send">
+            </div>
+        </div>
+
+        <script>
+            var vm = new Vue({
+                el: '#app',
+                data:{
+                    arr:[
+                        {obj:'A', words:'你好'},
+                        {obj:'B', words:'你好'}
+                    ],
+                    textVal: '',
+                    selectVal: '0',
+                },
+                methods: {
+                    send(){
+                        // this.arr.push({obj:"xxx" , words:"xxx"})
+                        // this.textVal == null?  alert("不能为空"):'';
+                        this.arr.push({obj:this.selectVal === '0'? 'A':'B' , words:this.textVal});
+                        
+                        this.textVal= null;
+                    }
+                },
+            });
+        </script>
+    </body>
+</html>

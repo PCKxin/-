@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- 以前 -->
+        <!-- <script src="js/m1.js"></script> -->
+
+
+        <!-- <script type="module">
+            // 1、通用的导入方式
+                // import * as m1 from "./es6_module/m1.js";
+                // console.log(m1);
+                // console.log(m1.school); // ABY
+                // m1.teach() // 
+
+
+            // 引入m2.js模块内容
+                // import * as m2 from "./es6_module/m2.js";
+                // console.log(m2.school);// 
+                // m2.findJob(); // 
+
+            // 引入m3.js模块内容
+                // import * as m3 from "./es6_module/m3.js";
+                // console.log(m3.default.school);// 
+                // m3.default.change();// 
+
+
+                console.log("============解构赋值===================");
+            // 解构赋值形式
+            // m1.js
+                // import {school , teach} from "./es6_module/m1.js";
+                // console.log(school);
+                // teach()
+
+
+            // m2.js
+                // import {school as bgs , findJob} from "./es6_module/m2.js";
+                // console.log(bgs);
+                // sayName()
+
+            // m3.js
+                // import {default as m4 } from "./es6_module/m3.js";
+                // console.log(m4.school);
+                // m4.change();
+
+
+            // // 简洁形式 针对默认暴漏
+            //     import m3 from "./es6_module/m3.js";
+            //     console.log(m3);
+            //     console.log(m3.school);
+            //     m3.change();
+
+            
+        </script> -->
+
+        <!-- 引入入口文件 -->
+        <!-- module作用是告诉浏览器，当前的脚本是一个模块化脚本，浏览器会使用严格模式解析 -->
+        <!-- 模块化脚本默认是延迟加载的，也就是说脚本的执行顺序是按照它们在页面中出现的顺序来执行的 -->
+        <script type="module" src="./es6_module/app_demo1.js"></script>
+
+    </body>
+</html>

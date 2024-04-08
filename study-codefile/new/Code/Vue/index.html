@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <link rel="stylesheet" href="./index.css">
+    <script src="./生命周期/js/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <Ytodo></Ytodo>
+    </div>
+
+
+    <template id="todo-list">
+        <!-- <div class="todo-list"> -->
+        <div>
+            <!-- 头部添加 -->
+            <header>
+                <div class="banxin">
+                    <h1>{{ title }}</h1>
+                    <!--  
+                    1. v-model 双向绑定数据
+                    2. @keyup.enter 监听回车键
+                    -->
+                    <input type="text" placeholder="添加Todo" v-model="newTodo" @keyup.enter="addTodo">
+                </div>
+            </header>
+            <!-- list 内容区 -->
+            <section class="banxin">
+                <!-- 正在进行 -->
+                <div class="title">
+                    <h3>正在进行</h3>
+                    <!--  
+                    1. filter 过滤数据
+                    2. length 获取长度
+                    todo 是数组中的每一项
+                    !todo.completed 未完成的
+                    -->
+                    <span>{{ todos.filter(todo => !todo.completed).length }}</span>
+                </div>
+                <ul class="list">
+                    <!--  
+                        v-for="item in items" 遍历数组
+                        :key="index" 为每个元素绑定唯一的key , 用于优化性能
+                        这里的v-for="(todo, index) in todos" :key="index" 意思是遍历todos数组，todo是数组中的每一项，index是索引
+                        v-if="!todo.completed" 过滤未完成的, 也就是completed为false的
+                    -->
+                    <li v-for="(todo, index) in todos" :key="index" v-show="!todo.completed">
+                        <!--  
+                            v-model="todo.completed" 意思是双向绑定数据，也就是改变checkbox的状态，todo.completed也会改变为true或false
+                        -->
+                        <input type="checkbox" class="chx" v-model="todo.completed">
+                        <!-- <input type="text" class="txt" v-model="todo.text"> -->
+                        <div>{{ todo.text }}</div>
+                        <label></label>
+                        <i @click="removeTodo(index)"> - </i>
+                    </li>
+                </ul>
+                <!-- 已完成 -->
+                <div class="title">
+                    <h3>已经完成</h3>
+                    <span>{{ todos.filter(todo => todo.completed).length }}</span>
+                </div>
+                <ul class="list">
+                    <!--  
+                        v-for="item in items" 遍历数组
+                        :key="index" 为每个元素绑定唯一的key , 用于优化性能
+                        这里的v-for="(todo, index) in todos" :key="index" 意思是遍历todos数组，todo是数组中的每一项，index是索引
+                        v-if="todo.completed" 过滤已完成的, 也就是completed为true的
+                    -->
+                    <li v-for="(todo, index) in todos" :key="index" v-show="todo.completed">
+                        <input type="checkbox" class="chx" v-model="todo.completed">
+                        <!-- <input type="text" class="txt" v-model="todo.text"> -->
+                        <div>{{ todo.text }}</div>
+                        <label></label>
+                        <i @click="removeTodo(index)"> - </i>
+                    </li>
+                </ul>
+            </section>
+            <!-- 清空按钮 -->
+            <footer>
+                <div class="banxin">
+                    <button @click="clearTodos" class="clearbtn">清空</button>
+                </div>
+            </footer>
+        </div>
+        
+    </template>
+
+
+
+
+
+
+    
+
+    <script>
+        Vue.config.productionTip = false;
+        // 根据以上注释代码，写出当前可运行的代码
+
+
+        // 以下开始逐行解释其作用及原理
+        // 注册全局组件
+        var tempdemo = {
+            // 组件名，用于在父组件中引用
+            template: '#todo-list',
+            // 组件属性，用于接收父组件传递的数据
+            props: {
+                // 标题，默认为'TodoList'
+                title: {
+                    type: String,
+                    default: 'TodoList'
+                },
+                // 初始数据，默认为空数组
+                initialTodos: {
+                    type: Array,
+                    default: () => []
+                }
+            },
+            data() {
+                return {
+                    // 本地状态，待办事项数组，默认为初始数据
+                    todos: this.initialTodos,
+                    // 新待办事项，默认为空
+                    newTodo: ''
+                }
+            },
+            // 监听属性变化
+            watch: {
+                // 监听todos属性变化
+                todos: {
+                    // 深度监听
+                    deep: true,
+                    // 当todos属性变化时，执行回调函数
+                    handler() {
+                        // 将todos数组转换为JSON字符串，存储到本地
+                        localStorage.setItem('todos', JSON.stringify(this.todos));
+                    }
+                }
+            },
+            // 组件创建时执行
+            created() {
+                // 从本地存储中获取todos数据
+                const todos = localStorage.getItem('todos');
+                // 如果本地存储中有todos数据
+                if (todos) {
+                    // 将JSON字符串转换为数组，赋值给todos
+                    this.todos = JSON.parse(todos);
+                }
+            },
+            
+            // 组件方法
+            methods: {
+                addTodo() {
+                    // 如果新待办事项不为空
+                    if (this.newTodo.trim() !== '') {
+                        // 添加新待办事项,text为新待办事项内容，completed的意思是是否完成，默认为false
+                        this.todos.push({ text: this.newTodo, completed: false });
+                        this.newTodo = '';
+                    }
+                },
+                removeTodo(index) {
+                    // 删除待办事项
+                    this.todos.splice(index, 1);
+                },
+                // 清空缓存
+                clearTodos() {
+                    // 清空todos数组
+                    this.todos = [];
+                }
+            }
+        }
+        
+        var vm = new Vue({
+            el: "#app",
+            data: {},
+            components: {
+                Ytodo: tempdemo
+            }
+        })
+    </script>
+</body>
+
+</html>

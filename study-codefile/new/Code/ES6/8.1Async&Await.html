@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // async和await是es7后推出的新特性, 用于解决Promise的回调地狱问题, 简化异步操作
+            // async用于声明这个函数是一个异步函数, 返回值被包装成自动解析的Promise对象
+            // await用于等待Promise对象的解析, 只能在async函数中使用, 用于等待异步操作的结果
+
+            // 清晰的简单案例
+            isOver = false;
+            console.log('异步操作开始');
+            function timeout1(ms) {
+                return new Promise(
+                    (resolve) => {
+                        setTimeout(resolve, ms);
+                    }
+                );
+            }
+            // 区别于Promise的then方法, await后面的代码会等待Promise对象解析后再执行
+            async function asyncPrint(value, ms) {
+                console.log('方法一等待中');
+                await timeout1(ms); // 等待timeout函数的Promise对象解析
+                console.log(value);
+            }
+
+            async function asyncPrint2(value, ms) {
+                console.log('方法二等待中');
+                await timeout1(ms); // 等待timeout函数的Promise对象解析
+                console.log(value);
+            }
+
+            async function asyncPrint3(value, ms) {
+                console.log('方法三等待中');
+                await timeout1(ms); // 等待timeout函数的Promise对象解析
+                console.log(value);
+            }
+
+            asyncPrint('方法1执行完成', 3000);
+            asyncPrint2('方法2_over', 1000);
+            asyncPrint3('方法3_teskOver', 2000);
+
+            console.log('异步操作进行中');  
+
+            // // 通过循环等待异步操作结束
+            // function checkOver() {
+            //     if (isOver) {
+            //         console.log('异步操作结束');
+            //     } else {
+            //         setTimeout(checkOver, 1000);
+            //     }
+            // }
+            // // checkOver();
+
+            // 通过Promise对象等待异步操作结束
+            
+
+
+        </script>
+    </body>
+</html>

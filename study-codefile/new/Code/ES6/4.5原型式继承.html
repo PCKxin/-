@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // 定义一个Animal // 父级
+            function Animal(){};
+            // 原型加方法
+            Animal.prototype.sayHi = function(){
+                console.log("我是原型身上的方法")
+            };
+            // 定义一个Person // 子类
+            function Person(){};
+            // 原型式继承
+            Person.prototype = Animal.prototype;
+
+            Animal.prototype.say = function(){
+                console.log("我是Animal新加的方法");
+            }
+
+            var per1 = new Person();
+            console.log(per1); 
+            per1.sayHi();
+            per1.say(); 
+        </script>
+    </body>
+</html>

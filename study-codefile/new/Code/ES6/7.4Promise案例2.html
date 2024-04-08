@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="referrer" content="no-referrer" /> 
+
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // 如果三个步骤A、B和C需要同时执行, 使用Promise.all方法
+            function stepA() {
+                return new Promise((resolve, reject) => {
+                    console.log('开始执行步骤A');
+                    setTimeout(() => {
+                        console.log('步骤A执行完毕');
+                        resolve('步骤A的结果');
+                    }, 1000);
+                });
+            }
+
+            function stepB() {
+                return new Promise((resolve, reject) => {
+                    console.log('开始执行步骤B');
+                    setTimeout(() => {
+                        console.log('步骤B执行完毕');
+                        resolve('步骤B的结果');
+                    }, 2000);
+                });
+            }
+
+            function stepC() {
+                return new Promise((resolve, reject) => {
+                    console.log('开始执行步骤C');
+                    setTimeout(() => {
+                        console.log('步骤C执行完毕');
+                        resolve('步骤C的结果');
+                    }, 3000);
+                });
+            }
+
+            Promise
+                .all([stepA(), stepB(), stepC()])
+                .then(results => {
+                    console.log(results); // 输出 ["步骤A的结果", "步骤B的结果", "步骤C的结果"]
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+
+
+            // 如果三个步骤A、B和C需要按顺序执行, 使用Promise的then方法
+            // 如果其中一个步骤失败, 则会立跳到.catch方法
+            // stepA()
+            //     .then(resultA => {
+            //         console.log(resultA);
+            //         return stepB();
+            //     })
+            //     .then(resultB => {
+            //         console.log(resultB);
+            //         return stepC();
+            //     })
+            //     .then(resultC => {
+            //         console.log(resultC);
+            //     })
+            //     .catch(error => {
+            //         console.error(error);
+            //     });
+
+            // 三个步骤A、B和C需要异步执行
+            // stepA().then(resultA => {
+            //     console.log(resultA);
+            // });
+            // stepB().then(resultB => {
+            //     console.log(resultB);
+            // });
+            // stepC().then(resultC => {
+            //     console.log(resultC);
+            // });
+
+            // Promise封装AJAX请求
+            // function ajax(url){
+            //     return new Promise(
+            //         (resolve, reject) => {
+            //             var xhr = new XMLHttpRequest();
+            //             xhr.open('GET', url);
+            //             // xhr.responseType = 'json';
+            //             // xhr.setRequestHeader('Accept', 'application/json');
+            //             // onreadystatechange 事件在请求接收到响应时被触发
+            //             xhr.onreadystatechange = function(){
+            //                 // readyState 4 表示请求已完成，且响应已就绪
+            //                 if(xhr.readyState === 4){
+            //                     // status 200 表示请求成功
+            //                     if(xhr.status === 200){
+            //                         resolve(xhr.responseText);
+            //                     }else{
+            //                         reject(xhr.statusText);
+            //                     }
+            //                 }
+            //             };
+            //             xhr.onerror = function(){
+            //                 reject(xhr.statusText);
+            //             };
+            //             xhr.send();
+            //         }
+            //     );   
+            // }
+            // // 调用
+            // ajax('')
+            //     .then(
+            //         (value) => {
+            //             console.log(value);
+            //         }
+            //     )
+            //     .catch(
+            //         (error) => {
+            //             console.error(error);
+            //         }
+            //     )
+            //     .finally(
+            //         () => {
+            //             console.log('请求结束');
+            //         }
+            //     );
+
+
+            // 拿图片base64编码案例
+            function getBase64(url) {
+                return new Promise(
+                    (resolve, reject) => {
+                        var xhr = new XMLHttpRequest();
+                        xhr.open('GET', url);
+                        xhr.responseType = 'blob'; // 返回类型为 blob
+                        // 设置一个Referer头部信息，前端修改这个不会生效, 需要在后端设置
+                        // xhr.setRequestHeader('Referer', 'https://blog.csdn.net/Retxp?spm=1000.2115.3001.5343');
+
+                        xhr.onload = function(){
+                            if(xhr.status === 200){
+                                var reader = new FileReader();
+                                reader.onloadend = function() {
+                                    resolve(reader.result); // reader.result包含了base64编码的图片数据
+                                };
+                                reader.onerror = function() {
+                                    reject(new Error('读取图片数据失败'));
+                                };
+                                reader.readAsDataURL(xhr.response); // 将Blob对象转换为base64编码的字符串
+                            }else{
+                                reject(new Error('请求失败，状态码：' + xhr.status));
+                            }
+                        };
+                        xhr.onerror = function() {
+                            reject(new Error('网络错误'));
+                        };
+                        xhr.send();
+                    }
+                )
+            }
+
+            // 调用
+            getBase64('https://img-blog.csdnimg.cn/9d05018e889d4ee787a6a435a827a78b.png')
+                .then(
+                    value => {
+                        console.log(value);
+                    }
+                )
+                .catch(
+                    error => {
+                        console.error(error);
+                    }
+                )
+                .finally(
+                    () => {
+                        console.log('请求结束');
+                    }
+                );
+        </script>
+    </body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title></title>
+        <style>
+            /*  
+            :not() 选择器匹配除括号内选择器之外的任何元素。
+            */
+            *:not(button){ 
+                margin: 0;
+                padding: 0;
+                border: 0;
+                list-style: none;
+            }
+            nav{
+                width:450px;
+                height: 50px;
+                background: #fcc;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                line-height: 50px;
+            }
+            .left,.right{
+                width: 50px;
+                height: 50px;
+                background-color: red;
+            }
+            .center{
+                width: 350px;
+                height: 50px;
+            }
+            ul{
+                display: flex;
+                justify-content: space-between;
+            }
+        </style>
+        <script src="../js/vue.js"></script>
+    </head>
+        <body>
+            <!-- 实例绑定的app就是父组件 -->
+            <div id="app">
+                <jdnav>
+                    
+                    <h3 slot="title">标题</h3>
+                    <input slot="ipt" type="text" placeholder="请输入文字">
+                    <ul slot="list">
+                        <li>品牌</li>
+                        <li>评价</li>
+                        <li>推荐</li>
+                    </ul>
+                </jdnav>
+            </div>
+
+
+            <!--  
+                template里面都是子组件
+            -->
+            <template id="temp">
+                <div>
+                    <nav>
+                        <!-- 左 -->
+                        <div class="left">&lt;</div>
+                        <!-- 中 -->
+                        <div class="center">
+                            <!--  
+                                :name="xxx" 属性作用是给插槽命名
+                            -->
+                            <slot :name="myname"></slot>
+                        </div>
+                        <!-- 右 -->
+                        <div class="right">&bull;&bull;&bull;</div>
+                    </nav>
+                    <button @click="togglebtn">切换显示区块</button>
+                </div>
+            </template>
+
+            <script>
+
+                Vue.config.productionTip = false;
+
+                var jdnav = {
+                    template:"#temp",
+                    data(){
+                        return{
+                            myname:"ipt"
+                        }
+                    },
+                    methods:{
+                        togglebtn(){
+                            console.log("切换显示区块");
+                            
+                            switch(this.myname){
+                                case "title":
+                                    this.myname = "ipt";
+                                    break;
+                                case "ipt":
+                                    this.myname = "list";
+                                    break;
+                                case "list":
+                                    this.myname = "title";
+                                    break;
+                                default:
+                                    this.myname = "title";
+                            }
+                        }
+                    }
+                };
+                var vm = new Vue({
+                    el:"#app",
+                    data:{},
+
+                    components:{
+                        jdnav,
+                    }
+                });
+            </script>
+        </body>
+</html>

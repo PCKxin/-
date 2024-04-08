@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title></title>
+        <script src="../js/vue.js"></script>
+    </head>
+        <body>
+
+            <!--  
+                兄弟组件之间的通信, 通常需要利用父组件做中间来传递数据
+                或者使用事件总线(Event Bus)来传递数据 或者使用Vuex等状态管理库
+
+            -->
+
+            <div id="app">
+                <Ycoma></Ycoma>
+                <Ycomb></Ycomb>
+            </div>
+
+            <template id="atemp">
+                <button @click="goB">A 组件</button>
+            </template>
+            <template id="btemp">
+                <button >B 组件{{str}}</button>
+            </template>
+
+            <script>
+                Vue.config.productionTip = false;
+
+
+                // 中央事件总线(就是再创建一个Vue实例)
+                var bus = new Vue();
+
+
+                var tempa = {
+                    template:"#atemp",
+                    methods:{
+                        goB(){
+                            const value = " - A组件传递的数据";
+                            bus.$emit("sendtoB", value);
+                        }
+                    },
+
+                }
+                var tempb = {
+                    template:"#btemp",
+                    data(){
+                        return{
+                            str:null
+                        }
+                    },
+                    // 生命周期钩子函数
+                    mounted(){
+                        // on是监听事件
+                        bus.$on("sendtoB", (value)=>{
+                            this.str = value;
+                        });
+                    }
+                }
+
+                var vm = new Vue({
+                    el:"#app",
+                    components:{
+                        "Ycoma":tempa,
+                        "Ycomb":tempb
+                    }
+                });
+            </script>
+        </body>
+</html>

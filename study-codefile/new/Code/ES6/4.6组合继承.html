@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // 组合继承: 借用构造函数继承+原型链继承
+
+            // 详细解释: 就是将父类的属性通过call继承给子类, 将父类的方法通过原型链继承给子类
+            // 原型链继承: 将父类的原型对象赋值给子类的原型对象
+            function Person(name, age, sex, weight){
+                this.name = name;
+                this.age = age;
+                this.sex = sex;
+                this.weight = weight;
+            }
+            // 方法都放在原型上
+            Person.prototype.sayHi = function(){
+                console.log("sayHi方法")
+            }
+            function Student(name, age, sex, weight, score){
+                // 借用构造函数继承, call继承
+                Person.call(this, name, age, sex, weight)
+                this.score = score;
+            };
+            Student.prototype = new Person();
+            // 实例化对象
+            var stu1 = new Student("shiroko",16,"girl","50kg","A+")
+            console.log(stu1.name, stu1.age, stu1.sex, stu1.weight, stu1.score) // 继承了父类的属性
+
+            stu1.sayHi(); // 继承了父类的方法
+            
+        </script>
+    </body>
+</html>
