@@ -37,6 +37,12 @@
 - `内置模块`
     - 内置模块是由 Node.js 官方提供的，例如 fs(文件系统)、http(网络)、os(操作系统) 等
 
+    - 引入方法
+        - `require('模块名')`
+        - const `{方法名}` = `require('模块名')`
+            - { log } 是解构赋值，相当于 const log = console.log;
+        - const `log` = `require('console')` `.log`
+
 - `自定义模块`
     - 自定义模块是由用户自己创建的模块，每个JS文件都是一个模块
 
