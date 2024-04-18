@@ -39,6 +39,8 @@
     - const `{方法名}` = `require('模块名')`
         - { log } 是解构赋值，相当于 const log = console.log;
     - const `log` = `require('console')` `.log`
+    - import * as `consoleobj` from `console`
+        - `as`意思是将console模块中的所有方法都赋值给consoleobj对象
 
 - `内置模块`
     - 内置模块是由 Node.js 官方提供的，例如 fs(文件系统)、http(网络)、os(操作系统) 等
@@ -48,3 +50,42 @@
 
 - `第三方模块`
     - 第三方模块是由第三方提供的模块，例如 express(网络框架)、mongoose(数据库) 等
+
+## 模块暴露方法
+
+- `module.exports` 暴露模块 (CommonJS)
+    - `module.exports` = `value`
+    - `module.exports` = `{key: value}`
+    - `module.exports` = `function() {}`
+    - `module.exports` = `class {}`
+
+
+- `exports` 暴露模块 (CommonJS)
+    - `exports.key = value`
+    - `exports.key = function() {}`
+    - `exports.key = class {}`
+
+- `exports default` 暴露模块 (ES6)
+    - `export default value`
+    - `export default {key: value}`
+    - `export default function() {}`
+    - `export default class {}`
+- 
+
+### 用法例
+    
+```js
+// 暴露模块
+module.exports = {
+    name: 'Shiroko',
+    age: 18
+}
+
+module.exports = function() {
+    console.log('Hello World');
+}
+
+```
+
+
+
