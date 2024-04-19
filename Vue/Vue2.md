@@ -125,6 +125,55 @@ Vue.config.productionTip = false;
 </div>
 ```
 
+#### 其他插值指令
+
+- `v-html`: 用于解析html标签
+    - 写法例:
+        - ```html
+            <div v-html="htmlStr"></div>
+          ```
+
+- `v-text`: 用于解析文本内容
+    - 写法例:
+        - ```html
+            <div v-text="message"></div>
+          ```
+
+- `v-pre`: 用于跳过这个元素和它的子元素的编译过程(不解析标签的内容)
+    - 写法例:
+        - ```html
+            <div v-pre>{{ message }}</div>
+          ```
+
+- `v-cloak`: 用于解决插值表达式闪烁问题
+    - 写法例:
+        - ```html
+            <div v-cloak>{{ message }}</div>
+          ```
+    - css解决闪烁问题
+        - ```css
+            [v-cloak] {
+                display: none;
+            }
+          ```
+
+- `v-once`: 用于只渲染一次
+    - 写法例:
+        - ```html
+            <div v-once>{{ message }}</div>
+          ```
+
+- 上例js
+    - ```js
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                message: 'Shiroko online',
+                htmlStr: '<h2>Shiroko online</h2>'
+            }
+        });
+      ```
+
 #### 案例
 
 ```html
@@ -270,6 +319,84 @@ var vm = new Vue({
             console.log(msg); // 我是被传递的参数
             console.log(event); // PointerEvent {isTrusted: true, pointerId: 1, width: 1, height: 1, pressure: 0, …}
         }
+        // 普通函数的this指向Vue实例
+        // showInfo: (msg, event) => {}
+        // 箭头函数的this指向window
     }
 });
+```
+
+### 以上内容应用案例
+
+- 使用时请注意引入Vue2.js 
+
+#### 姓名案例(双向数据绑定 插值语法)
+
+
+```html
+    <body>
+        <div id="_name">
+            姓: <input type="text" v-model="last_name"> <br>
+            名: <input type="text" v-model="first_name"> <br>
+            全名: {{last_name}}_{{first_name}}
+        </div>
+        <script>
+            Vue.config.productionTip = false
+            // 创建一个vue实例
+            var last_name = new Vue({
+                el: '#_name',
+                data: {
+                    last_name: 'Sunaokami',
+                    first_name: 'Shiroko'
+                }
+            })
+        </script>
+    </body>
+```
+
+#### 姓名案例(双向 插值 计算属性)
+
+```html
+    <body>
+        <div id="_name">
+            姓: <input type="text" v-model="last_name"> <br>
+            名: <input type="text" v-model="first_name"> <br>
+            <p>全名：{{fullName}}</p>
+            <p>全名：{{fullName}}</p>
+            <p>全名：{{fullName}}</p>
+            <p>全名：{{fullName}}</p>
+        </div>
+        <script>
+            Vue.config.productionTip = false
+            // 创建一个vue实例
+            var vm = new Vue({
+                el: '#_name',
+                data: {
+                    last_name: 'Sunaokami',
+                    first_name: 'Shiroko'
+                },
+                // 计算属性 computed 带有缓存功能
+                // 定义: 要用的属性不存在, 要通过已有属性计算得到
+                // 原理: 底层借助Object.defineProperty()方法, 为对象添加属性, 并为属性添加getter和setter
+                        // get什么时候执行
+                        // 1. 初次读取一次
+                        // 2. 依赖的属性值发生变化时
+                // 作用: 用于计算属性, 依赖其他属性值, 只有当依赖的属性值发生变化时, 才会重新计算
+                computed: {
+                    fullName: {
+                        get: function() {
+                            console.log('get被调用了')
+                            return this.last_name + '-' + this.first_name
+                        },
+                        set: function(value) {
+                            console.log('set被调用了', value)
+                            var arr = value.split('-')
+                            this.last_name = arr[0]
+                            this.first_name = arr[1]
+                        }
+                    }
+                }
+            })
+        </script>
+    </body>
 ```
