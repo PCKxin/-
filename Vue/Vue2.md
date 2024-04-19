@@ -509,3 +509,61 @@ var vm = new Vue({
             }
         });
         ```
+
+
+### key的作用和原理
+
+- 作用:
+    - 1. 用于标识元素
+    - 2. 独立标识元素, 便于Vue的虚拟DOM算法, 用于判断节点是否发生变化
+    - 3. 提高渲染效率
+
+#### 案例
+
+```html
+<!-- 视图 -->
+<div id="app">
+    <h2>人员列表</h2>
+    姓名: <input type="text" v-model="name">
+    年龄: <input type="text" v-model="age">
+    <button @click="addPerson">添加一个人</button>
+    <button @click.once="add">添加一个人(motheds)</button>
+    <ul>
+        <li v-for="item in list" :key="item.id">
+            {{item.id}}: {{item.name}} {{item.age}}
+        </li>
+        
+    </ul>
+</div>
+<script>
+        var vm = new Vue({
+            el: '#app',
+            data:{
+                name: '',
+                age: '',
+                list: [
+                    {id: "01", name: 'shiroko', age: 17},
+                    {id: "02", name: 'hoshino', age: 18},
+                    {id: "03", name: 'arona', age: 16}
+                ]
+            },
+            methods:{
+                // id递增
+                addPerson(){
+                    this.list.push({
+                        id:"0" + (this.list.length + 1),
+                        name: this.name,
+                        age: this.age
+                    });
+                },
+                add(){
+                        
+                    const p = {id:"0" + (this.list.length + 1), name: 'yukka', age: 17};
+                    this.list.push(p);
+                }
+
+            }
+        });
+</script>
+
+```
