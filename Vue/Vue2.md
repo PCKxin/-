@@ -511,6 +511,94 @@ var vm = new Vue({
         ```
 
 
+#### 列表排序&过滤案例
+
+- `watch` 监听数据变化
+    - 作用: 用于监听数据的变化
+    - 语法: `watch: { 监听的数据: 回调函数 }`
+
+
+```html
+<body>
+    <div id="app">
+        <h2>人员列表</h2>
+        <input type="text" v-model="keyWord">
+        <!-- 列表排序 -->
+        <button @click="sortType=2">年龄升序</button>
+        <button @click="sortType=1">年龄降序</button>
+        <button @click="sortType=0">取消排序</button>
+
+        
+        <ul>
+            <li v-for="(item,index) in newList" :key="item.id">
+                {{item.id}}--{{item.name}}--{{item.age}}
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        // watch 监听属性
+        // 当被监听的属性发生变化时，就会执行对应的回调函数
+        // 监听的属性必须存在，才能监听
+        // new Vue时传入watch配置
+        // vm.$watch('被监听的属性',function(newValue,oldValue){})
+        var vm = new Vue({
+            el: '#app',
+            data:{
+                sortType: 0,
+                keyWord: "",
+                list: [
+                    {id: "01", name: 'shiroko', age: 17},
+                    {id: "02", name: 'hoshino', age: 18},
+                    {id: "03", name: 'arona', age: 16}
+                ],
+                // newList: [
+                //     {id: "01", name: 'shiroko', age: 17},
+                //     {id: "02", name: 'hoshino', age: 18},
+                //     {id: "03", name: 'arona', age: 16}
+                // ],
+            },
+            watch: {
+                // keyWord 是被监听的属性
+                keyWord: {
+                    // immediate: false 表示初始化时不会立即执行
+                    immediate: false,
+                    // handler 是回调函数 当keyWord发生变化时，就会执行handler
+                    handler(newValue,oldValue){
+                        console.log("keyWord属性发生变化了");
+                        console.log(newValue,oldValue);
+                        // 过滤数组
+                        this.newList = this.list.filter((item)=>{
+                            return item.name.indexOf(newValue)!== -1;
+                        });
+                    }
+                }
+            }
+            // // computed 实现
+            // computed:{
+            //     newList(){
+            //         // 过滤
+            //         const ru = this.list.filter((item)=>{
+            //             return item.name.indexOf(this.keyWord)!== -1;
+            //         })
+            //         // 排序
+            //         if(this.sortType){
+            //             ru.sort(
+            //                 (a,b)=>{
+            //                     return this.sortType === 1? b.age - a.age : a.age - b.age;
+            //                 }
+            //             )
+            //         }
+            //         return ru;
+            //     }
+            // }
+        });
+    </script>
+</body>
+```
+
+
+
 ### key的作用和原理
 
 - 作用:
@@ -557,7 +645,6 @@ var vm = new Vue({
                     });
                 },
                 add(){
-                        
                     const p = {id:"0" + (this.list.length + 1), name: 'yukka', age: 17};
                     this.list.push(p);
                 }
