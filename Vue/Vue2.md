@@ -597,8 +597,6 @@ var vm = new Vue({
 </body>
 ```
 
-
-
 ### key的作用和原理
 
 - 作用:
@@ -654,3 +652,319 @@ var vm = new Vue({
 </script>
 
 ```
+
+### 7. vue控制样式
+
+#### 控制类名
+
+- `:class` 用于控制类名
+    - 作用: 用于动态绑定类名
+    - 语法: `:class="{类名: 布尔值}"`
+    - 简写: `:class="类名: 布尔值"`
+
+```css
+style {
+    .box1 {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+    }
+    .box2 {
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+    }
+    .box3 {
+        width: 100px;
+        height: 100px;
+        background-color: green;
+    }
+}
+```
+```html
+<body>
+<div id="app">
+    <!--  
+        对象写法
+        1. 对象写法可以控制多个类名
+    -->
+    <div class="box" :class="{box1:bool1,box2:bool2}"></div> <br>
+    <!--  
+        数组写法
+        ["类名1", "类名2", "类名3"]
+    -->
+    <div class="box" :class="['box1','box3']"></div> <br>
+    <!--  
+        意思是
+        如果bool1为true, 就添加box1类名
+        如果bool2为true, 就添加box2类名
+    -->
+    <div class="box" :class="[bool1 ? 'box1' : '', bool2 ? 'box2' : '']"></div> <br>
+    <!--  
+        字符串写法
+        1. 字符串写法可以控制一个类名
+    -->
+    <div class="box" :class="mod"></div> <br>
+    <!--  
+        普通三元表达式
+    -->
+    <div class="box" :class="bool3 ? 'box1' : 'box2'"></div>
+</div>
+
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data:{
+            bool1: true,
+            bool2: true,
+            bool3: false,
+            mod: "box3"
+        }
+    });
+</script>
+```
+
+#### 控制style样式
+
+
+- `:style` 用于控制样式
+    - 作用: 用于动态绑定样式
+    - 语法: `:style="{样式名: 值}"`
+    - 简写: `:style="样式名: 值"`
+
+```css
+<style>
+    .box{
+        width: 100px;
+        height: 100px;
+        background: pink;
+    }
+    .box1{
+        background: greenyellow;
+    }
+    .box2{
+        width: 300px;
+    }
+</style>
+```
+```html
+<body>
+    <!--  
+        style两种写法
+        1. 对象写法
+        2. 数组写法
+    -->
+    <div id="app">
+        <div class="box" :style="{fontSize}">V</div><br>
+        <!-- 多属性写法 -->
+        <div class="box" :style="{fontSize, color: 'skyblue', backgroundColor}">V</div> <br>
+        <!-- 三元表达式 -->
+        <div class="box" :style="{fontSize: bool1 ? '60px' : '30px', color: bool2 ? 'skyblue' : 'red', backgroundColor: bool3 ? 'greenyellow' : 'pink'}">V</div><br>
+        <!-- 数组写法 -->
+        <div class="box" :style="[{fontSize: bool1 ? '60px' : '30px'},{color: bool2 ? 'skyblue' : 'red'}]">V</div> <br>
+        <!-- 对象写法 -->
+        <div class="box" :style="styObj">V</div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data:{
+                bool1: true,
+                bool2: false,
+                bool3: false,
+                fontSize: '60px',
+                backgroundColor: 'greenyellow',
+                borderRaduis: '50%',
+                styObj: {
+                    fontSize: '60px',
+                    color: 'skyblue',
+                    backgroundColor: 'greenyellow'
+                }
+            }
+        });
+    </script>
+</body>
+```
+
+#### 选项卡案例
+
+```css
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    #box{
+        margin: 0 auto;
+        margin-top: 100px;
+        width: 400px;
+        height: 300px;
+        background: rgba(255, 192, 203, 0.692);
+    }
+
+    #btnPiece{
+        width: 400px;
+        height: 50px;
+        display: flex;
+    }
+    .btn{
+        width: 80px;
+        height: 50px;
+        background: skyblue;
+        text-align: center;
+        line-height: 50px;
+        margin-right: 5px;
+    }
+    #conPiece{
+        width: 400px;
+        height: 250px;
+        background: red;
+        text-align: center;
+        line-height: 250px;
+        font-size: 40px;
+    }
+</style>
+```
+
+```html
+<body>
+    <div id="box">
+        <div class="btn" @click="piece1">选项卡1</div>
+        <div class="btn" @click="piece2">选项卡2</div>
+        <div class="btn" @click="piece3()">选项卡3</div>
+        <div id="conPiece" :style="styObj">
+            {{message}}
+        </div>
+    </div>
+
+    <script>
+    new Vue({
+        el: '#box',
+        data: {
+            message: '选项卡1',
+            styObj: {
+                // backgroundColor: 'skyblue'
+                display: 'none'
+            }
+        },
+        methods: {
+            piece1: function() {
+                this.message = '选项卡1';
+                this.styObj = {
+                    display: 'block'
+                    background: 'skyblue'
+                },
+            },
+            piece2: function() {
+                this.message = '选项卡2';
+                this.styObj = {
+                    display: 'block'
+                    background: 'greenyellow'
+                },
+            },
+            piece3: function() {
+                this.message = '选项卡3';
+                this.styObj = {
+                    display: 'block'
+                    background: 'pink'
+                },
+            }
+            // xxx: function(){} 和 function xxx(){} 区别
+                // 1. xxx: function(){} 是对象的方法
+                // 2. function xxx(){} 是全局函数
+                // 对象方法和全局函数区别 
+                    // 1. 对象方法中的this指向对象
+                    // 2. 全局函数中的this指向window
+        }
+    })
+    </script>   
+</body>
+
+```
+
+### 8. 条件渲染
+
+- `v-if` `v-else` `v-else-if` 控制元素是否渲染
+    - 作用: 根据表达式的真假, 来决定是否渲染元素
+    - 语法: `v-if="表达式"` `v-else` `v-else-if="表达式"`
+    - 注意: 如果表达式为假, 元素不会渲染到页面中
+
+- `v-show` 控制元素显示隐藏
+    - 作用: 根据表达式的真假, 来决定是否显示元素
+    - 语法: `v-show="表达式"`
+    - 注意: 如果表达式为假, 元素会渲染到页面中, 只是不显示
+
+- 案例
+    ```html
+    <body>
+        <!-- 视图层 -->
+        <div id="app">
+            <!-- 
+                v-show 
+                适用于切换频率较高的场景
+                不展示的DOM元素会被隐藏，但是不会被删除
+            -->
+            <h2>Hello{{name}} 1</h2>
+            <!-- 
+                表达式 
+                v-if v-else v-else-if
+                适用于切换频率较低的场景
+                不展示的DOM元素会被删除
+
+                注意:
+                v-if v-else v-else-if 可以一起使用
+                但是结构不能被打断
+                v-else-if 必须紧跟在 v-if 或 v-else-if 之后
+            -->
+            <h2 v-show="isShow">Hello{{name}} 2</h2>
+            <!-- v-if -->
+            <h2 v-if="isShow">Hello{{name}} 3</h2>
+            <!-- v-else -->
+            <h2 v-else>Hello{{name}} 4</h2>
+            <!-- v-else-if -->
+            <h2 v-else-if="isShow">Hello{{name}} 5</h2>
+            <h2 v-else-if="!isShow">Hello{{name}} 6</h2>
+
+            <!-- 累加 -->
+            <h2>当前n值是{{n}}</h2>
+            <button @click="n++">+1</button>
+
+            <!-- n==1 2 3 显示 对应的div -->
+            <div v-if="n===1">n===1</div>
+            <div v-if="n===2">n===2</div>
+            <div v-if="n===3">n===3</div>
+        </div>
+
+        <!--  
+            template标签 Vue提供的一个标签
+            模版标签
+            1. 作用：用于包裹多个元素
+        -->
+        <template v-if="isShow">
+            <h2>Hello{{name}} 7</h2>
+        </template>
+
+        <!-- 收藏按钮 取消按钮 -->
+        <div id="app">
+            <button v-if="!bool" @click="bool=!bool">收藏</button>
+            <button v-else @click="bool=!bool">取消</button>
+        </div>
+
+
+        <script>
+            // 创建一个vue实例
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    // 用于控制显示隐藏的变量
+                    isShow: true,
+                    name: 'Shiroko',
+                    bool: false,
+                    n: 0
+                }
+            })
+        </script>
+    </body>
+    ```
+
+- [聊天对话框案例](../study-codefile/new/Code/Vue/Vue2/16-聊天对话框.html)
