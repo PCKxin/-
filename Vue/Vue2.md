@@ -400,3 +400,112 @@ var vm = new Vue({
         </script>
     </body>
 ```
+
+#### 姓名案例(双向 插值 事件处理)
+
+```html
+   <body>
+        <div id="_name">
+            姓: <input type="text" v-model="last_name"> <br>
+            名: <input type="text" v-model="first_name"> <br>
+            全名: {{get_full_name()}}
+            <button @click="get_full_name">点击事件</button>
+        </div>
+        <script>
+            Vue.config.productionTip = false
+            // 创建一个vue实例
+            var vm = new Vue({
+                el: '#_name',
+                data: {
+                    last_name: 'Sunaokami',
+                    first_name: 'Shiroko'
+                },
+                // 方法 methods
+                // 作用: 用于定义方法, 供模板中调用
+                methods: {
+                    get_full_name: function() {
+                        console.log('get_full_name被调用了')
+                        return this.last_name + '_' + this.first_name
+                    }
+                }
+            })
+        </script>
+    </body>
+```
+
+
+### 6. 列表渲染
+
+#### v-for 循环遍历
+
+- 作用: 用于循环遍历数组或对象
+- 语法: `v-for="(value, index) in 数组/对象" :key="唯一标识"`
+    - 简写: `v-for="item in 数组/对象" :key="唯一标识"`
+- 注意: `v-for` 和 `v-if` 不能同时放在一个元素上
+    - 主要原因是性能问题。
+        - 当v-if与v-for一起使用时，Vue将为每个循环迭代执行条件判断。这意味着在每次渲染时，都会进行额外的计算来确定是否应该显示或隐藏元素
+    - 由于v-if具有更高的优先级，它会在v-for之前执行。这可能导致不必要的计算和渲染开销，特别是在列表很大的情况下。这种情况下，请将v-if移动至容器元素上
+    为了提高性能，推荐的做法是尽量避免在同一个DOM元素上同时使用v-if和v-for
+
+- 如需同时在一个标签使用v-if和v-for的效果, 可以用`v-show`代替`v-if`
+
+- `:key`作用:
+    - 1. 为每个节点设置唯一标识, 提高渲染效率
+    - 2. 用于Vue的虚拟DOM算法, 用于判断节点是否发生变化
+
+- 案例
+    - in
+        - ```html
+            <div id="app">
+                <ul>
+                    <li v-for="item in list">{{item}}</li>
+                </ul>
+                <ul>
+                    <li v-for="(item, index) in list">{{index}}: {{item}}</li>
+                </ul>
+                <ul>
+                    <li v-for="(item, index) in list" :key="index">{{index}}: {{item}}</li>
+                </ul>
+            </div>
+          ```
+
+    - of
+        - ```html
+            <!--  
+                v-for of 
+                语法: v-for="item of list"
+                区别: v-for="item in list" 是遍历数组, v-for="item of list" 是遍历对象
+            -->
+            <ul>
+                <li v-for="item of list">{{item}}</li>
+            </ul>
+          ```
+
+    - 对象渲染&遍历次数
+        - ```html
+            <!--  
+                对象渲染
+                语法: v-for="(value, key, index) in obj"
+                说明: value是对象中的每一项, key是对象中的键, index是索引
+            -->
+            <ul>
+                <li v-for="(value, key, index) in obj">{{index}}: {{key}}: {{value}}</li>
+            </ul>
+            <!-- 遍历次数 -->
+            <ul>
+                <li v-for="(number,index) of 5">{{list}}</li>
+            </ul>
+          ```
+
+    - ```js
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                list: ['a', 'b', 'c', 'd'],
+                obj: {
+                    name: 'shiroko',
+                    age: 18,
+                },
+            }
+        });
+        ```
