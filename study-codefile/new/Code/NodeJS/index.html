@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div>
+            <!-- 4-http.js+3-2.fs.js 学习测试 -->
+            <div>
+                <label for="">用户名</label>
+                <input type="password" name="Uname" placeholder="请输入用户名">
+            </div>
+            <div>
+                <label for="">电话号</label>
+                <input type="password" name="Utel" placeholder="请输入电话号">
+            </div>
+            <div>
+                <label for="">密码</label>
+                <input type="password" name="Upwd" placeholder="请输入密码">
+            </div>
+        </div>
+
+
+        <script src="./module/jquery-2.1.4.min.js"></script>
+        <script src="./test_1.js"></script>
+        <script src="./test_2.js"></script>
+        <script src="./homework/sort&replace模块自制.js"></script>
+        
+        <script>
+            // 为什么会输出test_2.js的内容
+            // 因为test_2.js的内容会覆盖test_1.js的内容
+            // 变量污染的意思是：后面的变量会覆盖前面的变量
+            // 为了避免变量污染，我们可以使用立即执行函数
+            console.log(test);
+
+            // homework- sort&replace模块自制
+            // console.log(sort([1, 3, 2, 5, 4]));
+            // 从小到大排序
+            var list = [1, 3, 2, 5, 4];
+            sorts(list, function(a, b) {
+                return a - b;
+            });
+            console.log(list);
+            // 从大到小排序
+            sorts(list, function(a, b) {
+                return b - a;
+            });
+            console.log(list);
+
+
+            var str = 'hello world';
+            console.log(replace(str, 'world', 'nodejs'));
+
+
+            var ssr = "ssr dsda"
+            ssr[0] = 'S'
+            console.log(ssr)
+
+            // 为什么会输出ssr dsda
+            // 因为字符串是不可变的，所以ssr[0] = 'S'是无效的
+            
+
+            // 
+            $(
+                function(){
+                    $.ajax({
+                        url: 'http://127.0.0.1:3901/',
+                        // type: 'get',
+                        success: function(data){
+                            console.log(data);
+                            // res = JSON.parse(data);
+                            // console.log(res);
+                        }
+                    });
+                }
+            );
+        </script>
+    </body>
+</html>

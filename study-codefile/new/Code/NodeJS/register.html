@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="register">
+        <h2>注册页面</h2>
+        <div>
+            <label for="">用户名</label>
+            <input type="text" name="Uname" placeholder="请输入用户名">
+            <div>
+                <label for="">密码</label>
+                <input type="password" name="UPwd" placeholder="请输入密码">
+            </div>
+            <div>
+                <label for="">电话号</label>
+                <input type="text" name="Utel" placeholder="请输入电话号">
+            </div>
+
+            <input type="submit" value="注册">
+        </div>
+
+
+        <script src="./module/jquery-2.1.4.min.js"></script>
+        <script>
+            $(function () {
+                var user = $("input[name=Uname]")
+                var pwd = $("input[name=Upwd]")
+                var tel = $("input[name=Utel]")
+                var submit = $("input[type=submit]")
+
+                // 判断是否符合规则
+                var reg = {
+                    name: /^[a-zA_Z_]\w{5,14}$/,
+                    ped: /^\d{8}$/,
+                    tel: /^1[3-9]\d{9}$/,
+                }
+
+                submit.on("click", function () {
+                    // 先获取页面数据
+                    if (!user.val().trim()) {
+                        user.val("")
+                        return alert("请输入用户名")
+                    } else if (reg.name.test(user.val())) {
+                        return alert("用户名不符合规则")
+                    }
+
+                    // https://huggingface.co/alpindale/WizardLM-2-8x22B• 
+                    // https://huggingface.co/amazingvince/Not-WizardLM-2-7B/• 
+                    // https://huggingface.co/MaziyarPanahi/WizardLM-2-8x22B-GGUF• 
+                    // https://huggingface.co/MaziyarPanahi/WizardLM-2-7B-GGUF• 
+                    // Olllama模型库：https://ollama.com/library/wizardlm2
+                    // 在发送网络请求。进行注册
+                    $.ajax({
+                        url: "http://127.0.0.1:3901/register",
+                        data: {
+                            user: "郑朋浩",
+                            pwd: "qwe123",
+                            tel: "11996730272"
+                        },
+                        success: function (res) {
+                            console.log(res);
+                        }
+                    })
+
+                    // 注册成功 跳转登录页面
+
+                    // 注册失败 什么原因注册失败
+                })
+
+
+            })
+        </script>
+</body>
+
+</html>

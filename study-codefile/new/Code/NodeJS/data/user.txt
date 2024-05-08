@@ -1,0 +1,4 @@
+name: shiroko
+age: 17
+hoshino
+name: hoshino

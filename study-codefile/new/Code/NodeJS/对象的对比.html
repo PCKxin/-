@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        var obj = {}
+        var obj1 = obj
+        console.log(obj === obj1); // true
+
+        var obj2 = {}
+
+        console.log(obj === obj2); // flase
+        // console.log(obj1 === obj2); // flase
+
+        // 原始类型数据
+        var a = 100;
+        var b = a;
+        console.log(a===b);
+        a= 200
+
+        // 引用类型
+        var bgs = {addr:"南口镇南大街21号"}
+        var zs = bgs
+        var ls = bgs
+
+        console.log(zs === ls,zs === bgs);
+
+        bgs.addr = "朝阳区30号"
+
+        console.log(zs,ls);
+
+        zs.haha = 1000
+
+        console.log(zs , ls , bgs);
+        
+        zs = {
+            addr :"海淀区50号"
+        }
+
+        console.log(zs ,ls);
+
+    </script>
+</body>
+</html>

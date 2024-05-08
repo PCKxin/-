@@ -4,7 +4,22 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </nav>
-    <router-view/>
+
+
+
+    <!-- 全部缓存 -->
+    <!-- <keep-alive>
+      <router-view/>
+    </keep-alive> -->
+
+
+    <!-- 按需求缓存 -->
+    <keep-alive>
+      <router-view v-if="$route.meta.keepAlive"/>
+    </keep-alive>
+    <router-view v-if="!$route.meta.keepAlive"/>
+
+
   </div>
 </template>
 

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        
+        <script>
+            // RegExp 正则表达式
+            // 正则表达式是一个用来匹配字符串的模式
+            // 用来检查字符串是否符合规则的表达式
+
+            var str = 'helloworld, hello nodejs';
+
+            // 创建一个正则表达式
+
+            // new RegExp('hello', 'g');
+                // 参数1: 匹配的字符串
+                // 参数2: 匹配的模式
+                // g: 全局匹配
+                // i: 忽略大小写
+                // m: 多行匹配
+
+            var reg = new RegExp('hello', 'g');
+            var reg = /hello/g; // 简写方式
+            console.log(reg.test(str)); // true
+            console.log(reg.exec(str)); // ["hello", index: 0, input: "hello world, hello nodejs", groups: undefined]
+            // exec() 方法用于检索字符串中的正则表达式的匹配 返回一个数组 [匹配的字符串, 匹配的位置, 原字符串, groups]
+            // test() 方法用于检测一个字符串是否匹配某个模式 返回一个布尔值
+
+            // replace() 方法用于替换字符串中的匹配项 
+            // replace(要替换的字符串, 替换成的字符串)
+            console.log(str.replace(reg, 'hi')); // hi world, hi nodejs
+
+            // /匹配的字符串[符合这里面的任意一个字符]/g
+            // []: 匹配的字符集合
+            // [a-z]: 匹配所有小写字母
+            // [A-Z]: 匹配所有大写字母
+            // [0-9]: 匹配所有数字
+            // [a-zA-Z0-9]: 匹配所有字母和数字
+            // [^a-z]: 匹配所有非小写字母
+            // [^A-Z]: 匹配所有非大写字母
+            // [^0-9]: 匹配所有非数字
+            // [^a-zA-Z0-9]: 匹配所有非字母和数字
+            // [a-z0-9]: 匹配所有小写字母和数字
+
+            // 例:
+            var str2 = 'helloworld, hellonodejs, hello 123';
+            var reg2 = /hello[a-z0-9]/g; // 匹配所有 hello 后面跟一个小写字母或数字的字符串
+            console.log(reg2.exec(str2)); // ["hello w", index: 0, input: "hello world, hello nodejs, hello 123", groups: undefined]
+            
+            // \d: 匹配所有数字
+            // 例:
+            var reg3 = /hello \d/g; // 匹配所有 hello 后面跟一个数字的字符串
+            console.log(reg3.exec(str2)); // ["hello 1", index: 0, input: "hello world, hello nodejs, hello 123", groups: undefined]
+
+            // \D: 匹配所有非数字
+            // 例:
+            var reg4 = /hello\D/g; // 匹配所有 hello 后面跟一个非数字的字符串
+            console.log(reg4.exec(str2)); // ["hello w", index: 0, input: "hello world, hello nodejs, hello 123", groups: undefined]
+
+
+            // \w: 匹配所有字母和数字
+            // \W: 匹配所有非字母和数字
+            // \s: 匹配所有空白字符
+            // \S: 匹配所有非空白字符
+
+            // ^: 匹配字符串的开始
+            // $: 匹配字符串的结束
+            // \b: 匹配单词的边界
+            // \B: 匹配非单词的边界
+
+            // 验证手机号位数案例
+            var tel = '13812345678';
+            var tel2 = '1381234568.17';
+            var reg5 = /^1[3-9]\d{9}$/; 
+            // ^1: 以 1 开头
+            // [3-9]: 第二位是 3-9 之间的数字
+            // \d{9}: 后面是 9 位数字
+            // $: 结束
+            // 也可以写成: var reg5 = /^1[3456789][0123456789]{9}$/;
+            console.log(reg5.test(tel)); // true
+            console.log(reg5.test(tel2)); // false
+
+            // 验证邮箱案例
+            var email = 'shiro@eamil.com';
+            var reg6 = /^\w+@\w+\.\w+$/;
+            // ^\w+: 以字母或数字开头
+            // @: 包含一个 @ 符号
+            // \w+: 包含一个或多个字母或数字
+            // \.: 包含一个 .
+            // \w+: 包含一个或多个字母或数字
+            // $: 结束
+            console.log(reg6.test(email)); // true
+
+            // 验证身份证号码案例
+            var id = '123456789012345678';
+            var reg7 = /^\d{17}[\dX]$/;
+            // ^\d{17}: 以 17 位数字开头
+            // [\dX]: 最后一位是数字或 X
+            // $: 结束
+            console.log(reg7.test(id)); // true
+
+
+            // 验证用户名案例 6-15位 不能以数字开头
+            var regUser = /^[a-zA-Z][0-9a-zA-Z_]{5,14}$/;
+            // ^[a-zA-Z]: 以字母开头
+            // [0-9a-zA-Z_]: 后面是数字或字母或下划线
+            // {5,14}: 长度是 6-15 位
+            console.log(regUser.test('a123456')); // true
+            console.log(regUser.test('afdsa456a')); // true
+        </script>
+    </body>
+</html>    
