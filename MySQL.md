@@ -276,6 +276,16 @@ SELECT 字段1, 字段2, ... FROM 表名 GROUP BY 字段1 HAVING 条件;
 SELECT 字段1, 字段2, ... FROM 表名 GROUP BY 字段1 HAVING 条件 ORDER BY 字段1 ASC|DESC;
 ```
 
+##### 15. 查询指定字段并将字段处理后临时显示在查询终端
+
+- 例: 查询出所有人的信息外加每个人的年薪
+```sql
+-- salary 字段名
+-- annual_salary 临时字段名
+-- employee 表名
+SELECT *, salary * 12 AS annual_salary FROM employee;
+```
+
 #### 3. 更新数据
 
 - `UPDATE`: 更新数据
