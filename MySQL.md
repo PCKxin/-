@@ -126,8 +126,14 @@ DROP TABLE 表名;
 ```
 
 #### 3. 查看表结构
+
+##### 在当前数据库中
 ```sql
 DESC 表名;
+```
+##### 不在
+```sql
+DESC 数据库.表名;
 ```
 
 #### 4. 添加字段
@@ -153,6 +159,16 @@ ALTER TABLE 表名 CHANGE 旧字段名 新字段名 数据类型;
 #### 8. 修改字段默认值(比如默认值为NULL)
 ```sql
 ALTER TABLE 表名 ALTER 字段名 SET DEFAULT 默认值;
+```
+
+#### 9. 修改字段位置
+
+```sql
+ALTER TABLE 表名  MODIFY  字段名 类型 first;
+```
+
+```sql
+ALTER TABLE 表名  MODIFY  字段名 类型 after 某一个字段名;
 ```
 
 ### 数据操作
