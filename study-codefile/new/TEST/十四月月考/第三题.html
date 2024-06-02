@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="http://127.0.0.1:2209/js/jquery-1.12.4.js"></script>
+    </head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-family: Arial
+        }
+
+        .box {
+            width: 350px;
+            height: 200px;
+            /* border: 2px solid gray; */
+            box-sizing: border-box;
+            background-color: rgba(197, 195, 195, 0.74);
+            margin: 50px auto;
+            border-radius: 20px;
+        }
+
+        .options {
+            box-sizing: border-box;
+            padding-top: 8px;
+            width: 175px;
+            height: 50px;
+            /* border: 1px solid gray; */
+            float: left;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 50px;
+            outline: none;
+            /*点击去掉边框*/
+        }        
+        .box2 {
+            box-sizing: border-box;
+            width: 350px;
+            height: 400px;
+            /* display: none; */
+        }
+
+        .box2 .input1 {
+            width: 300px;
+            height: 40px;
+            margin: 20px 25px 0px;
+            /*上：20 左右：25 下：0*/
+            border-radius: 10px;
+            border: 0px;
+            font-size: 15px;
+        }
+
+        .box2 #userRegInfoName {
+            text-indent: 2em;
+        }
+
+        .box2 #userRegInfoTel {
+            text-indent: 2em;
+        }
+
+        .box2 #userRegPwd {
+            text-indent: 2em;
+        }
+
+        .box2 #registerBtn {
+            text-align: center;
+            font-size: 18px;
+            background-color: rgba(253, 168, 10, 0.938);
+            color: whitesmoke;
+            font-weight: bold;
+        }
+
+        .box2 .vc1 {
+            box-sizing: border-box;
+            width: 80px;
+            height: 40px;
+            /* border: 1px solid gray; */
+            margin-top: 20px;
+            margin-left: 25px;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            font-size: 15px;
+            float: left;
+        }
+
+        .box2 .vc2 {
+            margin-top: 15px;
+            margin-left: 10px;
+            float: left;
+            width: 60px;
+            height: 50px;
+            font-size: 15px;
+            border-radius: 5px;
+            border: 0px;
+            text-align: center;
+            outline: none;
+            /*点击去掉边框*/
+        }
+    </style>
+    <body>
+        <div class="box">
+            <div class="box2" id="opd2">
+                <input type="text" class="input1" id="userRegInfoTel" placeholder="请输入手机号">
+                <ul>
+                    <li class="vc1">验证码:</li>
+                    <li>
+                        <input type="text" class="vc2" id="cod1" readonly>
+                    </li>
+                    <li>
+                        <input type="text" class="vc2" id="cod2">
+                    </li>
+                    <li>
+                        <input type="button" value="换一张" class="vc2" id="cod3">
+                    </li>
+                </ul>
+                <input type="button" class="input1" id="registerBtn" value="登陆">
+            </div>
+        </div>
+
+
+        <script>
+            $(function () {
+                const url = "http://127.0.0.1:2209";
+                getcaptcha();
+                function getcaptcha() {
+                    $.ajax({
+                        url: url + "/captcha",
+                        type: "GET",
+                        success: function (data) {
+                            console.log(data.data)
+                            $("#cod1").val(data.data);
+                        }
+                    });
+                }
+                $("#cod3").click(function () {
+                    getcaptcha();
+                });
+                $("#registerBtn").click(function () {
+                    let tel = $("#userRegInfoTel").val();
+                    let code = $("#cod2").val();
+                    $.ajax({
+                        url: url + "/login",
+                        type: "POST",
+                        data: {
+                            tel: tel,
+                            code: code,
+                            time: new Date().getTime()
+                        },
+                        success: function (data) {
+                            console.log(data)
+                        }
+                    });
+                });
+            });
+        </script>
+
+    </body>
+</html>

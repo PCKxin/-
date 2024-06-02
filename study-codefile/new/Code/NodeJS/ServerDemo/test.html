@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="http://127.0.0.1:3901/css/swiper-bundle.min.css">
+        <link rel="stylesheet" href="http://127.0.0.1:3901/css/animate.min.css">
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .yuki_demobox{
+                margin-top: 20px;
+                text-align: center;
+                width: 100%;
+                height: auto;
+                font-size: 18px;
+                color: rgb(117, 117, 117);
+                background: rgba(185, 185, 185, 0.568);
+            }
+            img{
+                width: 75%;
+                height: 75%;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- <div class="yuki_demobox">
+            <div class="swiper">
+
+            </div>
+        </div>   -->
+        <button id="homepage">回首页</button>
+        <button id="slidebtn">轮播图</button>
+        
+        <div class="box"></div>
+
+
+
+        <script src="http://127.0.0.1:3901/jquery-2.1.4.min.js"></script>
+        <script src="http://127.0.0.1:3901/swiper-bundle.min.js"></script>
+        <script src="http://127.0.0.1:3901/swiper.animate1.0.3.min.js"></script>
+        <script>
+
+            $('#homepage').click(function(){
+                $.ajax({
+                    url: 'http://127.0.0.1:3901/html',
+                    success: res =>{
+                        $('.box').html(res);
+                    }
+                });
+            });
+
+            $('#slidebtn').click(function(){
+                $.ajax({
+                    url: 'http://127.0.0.1:3901/banner',
+                    // type: 'get',
+                    // success: function(data) {
+                    //     console.log(data);
+                    // }
+                    success: res =>{
+                        console.log(res)
+                        if(res.code == 200){
+                            var arr = res.data.data;
+                            var yukiBox = $('<div class="yuki_demobox"></div>');
+                            var swiper = $('<div class="swiper"></div>');
+                            var divs1 = $('<div class="swiper-wrapper"></div>');
+                            arr.forEach(item => {
+                                var divs2 = $('<div class="swiper-slide"></div>');
+                                var img = new Image();
+                                img.src = item.img;
+                                $(divs2).append(img);
+                                $(divs1).append(divs2);
+                            });
+                            var swiperbtn = `
+                                    <!-- 分页器 -->
+                                    <div class="swiper-pagination"></div>
+                                    <!-- 导航按钮 -->
+                                    <div class="swiper-button-next"></div>
+                                    <div class="swiper-button-prev"></div>
+                                    <!-- 滚动条 -->
+                                    <div class="swiper-scrollbar"></div>
+                                `
+                            $('.box').html(yukiBox);
+                            $('.yuki_demobox').append(swiper);
+                            $('.swiper').append(divs1);
+                            $('.swiper').append(swiperbtn);
+                            new Swiper('.swiper', {
+                                // autoplay: true,//可选选项，自动滑动
+                                autoplay: {
+                                    delay: 1000,//1秒切换一次
+                                    stopOnLastSlide: false,//停止在最后一个滑块上
+                                    disableOnInteraction: false,//用户操作swiper之后，是否禁止autoplay。默认为true：停止。
+                                },
+                                loop: true,//可选选项，开启循环
+                                navigation: {
+                                    nextEl: '.swiper-button-next', // 下一个按钮的class或者id
+                                    prevEl: '.swiper-button-prev',
+                                },
+                                // 分页器
+                                pagination: {
+                                    el: '.swiper-pagination', // 分页器的class
+                                    clickable: true, // 点击分页器的指示点分页器会控制Swiper切换
+                                },
+                            });
+                        }
+                        if(res.code == 500){
+                            alert(res.msg + '请刷新重试') 
+                        }
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>

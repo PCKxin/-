@@ -1,0 +1,44 @@
+{
+    "data":[
+        {
+            "campus": "实验分校",
+            "degree": "专科",
+            "major": "数字媒体艺术设计",
+            "username": "刘岩松",
+            "account": "2380206451116",
+            "password": "Ouchn@273013",
+            "tasklist": "形势与政策/计算机图像处理/计算机应用技术基础/视觉设计基础/设计概论/毛泽东思想和中国特色社会主义理论体系概论/思想道德与法治",
+            "remark": "6/1 提交学习行为表现"
+        },
+        {
+            "campus":"北工商校本部",
+            "degree":"专科",
+            "major":"计算机网络技术(网页设计方向)",
+            "username":"付子晟",
+            "account": "2380206401376",
+            "password": "Ouchn@20050626",
+            "tasklist": "网络实用技术基础/JavaScript程序设计/网络信息制作与发布/MySQL数据库应用/形势与政策/Web开发基础/Python程序设计/思想道德与法治",
+            "remark":null
+        },
+        {
+            "campus": "北工商校本部",
+            "degree": "专科",
+            "major":"计算机网络技术(网页设计方向)",
+            "username": "",
+            "account": "",
+            "password": "",
+            "tasklist": "",
+            "remark": null
+        },
+        {
+            "campus": "北工商校本部",
+            "degree": "专科",
+            "major": "数字媒体艺术设计",
+            "username": "",
+            "account": "",
+            "password": "",
+            "tasklist": "",
+            "remark": null
+        }
+    ]
+}

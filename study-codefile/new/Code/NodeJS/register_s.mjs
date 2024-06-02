@@ -100,13 +100,13 @@ server.on('request', function (req, res) {
     }
 
 
-});
+});  
 
 // listen() 方法用来监听端口号
 server.listen(
     3901,
     function () {
-        console.log(chalk.green.bold(
+        console.log(chalk.red.bold(
             '                  __    _                                           ___   ____  \n' +
             '   __  __ __  __ / /__ (_)  _____ ___   _____ _   __ ___   _____   <  /  / __ \\ \n' +
             '  / / / // / / // //_// /  / ___// _ \\ / ___/| | / // _ \\ / ___/   / /  / / / / \n' +
@@ -115,6 +115,6 @@ server.listen(
             '/____/                                                                          \n'
             // 想实现\效果，就要用双\\ , 因为\是转义字符
         ));
-        console.log(chalk.red.bold('system online'), chalk.yellow.bold('port:3901'))
+        console.log(chalk.green.bold('system online'), chalk.yellow.bold('port:3901'))
     }
 )

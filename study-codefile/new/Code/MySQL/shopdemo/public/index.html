@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index.js</title>
+    <link rel="stylesheet" href="http://127.0.0.1:3901/css/index.css">
+
+    <script src="http://127.0.0.1:3901/js/jquery-1.12.4.js"></script>
+</head>
+<body>
+    <div id="product">
+        <ul id="tab">
+            <li class="show">录入</li>
+            <li>展示</li>
+        </ul>
+
+        <div id="box">
+            <div class="list show">
+                产品录入
+                <div>
+                    <label for="">商品名称</label>
+                    <input type="text" id="pName">
+                </div>
+                <div>
+                    <label for="">商品种类</label>
+                    <select name="" id="pType">
+                        <!-- <option value="1">服饰</option>
+                        <option value="2">水果</option>
+                        <option value="3">家电</option>
+                        <option value="4">母婴</option>
+                        <option value="5">干果</option> -->
+                    </select>
+                </div>
+                <div>
+                    <label for="">商品价格</label>
+                    <input type="text" id="pPrice">
+                </div>
+                <div>
+                    <label for="">商品数量</label>
+                    <input type="text" id="pNum">
+                </div>
+
+                <button id="submit">提交</button>
+            </div>
+            <div class="list">
+                产品展示
+                <div id="typeBtnGroup">
+                    <button value="0" class="typeBtn">全部</button>
+                </div>
+                <table id="listT">
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>商品名称</th>
+                            <th>商品单价</th>
+                            <th>商品类型</th>
+                            <th>操作(加减库存)</th>
+                            <th>上架时间</th>
+                            <th>操作(删除)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="listTb">
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script>
+        $(function(){
+            const URL = "http://127.0.0.1:3901"
+            var $tabs = $("#tab li")
+            var $list = $("#box .list")
+            // 获取提交按钮
+            var $submit = $("#submit")
+
+
+
+            $tabs.on("click",function(){
+                // 获取下标
+                var ind = $(this).index()
+                // $tabs.removeClass("show").eq(ind).addClass("show")
+                // $list.removeClass("show").eq(ind).addClass("show")
+                $(this).addClass("show").siblings().removeClass("show")
+                $list.eq(ind).addClass("show").siblings().removeClass("show")
+            })
+        
+            getPtype()
+            function getPtype(){
+                $.ajax({
+                    url:URL+"/getProductType",
+                    type:"get",
+                    success:res=>{
+                        if(res.code == 200){
+                            // 获取到数据量,渲染到界面中
+                            setProductType(res.data)
+                        }   
+                    }
+                })
+            }
+        
+            function setProductType(arr=[]){
+                var str = ""
+                arr.map((item)=>{
+                    str+=`<option value="${item.id}">${item.type}</option>`
+                    // console.log(str);
+                })
+                $("#pType").append(str)
+            }
+        
+        
+        
+            $submit.on("click" , ()=>{
+                // 先判断页面是否输入值
+                // 所有值都输入了再提交数据
+                if(!$("#pName").val()) return alert("请输入商品名称")
+                if(!$("#pPrice").val() || isNaN($("#pPrice").val())) return alert("请输入正确的商品价格")
+                if(!$("#pNum").val() || isNaN($("#pNum").val())) return alert("请输入正确的商品数量")
+
+                var data = {
+                    name:$("#pName").val(),
+                    pPrice:$("#pPrice").val(),
+                    pNum:$("#pNum").val(),
+                    type:$("#pType").val(),
+                    cTime: new Date().getTime() // 获取的是时间戳
+                }
+                console.log(data.type);
+                $.ajax({
+                    url:URL+"/addProduct",
+                    type:"post",
+                    data,
+                    success:res=>{
+                        console.log(res);
+                    }
+                })
+            })
+        
+            function setProduct(arr=[]){
+                var str = ""
+                arr.map((item)=>{
+                    str+=`<tr>
+                        <td>${item.id}</td>
+                        <td>${item.name}</td>
+                        <td>${item.price}</td>
+                        <td>${item.type}</td>
+                        <td>
+                            <button class="addNumBtn" value="${item.id}">+</button>
+                            <span class="num">${item.num}</span>
+                            <button class="subNumBtn" value="${item.id}">-</button>
+                        </td>
+                        <td>${item.createTime}</td>
+                        <td>
+                            <button class="delBtn" value="${item.id}">删除</button>
+                        </td>
+                    </tr>`
+                })
+                $("#listTb").html(str)
+            }
+
+
+
+            // selProduct 产品展示
+            $("#tab").on("click" , function(){
+                $.ajax({
+                    url:URL+"/selProduct",
+                    type:"get",
+                    success:res=>{
+                        if(res.code == 200){
+                            // 获取类型序号, 并将按钮添加到上面
+                            var typeArr = res.data.map((item)=>{
+                                return item.type
+                            })
+                            var typeArr = [...new Set(typeArr)] // ...展开运算符,去重
+                    
+                            var str = `<button value="0" class="typeBtn">全部</button>`
+                            console.log(typeArr)
+                            typeArr.map((item)=>{
+                                console.log(item)
+                                // str+=`<button>${item}</button>`
+                                switch(item){
+                                    case "1":
+                                        str+=`<button value="1" class="typeBtn">服饰</button>`
+                                        break
+                                    case "2":
+                                        str+=`<button value="2" class="typeBtn">水果</button>`
+                                        break
+                                    case "3":
+                                        str+=`<button value="3" class="typeBtn">家电</button>`
+                                        break
+                                    case "4":
+                                        str+=`<button value="4" class="typeBtn">母婴</button>`
+                                        break
+                                    case "5":
+                                        str+=`<button value="5" class="typeBtn">干果</button>`
+                                        break
+                                }
+                            })
+                            $("#typeBtnGroup").html(str)
+                            // 获取到数据量,渲染到界面中
+                            setProduct(res.data)
+                        }
+                    }
+                })
+            })
+
+            // 点击分类按钮显示对应的商品
+            $("#typeBtnGroup").on("click",".typeBtn",function(){
+                var type = $(this).val()
+                $.ajax({
+                    url:URL+"/selProduct",
+                    type:"get",
+                    data:{type},
+                    success:res=>{
+                        if(res.code == 200){
+                            // 获取到数据量,渲染到界面中
+                            var data = null;
+                            switch (type){
+                                case "0":
+                                    data = res.data
+                                    break
+                                case "1":
+                                    data = res.data.filter((item)=>{
+                                        return item.type == "1"
+                                    })
+                                    break
+                                case "2":
+                                    data = res.data.filter((item)=>{
+                                        return item.type == "2"
+                                    })
+                                    break
+                                case "3":
+                                    data = res.data.filter((item)=>{
+                                        return item.type == "3"
+                                    })
+                                    break
+                                case "4":
+                                    data = res.data.filter((item)=>{
+                                        return item.type == "4"
+                                    })
+                                    break
+                                case "5":
+                                    data = res.data.filter((item)=>{
+                                        return item.type == "5"
+                                    })
+                                    break
+                            }
+                            setProduct(data)
+                        }
+                    }
+                })
+            })
+
+            // 删除和加减库存
+            // 接口: /delProduct
+            // 参数: id
+            // 接口: /updateProduct
+            // 参数: id, num
+
+            // 标签的value值为删除的id
+            // 点击事件放在元素本身
+            
+            $("#listTb").on("click",".delBtn",function(){
+                var id = $(this).val()
+                $.ajax({
+                    url:URL+"/delProduct",
+                    type:"get",
+                    data:{id},
+                    success:res=>{
+                        if(res.code == 200){
+                            $(this).parent().parent().remove()
+                        }
+                    }
+                })
+            })
+
+            // 加减库存
+
+            // 防抖函数
+            var timer = null;
+            function debounce(id,num, delay){
+                clearTimeout(timer)
+                timer = setTimeout(function(){
+                    $.ajax({
+                        url:URL+"/updateProduct",
+                        type:"post",
+                        data:{id,num},
+                        success:res=>{
+                            if(res.code == 200){
+                                // $(this).next().text(num)
+                                console.log(res)
+                                console.log("库存更新成功")
+                            }
+                        }
+                    })
+                },delay)
+            }
+
+            $("#listTb").on("click",".addNumBtn",function(){
+                var id = $(this).val()
+                var num = $(this).next().text()
+                num++
+                $(this).next().text(num)
+                // 使用防抖函数发送请求, 连续点击只发送一次请求
+
+                debounce(id,num, 2000)
+
+            })
+
+            $("#listTb").on("click",".subNumBtn",function(){
+                var id = $(this).val()
+                var num = $(this).prev().text()
+                num--
+                if(num<0) return alert("库存不足")
+                $(this).prev().text(num)
+                // 使用防抖函数发送请求, 连续点击只发送一次请求
+                debounce(id,num, 2000)
+            })
+        })
+
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-family: Arial
+        }
+
+        .box {
+            width: 350px;
+            height: 380px;
+            /* border: 2px solid gray; */
+            box-sizing: border-box;
+            background-color: rgba(197, 195, 195, 0.74);
+            margin: 50px auto;
+            border-radius: 20px;
+        }
+
+        .options {
+            box-sizing: border-box;
+            padding-top: 8px;
+            width: 175px;
+            height: 50px;
+            /* border: 1px solid gray; */
+            float: left;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 50px;
+            outline: none;
+            /*点击去掉边框*/
+        }
+
+        .box1 {
+            box-sizing: border-box;
+            width: 350px;
+            height: 400px;
+            display: block;
+        }
+
+        .box1 .input1 {
+            width: 300px;
+            height: 50px;
+            margin: 20px 25px 0px;
+            /*上：20 左右：25 下：0*/
+            border-radius: 10px;
+            border: 0px;
+            font-size: 15px;
+        }
+
+        .box1 #userInfo {
+            text-indent: 2em;
+        }
+
+        .box1 #userPwd {
+            text-indent: 2em;
+        }
+
+        .box1 #loginBtn {
+            text-align: center;
+            font-size: 18px;
+            background-color: rgba(253, 168, 10, 0.938);
+            color: whitesmoke;
+            font-weight: bold;
+        }
+
+        .box1 .vc1 {
+            box-sizing: border-box;
+            width: 80px;
+            height: 40px;
+            /* border: 1px solid gray; */
+            margin-top: 20px;
+            margin-left: 25px;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            font-size: 15px;
+            float: left;
+        }
+
+        .box1 .vc2 {
+            margin-top: 15px;
+            margin-left: 10px;
+            float: left;
+            width: 60px;
+            height: 50px;
+            font-size: 15px;
+            border-radius: 5px;
+            border: 0px;
+            text-align: center;
+            outline: none;
+            /*点击去掉边框*/
+        }
+
+        .box2 {
+            box-sizing: border-box;
+            width: 350px;
+            height: 400px;
+            display: none;
+        }
+
+        .box2 .input1 {
+            width: 300px;
+            height: 40px;
+            margin: 20px 25px 0px;
+            /*上：20 左右：25 下：0*/
+            border-radius: 10px;
+            border: 0px;
+            font-size: 15px;
+        }
+
+        .box2 #userRegInfoName {
+            text-indent: 2em;
+        }
+
+        .box2 #userRegInfoTel {
+            text-indent: 2em;
+        }
+
+        .box2 #userRegPwd {
+            text-indent: 2em;
+        }
+
+        .box2 #registerBtn {
+            text-align: center;
+            font-size: 18px;
+            background-color: rgba(253, 168, 10, 0.938);
+            color: whitesmoke;
+            font-weight: bold;
+        }
+
+        .box2 .vc1 {
+            box-sizing: border-box;
+            width: 80px;
+            height: 40px;
+            /* border: 1px solid gray; */
+            margin-top: 20px;
+            margin-left: 25px;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            font-size: 15px;
+            float: left;
+        }
+
+        .box2 .vc2 {
+            margin-top: 15px;
+            margin-left: 10px;
+            float: left;
+            width: 60px;
+            height: 50px;
+            font-size: 15px;
+            border-radius: 5px;
+            border: 0px;
+            text-align: center;
+            outline: none;
+            /*点击去掉边框*/
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul>
+            <!--options 选项的意思-->
+            <li class="options" id="op1" style="color: white;">账号登陆</li>
+            <li class="options" id="op2">账号注册</li>
+        </ul>
+        <!--opd 全称 option display 选项显示的意思-->
+        <div class="box1" id="opd1">
+            <input type="text" class="input1" id="userInfo" placeholder="请输入手机号或用户名">
+            <input type="password" class="input1" id="userPwd" placeholder="输入密码">
+            <input type="button" class="input1" id="loginBtn" value="登陆">
+        </div>
+        <div class="box2" id="opd2">
+            <!--opd 全称 option display 选项显示的意思-->
+            <input type="text" class="input1" id="userRegInfoName" placeholder="请输入用户名">
+            <input type="text" class="input1" id="userRegInfoTel" placeholder="请输入手机号">
+            <input type="password" class="input1" id="userRegPwd" placeholder="请输入密码">
+            <ul>
+                <li class="vc1">验证码:</li>
+                <li>
+                    <input type="text" class="vc2" id="cod1" readonly>
+                </li>
+                <li>
+                    <input type="text" class="vc2" id="cod2">
+                </li>
+                <li>
+                    <input type="button" value="换一张" class="vc2" id="cod3">
+                </li>
+            </ul>
+            <input type="button" class="input1" id="registerBtn" value="登陆">
+        </div>
+    </div>
+</body>
+
+
+<script src="./module/jquery-2.1.4.min.js"></script>
+<script>
+    $(document).ready(function () { // ready() 方法会在页面加载完成后执行函数
+        // $.ajax({
+        //     url: "http://127.0.0.1:3901/img",
+        //     type: "get",
+        //     success: function (res) {
+                
+        //         // base64转jpg并在控制台打印出来
+        //         var img = new Image();
+        //         img.src = "data:image/jpg;base64," + res;
+        //         img.onload = function () {
+        //             console.log(img);
+        //         }
+                
+        //     }
+        // });
+        // generateCaptcha();
+        // 请求验证码并显示
+        function generateCaptcha() {
+            $.ajax({
+                url: "http://127.0.0.1:3901/captcha",
+                type: "get",
+                success: function (res) {
+                    $("#cod1").val(res);
+                }
+            });
+        }
+
+
+        $("#op1").click(function () {
+            $("#opd1").show();
+            $("#opd2").hide();
+            $("#op1").css("color", "white");
+            $("#op2").css("color", "black");
+        });
+
+        $("#op2").click(function () {
+            $("#opd2").show();
+            $("#opd1").hide();
+            $("#op1").css("color", "black");
+            $("#op2").css("color", "white");
+            generateCaptcha();
+        });
+
+        $("#cod3").click(function () {
+            generateCaptcha();
+            // $("#cod1").val(Math.random().toString(36).slice(-4));
+        });
+
+        // 判断是否符合规则
+        var reg = {
+            name: /^[a-zA_Z_]\w{5,14}$/, // 6-15位字母数字下划线
+            // 最少6位，最多15位 字母数字混合
+            ped: /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,15}$/, // 6-15位字母数字混合
+            // (?![0-9]+$) 不能全是数字
+            // (?![a-zA-Z]+$) 不能全是字母
+            // [0-9A-Za-z]{6,15} 6-15位字母数字混合
+            tel: /^1[3-9]\d{9}$/, // 11位数字
+        };
+
+        function msglock(msg) {
+            const startTime = performance.now();
+
+            // 第一层 将字符串转换为Unicode编码
+            let unicodeArr = [];
+            for (let i = 0; i < msg.length; i++) {
+                unicodeArr.push(msg.charCodeAt(i));
+            }
+
+            // 第二层 将Unicode编码转换为二进制
+            let binaryArr = [];
+            for (let i = 0; i < unicodeArr.length; i++) {
+                binaryArr.push(unicodeArr[i].toString(2));
+            }
+
+            // 第三层 二进制转base64
+            let base64Arr = [];
+            for (let i = 0; i < binaryArr.length; i++) {
+                base64Arr.push(btoa(binaryArr[i]));
+            }
+
+            const endTime = performance.now();
+            const totalTime = endTime - startTime;
+
+            console.log("运行时间：", totalTime.toFixed(2), "毫秒");
+
+            return base64Arr;
+        }
+
+        // // 测试代码
+        // const encryptedMsg = msglock("Hello, World!");
+        // console.log("加密后的消息：", encryptedMsg);
+
+
+        $("#loginBtn").click(function () {
+            // var userInfo = $("#userInfo").val();
+            // var userPwd = $("#userPwd").val();
+            var userInfo = msglock($("#userInfo").val());
+            var userPwd = msglock($("#userPwd").val());
+            $.ajax({
+                url: "http://127.0.0.1:3901/user?login",
+                type: "post",
+                data: JSON.stringify({
+                    user: userInfo,
+                    pwd: userPwd
+                }),
+                contentType: "application/json",
+                success: function (res) {
+                    console.log(res);
+                }
+            })
+            // Your login logic here
+        });
+
+        $("#registerBtn").click(function () {
+            if (!$("#userRegInfoName").val().trim() || !$("#userRegInfoTel").val().trim() || !$("#userRegPwd").val().trim()) {
+                $("#userRegInfoName").val("");
+                $("#userRegInfoTel").val("");
+                $("#userRegPwd").val("");
+                return alert("输入框不能为空");
+            } else if (!reg.name.test($("#userRegInfoName").val())) {
+                return alert("用户名不符合规则");
+            } else if (!reg.tel.test($("#userRegInfoTel").val())) {
+                return alert("手机号不符合规则");
+            } else if (!reg.ped.test($("#userRegPwd").val())) {
+                return alert("密码不符合规则");
+            } else {
+                var cod1 = $("#cod1").val();
+                var cod2 = $("#cod2").val();
+                if (cod1 != cod2) {
+                    alert("验证码错误");
+                    return;
+                } else {
+                    $.ajax({
+                        url: "http://127.0.0.1:3901/user?register",
+                        type: "post",
+                        data: JSON.stringify({
+                            // user: $("#userRegInfoName").val(),
+                            // pwd: $("#userRegPwd").val(),
+                            // tel: $("#userRegInfoTel").val()
+                            user: msglock($("#userRegInfoName").val()),
+                            pwd: msglock($("#userRegPwd").val()),
+                            tel: msglock($("#userRegInfoTel").val())
+                        }),
+                        contentType: "application/json",
+                        success: function (res) {
+                            console.log(res);
+                        }
+                    })
+                }
+
+            }
+
+        });
+    });
+</script>
+
+</html>

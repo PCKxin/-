@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据管理</title>
+    <script src="http://127.0.0.1:2209/js/jquery-1.12.4.js"></script>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid gray; 
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        .highlight {
+            background-color: yellow;
+        }
+        button {
+            background-color: #87CEEB; 
+            color: white; 
+            border: none;
+            border-radius: 10px; 
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #00BFFF; 
+        }
+        input[type="text"] {
+            width: 200px; 
+            padding: 10px;
+            margin: 5px 0;
+            box-sizing: border-box;
+            border: 2px solid gray;
+            border-radius: 10px; 
+        }
+        .delete-link {
+            color: rgb(177, 177, 177);
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h2>数据管理</h2>
+    <div>
+        <label for="name">添加:</label>
+        <input type="text" id="name" placeholder="姓名">
+        <input type="text" id="age" placeholder="年龄">
+        <button id="addDataBtn">添加</button>
+        <button id="toggleHighlightBtn">开启/移入变色</button>
+    </div>
+    <br>
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- 数据将被插入这里 -->
+        </tbody>
+    </table>
+    <br>
+    <div>
+        <label for="search">搜索:</label>
+        <input type="text" id="search" placeholder="张三">
+        <button id="searchDataBtn">搜索</button>
+        <button id="resetTableBtn">重置</button>
+        <button id="sortTableBtn">排序: 年龄从小到大</button>
+    </div>
+
+    <script>
+        const URL = "http://127.0.0.1:2209";
+
+        getData();
+        // 获取数据
+        function getData() {
+            $.ajax({
+                url: `${URL}/getStudent`,
+                type: "GET",
+                success: function(data) {
+                    $("#dataTable tbody").empty(); // 清空表格
+                    console.log(data)
+                    data.data.forEach(data => {
+                        $("#dataTable tbody").append(
+                            `<tr>
+                                <td>${data.Id}</td>
+                                <td>${data.Username}</td>
+                                <td>${data.Age}</td>
+                                <td><span class="delete-link">删除</span></td>
+                            </tr>`
+                        );
+                    });
+                }
+            });
+        }
+        // 添加数据
+        $("#addDataBtn").click(function() {
+            const username = $("#name").val();
+            const age = $("#age").val();
+            
+            $.ajax({
+                url: `${URL}/addStudent`,
+                type: "POST",
+                data: {
+                    username: username,
+                    age: age
+                },
+                success: function(data) {
+                    getData();
+                    console.log(data)
+                }
+            });
+        });
+        // 删除数据
+        $("#dataTable").on("click", ".delete-link", function() {
+            const id = $(this).parent().siblings().eq(0).text();
+            $.ajax({
+                url: `${URL}/delStudent`,
+                type: "POST",
+                data: {
+                    id: id
+                },
+                success: function(data) {
+                    getData();
+                    console.log(data)
+                }
+            });
+        });
+        // 搜索数据
+        $("#searchDataBtn").click(function() {
+            const username = $("#search").val();
+            $.ajax({
+                url: `${URL}/searchStudent`,
+                type: "POST",
+                data: {
+                    username: username
+                },
+                success: function(data) {
+                    $("#dataTable tbody").empty(); // 清空表格
+                    data.data.forEach(data => {
+                        $("#dataTable tbody").append(
+                            `<tr>
+                                <td>${data.Id}</td>
+                                <td>${data.Username}</td>
+                                <td>${data.Age}</td>
+                                <td><span class="delete-link">删除</span></td>
+                            </tr>`
+                        );
+                    });
+                }
+            });
+        });
+
+        // 重置表格
+        $("#resetTableBtn").click(function() {
+            getData();
+        });
+
+        // 排序表格
+        $("#sortTableBtn").click(function() {
+            $.ajax({
+                url: `${URL}/sortStudent`,
+                type: "GET",
+                success: function(data) {
+                    $("#dataTable tbody").empty(); // 清空表格
+                    data.data.forEach(data => {
+                        $("#dataTable tbody").append(
+                            `<tr>
+                                <td>${data.Id}</td>
+                                <td>${data.Username}</td>
+                                <td>${data.Age}</td>
+                                <td><span class="delete-link">删除</span></td>
+                            </tr>`
+                        );
+                    });
+                }
+            });
+        });
+
+
+
+
+
+
+        $(document).ready(function() {
+
+            let highlightEnabled = false;
+
+            $("#toggleHighlightBtn").click(function() {
+                highlightEnabled = !highlightEnabled;
+                if (highlightEnabled) {
+                    $("#dataTable tbody tr").hover(
+                        function() {
+                            $(this).addClass("highlight");
+                        },
+                        function() {
+                            $(this).removeClass("highlight");
+                        }
+                    );
+                } else {
+                    $("#dataTable tbody tr").off("mouseenter mouseleave"); // 移除事件处理程序
+                    $("#dataTable tbody tr").removeClass("highlight");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

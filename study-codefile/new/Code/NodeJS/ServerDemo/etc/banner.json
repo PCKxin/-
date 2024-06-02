@@ -1,0 +1,16 @@
+{
+    "data" : [
+        {
+            "id" : 0,
+            "img" : "http://127.0.0.1:3901/banner/T113BG.png"
+        },
+        {
+            "id" : 1,
+            "img" : "http://127.0.0.1:3901/banner/T117BG.png"
+        },
+        {
+            "id" : 2,
+            "img" : "http://127.0.0.1:3901/banner/T120BG.jpg"
+        }
+    ]
+}
