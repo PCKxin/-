@@ -70,6 +70,63 @@ SHOW TABLES;
 - `MULTILINESTRING`: 多线类型
 - `MULTIPOLYGON`: 多面类型
 
+#### 约束, 意思是对字段的限制, 用于保证数据的完整性和一致性
+
+- `PRIMARY KEY`: 主键
+- `UNIQUE`: 唯一
+- `NOT NULL`: 非空
+- `DEFAULT`: 默认值
+- `AUTO_INCREMENT`: 自增长, 用于主键
+- `FOREIGN KEY`: 外键, 用于关联两个表
+- `CHECK`: 检查
+- `INDEX`: 索引
+- `FULLTEXT`: 全文索引
+- `SPATIAL`: 空间索引
+- `CONSTRAINT`: 约束
+
+##### 约束例
+
+```sql
+CREATE TABLE 表名(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    age INT DEFAULT
+);
+```
+
+##### 外键例
+
+```sql
+CREATE TABLE 表名(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    age INT DEFAULT,
+    department_id INT,
+    FOREIGN KEY(department_id) REFERENCES department(id)
+);
+```
+
+##### 多个外键例
+
+```sql
+CREATE TABLE 表名(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    age INT DEFAULT,
+    department_id INT,
+    job_id INT,
+    FOREIGN KEY(department_id) REFERENCES department(id),
+    FOREIGN KEY(job_id) REFERENCES job(id)
+);
+```
+##### 对已有表增加约束例
+
+```sql
+ALTER TABLE 表名 ADD CONSTRAINT 约束名 约束类型(字段名);
+```
+
+
+
 #### id字段
 
 ##### 1. 自增长id
@@ -172,6 +229,45 @@ ALTER TABLE 表名  MODIFY  字段名 类型 after 某一个字段名;
 ```
 
 ### 数据操作
+
+- `INSERT`: 插入数据
+- `SELECT`: 查询数据
+- `UPDATE`: 更新数据
+- `DELETE`: 删除数据
+- `TRUNCATE`: 删除表数据 不删除表结构
+- `CREATE INDEX`: 创建索引
+- `DROP INDEX`: 删除索引
+- `SHOW INDEX`: 查看索引
+
+- 聚合函数(也叫组合函数, 用于统计)
+    - `COUNT`: 数量, 可以统计所有行或者指定字段的行数
+        - `COUNT(*)`: 统计所有行
+        - `COUNT(字段名)`: 统计指定字段的行数
+        - `COUNT(DISTINCT 字段名)`: 统计指定字段的不重复行数
+        - 例:
+            - `SELECT COUNT(*) FROM 表名;` 返回表的行数
+            - `SELECT COUNT(字段名) FROM 表名;` 返回指定字段的行数
+    - `SUM`: 求和, 可以统计所有行或者指定字段的和
+        - `SUM(字段名)`: 统计指定字段的和
+        - `SUM(DISTINCT 字段名)`: 统计指定字段的不重复和
+        - `SUM(*)`: 统计所有行的和
+        - 例
+          -  `SELECT SUM(字段名) FROM 表名;` 返回指定字段的和
+          -  `SELECT SUM(*) FROM 表名;` 返回所有行的和
+    - `AVG`: 平均值, 可以统计所有行或者指定字段的平均值
+        - `AVG(字段名)`: 统计指定字段的平均值
+        - `AVG(DISTINCT 字段名)`: 统计指定字段的不重复平均值
+        - `AVG(*)`: 统计所有行的平均值
+        - 例
+            - `SELECT AVG(字段名) FROM 表名;` 返回指定字段的平均值
+            - `SELECT AVG(*) FROM 表名;` 返回所有行的平均值
+    - `MAX`: 最大值, 可以统计所有行或者指定字段的最大值
+        - `MAX(字段名)`: 统计指定字段的最大值
+        - `MAX(DISTINCT 字段名)`: 统计指定字段的不重复最大值
+        - `MAX(*)`: 统计所有行的最大值
+        - 例
+            - `SELECT MAX(字段名) FROM 表名;` 返回指定字段的最大值
+            - `SELECT MAX(*) FROM 表名;` 返回所有行的最大值
 
 #### 1. 插入数据
 
