@@ -72,13 +72,13 @@ SHOW TABLES;
 
 #### 约束, 意思是对字段的限制, 用于保证数据的完整性和一致性
 
-- `PRIMARY KEY`: 主键
-- `UNIQUE`: 唯一
-- `NOT NULL`: 非空
+- `PRIMARY KEY`: 主键 一个表只能有一个主键 用于唯一标识一条记录, 不会重复, 不可以有NULL
+- `UNIQUE`: 唯一 一个表可以有多个唯一字段 用于保证数据的唯一性 不会重复, 可以有多个NULL
+- `NOT NULL`: 非空 不能为空
 - `DEFAULT`: 默认值
 - `AUTO_INCREMENT`: 自增长, 用于主键
 - `FOREIGN KEY`: 外键, 用于关联两个表
-- `CHECK`: 检查
+- `CHECK`: 检查 用于检查数据的合法性
 - `INDEX`: 索引
 - `FULLTEXT`: 全文索引
 - `SPATIAL`: 空间索引
