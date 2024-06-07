@@ -500,3 +500,99 @@ nginx -s reload
 
 
 ## 虚拟主机
+
+- 虚拟主机是指在一台服务器上配置多个域名，以提高性能和可用性。
+- 虚拟主机有多种类型，如基于IP地址的虚拟主机、基于端口号的虚拟主机、基于域名的虚拟主机等。
+- 虚拟主机可以实现多个网站共享一个服务器，提高资源利用率。
+- 虚拟主机可以实现多个网站共享一个IP地址，提高性能和可用性。
+- 虚拟主机可以实现多个网站共享一个端口号，提高性能和可用性。
+
+### 基于IP地址的虚拟主机
+
+- 基于IP地址的虚拟主机是指在一台服务器上配置多个IP地址，每个IP地址对应一个域名。
+- 基于IP地址的虚拟主机适用于每个网站的性能相同的情况。
+- 基于IP地址的虚拟主机的优点是简单、公平，缺点是无法根据网站的性能进行动态调整。
+
+- 配置案例如下：
+  - ```shell
+    server {
+        listen 80; # 监听端口号80
+        server_name web1; # 指定服务器名称为web1
+        location / { # 处理请求
+            root /var/www/web1; # 指定根目录为/var/www/web1
+            index index.html; # 默认首页文件为index.html
+        }
+    }
+    server {
+        listen 80; # 监听端口号80
+        server_name web2; # 指定服务器名称为web2
+        location / { # 处理请求
+            root /var/www/web2; # 指定根目录为/var/www/web2
+            index index.html; # 默认首页文件为index.html
+        }
+    }
+    ```
+
+- 配置案例访问`web1`和`web2`的方式如下：
+  - `http://web1`
+  - `http://web2`
+
+### 基于端口号的虚拟主机
+
+- 基于端口号的虚拟主机是指在一台服务器上配置多个端口号，每个端口号对应一个域名。
+- 基于端口号的虚拟主机适用于每个网站的性能相同的情况。
+
+- 配置案例如下：
+  - ```shell
+    server {
+        listen 80; # 监听端口号80
+        server_name web1; # 指定服务器名称为web1
+        location / { # 处理请求
+            root /var/www/web1; # 指定根目录为/var/www/web1
+            index index.html; # 默认首页文件为index.html
+        }
+    }
+    server {
+        listen 81; # 监听端口号81
+        server_name web2; # 指定服务器名称为web2
+        location / { # 处理请求
+            root /var/www/web2; # 指定根目录为/var/www/web2
+            index index.html; # 默认首页文件为index.html
+        }
+    }
+    ```
+
+- 配置案例访问`web1`和`web2`的方式如下：
+  - `http://localhost:80`
+  - `http://localhost:81`
+
+### 基于域名的虚拟主机
+
+- 基于域名的虚拟主机是指在一台服务器上配置多个域名，每个域名对应一个网站。
+- 基于域名的虚拟主机适用于每个网站的性能相同的情况。
+
+- 配置案例如下：
+  - ```shell
+    server {
+        listen 80; # 监听端口号80
+        server_name web1; # 指定服务器名称为web1
+        location / { # 处理请求
+            root /var/www/web1; # 指定根目录为/var/www/web1
+            index index.html; # 默认首页文件为index.html
+        }
+    }
+    server {
+        listen 80; # 监听端口号80
+        server_name web2; # 指定服务器名称为web2
+        location / { # 处理请求
+            root /var/www/web2; # 指定根目录为/var/www/web2
+            index index.html; # 默认首页文件为index.html
+        }
+    }
+    ```
+
+- 配置案例访问`web1`和`web2`的方式如下：
+  - `http://web1`
+  - `http://web2`
+
+
